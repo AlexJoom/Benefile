@@ -1,0 +1,2404 @@
+{
+    "links" : [ ],
+    "projects" : [ {
+        "externalName" : "DAEM | IHM (Immigrants Health Care)",
+        "name" : "DAEM | IHM (Immigrants Health Care)",
+        "key" : "DIIHC",
+        "lead" : "xdimizas",
+        "description" : "",
+        "assigneeType" : 2,
+        "versions" : [ ],
+        "components" : [ ],
+        "issues" : [ {
+            "key" : "DIIHC-1",
+            "summary" : "Install wordpress page",
+            "reporter" : "atzoumas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429005600000,
+            "updated" : 1429104540000,
+            "resolutionDate" : 1429104540000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "atzoumas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "atzoumas",
+                "created" : 1429005600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429005600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429005600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429005600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429005600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-2",
+            "summary" : "setup jira project and communicate credentials",
+            "reporter" : "atzoumas",
+            "assignee" : "atzoumas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429525260000,
+            "updated" : 1429525260000,
+            "resolutionDate" : 1429551900000,
+            "timeSpent" : "PT3600S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "atzoumas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "atzoumas",
+                "created" : 1429525260000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "newValue" : "atzoumas",
+                    "newDisplayValue" : "Alexandros Tzoumas"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429525260000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429525260000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "3600",
+                    "newDisplayValue" : "3600"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11178",
+                    "oldDisplayValue" : "11178"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429525260000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429525260000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-3",
+            "summary" : "Install training plugin",
+            "reporter" : "atzoumas",
+            "description" : "http://namaste-lms.org/pro.php",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429702800000,
+            "updated" : 1429720500000,
+            "resolutionDate" : 1429720500000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "atzoumas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "atzoumas",
+                "created" : 1429702800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "http://namaste-lms.org/pro.php",
+                    "newDisplayValue" : "http://namaste-lms.org/pro.php\n\nUpload presentations to slideshare\nhttp://www.slideshare.net/prototypeinteractive"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429702800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "http://namaste-lms.org/pro.php\n\nUpload presentations to slideshare\nhttp://www.slideshare.net/prototypeinteractive",
+                    "newDisplayValue" : "http://namaste-lms.org/pro.php\n\n"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429702800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429702800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429702800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-6",
+            "summary" : "find training plugin",
+            "reporter" : "atzoumas",
+            "assignee" : "atzoumas",
+            "issueType" : "Task",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429608900000,
+            "updated" : 1429730400000,
+            "resolutionDate" : 1429730400000,
+            "timeSpent" : "PT1200S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "atzoumas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "atzoumas",
+                "created" : 1429608900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "atzoumas",
+                    "newDisplayValue" : "Alexandros Tzoumas"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429608900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "atzoumas",
+                "created" : 1429608900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "1200",
+                    "newDisplayValue" : "1200"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11180",
+                    "oldDisplayValue" : "11180"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429608900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429608900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-7",
+            "summary" : "ενσωματωση online ερωτηματολογιου",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429696200000,
+            "updated" : 1429804200000,
+            "resolutionDate" : 1429804200000,
+            "timeSpent" : "PT8940S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "Attachment",
+                    "newValue" : "10258",
+                    "newDisplayValue" : "DAEM.odt"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "8940",
+                    "newDisplayValue" : "8940"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11296",
+                    "oldDisplayValue" : "11296"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429696200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-8",
+            "summary" : "θα μπουν κουμπια που θα επιτρεπουν αναρτηση ενος post σε κοινωνικα δικτοια",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429789800000,
+            "updated" : 1429814520000,
+            "resolutionDate" : 1429814520000,
+            "timeSpent" : "PT600S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10202",
+                    "newDisplayValue" : "Selected for Development"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10202",
+                    "oldDisplayValue" : "Selected for Development",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "600",
+                    "newDisplayValue" : "600"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11289",
+                    "oldDisplayValue" : "11289"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429789800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-9",
+            "summary" : "Ασύγχρονη εφαρμογή για μάθηση εξ’ αποστάσεως",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "description" : "Namaste ! LMS (or similars)",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429864920000,
+            "updated" : 1429896840000,
+            "resolutionDate" : 1429896840000,
+            "timeSpent" : "PT13680S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "newDisplayValue" : "Namaste ! LMS (or similars)\n"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "4020",
+                    "newDisplayValue" : "4020"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11406",
+                    "oldDisplayValue" : "11406"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "oldValue" : "4020",
+                    "oldDisplayValue" : "4020",
+                    "newValue" : "6300",
+                    "newDisplayValue" : "6300"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11470",
+                    "oldDisplayValue" : "11470"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "oldValue" : "6300",
+                    "oldDisplayValue" : "6300",
+                    "newValue" : "13680",
+                    "newDisplayValue" : "13680"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11500",
+                    "oldDisplayValue" : "11500"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429864920000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-10",
+            "summary" : "Δημιουργεία manual με τις βασικες οδηγιες αναρτησης περιεχομενου",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1432545000000,
+            "updated" : 1432656600000,
+            "resolutionDate" : 1432656600000,
+            "timeSpent" : "PT19740S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10202",
+                    "newDisplayValue" : "Selected for Development"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10202",
+                    "oldDisplayValue" : "Selected for Development",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10202",
+                    "newDisplayValue" : "Selected for Development"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10202",
+                    "oldDisplayValue" : "Selected for Development",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "19740",
+                    "newDisplayValue" : "19740"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11748",
+                    "oldDisplayValue" : "11748"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432545000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-11",
+            "summary" : "Add Twitter account next to fb in menu",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "description" : "https://mobile.twitter.com/Immigr_Health",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429876800000,
+            "updated" : 1429885500000,
+            "resolutionDate" : 1429885500000,
+            "timeSpent" : "PT300S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "estafyla",
+                "created" : 1429876800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429876800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "300",
+                    "newDisplayValue" : "300"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11288",
+                    "oldDisplayValue" : "11288"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429876800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429876800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429876800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-12",
+            "summary" : "Ερωτηματολογιο (εξτρα) |  Να μην ειναι ορατο χωρις κωδικο προσβασης (οπως τωρα)",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430130300000,
+            "updated" : 1430159400000,
+            "resolutionDate" : 1430159400000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430130300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "summary",
+                    "oldDisplayValue" : "Ερωτηματολογιο (εχτρα) |",
+                    "newDisplayValue" : "Ερωτηματολογιο (εξτρα) |  Να μην ειναι ορατο χωρις κωδικο προσβασης (οπως τωρα)\n"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430130300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430130300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430130300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-13",
+            "summary" : "Ερωτηματολογιο (εξτρα) |  2. να μην φαινεται η ημερομηνια στο πεδίο στο κάτω μέρος καταχωρησης -(δες επισυναπτομενη φωτογραφια)",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430213400000,
+            "updated" : 1430249400000,
+            "resolutionDate" : 1430249400000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430213400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "summary",
+                    "oldDisplayValue" : "2. να μην φαινεται η ημερομηνια στο πεδίο στο κάτω μέρος καταχωρησης -(δες επισυναπτομενη φωτογραφια)",
+                    "newDisplayValue" : "Ερωτηματολογιο (εξτρα) |  2. να μην φαινεται η ημερομηνια στο πεδίο στο κάτω μέρος καταχωρησης -(δες επισυναπτομενη φωτογραφια)"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430213400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "Attachment",
+                    "newValue" : "10261",
+                    "newDisplayValue" : "DATE 1.1.B_13 QUESTIONNAIRE.gif"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430213400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430213400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430213400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-14",
+            "summary" : "Προσθηκη Google Statistics (αναλυτικη κινηση επισκεψiμοτητας του site)",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430730600000,
+            "updated" : 1430757600000,
+            "resolutionDate" : 1430757600000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430730600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-16",
+            "summary" : "Διαμορφωση νεου μενου για καλυτερη πλοηγηση",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430732400000,
+            "updated" : 1430836800000,
+            "resolutionDate" : 1430836800000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430732400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-17",
+            "summary" : "Δυνατοτητα μεταφρασης του site σε πολλες γλωσσες μεσω της προσθηκης Google Translate",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430822400000,
+            "updated" : 1430851200000,
+            "resolutionDate" : 1430851200000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430822400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-18",
+            "summary" : "Προσβαση σε στοιχεια του site μονο για εγγεγραμενους χρηστες & φορεις",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1431339300000,
+            "updated" : 1431357300000,
+            "resolutionDate" : 1431357300000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1431339300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-19",
+            "summary" : "Εφαρμογη template για την δυνατοτητα προβολης του site σε πολλαπλες συσκευές (smartphone, tablet, pc, laptop)",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429092900000,
+            "updated" : 1429542900000,
+            "resolutionDate" : 1429542900000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429092900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-20",
+            "summary" : "Διαχωρισμος του μενου σε καταλληλες θεματικες για ευκολοτερη κατανοηση του περιεχομενου",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430908500000,
+            "updated" : 1431448800000,
+            "resolutionDate" : 1431448800000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430908500000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-21",
+            "summary" : "Δυνατοτητα προβολης οπτικοακουστικού υλικου στις σελιδες",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1431421800000,
+            "updated" : 1431456000000,
+            "resolutionDate" : 1431456000000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1431421800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-22",
+            "summary" : "Προσβαση σε αρχεια μονο με account στο site",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1431429600000,
+            "updated" : 1431448200000,
+            "resolutionDate" : 1431448200000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1431429600000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-23",
+            "summary" : "Δημιουργεια σελίδων με δυνατοτητα ανεβασματος εικονων, κειμενων, βιντεο, αρχεια ηχου",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1431520800000,
+            "updated" : 1431535200000,
+            "resolutionDate" : 1431535200000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1431520800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-24",
+            "summary" : "Φάση 1 Προετοιμασία- Φ.1.1 Χαρτογράφηση Υπηρεσιών",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Έναρξη εργασιών 2/1/2015 και ολοκλήρωση 31/3/2015\nΔΑΕΜ\nΑνάθεση σε : Γ.Νίκου, Ι.Αλεξανδροπούλου και Α.Σωτηριανάκου\nΕργασίες για την χαρτογράφηση των υπρεσιών των εμπλεκόμενων δημοτικών ιατρείων",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429528800000,
+            "updated" : 1431283440000,
+            "resolutionDate" : 1431283440000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "estafyla",
+                "created" : 1429528800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "Έναρξη εργασιών 2/1/2015 και ολοκλήρωση 31/3/2015\r\nΑνάθεση σε : Γ.Νίκου, Ι.Αλεξανδροπούλου και Α.Σωτηριανάκου\r\nΕραγασίες για την χαρτογράφηση των υπρεσιών των εμπλεκόμενων δημοτικών ιατρείων\r\n",
+                    "newDisplayValue" : "Έναρξη εργασιών 2/1/2015 και ολοκλήρωση 31/3/2015\nΔΑΕΜ\nΑνάθεση σε : Γ.Νίκου, Ι.Αλεξανδροπούλου και Α.Σωτηριανάκου\nΕργασίες για την χαρτογράφηση των υπρεσιών των εμπλεκόμενων δημοτικών ιατρείων\nΑΝΑΠΤΥΞΙΑΞΗ ΗΡΑΚΛΕΙΟΥ\nΑνάθεση σε : \n"
+                } ]
+            }, {
+                "author" : "estafyla",
+                "created" : 1429528800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "Έναρξη εργασιών 2/1/2015 και ολοκλήρωση 31/3/2015\nΔΑΕΜ\nΑνάθεση σε : Γ.Νίκου, Ι.Αλεξανδροπούλου και Α.Σωτηριανάκου\nΕργασίες για την χαρτογράφηση των υπρεσιών των εμπλεκόμενων δημοτικών ιατρείων\nΑΝΑΠΤΥΞΙΑΞΗ ΗΡΑΚΛΕΙΟΥ\nΑνάθεση σε : \n",
+                    "newDisplayValue" : "Έναρξη εργασιών 2/1/2015 και ολοκλήρωση 31/3/2015\nΔΑΕΜ\nΑνάθεση σε : Γ.Νίκου, Ι.Αλεξανδροπούλου και Α.Σωτηριανάκου\nΕργασίες για την χαρτογράφηση των υπρεσιών των εμπλεκόμενων δημοτικών ιατρείων\n\n"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429528800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429528800000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-25",
+            "summary" : "Φάση 1 Προετοιμασία- Φ.1.2 Διαδικασίες επιλογής Προσωπικού",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Έναρξη : 2/1/2015 \r\nΟλοκλήρωση :31/3/2015\r\nΑνάθεση σε : Γ.Νικου. Ι.Αλεξανδροπουλου, Μ.Φυτρος.Α.Σωτηριανάκου",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429529100000,
+            "updated" : 1431283620000,
+            "resolutionDate" : 1431283620000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429529100000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429529100000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-26",
+            "summary" : "Φάση 1 Προετοιμασία-Φ.1.3 Ευαισθητοποίηση και ενημέρωση των νέων στελεχών",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Εναρξη 2/1/2015 εως 30/6/2015\r\nΑνάθεση σε ΚΕΕΛΠΝΟ- Σεμινάρια και αντροφοδοτηση ενημερωτικού υλικού μέσω πλατφόρμας",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429529700000,
+            "updated" : 1435684920000,
+            "resolutionDate" : 1435684920000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429529700000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429529700000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-27",
+            "summary" : "Φάση 1 Προετοιμασία-Φ.1.4 Σχεδιασμός και υλοποίηση διαδικτυακής πλατφόρμας",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Εναρξη διαδικασιών 2/1/2015 -ολοκλήρωση 19/5/2015\r\n\r\nΥπεργολάβος υλοποιησης πλατφορμας: εταιρeία Scify\r\nΟμάδα εργασιας ΔΑΕΜ: Ν.Σταθάτος, Μ.Βιτζηλαίου και Ν.Τζέκας",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429530000000,
+            "updated" : 1432227240000,
+            "resolutionDate" : 1432227240000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429530000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429530000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-28",
+            "summary" : "Φάση 1 Προετοιμασία- Φ1.5 Σχεδιασμός και συγγραφή του ενημερωτικού υλικού που θα διανεμηθεί στους πτχ",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Έναρξη 2/1/2015- ολοκλήρωση Απρίλιος 2015\r\nΑνάθεση σε ΚΕΕΛΠΝΟ για συγγραφή του υλικού",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429530900000,
+            "updated" : 1433961240000,
+            "resolutionDate" : 1433961240000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429530900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429530900000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-29",
+            "summary" : "Φάση 2 Υλοποίηση στις δομές-Φ2.1 Μετάφραση του υλικού  ενημέρωσης",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Ανάθεση σε υπεργολάβο ΑΒΑ ΕΡΜΗΣ στις 21/4/2015\r\nΠαράδοση υλικού σταδιακά εως 25/5/15",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429617300000,
+            "updated" : 1432755780000,
+            "resolutionDate" : 1432755780000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429617300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429617300000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-30",
+            "summary" : "Φάση 2 Υλοποίηση στις δομές-Φ2.2 Εκτύπωση του υλικού  ενημέρωσης",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Ανάθεση σε υπεργολάβο \"APPLY \" 8/5/2015 -σταδιακή παραλαβή υλικού",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1431092400000,
+            "updated" : 1435000260000,
+            "resolutionDate" : 1435000260000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1431092400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1431092400000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-31",
+            "summary" : "Φάση 2 Υλοποίηση στις δομές- Φ2.3 Στελέχωση δομών",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "ΔΑΕΜ: \r\nΠρόσκληση ενδιαφέροντος Κοιν.Λειτουργών και Επισκεπτών Υγειας : 11/02/2015 \r\nΠρόσκληση ενδιαφέροντος Διαπολιτισμικών Μεσολαβητών: 2/04/2015 - Ηταν άγονη\r\nΣυμβάσεις υπεργολαβίας ΔΑΕΜ :σύναψη 15 συμβάσεων (διάρκειας Μάρτιο –Ιούνιο) των στελεχών των δομώνΑθήνα, Θεσσαλονίκη, Ιωάννινα\r\n\r\nΑΝΑΠΤΥΞΙΑΚΗ ΗΡΑΚΛΕΙΟΥ:\r\nΠρόσκληση ενδιαφέροντος Κοιν.Λειτουργών , Επισκεπτών Υγειαςκαι Διαπολιτισμικών Μεσολαβητών : 18/02/2015 \r\nΣύναψη συμβάσεων:02/03/2015 - 8 ατομα",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429618200000,
+            "updated" : 1433961360000,
+            "resolutionDate" : 1433961360000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429618200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429618200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-32",
+            "summary" : "Φάση 3 Δημοσιότητα- Φ3.1 Δράσεις δημοσιότητας έργου (Διοργάνωση Ημερίδας)",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Διάρκεια δράσεων από 2/1/2015 εως 30/6/2015\r\n\r\nΔημιουργία facebook, twitter,Δελτία Τύπου\r\n\r\nΗμερίδα Εργου 30/6/2015 -Πολιτιστικό Κέντρο Μελίνα Μερκούρη-Δ.Αθηναίων",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429706280000,
+            "updated" : 1435685460000,
+            "resolutionDate" : 1435685460000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429706280000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429706280000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-33",
+            "summary" : "Φάση 3 Δημοσιότητα- Φ3.2 Παραγωγή και διανομή έντυπου ενημερωτικού υλικού και υλικού δημοσιότητας",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "description" : "Διάρκεια ενεργειών από 2/1/2015 εως 30/6/2015\r\nΔιανομή εντυπου υλικού σε δομές ιατρείων και σε εκδηλώσεις εκτός δομών",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429706940000,
+            "updated" : 1435685760000,
+            "resolutionDate" : 1435685760000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429706940000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429706940000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-34",
+            "summary" : "Φάση 3 Δημοσιότητα- Φ3.3 Ραδιοφωνική δημοσιότητα",
+            "reporter" : "estafyla",
+            "assignee" : "xdimizas",
+            "description" : "Σύμβαση με ραδιοφωνικούς σταθμούς ΔΕΡΑ-9'84, ΔΕΠΘΕ, STUDIO 19, χορηγία ΔΕΠΕΙ\nΚαθυστέρηση δημιουργίας ραδιοφωνικών σποτ λόγω των ιδιατερων γλώσσων και ιατρικου περιεχομενου υλικου  και εμπομπή τέλευταια εβδομάδα Μαϊου και κατα τη διαρκεια του μήνα Ιουνιου",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429709640000,
+            "updated" : 1435000440000,
+            "resolutionDate" : 1435000440000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "estafyla",
+                "created" : 1429709640000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "Σύμβαση με ραδιοφωνικούς σταθμούς ΔΕΡΑ-9'84, ΔΕΠΘΕ, STUDIO 19\r\nΚαθυστέρηση δημιουργίας ραδιοφωνικών σποτ λόγω των ιδιατερων γλώσσων και ιατρικου περιεχομενου υλικου  και εμπομπή τέλευταια εβδομάδα Μαϊου και κατα τη διαρκεια του μήνα Ιουνιου",
+                    "newDisplayValue" : "Σύμβαση με ραδιοφωνικούς σταθμούς ΔΕΡΑ-9'84, ΔΕΠΘΕ, STUDIO 19, χορηγία \nΚαθυστέρηση δημιουργίας ραδιοφωνικών σποτ λόγω των ιδιατερων γλώσσων και ιατρικου περιεχομενου υλικου  και εμπομπή τέλευταια εβδομάδα Μαϊου και κατα τη διαρκεια του μήνα Ιουνιου"
+                } ]
+            }, {
+                "author" : "estafyla",
+                "created" : 1429709640000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "oldDisplayValue" : "Σύμβαση με ραδιοφωνικούς σταθμούς ΔΕΡΑ-9'84, ΔΕΠΘΕ, STUDIO 19, χορηγία \nΚαθυστέρηση δημιουργίας ραδιοφωνικών σποτ λόγω των ιδιατερων γλώσσων και ιατρικου περιεχομενου υλικου  και εμπομπή τέλευταια εβδομάδα Μαϊου και κατα τη διαρκεια του μήνα Ιουνιου",
+                    "newDisplayValue" : "Σύμβαση με ραδιοφωνικούς σταθμούς ΔΕΡΑ-9'84, ΔΕΠΘΕ, STUDIO 19, χορηγία ΔΕΠΕΙ\nΚαθυστέρηση δημιουργίας ραδιοφωνικών σποτ λόγω των ιδιατερων γλώσσων και ιατρικου περιεχομενου υλικου  και εμπομπή τέλευταια εβδομάδα Μαϊου και κατα τη διαρκεια του μήνα Ιουνιου"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429709640000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-35",
+            "summary" : "ΠΑΡΑΔΟΤΕΑ ΕΡΓΟΥ",
+            "reporter" : "estafyla",
+            "assignee" : "estafyla",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1429710000000,
+            "updated" : 1435000740000,
+            "resolutionDate" : 1435000740000,
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "estafyla" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1429710000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "assignee",
+                    "oldValue" : "xdimizas",
+                    "oldDisplayValue" : "Christos Dimitzas",
+                    "newValue" : "e.stafyla@daem.gr",
+                    "newDisplayValue" : "Eirini Stafyla"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429710000000,
+                "items" : [ {
+                    "fieldType" : "custom",
+                    "field" : "Rank",
+                    "oldValue" : "",
+                    "oldDisplayValue" : "",
+                    "newValue" : "",
+                    "newDisplayValue" : "Ranked higher"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429710000000,
+                "items" : [ {
+                    "fieldType" : "custom",
+                    "field" : "Rank",
+                    "oldValue" : "",
+                    "oldDisplayValue" : "",
+                    "newValue" : "",
+                    "newDisplayValue" : "Ranked lower"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1429710000000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-36",
+            "summary" : "Create accounts for questionnaires access",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "description" : "1.  Αλεξανδρος Θεοφανοπουλος    theof@cityofathens.gr \n\nβάλε username: Dimos Athinaion\n\n\n\n2.  Θανασης Γκουγιαννος       akis_gou1@yahoo.gr \n\n\nβαλε username: Dimos Ioanninon",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1430302200000,
+            "updated" : 1430323800000,
+            "resolutionDate" : 1430323800000,
+            "timeSpent" : "PT840S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "custom",
+                    "field" : "Rank",
+                    "oldValue" : "",
+                    "oldDisplayValue" : "",
+                    "newValue" : "",
+                    "newDisplayValue" : "Ranked higher"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10202",
+                    "newDisplayValue" : "Selected for Development"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10202",
+                    "oldDisplayValue" : "Selected for Development",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "newDisplayValue" : "1.  Αλεξανδρος Θεοφανοπουλος    theof@cityofathens.gr \n\nβάλε username: Dimos Athinaion\n\n\n\n2.  Θανασης Γκουγιαννος       akis_gou1@yahoo.gr \n\n\nβαλε username: Dimos Ioanninon"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "840",
+                    "newDisplayValue" : "840"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11680",
+                    "oldDisplayValue" : "11680"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1430302200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        }, {
+            "key" : "DIIHC-37",
+            "summary" : "Create accounts for e-courses access",
+            "reporter" : "xdimizas",
+            "assignee" : "xdimizas",
+            "description" : "α/α\tΟνοματεπώνυμο\tEmail\n1\tΜορφωνιού Ιωάννα\tjoanna_morf@hotmail.com\n2\tΓαλανόπουλος Κωνσταντίνος\tkogalano84@gmail.com\n3\tΓιαννακίδης Γεώργιος\tGiorgos_giannakides@yahoo.com\n4\tΣταμπόγλη Μαρία-Άννα\tm_stampogli@yahoo.com\n5\tΣαϊπά Παγώνα\tpeggysaipa@yahoo.gr\n6\tΣιαφάκα Παναγιώτα\tpanagiotasiafaka@hotmail.com\n7\tΧατζηστεργίου Στέλλα\tstehatz@hotmail.com\n8\tΓιαννέλου Ευαγγελία\tevagiannelou@gmail.com\n9\tΚλάψη Αικατερίνη \tkaterinaklapsi45@yahoo.com\n10\tΠαλούμπα Θεοδώρα\tdwrapal@yahoo.gr\n11\tΚωτσοπούλου Ζαφειρία\tiroo1991@hotmail.com\n12\tΚοτσιάνη Καλλιόπη\tkotsiani.kalliopi@hotmail.com\n13\tΘάνου Ευαγγελία\tvanessathanou@gmail.com\n14\tΠότση Βασιλική\tpotsivasiliki@hotmail.com\n15\tΔέρμου Ευδοξία\tedevaderm@gmail.com\n16\tΜαράκη Αγγελική \tangeliki.maraki@gmail.com\n17\tΜπαλασάκη Αλίκη\talikibalasaki31@gmail.com\n18\tΑγγουράκη Ροδάνθη \tira0023@yahoo.gr\n19\tΒασιλάκη Ευμορφία\tvasilakiefi@yahoo.gr\n20\tΚοζορώνη Ειρήνη\tkozoroni_irene@yahoo.gr\n21\tΜυλωνάκη Νίκη\tsweetescape6@hotmail.com\n22\tΣκεπάρνη Ευαγγελία  \tevaggeliaskeparni@gmail.com\n23\tΧριστοδούλου Κατερίνα\tkaterinaxris@yahoo.gr",
+            "issueType" : "Story",
+            "status" : "Done",
+            "priority" : "Medium",
+            "created" : 1432813200000,
+            "updated" : 1432830000000,
+            "resolutionDate" : 1432830000000,
+            "timeSpent" : "PT11280S",
+            "estimate" : "PT0S",
+            "labels" : [ ],
+            "worklogs" : [ ],
+            "voters" : [ ],
+            "watchers" : [ "xdimizas" ],
+            "subtasks" : [ ],
+            "attachments" : [ ],
+            "history" : [ {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10202",
+                    "newDisplayValue" : "Selected for Development"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "description",
+                    "newDisplayValue" : "α/α\tΟνοματεπώνυμο\tEmail\n1\tΜορφωνιού Ιωάννα\tjoanna_morf@hotmail.com\n2\tΓαλανόπουλος Κωνσταντίνος\tkogalano84@gmail.com\n3\tΓιαννακίδης Γεώργιος\tGiorgos_giannakides@yahoo.com\n4\tΣταμπόγλη Μαρία-Άννα\tm_stampogli@yahoo.com\n5\tΣαϊπά Παγώνα\tpeggysaipa@yahoo.gr\n6\tΣιαφάκα Παναγιώτα\tpanagiotasiafaka@hotmail.com\n7\tΧατζηστεργίου Στέλλα\tstehatz@hotmail.com\n8\tΓιαννέλου Ευαγγελία\tevagiannelou@gmail.com\n9\tΚλάψη Αικατερίνη \tkaterinaklapsi45@yahoo.com\n10\tΠαλούμπα Θεοδώρα\tdwrapal@yahoo.gr\n11\tΚωτσοπούλου Ζαφειρία\tiroo1991@hotmail.com\n12\tΚοτσιάνη Καλλιόπη\tkotsiani.kalliopi@hotmail.com\n13\tΘάνου Ευαγγελία\tvanessathanou@gmail.com\n14\tΠότση Βασιλική\tpotsivasiliki@hotmail.com\n15\tΔέρμου Ευδοξία\tedevaderm@gmail.com\n16\tΜαράκη Αγγελική \tangeliki.maraki@gmail.com\n17\tΜπαλασάκη Αλίκη\talikibalasaki31@gmail.com\n18\tΑγγουράκη Ροδάνθη \tira0023@yahoo.gr\n19\tΒασιλάκη Ευμορφία\tvasilakiefi@yahoo.gr\n20\tΚοζορώνη Ειρήνη\tkozoroni_irene@yahoo.gr\n21\tΜυλωνάκη Νίκη\tsweetescape6@hotmail.com\n22\tΣκεπάρνη Ευαγγελία  \tevaggeliaskeparni@gmail.com\n23\tΧριστοδούλου Κατερίνα\tkaterinaxris@yahoo.gr"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10202",
+                    "oldDisplayValue" : "Selected for Development",
+                    "newValue" : "3",
+                    "newDisplayValue" : "In Progress"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "timeestimate",
+                    "newValue" : "0",
+                    "newDisplayValue" : "0"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "timespent",
+                    "newValue" : "11280",
+                    "newDisplayValue" : "11280"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "WorklogId",
+                    "oldValue" : "11733",
+                    "oldDisplayValue" : "11733"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "3",
+                    "oldDisplayValue" : "In Progress",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "oldValue" : "10000",
+                    "oldDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10001",
+                    "oldDisplayValue" : "Done",
+                    "newValue" : "10201",
+                    "newDisplayValue" : "Backlog"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "custom",
+                    "field" : "Rank",
+                    "oldValue" : "",
+                    "oldDisplayValue" : "",
+                    "newValue" : "",
+                    "newDisplayValue" : "Ranked higher"
+                } ]
+            }, {
+                "author" : "xdimizas",
+                "created" : 1432813200000,
+                "items" : [ {
+                    "fieldType" : "jira",
+                    "field" : "resolution",
+                    "newValue" : "10000",
+                    "newDisplayValue" : "Done"
+                }, {
+                    "fieldType" : "jira",
+                    "field" : "status",
+                    "oldValue" : "10201",
+                    "oldDisplayValue" : "Backlog",
+                    "newValue" : "10001",
+                    "newDisplayValue" : "Done"
+                } ]
+            } ],
+            "comments" : [ ],
+            "customFieldValues" : [ ]
+        } ]
+    } ],
+    "users" : [ {
+        "name" : "atzoumas",
+        "fullname" : "Alexandros Tzoumas",
+        "email" : "a.tzoumas@scify.org",
+        "groups" : [ "jira-developers", "jira-administrators", "jira-users" ],
+        "active" : true
+    }, {
+        "name" : "xdimizas",
+        "fullname" : "Christos Dimitzas",
+        "email" : "xdimizas@scify.org",
+        "groups" : [ "jira-developers", "jira-administrators", "jira-users" ],
+        "active" : true
+    }, {
+        "name" : "estafyla",
+        "fullname" : "Eirini Stafyla",
+        "email" : "e.stafyla@daem.gr",
+        "groups" : [ "DAEM | IMH", "jira-users" ],
+        "active" : true
+    } ]
+}
