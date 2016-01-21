@@ -13,7 +13,7 @@
             <div class="content">
                 <div class="title">Upload Excel file here</div>
                 <div>
-                    <form action="{{action('UploadFileController@excelUpload')}}"  id="dropzone" class="dropzone">
+                    <form action="{{action('UploadFileController@excelUpload')}}" id="dropzone" class="dropzone">
                         <div>
                             <div class="dz-message needsclick">
                                 <strong>

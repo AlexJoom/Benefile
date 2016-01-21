@@ -19,7 +19,7 @@ Route::get('upload', function () {
     return view('uploadExcelFile');
 });
 Route::post('upload', 'UploadFileController@excelUpload');
-Route::post('upload', 'UploadFileController@excelImport');
+Route::get('import', 'UploadFileController@excelImport');
 
 
 //Route::group(['middleware' => ['web']], function () {
