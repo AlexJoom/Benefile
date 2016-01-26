@@ -12,9 +12,9 @@ class CreateWorkTypeListLookupTable extends Migration
      */
     public function up()
     {
-        Schema::create('work_type_list_lookup', function (Blueprint $table) {
+        Schema::create('work_title_list_lookup', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('work_type');
+            $table->string('work_title');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateWorkTypeListLookupTable extends Migration
      */
     public function down()
     {
-        Schema::drop('work_type_list_lookup');
+        Schema::drop('work_title_list_lookup');
     }
 }

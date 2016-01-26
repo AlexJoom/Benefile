@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLanguageInterpreterLookupTable extends Migration
+class CreateLangsAndLangsLevelsForeachBenefiterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreateLanguageInterpreterLookupTable extends Migration
      */
     public function up()
     {
-        Schema::create('language_interpreter_lookup', function (Blueprint $table) {
+        Schema::create('benefiters_langs_and_langs_levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('interpreter_needed');
-            $table->timestamps();
+            $table->integer('benefiter_id');
+            $table->integer('lang_id');
+            $table->integer('language_level_id');
         });
     }
 
@@ -26,6 +27,6 @@ class CreateLanguageInterpreterLookupTable extends Migration
      */
     public function down()
     {
-        Schema::drop('language_interpreter_lookup');
+        Schema::dropIfExists('benefiters_langs_and_langs_levels');
     }
 }
