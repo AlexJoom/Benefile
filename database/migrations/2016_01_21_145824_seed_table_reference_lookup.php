@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersRolesTable extends Migration
+class SeedTableReferenceLookup extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateUsersRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_roles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('role');
-        });
+        DB::table('reference_lookup')->insert(
+            array(
+                array('booleanIndicator' => 1),
+                array('booleanIndicator' => 0)
+            )
+        );
     }
 
     /**
@@ -25,6 +27,6 @@ class CreateUsersRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users_roles');
+        //
     }
 }

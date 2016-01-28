@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersSubrolesTable extends Migration
+class SeedLanguageInterpreterTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateUsersSubrolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_subroles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('subrole');
-        });
+        DB::table('language_interpreter_lookup')->insert(
+            array(
+                array('interpreter_needed' => true),
+                array('interpreter_needed' => false)
+            )
+        );
     }
 
     /**
@@ -25,6 +27,6 @@ class CreateUsersSubrolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users_subroles');
+        //
     }
 }

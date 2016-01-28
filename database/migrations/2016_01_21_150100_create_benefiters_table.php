@@ -67,17 +67,11 @@ class CreateBenefitersTable extends Migration
 
             $table->string('other_language');
 
-            $table->boolean('language_interpreter_needed');
-//            $table->foreign('language_interpreter_needed_id')->references('id')->on('yes_or_no_lookup');
+            $table->integer('work_type_id')->unsigned();
+            $table->foreign('work_type_id')->references('id')->on('work_type_list_lookup');       // FOREIGN KEY
 
-            $table->boolean('is_benefiter_working');
-//            $table->foreign('work_status_id')->references('id')->on('yes_or_no_lookup');        // FOREIGN KEY
-
-            $table->integer('work_title_id')->unsigned();
-            $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');       // FOREIGN KEY
-
-            $table->boolean('working_legally');
-//            $table->foreign('work_legal_type_id')->references('id')->on('work_legal_type_lookup');
+            $table->integer('work_status_id')->unsigned();
+            $table->foreign('work_status_id')->references('id')->on('work_status_lookup');        // FOREIGN KEY
 
             $table->string('country_abandon_reason');
 
@@ -87,23 +81,23 @@ class CreateBenefitersTable extends Migration
 
             $table->string('detention_duration');
 
-            $table->integer('has_social_reference');
-//            $table->foreign('social_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->integer('social_reference_id')->unsigned();
+            $table->foreign('social_reference_id')->references('id')->on('reference_lookup');       // FOREIGN KEY
             $table->string('social_reference_actions');
             $table->date('social_reference_date');
 
-            $table->boolean('has_medical_reference');
-//            $table->foreign('medical_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->integer('medical_reference_id')->unsigned();
+            $table->foreign('medical_reference_id')->references('id')->on('reference_lookup');       // FOREIGN KEY
             $table->string('medical_reference_actions');
             $table->date('medical_reference_date');
 
-            $table->boolean('has_legal_reference');
-//            $table->foreign('legal_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->integer('legal_reference_id')->unsigned();
+            $table->foreign('legal_reference_id')->references('id')->on('reference_lookup');       // FOREIGN KEY
             $table->string('legal_reference_actions');
             $table->date('legal_reference_date');
 
-            $table->boolean('has_educational_reference');
-//            $table->foreign('educational_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->integer('educational_reference_id')->unsigned();
+            $table->foreign('educational_reference_id')->references('id')->on('reference_lookup');       // FOREIGN KEY
             $table->string('educational_reference_actions');
             $table->date('educational_reference_date');
 

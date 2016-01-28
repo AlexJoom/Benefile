@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkTypeListLookupTable extends Migration
+class CreateWorkStatusLookupTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateWorkTypeListLookupTable extends Migration
      */
     public function up()
     {
-        Schema::create('work_type_list_lookup', function (Blueprint $table) {
+        Schema::create('work_status_lookup', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('work_type');
+            $table->string('work_status');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateWorkTypeListLookupTable extends Migration
      */
     public function down()
     {
-        Schema::drop('work_type_list_lookup');
+        Schema::drop('work_status_lookup');
     }
 }

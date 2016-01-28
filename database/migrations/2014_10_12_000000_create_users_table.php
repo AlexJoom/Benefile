@@ -15,15 +15,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('lastname');
             $table->string('email')->unique();
             $table->string('password', 60);
-            // Role
-            $table->integer('user_role_id')->unsigned();
-            $table->foreign('user_role_id')->references('id')->on('users_roles');       // FOREIGN KEY
-            // Subrole (for doctors)
-            $table->integer('user_subrole_id')->unsigned();
-            $table->foreign('user_subrole_id')->references('id')->on('users_subroles');       // FOREIGN KEY
             $table->rememberToken();
             $table->timestamps();
         });
