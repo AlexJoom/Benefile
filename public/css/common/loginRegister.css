@@ -1,9 +1,17 @@
+.no-border{
+    border: none;
+}
+.font-weight-700{
+    font-weight: 700;
+}
+
 .inputFields{
-    width: 300px;
-    height: 40px;
+    width: 340px;
+    height: 60px;
     font-size: 22px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 12px;
 }
 
 .submitButton{
@@ -12,3 +20,29 @@
     padding: 5px 10px;
     color: rgba(0, 0, 0, 0.5);
 }
+
+.benfile-back-color{
+    background-color: #18454b;
+}
+
+#login input, #login input:focus{
+    background-color : #18454b;
+}
+
+.clickMessage{
+    color: white;
+    float: right;
+    font-size: 17px;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+a.clickMessage:hover{
+    color: #ffffff;
+}
+
+.submitColor{
+    background-color: #945949;
+    color: #ffffff;
+    font-size: 30px;
+}
+

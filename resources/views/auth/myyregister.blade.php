@@ -5,7 +5,7 @@
   <link href={{asset('css/common/loginRegister.css')}} rel="stylesheet" type="text/css">
 @stop
 
-@section('content')
+@section('mainBody')
 <div class="container-fluid ">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">

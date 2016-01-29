@@ -6,14 +6,14 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    display: table;
-    font-weight: 100;
-    font-family: 'Lato';
+    /*display: table;*/
+    /*font-weight: 100;*/
+    /*font-family: 'Lato';*/
 }
 
 .container {
     text-align: center;
-    display: table-cell;
+    /*display: table-cell;*/
     vertical-align: middle;
 }
 
@@ -23,7 +23,9 @@ body {
 }
 
 .title {
-    font-size: 96px;
+    font-size: 50px;
+    text-align: center;
+    color: #ffffff;
 }
 
 .margin-bottom-50{
@@ -32,4 +34,9 @@ body {
 
 .font-weight-600{
     font-weight: 600;
+}
+
+.centerDiv{
+    float: none;
+    margin: 0 auto;
 }
