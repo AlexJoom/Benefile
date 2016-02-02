@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,18 +25,3 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('home', 'Auth\AuthController@postRegister');
-
-
-
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
-
-Route::get('upload', function () {
-
-    return view('uploadExcelFile');
-});
-Route::post('upload', 'UploadFileController@excelUpload');
-Route::get('import', 'UploadFileController@fileImport');
-

@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Benefiters_Tables_Models\File_import_schema;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 
-
-class UploadFileController extends Controller{
-
+class UploadFileController extends Controller
+{
     public function excelUpload(){
         // get the file from the post request
         $file = Input::file('file');
@@ -46,10 +44,9 @@ class UploadFileController extends Controller{
             $colValues = str_getcsv( $csvFile[$i]);
             $file_import = new File_import_schema();
             for($j=1; $j<count($colValues); $j++){
-               $file_import->$file_import_Fields[$j] = $colValues[$j];
+                $file_import->$file_import_Fields[$j] = $colValues[$j];
             }
             $file_import->save();
         }
     }
-
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Validator;
-use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -25,19 +24,13 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-//    protected $redirectTo = '/home';
-
-    /**
      * Create a new authentication controller instance.
      *
+     * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -74,17 +67,5 @@ class AuthController extends Controller
             'user_role_id' => $data['user_role_id'],
             'user_subrole_id' => $data['user_subrole_id'],
         ]);
-    }
-
-
-    /**
-     * Log the user out of the application.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLogout(){
-        Auth::logout();
-        Session::flush();
-        return Redirect::to('/');
     }
 }

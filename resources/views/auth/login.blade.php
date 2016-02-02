@@ -19,26 +19,36 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
+							{{--<strong>Whoops!</strong> There were some problems with your input.<br><br>--}}
+							{{--<ul>--}}
+								{{--@foreach ($errors->all() as $error)--}}
+									{{--<li>{{ $error }}</li>--}}
+								{{--@endforeach--}}
+							{{--</ul>--}}
 						</div>
 					@endif
 					<form class="form-horizontal" role="form" method="POST" action="{{url('home')}}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
+						<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
 							<div class="col-md-6 centerDiv">
 								<input type="email" class="inputFields" name="email" value="{{ old('email') }}" placeholder="e-mail">
+								@if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
 							<div class="col-md-6 centerDiv">
 								<input type="password" class="inputFields" name="password" placeholder="Password">
+								@if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
 								<div>
 								    <a class="clickMessage" href="{{ url('/password/email') }}">Ξεχάσατε τον κωδικό σας?</a>
 								</div>
