@@ -27,6 +27,7 @@
 
 #login input, #login input:focus{
     background-color : #18454b;
+    color: #ffffff;
 }
 
 .clickMessage{

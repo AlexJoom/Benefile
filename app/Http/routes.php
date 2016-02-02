@@ -17,6 +17,13 @@ Route::get('/', function () {
 
 Route::get('home', 'HomeController@index');
 
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('home', 'Auth\AuthController@postLogin');
+
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('home', 'Auth\AuthController@postRegister');
 
 
 

@@ -27,7 +27,7 @@
 							</ul>
 						</div>
 					@endif
-					<form class="form-horizontal" role="form" method="POST" action="/home">
+					<form class="form-horizontal" role="form" method="POST" action="{{url('home')}}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
@@ -62,7 +62,7 @@
 								</button>
                                 <div class="clickMessage">
                                     <span class="font-weight-400">Δεν έχετε λογαριασμό?</span>&nbsp;&nbsp;
-                                    <a class="clickMessage" href="{{ url('/auth/register')}}">Εγγραφτείτε εδώ.</a>
+                                    <a class="clickMessage" href="{{ url('auth/register')}}">Εγγραφτείτε εδώ.</a>
                                 </div>
 							</div>
 						</div>

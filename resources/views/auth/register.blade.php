@@ -27,7 +27,7 @@
                             {{--</ul>--}}
                         {{--</div>--}}
                     {{--@endif--}}
-                    <form class="form-horizontal" role="form" method="POST" action="home">
+                    <form class="form-horizontal" role="form" method="POST" action="{{url('home')}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         {{-- name --}}
@@ -140,7 +140,7 @@
                                 <button type="submit" class="inputFields submitColor no-border"  style="margin-right: 15px;">Register</button>
                                 <div class="clickMessage">
                                     <span class="font-weight-400">Έχετε ήδη λογαριασμό?</span>&nbsp;&nbsp;
-                                    <a class="clickMessage font-weight-700" href="{{ url('/auth/register')}}">Πατήστε εδώ.</a>
+                                    <a class="clickMessage font-weight-700" href="{{ url('auth/register')}}">Πατήστε εδώ.</a>
                                 </div>
                             </div>
                         </div>
