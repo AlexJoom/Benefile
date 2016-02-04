@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             // Subrole (for doctors)
             $table->integer('user_subrole_id')->unsigned();
 //            $table->foreign('user_subrole_id')->references('id')->on('users_subroles');       // FOREIGN KEY
+            // Activation status (0 or 1)
+            $table->boolean('activation_status');
             $table->rememberToken();
             $table->timestamps();
         });

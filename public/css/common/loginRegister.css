@@ -131,3 +131,9 @@ form .form-group button{
     text-align: center;
 }
 
+.bottomDiv{
+    position: absolute;
+    bottom: 30px;
+    width: 93%;
+    text-align: center;
+}

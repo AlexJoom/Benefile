@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -26,13 +27,13 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+    protected $redirectTo = '/home';
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,6 +49,7 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
             'user_role_id' => 'required|max:20',
             'user_subrole_id' => 'required|max:20',
+            'activation_status' => 'max:20',
         ]);
     }
 
@@ -66,6 +68,15 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'user_role_id' => $data['user_role_id'],
             'user_subrole_id' => $data['user_subrole_id'],
+            // be default activation_status will be 0
+            'activation_status' => 0,
         ]);
     }
+
+//    public function test(){
+//        $user = DB::table('users')->where('email', 'dimizas1985@gmail.com')->first();
+//        if($user->activation_status == 0){
+//            return view('auth.awaitActivation');
+//        }
+//    }
 }
