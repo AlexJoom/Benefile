@@ -10,7 +10,11 @@
 }
 
 .no-float{
-    float: none;
+    float: none !important;
+}
+
+.text-center{
+    text-align: center;
 }
 .white{
     color: #ffffff;
@@ -76,7 +80,8 @@
 }
 
 #login input, #login input:focus,
-#register input, #register input:focus{
+#register input, #register input:focus,
+#reset-password input, #reset-password input:focus{
     background-color : #18454b;
     color: #ffffff;
     border: 2px solid #a6aaa9;
@@ -106,7 +111,7 @@ form input:focus{
 }
 
 form .form-group button{
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 #user-role, #user-subrole{
@@ -117,5 +122,11 @@ form .form-group button{
 
 #user-role:focus, #user-subrole:focus{
     border: 2px solid #b269a7 !important;
+}
+
+.reset-password-text{
+    color: white;
+    font-size: 30px;
+    text-align: center;
 }
 

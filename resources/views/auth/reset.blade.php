@@ -1,59 +1,61 @@
-@extends('app')
+@extends('layouts.login-register-layout')
 
-@section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+@section('title')
+    <title>Reset Password</title>
+@stop
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="hidden" name="token" value="{{ $token }}">
+@section('log-content')
+    <div class="panel panel-default">
+        <div class="reset-password-text">Επαναφορά κωδικού</div>
+        <div class="panel-body">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+            <form class="form-horizontal" role="form" method="POST" action="{{url('/password/reset')}}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="token" value="{{ $token }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+                {{-- email --}}
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                    <div class="col-md-6 centerDiv">
+                        <input type="email" class="inputFields" name="email" value="{{ old('email') }}" placeholder="email">
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
+                {{--Password--}}
+                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="col-md-6 centerDiv">
+                        <input type="password" class="inputFields" name="password" placeholder="Κωδικός">
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Reset Password
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                {{-- Confirm password --}}
+                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                    <div class="col-md-6 centerDiv">
+                        <input type="password" class="inputFields" name="password_confirmation" placeholder="Επιβεβαίωση κωδικού">
+                        @if ($errors->has('password_confirmation'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                {{--Register Button--}}
+                <div class="form-group">
+                    <div class="col-md-6 centerDiv">
+                        <button type="submit" class="inputFields submitColor no-border no-padding-left">Επαναφορά κωδικού</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

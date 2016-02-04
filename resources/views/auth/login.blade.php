@@ -4,12 +4,6 @@
 <title>Login</title>
 @stop
 
-@section('log-headLinks')
-  <link href={{asset('css/common/loginRegister.css')}} rel="stylesheet" type="text/css">
-  <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
-@stop
-
-
 @section('log-content')
 <div id="login">
     <div class="panel-body">

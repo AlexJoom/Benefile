@@ -1,50 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.login-register-layout')
 
-@section('mainBody')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-					@endif
+@section('title')
+    <title>Reset Password</title>
+@stop
 
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+@section('log-content')
+    <div id="reset-password">
+        <div class="reset-password-text margin-bottom-50"><b>Ξεχάσατε τον κωδικό σας;</b></div>
+        <div class="reset-password-text">
+            Συμπληρώστε το email που χρησιμοποιήσατε κατά την εγγραφή σας στο σύστημα και πατήστε επαναφορά.
+        </div>
+        <div class="panel-body">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/email">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+            <form class="form-horizontal" role="form" method="POST" action="{{url('/password/email')}}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Send Password Reset Link
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                <div class="form-group">
+                    <div class="col-md-6 centerDiv">
+                        <input type="email" class="inputFields" name="email" value="{{ old('email') }}" placeholder="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 centerDiv">
+                        <button type="submit" class="inputFields submitColor no-border margin-bottom-50">
+                            Επαναφορά
+                        </button>
+
+                        <div class="clickMessage no-float text-center">
+                            <a href="{{ url('auth/login')}}" class="white">Επιστροφή στην αρχική.</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
