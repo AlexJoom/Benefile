@@ -4,6 +4,7 @@
     <title>Reset Password</title>
 @stop
 
+
 @section('log-content')
     <div id="reset-password">
         <div class="reset-password-text margin-bottom-50"><b>Ξεχάσατε τον κωδικό σας;</b></div>

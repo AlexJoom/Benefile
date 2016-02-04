@@ -81,10 +81,11 @@
 
 #login input, #login input:focus,
 #register input, #register input:focus,
-#reset-password input, #reset-password input:focus{
+#reset-password input, #reset-password input:focus,
+#reset input, #reset input:focus{
     background-color : #18454b;
     color: #ffffff;
-    border: 2px solid #a6aaa9;
+    border: 3px solid #a6aaa9;
 }
 
 .clickMessage{
@@ -107,7 +108,7 @@ a.white:hover, a.white:focus{
 }
 
 form input:focus{
-    border: 2px solid #b269a7 !important;
+    border: 3px solid #b269a7 !important;
 }
 
 form .form-group button{

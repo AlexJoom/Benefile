@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -54,7 +53,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'from@example.com', 'name' => 'Example'],
 
     /*
     |--------------------------------------------------------------------------
@@ -122,3 +121,5 @@ return [
     'pretend' => false,
 
 ];
+
+

@@ -5,8 +5,8 @@
 @stop
 
 @section('log-content')
-    <div class="panel panel-default">
-        <div class="reset-password-text">Επαναφορά κωδικού</div>
+    <div id="reset">
+        <div class="reset-password-text margin-bottom-50">Επαναφορά κωδικού</div>
         <div class="panel-body">
 
             <form class="form-horizontal" role="form" method="POST" action="{{url('/password/reset')}}">
