@@ -16,7 +16,7 @@
     <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
     @yield('log-headLinks')
 </head>
-<body id="app-layout">
+<body id="login-register-layout">
     <div class="container-fluid">
     	<div class="row">
     	    <div class="col-md-6 no-float" id="leftCell">

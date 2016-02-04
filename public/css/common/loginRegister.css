@@ -29,7 +29,7 @@
     box-sizing: border-box;
 }
 
-.row{
+#login-register-layout .row{
     height: 100%;
     display: table-row;
 }

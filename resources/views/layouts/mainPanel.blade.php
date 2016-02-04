@@ -12,21 +12,45 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href={{asset('css/common/loginRegister.css')}} rel="stylesheet" type="text/css">
+    <link href={{asset('css/common/mainLayout.css')}} rel="stylesheet" type="text/css">
     <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
     @yield('log-headLinks')
 </head>
-<body id="app-layout">
-    <div class="container-fluid">
-    	<div class="row">
-    	    <div class="col-md-6 no-float" id="leftCell">
-                <img alt="Benefile logo" class="img-responsive logo-padding" src={{asset('images/BeneFile-Logo.png')}}>
-    	    </div>
-    		<div class="col-md-6 benfile-back-color no-float" id="rightCell">
-    		    @yield('log-content')
-    		</div>
-    	</div>
+<body id="main-layout">
+    <div class="panel-container">
+        {{-- User name row --}}
+        <div class="row no-margin purple-background height-6per" id="header">
+            @if (Auth::guest())
+            {{-- do nothing --}}
+            @else
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+            @endif
+        </div>
+
+        {{-- sidebar --}}
+        <div class="newCont">
+            <div class="row table-row">
+                {{-- sidebar --}}
+                <div class="col-sm-2 dark-green-background no-float" id="sidebar">
+                    dgheg
+                </div>
+                {{-- main window --}}
+                <div class="col-sm-10 no-float" id="main-window">
+                                {{-- actions refering to users --}}
+
+                                {{-- columns with details --}}
+
+                                {{-- results list --}}
+                        <h2>wergfwt24f2</h2>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

@@ -1,0 +1,47 @@
+.panel-container{
+    width: 100%;
+    height: 100%;
+}
+.no-margin{
+    margin: 0px !important;
+}
+.full-height{
+    height: 100%;
+}
+.no-float{
+    float: none;
+}
+
+.purple-background{
+    background-color: #4c2a47;
+}
+
+.dark-green-background{
+    background-color: #18444c;
+}
+
+.height-6per{
+    height: 6%;
+}
+.newCont{
+    display: table;
+    width: 100%;
+    height: 94%;
+    padding: 0px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#sidebar{
+    display: table-cell;
+}
+
+#main-window{
+    display: table-cell;
+}
+.table-row{
+    height: 100%;
+    display: table-row;
+}
