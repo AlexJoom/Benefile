@@ -11,15 +11,17 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href={{asset('bootstrap-3.3.6/dist/css/bootstrap.min.css')}} rel="stylesheet" type="text/css">
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--}}
     <link href={{asset('css/common/mainLayout.css')}} rel="stylesheet" type="text/css">
     <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
+
     @yield('log-headLinks')
 </head>
 <body id="main-layout">
     <div class="panel-container">
         {{-- User name row --}}
-        <div class="row no-margin purple-background height-6per" id="header">
+        <div class="no-margin purple-background height-6per" id="header">
             @if (Auth::guest())
             {{-- do nothing --}}
             @else
@@ -29,15 +31,61 @@
             @endif
         </div>
 
-        {{-- sidebar --}}
-        <div class="newCont">
-            <div class="row table-row">
+        <div class="newCont table-display">
+            <div class="table-row height-100per">
                 {{-- sidebar --}}
-                <div class="col-sm-2 dark-green-background no-float" id="sidebar">
-                    dgheg
+                <div class="col-md-2 dark-green-background no-padding table-cell height-100per" id="sidebar">
+
+                    {{-- NGO logo --}}
+                    <div class="logo-ngo" id="ngo-logo">
+                        <img width="35%" alt="Benefile logo" class="img-responsive" src={{asset('images/logo-praksis.png')}}>
+                    </div>
+
+                    {{-- Search bar --}}
+                    <div class="" id="search-bar">
+                        <div class="">
+                            <form>
+                                <input type="text" class="searchField dark-green-background" name="search" placeholder="Αναζήτηση ωφελουμένου">
+                                <button type="submit" class="glyphicon glyphicon-search searchButton"></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- Menu --}}
+                    <div class="margin-top-60 white" id="menu">
+                        <ul id="menu-first-layer">
+                            <li id="register-benefiter">
+                                <button class="buttonMenu">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
+                            </li>
+                            <li id="register-benefiter-list" class="hide no-background">
+                                <ul>
+                                    <li class="">
+                                        <a>Νέα εγγραφή</a>
+                                    </li>
+                                    <li class="">
+                                        <a>Φόρτωση αρχείου</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Αναφορά</a>
+                            </li>
+                            <li>
+                                <a>Χρήστες</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('auth/logout') }}">Έξοδος</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {{-- Benefile logo --}}
+                    <div class="bottomLogo">
+                        <img alt="Benefile logo" class="img-responsive" src={{asset('images/BeneFile-logo.png')}}>
+                    </div>
                 </div>
                 {{-- main window --}}
-                <div class="col-sm-10 no-float" id="main-window">
+                <div class="col-md-10 table-cell height-100per" id="main-window">
                                 {{-- actions refering to users --}}
 
                                 {{-- columns with details --}}
@@ -52,8 +100,10 @@
 
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/main-panel/common.js')}}"></script>
+
     @yield('log-scripts')
 </body>
 

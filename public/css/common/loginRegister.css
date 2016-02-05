@@ -13,6 +13,16 @@
     float: none !important;
 }
 
+.table-display{
+    display: table;
+}
+.table-row{
+    display: table-row;
+}
+.table-cell{
+    display: table-cell;
+}
+
 .text-center{
     text-align: center;
 }
@@ -21,7 +31,7 @@
 }
 
 .container-fluid{
-    display:table;
+    /*display:table;*/
     width: 100%;
     height: 100%;
     padding: 0px;
@@ -31,7 +41,7 @@
 
 #login-register-layout .row{
     height: 100%;
-    display: table-row;
+    /*display: table-row;*/
 }
 
 .col-md-6{
@@ -39,14 +49,14 @@
 }
 
 #leftCell{
-    display: table-cell;
+    /*display: table-cell;*/
     /*text-align: center;*/
     vertical-align: middle;
     width: 50%;
 }
 
 #rightCell{
-    display: table-cell;
+    /*display: table-cell;*/
     /*text-align: center;*/
     vertical-align: middle;
     width: 50%;
