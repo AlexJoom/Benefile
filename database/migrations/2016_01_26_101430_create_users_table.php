@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
 //            $table->foreign('user_subrole_id')->references('id')->on('users_subroles');       // FOREIGN KEY
             // Activation status (0 or 1)
             $table->boolean('activation_status');
-            $table->boolean('is_deactivated');
             $table->rememberToken();
             $table->timestamps();
         });
