@@ -24,7 +24,7 @@ Route::get('main-panel', function () {
 /*
  * Layout after login
  */
-Route::get('/userPanel', function () {
+Route::get('awaitingActivation', function () {
     return view('auth.awaitActivation');
 });
 Route::controllers([

@@ -5,6 +5,9 @@
 .white{
     color: #ffffff;
 }
+.grey{
+    color: #a9a9a9;
+}
 .no-margin{
     margin: 0px !important;
 }
@@ -37,16 +40,51 @@
 .dark-green-background{
     background-color: #18444c;
 }
+.light-green-background{
+    background-color: #00a59a;
+}
 
 .height-6per{
     height: 6%;
 }
+.height-8per{
+    height: 8%;
+}
+
 .height-100per{
     height: 100%;
 }
 .margin-top-60{
     margin-top:60px;
 }
+.pos-relative{
+    position: relative;
+}
+
+.grey-border-bottom{
+    border-bottom: 2px solid #a9a9a9;
+}
+
+/* TOP BAR (with usernam) */
+
+.userName{
+    float: right;
+    font-size: 20px;
+    color: white;
+    padding: 0px 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0%;
+}
+
+.userName a, .userName a:hover, .userName a:focus{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+/* TOP BAR (with usernam) */
 
 /* Container without the top bar */
 
@@ -70,7 +108,7 @@
 
             /* Search Bar*/
 .searchField{
-    width: 75%;
+    width: 76%;
     height: 55px;
     font-size: 16px;
     color: #ffffff;
@@ -86,7 +124,7 @@
     height: 57px;
     width: 20%;
     padding: 0px;
-    right: 4px;
+    right: 7px;
     top: 2px;
 }
             /* END Search Bar*/
@@ -94,7 +132,7 @@
             /* Menu */
 #menu ul {
     list-style-type: none;
-    font-size: 30px;
+    font-size: 28px;
     padding: 0px;
 }
 #menu ul li a{
@@ -116,10 +154,16 @@
     font-size: 20px;
     line-height: inherit;
 }
-#register-benefiter-list li {
+#register-benefiter-list ul li {
     font-size: 20px;
     padding-top: 5px !important;
     padding-bottom: 5px !important;
+}
+.child{
+    font-size: 20px;
+    padding: 0px 0px 10px 50px !important;
+    height: 42px !important;
+    line-height: 42px;
 }
 
 .buttonMenu{
