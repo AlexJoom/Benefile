@@ -16,18 +16,21 @@
     <link href={{asset('css/common/mainLayout.css')}} rel="stylesheet" type="text/css">
     <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
 
-    @yield('log-headLinks')
+    @yield('panel-headLinks')
 </head>
 <body id="main-layout">
     <div class="panel-container">
         {{-- User name row --}}
-        <div class="no-margin purple-background height-6per" id="header">
+        <div class="no-margin purple-background pos-relative height-6per" id="header">
             @if (Auth::guest())
             {{-- do nothing --}}
             @else
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+            <div class="userName">
+                <a href="#" class="white" role="button" aria-expanded="false">
+                    {{ Auth::user()->name }} {{ Auth::user()->lastname }}
+                </a>
+            </div>
             @endif
         </div>
 
@@ -55,17 +58,13 @@
                     <div class="margin-top-60 white" id="menu">
                         <ul id="menu-first-layer">
                             <li id="register-benefiter">
-                                <button class="buttonMenu">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                <button class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
                             </li>
-                            <li id="register-benefiter-list" class="hide no-background">
-                                <ul>
-                                    <li class="">
-                                        <a>Νέα εγγραφή</a>
-                                    </li>
-                                    <li class="">
-                                        <a>Φόρτωση αρχείου</a>
-                                    </li>
-                                </ul>
+                            <li id="child-1" class="child hide">
+                                <a>Νέα εγγραφή</a>
+                            </li>
+                            <li id="child-2" class="child hide">
+                                <a>Φόρτωση αρχείου</a>
                             </li>
                             <li>
                                 <a>Αναφορά</a>
@@ -85,13 +84,51 @@
                     </div>
                 </div>
                 {{-- main window --}}
-                <div class="col-md-10 table-cell height-100per" id="main-window">
+                <div class="col-md-10 table-cell height-100per no-padding" id="main-window">
                                 {{-- actions refering to users --}}
+                    <div class="no-margin light-green-background pos-relative height-8per" id="actions">
+                        <div class="col-md-4">
+                            <a class="white">Προς ενεργοποιηση</a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="white">Ενεργοποιημενοι</a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="white">Απενεργοποιημενοι</a>
+                        </div>
+                        {{-- The abone three options will be removed in order to be added dynamically from another view. --}}
+                        @yield('panel-actions')
+
+                    </div>
 
                                 {{-- columns with details --}}
+                    <div class="no-margin pos-relative height-6per grey-border-bottom" id="details">
+
+                        <div class="col-md-3">
+                            <a class="grey">Ονομα</a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a class="grey">Επιθετο</a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a class="grey">Ρολος</a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a class="grey">Ημ. Εγγραφης</a>
+                        </div>
+                        {{-- The abone three options will be removed in order to be added dynamically from another view. --}}
+                        @yield('panel-columns')
+                    </div>
+
 
                                 {{-- results list --}}
-                        <h2>wergfwt24f2</h2>
+                    <div class="no-margin pos-relative" id="header">
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,7 +141,7 @@
     <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
 
-    @yield('log-scripts')
+    @yield('panel-scripts')
 </body>
 
 </html>
