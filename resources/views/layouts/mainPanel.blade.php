@@ -70,7 +70,7 @@
                                 <a>Αναφορά</a>
                             </li>
                             <li>
-                                <a>Χρήστες</a>
+                                <a href="{{url('main-panel/users-list')}}">Χρήστες</a>
                             </li>
                             <li>
                                 <a href="{{ url('auth/logout') }}">Έξοδος</a>
@@ -83,52 +83,10 @@
                         <img alt="Benefile logo" class="img-responsive" src={{asset('images/BeneFile-logo.png')}}>
                     </div>
                 </div>
+
                 {{-- main window --}}
                 <div class="col-md-10 table-cell height-100per no-padding" id="main-window">
-                                {{-- actions refering to users --}}
-                    <div class="no-margin light-green-background pos-relative height-8per" id="actions">
-                        <div class="col-md-4">
-                            <a class="white">Προς ενεργοποιηση</a>
-                        </div>
-
-                        <div class="col-md-4">
-                            <a class="white">Ενεργοποιημενοι</a>
-                        </div>
-
-                        <div class="col-md-4">
-                            <a class="white">Απενεργοποιημενοι</a>
-                        </div>
-                        {{-- The abone three options will be removed in order to be added dynamically from another view. --}}
-                        @yield('panel-actions')
-
-                    </div>
-
-                                {{-- columns with details --}}
-                    <div class="no-margin pos-relative height-6per grey-border-bottom" id="details">
-
-                        <div class="col-md-3">
-                            <a class="grey">Ονομα</a>
-                        </div>
-
-                        <div class="col-md-3">
-                            <a class="grey">Επιθετο</a>
-                        </div>
-
-                        <div class="col-md-3">
-                            <a class="grey">Ρολος</a>
-                        </div>
-
-                        <div class="col-md-3">
-                            <a class="grey">Ημ. Εγγραφης</a>
-                        </div>
-                        {{-- The abone three options will be removed in order to be added dynamically from another view. --}}
-                        @yield('panel-columns')
-                    </div>
-
-
-                                {{-- results list --}}
-                    <div class="no-margin pos-relative" id="header">
-                    </div>
+                    @yield('main-window-content')
                 </div>
             </div>
         </div>

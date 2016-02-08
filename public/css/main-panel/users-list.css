@@ -1,0 +1,24 @@
+.no-margin{
+    margin: 0px !important;
+}
+.light-green-background{
+    margin: 0px !important;
+}
+.pos-relative{
+    position: relative;
+}
+.height-6per{
+    height: 6%;
+}
+.height-8per{
+    height: 8%;
+}
+.white{
+    color: #ffffff;
+}
+.grey{
+    color: #a9a9a9;
+}
+.grey-border-bottom{
+    border-bottom: 2px solid #a9a9a9;
+}

@@ -17,9 +17,6 @@ Route::get('/', function () {
 
 
 Route::get('home', 'HomeController@index');
-Route::get('main-panel', function () {
-    return view('layouts.mainPanel');
-});
 
 /*
  * Layout after login
@@ -31,3 +28,17 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+
+
+
+// MAIN PANEL ROUTES //
+
+Route::get('main-panel', function () {
+    return view('layouts.mainPanel');
+});
+
+Route::get('main-panel/users-list', function () {
+    return view('userPanel.users-list');
+});
+// END MAIN PANEL ROUTES //

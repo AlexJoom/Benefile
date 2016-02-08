@@ -50,6 +50,7 @@ class AuthController extends Controller
             'user_role_id' => 'required|max:20',
             'user_subrole_id' => 'required|max:20',
             'activation_status' => 'max:20',
+            'is_deactivated' => 'max:20',
         ]);
     }
 
@@ -68,8 +69,9 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'user_role_id' => $data['user_role_id'],
             'user_subrole_id' => $data['user_subrole_id'],
-            // be default activation_status will be 0
+            // by default activation_status will be 0
             'activation_status' => 0,
+            'is_deactivated' => 0,
         ]);
     }
 
