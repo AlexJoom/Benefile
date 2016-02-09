@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->integer('user_subrole_id')->unsigned();
 //            $table->foreign('user_subrole_id')->references('id')->on('users_subroles');       // FOREIGN KEY
             // Activation status (0 or 1)
-            $table->boolean('activation_status');
+            $table->boolean('activation_status')->default(0);
+            $table->boolean('is_deactivated')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
