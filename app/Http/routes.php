@@ -38,7 +38,7 @@ Route::get('main-panel', function () {
     return view('layouts.mainPanel');
 });
 
-Route::get('main-panel/users-list', function () {
-    return view('userPanel.users-list');
-});
+Route::get('main-panel/users-list', 'MainPanel\UsersController@getUsers');
+Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
+
 // END MAIN PANEL ROUTES //

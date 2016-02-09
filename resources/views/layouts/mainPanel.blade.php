@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @yield('title')
+    @yield('panel-title')
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -12,9 +12,12 @@
 
     <!-- Styles -->
     <link href={{asset('bootstrap-3.3.6/dist/css/bootstrap.min.css')}} rel="stylesheet" type="text/css">
+    <link href={{asset('DataTables/datatables.min.css')}} rel="stylesheet" type="text/css">
+    <link href={{asset('DataTables/DataTables-1.10.10/css/jquery.dataTables.min.css')}} rel="stylesheet" type="text/css">
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--}}
     <link href={{asset('css/common/mainLayout.css')}} rel="stylesheet" type="text/css">
     <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
+    <link href={{asset('css/main-panel/users-list.css')}} rel="stylesheet" type="text/css">
 
     @yield('panel-headLinks')
 </head>
@@ -60,19 +63,19 @@
                             <li id="register-benefiter">
                                 <button class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
                             </li>
-                            <li id="child-1" class="child hide">
+                            <li id="new-benefiter" class="child hide">
                                 <a>Νέα εγγραφή</a>
                             </li>
-                            <li id="child-2" class="child hide">
+                            <li id="import-file" class="child hide">
                                 <a>Φόρτωση αρχείου</a>
                             </li>
-                            <li>
+                            <li id="reports">
                                 <a>Αναφορά</a>
                             </li>
-                            <li>
-                                <a href="{{url('main-panel/users-list')}}">Χρήστες</a>
+                            <li id="users-list">
+                                <a  href="{{url('main-panel/users-list')}}">Χρήστες</a>
                             </li>
-                            <li>
+                            <li id="user-logout">
                                 <a href="{{ url('auth/logout') }}">Έξοδος</a>
                             </li>
                         </ul>
@@ -95,10 +98,13 @@
 
 
     <!-- JavaScripts -->
+
     <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
     <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
+    <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
-
+    <script src="{{asset('js/main-panel/users-list.js')}}"></script>
     @yield('panel-scripts')
 </body>
 
