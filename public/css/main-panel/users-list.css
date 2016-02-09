@@ -13,6 +13,12 @@
 .height-8per{
     height: 8%;
 }
+.height-70{
+    height: 70px;
+}
+.height-65{
+    height: 65px;
+}
 .white{
     color: #ffffff;
 }
@@ -22,3 +28,33 @@
 .grey-border-bottom{
     border-bottom: 2px solid #a9a9a9;
 }
+.pink-border-bottom{
+    border-bottom: 5px solid #b269a7;
+}
+
+.padding-20{
+    padding: 20px;
+}
+
+/****** USER STATUS (top bar) ******/
+
+.userStatus{
+    text-align: center;
+    font-size: 22px;
+    padding: 0px 80px;
+    height: 70px;
+    line-height: 70px;
+}
+.userStatus div{
+    color: #dcdee0;
+    text-decoration: none;
+    cursor: pointer;
+}
+.userStatus div:hover{
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+/****** END USER STATUS (top bar) ******/
