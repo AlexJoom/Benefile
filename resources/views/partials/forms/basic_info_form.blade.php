@@ -278,16 +278,16 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group float-left col-md-2">
-                            {!! Form::radio('working', 1, true) !!}
+                            {!! Form::radio('working', 1, true, array('id' => 'show_work_legally')) !!}
                             {!! Form::label('working', 'Ναι', array('class' => 'radio-value')) !!}
                         </div>
                         <div class="form-group float-left col-md-2">
-                            {!! Form::radio('working', 2, false) !!}
+                            {!! Form::radio('working', 2, false, array('id' => 'hide_work_legally')) !!}
                             {!! Form::label('working', 'Όχι', array('class' => 'radio-value')) !!}
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div id="working_legally_div" class="row">
                     <div class="padding-left-right-15">
                         <span class="float-left padding-left-right-15">Εργάζεται: </span>
                         <div class="form-group float-left col-md-2">
