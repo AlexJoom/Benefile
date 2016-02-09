@@ -34,9 +34,7 @@ Route::controllers([
 
 // MAIN PANEL ROUTES //
 
-Route::get('main-panel', function () {
-    return view('layouts.mainPanel');
-});
+Route::get('main-panel', 'HomeController@index');
 
 Route::get('main-panel/users-list', function () {
     return view('userPanel.users-list');
