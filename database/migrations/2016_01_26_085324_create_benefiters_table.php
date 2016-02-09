@@ -56,14 +56,19 @@ class CreateBenefitersTable extends Migration
             $table->date('educational_reference_date');
             $table->string('social_history');
             $table->timestamps();
+            $table->string('origin_country');
+            $table->string('nationality_country');
 
             // Foreign keys
             $table->integer('gender_id')->unsigned()->nullable();
             $table->foreign('gender_id')->references('id')->on('genders_lookup');
-            $table->integer('origin_country_id')->unsigned()->nullable();
-            $table->foreign('origin_country_id')->references('id')->on('countries_lookup');
-            $table->integer('nationality_country_id')->unsigned()->nullable();
-            $table->foreign('nationality_country_id')->references('id')->on('countries_lookup');
+            // Disable country table for now, insert country as string.
+            /*
+             * $table->integer('origin_country_id')->unsigned()->nullable();
+             * $table->foreign('origin_country_id')->references('id')->on('countries_lookup');
+             * $table->integer('nationality_country_id')->unsigned()->nullable();
+             * $table->foreign('nationality_country_id')->references('id')->on('countries_lookup');
+             */
             $table->integer('marital_status_id')->unsigned()->nullable();
             $table->foreign('marital_status_id')->references('id')->on('marital_status_lookup');
             $table->integer('legal_status_id')->unsigned()->nullable();
@@ -72,6 +77,20 @@ class CreateBenefitersTable extends Migration
             $table->foreign('education_id')->references('id')->on('education_lookup');
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
+        });
+
+        Schema::create('legal_statuses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->timestamp('expire_date');
+        });
+
+        Schema::create('benefiters_legal_status', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('benefiter_id')->unsigned();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
+            $table->integer('legal_status_id')->unsigned();
+            $table->foreign('legal_status_id')->references('id')->on('legal_statuses');
         });
 
         Schema::create('languages', function (Blueprint $table) {
@@ -106,6 +125,8 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('benefiters_languages');
         Schema::dropIfExists('language_levels');
         Schema::dropIfExists('languages');
+        Schema::dropIfExists('benefiters_legal_status');
+        Schema::dropIfExists('legal_statuses');
         Schema::dropIfExists('benefiters');
     }
 }
