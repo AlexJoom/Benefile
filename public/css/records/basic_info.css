@@ -98,3 +98,11 @@ input[type="radio"] {
 .color-green{
     color: #008000;
 }
+
+.color-red{
+    color: red;
+}
+
+.hide-element{
+    display: none;
+}

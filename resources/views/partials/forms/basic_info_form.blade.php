@@ -246,7 +246,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="padding-left-right-15">
+                    <div class="padding-left-right-15 language-div">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
                                 {!! Form::select('language', array('1' => 'English', '2' => 'Greek'), null) !!}
@@ -254,6 +254,7 @@
                             <div class="col-md-2 make-inline">
                                 {!! Form::select('language_level', array('1' => 'χαμηλό', '2' => 'μέτριο', '3' => 'καλό', '4' => 'πολύ καλό', '5' => 'άριστο'), null, array('class' => 'make-inline')) !!}
                                 <a class="color-green" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
+                                <a class="color-red hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
                             </div>
                         </div>
                     </div>
