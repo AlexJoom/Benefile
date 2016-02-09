@@ -34,10 +34,19 @@ Route::controllers([
 
 // MAIN PANEL ROUTES //
 
-Route::get('main-panel', function () {
-    return view('layouts.mainPanel');
+Route::get('main-panel', 'HomeController@index');
+
+Route::get('main-panel/users-list', function () {
+    return view('userPanel.users-list');
 });
 
+// start of records menu
+Route::get('main-panel/basic-info', function () {
+    return view('records.basic_info');
+});
+// end of records menu
+
+// END MAIN PANEL ROUTES //
 Route::get('main-panel/users-list', 'MainPanel\UsersController@getUsers');
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
 
