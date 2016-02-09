@@ -14,8 +14,8 @@ class CreateLegalStatusLookupTable extends Migration
     {
         Schema::create('legal_status_lookup', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('legal_status_title');
-            $table->timestamps();
+            $table->string('description');
+            $table->timestamp('expire_date');
         });
     }
 

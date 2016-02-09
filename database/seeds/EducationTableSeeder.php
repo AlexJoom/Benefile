@@ -14,7 +14,7 @@ class SeedEducationTable extends Migration
     {
         DB::table('education_lookup')->insert(
             array(
-                array('education_title' => "Αναλφάλβητος"),
+                array('education_title' => "Αναλφάβητος"),
                 array('education_title' => "Δημοτικό"),
                 array('education_title' => "Γυμνάσιο"),
                 array('education_title' => "Λύκειο"),
