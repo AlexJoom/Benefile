@@ -41,4 +41,11 @@ Route::get('main-panel', function () {
 Route::get('main-panel/users-list', function () {
     return view('userPanel.users-list');
 });
+
+// start of records menu
+Route::get('main-panel/basic-info', function () {
+    return view('records.basic_info');
+});
+// end of records menu
+
 // END MAIN PANEL ROUTES //

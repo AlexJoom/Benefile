@@ -1,0 +1,96 @@
+.form-section{
+    border: 20px solid #e6f4f4;
+}
+
+.form-section.no-bottom-border{
+    border: 20px solid #e6f4f4;
+    border-bottom: none;
+}
+
+.make-inline{
+    display: inline-block;
+}
+
+.make-block{
+    display: block;
+}
+
+.padding-left-right-15{
+    padding: 0 15px;
+}
+
+.margin-right-30{
+    margin-right: 30px;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.custom-input-text{
+    border: none;
+    border-bottom: 1px solid #b8bcbb;
+    background-color: #FFFFFF;
+    color: #53585f;
+    font-weight: 700;
+    display: block;
+    font-size: 1.1em;
+}
+
+.custom-input-text.address{
+    width: 100%;
+}
+
+.date-text-input{
+    width: 1.5em;
+    display: inline-block;
+}
+
+.bold-slash{
+    color: #53585f;
+    font-weight: 700;
+}
+
+label{
+    color: #5a5f66;
+    font-weight: 100;
+}
+
+h1.record-section-header{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 1em 0 0;
+    color: #53585f;
+}
+
+.underline-header{
+    border-bottom: 1px solid #214b53;
+    margin: 0 0 1em;
+}
+
+input[type="radio"] {
+    -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+    -moz-appearance: checkbox;    /* Firefox  */
+    -ms-appearance: checkbox;     /* not currently supported */
+    border-radius: 0;
+}
+
+.padding-top-none{
+    padding-top: 0;
+}
+
+.radio-value{
+    font-size: 1.1em;
+}
+
+.width-100-percent{
+    width: 100%;
+}
+
+.width-50-percent{
+    width: 50%;
+}
