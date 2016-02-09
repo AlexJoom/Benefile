@@ -87,6 +87,7 @@ class CreateBenefitersTable extends Migration
 
         Schema::create('benefiters_legal_status', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('description')->nullable();
             $table->integer('benefiter_id')->unsigned();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('legal_status_id')->unsigned();
