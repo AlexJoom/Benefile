@@ -62,7 +62,10 @@
     border-bottom: 2px solid #a9a9a9;
 }
 
-/* TOP BAR (with usernam) */
+/* TOP BAR (with username) */
+/*div#main-window {*/
+    /*top: -82px;*/
+/*}*/
 
 .userName{
     float: right;
@@ -197,13 +200,13 @@
 
 /* MEDIA */
 
-@media (max-width: 992px){
-    div#sidebar {
-        width: 30%;
-    }
-    div#main-window {
-        float: left;
-        width: 100%;
-    }
-}
+/*@media (max-width: 992px){*/
+    /*div#sidebar {*/
+        /*width: 30%;*/
+    /*}*/
+    /*div#main-window {*/
+        /*float: left;*/
+        /*width: 100%;*/
+    /*}*/
+/*}*/
 
