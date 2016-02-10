@@ -1,27 +1,119 @@
-## Laravel PHP Framework
+# Benefile project
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+### Starting the project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+For installing Laravel, please refer to [Official Laravel installation
+guide](http://laravel.com/docs/5.1).
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Installing dependencies (assuming apache as web server and mysql as db):
 
-## Official Documentation
+In a nutchell (assuming debian-based OS), first install the dependencies needed:
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Note: php5 package installs apache2 as a dependency so we have no need to add
+it manually.
 
-## Contributing
+`% sudo aptitude install php5 php5-cli mcrypt php5-mcrypt mysql-server php5-mysql`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Install composer according to official instructions (link above) and move binary to ~/bin:
 
-## Security Vulnerabilities
+`% curl -sS https://getcomposer.org/installer | php5 && mv composer.phar ~/bin`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+And add ~/.composer/vendor/bin to your $PATH. Example:
 
-### License
+```
+% cat ~/.profile
+[..snip..]
+LARAVEL=/home/username/.composer/vendor
+PATH=$PATH:$LARAVEL/bin
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+And source your .profile with `% source ~/.profile`
+
+After cloning the project with a simple `git clone https://github.com/scify/Benefile.git`, type `cd Benefile && composer install` to install all dependencies.
+
+### Apache configuration:
+
+```
+% cat /etc/apache2/sites-available/mysite.conf
+<VirtualHost *:80>
+	ServerName myapp.example.com
+	DocumentRoot "/path/to/Benefile/public"
+	<Directory "/path/to/Benefile/public">
+		AllowOverride all
+	</Directory>
+</VirtualHost>
+```
+
+Make the symbolic link:
+
+`% cd /etc/apache2/sites-enabled && sudo ln -s ../sites-available/mysite.conf`
+
+Enable mod_rewrite and restart apache:
+
+`% sudo a2enmod rewrite && sudo service apache2 restart`
+
+Fix permissions for storage directory:
+
+`% chown -R www-data /path/to/Benefile/storage && chown -R www-data /path/to/Benefile/public`
+
+or
+
+`% find . type -d -exec chmod 775 {} \; && find . -type f -exec chmod 664 {} \; && chown -R :www-data /path/to/Benefile/Storage && chown -R :www-data /path/to/Benefile/public`
+
+The above, changes the group ownership of public and storage directories to www-data, and `find` command changes permissions from 755 to 775 for directories and from 644 to 664 for files. This way, your web server user should be able to have write access with some sane security.
+
+Test your setup with:
+
+`% php artisan serve`
+
+and navigate to localhost:8000.
+
+
+### Nginx configuration:
+
+Add additional the additional dependencies needed:
+
+`% sudo aptitude install nginx php5-fpm`
+
+Disable cgi.fix_pathinfo at /etc/php5/fpm/php.ini: `cgi.fix_pathinfo=0`
+
+`% sudo php5enmod mcrypt && sudo service php5-fpm restart`
+
+Nginx server block:
+
+```
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /path/to/Benefile/public;
+    index index.php index.html index.htm;
+
+    server_name server_domain_or_IP;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
+
+`% sudo service nginx restart`
+
+For persmissions, you may look above.
+
+And finally, set the user appropriately:
+
+`% sudo chown -R www-data storage`
+
+*database instructions placeholder*
+
+Initialize the database with `php artisan migrate` and test the installation with `php artisan serve` and hit `localhost:8000/auth/register` at your browser of choice.
