@@ -41,7 +41,7 @@ Route::get('main-panel/users-list', function () {
 });
 
 // start of records menu
-Route::get('main-panel/basic-info', function () {
+Route::get('new-benefiter/basic-info', function () {
     return view('records.basic_info');
 });
 // end of records menu

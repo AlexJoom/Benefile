@@ -1,7 +1,7 @@
 @extends('layouts.mainPanel')
 
 @section('panel-title')
-    Users
+    Νέος Ωφελούμενος
 @stop
 
 @section('panel-headLinks')
