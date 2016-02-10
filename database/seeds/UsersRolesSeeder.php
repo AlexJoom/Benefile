@@ -1,18 +1,15 @@
 <?php
 
+Use Illuminate\Database\Seeder;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SeedUsersRolesTable extends Migration
+
+class UsersRolesSeeder extends Seeder
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function run()
     {
-        DB::table('users_roles')->insert(
+        \DB::table('users_roles')->insert(
             array(
                 array('role' => "Διαχειριστής"),
                 array('role' => "Γιατρός"),
@@ -23,13 +20,4 @@ class SeedUsersRolesTable extends Migration
         );
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-    }
 }

@@ -2,17 +2,14 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Seeder;
 
-class SeedUsersSubrolesTable extends Migration
+class UsersSubrolesSeeder extends Seeder
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+
+    public function run()
     {
-        DB::table('users_subroles')->insert(
+        \DB::table('users_subroles')->insert(
             array(
                 array('subrole' => "Γενικός ιατρός"),
                 array('subrole' => "Παιδίατρος"),
@@ -28,15 +25,5 @@ class SeedUsersSubrolesTable extends Migration
                 array('subrole'  => 'Νευρολόγος'),
             )
         );
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
     }
 }

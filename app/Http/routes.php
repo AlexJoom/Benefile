@@ -46,8 +46,9 @@ Route::get('main-panel/basic-info', function () {
 });
 // end of records menu
 
-// END MAIN PANEL ROUTES //
-Route::get('main-panel/users-list', 'MainPanel\UsersController@getUsers');
+
+Route::get('main-panel/users-list', 'MainPanel\UsersController@UsersList');
+Route::get('main-panel/users-list/to-be-activated', 'MainPanel\UsersController@ToBeActivated');
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
 
 // END MAIN PANEL ROUTES //

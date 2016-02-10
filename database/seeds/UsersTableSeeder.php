@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
 //            'activation_status' => 1,
 //            'is_deactivated' => 0,
 //        ));
-
+//
 //        // TEST USERS (WAIT TO BE ACTIVE)
 //        User::create(array(
 //            'name' => 'Doctor_Name_1',
