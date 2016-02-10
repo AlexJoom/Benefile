@@ -17,7 +17,7 @@
     {{--<div style="width: 100%; background-color: red;">--}}
         <div class="row width-100-percent">
             <div class="col-md-3 record-panel-title">
-                <a class="white" href="#">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
+                <a class="white" href="{{ url('/main-panel/basic-info') }}">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
