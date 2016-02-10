@@ -106,3 +106,15 @@ input[type="radio"] {
 .hide-element{
     display: none;
 }
+
+input:focus {
+    border-color: #b269a7;
+}
+
+.focused{
+    color: #b269a7;
+}
+
+.form-group:focus label{
+    color: red;
+}
