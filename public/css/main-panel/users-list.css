@@ -20,7 +20,10 @@
     height: 65px;
 }
 .white{
-    color: #ffffff;
+    color: #ffffff !important;
+}
+.bold{
+    font-weight: bold;
 }
 .grey{
     color: #a9a9a9;
@@ -56,5 +59,24 @@
     cursor: pointer;
 
 }
-
 /****** END USER STATUS (top bar) ******/
+
+/****** USER LIST TABLE ***************/
+
+table.display.dataTable td button{
+    border: none;
+    width: 220px;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.light-red-background{
+    background-color: #f6736d;
+}
+.lighter-green-background{
+    background-color: #6ae0b4;
+}
+
+/****** USER LIST TABLE ***************/
