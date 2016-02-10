@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @yield('panel-title')
+    <title>@yield('panel-title')</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -40,7 +40,7 @@
         <div class="newCont table-display">
             <div class="table-row height-100per">
                 {{-- sidebar --}}
-                <div class="col-md-2 dark-green-background no-padding table-cell height-100per" id="sidebar">
+                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per" id="sidebar">
 
                     {{-- NGO logo --}}
                     <div class="logo-ngo" id="ngo-logo">
@@ -88,7 +88,7 @@
                 </div>
 
                 {{-- main window --}}
-                <div class="col-md-10 table-cell height-100per no-padding" id="main-window">
+                <div class="col-md-10 col-xs-10 table-cell height-100per no-padding" id="main-window">
                     @yield('main-window-content')
                 </div>
             </div>
