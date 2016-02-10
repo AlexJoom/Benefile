@@ -26,7 +26,7 @@
     {{--<div style="width: 100%; background-color: red;">--}}
         <div class="row width-100-percent">
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $basic_selected }}" href="{{ url('/main-panel/basic-info') }}">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
+                <a class="white {{ $basic_selected }}" href="{{ url('/new-benefiter/basic-info') }}">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
