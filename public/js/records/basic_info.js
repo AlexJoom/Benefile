@@ -47,26 +47,8 @@ $(document).ready(function(){
     $input.on("blur", function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
     });
-
-    // when sth is clicked in panel make an ajax call to display that page
-    $(".record-panel-title a").on("click", function(){
-        $.ajax({
-            url: $(this).attr("href"),
-            type: "get",
-            success: function(data){
-                DisplayServerResponseAndSetUrl(data, this.url);
-            }
-        });
-        return false;
-    });
 });
 
 var $langs_count = 0;
 var $parent = $(".language-div").parent();
 var $input = $("input");
-
-function DisplayServerResponseAndSetUrl(data, url){
-    var $content = data.substring(data.indexOf('<div class="no-margin light-green-background'), data.indexOf('<!-- JavaScripts -->'));
-    $("#main-window").html($content);
-    window.history.pushState("", document.title, url); // change the url of the browser
-};

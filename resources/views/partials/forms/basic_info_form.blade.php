@@ -341,7 +341,7 @@
             </div>
         </div>
     </div>
-    <div class="detention-info form-section">
+    <div class="detention-info form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">9. Διάρκεια Κράτησης</h1>
         </div>
@@ -356,6 +356,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="form-section align-text-center">
+        {!! Form::submit('Αποθήκευση Βασικών Στοιχείων', array('class' => 'submit-button')) !!}
     </div>
 {!! Form::close() !!}
 </div>

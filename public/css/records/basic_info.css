@@ -118,3 +118,11 @@ input:focus {
 .form-group:focus label{
     color: red;
 }
+
+.submit-button{
+    background-color: #00a59a;
+    color: #FFFFFF;
+    padding: 1em;
+    font-size: 1.2em;
+    border: none;
+}

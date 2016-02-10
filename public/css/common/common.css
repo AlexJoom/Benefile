@@ -40,3 +40,7 @@ body {
     float: none;
     margin: 0 auto;
 }
+
+.align-text-center{
+    text-align: center;
+}
