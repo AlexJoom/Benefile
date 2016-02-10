@@ -1,6 +1,6 @@
 @extends('records.new_record_panel')
 
-@section('panel-headLinks')
+@section('css')
     <link href={{asset('css/records/basic_info.css')}} rel="stylesheet" type="text/css">
 @stop
 
