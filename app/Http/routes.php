@@ -36,9 +36,9 @@ Route::controllers([
 
 Route::get('main-panel', 'HomeController@index');
 
-Route::get('main-panel/users-list', function () {
-    return view('userPanel.users-list');
-});
+//Route::get('main-panel/users-list', function () {
+//    return view('userPanel.users-list');
+//});
 
 // start of records menu
 Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
@@ -46,8 +46,12 @@ Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicIn
 // end of records menu
 
 
+
+Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate');
 Route::get('main-panel/users-list', 'MainPanel\UsersController@UsersList');
-Route::get('main-panel/users-list/to-be-activated', 'MainPanel\UsersController@ToBeActivated');
+//Route::post('main-panel/users-list', 'MainPanel\UsersController@ToBeActivated');
+//Route::post('main-panel/users-list', 'MainPanel\UsersController@DeActivate');
+
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
 
 // END MAIN PANEL ROUTES //

@@ -61,7 +61,7 @@
                     <div class="margin-top-60 white" id="menu">
                         <ul id="menu-first-layer">
                             <li id="register-benefiter">
-                                <button class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
                                 <a href="{{ asset('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
@@ -101,10 +101,7 @@
 
     <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
     <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
-    <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
-    <script src="{{asset('js/main-panel/users-list.js')}}"></script>
     @yield('panel-scripts')
 </body>
 
