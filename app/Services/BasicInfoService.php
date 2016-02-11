@@ -1,5 +1,6 @@
 <?php namespace app\Services;
 
+use App\Models\Benefiters_Tables_Models\Benefiter;
 use Validator;
 
 class BasicInfoService{
@@ -15,14 +16,20 @@ class BasicInfoService{
         ));
     }
 
-    // get all languages and their levels keys from basic info's form $request
-    private function getLanguageAndLanguageLevelKeysArray($request){
-        // make an array with languages and languages levels keys
+    // insert into DB benefiter table
+    public function saveBasicInfoToDB($request){
+        $languagesAndLevels = $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request);
+        $benefiter = new Benefiter();
+    }
+
+    // get all languages keys from basic info's form $request
+    private function getLanguageKeysArray($request){
+        // make an array with all languages keys
         $keys = array_keys($request->request->all());
         $languages = array();
         foreach($keys as $key){
             // check if string "language" is contained in array's keys
-            if (strpos($key, "language") !== false){
+            if (strpos($key, "language") !== false && strpos($key, "language_level") === false){
                 array_push($languages, $key);
             }
         }
@@ -30,19 +37,47 @@ class BasicInfoService{
     }
 
     // deletes duplicate languages selected by user
-    private function deleteDuplicatedLanguages($languages){
+    private function deleteDuplicatedLanguages($languagesKeys, $request){
         // make sure all languages selected are different
-        $values = array_values($languages);
         $languages_id = array();
-        $i = 0;
-        foreach($languages as $language){
+        foreach($languagesKeys as $language){
             // if this is not a language level
             if(strpos($language, "language_level") === false){
-                $languages_id[$language] = $values[$i];
+                $languages_id[$language] = $request->$language;
             }
-            $i++;
         }
         return array_unique($languages_id);
+    }
+
+    // deletes duplicate languages selected by user
+    private function getUniqueLanguagesLevels($languagesUnique, $request){
+        // make sure you get all unique languages levels
+        $keys = array_keys($languagesUnique);
+        $languages_levels_id = array();
+        foreach($keys as $key){
+            $level_key = str_replace("language", "language_level", $key);
+            $languages_levels_id[$key] = $request->$level_key;
+        }
+        return $languages_levels_id;
+    }
+
+    // merges the language and language level array with the deleted duplicates languages array
+    private function mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request){
+        $languagesKeys = $this->getLanguageKeysArray($request);
+        $languagesUnique = $this->deleteDuplicatedLanguages($languagesKeys, $request);
+        $levelsUnique = $this->getUniqueLanguagesLevels($languagesUnique, $request);
+        $keys = array_keys($languagesUnique);
+        $merge = array();
+        foreach($keys as $key){
+            // make array containing language id and level id and...
+            $temp = array(
+                'language' => $languagesUnique[$key],
+                'level' =>$levelsUnique[$key],
+            );
+            // ...push it into the $merge array
+            array_push($merge, $temp);
+        }
+        return $merge;
     }
 
     // gets $day, $month, $year and returns a String with the date correctly formatted or null

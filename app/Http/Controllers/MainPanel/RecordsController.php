@@ -20,12 +20,12 @@ class RecordsController extends Controller
     // post from basic info form
     public function postBasicInfo(Request $request){
         $basicInfoService = new BasicInfoService();
-//        dd($request->request->all());
-        if($basicInfoService->basicInfoValidation($request)->fails()){
-            return 'fail';
+        $validator = $basicInfoService->basicInfoValidation($request);
+        if($validator->fails()){
+            return view('records.basic_info')->withErrors($validator->errors()->all());
         } else {
+            $basicInfoService->saveBasicInfoToDB($request);
             return 'success';
         }
-//        dd($basicInfoService->basicInfoValidation($request));
     }
 }
