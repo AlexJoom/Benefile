@@ -78,7 +78,7 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <select class="inputFields" id="user-role" onchange="showDiv(this)" name="user_role_id">
-                      <option value="0">Επιλογή ρόλου</option>
+                      <option value="0" disabled selected>Επιλογή ρόλου</option>
                       <option value="2">Γιατρός</option>
                       <option value="3">Νομικός Σύμβουλος</option>
                       <option value="4">Κοινωνικός Σύμβουλος</option>
@@ -96,7 +96,7 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <select class="inputFields" id="user-subrole" name="user_subrole_id">
-                      <option value="0">Επιλογή ειδικότητας</option>
+                      <option value="0" disabled selected>Επιλογή ειδικότητας</option>
                       <option value="1">Γενικός ιατρός</option>
                       <option value="2">Νομικός Σύμβουλος</option>
                       <option value="3">Κοινωνικός Σύμβουλος</option>
