@@ -11,13 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href={{asset('bootstrap-3.3.6/dist/css/bootstrap.min.css')}} rel="stylesheet" type="text/css">
-    <link href={{asset('DataTables/datatables.min.css')}} rel="stylesheet" type="text/css">
-    <link href={{asset('DataTables/DataTables-1.10.10/css/jquery.dataTables.min.css')}} rel="stylesheet" type="text/css">
+    <link href="{{asset('bootstrap-3.3.6/dist/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('DataTables/datatables.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('DataTables/DataTables-1.10.10/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css">
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--}}
-    <link href={{asset('css/common/mainLayout.css')}} rel="stylesheet" type="text/css">
-    <link href={{asset('css/common/common.css')}} rel="stylesheet" type="text/css">
-    <link href={{asset('css/main-panel/users-list.css')}} rel="stylesheet" type="text/css">
+    <link href="{{asset('css/common/mainLayout.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/common/common.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/main-panel/users-list.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/records/basic_info.css')}}" rel="stylesheet" type="text/css">
 
     @yield('panel-headLinks')
 </head>
@@ -101,7 +103,11 @@
 
     <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
     <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
+    <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
+    <script src="{{asset('js/main-panel/users-list.js')}}"></script>
+    <script src="{{asset('js/records/basic_info.js')}}"></script>
     @yield('panel-scripts')
 </body>
 

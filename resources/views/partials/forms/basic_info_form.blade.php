@@ -245,7 +245,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
+                <div id="language-wrapper" class="row">
                     <div class="padding-left-right-15 language-div">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
