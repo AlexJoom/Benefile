@@ -16,7 +16,7 @@
     padding-right: 0;
 }
 
-.record-panel-title a:hover, a:active, a:focus, .selected {
+.record-panel-title a:hover, .record-panel-title a:active, .record-panel-title a:focus, .selected {
     color: #FFFFFF;
     text-decoration: none;
     border-bottom: 5px solid #b269a7;
