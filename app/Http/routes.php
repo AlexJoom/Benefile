@@ -41,9 +41,8 @@ Route::get('main-panel/users-list', function () {
 });
 
 // start of records menu
-Route::get('new-benefiter/basic-info', function () {
-    return view('records.basic_info');
-});
+Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
+Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicInfo');
 // end of records menu
 
 

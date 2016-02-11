@@ -1,6 +1,6 @@
 <div class="basic-info-form">
-{{--{!! Form::model($user, array('url' => 'PUT_STH_HERE!!!')) !!}--}}
-{!! Form::open(array('url' => 'PUT_STH_HERE!!!')) !!}
+{{--{!! Form::model($user, array('url' => 'new-benefiter/basic-info')) !!}--}}
+{!! Form::open(array('url' => 'new-benefiter/basic-info')) !!}
     <div class="personal-info form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
