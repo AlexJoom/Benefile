@@ -106,7 +106,6 @@
     <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
-    <script src="{{asset('js/main-panel/users-list.js')}}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
     @yield('panel-scripts')
 </body>
