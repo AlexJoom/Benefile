@@ -41,6 +41,15 @@
     font-size: 1.1em;
 }
 
+.custom-input-textarea{
+    border: 1px solid #b8bcbb;
+    background-color: #FFFFFF;
+    color: #53585f;
+    font-weight: 700;
+    display: block;
+    font-size: 1.1em;
+}
+
 .custom-input-text.address{
     width: 100%;
 }
@@ -111,7 +120,7 @@ input[type="radio"] {
     display: none;
 }
 
-input:focus {
+input:focus, textarea:focus {
     border-color: #b269a7;
 }
 

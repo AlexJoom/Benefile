@@ -185,6 +185,82 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                            {!! Form::checkbox('legal_status', 4, false, array('class' => 'float-left')) !!}
+                            {!! Form::label('residence_permit', 'Βεβ. άδειας διαμονής (χρόνος/λήξη)', array('class' => 'float-left')) !!}
+                            {!! Form::text('residence_permit', null, array('class' => 'custom-input-text float-left')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left">
+                            {!! Form::label('Ημ. Λήξης') !!}
+                            <div class="make-inline">
+                                {!! Form::text('residence_permit_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('residence_permit_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('residence_permit_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                            {!! Form::checkbox('legal_status', 5, false, array('class' => 'float-left')) !!}
+                            {!! Form::label('immigrant_residence_permit', 'Άδεια παραμονής (μετανάστης)', array('class' => 'float-left')) !!}
+                            {!! Form::text('immigrant_residence_permit', null, array('class' => 'custom-input-text float-left')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left">
+                            {!! Form::label('Ημ. Λήξης') !!}
+                            <div class="make-inline">
+                                {!! Form::text('immigrant_residence_permit_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('immigrant_residence_permit_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('immigrant_residence_permit_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                            {!! Form::checkbox('legal_status', 6, false, array('class' => 'float-left')) !!}
+                            {!! Form::label('european', 'Ευρωπαίος πολίτης', array('class' => 'float-left')) !!}
+                            {!! Form::text('european', null, array('class' => 'custom-input-text float-left')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left">
+                            {!! Form::label('Ημ. Λήξης') !!}
+                            <div class="make-inline">
+                                {!! Form::text('european_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('european_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('european_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                            {!! Form::checkbox('legal_status', 7, false, array('class' => 'float-left')) !!}
+                            {!! Form::label('out_of_legal', 'Εκτός νομικού πλαισίου', array('class' => 'float-left')) !!}
+                            {!! Form::text('out_of_legal', null, array('class' => 'custom-input-text float-left')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left">
+                            {!! Form::label('Ημ. Λήξης') !!}
+                            <div class="make-inline">
+                                {!! Form::text('out_of_legal_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('out_of_legal_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
+                                {!! Form::text('out_of_legal_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -377,6 +453,22 @@
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
                             {!! Form::text('detention', null, array('class' => 'custom-input-text width-100-percent')) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detention-info form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">10. Κοινωνικό Ιστορικό</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group padding-left-right-15">
+                            {!! Form::textarea('social_background', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
                         </div>
                     </div>
                 </div>
