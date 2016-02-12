@@ -29,6 +29,7 @@ class UsersController extends Controller
                 // Active user is deactivated
                 }elseif($user['activation_status'] == '1' && $user['is_deactivated'] == '0'){
                     $user['activation_status'] = 0;
+                    $user['is_deactivated'] = 1;
                     $user->save();
                 // Reactivate previously deactivated used
                 }else{

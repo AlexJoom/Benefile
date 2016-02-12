@@ -18,6 +18,9 @@
     <link href="{{asset('css/common/mainLayout.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/common/common.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/main-panel/users-list.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/records/basic_info.css')}}" rel="stylesheet" type="text/css">
+
     @yield('panel-headLinks')
 </head>
 <body id="main-layout">
@@ -104,6 +107,7 @@
     <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
     <script src="{{asset('js/main-panel/users-list.js')}}"></script>
+    <script src="{{asset('js/records/basic_info.js')}}"></script>
     @yield('panel-scripts')
 </body>
 

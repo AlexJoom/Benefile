@@ -13,24 +13,6 @@
 //            console.log( data );
 //            $("#main-window").html(data);
 
-
-
-            // Apply dataTable
-            $(function() {
-                $('#usersTable-to-activate').DataTable( {
-                    "lengthMenu": [ [-1], ["All"] ]
-                } );
-
-                $('#usersTable-active').DataTable( {
-                    "lengthMenu": [ [-1], ["All"] ]
-                } );
-
-                $('#usersTable-deactivated').DataTable( {
-                    "lengthMenu": [ [-1], ["All"] ]
-                } );
-            });
-
-
             // Changes background color to menu buttons on click
             $(function(){
                 if (!$('#users-list').hasClass("purple-background")) {
@@ -38,8 +20,6 @@
                     $('#users-list').addClass("purple-background");
                 }
             });
-
-
 
             // Adjusts the height of the sidebar accordingly to the biggest screen height
             $(function(){
@@ -58,6 +38,21 @@
                     $('.col-md-4.userStatus div').removeClass('pink-border-bottom white bold');
                     $(this).addClass('pink-border-bottom white bold');
                 }
+            });
+
+            // Apply dataTable
+            $(function() {
+                $('#usersTable-to-activate').DataTable( {
+                    "lengthMenu": [ [-1], ["All"] ]
+                } );
+
+                $('#usersTable-active').DataTable( {
+                    "lengthMenu": [ [-1], ["All"] ]
+                } );
+
+                $('#usersTable-deactivated').DataTable( {
+                    "lengthMenu": [ [-1], ["All"] ]
+                } );
             });
 
             $('#results-to-activate').show();

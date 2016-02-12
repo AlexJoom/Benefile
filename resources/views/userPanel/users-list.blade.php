@@ -59,11 +59,8 @@
                             @endif
                             <td>{{substr($user['created_at'], 0,11)}}</td>
 
-                            <td>{{$user['activation_status']}}</td>
-                            <td>{{$user['is_deactivated']}}</td>
-
                             <td>
-                                <form action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
+                                <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
                                     <button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>
                                     {{ csrf_field() }}
@@ -112,7 +109,7 @@
                             @endif
                             <td>{{substr($user['created_at'], 0,11)}}</td>
                             <td>
-                                <form action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
+                                <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
                                     <button class="light-red-background">ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ</button>
                                     {{ csrf_field() }}
@@ -161,7 +158,7 @@
                             @endif
                             <td>{{substr($user['created_at'], 0,11)}}</td>
                             <td>
-                                <form action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
+                                <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
                                     <button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>
                                     {{ csrf_field() }}
@@ -311,7 +308,5 @@
 @stop
 
 @section('panel-scripts')
-    <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
-    <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/users-list.js')}}"></script>
 @stop
