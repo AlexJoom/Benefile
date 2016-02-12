@@ -63,7 +63,7 @@
                                 <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
-                                <a href="{{ asset('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
+                                <a href="{{ url('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
                             </li>
                             <li id="import-file" class="child hide">
                                 <a>Φόρτωση αρχείου</a>
