@@ -18,25 +18,4 @@ $('#menu ul li').click(function(){
     }
 });
 
-/* START OF "NEW RECORD" AJAX CALL */
-// when "new record" is clicked in panel make an ajax call to display that page
-$("#new-benefiter a").on("click", function(){
-    $.ajax({
-        url: $(this).attr("href"),
-        type: "get",
-        success: function(data){
-            DisplayNewBenefiterFormAndSetUrl(data, this.url);
-        }
-    });
-    return false;
-});
-
-// display new benefiter form and set appropriate url
-function DisplayNewBenefiterFormAndSetUrl(data, url){
-    var $content = data.substring(data.indexOf('<div class="no-margin light-green-background'), data.indexOf('<!-- JavaScripts -->'));
-    $("#main-window").html($content);
-    window.history.pushState("", document.title, url); // change the url of the browser
-};
-/* END OF "NEW RECORD" AJAX CALL */
-
 
