@@ -249,10 +249,36 @@
                     <div class="padding-left-right-15 language-div">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
-                                {!! Form::select('language', array('1' => 'English', '2' => 'Greek'), null, array('class' => 'language-selection')) !!}
+                                <select name="language" class="language-selection">
+                                    <?php
+                                        $first = true;
+                                    ?>
+                                    @foreach($languages as $language)
+                                    <?php $selected = "";?>
+                                    @if($first)
+                                        <?php $selected = "selected";
+                                              $first = false;
+                                        ?>
+                                    @endif
+                                    <option value="{{ $language->id }}" {{ $selected }}>{{ $language->description }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-2 make-inline">
-                                {!! Form::select('language_level', array('1' => 'χαμηλό', '2' => 'μέτριο', '3' => 'καλό', '4' => 'πολύ καλό', '5' => 'άριστο'), null, array('class' => 'make-inline level-selection')) !!}
+                                <select name="language_level" class="make-inline level-selection">
+                                    <?php
+                                        $first = true;
+                                    ?>
+                                    @foreach($languageLevels as $level)
+                                    <?php $selected = "";?>
+                                    @if($first)
+                                        <?php $selected = "selected";
+                                              $first = false;
+                                        ?>
+                                    @endif
+                                    <option value="{{ $level->id }}" {{ $selected }}>{{ $level->description }}</option>
+                                    @endforeach
+                                </select>
                                 <a class="color-green" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
                                 <a class="color-red hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
                             </div>

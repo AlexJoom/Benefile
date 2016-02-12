@@ -2,12 +2,16 @@
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use Validator;
+use Carbon\Carbon;
 
 class BasicInfoService{
 
+    private $editedInput;
+
     // validate the basic info
     public function basicInfoValidation($request){
-        return Validator::make($this->getValidationArray($request), array(
+        $this->getValidationArray($request);
+        return Validator::make($this->editedInput, array(
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'deportation_date' => 'date',
@@ -19,7 +23,11 @@ class BasicInfoService{
     // insert into DB benefiter table
     public function saveBasicInfoToDB($request){
         $languagesAndLevels = $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request);
-        $benefiter = new Benefiter();
+        // do stuff with $languagesAndLevels
+        $benefiter = new Benefiter(
+            $this->getArrayForDBInsert($request)
+        );
+        $benefiter->save();
     }
 
     // get all languages keys from basic info's form $request
@@ -84,33 +92,104 @@ class BasicInfoService{
     private function makeDateStringFromStrings($day, $month, $year){
         if($day != null && $month != null && $year != null){
             if(is_numeric($day) && is_numeric($month) && is_numeric($year)){
-                return $day.'.'.$month.'.'.$year;
+                return $day.'-'.$month.'-'.$year;
             }
         }
         return null;
     }
 
     // if date is text make its format valid for validation
-    private function makeDateFormatValid($date){
-        $date = str_replace('/', '.', $date);
-        $date = str_replace('-', '.', $date);
+    private function makeDateStringFormatValid($date){
+        $date = str_replace('/', '-', $date);
         return $date;
     }
 
     // make an array, appropriate for validating purposes
     private function getValidationArray($request){
         $birth_date = $this->makeDateStringFromStrings($request->birth_day, $request->birth_month, $request->birth_year);
-        $arrival_date = $this->makeDateFormatValid($request->arrival_date);
+        $arrival_date = $this->makeDateStringFormatValid($request->arrival_date);
         $deportation_date = $this->makeDateStringFromStrings($request->deportation_day, $request->deportation_month, $request->deportation_year);
         $asylum_date = $this->makeDateStringFromStrings($request->asylum_day, $request->asylum_month, $request->asylum_year);
         $refugee_date = $this->makeDateStringFromStrings($request->refugee_day, $request->refugee_month, $request->refugee_year);
-        $editedInput = array(
+        $this->editedInput = array(
             'birth_date' => $birth_date,
             'arrival_date' => $arrival_date,
             'deportation_date' => $deportation_date,
             'asylum_date' => $asylum_date,
             'refugee_date' => $refugee_date,
         );
-        return $editedInput;
+    }
+
+//    private function getDateFromStrings($day, $month, $year){
+//        return Carbon::createFromDate($year, $month, $day);
+//    }
+
+    // get Date from Date String
+//    private function getDateFromDateString($dateString){
+//        $day = strtok($dateString, ".");
+//        $month = strtok(".");
+//        $year = strtok(".");
+//        return Carbon::createFromDate($year, $month, $day);
+//    }
+
+    // get valid date for DB use from date String
+    public function makeDBFriendlyDate($date){
+        if($date != null) {
+            $day = strtok($date, "-");
+            $month = strtok("-");
+            $year = strtok("-");
+            return Carbon::createFromDate($year, $month, $day);
+        } else {
+            return "";
+        }
+    }
+
+    // make and return an array that will be appropriate for DB insert
+    private function getArrayForDBInsert($request){
+        return array(
+            "lastname" => $request->lastname,
+            "name" => $request->name,
+            "gender_id" => $request->gender,
+            "birth_date" => $this->makeDBFriendlyDate($this->editedInput['birth_date']),
+            "fathers_name" => $request->fathers_name,
+            "mothers_name" => $request->mothers_name,
+            "nationality_country" => $request->nationality_country,
+            "origin_country" => $request->origin_country,
+            "arrival_date" => $this->makeDBFriendlyDate($this->editedInput['arrival_date']),
+            "telephone" => $request->telephone,
+            "address" => $request->address,
+            "marital_status_id" => $request->marital_status_id,
+            "number_of_children" => $request->number_of_children,
+            "relatives_residence" => $request->relatives_residence,
+//            "deportation" => $request->,
+//            "deportation_day" => $request->,
+//            "deportation_month" => $request->,
+//            "deportation_year" => $request->,
+//            "asylum_application" => $request->,
+//            "asylum_day" => $request->,
+//            "asylum_month" => $request->,
+//            "asylum_year" => $request->,
+//            "refugee" => $request->,
+//            "refugee_day" => $request->,
+//            "refugee_month" => $request->,
+//            "refugee_year" => $request->,
+            "education_id" => $request->education_status,
+            "is_benefiter_working" => $request->working,
+            "working_legally" => $request->working_legally,
+            "country_abandon_reason" => $request->country_abandon,
+            "travel_route" => $request->travel_route,
+            "travel_duration" => $request->travel_duration,
+            "detention_duration" => $request->detention,
+        );
+    }
+
+    // get all languages from languages DB table
+    public function getAllLanguages(){
+        return \DB::table('languages')->get();
+    }
+
+    // get all language levels from language_levels DB table
+    public function getAllLanguageLevels(){
+        return \DB::table('language_levels')->get();
     }
 }
