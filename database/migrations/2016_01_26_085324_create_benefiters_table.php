@@ -25,31 +25,18 @@ class CreateBenefitersTable extends Migration
             $table->integer('telephone')->unsigned();
             $table->integer('number_of_children')->unsigned()->nullable();
             $table->string('relatives_residence')->nullable();
-            $table->string('legal_status_details')->nullable();
-            $table->date('legal_status_exp_date');
             $table->string('other_language')->nullable();
             $table->boolean('language_interpreter_needed');
             // $table->foreign('language_interpreter_needed_id')->references('id')->on('yes_or_no_lookup');
             $table->boolean('is_benefiter_working')->nullable();
             //$table->foreign('work_status_id')->references('id')->on('yes_or_no_lookup');        // FOREIGN KEY
+            $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
             //$table->foreign('work_legal_type_id')->references('id')->on('work_legal_type_lookup');
             $table->string('country_abandon_reason')->nullable();
             $table->string('travel_route')->nullable();
             $table->string('travel_duration')->nullable();
             $table->string('detention_duration')->nullable();
-            $table->integer('has_social_reference')->nullable();
-            //$table->foreign('social_reference_id')->references('id')->on('yes_or_no_lookup');
-            $table->string('social_reference_actions');
-            $table->date('social_reference_date');
-            $table->boolean('has_medical_reference');
-            //$table->foreign('medical_reference_id')->references('id')->on('yes_or_no_lookup');
-            $table->string('medical_reference_actions');
-            $table->date('medical_reference_date');
-            $table->boolean('has_legal_reference');
-            //$table->foreign('legal_reference_id')->references('id')->on('yes_or_no_lookup');
-            $table->string('legal_reference_actions');
-            $table->date('legal_reference_date');
             $table->boolean('has_educational_reference');
             //$table->foreign('educational_reference_id')->references('id')->on('yes_or_no_lookup');
             $table->string('educational_reference_actions');
@@ -77,6 +64,108 @@ class CreateBenefitersTable extends Migration
             $table->foreign('education_id')->references('id')->on('education_lookup');
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
+        });
+
+        // Social/legal/etc tables should be independent from main table.
+        // Every user class has different permissions and different tables make this process easier.
+
+        /*
+         * SOCIAL TABLE(S)
+         */
+        // Like a middle table, links benefiter <-> social table <-> social reference table.
+        Schema::create('benefiters_social_table', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('has_social_reference')->nullable();
+            //$table->foreign('social_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->string('social_reference_actions');
+            $table->date('social_reference_date');
+            $table->string('social_description')->nullable();
+
+            $table->integer('benefiters_id')->unsigned()->nullable();
+            $table->foreign('benefirets_id')->references('id')->on('benefiters');
+        });
+
+        Schema::create('benefiters_social_conference', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('conference_date')->nullable();
+            $table->string('conference_topic')->nullable();
+            $table->string('description')->nullable();
+
+            $table->integer('benefiters_social_id')->unsigned()->nullable();
+            $table->foreign('benefirets_social_id')->references('id')->on('benefiters_social_table');
+        });
+
+        /*
+         * MEDICAL TABLE(S)
+         */
+        Schema::create('benefiters_medical_table', function (Blueprint $table) {
+            $table->increments('id');
+            $table->boolean('has_medical_reference');
+            //$table->foreign('medical_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->string('medical_reference_actions');
+            $table->date('medical_reference_date');
+            $table->string('height')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('skull_perimeter')->nullable();
+            $table->string('temperature')->nullable();
+            $table->string('blood_pressure')->nullable();
+            %table->string('description')->nullable();
+
+            $table->integer('benefiters_id')->unsigned();
+            $table->foreign('benefirets_id')->references('id')->on('benefiters');
+        });
+
+        // Benefiter's clinical examination results.
+        Schema::create('benefiters_examination_results', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('respiratory_system')->nullable();
+            $table->string('digestive_system')->nullable;
+            $table->string('skin_cutaneous_tissue')->nullable;
+            $table->string('cardiovascular_system')->nullable;
+            $table->string('urinary_reproductive_system')->nullable;
+            $table->string('musculoskeletal_system')->nullable;
+            $table->string('immunization_vaccine_and_date')->nullable;
+            $table->string('nervous_system_and_sense_organs')->nullable;
+            $table->string('other')->nullable;
+
+            $table->integer('benefiters_id')->unsigned();
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+        });
+
+        // Benefiter's chronic conditions.
+        Schema::create('benefiters_chronic_conditions', function ()Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+
+            $table->integer('benefiters_id')->unsigned();
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+        });
+
+        // Benefiter's laboratory results.
+        Schema::create('benefiters_laboratory_results', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('laboratory_results')->nullable();
+            $table->string('medication')->nullable();
+            $table->string('referrals')->nullable();
+
+            $table->integer('benefiters_id')->unsigned();
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+        });
+
+        /*
+         * LEGAL TABLE(S)
+         */
+        Schema::create('benefiters_legal_table', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('legal_status_exp_date');
+            $table->boolean('has_legal_reference');
+            //$table->foreign('legal_reference_id')->references('id')->on('yes_or_no_lookup');
+            $table->string('legal_reference_actions');
+            $table->date('legal_reference_date');
+            $table->string('legal_description')->nullable();
+
+            $table->integer('benefiters_id')->unsigned()->nullable();
+            $table->foreign('benefirets_id')->references('id')->on('benefiters');
         });
 
         Schema::create('legal_statuses', function (Blueprint $table) {
