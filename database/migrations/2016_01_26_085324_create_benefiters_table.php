@@ -82,7 +82,7 @@ class CreateBenefitersTable extends Migration
             $table->string('social_description')->nullable();
 
             $table->integer('benefiters_id')->unsigned()->nullable();
-            $table->foreign('benefirets_id')->references('id')->on('benefiters');
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
         });
 
         Schema::create('benefiters_social_conference', function (Blueprint $table) {
@@ -92,7 +92,7 @@ class CreateBenefitersTable extends Migration
             $table->string('description')->nullable();
 
             $table->integer('benefiters_social_id')->unsigned()->nullable();
-            $table->foreign('benefirets_social_id')->references('id')->on('benefiters_social_table');
+            $table->foreign('benefiters_social_id')->references('id')->on('benefiters_social_table');
         });
 
         /*
@@ -109,10 +109,10 @@ class CreateBenefitersTable extends Migration
             $table->string('skull_perimeter')->nullable();
             $table->string('temperature')->nullable();
             $table->string('blood_pressure')->nullable();
-            %table->string('description')->nullable();
+            $table->string('description')->nullable();
 
             $table->integer('benefiters_id')->unsigned();
-            $table->foreign('benefirets_id')->references('id')->on('benefiters');
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
         });
 
         // Benefiter's clinical examination results.
@@ -133,7 +133,7 @@ class CreateBenefitersTable extends Migration
         });
 
         // Benefiter's chronic conditions.
-        Schema::create('benefiters_chronic_conditions', function ()Blueprint $table) {
+        Schema::create('benefiters_chronic_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
 
@@ -165,7 +165,7 @@ class CreateBenefitersTable extends Migration
             $table->string('legal_description')->nullable();
 
             $table->integer('benefiters_id')->unsigned()->nullable();
-            $table->foreign('benefirets_id')->references('id')->on('benefiters');
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
         });
 
         Schema::create('legal_statuses', function (Blueprint $table) {
@@ -212,6 +212,15 @@ class CreateBenefitersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('benefiters_legal_status');
+        Schema::dropIfExists('legal_statuses');
+        Schema::dropIfExists('benefiters_legal_table');
+        Schema::dropIfExists('benefiters_laboratory_results');
+        Schema::dropIfExists('benefiters_chronic_conditions');
+        Schema::dropIfExists('benefiters_examination_results');
+        Schema::dropIfExists('benefiters_medical_table');
+        Schema::dropIfExists('benefiters_social_conference');
+        Schema::dropIfExists('benefiters_social_table');
         Schema::dropIfExists('benefiters_languages');
         Schema::dropIfExists('language_levels');
         Schema::dropIfExists('languages');
