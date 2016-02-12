@@ -66,7 +66,7 @@
                                 <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
-                                <a href="{{ asset('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
+                                <a href="{{ url('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
                             </li>
                             <li id="import-file" class="child hide">
                                 <a>Φόρτωση αρχείου</a>
@@ -106,6 +106,7 @@
     <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('js/main-panel/common.js')}}"></script>
+    <script src="{{asset('js/main-panel/users-list.js')}}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
     @yield('panel-scripts')
 </body>
