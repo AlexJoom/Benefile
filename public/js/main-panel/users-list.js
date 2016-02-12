@@ -2,24 +2,19 @@
  * Created by cdimitzas on 9/2/2016.
  */
 
-//------------------  AJAX VIEWS  ----------------------------------//
 
 // USERS BUTTON ON SIDEBAR
-$('#users-list a').click(function() {
-    $.ajax({
-        url: $(this).attr("href"),
-        type: 'GET'
-    })
-        .done(function( data ) {
-            console.log( data );
-            $("#main-window").html(data);
-            // Changes background color to menu buttons on click
-            $(function(){
-                if (!$('#users-list').hasClass("purple-background")) {
-                    $("li.purple-background").removeClass("purple-background");
-                    $('#users-list').addClass("purple-background");
-                }
-            });
+//$('#users-list a').click(function() {
+//    $.ajax({
+//        url: $(this).attr("href"),
+//        type: 'GET'
+//    })
+//        .done(function( data ) {
+//            console.log( data );
+//            $("#main-window").html(data);
+
+
+
             // Apply dataTable
             $(function() {
                 $('#usersTable-to-activate').DataTable( {
@@ -34,6 +29,17 @@ $('#users-list a').click(function() {
                     "lengthMenu": [ [-1], ["All"] ]
                 } );
             });
+
+
+            // Changes background color to menu buttons on click
+            $(function(){
+                if (!$('#users-list').hasClass("purple-background")) {
+                    $("li.purple-background").removeClass("purple-background");
+                    $('#users-list').addClass("purple-background");
+                }
+            });
+
+
 
             // Adjusts the height of the sidebar accordingly to the biggest screen height
             $(function(){
@@ -87,9 +93,8 @@ $('#users-list a').click(function() {
                     $('#results-deactiveted').show();
                 }
             });
-        });
-    return false;
-});
+//        });
+//    return false;
+//});
 
-//------------------  END AJAX VIEWS  ----------------------------------//
 

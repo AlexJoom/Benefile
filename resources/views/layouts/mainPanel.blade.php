@@ -63,7 +63,7 @@
                     <div class="margin-top-60 white" id="menu">
                         <ul id="menu-first-layer">
                             <li id="register-benefiter">
-                                <button class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
                                 <a href="{{ asset('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
