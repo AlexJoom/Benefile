@@ -4,6 +4,11 @@
     Νέος Ωφελούμενος
 @stop
 
+@section('panel-headLinks')
+    <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
+    @yield('css')
+@stop
+
 @section('main-window-content')
 
     {{-- actions refering to records --}}
@@ -41,4 +46,9 @@
     </div>
 
     @yield('view-content')
+@stop
+
+@section('panel-scripts')
+    <script src="{{ asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
+    @yield('js')
 @stop
