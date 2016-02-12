@@ -31,7 +31,7 @@
                             <div class="make-inline">
                                 {!! Form::text('birth_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
                                 {!! Form::text('birth_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('birth_year', null, array('class' => 'custom-input-text date-text-input')) !!}
+                                {!! Form::text('birth_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                             <div class="make-inline">
                                 {!! Form::text('deportation_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
                                 {!! Form::text('deportation_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('deportation_year', null, array('class' => 'custom-input-text date-text-input')) !!}
+                                {!! Form::text('deportation_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             <div class="make-inline">
                                 {!! Form::text('asylum_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
                                 {!! Form::text('asylum_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('asylum_year', null, array('class' => 'custom-input-text date-text-input')) !!}
+                                {!! Form::text('asylum_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                             <div class="make-inline">
                                 {!! Form::text('refugee_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
                                 {!! Form::text('refugee_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('refugee_year', null, array('class' => 'custom-input-text date-text-input')) !!}
+                                {!! Form::text('refugee_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
                             </div>
                         </div>
                     </div>
