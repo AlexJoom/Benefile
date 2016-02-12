@@ -26,13 +26,13 @@ $(document).ready(function(){
         $copy.find(".language-selection").attr("name", $copy.find(".language-selection").attr("name") + $langs_count);
         $copy.find(".level-selection").attr("name", $copy.find(".level-selection").attr("name") + $langs_count);
         // append cloned element to parent
-        $parent = $("#language-wrapper");
+        var $parent = $("#language-wrapper");
         $copy.appendTo($parent);
     });
 
     // remove element after remove button is clicked
     $("body").on("click", ".color-red", function(){
-        $(this).parents(".added-div").hide();
+        $(this).parents(".added-div").remove();
     });
 
     // when input of type text is focused, change the color of the label

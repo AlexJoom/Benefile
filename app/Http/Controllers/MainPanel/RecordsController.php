@@ -14,11 +14,16 @@ class RecordsController extends Controller
 {
     // get basic info view
     public function getBasicInfo(){
-        return view('benefiter.basic_info');
+        // initialize basic info service
+        $basicInfoService = new BasicInfoService();
+        $languages = $basicInfoService->getAllLanguages();
+        $languageLevels = $basicInfoService->getAllLanguageLevels();
+        return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels);
     }
 
     // post from basic info form
     public function postBasicInfo(Request $request){
+        // initialize basic info service
         $basicInfoService = new BasicInfoService();
         $validator = $basicInfoService->basicInfoValidation($request);
         if($validator->fails()){

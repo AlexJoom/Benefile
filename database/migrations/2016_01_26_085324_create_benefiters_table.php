@@ -41,10 +41,11 @@ class CreateBenefitersTable extends Migration
             //$table->foreign('educational_reference_id')->references('id')->on('yes_or_no_lookup');
             $table->string('educational_reference_actions');
             $table->date('educational_reference_date');
-            $table->string('social_history');
-            $table->timestamps();
+            // TODO: Check if below is needed.
+            // $table->string('social_history');
             $table->string('origin_country');
             $table->string('nationality_country');
+            $table->timestamps();
 
             // Foreign keys
             $table->integer('gender_id')->unsigned()->nullable();
