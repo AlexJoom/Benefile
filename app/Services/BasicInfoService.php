@@ -22,12 +22,21 @@ class BasicInfoService{
 
     // insert into DB benefiter table
     public function saveBasicInfoToDB($request){
-        $languagesAndLevels = $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request);
-        // do stuff with $languagesAndLevels
         $benefiter = new Benefiter(
-            $this->getArrayForDBInsert($request)
+            $this->getBenefiterArrayForDBInsert($request)
         );
         $benefiter->save();
+        $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+    }
+
+    // get all languages from languages DB table
+    public function getAllLanguages(){
+        return \DB::table('languages')->get();
+    }
+
+    // get all language levels from language_levels DB table
+    public function getAllLanguageLevels(){
+        return \DB::table('language_levels')->get();
     }
 
     // get all languages keys from basic info's form $request
@@ -120,20 +129,8 @@ class BasicInfoService{
         );
     }
 
-//    private function getDateFromStrings($day, $month, $year){
-//        return Carbon::createFromDate($year, $month, $day);
-//    }
-
-    // get Date from Date String
-//    private function getDateFromDateString($dateString){
-//        $day = strtok($dateString, ".");
-//        $month = strtok(".");
-//        $year = strtok(".");
-//        return Carbon::createFromDate($year, $month, $day);
-//    }
-
     // get valid date for DB use from date String
-    public function makeDBFriendlyDate($date){
+    private function makeDBFriendlyDate($date){
         if($date != null) {
             $day = strtok($date, "-");
             $month = strtok("-");
@@ -145,7 +142,7 @@ class BasicInfoService{
     }
 
     // make and return an array that will be appropriate for DB insert
-    private function getArrayForDBInsert($request){
+    private function getBenefiterArrayForDBInsert($request){
         return array(
             "lastname" => $request->lastname,
             "name" => $request->name,
@@ -183,13 +180,27 @@ class BasicInfoService{
         );
     }
 
-    // get all languages from languages DB table
-    public function getAllLanguages(){
-        return \DB::table('languages')->get();
+    // save languages and languages level for benefiter with $benefiterId to DB
+    private function saveLanguagesToDB($benefiterId, $languagesAndLevels){
+        $languagesAndLevelsDBFriendly = $this->getLanguagesArrayForDBInsert($benefiterId, $languagesAndLevels);
+        foreach($languagesAndLevelsDBFriendly as $languageAndLevel){
+            \DB::table('benefiters_languages')->insert($languageAndLevel);
+        }
     }
 
-    // get all language levels from language_levels DB table
-    public function getAllLanguageLevels(){
-        return \DB::table('language_levels')->get();
+    // returns array for benefiters_languages DB insertions
+    private function getLanguagesArrayForDBInsert($benefiterId, $languagesAndLevels){
+        $languagesForDB = array();
+        foreach($languagesAndLevels as $languageAndLevel){
+            // create a temp array with values needed and...
+            $temp = array(
+                'benefiter_id' => $benefiterId,
+                'language_id' => $languageAndLevel['language'],
+                'language_level_id' => $languageAndLevel['level'],
+            );
+            // ...push it into $languagesForDB
+            array_push($languagesForDB, $temp);
+        }
+        return $languagesForDB;
     }
 }
