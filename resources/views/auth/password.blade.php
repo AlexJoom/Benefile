@@ -20,7 +20,9 @@
 
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <strong>Παρουσιάστηκε ενα πρόβλημα κατά την καταγραφή του αιτήματός σας.</strong>
+                     <br>
+                     Παρακαλώ επιβεβαιώστε τα στοιχεία σας.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

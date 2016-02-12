@@ -14,7 +14,7 @@ class RecordsController extends Controller
 {
     // get basic info view
     public function getBasicInfo(){
-        return view('records.basic_info');
+        return view('benefiter.basic_info');
     }
 
     // post from basic info form
@@ -22,7 +22,7 @@ class RecordsController extends Controller
         $basicInfoService = new BasicInfoService();
         $validator = $basicInfoService->basicInfoValidation($request);
         if($validator->fails()){
-            return view('records.basic_info')->withErrors($validator->errors()->all());
+            return view('benefiter.basic_info')->withErrors($validator->errors()->all());
         } else {
             $basicInfoService->saveBasicInfoToDB($request);
             return 'success';

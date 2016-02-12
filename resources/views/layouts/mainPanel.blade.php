@@ -66,7 +66,7 @@
                                 <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
-                                <a href="{{ asset('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
+                                <a href="{{ url('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
                             </li>
                             <li id="import-file" class="child hide">
                                 <a>Φόρτωση αρχείου</a>
@@ -74,9 +74,11 @@
                             <li id="reports">
                                 <a>Αναφορά</a>
                             </li>
+                            @if(Auth::user()->user_role_id == 1)
                             <li id="users-list">
                                 <a  href="{{url('main-panel/users-list')}}">Χρήστες</a>
                             </li>
+                            @endif
                             <li id="user-logout">
                                 <a href="{{ url('auth/logout') }}">Έξοδος</a>
                             </li>

@@ -49,8 +49,6 @@ Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicIn
 
 Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate');
 Route::get('main-panel/users-list', 'MainPanel\UsersController@UsersList');
-//Route::post('main-panel/users-list', 'MainPanel\UsersController@ToBeActivated');
-//Route::post('main-panel/users-list', 'MainPanel\UsersController@DeActivate');
 
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
 
