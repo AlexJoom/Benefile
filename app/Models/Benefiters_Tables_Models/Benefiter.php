@@ -42,4 +42,24 @@ class Benefiter extends Model
         'legal_status_id',
         'education_id',
         'work_title_id'];
+
+    public function benefitersSocialTable()
+    {
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefitersSocialTable');
+    }
+
+    public function educationLookup()
+    {
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\EducationLookup');
+    }
+
+    public function benefitersMedicalTable()
+    {
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefitersMedicalTable');
+    }
+
+    public function benefitersChronicConditions()
+    {
+        return $this->hasMany('App\Models\Benefiters_Tables_Models\BenefitersChronicConditions');
+    }
 }
