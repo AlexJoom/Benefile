@@ -67,9 +67,6 @@ class CreateBenefitersTable extends Migration
             // Lookup table for work field.
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
-            // Lookup table for chronic conditions.
-            $table->integer('chronic_conditions_id')->unsigned()->nullable();
-            $table->foreign('chronic_conditions_id')->references('id')->on('medical_chronic_conditions');
         });
 
         // Social/legal/etc tables should be independent from main table.
@@ -106,6 +103,13 @@ class CreateBenefitersTable extends Migration
         /*
          * MEDICAL TABLE(S)
          */
+
+        // Benefiter's chronic conditions.
+        Schema::create('medical_chronic_conditions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('description');
+        });
+
         Schema::create('medical_visits', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('has_medical_reference');
@@ -115,6 +119,9 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('benefiters_id')->unsigned();
             $table->foreign('benefiters_id')->references('id')->on('benefiters');
+            // Lookup table for chronic conditions.
+            $table->integer('chronic_conditions_id')->unsigned()->nullable();
+            $table->foreign('chronic_conditions_id')->references('id')->on('medical_chronic_conditions');
         });
 
         // General examination table.
@@ -152,12 +159,6 @@ class CreateBenefitersTable extends Migration
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
             $table->integer('results_lookup_id')->unsigned();
             $table->foreign('results_lookup_id')->references('id')->on('medical_examination_results_lookup');
-        });
-
-        // Benefiter's chronic conditions.
-        Schema::create('medical_chronic_conditions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('description');
         });
 
         // Benefiter's laboratory results.
@@ -272,12 +273,12 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_medication_lookup');
         Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
-        Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results');
         Schema::dropIfExists('medical_examination_results_lookup');
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
         // Schema::dropIfExists('benefiters_social_table');
         Schema::dropIfExists('benefiters');
+        Schema::dropIfExists('medical_chronic_conditions');
     }
 }
