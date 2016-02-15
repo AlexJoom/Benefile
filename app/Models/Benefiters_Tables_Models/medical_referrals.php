@@ -4,12 +4,12 @@ namespace App\Models\Benefiters_Tables_Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class medical_laboratory_results extends Model
+class medical_referrals extends Model
 {
-    protected $table = 'medical_laboratory_results';
+    protected $table = 'medical_referrals';
 
     protected $fillable = [
-        'laboratory_results',
+        'referrals'
         'medical_visit_id'];
 
     public function medical_visits()

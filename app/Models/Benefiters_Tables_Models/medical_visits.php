@@ -37,4 +37,9 @@ class medical_visits extends Model
     {
         return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_examination_results');
     }
+
+    public function medical_referrals()
+    {
+        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_referrals');
+    }
 }

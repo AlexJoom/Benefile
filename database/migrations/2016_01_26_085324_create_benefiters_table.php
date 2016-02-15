@@ -163,8 +163,15 @@ class CreateBenefitersTable extends Migration
         // Benefiter's laboratory results.
         Schema::create('medical_laboratory_results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('laboratory_results')->nullable();
-            $table->string('referrals')->nullable();
+            $table->text('laboratory_results')->nullable();
+
+            $table->integer('medical_visit_id')->unsigned();
+            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+        });
+
+        Schema::create('medical_referrals', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('referrals');
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
