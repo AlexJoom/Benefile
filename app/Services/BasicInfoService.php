@@ -115,6 +115,7 @@ class BasicInfoService{
     // make and return an array that will be appropriate for DB insert
     private function getBenefiterArrayForDBInsert($request){
         return array(
+//             "folder_number" => $request['folder_name'],
             "lastname" => $request['lastname'],
             "name" => $request['name'],
             "gender_id" => $request['gender'],
@@ -129,6 +130,7 @@ class BasicInfoService{
             "marital_status_id" => $request['marital_status'],
             "number_of_children" => $request['number_of_children'],
             "relatives_residence" => $request['relatives_residence'],
+            "language_interpreter_needed" => $request['interpreter'],
 //            "deportation" => $request['deportation'],
 //            "deportation_date" => $request['deportation_date'],
 //            "asylum_application" => $request['asylum_application'],
@@ -151,6 +153,7 @@ class BasicInfoService{
             "travel_duration" => $request['travel_duration'],
             "detention_duration" => $request['detention'],
             "social_background" => $request['social_background'],
+            "document_manager_id" => \Auth::user()->id,
         );
     }
 
