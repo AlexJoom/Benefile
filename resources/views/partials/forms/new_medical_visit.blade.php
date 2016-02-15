@@ -1,8 +1,32 @@
-
 <div class="basic-info-form">
-{{--{!! Form::model($user, array('url' => 'new-benefiter/basic-info')) !!}--}}
+
+<?php
+    $tab = "medical";
+?>
+@include('partials.select-panel')
+
+{{-- MEDICAL FILE & VISIT NUMBER --}}
+<div class="row padding-top-20">
+    <div class="col-md-12">
+        <div class="row float-right">
+            <div class="padding-left-right-15">
+                <div class="form-group padding-left-right-15">
+                    {!! Form::label('travel_route', 'Αριθμός Φακέλου') !!}
+                    {!! Form::text('travel_route', 'Αριθμος', array('class' => 'custom-input-text text-align-right')) !!}
+                </div>
+                <div class="form-group padding-left-right-15">
+                    {!! Form::label('travel_duration', 'Αριθμός επίσκεψης') !!}
+                    {!! Form::text('travel_duration', 'Αριθμος', array('class' => 'custom-input-text text-align-right')) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {!! Form::open(array('url' => 'new-benefiter/basic-info')) !!}
-    <div class="personal-info form-section no-bottom-border">
+    {{-- General Details  (Info that comes from DB) --}}
+    <div class="form-section no-bottom-border">
+
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
         </div>
@@ -10,23 +34,27 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="padding-left-right-15">
+                        {{-- LASTNAME --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
-                            {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('lastname', 'LASTNAME', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
+                        {{--NAME --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('name', 'ΟΝΟΜΑ') !!}
-                            {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('name', 'NAME', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
+                        {{-- GENDER --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('gender', 'ΦΥΛΟ') !!}
                             <div class="make-inline">
-                                {!! Form::radio('gender', 1, true, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('gender', 1, true, array('class' => 'make-inline', 'disabled')) !!}
                                 {!! Form::label('gender', 'Άνδρας', array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender', 2, false, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('gender', 2, false, array('class' => 'make-inline', 'disabled')) !!}
                                 {!! Form::label('gender', 'Γυναίκα', array('class' => 'radio-value')) !!}
                             </div>
                         </div>
+                        {{-- DATE OF BIRTH --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('ΗΜΕΡ. ΓΕΝΝΗΣΗΣ') !!}
                             <div class="make-inline">
@@ -37,46 +65,50 @@
                 </div>
                 <div class="row">
                     <div class="padding-left-right-15">
+                        {{-- FATHERS NAME --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
-                            {!! Form::text('fathers_name', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('fathers_name', 'FATHERS NAME', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
+                        {{-- MOTHERS NAME --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('mothers_name', 'ΜΗΤΡΩΝΥΜΟ') !!}
-                            {!! Form::text('mothers_name', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('mothers_name', 'MOTHERS NAME', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
+                        {{-- NATIONALITY --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('nationality_country', 'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ') !!}
-                            {!! Form::text('nationality_country', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('origin_country', 'ΧΩΡΑ ΚΑΤΑΓΩΓΗΣ') !!}
-                            {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('nationality_country', 'NATIONALITY', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="padding-left-right-15">
+                        {{-- ARRIVAL DATE --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('arrival_date', 'ΗΜΕΡ. ΑΦΙΞΗΣ') !!}
                             {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
+                        {{-- ENTRY POINT --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('telephone', 'ΤΗΛ. ΕΠΙΚΟΙΝΩΝΙΑΣ') !!}
-                            {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::label('travel_route', 'Διαδρομή') !!}
+                            {!! Form::text('travel_route', 'ΣΗΜΕΙΟ ΕΙΣΟΔΟΥ', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
-                            {!! Form::label('address', 'Δ/ΝΣΗ ΚΑΤΟΙΚΙΑΣ') !!}
-                            {!! Form::text('address', null, array('class' => 'custom-input-text address')) !!}
+                        {{-- DURATION OF TRAVEL --}}
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('travel_duration', 'Διάρκεια') !!}
+                            {!! Form::text('travel_duration', 'DURATION OF TRAVEL', array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="family-info form-section no-bottom-border">
+
+    {{-- Basic medical details --}}
+    <div class="form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">2. Οικογενειακή Κατάσταση</h1>
+            <h1 class="record-section-header padding-left-right-15">2. Βασικά Ιατρικά στοιχεία</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -121,6 +153,19 @@
             </div>
         </div>
     </div>
+    {{-- Clinical Results --}}
+
+    {{-- Laboratory Results --}}
+
+    {{-- Medication Details --}}
+
+    {{-- Upload file --}}
+
+
+
+
+
+
     <div class="legal-info form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">3. Νομικό Καθεστώς</h1>
@@ -294,63 +339,6 @@
                                 {!! Form::radio('education_status', 9, false, array('class' => 'make-inline')) !!}
                                 {!! Form::label('education_status', 'Διδακτορικός τίτλος', array('class' => 'radio-value')) !!}
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="languages-info form-section no-bottom-border">
-        <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">5. Γλώσσες Eπικοινωνίας</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="language-wrapper" class="row">
-                    <div class="padding-left-right-15 language-div">
-                        <div class="form-group float-left width-100-percent">
-                            <div class="col-md-3 make-inline">
-                                <select name="language" class="language-selection">
-                                    <?php
-                                        $first = true;
-                                    ?>
-                                    @foreach($languages as $language)
-                                    <?php $selected = "";?>
-                                    @if($first)
-                                        <?php $selected = "selected";
-                                              $first = false;
-                                        ?>
-                                    @endif
-                                    <option value="{{ $language->id }}" {{ $selected }}>{{ $language->description }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-2 make-inline">
-                                <select name="language_level" class="make-inline level-selection">
-                                    <?php
-                                        $first = true;
-                                    ?>
-                                    @foreach($languageLevels as $level)
-                                    <?php $selected = "";?>
-                                    @if($first)
-                                        <?php $selected = "selected";
-                                              $first = false;
-                                        ?>
-                                    @endif
-                                    <option value="{{ $level->id }}" {{ $selected }}>{{ $level->description }}</option>
-                                    @endforeach
-                                </select>
-                                <a class="color-green add-lang" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
-                                <a class="color-red remove-lang hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group float-left padding-left-right-15 width-100-percent">
-                            {!! Form::checkbox('interpreter', true, false, array('class' => 'float-left')) !!}
-                            {!! Form::label('interpreter', 'Χρήση διερμηνέα', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                 </div>

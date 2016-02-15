@@ -10,7 +10,9 @@ body {
     /*font-weight: 100;*/
     /*font-family: 'Lato';*/
 }
-
+.text-align-right{
+    text-align: right;
+}
 .container {
     text-align: center;
     /*display: table-cell;*/

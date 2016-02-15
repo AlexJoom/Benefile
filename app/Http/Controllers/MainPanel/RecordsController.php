@@ -36,4 +36,10 @@ class RecordsController extends Controller
             return 'success';
         }
     }
+
+
+    // Get Medical folder of benefiter
+    public function getMedialFolder(){
+        return view('benefiter.medical-folder');
+    }
 }

@@ -11,10 +11,7 @@
 @stop
 
 @section('main-window-content')
-
-    @include('partials.select-panel')
-
-    @include('partials.forms.basic_info_form')
+    @include('partials.forms.new_medical_visit')
 @stop
 
 @section('panel-scripts')
