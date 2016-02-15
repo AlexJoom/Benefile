@@ -67,6 +67,9 @@ class CreateBenefitersTable extends Migration
             // Lookup table for work field.
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
+            // Lookup table for chronic conditions.
+            $table->integer('chronic_conditions_id')->unsigned()->nullable();
+            $table->foreign('chronic_conditions_id')->references('id')->on('medical_chronic_conditions');
         });
 
         // Social/legal/etc tables should be independent from main table.
@@ -155,9 +158,6 @@ class CreateBenefitersTable extends Migration
         Schema::create('medical_chronic_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
-
-            $table->integer('medical_visit_id')->unsigned();
-            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
         });
 
         // Benefiter's laboratory results.
