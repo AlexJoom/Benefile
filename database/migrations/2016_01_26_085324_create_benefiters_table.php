@@ -128,23 +128,27 @@ class CreateBenefitersTable extends Migration
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
         });
+        //
+        // Lookup table for clinical examination results. Seed with 'respiratory system', 'digestive system', etc.
+        Schema::create('medical_examination_results_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('description');
+            /*
+             * $table->integer('medical_results_id')->unsigned();
+             * $table->foreign('medical_results_id')->references('id')->on('medical_examination_results');
+             */
+        });
 
         // Benefiter's clinical examination results.
         Schema::create('medical_examination_results', function (Blueprint $table) {
             $table->increments('id');
             // Notes field.
-            $table->text('other')->nullable;
+            $table->text('description')->nullable;
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
-        });
-
-        // Lookup table for clinical examination results. Seed with 'respiratory system', 'digestive system', etc.
-        Schema::create('medical_examination_results_lookup', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('description');
-            $table->integer('medical_results_id')->unsigned();
-            $table->foreign('medical_results_id')->references('id')->on('medical_examination_results');
+            $table->integer('results_lookup_id')->unsigned();
+            $table->foreign('results_lookup_id')->references('id')->on('medical_examination_results_lookup');
         });
 
         // Benefiter's chronic conditions.
@@ -159,8 +163,15 @@ class CreateBenefitersTable extends Migration
         // Benefiter's laboratory results.
         Schema::create('medical_laboratory_results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('laboratory_results')->nullable();
-            $table->string('referrals')->nullable();
+            $table->text('laboratory_results')->nullable();
+
+            $table->integer('medical_visit_id')->unsigned();
+            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+        });
+
+        Schema::create('medical_referrals', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('referrals');
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
@@ -247,10 +258,11 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('languages');
         Schema::dropIfExists('medical_medication');
         Schema::dropIfExists('medical_medication_lookup');
+        Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
         Schema::dropIfExists('medical_chronic_conditions');
-        Schema::dropIfExists('medical_examination_results_lookup');
         Schema::dropIfExists('medical_examination_results');
+        Schema::dropIfExists('medical_examination_results_lookup');
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
         // Schema::dropIfExists('benefiters_social_table');
