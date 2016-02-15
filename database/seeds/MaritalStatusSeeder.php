@@ -1,18 +1,17 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Seeder;
 
-class SeedMaritalStatusTable extends Migration
+class MaritalStatusSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
-        DB::table('marital_status_lookup')->insert(
+        \DB::table('marital_status_lookup')->insert(
             array(
                 array('marital_status_title' => "Άγαμος"),
                 array('marital_status_title' => "Έγγαμος"),
@@ -21,15 +20,5 @@ class SeedMaritalStatusTable extends Migration
                 array('marital_status_title' => "Εν διαστάση")
             )
         );
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
     }
 }

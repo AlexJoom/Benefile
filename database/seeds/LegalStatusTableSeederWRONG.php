@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class LegalStatusTableSeeder extends Seeder
+class SeedLegalStatusTable extends Migration
 {
     /**
-     * Run the database seeds.
+     * Run the migrations.
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
-        \DB::table('legal_status_lookup')->insert(
+        DB::table('legal_status_lookup')->insert(
             array(
                 array('legal_status_title' => "Διοικητική απόφαση απέλασης"),
                 array('legal_status_title' => "Αριθμός Δελτίου αιτήσαντος ασύλου"),
@@ -22,5 +23,15 @@ class LegalStatusTableSeeder extends Seeder
                 array('legal_status_title' => 'Εκτός νομικού πλαισίου')
             )
         );
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
     }
 }
