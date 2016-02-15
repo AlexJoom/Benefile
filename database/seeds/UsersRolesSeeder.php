@@ -1,6 +1,6 @@
 <?php
 
-Use Illuminate\Database\Seeder;
+use Illuminate\Database\Seeder;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
