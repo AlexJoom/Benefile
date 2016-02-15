@@ -191,6 +191,17 @@ class CreateBenefitersTable extends Migration
             $table->integer('medication_lookup_id')->unsigned();
             $table->foreign('medication_lookup_id')->references('id')->on('medical_medication_lookup');
         });
+
+        Schema::create('medical_uploads', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->text('description');
+            $table->string('path');
+
+            $table->integer('medical_visit_id')->unsigned();
+            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+        });
+
         /*
          * LEGAL TABLE(S)
          */
