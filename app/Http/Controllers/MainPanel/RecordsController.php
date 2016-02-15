@@ -12,24 +12,27 @@ use Validator;
 
 class RecordsController extends Controller
 {
+    private $basicInfoService;
+
+    public function __construct(){
+        // initialize basic info service
+        $this->basicInfoService = new BasicInfoService();
+    }
+
     // get basic info view
     public function getBasicInfo(){
-        // initialize basic info service
-        $basicInfoService = new BasicInfoService();
-        $languages = $basicInfoService->getAllLanguages();
-        $languageLevels = $basicInfoService->getAllLanguageLevels();
+        $languages = $this->basicInfoService->getAllLanguages();
+        $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels);
     }
 
     // post from basic info form
     public function postBasicInfo(Request $request){
-        // initialize basic info service
-        $basicInfoService = new BasicInfoService();
-        $validator = $basicInfoService->basicInfoValidation($request);
+        $validator = $this->basicInfoService->basicInfoValidation($request->all());
         if($validator->fails()){
             return view('benefiter.basic_info')->withErrors($validator->errors()->all());
         } else {
-            $basicInfoService->saveBasicInfoToDB($request);
+            $this->basicInfoService->saveBasicInfoToDB($request->all());
             return 'success';
         }
     }
