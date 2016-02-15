@@ -10,9 +10,16 @@ class BasicInfoService{
     public function basicInfoValidation($request){
 //        $this->getValidationArray($request);
         return Validator::make($request, array(
+            'name' => 'max:255',
+            'lastname' => 'max:255',
+            'fathers_name' => 'max:255',
+            'mothers_name' => 'max:255',
             'birth_date' => 'date',
             'arrival_date' => 'date',
+            'address' => 'max:255',
+            'telephone' => 'digits:10',
             'number_of_children' => 'integer',
+            'relatives_residence' => 'max:255',
             'deportation_date' => 'date',
             'asylum_date' => 'date',
             'refugee_date' => 'date',
@@ -20,6 +27,11 @@ class BasicInfoService{
             'immigrant_residence_permit_date' => 'date',
             'european_date' => 'date',
             'out_of_legal_date' => 'date',
+            'country_abandon_reason' => 'max:255',
+            'travel_route' => 'max:255',
+            'travel_duration' => 'max:255',
+            'detention_duration' => 'max:255',
+            'social_background' => 'max:2000',
         ));
     }
 
