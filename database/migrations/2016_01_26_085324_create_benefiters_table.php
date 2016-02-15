@@ -258,6 +258,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('languages');
         Schema::dropIfExists('medical_medication');
         Schema::dropIfExists('medical_medication_lookup');
+        Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
         Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results');
