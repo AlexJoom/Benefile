@@ -15,7 +15,6 @@ class CreateGendersLookupTable extends Migration
         Schema::create('genders_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->string('gender');
-            $table->timestamps();
         });
     }
 

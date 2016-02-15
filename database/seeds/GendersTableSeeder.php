@@ -1,32 +1,18 @@
 <?php
 
+use Illuminate\Database\Seeder;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SeedGendersTable extends Migration
+class GendersSeeder extends Seeder
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function run()
     {
-        DB::table('genders_lookup')->insert(
+        \DB::table('genders_lookup')->insert(
           array(
               array('gender' => "Άντρας"),
               array('gender' => "Γυναίκα")
           )
         );
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
     }
 }
