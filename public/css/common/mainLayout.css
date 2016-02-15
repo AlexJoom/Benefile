@@ -40,7 +40,9 @@
 .light-green-background{
     background-color: #00a59a;
 }
-
+.padding-top-20{
+    padding-top: 20px;
+}
 .height-6per{
     height: 6%;
 }
