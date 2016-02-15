@@ -54,13 +54,8 @@
     width: 100%;
 }
 
-.date-text-input{
-    width: 1.5em;
+.date-input{
     display: inline-block;
-}
-
-.year-text-input{
-    width: 3em;
 }
 
 .bold-slash{
@@ -102,6 +97,10 @@ input[type="radio"] {
 
 .width-100-percent{
     width: 100%;
+}
+
+.width-80-percent{
+    width: 80%;
 }
 
 .width-50-percent{

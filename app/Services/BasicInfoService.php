@@ -6,17 +6,20 @@ use Carbon\Carbon;
 
 class BasicInfoService{
 
-    private $editedInput;
-
     // validate the basic info
     public function basicInfoValidation($request){
-        $this->getValidationArray($request);
-        return Validator::make($this->editedInput, array(
+//        $this->getValidationArray($request);
+        return Validator::make($request, array(
             'birth_date' => 'date',
             'arrival_date' => 'date',
+            'number_of_children' => 'integer',
             'deportation_date' => 'date',
             'asylum_date' => 'date',
             'refugee_date' => 'date',
+            'residence_permit_date' => 'date',
+            'immigrant_residence_permit_date' => 'date',
+            'european_date' => 'date',
+            'out_of_legal_date' => 'date',
         ));
     }
 
@@ -42,7 +45,7 @@ class BasicInfoService{
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys
-        $keys = array_keys($request->request->all());
+        $keys = array_keys($request);
         $languages = array();
         foreach($keys as $key){
             // check if string "language" is contained in array's keys
@@ -60,7 +63,7 @@ class BasicInfoService{
         foreach($languagesKeys as $language){
             // if this is not a language level
             if(strpos($language, "language_level") === false){
-                $languages_id[$language] = $request->$language;
+                $languages_id[$language] = $request[$language];
             }
         }
         return array_unique($languages_id);
@@ -73,7 +76,7 @@ class BasicInfoService{
         $languages_levels_id = array();
         foreach($keys as $key){
             $level_key = str_replace("language", "language_level", $key);
-            $languages_levels_id[$key] = $request->$level_key;
+            $languages_levels_id[$key] = $request[$level_key];
         }
         return $languages_levels_id;
     }
@@ -97,38 +100,6 @@ class BasicInfoService{
         return $merge;
     }
 
-    // gets $day, $month, $year and returns a String with the date correctly formatted or null
-    private function makeDateStringFromStrings($day, $month, $year){
-        if($day != null && $month != null && $year != null){
-            if(is_numeric($day) && is_numeric($month) && is_numeric($year)){
-                return $day.'-'.$month.'-'.$year;
-            }
-        }
-        return null;
-    }
-
-    // if date is text make its format valid for validation
-    private function makeDateStringFormatValid($date){
-        $date = str_replace('/', '-', $date);
-        return $date;
-    }
-
-    // make an array, appropriate for validating purposes
-    private function getValidationArray($request){
-        $birth_date = $this->makeDateStringFromStrings($request->birth_day, $request->birth_month, $request->birth_year);
-        $arrival_date = $this->makeDateStringFormatValid($request->arrival_date);
-        $deportation_date = $this->makeDateStringFromStrings($request->deportation_day, $request->deportation_month, $request->deportation_year);
-        $asylum_date = $this->makeDateStringFromStrings($request->asylum_day, $request->asylum_month, $request->asylum_year);
-        $refugee_date = $this->makeDateStringFromStrings($request->refugee_day, $request->refugee_month, $request->refugee_year);
-        $this->editedInput = array(
-            'birth_date' => $birth_date,
-            'arrival_date' => $arrival_date,
-            'deportation_date' => $deportation_date,
-            'asylum_date' => $asylum_date,
-            'refugee_date' => $refugee_date,
-        );
-    }
-
     // get valid date for DB use from date String
     private function makeDBFriendlyDate($date){
         if($date != null) {
@@ -144,39 +115,42 @@ class BasicInfoService{
     // make and return an array that will be appropriate for DB insert
     private function getBenefiterArrayForDBInsert($request){
         return array(
-            "lastname" => $request->lastname,
-            "name" => $request->name,
-            "gender_id" => $request->gender,
-            "birth_date" => $this->makeDBFriendlyDate($this->editedInput['birth_date']),
-            "fathers_name" => $request->fathers_name,
-            "mothers_name" => $request->mothers_name,
-            "nationality_country" => $request->nationality_country,
-            "origin_country" => $request->origin_country,
-            "arrival_date" => $this->makeDBFriendlyDate($this->editedInput['arrival_date']),
-            "telephone" => $request->telephone,
-            "address" => $request->address,
-            "marital_status_id" => $request->marital_status_id,
-            "number_of_children" => $request->number_of_children,
-            "relatives_residence" => $request->relatives_residence,
-//            "deportation" => $request->,
-//            "deportation_day" => $request->,
-//            "deportation_month" => $request->,
-//            "deportation_year" => $request->,
-//            "asylum_application" => $request->,
-//            "asylum_day" => $request->,
-//            "asylum_month" => $request->,
-//            "asylum_year" => $request->,
-//            "refugee" => $request->,
-//            "refugee_day" => $request->,
-//            "refugee_month" => $request->,
-//            "refugee_year" => $request->,
-            "education_id" => $request->education_status,
-            "is_benefiter_working" => $request->working,
-            "working_legally" => $request->working_legally,
-            "country_abandon_reason" => $request->country_abandon,
-            "travel_route" => $request->travel_route,
-            "travel_duration" => $request->travel_duration,
-            "detention_duration" => $request->detention,
+            "lastname" => $request['lastname'],
+            "name" => $request['name'],
+            "gender_id" => $request['gender'],
+            "birth_date" => $this->makeDBFriendlyDate($request['birth_date']),
+            "fathers_name" => $request['fathers_name'],
+            "mothers_name" => $request['mothers_name'],
+            "nationality_country" => $request['nationality_country'],
+            "origin_country" => $request['origin_country'],
+            "arrival_date" => $this->makeDBFriendlyDate($request['arrival_date']),
+            "telephone" => $request['telephone'],
+            "address" => $request['address'],
+            "marital_status_id" => $request['marital_status'],
+            "number_of_children" => $request['number_of_children'],
+            "relatives_residence" => $request['relatives_residence'],
+//            "deportation" => $request['deportation'],
+//            "deportation_date" => $request['deportation_date'],
+//            "asylum_application" => $request['asylum_application'],
+//            "asylum_date" => $request['asylum_date'],
+//            "refugee" => $request['refugee'],
+//            "refugee_date" => $request['refugee_date'],
+//            "residence_permit" => $request['residence_permit'],
+//            "residence_permit_date" => $request['residence_permit_date'],
+//            "immigrant_residence_permit" => $request['immigrant_residence_permit'],
+//            "immigrant_residence_permit_date" => $request['immigrant_residence_permit_date'],
+//            "european" => $request['european'],
+//            "european_date" => $request['european_date'],
+//            "out_of_legal" => $request['out_of_legal'],
+//            "out_of_legal_date" => $request['out_of_legal_date'],
+            "education_id" => $request['education_status'],
+            "is_benefiter_working" => $request['working'],
+            "working_legally" => $request['working_legally'],
+            "country_abandon_reason" => $request['country_abandon'],
+            "travel_route" => $request['travel_route'],
+            "travel_duration" => $request['travel_duration'],
+            "detention_duration" => $request['detention'],
+            "social_background" => $request['social_background'],
         );
     }
 

@@ -29,9 +29,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('ΗΜΕΡ. ΓΕΝΝΗΣΗΣ') !!}
                             <div class="make-inline">
-                                {!! Form::text('birth_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('birth_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('birth_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +58,7 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('arrival_date', 'ΗΜΕΡ. ΑΦΙΞΗΣ') !!}
-                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('telephone', 'ΤΗΛ. ΕΠΙΚΟΙΝΩΝΙΑΣ') !!}
@@ -140,9 +138,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('deportation_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('deportation_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('deportation_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('deportation_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -159,9 +155,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('asylum_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('asylum_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('asylum_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('asylum_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -178,9 +172,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('refugee_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('refugee_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('refugee_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('refugee_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -197,9 +189,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('residence_permit_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('residence_permit_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('residence_permit_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('residence_permit_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -216,9 +206,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('immigrant_residence_permit_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('immigrant_residence_permit_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('immigrant_residence_permit_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('immigrant_residence_permit_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -235,9 +223,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('european_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('european_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('european_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('european_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -254,9 +240,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('out_of_legal_day', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('out_of_legal_month', null, array('class' => 'custom-input-text date-text-input')) !!}<span class="bold-slash">/</span>
-                                {!! Form::text('out_of_legal_year', null, array('class' => 'custom-input-text date-text-input year-text-input')) !!}
+                                {!! Form::text('out_of_legal_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -355,8 +339,8 @@
                                     <option value="{{ $level->id }}" {{ $selected }}>{{ $level->description }}</option>
                                     @endforeach
                                 </select>
-                                <a class="color-green" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
-                                <a class="color-red hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
+                                <a class="color-green add-lang" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
+                                <a class="color-red remove-lang hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ $(document).ready(function(){
     });
 
     // add more languages
-    $("body").on("click", ".color-green", function(){
+    $("body").on("click", ".add-lang", function(){
         var $copy = $(".language-div").clone();
         // change the class so they won't be cloned every time all of them
         $copy.removeClass("language-div").addClass("added-div");
@@ -31,7 +31,7 @@ $(document).ready(function(){
     });
 
     // remove element after remove button is clicked
-    $("body").on("click", ".color-red", function(){
+    $("body").on("click", ".remove-lang", function(){
         $(this).parents(".added-div").remove();
     });
 
@@ -47,6 +47,19 @@ $(document).ready(function(){
     // when input is blurred change to normal color
     $("body").on("blur", "input", function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
+    });
+
+    // make field a datepicker
+    $(".date-input").datepicker({
+        format: 'dd-mm-yyyy'
+    });
+
+    // make datepicker fields not editable but clickable
+    $(".date-input").attr("readonly", "");
+
+    // clear date value
+    $(".clear-date").on("click", function(){
+        $(this).parents('div:first').find(".date-input").val("");
     });
 });
 
