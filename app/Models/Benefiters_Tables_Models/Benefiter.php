@@ -43,23 +43,25 @@ class Benefiter extends Model
         'education_id',
         'work_title_id'];
 
-    public function benefitersSocialTable()
-    {
-        return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefitersSocialTable');
-    }
+    /*
+     * public function benefitersSocialTable()
+     * {
+     *     return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefitersSocialTable');
+     * }
+     */
 
     public function educationLookup()
     {
         return $this->hasOne('App\Models\Benefiters_Tables_Models\EducationLookup');
     }
 
-    public function benefitersMedicalTable()
+    public function medical_visits()
     {
-        return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefitersMedicalTable');
+        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_visits');
     }
 
-    public function benefitersChronicConditions()
+    public function medical_examinations()
     {
-        return $this->hasMany('App\Models\Benefiters_Tables_Models\BenefitersChronicConditions');
+        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_examinations');
     }
 }
