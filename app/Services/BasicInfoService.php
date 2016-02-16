@@ -20,6 +20,8 @@ class BasicInfoService{
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
             'mothers_name' => 'max:255',
+            'nationality_country' => 'max:255',
+            'origin_country' => 'max:255',
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'address' => 'max:255',
