@@ -21,11 +21,11 @@ class LanguageSeeder extends Seeder
 
         \DB::table('language_levels')->insert(
             array(
-                array('description'   => 'Excellent'),
-                array('description'   => 'Good'),
-                array('description'   => 'Average'),
+                array('description'   => 'Poor'),
                 array('description'   => 'Below average'),
-                array('description'   => 'Poor')
+                array('description'   => 'Average'),
+                array('description'   => 'Good'),
+                array('description'   => 'Excellent'),
             )
         );
     }
