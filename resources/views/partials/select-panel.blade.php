@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $social_selected }}" href="">ΚΟΙΝΩΝΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a class="white {{ $social_selected }}" href="{{ url('/new-benefiter/social-folder') }}">ΚΟΙΝΩΝΙΚΟΣ ΦΑΚΕΛΟΣ</a>
             </div>
         </div>
         {{-- The abone three options will be removed in order to be added dynamically from another view. --}}

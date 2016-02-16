@@ -11,13 +11,17 @@ class EducationTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('marital_status_lookup')->insert(
+        \DB::table('education_lookup')->insert(
             array(
-                array('marital_status_title' => "Άγαμος"),
-                array('marital_status_title' => "Έγγαμος"),
-                array('marital_status_title' => "Διαζευγμένος/η"),
-                array('marital_status_title' => "Χήρος/α"),
-                array('marital_status_title' => "Εν διαστάση")
+                array('education_title' => "Αναλφάβητος"),
+                array('education_title' => "Δημοτικό"),
+                array('education_title' => "Γυμνάσιο"),
+                array('education_title' => "Λύκειο"),
+                array('education_title' => "Επαγγελματικό Λύκειο"),
+                array('education_title' => "ΤΕΙ"),
+                array('education_title' => "ΑΕΙ"),
+                array('education_title' => "Μεταπτυχιακός τίτλος"),
+                array('education_title' => "Διδακτορικός τίτλος")
             )
         );
     }

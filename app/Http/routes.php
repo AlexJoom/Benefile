@@ -30,6 +30,10 @@ Route::controllers([
 ]);
 
 
+
+
+// MAIN PANEL ROUTES //
+
 Route::get('main-panel', 'HomeController@index');
 
 // MAIN PANEL MENU
@@ -48,6 +52,8 @@ Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedi
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
+Route::get('new-benefiter/social-folder', 'MainPanel\RecordsController@getSocialFolder');
+Route::post('new-benefiter/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ ΕΓΓΡΑΦΗ
 
