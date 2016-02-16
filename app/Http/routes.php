@@ -30,28 +30,46 @@ Route::controllers([
 ]);
 
 
-
-
-// MAIN PANEL ROUTES //
-
 Route::get('main-panel', 'HomeController@index');
 
-//Route::get('main-panel/users-list', function () {
-//    return view('userPanel.users-list');
-//});
-
-// start of records menu
+// MAIN PANEL MENU
+//--- ΕΓΓΡΑΦΗ
+//----------- ΝΕΑ ΕΓΓΡΑΦΗ
+//----------------------- BASIC INFO
 Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
 Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+//----------------------- END BASIC INFO
 
+//----------------------- MEDICAL FOLDER
 Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedialFolder');
-// end of records menu
+//----------------------- END MEDICAL FOLDER
 
+//----------------------- LEGAL FOLDER
+//----------------------- END LEGAL FOLDER
 
+//----------------------- SOCIAL FOLDER
+//----------------------- END SOCIAL FOLDER
+//----------- END ΝΕΑ ΕΓΓΡΑΦΗ
 
-Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate');
-Route::get('main-panel/users-list', 'MainPanel\UsersController@UsersList');
+//----------- ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
+Route::get('new-benefiter/uploadCSV', 'UploadFileController@getUploadCSV');
+Route::post('new-benefiter/uploadCSV', 'UploadFileController@excelUpload');
+//----------- END ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
+//--- END ΕΓΓΡΑΦΗ
 
+//--- ΑΝΑΦΟΡΑ
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
+//--- END ΑΝΑΦΟΡΑ
 
-// END MAIN PANEL ROUTES //
+//--- ΧΡΗΣΤΕΣ
+Route::get('main-panel/users-list', 'MainPanel\UsersController@UsersList');
+Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate');
+//--- END ΧΡΗΣΤΕΣ
+
+// END OF MAIN PANEL MENU
+
+
+
+
+
+

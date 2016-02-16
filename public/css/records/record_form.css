@@ -10,6 +10,9 @@
 .make-inline{
     display: inline-block;
 }
+.display-inline{
+    display: inline-block !important;
+}
 
 .make-block{
     display: block;
@@ -94,7 +97,16 @@ input[type="radio"] {
 .radio-value{
     font-size: 1.1em;
 }
+.display-block{
+    display: block;
 
+}
+.max-width-none{
+    max-width: none;
+}
+.width-260{
+    width: 260px;
+}
 .width-100-percent{
     width: 100%;
 }
@@ -105,6 +117,12 @@ input[type="radio"] {
 
 .width-50-percent{
     width: 50%;
+}
+.width-30-percent{
+    width: 30%;
+}
+.padding-bottom-30{
+    padding-bottom: 30px;
 }
 
 .color-green{
