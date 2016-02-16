@@ -69,6 +69,24 @@ class CreateBenefitersTable extends Migration
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
         });
 
+        // Lookup for 'Legal Status' in basic info form.
+        Schema::create('legal_status_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+        });
+
+        // Middle table for 'Legal Status' in basic info form. Every benefiter may have more than one legal status.
+        Schema::create('benefiters_legal_status', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('description')->nullable();
+            $table->date('exp_date');
+
+            $table->integer('benefiters_id')->unsigned()->nullable();
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+            $table->integer('legal_lookup_id')->unsigned()->nullable();
+            $table->foreign('legal_lookup_id')->references('id')->on('legal_status_lookup');
+        });
+
         // Social/legal/etc tables should be independent from main table.
         // Every user class has different permissions and different tables make this process easier.
 
@@ -278,6 +296,8 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
         // Schema::dropIfExists('benefiters_social_table');
+        Schema::dropIfExists('benefiters_legal_status');
+        Schema::dropIfExists('legal_status_lookup');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('medical_chronic_conditions');
     }
