@@ -274,6 +274,19 @@ class CreateBenefitersTable extends Migration
             $table->integer('language_level_id')->unsigned();
             $table->foreign('language_level_id')->references('id')->on('language_levels');
         });
+
+        Schema::create('psychosocial_support_lookup', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+        });
+
+        Schema::create('benefiters_psychosocial_support', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('benefiter_id')->unsigned();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
+            $table->integer('psychosocial_support_id')->unsigned();
+            $table->foreign('psychosocial_support_id')->references('id')->on('psychosocial_support_lookup');
+        });
     }
 
     /**
@@ -298,6 +311,8 @@ class CreateBenefitersTable extends Migration
         // Schema::dropIfExists('benefiters_social_table');
         Schema::dropIfExists('benefiters_legal_status');
         Schema::dropIfExists('legal_status_lookup');
+        Schema::dropIfExists('benefiters_psychosocial_support');
+        Schema::dropIfExists('psychosocial_support_lookup');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('medical_chronic_conditions');
     }

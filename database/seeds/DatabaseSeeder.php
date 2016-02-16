@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MaritalStatusSeeder::class);
         $this->call(EducationTableSeeder::class);
         $this->call(LegalStatusTableSeeder::class);
+        $this->call(SocialFolderSeeder::class);
         // $this->call(TestUsersTableSeeder::class);
 
         Model::reguard();
