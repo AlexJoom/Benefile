@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\MainPanel;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
+use App\Services\SocialFolderService;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Services\BasicInfoService;
@@ -13,10 +13,13 @@ use Validator;
 class RecordsController extends Controller
 {
     private $basicInfoService;
+    private $socialFolderService;
 
     public function __construct(){
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
+        // initialize social folder service
+        $this->socialFolderService = new SocialFolderService();
     }
 
     // get basic info view
@@ -42,6 +45,15 @@ class RecordsController extends Controller
         return view('benefiter.social_folder')->with("tab", "social");
     }
 
+    // post from social folder form
+    public function postSocialFolder(Request $request){
+        $validator = $this->socialFolderService->socialFolderValidation($request->all());
+        if($validator->fails()){
+            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
+        } else {
+            return 'success';
+        }
+    }
 
     // Get Medical folder of benefiter
     public function getMedialFolder(){
