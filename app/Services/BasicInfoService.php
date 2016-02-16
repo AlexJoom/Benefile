@@ -1,19 +1,27 @@
 <?php namespace app\Services;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
+use App\Services\DatesHelper;
 use Validator;
-use Carbon\Carbon;
 
 class BasicInfoService{
 
+    private $datesHelper;
+
+    public function __construct(){
+        // initialize dates helper
+        $this->datesHelper = new DatesHelper();
+    }
+
     // validate the basic info
     public function basicInfoValidation($request){
-//        $this->getValidationArray($request);
         return Validator::make($request, array(
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
             'mothers_name' => 'max:255',
+            'nationality_country' => 'max:255',
+            'origin_country' => 'max:255',
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'address' => 'max:255',
@@ -116,18 +124,6 @@ class BasicInfoService{
         return $merge;
     }
 
-    // get valid date for DB use from date String
-    private function makeDBFriendlyDate($date){
-        if($date != null) {
-            $day = strtok($date, "-");
-            $month = strtok("-");
-            $year = strtok("-");
-            return Carbon::createFromDate($year, $month, $day);
-        } else {
-            return "";
-        }
-    }
-
     // make and return an array that will be appropriate for DB insert
     private function getBenefiterArrayForDBInsert($request){
         return array(
@@ -135,12 +131,12 @@ class BasicInfoService{
             "lastname" => $request['lastname'],
             "name" => $request['name'],
             "gender_id" => $request['gender'],
-            "birth_date" => $this->makeDBFriendlyDate($request['birth_date']),
+            "birth_date" => $this->datesHelper->makeDBFriendlyDate($request['birth_date']),
             "fathers_name" => $request['fathers_name'],
             "mothers_name" => $request['mothers_name'],
             "nationality_country" => $request['nationality_country'],
             "origin_country" => $request['origin_country'],
-            "arrival_date" => $this->makeDBFriendlyDate($request['arrival_date']),
+            "arrival_date" => $this->datesHelper->makeDBFriendlyDate($request['arrival_date']),
             "telephone" => $request['telephone'],
             "address" => $request['address'],
             "marital_status_id" => $request['marital_status'],

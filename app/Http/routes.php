@@ -43,6 +43,8 @@ Route::get('main-panel', 'HomeController@index');
 // start of records menu
 Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
 Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+Route::get('new-benefiter/social-folder', 'MainPanel\RecordsController@getSocialFolder');
+Route::post('new-benefiter/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 
 Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedialFolder');
 // end of records menu
