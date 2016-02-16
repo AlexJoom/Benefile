@@ -37,6 +37,10 @@ class BasicInfoService{
 
     // insert into DB benefiter table
     public function saveBasicInfoToDB($request){
+        // if interpreter checkbox has no value, it should have '0' value
+        if(!array_key_exists('interpreter' ,$request)){
+           $request['interpreter'] = 0;
+        }
         $benefiter = new Benefiter(
             $this->getBenefiterArrayForDBInsert($request)
         );

@@ -37,6 +37,11 @@ class RecordsController extends Controller
         }
     }
 
+    // get social folder view
+    public function getSocialFolder(){
+        return view('benefiter.social_folder')->with("tab", "social");
+    }
+
 
     // Get Medical folder of benefiter
     public function getMedialFolder(){
