@@ -23,7 +23,7 @@
     </div>
 </div>
 
-{!! Form::open(array('url' => 'new-benefiter/medical-folder')) !!}
+{!! Form::open(array('action' => 'MainPanel\RecordsController@postMedicalFolder')) !!}
     {{-- GENERAL DETAILS  (Info that comes from DB) --}}
     <div class="form-section no-bottom-border">
         <div class="underline-header">
@@ -117,7 +117,7 @@
                         {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('doctor_name', 'ΟΝΟΜΑ ΙΑΤΡΟΥ') !!}
-                            {!! Form::text('doctor_name', 'Dr. House', array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                         {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -142,21 +142,22 @@
                                                                 'Παραπομπή σε ειδικευμένο γιατρό']) !!}
                         </div>
                         {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ - ΠΕΡΙΣΤΑΤΙΚΟ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('incident_type_text', 'ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ') !!}
-                            {!! Form::textarea('incident_type_text', null, ['size' => '30x3']) !!}
-                        </div>
+                        {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
+                            {{--{!! Form::label('incident_type_text', 'ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ') !!}--}}
+                            {{--{!! Form::textarea('incident_type_text', null, ['size' => '30x3']) !!}--}}
+                        {{--</div>--}}
                     </div>
                 </div>
 
                 {{-- main medical info --}}
+                <hr>
                 <div id="chronic-cond" class="row padding-bottom-30">
                     <div  class="padding-left-right-15 chronicConditions">
                         <div class="form-group float-left width-100-percent">
                             {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
                             <div class="make-inline col-md-4">
                                 {!! Form::label('chronic_conditions', 'ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ: ') !!}
-                                {!! Form::text('chronic_conditions', null, array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
+                                {!! Form::text('chronic_conditions[]', null, array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-condition" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -169,6 +170,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 {{-- physical examinations --}}
                 <div class="row">
                     <div class="padding-left-right-15">
@@ -195,7 +197,7 @@
                         </div>
                         {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('skull-perimeter', 'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα)') !!}
+                            {!! Form::label('skull-perimeter', 'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ για νεογέννητα (cm)') !!}
                             {!! Form::text('skull-perimeter', null, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
@@ -205,7 +207,7 @@
     </div>
 
     {{-- CLINICAL RESULTS --}}
-    <div class="legal-info form-section no-bottom-border">
+    <div class="form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">3. Κλινικά αποτελέσματα</h1>
         </div>
@@ -213,51 +215,53 @@
             <div class="col-md-12">
                 <div class="row">
                     {{-- 1. RESPIRATORY SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('respiratory_system', 'RESPIRATORY SYSTEM:') !!}
-                        {!! Form::textarea('respiratory_system', null, ['size' => '30x2']) !!}
+                        {!! Form::textarea('respiratory_system', null, ['size' => '35x5']) !!}
                     </div>
                     {{-- 2. DIGESTIVE SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('digestive_system', 'DIGESTIVE SYSTEM:') !!}
-                        {!! Form::textarea('digestive_system', null, ['size' => '30x2']) !!}
+                        {!! Form::textarea('digestive_system', null, ['size' => '35x5']) !!}
                     </div>
                         {{-- 3. SKIN & CUTANEOUS TISSUE --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('skin_tissue', 'SKIN & CUTANEOUS TISSUE:') !!}
-                        {!! Form::textarea('skin_tissue', null, ['size' => '30x2']) !!}
-                    </div>
-                    {{-- 4. CARDIOVASCULAR SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('cardiovascular_system', 'CARDIOVASCULAR SYSTEM:') !!}
-                        {!! Form::textarea('cardiovascular_system', null, ['size' => '30x2']) !!}
-                    </div>
-                    {{-- 5. URINARY/REPRODUCTIVE SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('urinary_system', 'URINARY/REPRODUCTIVE SYSTEM:', array('class' => 'display-block width-260 max-width-none')) !!}
-                        {!! Form::textarea('urinary_system', null, ['size' => '30x2']) !!}
+                        {!! Form::textarea('skin_tissue', null, ['size' => '35x5']) !!}
                     </div>
                 </div>
                 <div class="row">
-                    {{-- 6. MUSCULOSKELETAL SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('musculoskeletal_system', 'MUSCULOSKELETAL SYSTEM:') !!}
-                        {!! Form::textarea('musculoskeletal_system', null, ['size' => '30x2']) !!}
+                    {{-- 4. CARDIOVASCULAR SYSTEM --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        {!! Form::label('cardiovascular_system', 'CARDIOVASCULAR SYSTEM:') !!}
+                        {!! Form::textarea('cardiovascular_system', null, ['size' => '35x5']) !!}
                     </div>
+                    {{-- 5. URINARY/REPRODUCTIVE SYSTEM --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        {!! Form::label('urinary_system', 'URINARY/REPRODUCTIVE SYSTEM:', array('class' => 'display-block width-270 max-width-none')) !!}
+                        {!! Form::textarea('urinary_system', null, ['size' => '35x5']) !!}
+                    </div>
+                    {{-- 6. MUSCULOSKELETAL SYSTEM --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        {!! Form::label('musculoskeletal_system', 'MUSCULOSKELETAL SYSTEM:') !!}
+                        {!! Form::textarea('musculoskeletal_system', null, ['size' => '35x5']) !!}
+                    </div>
+                </div>
+                <div class="row">
                     {{-- 7. IMMUNIZATION (vaccine & date) --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('immunization_system', 'IMMUNIZATION (vaccine & date):') !!}
-                        {!! Form::textarea('immunization_system', null, ['size' => '30x2']) !!}
+                        {!! Form::textarea('immunization_system', null, ['size' => '35x5']) !!}
                     </div>
                     {{-- 8. NERVOUS SYSTEM & SENSE ORGANS --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('nervous_system', 'NERVOUS SYSTEM & SENSE ORGANS:', array('class' => 'display-block width-260 max-width-none')) !!}
-                        {!! Form::textarea('nervous_system', null, ['size' => '30x2']) !!}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        {!! Form::label('nervous_system', 'NERVOUS SYSTEM & SENSE ORGANS:', array('class' => 'display-block width-270 max-width-none')) !!}
+                        {!! Form::textarea('nervous_system', null, ['size' => '35x5']) !!}
                     </div>
                     {{-- 9. OTHER --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('other', 'OTHER:') !!}
-                        {!! Form::textarea('other', null, ['size' => '30x2']) !!}
+                        {!! Form::textarea('other', null, ['size' => '35x5']) !!}
                     </div>
                 </div>
             </div>
@@ -265,7 +269,7 @@
     </div>
 
     {{-- LABORATORY RESULTS --}}
-    <div class="education-info form-section no-bottom-border">
+    <div class="form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">4. Εργαστηριακά αποτελέσματα</h1>
         </div>
@@ -277,7 +281,7 @@
                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                             <div class="make-inline col-md-10">
                                 {!! Form::label('lab-results', 'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ') !!}
-                                {!! Form::text('lab-results', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::text('lab-results[]', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-lab-result" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -295,9 +299,9 @@
     </div>
 
     {{-- MEDICATION DETAILS --}}
-    <div class="work-info form-section no-bottom-border">
+    <div class="form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">6. Φαρμακευτική αγωγή</h1>
+            <h1 class="record-section-header padding-left-right-15">5. Φαρμακευτική αγωγή</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -307,7 +311,7 @@
                             {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
                             <div class="make-inline col-md-10">
                                 {!! Form::label('medicationList', 'ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ: ') !!}
-                                {!! Form::text('medicationList', null, array('id'=>'medList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::text('medicationList[]', null, array('id'=>'medList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-med" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -324,24 +328,66 @@
         </div>
     </div>
 
-    {{-- UPLOAD FILE --}}
-    <div class="country-abandon-info form-section no-bottom-border">
+    {{-- REFERRALS --}}
+    <div class="form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">7. Ανέβασμα αρχείου</h1>
+            <h1 class="record-section-header padding-left-right-15">6. Παραπομπές</h1>
         </div>
         <div class="row">
-            <div class="padding-left-right-15">
-                {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
-                    {!! Form::label('upload_file_title', 'ΠΕΡΙΓΡΑΦΗ ΑΡΧΕΙΟΥ: ') !!}
-                    {!! Form::text('upload_file_title', null, array('class' => 'custom-input-text display-inline width-50-percent')) !!}
+            <div class="col-md-12">
+                <div id="referrals" class="row padding-bottom-30">
+                    <div  class="padding-left-right-15 referral">
+                        <div class="form-group float-left width-100-percent">
+                            {{-- ΠΑΡΑΠΟΜΠΗ --}}
+                            <div class="make-inline col-md-10">
+                                {!! Form::label('referrals', 'ΠΑΡΑΠΟΜΠΗ: ') !!}
+                                {!! Form::text('referrals[]', null, array('id'=>'refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {{-- add --}}
+                                <a class="color-green add-ref" href="javascript:void(0)">
+                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                </a>
+                                {{-- remove --}}
+                                <a class="color-red remove-ref hide-element" href="javascript:void(0)">
+                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="padding-left-right-15">
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                    {!! Form::file('upload_file', null, array('class' => 'custom-input-text')) !!}
+    </div>
+
+    {{-- UPLOAD FILE --}}
+    <div class="form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">7. Ανέβασμα αρχείου</h1>
+        </div>
+        <div id="upload_file">
+            <div class="uploadFile">
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
+                            {!! Form::label('upload_file_title', 'ΠΕΡΙΓΡΑΦΗ ΑΡΧΕΙΟΥ: ') !!}
+                            {!! Form::text('upload_file_title[]', null, array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                            {{-- add --}}
+                            <a class="color-green add-file" href="javascript:void(0)">
+                                <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                            </a>
+                            {{-- remove --}}
+                            <a class="color-red remove-file hide-element" href="javascript:void(0)">
+                                <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                            {!! Form::file('upload_file_path[]', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
