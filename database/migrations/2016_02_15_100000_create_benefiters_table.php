@@ -123,7 +123,7 @@ class CreateBenefitersTable extends Migration
          */
 
         // Benefiter's chronic conditions.
-        Schema::create('medical_chronic_conditions', function (Blueprint $table) {
+        Schema::create('medical_chronic_conditions_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
         });
@@ -143,9 +143,6 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('benefiter_id')->unsigned();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
-            // Lookup table for chronic conditions.
-            $table->integer('chronic_conditions_id')->unsigned()->nullable();
-            $table->foreign('chronic_conditions_id')->references('id')->on('medical_chronic_conditions');
             // doctor_id -> user with doctor subrole that has permissions to add/edit medical_visits table.
             $table->integer('doctor_id')->unsigned();
             $table->foreign('doctor_id')->references('id')->on('users');
@@ -180,6 +177,16 @@ class CreateBenefitersTable extends Migration
              * $table->integer('medical_results_id')->unsigned();
              * $table->foreign('medical_results_id')->references('id')->on('medical_examination_results');
              */
+        });
+
+        Schema::create('medical_chronic_conditions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('description');
+
+            $table->integer('chronic_condition_id')->unsigned();
+            $table->foreign('chronic_condition_id')->references('id')->on('medical_chronic_conditions_lookup');
+            $table->integer('benefiters_id')->unsigned();
+            $table->foreign('benefiters_id')->references('id')->on('benefiters');
         });
 
         // Benefiter's clinical examination results.
