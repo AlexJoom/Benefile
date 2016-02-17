@@ -16,6 +16,8 @@ class RecordsController extends Controller
     private $basicInfoService;
     private $socialFolderService;
     private $medicalVisit;
+    private $languages;
+    private $languageLevels;
 
     public function __construct(){
         // initialize basic info service
@@ -24,20 +26,21 @@ class RecordsController extends Controller
         $this->socialFolderService = new SocialFolderService();
         // initialize medical visit service
         $this->medicalVisit = new BenefiterMedicalFolderService();
+        // set $languages and $languagesLevels
+        $this->languages = $this->basicInfoService->getAllLanguages();
+        $this->languageLevels = $this->basicInfoService->getAllLanguageLevels();
     }
 
     // get basic info view
     public function getBasicInfo(){
-        $languages = $this->basicInfoService->getAllLanguages();
-        $languageLevels = $this->basicInfoService->getAllLanguageLevels();
-        return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels);
+        return view('benefiter.basic_info')->with("languages", $this->languages)->with("languageLevels", $this->languageLevels);
     }
 
     // post from basic info form
     public function postBasicInfo(Request $request){
         $validator = $this->basicInfoService->basicInfoValidation($request->all());
         if($validator->fails()){
-            return view('benefiter.basic_info')->withErrors($validator->errors()->all());
+            return view('benefiter.basic_info')->with("languages", $this->languages)->with("languageLevels", $this->languageLevels)->withErrors($validator->errors()->all());
         } else {
             $this->basicInfoService->saveBasicInfoToDB($request->all());
             return 'success';

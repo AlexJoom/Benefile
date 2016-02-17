@@ -10,19 +10,19 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
-                            {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('lastname', $benefiterBasicInfo->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('name', 'ΟΝΟΜΑ') !!}
-                            {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('name', $benefiterBasicInfo->name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
-                            {!! Form::text('fathers_name', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('fathers_name', $benefiterBasicInfo->fathers_name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('children_names', 'ΟΝΟΜΑΤΑ ΤΕΚΝΩΝ') !!}
-                            {!! Form::text('children_names', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('children_names', $benefiterBasicInfo->mothers_name, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('origin_country', 'ΧΩΡΑ ΚΑΤΑΓΩΓΗΣ') !!}
-                            {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('origin_country', $benefiterBasicInfo->origin_country, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('ethnic_group', 'ΕΘΝΟΤΙΚΗ ΟΜΑΔΑ') !!}
@@ -38,11 +38,11 @@
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('birthday', 'ΗΜ. ΓΕΝΝΗΣΗΣ') !!}
-                            {!! Form::text('birthday', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            {!! Form::text('birthday', $benefiterBasicInfo->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('telephone', 'ΤΗΛΕΦΩΝΟ') !!}
-                            {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('telephone', $benefiterBasicInfo->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                 </div>
@@ -74,37 +74,37 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 1, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 1, false, array('class' => 'float-left', 'tabindex' => '1')) !!}
                             {!! Form::label('individual_empowerment', 'Ενδυνάμωση-Αυτενέργεια ατόμου', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 2, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 2, false, array('class' => 'float-left', 'tabindex' => '2')) !!}
                             {!! Form::label('self_esteem', 'Ενίσχυση αυτοεκτίμησης και αυτοπεποίθησης', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 3, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 3, false, array('class' => 'float-left', 'tabindex' => '3')) !!}
                             {!! Form::label('family_problems', 'Συνεργασία με οικογένεια για την αντιμετώπιση oικογενειακών ή άλλων προβλημάτων', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 4, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 4, false, array('class' => 'float-left', 'tabindex' => '4')) !!}
                             {!! Form::label('education', 'Εκπαίδευση-Κατάρτιση', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 5, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 5, false, array('class' => 'float-left', 'tabindex' => '5')) !!}
                             {!! Form::label('legal_issues', 'Νομικά ζητήματα', array('class' => 'float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial-statuses', 6, false, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('psychosocial_statuses[]', 6, false, array('class' => 'float-left', 'tabindex' => '6')) !!}
                             {!! Form::label('job_search', 'Εκμάθηση τεχνικών αναζήτησης εργασίας', array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -128,7 +128,20 @@
                             <div class="width-100-percent">
                                 {!! Form::label('psychosocial_theme', 'ΘΕΜΑ') !!}
                             </div>
-                            <select name="psychosocial_theme"></select>
+                            <select name="psychosocial_theme">
+                                <?php
+                                    $first = true;
+                                ?>
+                                @foreach($psychosocialSubjects as $subject)
+                                <?php $selected = "";?>
+                                @if($first)
+                                    <?php $selected = "selected";
+                                          $first = false;
+                                    ?>
+                                @endif
+                                <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

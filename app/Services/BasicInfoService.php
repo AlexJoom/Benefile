@@ -65,7 +65,12 @@ class BasicInfoService{
         );
         $benefiter->save();
         $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+        // if legal status is not existent, add it
+        if(!array_key_exists('legal_status' ,$request)){
+            $request['legal_status'] = null;
+        }
         $this->saveLegalStatusesToDB($benefiter->id, $request);
+        return $benefiter;
     }
 
     // get all languages from languages DB table
@@ -194,9 +199,11 @@ class BasicInfoService{
     // saves legal statuses for benefiter with $benefiterId to DB
     private function saveLegalStatusesToDB($benefiterId, $request){
         $legal_statuses_checked = $request['legal_status'];
-        $this->makeLegalStatusDatesAndTextsArrays();
-        foreach($legal_statuses_checked as $legal_status_checked){
-            \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked)));
+        if($legal_statuses_checked != null) {
+            $this->makeLegalStatusDatesAndTextsArrays();
+            foreach ($legal_statuses_checked as $legal_status_checked) {
+                \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked)));
+            }
         }
     }
 
