@@ -81,8 +81,8 @@ class CreateBenefitersTable extends Migration
             $table->text('description')->nullable();
             $table->date('exp_date');
 
-            $table->integer('benefiters_id')->unsigned()->nullable();
-            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+            $table->integer('benefiter_id')->unsigned()->nullable();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('legal_lookup_id')->unsigned()->nullable();
             $table->foreign('legal_lookup_id')->references('id')->on('legal_status_lookup');
         });
@@ -128,28 +128,43 @@ class CreateBenefitersTable extends Migration
             $table->text('description');
         });
 
+        Schema::create('medical_location_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+        });
+
+        Schema::create('medical_examination_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+        });
+
         Schema::create('medical_visits', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('has_medical_reference');
-            //$table->foreign('medical_reference_id')->references('id')->on('yes_or_no_lookup');
-            $table->text('medical_reference_actions');
-            $table->date('medical_reference_date');
 
-            $table->integer('benefiters_id')->unsigned();
-            $table->foreign('benefiters_id')->references('id')->on('benefiters');
+            $table->integer('benefiter_id')->unsigned();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
             // Lookup table for chronic conditions.
             $table->integer('chronic_conditions_id')->unsigned()->nullable();
             $table->foreign('chronic_conditions_id')->references('id')->on('medical_chronic_conditions');
+            // doctor_id -> user with doctor subrole that has permissions to add/edit medical_visits table.
+            $table->integer('doctor_id')->unsigned();
+            $table->foreign('doctor_id')->references('id')->on('users');
+            $table->integer('medical_location_id')->unsigned();
+            $table->foreign('medical_location_id')->references('id')->on('medical_location_lookup');
+            $table->integer('medical_examination_id')->unsigned();
+            $table->foreign('medical_examination_id')->references('id')->on('medical_examination_lookup');
         });
 
         // General examination table.
         Schema::create('medical_examinations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('height')->nullable();
-            $table->string('weight')->nullable();
-            $table->string('skull_perimeter')->nullable();
-            $table->string('temperature')->nullable();
-            $table->string('blood_pressure')->nullable();
+            $table->float('height')->nullable();
+            $table->float('weight')->nullable();
+            $table->float('skull_perimeter')->nullable();
+            $table->float('temperature')->nullable();
+            $table->float('blood_pressure_diastolic')->nullable();
+            $table->float('blood_pressure_systolic')->nullable();
+            $table->date('examination_date')->nullable;
             // Notes field.
             $table->text('description')->nullable();
 
@@ -314,6 +329,8 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('benefiters_psychosocial_support');
         Schema::dropIfExists('psychosocial_support_lookup');
         Schema::dropIfExists('benefiters');
+        Schema::dropIfExists('medical_examination_lookup');
+        Schema::dropIfExists('medical_location_lookup');
         Schema::dropIfExists('medical_chronic_conditions');
     }
 }
