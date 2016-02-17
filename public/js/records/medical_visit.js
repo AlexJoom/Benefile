@@ -11,8 +11,8 @@ $(document).ready(function(){
         $copy.find(".color-green").hide();
         $copy.find(".color-red").show();
         // set new name to dropdowns so that the controller can view them all
-        $condition_count++;
-        $copy.find("#chronCon").attr("name", $copy.find("#chronCon").attr("name") + $condition_count);
+        //$condition_count++;
+        //$copy.find("#chronCon").attr("name", $copy.find("#chronCon").attr("name") + $condition_count);
 
         // append cloned element to parent
         var $parent = $("#chronic-cond");
@@ -32,8 +32,8 @@ $(document).ready(function(){
         $copy.find(".color-green").hide();
         $copy.find(".color-red").show();
         // set new name to dropdowns so that the controller can view them all
-        $result_count++;
-        $copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
+        //$result_count++;
+        //$copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
 
         // append cloned element to parent
         var $parent = $("#lab-result");
@@ -53,8 +53,8 @@ $(document).ready(function(){
         $copy.find(".color-green").hide();
         $copy.find(".color-red").show();
         // set new name to dropdowns so that the controller can view them all
-        $meds_count++;
-        $copy.find("#medList").attr("name", $copy.find("#medList").attr("name") + $meds_count);
+        //$meds_count++;
+        //$copy.find("#medList").attr("name", $copy.find("#medList").attr("name") + $meds_count);
 
         // append cloned element to parent
         var $parent = $("#medication");
@@ -65,19 +65,51 @@ $(document).ready(function(){
         $(this).parents(".med-added-div").remove();
     });
 
-    // DROPZONE
-    Dropzone.autoDiscover = false;
-    Dropzone.options.medical_file_dropzone = {
-        //url: 'dashboard/add/products',
-        uploadMultiple: true,
-        maxFiles: 10,
-        //acceptedFiles: '.jpg, .jpeg',
-        autoProcessQueue: false, // myDropzone.processQueue() to upload dropped files
-        addRemoveLinks: true,
-        dictRemoveFile: "Remove file"
-    };
+    // add more referrals
+    $("body").on("click", ".add-ref", function(){
+        var $copy = $(".referral").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("referral").addClass("ref-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$refs_count++;
+        //$copy.find("#refList").attr("name", $copy.find("#refList").attr("name") + $refs_count);
+
+        // append cloned element to parent
+        var $parent = $("#referrals");
+        $copy.appendTo($parent);
+    });
+    // remove referral element after remove button is clicked
+    $("body").on("click", ".remove-ref", function(){
+        $(this).parents(".ref-added-div").remove();
+    });
+
+    // add more files
+    $("body").on("click", ".add-file", function(){
+        var $copy = $(".uploadFile").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("uploadFile").addClass("file-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$file_count++;
+        //$copy.find("#file").attr("name", $copy.find("#file").attr("name") + $file_count);
+
+        // append cloned element to parent
+        var $parent = $("#upload_file");
+        $copy.appendTo($parent);
+    });
+    // remove file element after remove button is clicked
+    $("body").on("click", ".remove-file", function(){
+        $(this).parents(".file-added-div").remove();
+    });
 });
 
-var $condition_count = 0;
-var $result_count = 0;
-var $meds_count = 0;
+//var $condition_count = 0;
+//var $result_count = 0;
+//var $meds_count = 0;
+//var $refs_count = 0;
+//var $file_count = 0;

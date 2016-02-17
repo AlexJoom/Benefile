@@ -39,7 +39,6 @@ class Benefiter extends Model
         'nationality_country',
         'gender_id',
         'marital_status_id',
-        'legal_status_id',
         'education_id',
         'work_title_id'];
 

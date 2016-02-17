@@ -131,7 +131,7 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 1, false, array('class' => 'float-left', 'tabindex' => '1')) !!}
-                            {!! Form::label('deportation', '∆ιοικητική απόφαση απέλασης', array('class' => 'float-left')) !!}
+                            {!! Form::label('description', '∆ιοικητική απόφαση απέλασης', array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text make-inline float-left')) !!}
                         </div>
                     </div>
