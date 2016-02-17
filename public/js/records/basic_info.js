@@ -29,8 +29,7 @@ $(document).ready(function(){
         var $parent = $("#language-wrapper");
         $copy.appendTo($parent);
     });
-
-    // remove element after remove button is clicked
+    // remove lang element after remove button is clicked
     $("body").on("click", ".remove-lang", function(){
         $(this).parents(".added-div").remove();
     });

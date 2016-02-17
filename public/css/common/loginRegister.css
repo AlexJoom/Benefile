@@ -12,7 +12,9 @@
 .no-float{
     float: none !important;
 }
-
+.height-100per{
+    height: 100%;
+}
 .table-display{
     display: table;
 }

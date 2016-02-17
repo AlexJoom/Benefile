@@ -1,15 +1,15 @@
-@extends('layouts.mainLayout')
+@extends('layouts.mainPanel')
 
-    @section('headLinks')
+    @section('panel-headLinks')
         <link href={{asset('css/uploadExcel/uploadExcelPage.css')}} rel="stylesheet" type="text/css">
         <link href={{asset('css/uploadExcel/dropzone.css')}} rel="stylesheet" type="text/css">
         <link href={{asset('css/uploadExcel/uploadExcelPage.css')}} rel="stylesheet" type="text/css">
     @stop
 
-    @section('mainBody')
+    @section('main-window-content')
         <div class="title">Upload Excel file here</div>
         <div>
-            <form action="{{action('UploadFileController@excelUpload')}}" id="dropzone" class="dropzone">
+            <form action="{{url('uploadCSV')}}" id="dropzone" class="dropzone">
                 <div>
                     <div class="dz-message needsclick">
                         <strong>
@@ -24,7 +24,7 @@
         </div>
     @stop
 
-    @section('scripts')
+    @section('panel-scripts')
         <script src={{ asset('js/dropzone.js')}}></script>
         <script>
             Dropzone.options.dropzone = {

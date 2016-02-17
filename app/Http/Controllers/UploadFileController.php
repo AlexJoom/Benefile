@@ -8,6 +8,10 @@ use Carbon\Carbon;
 
 class UploadFileController extends Controller
 {
+    public function getUploadCSV(){
+        return view('uploadExcel');
+    }
+
     public function excelUpload(){
         // get the file from the post request
         $file = Input::file('file');

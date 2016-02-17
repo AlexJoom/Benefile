@@ -67,7 +67,7 @@
                                 <a href="{{ url('new-benefiter/basic-info') }}">Νέα εγγραφή</a>
                             </li>
                             <li id="import-file" class="child hide">
-                                <a>Φόρτωση αρχείου</a>
+                                <a href="{{url('new-benefiter/uploadCSV')}}">Φόρτωση αρχείου</a>
                             </li>
                             <li id="reports">
                                 <a>Αναφορά</a>
