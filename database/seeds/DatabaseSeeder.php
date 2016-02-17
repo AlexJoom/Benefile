@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(EducationTableSeeder::class);
         $this->call(LegalStatusTableSeeder::class);
         $this->call(SocialFolderSeeder::class);
+        $this->call(WorkTitleListLookupSeeder::class);
         $this->call(MedicalExaminaitonsSeeder::class);
-        $this->call(TestUsersTableSeeder::class);
         $this->call(TestBenefitersSeeder::class);
-
+//        $this->call(TestUsersTableSeeder::class);
 
         Model::reguard();
     }
