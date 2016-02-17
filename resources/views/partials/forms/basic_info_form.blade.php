@@ -132,14 +132,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 1, false, array('class' => 'float-left', 'tabindex' => '1')) !!}
                             {!! Form::label('deportation', '∆ιοικητική απόφαση απέλασης', array('class' => 'float-left')) !!}
-                            {!! Form::text('deportation', null, array('class' => 'custom-input-text make-inline float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text make-inline float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('deportation_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -149,14 +149,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 2, false, array('class' => 'float-left', 'tabindex' => '2')) !!}
                             {!! Form::label('asylum_application', 'Αρ. δελτίου αιτήσαντος ασύλου', array('class' => 'float-left')) !!}
-                            {!! Form::text('asylum_application', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('asylum_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -166,14 +166,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 3, false, array('class' => 'float-left', 'tabindex' => '3')) !!}
                             {!! Form::label('refugee', 'Αρ. δελτίου πρόσφυγα', array('class' => 'float-left')) !!}
-                            {!! Form::text('refugee', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('refugee_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -183,14 +183,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 4, false, array('class' => 'float-left', 'tabindex' => '4')) !!}
                             {!! Form::label('residence_permit', 'Βεβ. άδειας διαμονής (χρόνος/λήξη)', array('class' => 'float-left')) !!}
-                            {!! Form::text('residence_permit', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('residence_permit_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -200,14 +200,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 5, false, array('class' => 'float-left', 'tabindex' => '5')) !!}
                             {!! Form::label('immigrant_residence_permit', 'Άδεια παραμονής (μετανάστης)', array('class' => 'float-left')) !!}
-                            {!! Form::text('immigrant_residence_permit', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('immigrant_residence_permit_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -217,14 +217,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 6, false, array('class' => 'float-left', 'tabindex' => '6')) !!}
                             {!! Form::label('european', 'Ευρωπαίος πολίτης', array('class' => 'float-left')) !!}
-                            {!! Form::text('european', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('european_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -234,14 +234,14 @@
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::checkbox('legal_status[]', 7, false, array('class' => 'float-left', 'tabindex' => '7')) !!}
                             {!! Form::label('out_of_legal', 'Εκτός νομικού πλαισίου', array('class' => 'float-left')) !!}
-                            {!! Form::text('out_of_legal', null, array('class' => 'custom-input-text float-left')) !!}
+                            {!! Form::text('legal_status_text[]', null, array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('out_of_legal_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>

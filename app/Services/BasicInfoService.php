@@ -7,6 +7,9 @@ use Validator;
 class BasicInfoService{
 
     private $datesHelper;
+    private $requestForValidation;
+    private $legalDates = array();
+    private $legalTexts = array();
 
     public function __construct(){
         // initialize dates helper
@@ -15,7 +18,8 @@ class BasicInfoService{
 
     // validate the basic info
     public function basicInfoValidation($request){
-        return Validator::make($request, array(
+        $this->requestForValidation = $this->getValidationArray($request);
+        return Validator::make($this->requestForValidation, array(
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
@@ -28,13 +32,20 @@ class BasicInfoService{
             'telephone' => 'digits:10',
             'number_of_children' => 'integer',
             'relatives_residence' => 'max:255',
-            'deportation_date' => 'date',
-            'asylum_date' => 'date',
-            'refugee_date' => 'date',
-            'residence_permit_date' => 'date',
-            'immigrant_residence_permit_date' => 'date',
-            'european_date' => 'date',
-            'out_of_legal_date' => 'date',
+            'legal_status_text0' => 'max:255',
+            'legal_status_text1' => 'max:255',
+            'legal_status_text2' => 'max:255',
+            'legal_status_text3' => 'max:255',
+            'legal_status_text4' => 'max:255',
+            'legal_status_text5' => 'max:255',
+            'legal_status_text6' => 'max:255',
+            'legal_status_exp_date0' => 'date',
+            'legal_status_exp_date1' => 'date',
+            'legal_status_exp_date2' => 'date',
+            'legal_status_exp_date3' => 'date',
+            'legal_status_exp_date4' => 'date',
+            'legal_status_exp_date5' => 'date',
+            'legal_status_exp_date6' => 'date',
             'country_abandon_reason' => 'max:255',
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
@@ -54,6 +65,7 @@ class BasicInfoService{
         );
         $benefiter->save();
         $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+        $this->saveLegalStatusesToDB($benefiter->id, $request);
     }
 
     // get all languages from languages DB table
@@ -143,20 +155,6 @@ class BasicInfoService{
             "number_of_children" => $request['number_of_children'],
             "relatives_residence" => $request['relatives_residence'],
             "language_interpreter_needed" => $request['interpreter'],
-//            "deportation" => $request['deportation'],
-//            "deportation_date" => $request['deportation_date'],
-//            "asylum_application" => $request['asylum_application'],
-//            "asylum_date" => $request['asylum_date'],
-//            "refugee" => $request['refugee'],
-//            "refugee_date" => $request['refugee_date'],
-//            "residence_permit" => $request['residence_permit'],
-//            "residence_permit_date" => $request['residence_permit_date'],
-//            "immigrant_residence_permit" => $request['immigrant_residence_permit'],
-//            "immigrant_residence_permit_date" => $request['immigrant_residence_permit_date'],
-//            "european" => $request['european'],
-//            "european_date" => $request['european_date'],
-//            "out_of_legal" => $request['out_of_legal'],
-//            "out_of_legal_date" => $request['out_of_legal_date'],
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
             "working_legally" => $request['working_legally'],
@@ -191,5 +189,80 @@ class BasicInfoService{
             array_push($languagesForDB, $temp);
         }
         return $languagesForDB;
+    }
+
+    // saves legal statuses for benefiter with $benefiterId to DB
+    private function saveLegalStatusesToDB($benefiterId, $request){
+        $legal_statuses_checked = $request['legal_status'];
+        $this->makeLegalStatusDatesAndTextsArrays();
+        foreach($legal_statuses_checked as $legal_status_checked){
+            \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked)));
+        }
+    }
+
+    // returns an array for legal status DB table insert
+    private function getLegalStatusArrayForDBInsert($benefiterId, $legal_status_checked){
+        return array(
+            "benefiters_id" => $benefiterId,
+            "exp_date" => $this->datesHelper->makeDBFriendlyDate($this->legalDates[$legal_status_checked - 1]),
+            "description" => $this->legalTexts[$legal_status_checked - 1],
+            "legal_lookup_id" => $legal_status_checked,
+        );
+    }
+
+    // creates two arrays: an array for legal statuses dates and one for legal statuses texts
+    private function makeLegalStatusDatesAndTextsArrays(){
+        $keys = array_keys($this->requestForValidation);
+        foreach($keys as $key){
+            if(strpos($key, "legal_status_exp_date") !== false){
+                array_push($this->legalDates, $this->requestForValidation[$key]);
+            } elseif (strpos($key, "legal_status_text") !== false){
+                array_push($this->legalTexts, $this->requestForValidation[$key]);
+            }
+        }
+    }
+
+    // returns an array suitable for validation
+    private function getValidationArray($request){
+        return array(
+            //             "folder_number" => $request['folder_name'],
+            "lastname" => $request['lastname'],
+            "name" => $request['name'],
+            "gender_id" => $request['gender'],
+            "birth_date" => $this->datesHelper->makeDBFriendlyDate($request['birth_date']),
+            "fathers_name" => $request['fathers_name'],
+            "mothers_name" => $request['mothers_name'],
+            "nationality_country" => $request['nationality_country'],
+            "origin_country" => $request['origin_country'],
+            "arrival_date" => $this->datesHelper->makeDBFriendlyDate($request['arrival_date']),
+            "telephone" => $request['telephone'],
+            "address" => $request['address'],
+            "marital_status_id" => $request['marital_status'],
+            "number_of_children" => $request['number_of_children'],
+            "relatives_residence" => $request['relatives_residence'],
+            "legal_status_text0" => $request['legal_status_text'][0],
+            "legal_status_text1" => $request['legal_status_text'][1],
+            "legal_status_text2" => $request['legal_status_text'][2],
+            "legal_status_text3" => $request['legal_status_text'][3],
+            "legal_status_text4" => $request['legal_status_text'][4],
+            "legal_status_text5" => $request['legal_status_text'][5],
+            "legal_status_text6" => $request['legal_status_text'][6],
+            "legal_status_exp_date0" => $request['legal_status_exp_date'][0],
+            "legal_status_exp_date1" => $request['legal_status_exp_date'][1],
+            "legal_status_exp_date2" => $request['legal_status_exp_date'][2],
+            "legal_status_exp_date3" => $request['legal_status_exp_date'][3],
+            "legal_status_exp_date4" => $request['legal_status_exp_date'][4],
+            "legal_status_exp_date5" => $request['legal_status_exp_date'][5],
+            "legal_status_exp_date6" => $request['legal_status_exp_date'][6],
+            "education_id" => $request['education_status'],
+            "is_benefiter_working" => $request['working'],
+            "working_legally" => $request['working_legally'],
+            "country_abandon_reason" => $request['country_abandon'],
+            "travel_route" => $request['travel_route'],
+            "travel_duration" => $request['travel_duration'],
+            "detention_duration" => $request['detention'],
+            "social_background" => $request['social_background'],
+            "document_manager_id" => \Auth::user()->id,
+        );
     }
 }
