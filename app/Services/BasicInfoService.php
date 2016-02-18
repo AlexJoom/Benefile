@@ -29,7 +29,7 @@ class BasicInfoService{
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'address' => 'max:255',
-            'telephone' => 'digits:10',
+            'telephone' => 'min:5|max:20',
             'number_of_children' => 'integer',
             'relatives_residence' => 'max:255',
             'legal_status_text0' => 'max:255',
