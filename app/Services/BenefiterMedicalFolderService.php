@@ -121,8 +121,7 @@ class BenefiterMedicalFolderService
         $chronic_conditions = $request['chronic_conditions'];
         $chronic_conditions_array = [];
         foreach ($chronic_conditions as $cc){
-            array_push($chronic_conditions_array, ['description'=>$cc,
-                                                    ]);
+            array_push($chronic_conditions_array, ['description'=>$cc]);
         }
         return $chronic_conditions_array;
     }
