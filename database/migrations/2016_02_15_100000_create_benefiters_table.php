@@ -28,18 +28,14 @@ class CreateBenefitersTable extends Migration
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
             $table->boolean('language_interpreter_needed');
-            // $table->foreign('language_interpreter_needed_id')->references('id')->on('yes_or_no_lookup');
             $table->boolean('is_benefiter_working')->nullable();
-            //$table->foreign('work_status_id')->references('id')->on('yes_or_no_lookup');        // FOREIGN KEY
             $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
-            //$table->foreign('work_legal_type_id')->references('id')->on('work_legal_type_lookup');
             $table->text('country_abandon_reason')->nullable();
             $table->text('travel_route')->nullable();
             $table->text('travel_duration')->nullable();
             $table->text('detention_duration')->nullable();
             $table->boolean('has_educational_reference');
-            //$table->foreign('educational_reference_id')->references('id')->on('yes_or_no_lookup');
             $table->text('educational_reference_actions');
             $table->date('educational_reference_date');
             // TODO: Check if below is needed.
@@ -48,6 +44,7 @@ class CreateBenefitersTable extends Migration
             $table->string('nationality_country');
             // Insert user that created the benefiter's file.
             $table->integer('document_manager_id');
+            $table->text('social_history');
             $table->timestamps();
 
             // Foreign keys

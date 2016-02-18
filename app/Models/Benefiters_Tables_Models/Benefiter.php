@@ -20,7 +20,6 @@ class Benefiter extends Model
         'telephone',
         'number_of_children',
         'relatives_residence',
-
         'other_language',
         'language_interpreter_needed',
         'is_benefiter_working',
@@ -30,13 +29,14 @@ class Benefiter extends Model
         'travel_route',
         'travel_duration',
         'detention_duration',
-
         'has_educational_reference',
         'educational_reference_actions',
         'educational_reference_date',
-
         'origin_country',
         'nationality_country',
+        'document_manager_id',
+        'social_history',
+
         'gender_id',
         'marital_status_id',
         'education_id',
