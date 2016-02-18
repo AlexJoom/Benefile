@@ -94,7 +94,7 @@ class RecordsController extends Controller
     // Get Medical visit data of benefiter
     public function getMedialFolder(){
         // in addition the repeaded data will be send to the medical folder/visit
-        return view('benefiter.medical-folder');
+        return view('benefiter.medical-folder')->with("benefiter", new Benefiter());
     }
     // POST Medical visit data
     public function postMedicalFolder(Request $request){
