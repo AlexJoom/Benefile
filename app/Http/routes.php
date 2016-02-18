@@ -56,8 +56,8 @@ Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMe
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
-Route::get('new-benefiter/social-folder', 'MainPanel\RecordsController@getSocialFolder');
-Route::post('new-benefiter/social-folder', 'MainPanel\RecordsController@postSocialFolder');
+Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocialFolder');
+Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 
