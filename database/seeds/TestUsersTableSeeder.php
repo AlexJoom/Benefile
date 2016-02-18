@@ -31,7 +31,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'ch.ris.tosdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 3,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 0,
         ));
@@ -42,7 +42,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chr.ist.osdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 4,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 0,
         ));
@@ -53,7 +53,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chri.sto.sdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 5,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 0,
         ));
@@ -80,7 +80,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'ch.ristosdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 3,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 1,
             'is_deactivated' => 0,
         ));
@@ -91,7 +91,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chr.istosdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 4,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 1,
             'is_deactivated' => 0,
         ));
@@ -102,7 +102,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chri.stosdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 5,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 1,
             'is_deactivated' => 0,
         ));
@@ -128,7 +128,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'ch.ris.tos.dimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 3,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 1,
         ));
@@ -139,7 +139,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chr.ist.osd.imizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 4,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 1,
         ));
@@ -150,7 +150,7 @@ class TestUsersTableSeeder extends Seeder
             'email' => 'chri.sto.sdim.izas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 5,
-            'user_subrole_id' => 0,
+            'user_subrole_id' => null,
             'activation_status' => 0,
             'is_deactivated' => 1,
         ));

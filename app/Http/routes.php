@@ -37,6 +37,9 @@ Route::controllers([
 Route::get('main-panel', 'HomeController@index');
 
 // MAIN PANEL MENU
+//--- ΟΦΕΛΟΥΜΕΝΟΙ
+Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
+//--- END ΟΦΕΛΟΥΜΕΝΟΙ
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
 //----------------------- BASIC INFO
@@ -46,6 +49,7 @@ Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicI
 
 //----------------------- MEDICAL FOLDER
 Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedialFolder');
+Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
 //----------------------- END MEDICAL FOLDER
 
 //----------------------- LEGAL FOLDER
@@ -55,7 +59,7 @@ Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedi
 Route::get('new-benefiter/social-folder', 'MainPanel\RecordsController@getSocialFolder');
 Route::post('new-benefiter/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 //----------------------- END SOCIAL FOLDER
-//----------- END ΝΕΑ ΕΓΓΡΑΦΗ
+//----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 
 //----------- ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
 Route::get('new-benefiter/uploadCSV', 'UploadFileController@getUploadCSV');

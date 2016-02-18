@@ -14,17 +14,11 @@ class UsersController extends Controller{
         $this->userService = new UserService();
     }
 
-    /*
-     *
-     */
     public function UsersList(){
        $users =  $this->userService->getAllUsers();
         return view('users.users-list', compact('users'));
     }
 
-    /*
-     *
-     */
     public function UserStatusUpdate(Request $request){
         $this->userService->AdminUpdateUserStatus($request['user_id']);
         return redirect('main-panel/users-list');
