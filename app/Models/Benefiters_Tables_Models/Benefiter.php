@@ -51,16 +51,11 @@ class Benefiter extends Model
 
     public function educationLookup()
     {
-        return $this->hasOne('App\Models\Benefiters_Tables_Models\EducationLookup');
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\EducationLookup', 'id', 'education_id');
     }
 
     public function medical_visits()
     {
-        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_visits');
-    }
-
-    public function medical_examinations()
-    {
-        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_examinations');
+        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_visits', 'id', 'benefiter_id');
     }
 }

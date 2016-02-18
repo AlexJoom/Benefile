@@ -7,44 +7,33 @@
             <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
+                    <th>ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ</th>
                     <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>ΕΠΙΘΕΤΟ</th>
+                    <th>ΕΠΙΚΟΙΝΩΝΙΑ</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
+                    <th>ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ</th>
                     <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>ΕΠΙΘΕΤΟ</th>
+                    <th>ΕΠΙΚΟΙΝΩΝΙΑ</th>
                     <th></th>
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach($users as $user)
-                    @if($user['activation_status'] == 0 && $user['is_deactivated'] == 0)
+                @foreach($benefiters as $benefiter)
                         <tr>
-                            <td>{{ $user['lastname'] }}</td>
-                            <td>{{ $user['name'] }}</td>
-                            @if($user['user_role_id'] == 2)
-                                <td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>
-                            @else
-                                <td>{{$user['role']['role']}}</td>
-                            @endif
-                            <td>{{substr($user['created_at'], 0,11)}}</td>
-
+                            <td>{{ $benefiter['folder_number'] }}</td>
+                            <td>{{ $benefiter['name'] }}</td>
+                            <td>{{ $benefiter['lastname'] }}</td>
+                            <td>{{ $benefiter['telephone'] }}</td>
                             <td>
-                                <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
-                                    <input type="hidden" name="user_id" value={{$user['id']}}>
-                                    <button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>
-                                    {{ csrf_field() }}
-                                </form>
+                                <button class="lighter-green-background">Επεξεργασία</button>
                             </td>
                         </tr>
-                    @endif
                 @endforeach
                 </tbody>
             </table>

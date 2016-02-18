@@ -99,6 +99,7 @@ class BenefiterMedicalFolderService
         $medical_chronic_conditions = new medical_chronic_conditions(
             $this->medical_chronic_conditions($request)
         );
+        dd($medical_chronic_conditions);
         $medical_chronic_conditions->save();
 
         // medical_examination_results table

@@ -35,7 +35,7 @@ class TestBenefitersSeeder extends Seeder
                 'travel_duration'               => '2 weeks',
                 'detention_duration'            => '',
 
-                'has_educational_reference'     => 0,
+                'has_educational_reference'     => 1,
                 'educational_reference_actions' => 'education',
                 'educational_reference_date'    => date('2014-03-15'),
 
@@ -70,7 +70,7 @@ class TestBenefitersSeeder extends Seeder
             'travel_duration'               => '2 weeks',
             'detention_duration'            => '',
 
-            'has_educational_reference'     => 0,
+            'has_educational_reference'     => 2,
             'educational_reference_actions' => 'education',
             'educational_reference_date'    => date('2014-03-15'),
 
@@ -105,7 +105,7 @@ class TestBenefitersSeeder extends Seeder
             'travel_duration'               => '2 weeks',
             'detention_duration'            => '',
 
-            'has_educational_reference'     => 0,
+            'has_educational_reference'     => 3,
             'educational_reference_actions' => 'education',
             'educational_reference_date'    => date('2014-03-15'),
 
@@ -140,7 +140,7 @@ class TestBenefitersSeeder extends Seeder
             'travel_duration'               => '2 weeks',
             'detention_duration'            => '',
 
-            'has_educational_reference'     => 0,
+            'has_educational_reference'     => 4,
             'educational_reference_actions' => 'education',
             'educational_reference_date'    => date('2014-03-15'),
 
@@ -175,7 +175,7 @@ class TestBenefitersSeeder extends Seeder
             'travel_duration'               => '2 weeks',
             'detention_duration'            => '',
 
-            'has_educational_reference'     => 0,
+            'has_educational_reference'     => 5,
             'educational_reference_actions' => 'education',
             'educational_reference_date'    => date('2014-03-15'),
 
@@ -210,7 +210,7 @@ class TestBenefitersSeeder extends Seeder
             'travel_duration'               => '2 weeks',
             'detention_duration'            => '',
 
-            'has_educational_reference'     => 0,
+            'has_educational_reference'     => 6,
             'educational_reference_actions' => 'education',
             'educational_reference_date'    => date('2014-03-15'),
 

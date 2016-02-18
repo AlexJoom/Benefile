@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\MainPanel;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
-use app\Services\BenefitersService;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
+use App\Services\BenefitersService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -37,8 +37,9 @@ class RecordsController extends Controller
 
     // Get Benefiters list
     public function getBenefitersList(){
-        $benefitersList =  $this->benefiterList->getAllBenefiters();
-        return view('benefiter.benefiters_list', compact('benefitersList'));
+        $benefiters =  $this->benefiterList->getAllBenefiters();
+//        dd($benefiters);
+        return view('benefiter.benefiters_list', compact('benefiters'));
     }
 
     // get basic info view

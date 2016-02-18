@@ -6,7 +6,7 @@ use Validator;
 class BenefitersService{
 
     public function getAllBenefiters(){
-        $benefitersList = Benefiter::with('educationLookup', 'medical_visits', 'medical_examinations')->get();
+        $benefitersList = Benefiter::with('educationLookup', 'medical_visits')->get();
         return $benefitersList;
     }
 }
