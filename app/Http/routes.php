@@ -40,8 +40,8 @@ Route::get('main-panel', 'HomeController@index');
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
 //----------------------- BASIC INFO
-Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
-Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
+Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
@@ -73,7 +73,6 @@ Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate
 //--- END ΧΡΗΣΤΕΣ
 
 // END OF MAIN PANEL MENU
-
 
 
 
