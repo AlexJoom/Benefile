@@ -178,10 +178,10 @@ class BasicInfoService{
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
             "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon'],
+            "country_abandon_reason" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention'],
+            "detention_duration" => $request['detention_duration'],
             "social_background" => $request['social_background'],
             "document_manager_id" => \Auth::user()->id,
         );
@@ -279,12 +279,11 @@ class BasicInfoService{
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
             "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon'],
+            "country_abandon_reason" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention'],
+            "detention_duration" => $request['detention_duration'],
             "social_background" => $request['social_background'],
-            "document_manager_id" => \Auth::user()->id,
         );
     }
 }
