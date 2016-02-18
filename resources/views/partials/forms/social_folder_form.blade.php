@@ -10,19 +10,19 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
-                            {!! Form::text('lastname', $benefiterBasicInfo->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                            {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('name', 'ΟΝΟΜΑ') !!}
-                            {!! Form::text('name', $benefiterBasicInfo->name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                            {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
-                            {!! Form::text('fathers_name', $benefiterBasicInfo->fathers_name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                            {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('children_names', 'ΟΝΟΜΑΤΑ ΤΕΚΝΩΝ') !!}
-                            {!! Form::text('children_names', $benefiterBasicInfo->mothers_name, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('children_names', null, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('origin_country', 'ΧΩΡΑ ΚΑΤΑΓΩΓΗΣ') !!}
-                            {!! Form::text('origin_country', $benefiterBasicInfo->origin_country, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                            {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('ethnic_group', 'ΕΘΝΟΤΙΚΗ ΟΜΑΔΑ') !!}
@@ -38,11 +38,11 @@
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('birthday', 'ΗΜ. ΓΕΝΝΗΣΗΣ') !!}
-                            {!! Form::text('birthday', $benefiterBasicInfo->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            {!! Form::text('birthday', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date hide"></span></a>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('telephone', 'ΤΗΛΕΦΩΝΟ') !!}
-                            {!! Form::text('telephone', $benefiterBasicInfo->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                            {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                 </div>
