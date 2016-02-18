@@ -48,7 +48,7 @@ class RecordsController extends Controller
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
             if($benefiter == null) {
-                return "Page not found.";
+                return view('errors.404');
             } else {
                 $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($id);
                 $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsByBenefiterId($id);
