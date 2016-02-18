@@ -43,8 +43,8 @@ Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
 //----------------------- BASIC INFO
-Route::get('new-benefiter/basic-info', 'MainPanel\RecordsController@getBasicInfo');
-Route::post('new-benefiter/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
+Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
@@ -56,8 +56,8 @@ Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMe
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
-Route::get('new-benefiter/social-folder', 'MainPanel\RecordsController@getSocialFolder');
-Route::post('new-benefiter/social-folder', 'MainPanel\RecordsController@postSocialFolder');
+Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocialFolder');
+Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 
@@ -77,7 +77,6 @@ Route::post('main-panel/users-list', 'MainPanel\UsersController@UserStatusUpdate
 //--- END ΧΡΗΣΤΕΣ
 
 // END OF MAIN PANEL MENU
-
 
 
 

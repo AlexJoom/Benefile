@@ -29,9 +29,16 @@ $(document).ready(function(){
         var $parent = $("#language-wrapper");
         $copy.appendTo($parent);
     });
+
     // remove lang element after remove button is clicked
     $("body").on("click", ".remove-lang", function(){
         $(this).parents(".added-div").remove();
+    });
+
+    // make added-div languages display remove and not add button
+    $(".added-div").each(function(){
+        $(this).find(".color-green").hide();
+        $(this).find(".color-red").show();
     });
 
     // when input of type text is focused, change the color of the label
@@ -46,19 +53,6 @@ $(document).ready(function(){
     // when input is blurred change to normal color
     $("body").on("blur", "input", function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
-    });
-
-    // make field a datepicker
-    $(".date-input").datepicker({
-        format: 'dd-mm-yyyy'
-    });
-
-    // make datepicker fields not editable but clickable
-    $(".date-input").attr("readonly", "");
-
-    // clear date value
-    $(".clear-date").on("click", function(){
-        $(this).parents('div:first').find(".date-input").val("");
     });
 });
 

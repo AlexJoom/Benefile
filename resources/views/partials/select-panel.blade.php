@@ -17,13 +17,17 @@
         } else {
             $basic_selected = 'selected';
         }
+        /* if benefiter id is not set, set it to '-1' */
+        if($benefiter->id == null){
+            $benefiter->id = -1;
+        }
     ?>
 
     <div class="no-margin light-green-background width-100-percent" id="actions">
     {{--<div style="width: 100%; background-color: red;">--}}
         <div class="row width-100-percent">
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $basic_selected }}" href="{{ url('/new-benefiter/basic-info') }}">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
+                <a class="white {{ $basic_selected }}" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/basic-info">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
@@ -35,7 +39,7 @@
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $social_selected }}" href="{{ url('/new-benefiter/social-folder') }}">ΚΟΙΝΩΝΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a class="white {{ $social_selected }}" href="{{ url('/benefiter')}}/{{ $benefiter->id }}/social-folder">ΚΟΙΝΩΝΙΚΟΣ ΦΑΚΕΛΟΣ</a>
             </div>
         </div>
         {{-- The abone three options will be removed in order to be added dynamically from another view. --}}

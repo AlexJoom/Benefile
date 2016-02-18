@@ -29,7 +29,7 @@ class BasicInfoService{
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'address' => 'max:255',
-            'telephone' => 'digits:10',
+            'telephone' => 'min:5|max:20',
             'number_of_children' => 'integer',
             'relatives_residence' => 'max:255',
             'legal_status_text0' => 'max:255',
@@ -50,7 +50,7 @@ class BasicInfoService{
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
             'detention_duration' => 'max:255',
-            'social_background' => 'max:2000',
+            'social_history' => 'max:2000',
         ));
     }
 
@@ -81,6 +81,21 @@ class BasicInfoService{
     // get all language levels from language_levels DB table
     public function getAllLanguageLevels(){
         return \DB::table('language_levels')->get();
+    }
+
+    // finds a benefiter from its id
+    public function findExistentBenefiter($id){
+        return \DB::table('benefiters')->where('id', '=', $id)->first();
+    }
+
+    // gets all benefiter's legal statuses
+    public function getLegalStatusesByBenefiterId($id){
+        return \DB::table('benefiters_legal_status')->where('benefiter_id', '=', $id)->get();
+    }
+
+    // gets all benefiter's languages and languages levels
+    public function getLanguagesAndLanguagesLevelsByBenefiterId($id){
+        return \DB::table('benefiters_languages')->where('benefiter_id', '=', $id)->get();
     }
 
     // get all languages keys from basic info's form $request
@@ -163,11 +178,11 @@ class BasicInfoService{
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
             "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon'],
+            "country_abandon_reason" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention'],
-            "social_background" => $request['social_background'],
+            "detention_duration" => $request['detention_duration'],
+            "social_history" => $request['social_history'],
             "document_manager_id" => \Auth::user()->id,
         );
     }
@@ -210,7 +225,7 @@ class BasicInfoService{
     // returns an array for legal status DB table insert
     private function getLegalStatusArrayForDBInsert($benefiterId, $legal_status_checked){
         return array(
-            "benefiters_id" => $benefiterId,
+            "benefiter_id" => $benefiterId,
             "exp_date" => $this->datesHelper->makeDBFriendlyDate($this->legalDates[$legal_status_checked - 1]),
             "description" => $this->legalTexts[$legal_status_checked - 1],
             "legal_lookup_id" => $legal_status_checked,
@@ -264,12 +279,11 @@ class BasicInfoService{
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
             "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon'],
+            "country_abandon_reason" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention'],
-            "social_background" => $request['social_background'],
-            "document_manager_id" => \Auth::user()->id,
+            "detention_duration" => $request['detention_duration'],
+            "social_history" => $request['social_history'],
         );
     }
 }
