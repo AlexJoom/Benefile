@@ -109,16 +109,6 @@ class RecordsController extends Controller
         }
     }
 
-    // post from social folder form
-    public function postSocialFolder(Request $request){
-        $validator = $this->socialFolderService->socialFolderValidation($request->all());
-        if($validator->fails()){
-            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
-        } else {
-            return 'success';
-        }
-    }
-
     // GET MEDICAL VISIT DATA FOR BENEFITER
     public function getMedicalFolder(){
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
