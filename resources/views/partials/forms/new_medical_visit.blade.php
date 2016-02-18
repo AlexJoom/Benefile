@@ -213,57 +213,71 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
+                 @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                    @if($i%3 == 0)
+                        <div class="row">
+                    @endif
+                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                                {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':') !!}
+                                {!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}
+                            </div>
+                    @if($i%3 == 2)
+                        </div>
+                    @endif
+                 @endfor
+
+
+                {{--<div class="row">--}}
                     {{-- 1. RESPIRATORY SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('respiratory_system', 'RESPIRATORY SYSTEM:') !!}
-                        {!! Form::textarea('respiratory_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('respiratory_system', 'RESPIRATORY SYSTEM:') !!}--}}
+                        {{--{!! Form::textarea('respiratory_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                     {{-- 2. DIGESTIVE SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('digestive_system', 'DIGESTIVE SYSTEM:') !!}
-                        {!! Form::textarea('digestive_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('digestive_system', 'DIGESTIVE SYSTEM:') !!}--}}
+                        {{--{!! Form::textarea('digestive_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                         {{-- 3. SKIN & CUTANEOUS TISSUE --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('skin_tissue', 'SKIN & CUTANEOUS TISSUE:') !!}
-                        {!! Form::textarea('skin_tissue', null, ['size' => '35x5']) !!}
-                    </div>
-                </div>
-                <div class="row">
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('skin_tissue', 'SKIN & CUTANEOUS TISSUE:') !!}--}}
+                        {{--{!! Form::textarea('skin_tissue', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
                     {{-- 4. CARDIOVASCULAR SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('cardiovascular_system', 'CARDIOVASCULAR SYSTEM:') !!}
-                        {!! Form::textarea('cardiovascular_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('cardiovascular_system', 'CARDIOVASCULAR SYSTEM:') !!}--}}
+                        {{--{!! Form::textarea('cardiovascular_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                     {{-- 5. URINARY/REPRODUCTIVE SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('urinary_system', 'URINARY/REPRODUCTIVE SYSTEM:', array('class' => 'display-block width-270 max-width-none')) !!}
-                        {!! Form::textarea('urinary_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('urinary_system', 'URINARY/REPRODUCTIVE SYSTEM:', array('class' => 'display-block width-270 max-width-none')) !!}--}}
+                        {{--{!! Form::textarea('urinary_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                     {{-- 6. MUSCULOSKELETAL SYSTEM --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('musculoskeletal_system', 'MUSCULOSKELETAL SYSTEM:') !!}
-                        {!! Form::textarea('musculoskeletal_system', null, ['size' => '35x5']) !!}
-                    </div>
-                </div>
-                <div class="row">
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('musculoskeletal_system', 'MUSCULOSKELETAL SYSTEM:') !!}--}}
+                        {{--{!! Form::textarea('musculoskeletal_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
                     {{-- 7. IMMUNIZATION (vaccine & date) --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('immunization_system', 'IMMUNIZATION (vaccine & date):') !!}
-                        {!! Form::textarea('immunization_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('immunization_system', 'IMMUNIZATION (vaccine & date):') !!}--}}
+                        {{--{!! Form::textarea('immunization_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                     {{-- 8. NERVOUS SYSTEM & SENSE ORGANS --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('nervous_system', 'NERVOUS SYSTEM & SENSE ORGANS:', array('class' => 'display-block width-270 max-width-none')) !!}
-                        {!! Form::textarea('nervous_system', null, ['size' => '35x5']) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('nervous_system', 'NERVOUS SYSTEM & SENSE ORGANS:', array('class' => 'display-block width-270 max-width-none')) !!}--}}
+                        {{--{!! Form::textarea('nervous_system', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
                     {{-- 9. OTHER --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                        {!! Form::label('other', 'OTHER:') !!}
-                        {!! Form::textarea('other', null, ['size' => '35x5']) !!}
-                    </div>
-                </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                        {{--{!! Form::label('other', 'OTHER:') !!}--}}
+                        {{--{!! Form::textarea('other', null, ['size' => '35x5']) !!}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MainPanel;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
+use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -31,7 +32,7 @@ class RecordsController extends Controller
         $this->medicalVisit = new BenefiterMedicalFolderService();
     }
 
-    // Get Benefiters list
+    // GET BENEFITERS LIST
     public function getBenefitersList(){
         $benefiters =  $this->benefiterList->getAllBenefiters();
 //        dd($benefiters);
@@ -108,12 +109,22 @@ class RecordsController extends Controller
         }
     }
 
-    // Get Medical visit data of benefiter
-    public function getMedialFolder(){
-        // in addition the repeaded data will be send to the medical folder/visit
-        return view('benefiter.medical-folder')->with("benefiter", new Benefiter());
+    // post from social folder form
+    public function postSocialFolder(Request $request){
+        $validator = $this->socialFolderService->socialFolderValidation($request->all());
+        if($validator->fails()){
+            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
+        } else {
+            return 'success';
+        }
     }
-    // POST Medical visit data
+
+    // GET MEDICAL VISIT DATA FOR BENEFITER
+    public function getMedicalFolder(){
+        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+        return view('benefiter.medical-folder', compact('ExamResultsLookup'))->with('benefiter', new Benefiter());
+    }
+    // POST MEDICAL VISIT DATA
     public function postMedicalFolder(Request $request){
 //        dd($request->all());
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
