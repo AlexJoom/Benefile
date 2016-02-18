@@ -23,7 +23,7 @@ class CreateBenefitersTable extends Migration
             $table->date('birth_date');
             $table->date('arrival_date');
             $table->string('address');
-            $table->integer('telephone')->unsigned();
+            $table->string('telephone')->nullable();
             $table->integer('number_of_children')->unsigned()->nullable();
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
