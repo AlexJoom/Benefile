@@ -90,7 +90,7 @@ class BasicInfoService{
 
     // gets all benefiter's legal statuses
     public function getLegalStatusesByBenefiterId($id){
-        return \DB::table('benefiters_legal_status')->where('benefiters_id', '=', $id)->get();
+        return \DB::table('benefiters_legal_status')->where('benefiter_id', '=', $id)->get();
     }
 
     // gets all benefiter's languages and languages levels
@@ -225,7 +225,7 @@ class BasicInfoService{
     // returns an array for legal status DB table insert
     private function getLegalStatusArrayForDBInsert($benefiterId, $legal_status_checked){
         return array(
-            "benefiters_id" => $benefiterId,
+            "benefiter_id" => $benefiterId,
             "exp_date" => $this->datesHelper->makeDBFriendlyDate($this->legalDates[$legal_status_checked - 1]),
             "description" => $this->legalTexts[$legal_status_checked - 1],
             "legal_lookup_id" => $legal_status_checked,
