@@ -83,6 +83,21 @@ class BasicInfoService{
         return \DB::table('language_levels')->get();
     }
 
+    // finds a benefiter from its id
+    public function findExistentBenefiter($id){
+        return \DB::table('benefiters')->where('id', '=', $id)->first();
+    }
+
+    // gets all benefiter's legal statuses
+    public function getLegalStatusesByBenefiterId($id){
+        return \DB::table('benefiters_legal_status')->where('benefiters_id', '=', $id)->get();
+    }
+
+    // gets all benefiter's languages and languages levels
+    public function getLanguagesAndLanguagesLevelsByBenefiterId($id){
+        return \DB::table('benefiters_languages')->where('benefiter_id', '=', $id)->get();
+    }
+
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys
