@@ -318,6 +318,9 @@ class CreateBenefitersTable extends Migration
      */
     public function down()
     {
+        // Schema::dropIfExists('benefiters_social_table');
+        Schema::dropIfExists('benefiters_psychosocial_support');
+        Schema::dropIfExists('psychosocial_support_lookup');
         Schema::dropIfExists('benefiters_languages');
         Schema::dropIfExists('language_levels');
         Schema::dropIfExists('languages');
@@ -327,17 +330,15 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
         Schema::dropIfExists('medical_examination_results');
+        Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results_lookup');
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
-        // Schema::dropIfExists('benefiters_social_table');
-        Schema::dropIfExists('benefiters_legal_status');
-        Schema::dropIfExists('legal_status_lookup');
-        Schema::dropIfExists('benefiters_psychosocial_support');
-        Schema::dropIfExists('psychosocial_support_lookup');
-        Schema::dropIfExists('benefiters');
         Schema::dropIfExists('medical_examination_lookup');
         Schema::dropIfExists('medical_location_lookup');
-        Schema::dropIfExists('medical_chronic_conditions');
+        Schema::dropIfExists('medical_chronic_conditions_lookup');
+        Schema::dropIfExists('benefiters_legal_status');
+        Schema::dropIfExists('legal_status_lookup');
+        Schema::dropIfExists('benefiters');
     }
 }
