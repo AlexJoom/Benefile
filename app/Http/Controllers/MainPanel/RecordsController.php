@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MainPanel;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
+use app\Services\BenefitersService;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use Illuminate\Http\Request;
@@ -18,8 +19,11 @@ class RecordsController extends Controller
     private $medicalVisit;
     private $languages;
     private $languageLevels;
+    private $benefiterList = null;
 
     public function __construct(){
+        // initialize benefiters list service
+        $this->benefiterList = new BenefitersService();
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
         // initialize social folder service
@@ -29,6 +33,12 @@ class RecordsController extends Controller
         // set $languages and $languagesLevels
         $this->languages = $this->basicInfoService->getAllLanguages();
         $this->languageLevels = $this->basicInfoService->getAllLanguageLevels();
+    }
+
+    // Get Benefiters list
+    public function getBenefitersList(){
+        $benefitersList =  $this->benefiterList->getAllBenefiters();
+        return view('benefiter.benefiters_list', compact('benefitersList'));
     }
 
     // get basic info view

@@ -37,6 +37,9 @@ Route::controllers([
 Route::get('main-panel', 'HomeController@index');
 
 // MAIN PANEL MENU
+//--- ΟΦΕΛΟΥΜΕΝΟΙ
+Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
+//--- END ΟΦΕΛΟΥΜΕΝΟΙ
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
 //----------------------- BASIC INFO
