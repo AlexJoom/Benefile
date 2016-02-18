@@ -77,18 +77,34 @@ class RecordsController extends Controller
     // get social folder view
     public function getSocialFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-        $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
-        return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter);
+        if($benefiter == null) {
+            return view('errors.404');
+        } else {
+            $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
+            if($socialFolder == null){
+                return view('errors.404');
+            } else {
+                $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
+                $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
+                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport);
+            }
+        }
     }
 
     // post from social folder form
     public function postSocialFolder(Request $request, $id){
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
+        $socialFolder = null;
+        $psychosocialSupport = null;
         $validator = $this->socialFolderService->socialFolderValidation($request->all());
         if($validator->fails()){
-            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
+            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->withErrors($validator->errors()->all());
         } else {
             $this->socialFolderService->saveSocialFolderToDB($request->all(), $id);
-            return 'success';
+            $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
+            $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
+            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport);
         }
     }
 

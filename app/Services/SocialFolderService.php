@@ -30,6 +30,16 @@ class SocialFolderService{
         return \DB::table('psychosocial_support_lookup')->get();
     }
 
+    // gets the social folder from benefiter's id
+    public function getSocialFolderFromBenefiterId($id){
+        return \DB::table('social_folder')->where('benefiter_id', '=', $id)->first();
+    }
+
+    //
+    public function getBenefiterPsychosocialSupport($id){
+        return \DB::table('benefiters_psychosocial_support')->where('benefiter_id', '=', $id)->get();
+    }
+
     // returns an array suitable for social_folder DB insertion
     private function getSocialFolderArrayForDBInsert($request, $benefiterId){
         return array(
