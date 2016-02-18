@@ -1,6 +1,8 @@
 <?php namespace app\Services;
 
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
+use App\Models\Benefiters_Tables_Models\medical_examination_results;
+use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Services\DatesHelper;
 use Validator;
 use Carbon\Carbon;
@@ -10,7 +12,7 @@ class BenefiterMedicalFolderService
 
     private $datesHelper;
     private $requestForValidation;
-    private $benefiter_id;
+    private $medical_visit_id = 1;
 
     public function __construct()
     {
@@ -96,13 +98,10 @@ class BenefiterMedicalFolderService
         // medical_visits table
 
         // medical_chronic_conditions table
-        $medical_chronic_conditions = new medical_chronic_conditions(
-            $this->medical_chronic_conditions($request)
-        );
-        dd($medical_chronic_conditions);
-        $medical_chronic_conditions->save();
 
         // medical_examination_results table
+        $request_medical_examination_results = $this->medical_examination_results($request);
+        $medical_examination_results = new medical_examination_results();
 
         // medical_examinations table
 
@@ -129,6 +128,7 @@ class BenefiterMedicalFolderService
 
     // medical_examination_results table
     private function medical_examination_results($request){
+        $count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
         return array(
             'respiratory_system' => $request['respiratory_system'],
             'digestive_system' => $request['digestive_system'],

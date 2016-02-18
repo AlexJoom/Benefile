@@ -1,5 +1,4 @@
 <?php
-use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup as Exam_results;
 use Illuminate\Database\Seeder;
 
 class MedicalExaminaitonsSeeder extends Seeder{
