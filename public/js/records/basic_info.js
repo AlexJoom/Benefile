@@ -29,9 +29,16 @@ $(document).ready(function(){
         var $parent = $("#language-wrapper");
         $copy.appendTo($parent);
     });
+
     // remove lang element after remove button is clicked
     $("body").on("click", ".remove-lang", function(){
         $(this).parents(".added-div").remove();
+    });
+
+    // make added-div languages display remove and not add button
+    $(".added-div").each(function(){
+        $(this).find(".color-green").hide();
+        $(this).find(".color-red").show();
     });
 
     // when input of type text is focused, change the color of the label

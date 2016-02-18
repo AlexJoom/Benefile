@@ -353,6 +353,52 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="language-wrapper" class="row">
+                <?php
+                    // if there are available languages selected
+                    if(isset($benefiter_languages) and $benefiter_languages != null){
+                        $first = 0;
+                        foreach($benefiter_languages as $benefiter_language){
+                            if ($first == 0){
+                                $first++;
+                    echo '<div class="padding-left-right-15 language-div">';
+                            } else {
+                    echo '<div class="padding-left-right-15 added-div">';
+                            }
+                ?>
+                        <div class="form-group float-left width-100-percent">
+                            <div class="col-md-3 make-inline">
+                                <select name="language" class="language-selection">
+                                    @foreach($languages as $language)
+                                    <?php $selected = "";?>
+                                    @if($benefiter_language->language_id == $language->id)
+                                        <?php $selected = "selected"; ?>
+                                    @endif
+                                    <option value="{{ $language->id }}" {{ $selected }}>{{ $language->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-2 make-inline">
+                                <select name="language_level" class="make-inline level-selection">
+                                    <?php
+                                        $first = true;
+                                    ?>
+                                    @foreach($languageLevels as $level)
+                                    <?php $selected = "";?>
+                                    @if($benefiter_language->language_level_id == $level->id)
+                                        <?php $selected = "selected"; ?>
+                                    @endif
+                                    <option value="{{ $level->id }}" {{ $selected }}>{{ $level->description }}</option>
+                                    @endforeach
+                                </select>
+                                <a class="color-green add-lang" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
+                                <a class="color-red remove-lang hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                        }
+                    } else { // if there are not selected languages available
+                ?>
                     <div class="padding-left-right-15 language-div">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
@@ -391,6 +437,7 @@
                             </div>
                         </div>
                     </div>
+                <?php } ?>
                 </div>
                 <div class="row">
                     <div class="padding-left-right-15">
@@ -424,14 +471,14 @@
                             $working = true;
                             $not_working = false;
                             // if benefiter is not new and is not working change the initialized values
-                            if($benefiter->id != -1 && $benefiter->is_benefiter_working == 0){
+                            if($benefiter->id != -1 && $benefiter->is_benefiter_working == 2){
                                 $not_working = true;
                             }
                             // initialized values for working legally radiobox
                             $working_legally = true;
                             $working_illegally = false;
                             // check if benefiter is not new and if (s)he is working illegally change initialized values
-                            if($benefiter->id != -1 && $benefiter->working_legally == 0){
+                            if($benefiter->id != -1 && $benefiter->working_legally == 2){
                                 $working_illegally = true;
                             }
                         ?>
@@ -523,7 +570,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
-                            {!! Form::textarea('social_background', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                            {!! Form::textarea('social_history', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
                         </div>
                     </div>
                 </div>

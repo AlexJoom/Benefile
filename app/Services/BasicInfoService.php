@@ -50,7 +50,7 @@ class BasicInfoService{
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
             'detention_duration' => 'max:255',
-            'social_background' => 'max:2000',
+            'social_history' => 'max:2000',
         ));
     }
 
@@ -182,7 +182,7 @@ class BasicInfoService{
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
             "detention_duration" => $request['detention_duration'],
-            "social_background" => $request['social_background'],
+            "social_history" => $request['social_history'],
             "document_manager_id" => \Auth::user()->id,
         );
     }
@@ -283,7 +283,7 @@ class BasicInfoService{
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
             "detention_duration" => $request['detention_duration'],
-            "social_background" => $request['social_background'],
+            "social_history" => $request['social_history'],
         );
     }
 }
