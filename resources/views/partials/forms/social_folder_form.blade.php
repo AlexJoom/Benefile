@@ -1,5 +1,5 @@
 <div class="social-folder-form">
-{!! Form::open(array('url' => 'new-benefiter/social-folder')) !!}
+{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/social-folder')) !!}
     <div class="personal-family-info form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία Ατόμου-Οικογένειας</h1>

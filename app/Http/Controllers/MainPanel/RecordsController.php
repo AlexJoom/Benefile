@@ -75,21 +75,22 @@ class RecordsController extends Controller
     }
 
     // get social folder view
-//    public function getSocialFolder(){
-//        $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
-//        return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects);
-//    }
-//
-//    // post from social folder form
-//    public function postSocialFolder(Request $request){
-//        $validator = $this->socialFolderService->socialFolderValidation($request->all());
-//        if($validator->fails()){
-//            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
-//        } else {
-//            $this->socialFolderService->saveSocialFolderToDB($request->all(), $this->benefiter->id);
-//            return 'success';
-//        }
-//    }
+    public function getSocialFolder($id){
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
+        return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter);
+    }
+
+    // post from social folder form
+    public function postSocialFolder(Request $request, $id){
+        $validator = $this->socialFolderService->socialFolderValidation($request->all());
+        if($validator->fails()){
+            return view('benefiter.social_folder')->withErrors($validator->errors()->all());
+        } else {
+            $this->socialFolderService->saveSocialFolderToDB($request->all(), $id);
+            return 'success';
+        }
+    }
 
     // Get Medical visit data of benefiter
     public function getMedialFolder(){
