@@ -31,5 +31,6 @@
 @section('panel-scripts')
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
+    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/records/social_folder.js')}}"></script>
 @stop
