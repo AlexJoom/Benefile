@@ -4,7 +4,6 @@
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_chronic_conditions.php" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_chronic_conditions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -64,8 +63,8 @@
       <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.259259" vertical-offset="1547" max-vertical-offset="2300">
-              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.703704" vertical-offset="1720" max-vertical-offset="2530">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
               <folding>
                 <element signature="e#50#100#0#PHP" expanded="true" />
                 <element signature="e#2540#3645#0#PHP" expanded="false" />
@@ -79,13 +78,12 @@
       <file leaf-file-name="BenefiterMedicalFolderService.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3986014" vertical-offset="968" max-vertical-offset="4278">
-              <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+            <state vertical-scroll-proportion="-0.25735295" vertical-offset="1118" max-vertical-offset="4646">
+              <caret line="101" column="46" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
               <folding>
                 <element signature="e#31#98#0#PHP" expanded="true" />
                 <element signature="e#877#3264#0#PHP" expanded="false" />
-                <element signature="e#4271#5147#0#PHP" expanded="false" />
-                <element signature="e#5172#5488#0#PHP" expanded="false" />
+                <element signature="e#4509#5389#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -631,11 +629,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16153847" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802198" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16153847" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2802198" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26454034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1078,8 +1076,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.259259" vertical-offset="1547" max-vertical-offset="2300">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.703704" vertical-offset="1720" max-vertical-offset="2530">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
           <folding>
             <element signature="e#50#100#0#PHP" expanded="true" />
             <element signature="e#2540#3645#0#PHP" expanded="false" />
@@ -1091,13 +1089,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3986014" vertical-offset="968" max-vertical-offset="4278">
-          <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+        <state vertical-scroll-proportion="-0.25735295" vertical-offset="1118" max-vertical-offset="4646">
+          <caret line="101" column="46" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
           <folding>
             <element signature="e#31#98#0#PHP" expanded="true" />
             <element signature="e#877#3264#0#PHP" expanded="false" />
-            <element signature="e#4271#5147#0#PHP" expanded="false" />
-            <element signature="e#5172#5488#0#PHP" expanded="false" />
+            <element signature="e#4509#5389#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

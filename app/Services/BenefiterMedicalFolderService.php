@@ -99,20 +99,22 @@ class BenefiterMedicalFolderService
     //--------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
     //--------------------------------------------------------------------//
-
-    // medical_visit table
+    // TODO add transaction to public function
+    //TODO CREATE A FUNCTION THAT CALLS THE BELOW FUNCTIONS AND MEKE THE BELOW PRIVATE NOT PUBLIC
+    //----------- medical_visit table ------------------------------------//
     public function save_medical_visit($request){
         $newMedicalVisit = medical_visits::with('benefiter', 'doctor', 'medicalLocation')->get();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
         $newMedicalVisit->medical_location_id = $request['medical_location_id'];
         $newMedicalVisit->save();
+        return $newMedicalVisit->id;
     }
 
-    // ---------- medical_chronic_conditions table ----------------//
+    //----------- medical_chronic_conditions table -----------------------//
     // DB save
     public function save_medical_chronic_conditions($request){
-        $medical_chronic_conditions_from_post = $this->medical_chronic_conditions($request);
+        $medical_chronic_conditions_from_post = $this->get_medical_chronic_conditions($request);
         foreach($medical_chronic_conditions_from_post as $cc){
             $medical_chronic_conditions = new medical_chronic_conditions();
             // save to lookup first
@@ -127,7 +129,7 @@ class BenefiterMedicalFolderService
         }
     }
     // post request
-    private function medical_chronic_conditions($request){
+    private function get_medical_chronic_conditions($request){
         $chronic_conditions = $request['chronic_conditions'];
         $chronic_conditions_array = [];
         foreach ($chronic_conditions as $cc){
@@ -135,12 +137,19 @@ class BenefiterMedicalFolderService
         }
         return $chronic_conditions_array;
     }
-    // ----------------------------------------------------------- //
+    // ------------------------------------------------------------------ //
 
-    //----------- medical_examination_results table ----------------//
+    //----------- medical_examination_results table ----------------------//
     // DB save
-    public function save_medical_examination_results(){
-        //$request_medical_examination_results = $this->get_medical_examination_request($request);
+    public function save_medical_examination_results($request, $id){
+        $request_medical_examination_results_from_post = $this->get_medical_examination_results($request);
+        foreach($request_medical_examination_results_from_post as $exResults){
+            $medical_examination_results = new medical_examination_results();
+
+            $medical_examination_results->description = $exResults;
+            $medical_examination_results->medical_visit_id = $id;
+
+        }
     }
     // post request
     private function get_medical_examination_results($request){
@@ -155,9 +164,9 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
-    // ----------------------------------------------------------- //
+    // ----------------------------------------------------------------- //
 
-    //----------- medical_examinations table ----------------------//
+    //----------- medical_examinations table ----------------------------//
     // DB save
     public function save_medical_examinations(){
 
@@ -175,7 +184,7 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
-    // ----------------------------------------------------------- //
+    // ----------------------------------------------------------------- //
 
     //----------- medical_laboratory_results table ----------------------//
     // DB save
@@ -193,10 +202,10 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
-    // ----------------------------------------------------------- //
+    // --------------------------------------------------------------- //
 
 
-    //----------- medical_medication table ----------------------//
+    //----------- medical_medication table ----------------------------//
     // DB save
     public function save_medical_medication(){
 
@@ -212,11 +221,11 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
-    // ----------------------------------------------------------- //
+    // -------------------------------------------------------------- //
 
 
 
-    //----------- medical_referrals table ----------------------//
+    //----------- medical_referrals table ---------------------------//
     // DB save
     public function save_medical_referrals(){
 
@@ -232,11 +241,11 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
-    // ----------------------------------------------------------- //
+    // ------------------------------------------------------------ //
 
 
 
-    //----------- medical_uploads table ----------------------//
+    //----------- medical_uploads table ----------------------------//
     // DB save
     public function save_medical_uploads(){
 
