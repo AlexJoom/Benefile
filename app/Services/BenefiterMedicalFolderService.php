@@ -1,7 +1,9 @@
 <?php namespace app\Services;
 
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
+use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
+use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Services\DatesHelper;
 use Validator;
@@ -20,7 +22,9 @@ class BenefiterMedicalFolderService
         $this->datesHelper = new DatesHelper();
     }
 
+    //-----------------------------------------------//
     // PART 1 : validate the medical info frm the post
+    //-----------------------------------------------//
     public function medicalValidation($request){
         $this->requestForValidation = $this->getValidationArray($request);
         $rules = array(
@@ -92,49 +96,53 @@ class BenefiterMedicalFolderService
         );
     }
 
-    // PART 2 : insert into DB benefiter medical table
-    public function saveToDB($request){
+    //--------------------------------------------------------------------//
+    // PART 2 : insert into DB benefiter medical tables
+    //--------------------------------------------------------------------//
 
-        // medical_visits table
-
-        // medical_chronic_conditions table
-
-        // medical_examination_results table (get the request and save to table row the result the title)
-        $request_medical_examination_results = $this->get_medical_examination_request($request);
-        $medical_examination_results = new medical_examination_results();
-
-        // medical_examinations table
-
-        // medical_examinations table
-
-        // medical_medication table
-
-        // medical_referrals table
-
-        // medical_uploads table
+    // medical_visit table
+    public function save_medical_visit($request){
+        $newMedicalVisit = medical_visits::with('benefiter', 'doctor', 'medicalLocation')->get();
+        $newMedicalVisit->benefiter_id = $request['benefiter_id'];
+        $newMedicalVisit->doctor_id = $request['doctor_id'];
+        $newMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $newMedicalVisit->save();
     }
-    //--------------------------------------------------------------//
-    //-------------- NEEDED FROM PART 2 ----------------------------//
-    //--------------------------------------------------------------//
-
 
     // ---------- medical_chronic_conditions table ----------------//
+    // DB save
+    //         lookup tables
+    public function save_medical_chronic_conditions_lookup($request){
+        $medical_chronic_conditions_from_post = $this->medical_chronic_conditions($request);
+        foreach($medical_chronic_conditions_from_post as $cc){
+            $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+            $medical_chronic_conditions_lookup->description = $cc;
+            $medical_chronic_conditions_lookup->save();
+        }
+    }
+    public function save_medical_chronic_conditions(){
+
+    }
     // post request
     private function medical_chronic_conditions($request){
         $chronic_conditions = $request['chronic_conditions'];
         $chronic_conditions_array = [];
         foreach ($chronic_conditions as $cc){
-            array_push($chronic_conditions_array, ['description'=>$cc]);
+            array_push($chronic_conditions_array, $cc);
         }
         return $chronic_conditions_array;
     }
-    // other lookup tables
-
+    // ----------------------------------------------------------- //
 
     //----------- medical_examination_results table ----------------//
-    private function get_medical_examination_request($request){
-        // post request
-                //$count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
+    // DB save
+    public function save_medical_examination_results(){
+        //$request_medical_examination_results = $this->get_medical_examination_request($request);
+    }
+    // post request
+    private function get_medical_examination_results($request){
+
+        //$count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
         $request_medical_examination_results_array = [];
         $examResults = $request['examResultLoukup'];
         foreach($examResults as $exam){
@@ -144,8 +152,13 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+    // ----------------------------------------------------------- //
 
     //----------- medical_examinations table ----------------------//
+    // DB save
+    public function save_medical_examinations(){
+
+    }
     // post request
     private function medical_examinations($request){
         return array(
@@ -159,7 +172,13 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+    // ----------------------------------------------------------- //
+
     //----------- medical_laboratory_results table ----------------------//
+    // DB save
+    public function save_medical_laboratory_results(){
+
+    }
     // post request
     private function medical_laboratory_results($request){
         $lab_results = $request->get('lab-results');
@@ -171,7 +190,14 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+    // ----------------------------------------------------------- //
+
+
     //----------- medical_medication table ----------------------//
+    // DB save
+    public function save_medical_medication(){
+
+    }
     //post request
     private function medical_medication($request){
         $medicationList = $request->get('medicationList');
@@ -183,7 +209,15 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+    // ----------------------------------------------------------- //
+
+
+
     //----------- medical_referrals table ----------------------//
+    // DB save
+    public function save_medical_referrals(){
+
+    }
     // post request
     private function medical_referrals($request){
         $referrals = $request->get('referrals');
@@ -195,24 +229,31 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+    // ----------------------------------------------------------- //
+
+
+
     //----------- medical_uploads table ----------------------//
+    // DB save
+    public function save_medical_uploads(){
+
+    }
     // post request
     private function medical_uploads($request){
-//TODO
+
     }
     // other lookup tables
 
-    //----------- medical_visits table ----------------------//
-    // post request
-    private function medical_visits($request){
-        return array(
-            'doctor_name' =>  $request[\Auth::user()->id],
-            'examination_date' => $this->datesHelper->makeDBFriendlyDate($request['examination_date']),
-            'examination_location' => $request['examination_location'],
-            'incident_type' => $request['incident_type'],
-        );
-    }
-    // other lookup tables
+    // ------------------------------------------------------------------ //
+    // PART 2 : END
+    //--------------------------------------------------------------------//
 
-    //-------------- NEEDED FROM PART 2 END ----------------------------//
+    // FUNCTIONS USED BY MANY
+    /*
+     * will return the medical visit id from the
+     */
+    private function get_medical_visit_id($id){
+
+    }
+
 }

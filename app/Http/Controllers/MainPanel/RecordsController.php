@@ -32,7 +32,7 @@ class RecordsController extends Controller
         $this->medicalVisit = new BenefiterMedicalFolderService();
     }
 
-    // GET BENEFITERS LIST
+    //------------ GET BENEFITERS LIST -------------------------------//
     public function getBenefitersList(){
         $benefiters =  $this->benefiterList->getAllBenefiters();
 //        dd($benefiters);
@@ -116,12 +116,14 @@ class RecordsController extends Controller
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request){
+        // TODO: POST MUST HAVE BENEFITER ID & DOCTOR ID $ MEDICAL LOCATION ID
 //        dd($request->all());
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
 //        if($validator->fails()){
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
-            $this->medicalVisit->saveToDB($request->all());
+
+            $this->medicalVisit->save_medical_chronic_conditions_lookup($request->all());
             return 'success';
 //        }
 

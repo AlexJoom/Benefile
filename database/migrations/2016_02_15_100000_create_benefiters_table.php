@@ -61,6 +61,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('legal_status_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         // Middle table for 'Legal Status' in basic info form. Every benefiter may have more than one legal status.
@@ -73,6 +74,7 @@ class CreateBenefitersTable extends Migration
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('legal_lookup_id')->unsigned()->nullable();
             $table->foreign('legal_lookup_id')->references('id')->on('legal_status_lookup');
+            $table->timestamps();
         });
 
         // Social/legal/etc tables should be independent from main table.
@@ -114,11 +116,13 @@ class CreateBenefitersTable extends Migration
         Schema::create('medical_chronic_conditions_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
+            $table->timestamps();
         });
 
         Schema::create('medical_location_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         Schema::create('medical_visits', function (Blueprint $table) {
@@ -131,6 +135,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->integer('medical_location_id')->unsigned();
             $table->foreign('medical_location_id')->references('id')->on('medical_location_lookup');
+
+            $table->timestamps();
         });
 
         // General examination table.
@@ -148,12 +154,15 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+
+            $table->timestamps();
         });
         //
         // Lookup table for clinical examination results. Seed with 'respiratory system', 'digestive system', etc.
         Schema::create('medical_examination_results_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
+            $table->timestamps();
             /*
              * $table->integer('medical_results_id')->unsigned();
              * $table->foreign('medical_results_id')->references('id')->on('medical_examination_results');
@@ -168,6 +177,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('chronic_condition_id')->references('id')->on('medical_chronic_conditions_lookup');
             $table->integer('benefiters_id')->unsigned();
             $table->foreign('benefiters_id')->references('id')->on('benefiters');
+
+            $table->timestamps();
         });
 
         // Benefiter's clinical examination results.
@@ -180,6 +191,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
             $table->integer('results_lookup_id')->unsigned();
             $table->foreign('results_lookup_id')->references('id')->on('medical_examination_results_lookup');
+
+            $table->timestamps();
         });
 
         // Benefiter's laboratory results.
@@ -189,6 +202,8 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+
+            $table->timestamps();
         });
 
         Schema::create('medical_referrals', function (Blueprint $table) {
@@ -197,12 +212,15 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+
+            $table->timestamps();
         });
 
         // Medication names lookup table.
         Schema::create('medical_medication_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description');
+            $table->timestamps();
         });
 
         Schema::create('medical_medication', function (Blueprint $table) {
@@ -212,6 +230,7 @@ class CreateBenefitersTable extends Migration
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
             $table->integer('medication_lookup_id')->unsigned();
             $table->foreign('medication_lookup_id')->references('id')->on('medical_medication_lookup');
+            $table->timestamps();
         });
 
         Schema::create('medical_uploads', function (Blueprint $table) {
@@ -222,6 +241,7 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+            $table->timestamps();
         });
 
         /*
@@ -260,11 +280,13 @@ class CreateBenefitersTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         Schema::create('language_levels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         Schema::create('benefiters_languages', function (Blueprint $table) {
@@ -281,6 +303,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('psychosocial_support_lookup', function(Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         Schema::create('benefiters_psychosocial_support', function(Blueprint $table) {
@@ -289,6 +312,7 @@ class CreateBenefitersTable extends Migration
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('psychosocial_support_id')->unsigned();
             $table->foreign('psychosocial_support_id')->references('id')->on('psychosocial_support_lookup');
+            $table->timestamps();
         });
     }
 
