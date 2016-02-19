@@ -111,17 +111,20 @@ class BenefiterMedicalFolderService
 
     // ---------- medical_chronic_conditions table ----------------//
     // DB save
-    //         lookup tables
-    public function save_medical_chronic_conditions_lookup($request){
+    public function save_medical_chronic_conditions($request){
         $medical_chronic_conditions_from_post = $this->medical_chronic_conditions($request);
         foreach($medical_chronic_conditions_from_post as $cc){
+            $medical_chronic_conditions = new medical_chronic_conditions();
+            // save to lookup first
             $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
             $medical_chronic_conditions_lookup->description = $cc;
             $medical_chronic_conditions_lookup->save();
+            // then to chronic conditions table
+            $medical_chronic_conditions->benefiters_id = 1;
+            $medical_chronic_conditions->description = $cc;
+            $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+            $medical_chronic_conditions->save();
         }
-    }
-    public function save_medical_chronic_conditions(){
-
     }
     // post request
     private function medical_chronic_conditions($request){

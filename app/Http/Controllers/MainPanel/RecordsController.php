@@ -123,7 +123,7 @@ class RecordsController extends Controller
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
 
-            $this->medicalVisit->save_medical_chronic_conditions_lookup($request->all());
+            $this->medicalVisit->save_medical_chronic_conditions($request->all());
             return 'success';
 //        }
 
