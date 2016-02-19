@@ -38,8 +38,6 @@ class CreateBenefitersTable extends Migration
             $table->boolean('has_educational_reference');
             $table->text('educational_reference_actions');
             $table->date('educational_reference_date');
-            // TODO: Check if below is needed.
-            // $table->string('social_history');
             $table->string('origin_country');
             $table->string('nationality_country');
             // Insert user that created the benefiter's file.
@@ -50,13 +48,6 @@ class CreateBenefitersTable extends Migration
             // Foreign keys
             $table->integer('gender_id')->unsigned()->nullable();
             $table->foreign('gender_id')->references('id')->on('genders_lookup');
-            // Disable country table for now, insert country as string.
-            /*
-             * $table->integer('origin_country_id')->unsigned()->nullable();
-             * $table->foreign('origin_country_id')->references('id')->on('countries_lookup');
-             * $table->integer('nationality_country_id')->unsigned()->nullable();
-             * $table->foreign('nationality_country_id')->references('id')->on('countries_lookup');
-             */
             $table->integer('marital_status_id')->unsigned()->nullable();
             $table->foreign('marital_status_id')->references('id')->on('marital_status_lookup');
             $table->integer('education_id')->unsigned()->nullable();
@@ -130,11 +121,6 @@ class CreateBenefitersTable extends Migration
             $table->string('description');
         });
 
-        Schema::create('medical_examination_lookup', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('description');
-        });
-
         Schema::create('medical_visits', function (Blueprint $table) {
             $table->increments('id');
 
@@ -145,8 +131,6 @@ class CreateBenefitersTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->integer('medical_location_id')->unsigned();
             $table->foreign('medical_location_id')->references('id')->on('medical_location_lookup');
-            $table->integer('medical_examination_id')->unsigned();
-            $table->foreign('medical_examination_id')->references('id')->on('medical_examination_lookup');
         });
 
         // General examination table.
@@ -331,7 +315,6 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_examination_results_lookup');
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
-        Schema::dropIfExists('medical_examination_lookup');
         Schema::dropIfExists('medical_location_lookup');
         Schema::dropIfExists('medical_chronic_conditions_lookup');
         Schema::dropIfExists('benefiters_legal_status');
