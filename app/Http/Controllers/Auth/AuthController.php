@@ -48,7 +48,7 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'user_role_id' => 'required|max:20',
-            'user_subrole_id' => 'required|max:20',
+            'user_subrole_id' => 'max:20',
             'activation_status' => 'max:20',
             'is_deactivated' => 'max:20',
         ]);
@@ -62,6 +62,18 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        if ($data['user_role_id'] != 2 ) {
+            return User::create([
+                'name' => $data['name'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'user_role_id' => $data['user_role_id'],
+                // by default activation_status will be 0
+                'activation_status' => 0,
+                'is_deactivated' => 0,
+            ]);
+        }
         return User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
