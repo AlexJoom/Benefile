@@ -1,4 +1,12 @@
 <div class="social-folder-form">
+<?php
+    if(!isset($social_folder) || $social_folder == null){
+        $social_folder = (object) array(
+            'ethnic_group' => null,
+            'comments' => null,
+        );
+    }
+?>
 {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/social-folder')) !!}
     <div class="personal-family-info form-section no-bottom-border">
         <div class="underline-header">

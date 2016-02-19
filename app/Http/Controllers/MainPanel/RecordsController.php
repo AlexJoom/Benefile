@@ -82,10 +82,10 @@ class RecordsController extends Controller
             return view('errors.404');
         } else {
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
+            $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
             if($socialFolder == null){
-                return view('errors.404');
+                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter);
             } else {
-                $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
                 $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
                 return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport);
             }
