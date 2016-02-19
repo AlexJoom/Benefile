@@ -48,7 +48,7 @@ Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicI
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
-Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedialFolder');
+Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedicalFolder');
 Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
 //----------------------- END MEDICAL FOLDER
 
