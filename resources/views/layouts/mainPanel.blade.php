@@ -61,7 +61,7 @@
                     <div class="margin-top-60 white" id="menu">
                         <ul id="menu-first-layer">
                             <li id="benefiters-list">
-                                <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">Οφελούμενοι</a>
+                                <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">Ωφελούμενοι</a>
                             </li>
                             <li id="register-benefiter">
                                 <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>

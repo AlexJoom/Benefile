@@ -105,7 +105,7 @@ class RecordsController extends Controller
     // GET MEDICAL VISIT DATA FOR BENEFITER
     public function getMedialFolder(){
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-        return view('benefiter.medical-folder', compact('ExamResultsLookup'));
+        return view('benefiter.medical-folder', compact('ExamResultsLookup'))->with('benefiter', new Benefiter());
     }
     // POST MEDICAL VISIT DATA
     public function postMedicalFolder(Request $request){
