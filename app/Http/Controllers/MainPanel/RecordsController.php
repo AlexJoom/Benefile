@@ -109,12 +109,12 @@ class RecordsController extends Controller
         }
     }
 
-    // GET MEDICAL VISIT DATA FOR BENEFITER
+    //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder(){
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
         return view('benefiter.medical-folder', compact('ExamResultsLookup'))->with('benefiter', new Benefiter());
     }
-    // POST MEDICAL VISIT DATA
+    //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request){
 //        dd($request->all());
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
