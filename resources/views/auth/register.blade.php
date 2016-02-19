@@ -96,20 +96,11 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <select class="inputFields" id="user-subrole" name="user_subrole_id">
-                      <option value="0" disabled selected>Επιλογή ειδικότητας</option>
-                      <option value="1">Γενικός ιατρός</option>
-                      <option value="2">Νομικός Σύμβουλος</option>
-                      <option value="3">Κοινωνικός Σύμβουλος</option>
-                      <option value="4">Ψυχολόγος</option>
-                      <option value="5">Παιδίατρος</option>
-                      <option value="6">Γυναικολόγος</option>
-                      <option value="7">Οδοντίατρος</option>
-                      <option value="8">Δερματολόγος</option>
-                      <option value="9">Ορθοπεδικός</option>
-                      <option value="10">Καρδιολόγος</option>
-                      <option value="11">Οφθαλμίατρος</option>
-                      <option value="11">Ψυχίατρος</option>
-                      <option value="11">Νευρολόγος</option>
+                        <option value="0" disabled selected>Επιλογή ειδικότητας</option>
+
+                        @foreach ($subroles as $subrole)
+                            <option value="{!! $subrole->id !!}">{!! $subrole->subrole !!}</option>
+                        @endforeach
                     </select>
                     @if ($errors->has('user_subrole_id'))
                         <span class="help-block">
