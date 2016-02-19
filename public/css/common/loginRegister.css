@@ -46,6 +46,12 @@
     /*display: table-row;*/
 }
 
+#login, .logo-padding {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 .col-md-6{
     width: 55%;
 }
