@@ -99,8 +99,8 @@ class BenefiterMedicalFolderService
 
         // medical_chronic_conditions table
 
-        // medical_examination_results table
-        $request_medical_examination_results = $this->medical_examination_results($request);
+        // medical_examination_results table (get the request and save to table row the result the title)
+        $request_medical_examination_results = $this->get_medical_examination_request($request);
         $medical_examination_results = new medical_examination_results();
 
         // medical_examinations table
@@ -113,10 +113,13 @@ class BenefiterMedicalFolderService
 
         // medical_uploads table
     }
-
+    //--------------------------------------------------------------//
     //-------------- NEEDED FROM PART 2 ----------------------------//
+    //--------------------------------------------------------------//
 
-    // medical_chronic_conditions table
+
+    // ---------- medical_chronic_conditions table ----------------//
+    // post request
     private function medical_chronic_conditions($request){
         $chronic_conditions = $request['chronic_conditions'];
         $chronic_conditions_array = [];
@@ -125,24 +128,25 @@ class BenefiterMedicalFolderService
         }
         return $chronic_conditions_array;
     }
+    // other lookup tables
 
-    // medical_examination_results table
-    private function medical_examination_results($request){
-        $count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
-        return array(
-            'respiratory_system' => $request['respiratory_system'],
-            'digestive_system' => $request['digestive_system'],
-            'skin_tissue' => $request['skin_tissue'],
-            'cardiovascular_system' => $request['cardiovascular_system'],
-            'urinary_system' => $request['urinary_system'],
-            'musculoskeletal_system' => $request['musculoskeletal_system'],
-            'immunization_system' => $request['immunization_system'],
-            'nervous_system' => $request['nervous_system'],
-            'other' => $request['other'],
-        );
+
+    //----------- medical_examination_results table ----------------//
+    private function get_medical_examination_request($request){
+        // post request
+                //$count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
+        $request_medical_examination_results_array = [];
+        $examResults = $request['examResultLoukup'];
+        foreach($examResults as $exam){
+            array_push($request_medical_examination_results_array,$exam);
+        }
+        return $request_medical_examination_results_array;
     }
+    // other lookup tables
 
-    // medical_examinations table
+
+    //----------- medical_examinations table ----------------------//
+    // post request
     private function medical_examinations($request){
         return array(
             'height' => $request['height'],
@@ -153,8 +157,10 @@ class BenefiterMedicalFolderService
             'skull-perimeter' => $request['skull-perimeter'],
         );
     }
+    // other lookup tables
 
-    // medical_laboratory_results table
+    //----------- medical_laboratory_results table ----------------------//
+    // post request
     private function medical_laboratory_results($request){
         $lab_results = $request->get('lab-results');
         $lab_results_array = [];
@@ -163,8 +169,10 @@ class BenefiterMedicalFolderService
         }
         return $lab_results_array;
     }
+    // other lookup tables
 
-    // medical_medication table
+    //----------- medical_medication table ----------------------//
+    //post request
     private function medical_medication($request){
         $medicationList = $request->get('medicationList');
         $medication_array =[];
@@ -173,8 +181,10 @@ class BenefiterMedicalFolderService
         }
         return$medication_array;
     }
+    // other lookup tables
 
-    // medical_referrals table
+    //----------- medical_referrals table ----------------------//
+    // post request
     private function medical_referrals($request){
         $referrals = $request->get('referrals');
         $referrals_array = [];
@@ -183,13 +193,17 @@ class BenefiterMedicalFolderService
         }
         return $referrals_array;
     }
+    // other lookup tables
 
-    // medical_uploads table
+    //----------- medical_uploads table ----------------------//
+    // post request
     private function medical_uploads($request){
 //TODO
     }
+    // other lookup tables
 
-    // medical_visits table
+    //----------- medical_visits table ----------------------//
+    // post request
     private function medical_visits($request){
         return array(
             'doctor_name' =>  $request[\Auth::user()->id],
@@ -198,6 +212,7 @@ class BenefiterMedicalFolderService
             'incident_type' => $request['incident_type'],
         );
     }
+    // other lookup tables
 
     //-------------- NEEDED FROM PART 2 END ----------------------------//
 }
