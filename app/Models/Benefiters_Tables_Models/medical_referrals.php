@@ -9,7 +9,7 @@ class medical_referrals extends Model
     protected $table = 'medical_referrals';
 
     protected $fillable = [
-        'referrals'
+        'referrals',
         'medical_visit_id'];
 
     public function medical_visits()

@@ -16,8 +16,4 @@ class medical_medication_lookup extends Model
         return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_visits', 'medical_visit_id');
     }
 
-    public function medical_medication()
-    {
-        return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_medication', 'medication_lookup_id');
-    }
 }

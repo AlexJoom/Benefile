@@ -5,7 +5,11 @@ use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
 use App\Models\Benefiters_Tables_Models\medical_examinations;
 use App\Models\Benefiters_Tables_Models\medical_visits;
+use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
+use App\Models\Benefiters_Tables_Models\medical_medication;
+use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
+use App\Models\Benefiters_Tables_Models\medical_referrals;
 use App\Services\DatesHelper;
 use Validator;
 use Carbon\Carbon;
@@ -125,8 +129,8 @@ class BenefiterMedicalFolderService
     //----------- medical_chronic_conditions table -----------------------DONE//
     // DB save
     public function save_medical_chronic_conditions($request){
-        $medical_chronic_conditions_from_post = $this->get_medical_chronic_conditions($request);
-        foreach($medical_chronic_conditions_from_post as $cc){
+        $request_medical_chronic_conditions = $this->get_medical_chronic_conditions($request);
+        foreach($request_medical_chronic_conditions as $cc){
             if(!empty($cc)){
                 $medical_chronic_conditions = new medical_chronic_conditions();
                 // save to lookup first
@@ -134,7 +138,7 @@ class BenefiterMedicalFolderService
                 $medical_chronic_conditions_lookup->description = $cc;
                 $medical_chronic_conditions_lookup->save();
                 // then to chronic conditions table
-                $medical_chronic_conditions->benefiters_id = 1;
+                $medical_chronic_conditions->benefiters_id = $request['$benefiter_id'];
                 $medical_chronic_conditions->description = $cc;
                 $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
                 $medical_chronic_conditions->save();
@@ -150,10 +154,10 @@ class BenefiterMedicalFolderService
         }
         return $chronic_conditions_array;
     }
+
+
+
     // ------------------------------------------------------------------ //
-
-
-
     //----------- medical_examination_results table ----------------------DONE//
     // DB save
     public function save_medical_examination_results($request, $id){
@@ -187,7 +191,6 @@ class BenefiterMedicalFolderService
 
 
     // ----------------------------------------------------------------- //
-
     //----------- medical_examinations table ----------------------------DONE//
     // DB save
     public function save_medical_examinations($request, $id){
@@ -208,15 +211,24 @@ class BenefiterMedicalFolderService
 
 
     // ----------------------------------------------------------------- //
-
-    //----------- medical_laboratory_results table ----------------------//
+    //----------- medical_laboratory_results table ----------------------DONE//
     // DB save
-    public function save_medical_laboratory_results(){
+    public function save_medical_laboratory_results($request, $id){
+        $request_lab_results = $this->medical_laboratory_results($request);
+        foreach($request_lab_results as $rlr){
+            if(!empty($rlr)){
+                $lab_results = new medical_laboratory_results();
 
+                $lab_results->laboratory_results = $rlr;
+                $lab_results->medical_visit_id = $id;
+
+                $lab_results->save();
+            }
+        }
     }
     // post request
     private function medical_laboratory_results($request){
-        $lab_results = $request->get('lab-results');
+        $lab_results = $request['lab_results'];
         $lab_results_array = [];
         foreach ($lab_results as $lr){
             array_push($lab_results_array, $lr);
@@ -225,59 +237,79 @@ class BenefiterMedicalFolderService
     }
     // other lookup tables
 
+
+
     // --------------------------------------------------------------- //
-
-
-    //----------- medical_medication table ----------------------------//
+    //----------- medical_medication table ----------------------------DONE//
     // DB save
-    public function save_medical_medication(){
+    public function save_medical_medication($request, $id){
+        $request_medical_medication = $this->medical_medication($request);
+        foreach($request_medical_medication as $rmm){
+            if(!empty($rmm)){
+                $med_medication = new medical_medication();
 
+                // first write to lookup
+                $med_medication_lookup = new medical_medication_lookup();
+                $med_medication_lookup->description = $rmm;
+                $med_medication_lookup->save();
+
+                // then continue to medication table
+                $med_medication->medical_visit_id = $id;
+                $med_medication->medication_lookup_id = $med_medication_lookup->id;
+                $med_medication->save();
+            }
+
+        }
     }
     //post request
     private function medical_medication($request){
-        $medicationList = $request->get('medicationList');
+        $medicationList = $request['medicationList'];
         $medication_array =[];
         foreach ($medicationList as $ml){
             array_push($medication_array, $ml);
         }
-        return$medication_array;
+        return $medication_array;
     }
-    // other lookup tables
+
+
 
     // -------------------------------------------------------------- //
-
-
-
     //----------- medical_referrals table ---------------------------//
     // DB save
-    public function save_medical_referrals(){
+    public function save_medical_referrals($request, $id){
+        $request_medical_referrals = $this->medical_referrals($request);
+        foreach($request_medical_referrals as $rmr){
+            if(!empty($rmr)){
+                $med_referral = new medical_referrals();
+                $med_referral->referrals = $rmr;
+                $med_referral->medical_visit_id = $id;
+                $med_referral->save();
+            }
 
+        }
     }
     // post request
     private function medical_referrals($request){
-        $referrals = $request->get('referrals');
+        $referrals = $request['referrals'];
         $referrals_array = [];
         foreach ($referrals as $ref){
             array_push($referrals_array, $ref);
         }
         return $referrals_array;
     }
-    // other lookup tables
+
+
 
     // ------------------------------------------------------------ //
-
-
-
     //----------- medical_uploads table ----------------------------//
     // DB save
-    public function save_medical_uploads(){
+    public function save_medical_uploads($request){
 
     }
     // post request
     private function medical_uploads($request){
 
     }
-    // other lookup tables
 
     // ------------------------------------------------------------------ //
     // PART 2 : END

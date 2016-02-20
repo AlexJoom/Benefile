@@ -130,6 +130,8 @@ class RecordsController extends Controller
 //        } else {
 
 
+        dd($request->all());
+
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
             // chronic conditions table
@@ -138,6 +140,13 @@ class RecordsController extends Controller
             $this->medicalVisit->save_medical_examination_results($request->all(), $medicalVisit_id);
             //medical_examinations table
             $this->medicalVisit->save_medical_examinations($request->all(), $medicalVisit_id);
+            // laboratory results
+            $this->medicalVisit->save_medical_laboratory_results($request->all(), $medicalVisit_id);
+            // medication table
+            $this->medicalVisit->save_medical_medication($request->all(), $medicalVisit_id);
+            // medical referrals
+            $this->medicalVisit->save_medical_referrals($request->all(), $medicalVisit_id);
+
 
             return 'success';
 //        }

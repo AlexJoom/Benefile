@@ -10,7 +10,7 @@ class medical_medication extends Model
 
     protected $fillable = [
         'medical_visit_id',
-        'medical_lookup_id'];
+        'medication_lookup_id'];
 
     public function medical_visits()
     {

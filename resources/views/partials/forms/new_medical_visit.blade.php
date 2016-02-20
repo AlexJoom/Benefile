@@ -299,8 +299,8 @@
                         <div class="form-group float-left width-100-percent">
                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                             <div class="make-inline col-md-10">
-                                {!! Form::label('lab-results', 'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ') !!}
-                                {!! Form::text('lab-results[]', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::label('lab_results', 'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ') !!}
+                                {!! Form::text('lab_results[]', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-lab-result" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
