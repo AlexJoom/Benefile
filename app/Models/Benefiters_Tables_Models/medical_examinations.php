@@ -15,7 +15,8 @@ class medical_examinations extends Model
         'temperature',
         'blood_pressure',
         'description',
-        'medical_visit_id'];
+        'medical_visit_id',
+        'examination_date'];
 
     public function medical_visits()
     {

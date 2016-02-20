@@ -148,7 +148,7 @@ class CreateBenefitersTable extends Migration
             $table->float('temperature')->nullable();
             $table->float('blood_pressure_diastolic')->nullable();
             $table->float('blood_pressure_systolic')->nullable();
-            $table->date('examination_date')->nullable;
+            $table->date('examination_date')->nullable();
             // Notes field.
             $table->text('description')->nullable();
 

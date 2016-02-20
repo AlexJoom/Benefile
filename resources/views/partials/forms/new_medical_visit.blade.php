@@ -11,12 +11,12 @@
         <div class="row float-right">
             <div class="padding-left-right-15">
                 <div class="form-group padding-left-right-15 float-left">
-                    {!! Form::label('travel_route', 'Αριθμός Φακέλου') !!}
-                    {!! Form::text('travel_route', 'α/α', array('class' => 'custom-input-text text-align-right')) !!}
+                    {!! Form::label('folder_number', 'Αριθμός Φακέλου') !!}
+                    {!! Form::text('folder_number', $benefiter_id, array('class' => 'custom-input-text text-align-right')) !!}
                 </div>
                 <div class="form-group padding-left-right-15 float-left">
-                    {!! Form::label('travel_duration', 'Αριθμός επίσκεψης') !!}
-                    {!! Form::text('travel_duration', 'α/α', array('class' => 'custom-input-text text-align-right')) !!}
+                    {!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}
+                    {!! Form::text('medical_visit_id', 'α/α', array('class' => 'custom-input-text text-align-right')) !!}
                 </div>
             </div>
         </div>
@@ -24,6 +24,15 @@
 </div>
 
 {!! Form::open(array('action' => 'MainPanel\RecordsController@postMedicalFolder')) !!}
+    {{-- get the benefiter id --}}
+    {!! Form::hidden('benefiter_id', $benefiter_id) !!}
+    {{-- get the doctor id --}}
+    {!! Form::hidden('doctor_id', $doctor_id) !!}
+
+    {{-- The medical_visit_id should probably be created when we get the form view --}}
+    {{--{!! Form::hidden('medical_visit_id', $medical_visit_id) !!}--}}
+
+
     {{-- GENERAL DETAILS  (Info that comes from DB) --}}
     <div class="form-section no-bottom-border">
         <div class="underline-header">
@@ -126,12 +135,8 @@
                         </div>
                         {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('examination_location', 'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ') !!}
-                            {!! Form::select('examination_location', ['Κέντρο κράτησης Κορίνθου',
-                                                                        'Πολυιατρείο Αθήνας',
-                                                                        'Πολυιατρείο Θεσσαλονίκης',
-                                                                        'Κέντρο Ημέρας Αθήνας',
-                                                                        'Κέντρο Ημέρας']) !!}
+                            {!! Form::label('medical_location_id', 'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ') !!}
+                            {!! Form::select('medical_location_id', $medical_locations_array) !!}
                         </div>
                         {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -197,8 +202,8 @@
                         </div>
                         {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('skull-perimeter', 'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ για νεογέννητα (cm)') !!}
-                            {!! Form::text('skull-perimeter', null, array('class' => 'custom-input-text')) !!}
+                            {!! Form::label('skull_perimeter', 'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ για νεογέννητα (cm)') !!}
+                            {!! Form::text('skull_perimeter', null, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
                 </div>
@@ -218,7 +223,7 @@
                         <div class="row">
                     @endif
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                                {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':') !!}
+                                {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                 {!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}
                             </div>
                     @if($i%3 == 2)

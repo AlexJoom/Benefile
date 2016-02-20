@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MainPanel;
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
+use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Services\BasicInfoService;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class RecordsController extends Controller
@@ -35,7 +37,6 @@ class RecordsController extends Controller
     //------------ GET BENEFITERS LIST -------------------------------//
     public function getBenefitersList(){
         $benefiters =  $this->benefiterList->getAllBenefiters();
-//        dd($benefiters);
         return view('benefiter.benefiters_list', compact('benefiters'));
     }
 
@@ -112,33 +113,37 @@ class RecordsController extends Controller
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder(){
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-        return view('benefiter.medical-folder', compact('ExamResultsLookup'))->with('benefiter', new Benefiter());
+        // brings the medical location array from db
+        $medical_locations = medical_location_lookup::get()->all();
+        $medical_locations_array = $this->medicalVisit->medical_locations_simplier_array($medical_locations);
+        //TODO this benefiter id needs to be inserted from the respective url which includes it
+        $benefiter_id = 1;
+        $doctor_id = Auth::user()->id;
+        return view('benefiter.medical-folder', compact('ExamResultsLookup','medical_locations_array' ,'benefiter_id', 'doctor_id'))->with('benefiter', new Benefiter());
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request){
-        // TODO: POST MUST HAVE BENEFITER ID & DOCTOR ID $ MEDICAL LOCATION ID
-//        dd($request->all());
+
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
 //        if($validator->fails()){
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
 
 
-
-//            // medical visit table
-//            $this->medicalVisit->save_medical_visit($request->all());
-//            // chronic conditions table
-//            $this->medicalVisit->save_medical_chronic_conditions($request->all());
+            // medical visit table
+            $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
+            // chronic conditions table
+            $this->medicalVisit->save_medical_chronic_conditions($request->all());
             //medical_examination_results table
-            $this->medicalVisit->save_medical_examination_results($request->all());
-
-
+            $this->medicalVisit->save_medical_examination_results($request->all(), $medicalVisit_id);
+            //medical_examinations table
+            $this->medicalVisit->save_medical_examinations($request->all(), $medicalVisit_id);
 
             return 'success';
 //        }
 
 
-        // in addition the repeaded data will be send to the medical folder/visit
+        // in addition the repeated data will be send to the medical folder/visit
 //        return view('benefiter.medical-folder');
     }
 }
