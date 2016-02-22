@@ -633,18 +633,25 @@
                         <div id="basic_info_referrals" class="row padding-bottom-30">
                             <div  class="padding-left-right-15 basic_info_referral">
                                 <div class="form-group float-left width-100-percent">
+
                                     {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                     <div class="make-inline col-md-10">
                                         {!! Form::label('basic_info_referrals', 'ΠΑΡΑΠΟΜΠΗ: ') !!}
+                                        {!! Form::select('basic_info_referral_id[]', $basic_info_referral_array) !!}
+
                                         {!! Form::text('basic_info_referrals[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+
                                         {{-- add --}}
-                                        <a class="color-green add-ref" href="javascript:void(0)">
+                                        <a class="color-green add-ref float-right" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline"></span>
                                         </a>
                                         {{-- remove --}}
-                                        <a class="color-red remove-ref hide-element" href="javascript:void(0)">
+                                        <a class="color-red remove-ref hide-element float-right" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                         </a>
+                                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-right col-md-2">
+                                            {!! Form::text('referral_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

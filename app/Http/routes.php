@@ -45,6 +45,7 @@ Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
 //----------------------- BASIC INFO
 Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
 Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@postBasicInfoReferrals');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
