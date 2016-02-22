@@ -58,6 +58,23 @@ class CreateBenefitersTable extends Migration
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
         });
 
+        // Lookup for general reference table.
+        Schema::create('benefiter_reference_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+        });
+
+        Schema::create('reference', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description')->nullable();
+            $table->date('reference_date')->nullable();
+
+            $table->integer('benefiter_id')->unsigned();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
+            $table->integer('reference_lookup_id')->unsigned();
+            $table->foreign('reference_lookup_id')->references('id')->on('benefiter_reference_lookup');
+        });
+        
         // Lookup for 'Legal Status' in basic info form.
         Schema::create('legal_status_lookup', function (Blueprint $table) {
             $table->increments('id');
@@ -344,6 +361,8 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_chronic_conditions_lookup');
         Schema::dropIfExists('benefiters_legal_status');
         Schema::dropIfExists('legal_status_lookup');
+        Schema::dropIfExists('reference');
+        Schema::dropIfExists('benefiter_reference_lookup');
         Schema::dropIfExists('benefiters');
     }
 }
