@@ -4,7 +4,7 @@ namespace App\Models\Benefiters_Tables_Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReferencesLookup extends Model
+class BenefiterReferrals_lookup extends Model
 {
     protected $table = 'benefiter_referrals_lookup';
 
