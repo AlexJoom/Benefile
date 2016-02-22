@@ -300,7 +300,7 @@
                             {!! Form::text('legal_status_text[]', $legal_status_text[6], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 hide">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
