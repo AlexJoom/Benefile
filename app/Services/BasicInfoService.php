@@ -325,9 +325,8 @@ class BasicInfoService{
         $request_basic_info_referrals = $this->basic_info_referrals($request);
         foreach($request_basic_info_referrals as $bir){
             if(!empty($bir)){
-                $med_referral = new BenefiterReferrals();
-                $med_referral->referrals = $bir;
-                $med_referral->medical_visit_id = $id;
+                $basic_info_referral = new BenefiterReferrals();
+                $basic_info_referral->description =
                 $med_referral->save();
             }
 

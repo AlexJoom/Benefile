@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MainPanel;
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
+use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -42,6 +43,10 @@ class RecordsController extends Controller
 
     // get basic info view
     public function getBasicInfo($id){
+        // brings the referrals options array from db
+        $basic_info_referral = BenefiterReferrals_lookup::get()->all();
+        $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
+
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         // get legal statuses from session, else get null and afterwards forget session value
@@ -65,7 +70,8 @@ class RecordsController extends Controller
                                            ->with("languageLevels", $languageLevels)
                                            ->with("benefiter", $benefiter)
                                            ->with("legalStatuses", $legal_statuses)
-                                           ->with("benefiter_languages", $benefiterLanguagesAndLevels);
+                                           ->with("benefiter_languages", $benefiterLanguagesAndLevels)
+                                           ->with('basic_info_referral_array', $basic_info_referral_array);
     }
 
     // post from basic info form
@@ -114,6 +120,12 @@ class RecordsController extends Controller
         }
     }
 
+    // post basic info referrals
+    // TODO
+    public function postBasicInfoReferrals(Request $request){
+        dd($request->all());
+    }
+
     // get social folder view
     public function getSocialFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -153,7 +165,7 @@ class RecordsController extends Controller
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
         // brings the medical location array from db
         $medical_locations = medical_location_lookup::get()->all();
-        $medical_locations_array = $this->medicalVisit->medical_locations_simplier_array($medical_locations);
+        $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         //TODO this benefiter id needs to be inserted from the respective url which includes it
         $benefiter_folder_number = Benefiter::where('id','=', 1)->first()->folder_number;
         $benefiter_id = 1;
