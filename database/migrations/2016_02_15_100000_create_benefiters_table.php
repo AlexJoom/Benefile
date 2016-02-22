@@ -25,6 +25,7 @@ class CreateBenefitersTable extends Migration
             $table->string('address');
             $table->string('telephone')->nullable();
             $table->integer('number_of_children')->unsigned()->nullable();
+            $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
             $table->boolean('language_interpreter_needed');

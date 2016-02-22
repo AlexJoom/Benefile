@@ -136,9 +136,19 @@
                             ?>
                             {!! Form::text('number_of_children', null, array('class' => 'custom-input-text')) !!}
                         </div>
+                    </div>
+                    <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
                             {!! Form::label('relatives_residence', 'ΤΟΠΟΣ ΔΙΑΜΟΝΗΣ ΣΥΓΓΕΝΙΚΩΝ ΠΡΟΣΩΠΩΝ') !!}
                             {!! Form::text('relatives_residence', null, array('class' => 'custom-input-text address')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
+                            {!! Form::label('children_names', 'ΟΝΟΜΑΤΑ ΤΕΚΝΩΝ') !!}
+                            {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
                         </div>
                     </div>
                 </div>
