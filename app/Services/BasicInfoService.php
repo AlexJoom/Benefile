@@ -33,20 +33,6 @@ class BasicInfoService{
             'number_of_children' => 'integer',
             'chidren_names' => 'max:2000',
             'relatives_residence' => 'max:255',
-//            'legal_status_text0' => 'max:255',
-//            'legal_status_text1' => 'max:255',
-//            'legal_status_text2' => 'max:255',
-//            'legal_status_text3' => 'max:255',
-//            'legal_status_text4' => 'max:255',
-//            'legal_status_text5' => 'max:255',
-//            'legal_status_text6' => 'max:255',
-//            'legal_status_exp_date0' => 'date',
-//            'legal_status_exp_date1' => 'date',
-//            'legal_status_exp_date2' => 'date',
-//            'legal_status_exp_date3' => 'date',
-//            'legal_status_exp_date4' => 'date',
-//            'legal_status_exp_date5' => 'date',
-//            'legal_status_exp_date6' => 'date',
             'country_abandon_reason' => 'max:255',
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
@@ -114,11 +100,21 @@ class BasicInfoService{
     // gets an array with legal statuses from request in case of validation failure
     public function getLegalStatusesArrayFromRequest($legal_statuses, $legal_texts, $legal_exp_dates){
         $temp = array();
-//        $this->makeLegalStatusDatesAndTextsArrays();
-        foreach($legal_statuses as $legal_status) {
-            array_push($temp, (object) $this->getLegalStatusArrayForValidationFailure($legal_status, $legal_texts[$legal_status - 1], $legal_exp_dates[$legal_status - 1]));
+        if($legal_statuses != null) {
+            foreach ($legal_statuses as $legal_status) {
+                array_push($temp, (object)$this->getLegalStatusArrayForValidationFailure($legal_status, $legal_texts[$legal_status - 1], $legal_exp_dates[$legal_status - 1]));
+            }
         }
         return $temp;
+    }
+
+    // returns languages and levels input from request when validation fails
+    public function getLanguagesAndLanguagesLevelsFromRequest($request){
+        $languages_levels = $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request);
+        for($i = 0; $i < count($languages_levels); $i++){
+            $languages_levels[$i] = (object) $languages_levels[$i];
+        }
+        return $languages_levels;
     }
 
     // get all languages keys from basic info's form $request
@@ -170,8 +166,8 @@ class BasicInfoService{
         foreach($keys as $key){
             // make array containing language id and level id and...
             $temp = array(
-                'language' => $languagesUnique[$key],
-                'level' =>$levelsUnique[$key],
+                'language_id' => $languagesUnique[$key],
+                'language_level_id' =>$levelsUnique[$key],
             );
             // ...push it into the $merge array
             array_push($merge, $temp);
@@ -226,8 +222,8 @@ class BasicInfoService{
             // create a temp array with values needed and...
             $temp = array(
                 'benefiter_id' => $benefiterId,
-                'language_id' => $languageAndLevel['language'],
-                'language_level_id' => $languageAndLevel['level'],
+                'language_id' => $languageAndLevel['language_id'],
+                'language_level_id' => $languageAndLevel['language_level_id'],
             );
             // ...push it into $languagesForDB
             array_push($languagesForDB, $temp);
