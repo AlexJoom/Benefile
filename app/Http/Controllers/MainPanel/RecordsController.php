@@ -74,7 +74,6 @@ class RecordsController extends Controller
         if($validator->fails()){
             $legal_statuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsFromRequest($request->all());
-//            dd($benefiterLanguagesAndLevels);
             return redirect('benefiter/-1/basic-info')
                         ->withInput(array(
                             'folder_number' => $request->folder_number,
@@ -93,6 +92,14 @@ class RecordsController extends Controller
                             'number_of_children' => $request->number_of_children,
                             'relatives_residence' => $request->relatives_residence,
                             'education_status' => $request->education_status,
+                            'interpreter' => $request->interpreter,
+                            'working' => $request->working,
+                            'working_legally' => $request->working_legally,
+                            'country_abandon_reason' => $request->country_abandon_reason,
+                            'travel_route' => $request->travel_route,
+                            'travel_duration' => $request->travel_duration,
+                            'detention_duration' => $request->detention_duration,
+                            'social_history' => $request->social_history,
                         ))
                         ->with("legalStatuses", $legal_statuses)
                         ->with("benefiter_languages", $benefiterLanguagesAndLevels)
