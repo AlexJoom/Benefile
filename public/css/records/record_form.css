@@ -2,6 +2,10 @@
     border: 20px solid #e6f4f4;
 }
 
+.text-align-center{
+    text-align: center;
+}
+
 .form-section.no-bottom-border{
     border: 20px solid #e6f4f4;
     border-bottom: none;
@@ -92,7 +96,9 @@ input[type="radio"] {
     -ms-appearance: checkbox;     /* not currently supported */
     border-radius: 0;
 }
-
+.padding-20{
+    padding: 20px;
+}
 .padding-top-none{
     padding-top: 0;
 }
@@ -167,4 +173,11 @@ input:focus, textarea:focus {
     color: white;
     font-size: 18px;
     font-weight: 700;
+}
+
+.referral-info{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+    text-align: center;
 }
