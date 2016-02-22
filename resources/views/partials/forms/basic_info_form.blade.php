@@ -605,4 +605,56 @@
         {!! Form::submit('Αποθήκευση Βασικών Στοιχείων', array('class' => 'submit-button')) !!}
     </div>
 {!! Form::close() !!}
+    {{-- BASIC INFO REFERRALS --}}
+    @if($benefiter->id == -1)
+        <div class="row">
+            <div class="col-md-12 referral-info">
+                <p>Για την δυνατότητα καταχώρησης παραπομπής, καταχωρήστε και αποθηκεύστε πρώτα τα στοιχεία του οφελούμενου. </p>
+            </div>
+        </div>
+    @else
+        {{-- REFERRALS --}}
+        <div class="form-section no-bottom-border">
+            <div class="underline-header">
+                <h1 class="record-section-header padding-left-right-15">11. Παραπομπές</h1>
+            </div>
+            {{-- OLDER REFERRALS LIST --}}
+            <h5 class="text-align-center">ΛΙΣΤΑ ΠΑΡΑΠΟΜΠΩΝ</h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="basic_info_referrals-list" class="row padding-bottom-30">
+                    </div>
+                </div>
+            </div>
+            {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
+                {{-- ADD NEW REFERRAL --}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="basic_info_referrals" class="row padding-bottom-30">
+                            <div  class="padding-left-right-15 basic_info_referral">
+                                <div class="form-group float-left width-100-percent">
+                                    {{-- ΠΑΡΑΠΟΜΠΗ --}}
+                                    <div class="make-inline col-md-10">
+                                        {!! Form::label('basic_info_referrals', 'ΠΑΡΑΠΟΜΠΗ: ') !!}
+                                        {!! Form::text('basic_info_referrals[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                        {{-- add --}}
+                                        <a class="color-green add-ref" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                        </a>
+                                        {{-- remove --}}
+                                        <a class="color-red remove-ref hide-element" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section align-text-center">
+                    {!! Form::submit('Αποθήκευση Παραπομπών', array('class' => 'submit-button')) !!}
+                </div>
+            {!! Form::close() !!}
+        </div>
+    @endif
 </div>
