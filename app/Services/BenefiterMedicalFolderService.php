@@ -274,7 +274,7 @@ class BenefiterMedicalFolderService
 
 
     // -------------------------------------------------------------- //
-    //----------- medical_referrals table ---------------------------//
+    //----------- medical_referrals table ---------------------------DONE//
     // DB save
     public function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);

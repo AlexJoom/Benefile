@@ -106,6 +106,12 @@ $(document).ready(function(){
     $("body").on("click", ".remove-file", function(){
         $(this).parents(".file-added-div").remove();
     });
+
+    // By clicking the new visit button the form should be slide down
+    $('#new-medical-visit').hide();
+    $('#new-med-visit-button').on('click', function(){
+        $('#new-medical-visit').slideToggle();
+    });
 });
 
 //var $condition_count = 0;
