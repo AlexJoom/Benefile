@@ -28,7 +28,7 @@ class CreateBenefitersTable extends Migration
             $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
-            $[BEN-153] - Import seed file for reference table.table->boolean('language_interpreter_needed');
+            $table->boolean('language_interpreter_needed');
             $table->boolean('is_benefiter_working')->nullable();
             $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
