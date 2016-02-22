@@ -17,4 +17,9 @@ class DatesHelper
             return "";
         }
     }
+
+    // gets Carbon Formatted String from simple Date String
+    public function getDateStringFromSimpleString($date){
+        return $this->makeDBFriendlyDate($date)->toDateTimeString();
+    }
 }

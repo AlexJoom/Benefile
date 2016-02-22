@@ -264,7 +264,7 @@ class BasicInfoService{
         }
     }
 
-    //
+    // returns an array with the legal status from request in case of validation failure
     private function getLegalStatusArrayForValidationFailure($legal_status, $legal_text, $legal_exp_date){
         return array(
             "exp_date" => $this->datesHelper->getDateStringFromSimpleString($legal_exp_date),
