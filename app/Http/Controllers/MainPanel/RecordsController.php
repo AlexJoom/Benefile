@@ -47,7 +47,8 @@ class RecordsController extends Controller
         // get legal statuses from session, else get null and afterwards forget session value
         $legal_statuses = session()->get('legalStatuses', function() { return null; });
         session()->forget('legalStatuses');
-        $benefiterLanguagesAndLevels = null;
+        $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
+        session()->forget('benefiter_languages');
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -70,9 +71,10 @@ class RecordsController extends Controller
     // post from basic info form
     public function postBasicInfo(Request $request){
         $validator = $this->basicInfoService->basicInfoValidation($request->all());
-
         if($validator->fails()){
-            $legalStatuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
+            $legal_statuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
+            $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsFromRequest($request->all());
+//            dd($benefiterLanguagesAndLevels);
             return redirect('benefiter/-1/basic-info')
                         ->withInput(array(
                             'lastname' => $request->lastname,
@@ -89,8 +91,10 @@ class RecordsController extends Controller
                             'marital_status' => $request->marital_status,
                             'number_of_children' => $request->number_of_children,
                             'relatives_residence' => $request->relatives_residence,
+                            'education_status' => $request->education_status,
                         ))
-                        ->with("legalStatuses", $legalStatuses)
+                        ->with("legalStatuses", $legal_statuses)
+                        ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                         ->withErrors($validator->errors()->all());
         } else {
             $benefiter = $this->basicInfoService->saveBasicInfoToDB($request->all());
