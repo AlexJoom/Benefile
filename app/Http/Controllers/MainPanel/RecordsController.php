@@ -46,6 +46,7 @@ class RecordsController extends Controller
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         $legal_statuses = null;
         $benefiterLanguagesAndLevels = null;
+        $benefiter_folder_number = null;
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -58,7 +59,12 @@ class RecordsController extends Controller
         } else {
             $benefiter = new Benefiter();
         }
-        return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels)->with("benefiter", $benefiter)->with("legal_statuses", $legal_statuses)->with("benefiter_languages", $benefiterLanguagesAndLevels);
+        return view('benefiter.basic_info')->with("languages", $languages)
+                                           ->with("languageLevels", $languageLevels)
+                                           ->with("benefiter", $benefiter)
+                                           ->with("legal_statuses", $legal_statuses)
+                                           ->with("benefiter_languages", $benefiterLanguagesAndLevels)
+                                           ->with('benefiter_folder_number'. $benefiter_folder_number);
     }
 
     // post from basic info form
@@ -66,13 +72,15 @@ class RecordsController extends Controller
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         $validator = $this->basicInfoService->basicInfoValidation($request->all());
+
         if($validator->fails()){
             return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels)->with("benefiter", new Benefiter())->withErrors($validator->errors()->all());
         } else {
             $benefiter = $this->basicInfoService->saveBasicInfoToDB($request->all());
             $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($benefiter->id);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsByBenefiterId($benefiter->id);
-            return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels)->with("benefiter", $benefiter)->with("legal_statuses", $legal_statuses)->with("benefiter_languages", $benefiterLanguagesAndLevels);
+            $benefiter_folder_number = $benefiter->folder_number;
+            return view('benefiter.basic_info')->with("languages", $languages)->with("languageLevels", $languageLevels)->with("benefiter", $benefiter)->with("legal_statuses", $legal_statuses)->with("benefiter_languages", $benefiterLanguagesAndLevels)->with('benefiter_folder_number', $benefiter_folder_number);
         }
     }
 
@@ -117,9 +125,10 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->medical_locations_simplier_array($medical_locations);
         //TODO this benefiter id needs to be inserted from the respective url which includes it
+        $benefiter_folder_number = Benefiter::where('id','=', 1)->first()->folder_number;
         $benefiter_id = 1;
         $doctor_id = Auth::user()->id;
-        return view('benefiter.medical-folder', compact('ExamResultsLookup','medical_locations_array' ,'benefiter_id', 'doctor_id'))->with('benefiter', new Benefiter());
+        return view('benefiter.medical-folder', compact('ExamResultsLookup','medical_locations_array', 'benefiter_folder_number', 'benefiter_id', 'doctor_id'))->with('benefiter', new Benefiter());
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request){
@@ -128,9 +137,6 @@ class RecordsController extends Controller
 //        if($validator->fails()){
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
-
-
-        dd($request->all());
 
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
