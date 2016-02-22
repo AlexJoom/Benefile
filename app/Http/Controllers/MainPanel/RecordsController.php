@@ -97,6 +97,7 @@ class RecordsController extends Controller
                             'marital_status' => $request->marital_status,
                             'number_of_children' => $request->number_of_children,
                             'relatives_residence' => $request->relatives_residence,
+                            'children_names' => $request->children_names,
                             'education_status' => $request->education_status,
                             'interpreter' => $request->interpreter,
                             'working' => $request->working,
