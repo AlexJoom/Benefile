@@ -75,6 +75,7 @@ class RecordsController extends Controller
             $legalStatuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
             return redirect('benefiter/-1/basic-info')
                         ->withInput(array(
+                            'folder_number' => $request->folder_number,
                             'lastname' => $request->lastname,
                             'name' => $request->name,
                             'gender' => $request->gender,
