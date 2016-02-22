@@ -77,4 +77,4 @@ $(document).ready(function(){
     });
 });
 
-var $langs_count = 0;
+var $langs_count = $(".added-div").length;

@@ -49,6 +49,7 @@ class RecordsController extends Controller
         session()->forget('legalStatuses');
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
         session()->forget('benefiter_languages');
+//        dd($benefiterLanguagesAndLevels);
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -93,6 +94,14 @@ class RecordsController extends Controller
                             'number_of_children' => $request->number_of_children,
                             'relatives_residence' => $request->relatives_residence,
                             'education_status' => $request->education_status,
+                            'interpreter' => $request->interpreter,
+                            'working' => $request->working,
+                            'working_legally' => $request->working_legally,
+                            'country_abandon_reason' => $request->country_abandon_reason,
+                            'travel_route' => $request->travel_route,
+                            'travel_duration' => $request->travel_duration,
+                            'detention_duration' => $request->detention_duration,
+                            'social_history' => $request->social_history,
                         ))
                         ->with("legalStatuses", $legal_statuses)
                         ->with("benefiter_languages", $benefiterLanguagesAndLevels)
