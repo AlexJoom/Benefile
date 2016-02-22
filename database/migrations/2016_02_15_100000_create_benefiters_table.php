@@ -28,7 +28,7 @@ class CreateBenefitersTable extends Migration
             $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
-            $table->boolean('language_interpreter_needed');
+            $[BEN-153] - Import seed file for reference table.table->boolean('language_interpreter_needed');
             $table->boolean('is_benefiter_working')->nullable();
             $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
@@ -86,7 +86,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('benefiters_legal_status', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description')->nullable();
-            $table->date('exp_date');
+            $table->date('exp_date')->nullable();
 
             $table->integer('benefiter_id')->unsigned()->nullable();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
