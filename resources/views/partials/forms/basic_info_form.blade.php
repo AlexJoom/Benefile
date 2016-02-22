@@ -12,7 +12,7 @@
                         <div class="padding-left-right-15">
                             <div class="form-group padding-left-right-15 float-left">
                                 {!! Form::label('folder_number', 'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ') !!}
-                                {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right')) !!}
+                                {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
                             </div>
                         </div>
                     </div>
@@ -172,8 +172,8 @@
                             $legal_status_text[$i] = "";
                             $legal_status_exp_date[$i] = "";
                         }
-                        if(isset($legal_statuses) and $legal_statuses != null){
-                            foreach($legal_statuses as $status){
+                        if(isset($legalStatuses) and $legalStatuses != null){
+                            foreach($legalStatuses as $status){
                                 $id = $status->legal_lookup_id - 1;
                                 $legal_status[$id] = true;
                                 $legal_status_text[$id] = $status->description;

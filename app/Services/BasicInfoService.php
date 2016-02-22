@@ -18,8 +18,7 @@ class BasicInfoService{
 
     // validate the basic info
     public function basicInfoValidation($request){
-        $this->requestForValidation = $this->getValidationArray($request);
-        return Validator::make($this->requestForValidation, array(
+        $rules = array(
             'folder_number' => 'max:255',
             'name' => 'max:255',
             'lastname' => 'max:255',
@@ -33,26 +32,37 @@ class BasicInfoService{
             'telephone' => 'min:5|max:20',
             'number_of_children' => 'integer',
             'relatives_residence' => 'max:255',
-            'legal_status_text0' => 'max:255',
-            'legal_status_text1' => 'max:255',
-            'legal_status_text2' => 'max:255',
-            'legal_status_text3' => 'max:255',
-            'legal_status_text4' => 'max:255',
-            'legal_status_text5' => 'max:255',
-            'legal_status_text6' => 'max:255',
-            'legal_status_exp_date0' => 'date',
-            'legal_status_exp_date1' => 'date',
-            'legal_status_exp_date2' => 'date',
-            'legal_status_exp_date3' => 'date',
-            'legal_status_exp_date4' => 'date',
-            'legal_status_exp_date5' => 'date',
-            'legal_status_exp_date6' => 'date',
+//            'legal_status_text0' => 'max:255',
+//            'legal_status_text1' => 'max:255',
+//            'legal_status_text2' => 'max:255',
+//            'legal_status_text3' => 'max:255',
+//            'legal_status_text4' => 'max:255',
+//            'legal_status_text5' => 'max:255',
+//            'legal_status_text6' => 'max:255',
+//            'legal_status_exp_date0' => 'date',
+//            'legal_status_exp_date1' => 'date',
+//            'legal_status_exp_date2' => 'date',
+//            'legal_status_exp_date3' => 'date',
+//            'legal_status_exp_date4' => 'date',
+//            'legal_status_exp_date5' => 'date',
+//            'legal_status_exp_date6' => 'date',
             'country_abandon_reason' => 'max:255',
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
             'detention_duration' => 'max:255',
             'social_history' => 'max:2000',
-        ));
+        );
+        $legal_status_texts = $request['legal_status_text'];
+        foreach($legal_status_texts as $legal_status_text){
+            array_push($rules, [$legal_status_text => 'max:255']);
+        }
+        $legal_status_exp_dates = $request['legal_status_exp_date'];
+        foreach($legal_status_exp_dates as $legal_status_exp_date){
+            array_push($rules, [$legal_status_exp_date => 'date']);
+        }
+        $request['birth_date'] = $this->datesHelper->makeDBFriendlyDate($request['birth_date']);
+        $request['arrival_date'] = $this->datesHelper->makeDBFriendlyDate($request['arrival_date']);
+        return Validator::make($request, $rules);
     }
 
     // insert into DB benefiter table
@@ -97,6 +107,16 @@ class BasicInfoService{
     // gets all benefiter's languages and languages levels
     public function getLanguagesAndLanguagesLevelsByBenefiterId($id){
         return \DB::table('benefiters_languages')->where('benefiter_id', '=', $id)->get();
+    }
+
+    // gets an array with legal statuses from request in case of validation failure
+    public function getLegalStatusesArrayFromRequest($legal_statuses, $legal_texts, $legal_exp_dates){
+        $temp = array();
+//        $this->makeLegalStatusDatesAndTextsArrays();
+        foreach($legal_statuses as $legal_status) {
+            array_push($temp, (object) $this->getLegalStatusArrayForValidationFailure($legal_status, $legal_texts[$legal_status - 1], $legal_exp_dates[$legal_status - 1]));
+        }
+        return $temp;
     }
 
     // get all languages keys from basic info's form $request
@@ -216,26 +236,26 @@ class BasicInfoService{
     private function saveLegalStatusesToDB($benefiterId, $request){
         $legal_statuses_checked = $request['legal_status'];
         if($legal_statuses_checked != null) {
-            $this->makeLegalStatusDatesAndTextsArrays();
+//            $this->makeLegalStatusDatesAndTextsArrays($request);
             foreach ($legal_statuses_checked as $legal_status_checked) {
-                \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked)));
+                \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked), $request));
             }
         }
     }
 
     // returns an array for legal status DB table insert
-    private function getLegalStatusArrayForDBInsert($benefiterId, $legal_status_checked){
+    private function getLegalStatusArrayForDBInsert($benefiterId, $legal_status_checked, $request){
         return array(
             "benefiter_id" => $benefiterId,
-            "exp_date" => $this->datesHelper->makeDBFriendlyDate($this->legalDates[$legal_status_checked - 1]),
-            "description" => $this->legalTexts[$legal_status_checked - 1],
+            "exp_date" => $this->datesHelper->makeDBFriendlyDate($request['legal_status_exp_date'][$legal_status_checked - 1]),
+            "description" => $request['legal_status_text'][$legal_status_checked - 1],
             "legal_lookup_id" => $legal_status_checked,
         );
     }
 
     // creates two arrays: an array for legal statuses dates and one for legal statuses texts
-    private function makeLegalStatusDatesAndTextsArrays(){
-        $keys = array_keys($this->requestForValidation);
+    private function makeLegalStatusDatesAndTextsArrays($request){
+        $keys = array_keys($request);
         foreach($keys as $key){
             if(strpos($key, "legal_status_exp_date") !== false){
                 array_push($this->legalDates, $this->requestForValidation[$key]);
@@ -243,6 +263,15 @@ class BasicInfoService{
                 array_push($this->legalTexts, $this->requestForValidation[$key]);
             }
         }
+    }
+
+    //
+    private function getLegalStatusArrayForValidationFailure($legal_status, $legal_text, $legal_exp_date){
+        return array(
+            "exp_date" => $this->datesHelper->getDateStringFromSimpleString($legal_exp_date),
+            "description" => $legal_text,
+            "legal_lookup_id" => $legal_status,
+        );
     }
 
     // returns an array suitable for validation
