@@ -19,6 +19,7 @@ class Benefiter extends Model
         'address',
         'telephone',
         'number_of_children',
+        'children_names',
         'relatives_residence',
         'other_language',
         'language_interpreter_needed',

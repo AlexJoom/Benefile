@@ -7,7 +7,7 @@ class SocialFolderService{
     // validates the social folder view form input
     public function socialFolderValidation($request){
         return Validator::make($request, array(
-            'children_names' => 'max:255',
+            // 'children_names' => 'max:255',
             'ethnic_group' => 'max:255',
             'comments' => 'max:2000',
             'session_date' => 'date',

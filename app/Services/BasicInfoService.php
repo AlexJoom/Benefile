@@ -31,6 +31,7 @@ class BasicInfoService{
             'address' => 'max:255',
             'telephone' => 'min:5|max:20',
             'number_of_children' => 'integer',
+            'chidren_names' => 'max:2000',
             'relatives_residence' => 'max:255',
 //            'legal_status_text0' => 'max:255',
 //            'legal_status_text1' => 'max:255',
@@ -74,6 +75,7 @@ class BasicInfoService{
         $benefiter = new Benefiter(
             $this->getBenefiterArrayForDBInsert($request)
         );
+        // dd($benefiter);
         $benefiter->save();
         $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
         // if legal status is not existent, add it
@@ -194,6 +196,7 @@ class BasicInfoService{
             "address" => $request['address'],
             "marital_status_id" => $request['marital_status'],
             "number_of_children" => $request['number_of_children'],
+            "children_names" => $request['children_names'],
             "relatives_residence" => $request['relatives_residence'],
             "language_interpreter_needed" => $request['interpreter'],
             "education_id" => $request['education_status'],
@@ -291,6 +294,7 @@ class BasicInfoService{
             "address" => $request['address'],
             "marital_status_id" => $request['marital_status'],
             "number_of_children" => $request['number_of_children'],
+            "children_names" => $request['children_names'],
             "relatives_residence" => $request['relatives_residence'],
             "legal_status_text0" => $request['legal_status_text'][0],
             "legal_status_text1" => $request['legal_status_text'][1],
