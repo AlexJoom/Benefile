@@ -109,11 +109,6 @@ class BenefiterMedicalFolderService
 
 
     //TODO CREATE A FUNCTION THAT CALLS THE BELOW FUNCTIONS AND MAKE THE BELOW PRIVATE NOT PUBLIC
-
-
-
-
-
     //----------- medical_visit table ------------------------------------DONE//
     public function save_medical_visit($request){
         $newMedicalVisit = new medical_visits();
