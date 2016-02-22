@@ -54,6 +54,27 @@ $(document).ready(function(){
     $("body").on("blur", "input", function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
     });
+
+    // add more referrals in basic info
+    $("body").on("click", ".add-ref", function(){
+        var $copy = $(".basic_info_referral").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("basic_info_referral").addClass("ref-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$refs_count++;
+        //$copy.find("#refList").attr("name", $copy.find("#refList").attr("name") + $refs_count);
+
+        // append cloned element to parent
+        var $parent = $("#basic_info_referrals");
+        $copy.appendTo($parent);
+    });
+    // remove referral element after remove button is clicked
+    $("body").on("click", ".remove-ref", function(){
+        $(this).parents(".ref-added-div").remove();
+    });
 });
 
 var $langs_count = $(".added-div").length;
