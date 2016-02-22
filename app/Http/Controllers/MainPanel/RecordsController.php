@@ -77,6 +77,7 @@ class RecordsController extends Controller
 //            dd($benefiterLanguagesAndLevels);
             return redirect('benefiter/-1/basic-info')
                         ->withInput(array(
+                            'folder_number' => $request->folder_number,
                             'lastname' => $request->lastname,
                             'name' => $request->name,
                             'gender' => $request->gender,
