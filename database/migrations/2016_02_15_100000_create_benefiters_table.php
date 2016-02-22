@@ -15,7 +15,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('benefiters', function (Blueprint $table) {
             $table->increments('id');
             // Insert user that created the benefiter's file.
-            $table->string('folder_number');
+            $table->string('folder_number')->unique();
             $table->string('name');
             $table->string('lastname');
             $table->string('fathers_name');
