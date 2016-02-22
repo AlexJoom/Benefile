@@ -1,9 +1,23 @@
 <div class="basic-info-form">
 {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info')) !!}
+
     <div class="personal-info form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
         </div>
+        {{-- BENEFITER FOLDER NUMBER --}}
+            <div class="row padding-top-20">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="padding-left-right-15">
+                            <div class="form-group padding-left-right-15 float-left">
+                                {!! Form::label('folder_number', 'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ') !!}
+                                {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">

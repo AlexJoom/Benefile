@@ -20,6 +20,7 @@ class BasicInfoService{
     public function basicInfoValidation($request){
         $this->requestForValidation = $this->getValidationArray($request);
         return Validator::make($this->requestForValidation, array(
+            'folder_number' => 'max:255',
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
@@ -159,7 +160,7 @@ class BasicInfoService{
     // make and return an array that will be appropriate for DB insert
     private function getBenefiterArrayForDBInsert($request){
         return array(
-//             "folder_number" => $request['folder_name'],
+            "folder_number" => $request['folder_number'],
             "lastname" => $request['lastname'],
             "name" => $request['name'],
             "gender_id" => $request['gender'],
@@ -247,7 +248,7 @@ class BasicInfoService{
     // returns an array suitable for validation
     private function getValidationArray($request){
         return array(
-            //             "folder_number" => $request['folder_name'],
+            "folder_number" => $request['folder_number'],
             "lastname" => $request['lastname'],
             "name" => $request['name'],
             "gender_id" => $request['gender'],
