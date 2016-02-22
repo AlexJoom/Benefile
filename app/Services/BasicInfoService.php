@@ -320,7 +320,6 @@ class BasicInfoService{
     // -------------------------------------------------------------- //
     //----------- benefter_reference_lookup table (REFERRALS) --------//
     // DB save
-//    TODO
     public function save_medical_referrals($request){
         $request_basic_info_referrals = $this->basic_info_referrals($request);
         foreach($request_basic_info_referrals as $bir){
