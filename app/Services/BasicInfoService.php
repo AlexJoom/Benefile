@@ -316,4 +316,30 @@ class BasicInfoService{
             "social_history" => $request['social_history'],
         );
     }
+
+    // -------------------------------------------------------------- //
+    //----------- benefter_reference_lookup table (REFERRALS) --------//
+    // DB save
+//    TODO
+    public function save_medical_referrals($request){
+        $request_basic_info_referrals = $this->basic_info_referrals($request);
+        foreach($request_basic_info_referrals as $bir){
+            if(!empty($bir)){
+                $med_referral = new medical_referrals();
+                $med_referral->referrals = $bir;
+                $med_referral->medical_visit_id = $id;
+                $med_referral->save();
+            }
+
+        }
+    }
+    // post request
+    private function basic_info_referrals($request){
+        $basic_info_referrals = $request['basic_info_referrals'];
+        $referrals_array = [];
+        foreach ($basic_info_referrals as $ref){
+            array_push($referrals_array, $ref);
+        }
+        return $referrals_array;
+    }
 }

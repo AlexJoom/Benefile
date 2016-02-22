@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReferencesLookup extends Model
 {
-    protected $table = 'benefter_reference_lookup';
+    protected $table = 'benefiter_referrals_lookup';
 
     protected $fillable = [
         'description'];

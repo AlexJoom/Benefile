@@ -12,7 +12,7 @@ class ReferenceSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('benefiter_reference_lookup')->insert(
+        \DB::table('benefiter_referrals_lookup')->insert(
             array(
                 array('description'   => 'Κοινωνική'),
                 array('description'   => 'Ιατρική'),

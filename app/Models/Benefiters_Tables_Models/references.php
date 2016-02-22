@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reference extends Model
 {
-    protected $table = 'reference';
+    protected $table = 'benefiter_referrals';
 
     protected $fillable = [
         'description',
