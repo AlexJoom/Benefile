@@ -49,6 +49,7 @@ class RecordsController extends Controller
         session()->forget('legalStatuses');
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
         session()->forget('benefiter_languages');
+//        dd($benefiterLanguagesAndLevels);
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -74,6 +75,7 @@ class RecordsController extends Controller
         if($validator->fails()){
             $legal_statuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsFromRequest($request->all());
+//            dd($benefiterLanguagesAndLevels);
             return redirect('benefiter/-1/basic-info')
                         ->withInput(array(
                             'folder_number' => $request->folder_number,

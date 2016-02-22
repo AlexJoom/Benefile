@@ -380,18 +380,18 @@
                 <?php
                     // if there are available languages selected
                     if(isset($benefiter_languages) and $benefiter_languages != null){
-                        $first = 0;
+                        $counter = -1;
                         foreach($benefiter_languages as $benefiter_language){
-                            if ($first == 0){
-                                $first++;
+                            if ($counter == -1){
                     echo '<div class="padding-left-right-15 language-div">';
                             } else {
                     echo '<div class="padding-left-right-15 added-div">';
                             }
+                            $counter++;
                 ?>
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
-                                <select name="language" class="language-selection">
+                                <select name="language{{$counter}}" class="language-selection">
                                     @foreach($languages as $language)
                                     <?php $selected = "";?>
                                     @if($benefiter_language->language_id == $language->id)
@@ -402,7 +402,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2 make-inline">
-                                <select name="language_level" class="make-inline level-selection">
+                                <select name="language_level{{$counter}}" class="make-inline level-selection">
                                     <?php
                                         $first = true;
                                     ?>
