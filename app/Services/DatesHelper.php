@@ -22,4 +22,23 @@ class DatesHelper
     public function getDateStringFromSimpleString($date){
         return $this->makeDBFriendlyDate($date)->toDateTimeString();
     }
+
+    // gets finely formatted String from DB Date
+    public function getFinelyFormattedStringDateFromDBDate($date){
+        if($date == "0000-00-00 "){
+            $date = "";
+            return $date;
+        } else {
+            if($date != "") {
+                if (strlen($date) > 10) {
+                    $data = substr($date, 0, -9);
+                } else {
+                    $data = $date;
+                }
+                $tmp = explode('-', $data);
+                $data = $tmp[2] . '-' . $tmp[1] . '-' . $tmp[0];
+                return $data;
+            }
+        }
+    }
 }
