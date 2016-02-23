@@ -96,8 +96,8 @@ class BenefiterMedicalFolderService
     private function getValidationArray($request){
         return array(
 //            TODO
-            "social_background" => $request['social_background'],
-            "document_manager_id" => \Auth::user()->id,
+//            "social_background" => $request['social_background'],
+//            "document_manager_id" => \Auth::user()->id,
         );
     }
 
@@ -115,6 +115,7 @@ class BenefiterMedicalFolderService
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
         $newMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $newMedicalVisit->medical_visit_date = $request['examination_date'];
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
@@ -133,7 +134,7 @@ class BenefiterMedicalFolderService
                 $medical_chronic_conditions_lookup->description = $cc;
                 $medical_chronic_conditions_lookup->save();
                 // then to chronic conditions table
-                $medical_chronic_conditions->benefiters_id = $request['$benefiter_id'];
+                $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
                 $medical_chronic_conditions->description = $cc;
                 $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
                 $medical_chronic_conditions->save();
