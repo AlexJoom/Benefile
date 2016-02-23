@@ -13,6 +13,7 @@
         'mothers_name' => 'ΜΗΤΡΩΝΥΜΟ',
         'nationality_country' => 'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ',
         'origin_country' => 'ΧΩΡΑ ΚΑΤΑΓΩΓΗΣ',
+        'ethnic_group' => 'ΕΘΝΟΤΙΚΗ ΟΜΑΔΑ',
         'arrival_date' => 'ΗΜΕΡ. ΑΦΙΞΗΣ',
         'telephone' => 'ΤΗΛ. ΕΠΙΚΟΙΝΩΝΙΑΣ',
         'address' => 'Δ/ΝΣΗ ΚΑΤΟΙΚΙΑΣ',

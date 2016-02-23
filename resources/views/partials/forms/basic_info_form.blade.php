@@ -89,6 +89,10 @@
                             {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
                         </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
+                            {!! Form::text('ethnic_group', null, array('class' => 'custom-input-text')) !!}
+                        </div>
                     </div>
                 </div>
                 <div class="row">

@@ -35,6 +35,7 @@ class Benefiter extends Model
         'educational_reference_date',
         'origin_country',
         'nationality_country',
+        'ethnic_group',
         'document_manager_id',
         'social_history',
 

@@ -99,6 +99,7 @@ class RecordsController extends Controller
                             'nationality_country' => $request->nationality_country,
                             'origin_country' => $request->origin_country,
                             'arrival_date' => $request->arrival_date,
+                            'ethnic_group' => $request->ethnic_group,
                             'telephone' => $request->telephone,
                             'address' => $request->address,
                             'marital_status' => $request->marital_status,
