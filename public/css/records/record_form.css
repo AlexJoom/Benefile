@@ -190,3 +190,7 @@ input:focus, textarea:focus {
 #benefiter_referrals_history td{
     text-align: center;
 }
+
+input[disabled]{
+    opacity: 0.6;
+}
