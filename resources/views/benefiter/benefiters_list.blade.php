@@ -31,7 +31,10 @@
                             <td>{{ $benefiter['lastname'] }}</td>
                             <td>{{ $benefiter['telephone'] }}</td>
                             <td>
-                                <button class="lighter-green-background">Επεξεργασία</button>
+                                {!! Form::open(array('url' => 'benefiter/'. $benefiter['id'] .'/basic-info', 'method' => 'get')) !!}
+                                    {!! Form::hidden('benefiter_id', $benefiter['id']) !!}
+                                    {!! Form::submit('Επεξεργασία', array('class' => 'edit-button lighter-green-background')) !!}
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                 @endforeach
