@@ -110,6 +110,7 @@
         <div class="col-md-12">
             <div class="no-margin pos-relative" id="results-to-activate">
                 <div class="display padding-20">
+                    @if(count($benefiter_medical_history_list)>0)
                     <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
@@ -139,6 +140,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                    <h5 class="text-align-center">Δεν βρέθηκε ιατρικό ιστορικό</h5>
+                    @endif
                 </div>
             </div>
         </div>
@@ -154,7 +158,7 @@
 
 
 <div id="new-medical-visit" class="basic-info-form">
-    {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder')) !!}
+    {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder', 'files'=>true)) !!}
         {{-- get the benefiter id --}}
         {!! Form::hidden('benefiter_id', $benefiter->id) !!}
         {{-- get the doctor id --}}
@@ -439,7 +443,7 @@
                             {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
                                 {!! Form::label('upload_file_title', 'ΠΕΡΙΓΡΑΦΗ ΑΡΧΕΙΟΥ: ') !!}
-                                {!! Form::text('upload_file_title[]', null, array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::text('upload_file_description[]', null, array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-file" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -454,7 +458,7 @@
                     <div class="row">
                         <div class="padding-left-right-15">
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                                {!! Form::file('upload_file_path[]', null, array('class' => 'custom-input-text')) !!}
+                                {!! Form::file('upload_file_title[]', null, array('class' => 'custom-input-text')) !!}
                             </div>
                         </div>
                     </div>

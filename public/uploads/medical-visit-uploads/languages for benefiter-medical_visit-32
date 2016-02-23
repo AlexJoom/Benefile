@@ -1,0 +1,86 @@
+
+
+-- step 1: insert new languages 
+ insert into language_lookup (language,created_at,updated_at)
+   select distinct f.language, now() as created_at, now() as updated_at  from  
+   (
+		SELECT
+			distinct
+			  TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(f.language, ',', numbers.n), ',', -1)) as language
+			FROM
+				( 
+				  select 1 as n union select 2 as n union select 3 as n union
+				  select 4 as n union select 5  as n union select 7 as n union
+				   select 8  as n union select 9 as n 
+				 ) as numbers  -- stackoverflow link
+			INNER JOIN File_Import_Schema f
+			  ON CHAR_LENGTH(f.language)
+				 -CHAR_LENGTH(REPLACE(f.language, ',', ''))>=numbers.n-1
+			ORDER BY
+			  id, n
+	) f -- now that we have the languages seperated to rows we can insert the languages that are not in the lookup table
+ 		left outer join language_lookup lang on f.language = lang.language
+   where lang.id is null;
+
+
+
+-- Insert this to a table that has benefiter_id, language and lang_level_id
+ insert into benefiters_langs_and_langs_levels (benefiter_id, lang_id, language_level_id)
+  
+	select languagesThatBenefiterSpeaks.benefiter_id, languagesThatBenefiterSpeaks.lang_id, language_level_id from 
+	(
+		select  b.id as benefiter_id, l.id as lang_id from 
+		(
+				SELECT
+					f.folder_number,
+					  TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(f.language, ',', numbers.n), ',', -1)) as language
+					FROM
+						( 
+						  select 1 as n union select 2 as n union select 3 as n union
+						  select 4 as n union select 5  as n union select 7 as n union
+						   select 8  as n union select 9 as n 
+						 ) as numbers  -- stackoverflow link
+					INNER JOIN File_Import_Schema f
+					  ON CHAR_LENGTH(f.language)
+						 -CHAR_LENGTH(REPLACE(f.language, ',', ''))>=numbers.n-1
+					ORDER BY
+					  id, n
+			) f 
+				inner join benefiters b on b.folder_number = f.folder_number
+				inner join language_lookup l on f.language = l.language
+	) as languagesThatBenefiterSpeaks
+  
+	left outer join 
+	(
+		select  b.id as benefiter_id,languageLevels.language_level_id,lookup.id as lang_id from 
+		(
+			select l.folder_number, l.language_level , 
+			 case when (LENGTH(l.language_level) - LENGTH(REPLACE(l.language_level,'ΚΑΛΟ',''))) <>0 then 1
+				  when (LENGTH(l.language_level) - LENGTH(REPLACE(l.language_level,'ΜΕΤΡΙΑ',''))) <>0 then 2
+			else 3 end as language_level_id, 
+				SUBSTRING_INDEX(l.language_level,'(',1) as language
+			-- SUBSTRING_INDEX(l.language_level,'ΚΑΛΟ',1)  -- SUBSTRING_INDEX('ΚΑΛΟ',0, f.language_level)
+			 from 
+			(
+				SELECT
+							f.folder_number,
+							  TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(f.language_level, ',', numbers.n), ',', -1)) as language_level
+							FROM
+								( 
+								  select 1 as n union select 2 as n union select 3 as n union
+								  select 4 as n union select 5  as n union select 7 as n union
+								   select 8  as n union select 9 as n 
+								 ) as numbers  -- stackoverflow link
+							INNER JOIN File_Import_Schema f
+							  ON CHAR_LENGTH(f.language_level)
+								 -CHAR_LENGTH(REPLACE(f.language_level, ',', ''))>=numbers.n-1
+							ORDER BY
+							  id, n
+			) as l
+
+		) as languageLevels
+		inner join benefiters b on b.folder_number = languageLevels.folder_number
+		inner join  language_lookup lookup on lookup.language  = languageLevels.language
+	) LevelOfLanguages
+	on languagesThatBenefiterSpeaks.lang_id = LevelOfLanguages.lang_id
+

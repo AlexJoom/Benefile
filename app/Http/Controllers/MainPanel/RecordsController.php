@@ -142,17 +142,17 @@ class RecordsController extends Controller
     // get social folder view
     public function getSocialFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-        $doctor_id = Auth::user()->id;
+        $psychologist_id = Auth::user()->id;
         if($benefiter == null) {
             return view('errors.404');
         } else {
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
             $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
             if($socialFolder == null){
-                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("doctor_id", $doctor_id);
+                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("psychologist_id", $psychologist_id);
             } else {
                 $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
-                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with("doctor_id", $doctor_id);
+                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with("psychologist_id", $psychologist_id);
             }
         }
     }
@@ -215,6 +215,7 @@ class RecordsController extends Controller
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
 
+
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
             // chronic conditions table
@@ -229,6 +230,8 @@ class RecordsController extends Controller
             $this->medicalVisit->save_medical_medication($request->all(), $medicalVisit_id);
             // medical referrals
             $this->medicalVisit->save_medical_referrals($request->all(), $medicalVisit_id);
+            // medical file uploads
+            $this->medicalVisit->save_medical_uploads($request->all(), $medicalVisit_id);
 
 
             return view('benefiter.medical-folder', compact('benefiter',
