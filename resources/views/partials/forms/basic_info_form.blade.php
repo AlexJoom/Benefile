@@ -188,7 +188,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <?php
-                        for($i = 0; $i < 7; $i++){
+                        for($i = 0; $i < 8; $i++){
                             $legal_status[$i] = false;
                             $legal_status_text[$i] = "";
                             $legal_status_exp_date[$i] = "";
@@ -307,15 +307,32 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7')) !!}
-                            {!! Form::label('out_of_legal', 'Εκτός νομικού πλαισίου', array('class' => 'float-left')) !!}
+                            {!! Form::label('humanitarian', 'Ανθρωπιστικό', array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[6], array('class' => 'custom-input-text float-left')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left">
+                            {!! Form::label('Ημ. Λήξης') !!}
+                            <div class="make-inline">
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                            {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8')) !!}
+                            {!! Form::label('out_of_legal', 'Εκτός νομικού πλαισίου', array('class' => 'float-left')) !!}
+                            {!! Form::text('legal_status_text[]', $legal_status_text[7], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6 hide">
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label('Ημ. Λήξης') !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
