@@ -651,7 +651,7 @@
                 <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>
             {{-- OLDER REFERRALS LIST --}}
-            <h5 class="text-align-center">ΙΣΤΟΡΙΚΟ ΠΑΡΑΠΟΜΠΩΝ</h5>
+            <h5 class="text-align-center">@lang($p."referrals_history")</h5>
             <div class="row">
                 <div class="col-md-12">
                     <div id="basic_info_referrals-list" class="row padding-bottom-30">
