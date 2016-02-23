@@ -146,7 +146,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group padding-left-right-15 float-left col-md-2">
-                            {!! Form::label('doctor_name', 'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ:') !!}
+                            {!! Form::label('doctor_name', Lang::get('social_folder_form.created_by')) !!}
                             {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-80-percent', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group padding-left-right-15 float-left col-md-2">

@@ -11,6 +11,7 @@
         'legal_issues' => 'Νομικά ζητήματα',
         'job_search' => 'Εκμάθηση τεχνικών αναζήτησης εργασίας',
         'new_session' => 'Νέα Συνεδρία',
+        'created_by' => 'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ:',
         'session_date' => 'ΗΜ. ΣΥΝΕΔΡΙΑΣ',
         'psychosocial_theme' => 'ΘΕΜΑ',
         'session_comments' => 'ΠΑΡΑΤΗΡΗΣΕΙΣ',
