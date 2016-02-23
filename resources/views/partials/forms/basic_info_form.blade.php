@@ -635,7 +635,7 @@
 {!! Form::close() !!}
     {{-- BASIC INFO REFERRALS --}}
     @if($benefiter->id == -1)
-        <div class="row">
+        <div>
             <div class="col-md-12 referral-info">
                 <p>Για την δυνατότητα καταχώρησης παραπομπής, καταχωρήστε και αποθηκεύστε πρώτα τα στοιχεία του οφελούμενου. </p>
             </div>
@@ -733,10 +733,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="form-section align-text-center">
                     {!! Form::submit('Αποθήκευση Παραπομπών', array('class' => 'submit-button')) !!}
                 </div>
             {!! Form::close() !!}
-        </div>
     @endif
 </div>
