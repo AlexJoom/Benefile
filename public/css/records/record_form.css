@@ -95,11 +95,8 @@ input[type="radio"] {
     -moz-appearance: checkbox;    /* Firefox  */
     -ms-appearance: checkbox;     /* not currently supported */
     border-radius: 0;
-    margin-right: 10px;
 }
-input[type="checkbox"] {
-    margin-right: 10px;
-}
+
 .padding-20{
     padding: 20px;
 }
