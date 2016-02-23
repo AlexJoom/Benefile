@@ -62,6 +62,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('benefiter_referrals_lookup', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
 
         Schema::create('benefiter_referrals', function (Blueprint $table) {
@@ -73,6 +74,7 @@ class CreateBenefitersTable extends Migration
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('referral_lookup_id')->unsigned();
             $table->foreign('referral_lookup_id')->references('id')->on('benefiter_referrals_lookup');
+            $table->timestamps();
         });
         
         // Lookup for 'Legal Status' in basic info form.

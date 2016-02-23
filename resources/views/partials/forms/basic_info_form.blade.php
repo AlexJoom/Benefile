@@ -623,10 +623,57 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="basic_info_referrals-list" class="row padding-bottom-30">
+                        <div class="no-margin pos-relative" id="results-to-activate">
+                            <div class="display padding-20">
+                                <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ΠΑΡΑΠΟΜΠΗ</th>
+                                        <th>ΠΕΡΙΓΡΑΦΗ</th>
+                                        <th>ΗΜ. ΠΑΡΑΠΟΜΠΗΣ</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>ΠΑΡΑΠΟΜΠΗ</th>
+                                        <th>ΠΕΡΙΓΡΑΦΗ</th>
+                                        <th>ΗΜ. ΠΑΡΑΠΟΜΠΗΣ</th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {{--@foreach($users as $user)--}}
+                                        {{--@if($user['activation_status'] == 0 && $user['is_deactivated'] == 0)--}}
+                                            {{--<tr>--}}
+                                                {{--<td>{{ $user['lastname'] }}</td>--}}
+                                                {{--<td>{{ $user['name'] }}</td>--}}
+                                                {{--@if($user['user_role_id'] == 2)--}}
+                                                    {{--<td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>--}}
+                                                {{--@else--}}
+                                                    {{--<td>{{$user['role']['role']}}</td>--}}
+                                                {{--@endif--}}
+                                                {{--<td>{{substr($user['created_at'], 0,11)}}</td>--}}
+
+                                                {{--<td>--}}
+                                                    {{--<form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">--}}
+                                                        {{--<input type="hidden" name="user_id" value={{$user['id']}}>--}}
+                                                        {{--<button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>--}}
+                                                        {{--{{ csrf_field() }}--}}
+                                                    {{--</form>--}}
+                                                {{--</td>--}}
+                                            {{--</tr>--}}
+                                        {{--@endif--}}
+                                    {{--@endforeach--}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
+                {!! Form::hidden('benefiter_id', $benefiter->id) !!}
                 {{-- ADD NEW REFERRAL --}}
                 <div class="row">
                     <div class="col-md-12">
@@ -637,9 +684,9 @@
                                     {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                     <div class="make-inline col-md-10">
                                         {!! Form::label('basic_info_referrals', 'ΠΑΡΑΠΟΜΠΗ: ') !!}
-                                        {!! Form::select('basic_info_referral_id[]', $basic_info_referral_array) !!}
+                                        {!! Form::select('basic_info_referrals_id[]', $basic_info_referral_array) !!}
 
-                                        {!! Form::text('basic_info_referrals[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                        {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
 
                                         {{-- add --}}
                                         <a class="color-green add-ref float-right" href="javascript:void(0)">
@@ -650,7 +697,7 @@
                                             <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                         </a>
                                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-right col-md-2">
-                                            {!! Form::text('referral_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                            {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                         </div>
                                     </div>
                                 </div>

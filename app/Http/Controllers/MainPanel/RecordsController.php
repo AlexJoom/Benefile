@@ -6,6 +6,7 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
+use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -43,9 +44,13 @@ class RecordsController extends Controller
 
     // get basic info view
     public function getBasicInfo($id){
-        // brings the referrals options array from db
+        // brings the referrals options array from db to view
         $basic_info_referral = BenefiterReferrals_lookup::get()->all();
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
+
+        // brinks all referrals saved to db for this benefiter id
+        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)
+                                                   ->get()->all();
 
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
@@ -71,7 +76,8 @@ class RecordsController extends Controller
                                            ->with("benefiter", $benefiter)
                                            ->with("legalStatuses", $legal_statuses)
                                            ->with("benefiter_languages", $benefiterLanguagesAndLevels)
-                                           ->with('basic_info_referral_array', $basic_info_referral_array);
+                                           ->with('basic_info_referral_array', $basic_info_referral_array)
+                                           ->with('benefiter_referrals_list', $benefiter_referrals_list);
     }
 
     // post from basic info form
@@ -122,9 +128,13 @@ class RecordsController extends Controller
     }
 
     // post basic info referrals
-    // TODO
     public function postBasicInfoReferrals(Request $request){
-        dd($request->all());
+        // update basic info referrals table
+        $this->basicInfoService->basic_info_referrals($request);
+        // fetch all saved referrals
+        $basic_info_referrals = BenefiterReferrals::get()->all();
+
+        return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals);
     }
 
     // get social folder view

@@ -253,7 +253,6 @@ class BenefiterMedicalFolderService
                 $med_medication->medication_lookup_id = $med_medication_lookup->id;
                 $med_medication->save();
             }
-
         }
     }
     //post request
@@ -280,7 +279,6 @@ class BenefiterMedicalFolderService
                 $med_referral->medical_visit_id = $id;
                 $med_referral->save();
             }
-
         }
     }
     // post request

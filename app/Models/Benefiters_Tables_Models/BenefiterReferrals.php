@@ -10,7 +10,7 @@ class BenefiterReferrals extends Model
 
     protected $fillable = [
         'description',
-        'reference_date',
+        'referral_date',
         'benefiter_id',
-        'reference_lookup_id'];
+        'referral_lookup_id'];
 }
