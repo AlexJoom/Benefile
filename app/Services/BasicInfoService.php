@@ -8,9 +8,6 @@ use Validator;
 class BasicInfoService{
 
     private $datesHelper;
-    private $requestForValidation;
-    private $legalDates = array();
-    private $legalTexts = array();
 
     public function __construct(){
         // initialize dates helper
@@ -20,7 +17,7 @@ class BasicInfoService{
     // validate the basic info
     public function basicInfoValidation($request){
         $rules = array(
-            'folder_number' => 'max:255',
+            'folder_number' => 'max:255|unique:benefiters',
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
@@ -253,68 +250,12 @@ class BasicInfoService{
         );
     }
 
-    // creates two arrays: an array for legal statuses dates and one for legal statuses texts
-    private function makeLegalStatusDatesAndTextsArrays($request){
-        $keys = array_keys($request);
-        foreach($keys as $key){
-            if(strpos($key, "legal_status_exp_date") !== false){
-                array_push($this->legalDates, $this->requestForValidation[$key]);
-            } elseif (strpos($key, "legal_status_text") !== false){
-                array_push($this->legalTexts, $this->requestForValidation[$key]);
-            }
-        }
-    }
-
     // returns an array with the legal status from request in case of validation failure
     private function getLegalStatusArrayForValidationFailure($legal_status, $legal_text, $legal_exp_date){
         return array(
             "exp_date" => $this->datesHelper->getDateStringFromSimpleString($legal_exp_date),
             "description" => $legal_text,
             "legal_lookup_id" => $legal_status,
-        );
-    }
-
-    // returns an array suitable for validation
-    private function getValidationArray($request){
-        return array(
-            "folder_number" => $request['folder_number'],
-            "lastname" => $request['lastname'],
-            "name" => $request['name'],
-            "gender_id" => $request['gender'],
-            "birth_date" => $this->datesHelper->makeDBFriendlyDate($request['birth_date']),
-            "fathers_name" => $request['fathers_name'],
-            "mothers_name" => $request['mothers_name'],
-            "nationality_country" => $request['nationality_country'],
-            "origin_country" => $request['origin_country'],
-            "arrival_date" => $this->datesHelper->makeDBFriendlyDate($request['arrival_date']),
-            "telephone" => $request['telephone'],
-            "address" => $request['address'],
-            "marital_status_id" => $request['marital_status'],
-            "number_of_children" => $request['number_of_children'],
-            "children_names" => $request['children_names'],
-            "relatives_residence" => $request['relatives_residence'],
-            "legal_status_text0" => $request['legal_status_text'][0],
-            "legal_status_text1" => $request['legal_status_text'][1],
-            "legal_status_text2" => $request['legal_status_text'][2],
-            "legal_status_text3" => $request['legal_status_text'][3],
-            "legal_status_text4" => $request['legal_status_text'][4],
-            "legal_status_text5" => $request['legal_status_text'][5],
-            "legal_status_text6" => $request['legal_status_text'][6],
-            "legal_status_exp_date0" => $request['legal_status_exp_date'][0],
-            "legal_status_exp_date1" => $request['legal_status_exp_date'][1],
-            "legal_status_exp_date2" => $request['legal_status_exp_date'][2],
-            "legal_status_exp_date3" => $request['legal_status_exp_date'][3],
-            "legal_status_exp_date4" => $request['legal_status_exp_date'][4],
-            "legal_status_exp_date5" => $request['legal_status_exp_date'][5],
-            "legal_status_exp_date6" => $request['legal_status_exp_date'][6],
-            "education_id" => $request['education_status'],
-            "is_benefiter_working" => $request['working'],
-            "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon_reason'],
-            "travel_route" => $request['travel_route'],
-            "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention_duration'],
-            "social_history" => $request['social_history'],
         );
     }
 
