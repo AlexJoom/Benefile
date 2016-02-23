@@ -17,7 +17,7 @@ class TestUsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Doctor_Name_1',
             'lastname' => 'DoctorLastname_1',
-            'email' => 'chris.tosdimizas@gmail.com',
+            'email' => 'chris.tosdimi.z.a.s@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 2,
             'user_subrole_id' => 3,

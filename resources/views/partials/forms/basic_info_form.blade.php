@@ -1,4 +1,15 @@
 <div class="basic-info-form">
+<?php
+    $datesHelper = new \app\Services\DatesHelper();
+    if (isset($benefiter) and $benefiter != null){
+        if ($benefiter->birth_date != null) {
+            $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        }
+        if ($benefiter->arrival_date != null) {
+            $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
+        }
+    }
+?>
 {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info')) !!}
 
     <div class="personal-info form-section no-bottom-border">
@@ -187,7 +198,7 @@
                                 $id = $status->legal_lookup_id - 1;
                                 $legal_status[$id] = true;
                                 $legal_status_text[$id] = $status->description;
-                                $legal_status_exp_date[$id] = $status->exp_date;
+                                $legal_status_exp_date[$id] = $datesHelper->getFinelyFormattedStringDateFromDBDate($status->exp_date);
                             }
                         }
                     ?>
