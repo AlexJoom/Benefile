@@ -1,7 +1,9 @@
 $(document).ready(function(){
-    // make field a datepicker
-    $(".date-input").datepicker({
-        format: 'dd-mm-yyyy'
+    // make field a datepicker (including dynamically created elements)
+    $("body").on("focus", ".date-input", function(){
+        $(this).datepicker({
+            format: 'dd-mm-yyyy'
+        });
     });
 
     // make datepicker fields not editable but clickable

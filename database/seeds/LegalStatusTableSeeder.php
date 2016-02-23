@@ -19,6 +19,7 @@ class LegalStatusTableSeeder extends Seeder
                 array('description' => "Βεβαίωση άδειας διαμονής (Χρόνος/Λήξη)"),
                 array('description' => "Άδεια παραμονής (μετανάστη)"),
                 array('description' => 'Ευρωπαίος πολίτης'),
+                array('description' => 'Ανθρωπιστικό'),
                 array('description' => 'Εκτός νομικού πλαισίου')
             )
         );
