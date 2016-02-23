@@ -1,5 +1,9 @@
+<?php
+    $p = "basic_info_form.";
+?>
 <div class="basic-info-form">
 <?php
+    // format correctly the dates!
     $datesHelper = new \app\Services\DatesHelper();
     if (isset($benefiter) and $benefiter != null){
         if ($benefiter->birth_date != null) {
@@ -14,7 +18,7 @@
 
     <div class="personal-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
+            <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
         </div>
         {{-- BENEFITER FOLDER NUMBER --}}
             <div class="row padding-top-20">
@@ -22,7 +26,7 @@
                     <div class="row">
                         <div class="padding-left-right-15">
                             <div class="form-group padding-left-right-15 float-left">
-                                {!! Form::label('folder_number', 'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ') !!}
+                                {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
                                 {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
                             </div>
                         </div>
@@ -34,15 +38,15 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
+                            {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('name', 'ΟΝΟΜΑ') !!}
+                            {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
                             {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('gender', 'ΦΥΛΟ') !!}
+                            {!! Form::label('gender', Lang::get('basic_info_form.gender')) !!}
                             <?php
                                 $male = false;
                                 $female = false;
@@ -54,13 +58,13 @@
                             ?>
                             <div class="make-inline">
                                 {!! Form::radio('gender', 1, $male, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender', 'Άνδρας', array('class' => 'radio-value')) !!}
+                                {!! Form::label('gender', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
                                 {!! Form::radio('gender', 2, $female, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender', 'Γυναίκα', array('class' => 'radio-value')) !!}
+                                {!! Form::label('gender', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('ΗΜΕΡ. ΓΕΝΝΗΣΗΣ') !!}
+                            {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -70,19 +74,19 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
+                            {!! Form::label('fathers_name', Lang::get('basic_info_form.fathers_name')) !!}
                             {!! Form::text('fathers_name', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('mothers_name', 'ΜΗΤΡΩΝΥΜΟ') !!}
+                            {!! Form::label('mothers_name', Lang::get('basic_info_form.mothers_name')) !!}
                             {!! Form::text('mothers_name', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('nationality_country', 'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ') !!}
+                            {!! Form::label('nationality_country', Lang::get('basic_info_form.nationality_country')) !!}
                             {!! Form::text('nationality_country', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('origin_country', 'ΧΩΡΑ ΚΑΤΑΓΩΓΗΣ') !!}
+                            {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
@@ -90,11 +94,11 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('arrival_date', 'ΗΜΕΡ. ΑΦΙΞΗΣ') !!}
+                            {!! Form::label('arrival_date', Lang::get('basic_info_form.arrival_date')) !!}
                             {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('telephone', 'ΤΗΛ. ΕΠΙΚΟΙΝΩΝΙΑΣ') !!}
+                            {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                             <?php
                                 if($benefiter->telephone == 0){
                                     $benefiter->telephone = "";
@@ -103,7 +107,7 @@
                             {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
-                            {!! Form::label('address', 'Δ/ΝΣΗ ΚΑΤΟΙΚΙΑΣ') !!}
+                            {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                             {!! Form::text('address', null, array('class' => 'custom-input-text address')) !!}
                         </div>
                     </div>
@@ -113,7 +117,7 @@
     </div>
     <div class="family-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">2. Οικογενειακή Κατάσταση</h1>
+            <h1 class="record-section-header padding-left-right-15">2. @lang($p."family_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -129,23 +133,23 @@
                             ?>
                             <div class="col-md-2 make-inline">
                                 {!! Form::radio('marital_status', 1, $marital_status[0], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', 'Άγαμος', array('class' => 'radio-value')) !!}
+                                {!! Form::label('marital_status', Lang::get('basic_info_form.unmarried'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
                                 {!! Form::radio('marital_status', 2, $marital_status[1], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', 'Έγγαμος', array('class' => 'radio-value')) !!}
+                                {!! Form::label('marital_status', Lang::get('basic_info_form.married'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
                                 {!! Form::radio('marital_status', 3, $marital_status[2], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', 'Διαζευμένος/η', array('class' => 'radio-value')) !!}
+                                {!! Form::label('marital_status', Lang::get('basic_info_form.divorced'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
                                 {!! Form::radio('marital_status', 4, $marital_status[3], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', 'Χήρος/α', array('class' => 'radio-value')) !!}
+                                {!! Form::label('marital_status', Lang::get('basic_info_form.widower'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
                                 {!! Form::radio('marital_status', 5, $marital_status[4], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', 'Εν διαστάσει', array('class' => 'radio-value')) !!}
+                                {!! Form::label('marital_status', Lang::get('basic_info_form.estranged'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -153,7 +157,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('number_of_children', 'ΑΡΙΘΜΟΣ ΠΑΙΔΙΩΝ') !!}
+                            {!! Form::label('number_of_children', Lang::get('basic_info_form.number_of_children')) !!}
                             <?php
                                 if($benefiter->number_of_children == 0){
                                     $benefiter->number_of_children = "";
@@ -164,7 +168,7 @@
                     </div>
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
-                            {!! Form::label('relatives_residence', 'ΤΟΠΟΣ ΔΙΑΜΟΝΗΣ ΣΥΓΓΕΝΙΚΩΝ ΠΡΟΣΩΠΩΝ') !!}
+                            {!! Form::label('relatives_residence', Lang::get('basic_info_form.relatives_residence')) !!}
                             {!! Form::text('relatives_residence', null, array('class' => 'custom-input-text address')) !!}
                         </div>
                     </div>
@@ -172,7 +176,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
-                            {!! Form::label('children_names', 'ΟΝΟΜΑΤΑ ΤΕΚΝΩΝ') !!}
+                            {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
                             {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
                         </div>
                     </div>
@@ -182,7 +186,7 @@
     </div>
     <div class="legal-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">3. Νομικό Καθεστώς</h1>
+            <h1 class="record-section-header padding-left-right-15">3. @lang($p."legal_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -205,13 +209,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 1, $legal_status[0], array('class' => 'float-left', 'tabindex' => '1')) !!}
-                            {!! Form::label('deportation', '∆ιοικητική απόφαση απέλασης', array('class' => 'float-left')) !!}
+                            {!! Form::label('deportation', Lang::get('basic_info_form.deportation'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[0], array('class' => 'custom-input-text make-inline float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[0], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -222,13 +226,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 2, $legal_status[1], array('class' => 'float-left', 'tabindex' => '2')) !!}
-                            {!! Form::label('asylum_application', 'Αρ. δελτίου αιτήσαντος ασύλου', array('class' => 'float-left')) !!}
+                            {!! Form::label('asylum_application', Lang::get('basic_info_form.asylum_application'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[1], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[1], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -239,13 +243,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 3, $legal_status[2], array('class' => 'float-left', 'tabindex' => '3')) !!}
-                            {!! Form::label('refugee', 'Αρ. δελτίου πρόσφυγα', array('class' => 'float-left')) !!}
+                            {!! Form::label('refugee', Lang::get('basic_info_form.refugee'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[2], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[2], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -256,13 +260,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 4, $legal_status[3], array('class' => 'float-left', 'tabindex' => '4')) !!}
-                            {!! Form::label('residence_permit', 'Βεβ. άδειας διαμονής (χρόνος/λήξη)', array('class' => 'float-left')) !!}
+                            {!! Form::label('residence_permit', Lang::get('basic_info_form.residence_permit'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[3], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[3], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -273,13 +277,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 5, $legal_status[4], array('class' => 'float-left', 'tabindex' => '5')) !!}
-                            {!! Form::label('immigrant_residence_permit', 'Άδεια παραμονής (μετανάστης)', array('class' => 'float-left')) !!}
+                            {!! Form::label('immigrant_residence_permit', Lang::get('basic_info_form.immigrant_residence_permit'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[4], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[4], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -290,13 +294,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 6, $legal_status[5], array('class' => 'float-left', 'tabindex' => '6')) !!}
-                            {!! Form::label('european', 'Ευρωπαίος πολίτης', array('class' => 'float-left')) !!}
+                            {!! Form::label('european', Lang::get('basic_info_form.european'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[5], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[5], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -307,13 +311,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7')) !!}
-                            {!! Form::label('humanitarian', 'Ανθρωπιστικό', array('class' => 'float-left')) !!}
+                            {!! Form::label('humanitarian', Lang::get('basic_info_form.humanitarian'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[6], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -324,13 +328,13 @@
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8')) !!}
-                            {!! Form::label('out_of_legal', 'Εκτός νομικού πλαισίου', array('class' => 'float-left')) !!}
+                            {!! Form::label('out_of_legal', Lang::get('basic_info_form.out_of_legal'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[7], array('class' => 'custom-input-text float-left')) !!}
                         </div>
                     </div>
                     <div class="col-md-6 hide">
                         <div class="form-group make-inline padding-left-right-15 float-left">
-                            {!! Form::label('Ημ. Λήξης') !!}
+                            {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
@@ -342,7 +346,7 @@
     </div>
     <div class="education-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">4. Εκπαίδευση</h1>
+            <h1 class="record-section-header padding-left-right-15">4. @lang($p."education_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -358,39 +362,39 @@
                             ?>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 1, $education[0], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Αναλφάβητος', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.illiterate'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 2, $education[1], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Δημοτικό', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.elementary'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 3, $education[2], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Γυμνάσιο', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.middle'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 4, $education[3], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Λύκειο', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.high'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 5, $education[4], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Επαγγελματικό Λύκειο', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.professional_high'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 6, $education[5], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'ΤΕΙ', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.tei'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 7, $education[6], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'ΑΕΙ', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.aei'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 8, $education[7], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Μεταπτυχιακός τίτλος', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.master'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('education_status', 9, $education[8], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', 'Διδακτορικός τίτλος', array('class' => 'radio-value')) !!}
+                                {!! Form::label('education_status', Lang::get('basic_info_form.phd'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -400,7 +404,7 @@
     </div>
     <div class="languages-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">5. Γλώσσες Eπικοινωνίας</h1>
+            <h1 class="record-section-header padding-left-right-15">5. @lang($p."languages_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -503,7 +507,7 @@
                         ?>
                         <div class="form-group float-left padding-left-right-15 width-100-percent">
                             {!! Form::checkbox('interpreter', true, $interpreter, array('class' => 'float-left')) !!}
-                            {!! Form::label('interpreter', 'Χρήση διερμηνέα', array('class' => 'float-left')) !!}
+                            {!! Form::label('interpreter', Lang::get('basic_info_form.interpreter'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
                 </div>
@@ -512,7 +516,7 @@
     </div>
     <div class="work-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">6. Εργασία</h1>
+            <h1 class="record-section-header padding-left-right-15">6. @lang($p."work_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -536,24 +540,24 @@
                         ?>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working', 1, $working, array('id' => 'show_work_legally')) !!}
-                            {!! Form::label('working', 'Ναι', array('class' => 'radio-value')) !!}
+                            {!! Form::label('working', Lang::get('basic_info_form.yes'), array('class' => 'radio-value')) !!}
                         </div>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working', 2, $not_working, array('id' => 'hide_work_legally')) !!}
-                            {!! Form::label('working', 'Όχι', array('class' => 'radio-value')) !!}
+                            {!! Form::label('working', Lang::get('basic_info_form.no'), array('class' => 'radio-value')) !!}
                         </div>
                     </div>
                 </div>
                 <div id="working_legally_div" class="row">
                     <div class="padding-left-right-15">
-                        <span class="float-left padding-left-right-15">Εργάζεται: </span>
+                        <span class="float-left padding-left-right-15">@lang($p."working")</span>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working_legally', 1, $working_legally) !!}
-                            {!! Form::label('working_legally', 'Νόμιμα', array('class' => 'radio-value')) !!}
+                            {!! Form::label('working_legally', Lang::get('basic_info_form.legally'), array('class' => 'radio-value')) !!}
                         </div>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working_legally', 2, $working_illegally) !!}
-                            {!! Form::label('working_legally', 'Παράνομα', array('class' => 'radio-value')) !!}
+                            {!! Form::label('working_legally', Lang::get('basic_info_form.illegally'), array('class' => 'radio-value')) !!}
                         </div>
                     </div>
                 </div>
@@ -562,7 +566,7 @@
     </div>
     <div class="country-abandon-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">7. Λόγος εγκατάλειψης χώρας</h1>
+            <h1 class="record-section-header padding-left-right-15">7. @lang($p."country_abandon_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -578,18 +582,18 @@
     </div>
     <div class="travel-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">8. Ταξίδι</h1>
+            <h1 class="record-section-header padding-left-right-15">8. @lang($p."voyage")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
-                            {!! Form::label('travel_route', 'Διαδρομή') !!}
+                            {!! Form::label('travel_route', Lang::get('basic_info_form.travel_route')) !!}
                             {!! Form::text('travel_route', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group padding-left-right-15">
-                            {!! Form::label('travel_duration', 'Διάρκεια') !!}
+                            {!! Form::label('travel_duration', Lang::get('basic_info_form.travel_duration')) !!}
                             {!! Form::text('travel_duration', null, array('class' => 'custom-input-text')) !!}
                         </div>
                     </div>
@@ -599,7 +603,7 @@
     </div>
     <div class="detention-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">9. Διάρκεια Κράτησης</h1>
+            <h1 class="record-section-header padding-left-right-15">9. @lang($p."detention_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -613,9 +617,9 @@
             </div>
         </div>
     </div>
-    <div class="detention-info form-section no-bottom-border">
+    <div class="social-background-info form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">10. Κοινωνικό Ιστορικό</h1>
+            <h1 class="record-section-header padding-left-right-15">10. @lang($p."social_background_info")</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -629,25 +633,25 @@
             </div>
         </div>
     </div>
-    <div class="form-section align-text-center">
-        {!! Form::submit('Αποθήκευση Βασικών Στοιχείων', array('class' => 'submit-button')) !!}
+    <div class="form-section align-text-center no-bottom-border">
+        {!! Form::submit(Lang::get('basic_info_form.save_basic_info'), array('class' => 'submit-button')) !!}
     </div>
 {!! Form::close() !!}
     {{-- BASIC INFO REFERRALS --}}
     @if($benefiter->id == -1)
-        <div>
+        <div class="form-section no-bottom-border">
             <div class="col-md-12 referral-info">
-                <p>Για την δυνατότητα καταχώρησης παραπομπής, καταχωρήστε και αποθηκεύστε πρώτα τα στοιχεία του οφελούμενου. </p>
+                <p>@lang($p."referral_info")</p>
             </div>
         </div>
     @else
         {{-- REFERRALS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">11. Παραπομπές</h1>
+                <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>
             {{-- OLDER REFERRALS LIST --}}
-            <h5 class="text-align-center">ΛΙΣΤΑ ΠΑΡΑΠΟΜΠΩΝ</h5>
+            <h5 class="text-align-center">@lang($p."referrals_list")</h5>
             <div class="row">
                 <div class="col-md-12">
                     <div id="basic_info_referrals-list" class="row padding-bottom-30">
@@ -656,17 +660,17 @@
                                 <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
-                                        <th>ΠΑΡΑΠΟΜΠΗ</th>
-                                        <th>ΠΕΡΙΓΡΑΦΗ</th>
-                                        <th>ΗΜ. ΠΑΡΑΠΟΜΠΗΣ</th>
+                                        <th>@lang($p."referral")</th>
+                                        <th>@lang($p."description")</th>
+                                        <th>@lang($p."referral_date")</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>ΠΑΡΑΠΟΜΠΗ</th>
-                                        <th>ΠΕΡΙΓΡΑΦΗ</th>
-                                        <th>ΗΜ. ΠΑΡΑΠΟΜΠΗΣ</th>
+                                        <th>@lang($p."referral")</th>
+                                        <th>@lang($p."description")</th>
+                                        <th>@lang($p."referral_date")</th>
                                         <th></th>
                                     </tr>
                                     </tfoot>
@@ -711,7 +715,7 @@
 
                                     {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                     <div class="make-inline col-md-10">
-                                        {!! Form::label('basic_info_referrals', 'ΠΑΡΑΠΟΜΠΗ: ') !!}
+                                        {!! Form::label('basic_info_referrals', Lang::get('basic_info_form.referral_label')) !!}
                                         {!! Form::select('basic_info_referrals_id[]', $basic_info_referral_array) !!}
 
                                         {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
@@ -735,7 +739,7 @@
                 </div>
                 </div>
                 <div class="form-section align-text-center">
-                    {!! Form::submit('Αποθήκευση Παραπομπών', array('class' => 'submit-button')) !!}
+                    {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
                 </div>
             {!! Form::close() !!}
     @endif
