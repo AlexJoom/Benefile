@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
-                            {!! Form::text('children_names', $benefiter->children_names, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('children_names', $benefiter->children_names, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
-                            {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text')) !!}
+                            {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('birth_date', Lang::get('basic_info_form.birth_date')) !!}
