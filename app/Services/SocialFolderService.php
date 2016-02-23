@@ -80,6 +80,7 @@ class SocialFolderService{
             'session_date' => $datesHelper->makeDBFriendlyDate($request['session_date']),
             'session_comments' => $request['session_comments'],
             'psychosocial_theme_id' => $request['psychosocial_theme'],
+            'psychologist_id' => \Auth::user()->id,
         );
     }
 }
