@@ -31,9 +31,12 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    {!! Form::open(array('action' => 'MainPanel\RecordsController@postMedicalFolder')) !!}
+    {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder')) !!}
+
+        {{$benefiter->id}}
+
         {{-- get the benefiter id --}}
-        {!! Form::hidden('benefiter_id', $benefiter_id) !!}
+        {!! Form::hidden('benefiter_id', $benefiter->id) !!}
         {{-- get the doctor id --}}
         {!! Form::hidden('doctor_id', $doctor_id) !!}
 

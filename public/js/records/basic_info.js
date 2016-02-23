@@ -75,6 +75,13 @@ $(document).ready(function(){
     $("body").on("click", ".remove-ref", function(){
         $(this).parents(".ref-added-div").remove();
     });
+
+    // Apply dataTable to benefiter referrals history
+    $(function() {
+        $('#benefiter_referrals_history').DataTable( {
+            //"lengthMenu": [ [-1], ["All"] ]
+        });
+    });
 });
 
 var $langs_count = $(".added-div").length;

@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a id="benefiter-medical-folder" class="white {{ $medical_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/new-benefiter/medical-folder') }}">ΙΑΤΡΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a id="benefiter-medical-folder" class="white {{ $medical_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/medical-folder">ΙΑΤΡΙΚΟΣ ΦΑΚΕΛΟΣ</a>
             </div>
 
             <div class="col-md-3 record-panel-title">

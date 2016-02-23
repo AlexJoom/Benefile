@@ -651,19 +651,18 @@
                 <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>
             {{-- OLDER REFERRALS LIST --}}
-            <h5 class="text-align-center">@lang($p."referrals_list")</h5>
+            <h5 class="text-align-center">ΙΣΤΟΡΙΚΟ ΠΑΡΑΠΟΜΠΩΝ</h5>
             <div class="row">
                 <div class="col-md-12">
                     <div id="basic_info_referrals-list" class="row padding-bottom-30">
                         <div class="no-margin pos-relative" id="results-to-activate">
                             <div class="display padding-20">
-                                <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
+                                <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
-                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -671,32 +670,16 @@
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
-                                        <th></th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    {{--@foreach($users as $user)--}}
-                                        {{--@if($user['activation_status'] == 0 && $user['is_deactivated'] == 0)--}}
-                                            {{--<tr>--}}
-                                                {{--<td>{{ $user['lastname'] }}</td>--}}
-                                                {{--<td>{{ $user['name'] }}</td>--}}
-                                                {{--@if($user['user_role_id'] == 2)--}}
-                                                    {{--<td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>--}}
-                                                {{--@else--}}
-                                                    {{--<td>{{$user['role']['role']}}</td>--}}
-                                                {{--@endif--}}
-                                                {{--<td>{{substr($user['created_at'], 0,11)}}</td>--}}
-
-                                                {{--<td>--}}
-                                                    {{--<form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">--}}
-                                                        {{--<input type="hidden" name="user_id" value={{$user['id']}}>--}}
-                                                        {{--<button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>--}}
-                                                        {{--{{ csrf_field() }}--}}
-                                                    {{--</form>--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endif--}}
-                                    {{--@endforeach--}}
+                                    @foreach($benefiter_referrals_list as $referral)
+                                        <tr>
+                                            <td>{{ $referral['referralType']['description'] }}</td>
+                                            <td>{{ $referral['description'] }}</td>
+                                            <td>{{ $referral['referral_date'] }}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -708,6 +691,7 @@
                 {!! Form::hidden('benefiter_id', $benefiter->id) !!}
                 {{-- ADD NEW REFERRAL --}}
                 <div class="row">
+                    <h5 class="text-align-center">ΝΕΑ ΠΑΡΑΠΟΜΠΗ</h5>
                     <div class="col-md-12">
                         <div id="basic_info_referrals" class="row padding-bottom-30">
                             <div  class="padding-left-right-15 basic_info_referral">
