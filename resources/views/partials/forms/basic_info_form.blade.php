@@ -179,7 +179,7 @@
                 </div>
                 <div class="row">
                     <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-6">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-12">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
                             {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
                         </div>
