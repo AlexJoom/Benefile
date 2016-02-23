@@ -260,26 +260,24 @@ class BasicInfoService{
     }
 
     // -------------------------------------------------------------- //
-    //----------- benefter_reference_lookup table (REFERRALS) --------//
+    //----------- benefter basic_info_referrals table (REFERRALS) --------//
     // DB save
-    public function save_medical_referrals($request){
-        $request_basic_info_referrals = $this->basic_info_referrals($request);
-        foreach($request_basic_info_referrals as $bir){
-            if(!empty($bir)){
-                $basic_info_referral = new BenefiterReferrals();
-                $basic_info_referral->description =
-                $med_referral->save();
-            }
+    public function basic_info_referrals($request){
+        $request_basic_info_referrals_id = $request['basic_info_referrals_id'];
+        $request_basic_info_referrals_text = $request['basic_info_referrals_text'];
+        $request_basic_info_referrals_date = $request['basic_info_referrals_date'];
+        $benefiter_id = $request['benefiter_id'];
 
+        // referrals added to be posted (same as text array and date array)
+        $ref_number = count($request_basic_info_referrals_id);
+        for($i=0 ; $i<$ref_number; $i++){
+            $basic_info_referral = new BenefiterReferrals();
+            $basic_info_referral->description = $request_basic_info_referrals_text[$i];
+            $basic_info_referral->referral_date = $request_basic_info_referrals_date[$i];
+            $basic_info_referral->benefiter_id = $benefiter_id;
+            $basic_info_referral->referral_lookup_id = $request_basic_info_referrals_id[$i];
+
+            $basic_info_referral->save();
         }
-    }
-    // post request
-    private function basic_info_referrals($request){
-        $basic_info_referrals = $request['basic_info_referrals'];
-        $referrals_array = [];
-        foreach ($basic_info_referrals as $ref){
-            array_push($referrals_array, $ref);
-        }
-        return $referrals_array;
     }
 }
