@@ -185,3 +185,8 @@ input:focus, textarea:focus {
     padding: 20px;
     text-align: center;
 }
+
+#benefiter_referrals_history th,
+#benefiter_referrals_history td{
+    text-align: center;
+}
