@@ -13,4 +13,8 @@ class BenefiterReferrals extends Model
         'referral_date',
         'benefiter_id',
         'referral_lookup_id'];
+
+    public function referralType(){
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup', 'id', 'referral_lookup_id');
+    }
 }

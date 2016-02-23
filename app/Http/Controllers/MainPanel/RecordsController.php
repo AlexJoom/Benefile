@@ -49,8 +49,8 @@ class RecordsController extends Controller
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
 
         // brinks all referrals saved to db for this benefiter id
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)
-                                                   ->get()->all();
+        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')
+                                                        ->get();
 
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
