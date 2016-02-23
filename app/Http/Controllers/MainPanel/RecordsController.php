@@ -177,6 +177,7 @@ class RecordsController extends Controller
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
             return view('errors.404');
         } else {
@@ -195,7 +196,8 @@ class RecordsController extends Controller
                                                             'benefiter_id',
                                                             'doctor_id',
                                                             'benefiter',
-                                                            'benefiter_medical_history_list'));
+                                                            'benefiter_medical_history_list',
+                                                            'medical_visits_number'));
         }
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
@@ -209,7 +211,7 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-
+        // TODO
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
 //        if($validator->fails()){
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
@@ -243,8 +245,5 @@ class RecordsController extends Controller
                                                             'ExamResultsLookup'));
 //        }
 
-
-        // in addition the repeated data will be send to the medical folder/visit
-//        return view('benefiter.medical-folder');
     }
 }

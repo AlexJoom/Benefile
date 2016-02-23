@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    {{-- MEDICAL FILE & VISIT NUMBER --}}
+    {{-- MEDICAL FILE--}}
     <div class="row padding-top-20">
         <div class="col-md-12">
             <div class="row float-right">
@@ -92,8 +92,8 @@
                         {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
                     </div>
                     <div class="form-group padding-left-right-15 float-left">
-                        {!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}
-                        {!! Form::text('medical_visit_id', 'α/α', array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                        {!! Form::label('medical_visit_id', 'Αριθμός επισκέψεων') !!}
+                        {!! Form::text('medical_visit_id', $medical_visits_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
                     </div>
                 </div>
             </div>
@@ -114,6 +114,7 @@
                     <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
+                            <th>Α/Α</th>
                             <th>ΓΙΑΤΡΟΣ</th>
                             <th>ΤΟΠΟΘΕΣΙΑ</th>
                             <th>ΗΜ. ΕΞΕΤΑΣΗΣ</th>
@@ -121,23 +122,25 @@
                         </thead>
                         <tfoot>
                         <tr>
+                            <th>Α/Α</th>
                             <th>ΓΙΑΤΡΟΣ</th>
                             <th>ΤΟΠΟΘΕΣΙΑ</th>
                             <th>ΗΜ. ΕΞΕΤΑΣΗΣ</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @foreach($benefiter_medical_history_list as $med_history)
+                        @for($i=0 ; $i<count($benefiter_medical_history_list) ; $i++)
                             <tr>
-                                <td>{{ $med_history['doctor']['name'] }} {{ $med_history['doctor']['lastname'] }}</td>
-                                <td>{{ $med_history['medicalLocation']['description'] }}</td>
-                                @if($med_history['medical_visit_date'] == null)
-                                <td>{{ $med_history['created_at'] }}</td>
+                                <td>{{ $i+1 }}</td>
+                                <td>{{ $benefiter_medical_history_list[$i]['doctor']['name'] }} {{ $benefiter_medical_history_list[$i]['doctor']['lastname'] }}</td>
+                                <td>{{ $benefiter_medical_history_list[$i]['medicalLocation']['description'] }}</td>
+                                @if($benefiter_medical_history_list[$i]['medical_visit_date'] == null)
+                                <td>{{ $benefiter_medical_history_list[$i]['created_at'] }}</td>
                                 @else
-                                <td>{{ $med_history['medical_visit_date'] }}</td>
+                                <td>{{ $benefiter_medical_history_list[$i]['medical_visit_date'] }}</td>
                                 @endif
                             </tr>
-                        @endforeach
+                        @endfor
                         </tbody>
                     </table>
                     @else
@@ -164,8 +167,19 @@
         {{-- get the doctor id --}}
         {!! Form::hidden('doctor_id', $doctor_id) !!}
 
-        {{-- The medical_visit_id should probably be created when we get the form view --}}
-        {{--{!! Form::hidden('medical_visit_id', $medical_visit_id) !!}--}}
+        {{-- MEDICAL FILE & VISIT NUMBER --}}
+        <div class="row padding-top-20">
+            <div class="col-md-12">
+                <div class="row float-right">
+                    <div class="padding-left-right-15">
+                        <div class="form-group padding-left-right-15 float-left">
+                            {!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}
+                            {!! Form::text('medical_visit_id', $medical_visits_number+1, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {{-- BASIC MEDICAL DETAILS --}}
         <div class="form-section no-bottom-border">
