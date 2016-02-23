@@ -10,6 +10,9 @@
     border: 20px solid #e6f4f4;
     border-bottom: none;
 }
+.no-top-border{
+    border-top: none;
+}
 
 .make-inline{
     display: inline-block;

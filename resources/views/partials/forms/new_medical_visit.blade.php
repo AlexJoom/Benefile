@@ -4,6 +4,147 @@
 @include('partials.select-panel')
 
 
+{{-- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) --}}
+<div class="form-section no-bottom-border">
+    <div class="underline-header">
+        <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="padding-left-right-15">
+                    {{-- LASTNAME --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
+                        {!! Form::text('lastname', 'LASTNAME', array('class' => 'custom-input-text', 'disabled')) !!}
+                    </div>
+                    {{--NAME --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('name', 'ΟΝΟΜΑ') !!}
+                        {!! Form::text('name', 'NAME', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                    {{-- GENDER --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('gender', 'ΦΥΛΟ') !!}
+                        <div class="make-inline">
+                            {!! Form::radio('gender', 1, true, array('class' => 'make-inline')) !!}
+                            {!! Form::label('gender', 'Άνδρας', array('class' => 'radio-value' , 'disabled')) !!}
+                            {!! Form::radio('gender', 2, false, array('class' => 'make-inline')) !!}
+                            {!! Form::label('gender', 'Γυναίκα', array('class' => 'radio-value' , 'disabled')) !!}
+                        </div>
+                    </div>
+                    {{-- DATE OF BIRTH --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('birth_date', 'ΗΜΕΡ. ΓΕΝΝΗΣΗΣ') !!}
+                        <div class="make-inline">
+                            {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="padding-left-right-15">
+                    {{-- FATHERS NAME --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
+                        {!! Form::text('fathers_name', 'FATHERS NAME', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                    {{-- MOTHERS NAME --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('mothers_name', 'ΜΗΤΡΩΝΥΜΟ') !!}
+                        {!! Form::text('mothers_name', 'MOTHERS NAME', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                    {{-- NATIONALITY --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('nationality_country', 'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ') !!}
+                        {!! Form::text('nationality_country', 'NATIONALITY', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="padding-left-right-15">
+                    {{-- ARRIVAL DATE --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('arrival_date', 'ΗΜΕΡ. ΑΦΙΞΗΣ') !!}
+                        {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                    </div>
+                    {{-- ENTRY POINT --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('travel_route', 'Διαδρομή') !!}
+                        {!! Form::text('travel_route', 'ΣΗΜΕΙΟ ΕΙΣΟΔΟΥ', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                    {{-- DURATION OF TRAVEL --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('travel_duration', 'Διάρκεια') !!}
+                        {!! Form::text('travel_duration', 'DURATION OF TRAVEL', array('class' => 'custom-input-text' , 'disabled')) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- MEDICAL FILE & VISIT NUMBER --}}
+    <div class="row padding-top-20">
+        <div class="col-md-12">
+            <div class="row float-right">
+                <div class="padding-left-right-15">
+                    <div class="form-group padding-left-right-15 float-left">
+                        {!! Form::label('folder_number', 'Αριθμός Φακέλου') !!}
+                        {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                    </div>
+                    <div class="form-group padding-left-right-15 float-left">
+                        {!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}
+                        {!! Form::text('medical_visit_id', 'α/α', array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- 2. MEDICAL HISTORY TABLE --}}
+<div class="form-section">
+    <div class="underline-header">
+        <h1 class="record-section-header padding-left-right-15">2. Ιατρικό Ιστορικό οφελούμενου</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="no-margin pos-relative" id="results-to-activate">
+                <div class="display padding-20">
+                    <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>ΓΙΑΤΡΟΣ</th>
+                            <th>ΤΟΠΟΘΕΣΙΑ</th>
+                            <th>ΗΜ. ΕΞΕΤΑΣΗΣ</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>ΓΙΑΤΡΟΣ</th>
+                            <th>ΤΟΠΟΘΕΣΙΑ</th>
+                            <th>ΗΜ. ΕΞΕΤΑΣΗΣ</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach($benefiter_medical_history_list as $med_history)
+                            <tr>
+                                <td>{{ $med_history['doctor']['name'] }} {{ $med_history['doctor']['lastname'] }}</td>
+                                <td>{{ $med_history['medicalLocation']['description'] }}</td>
+                                @if($med_history['medical_visit_date'] == null)
+                                <td>{{ $med_history['created_at'] }}</td>
+                                @else
+                                <td>{{ $med_history['medical_visit_date'] }}</td>
+                                @endif
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- NEW MEDICAL VISIT BUTTON (dropsdown the form) --}}
 <div class="row padding-top-20">
     <div class="col-md-12">
@@ -13,28 +154,7 @@
 
 
 <div id="new-medical-visit" class="basic-info-form">
-    {{-- MEDICAL FILE & VISIT NUMBER --}}
-    {{--<div class="row padding-top-20">--}}
-        {{--<div class="col-md-12">--}}
-            {{--<div class="row float-right">--}}
-                {{--<div class="padding-left-right-15">--}}
-                    {{--<div class="form-group padding-left-right-15 float-left">--}}
-                        {{--{!! Form::label('folder_number', 'Αριθμός Φακέλου') !!}--}}
-                        {{--{!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right')) !!}--}}
-                    {{--</div>--}}
-                    {{--<div class="form-group padding-left-right-15 float-left">--}}
-                        {{--{!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}--}}
-                        {{--{!! Form::text('medical_visit_id', 'α/α', array('class' => 'custom-input-text text-align-right')) !!}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
     {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder')) !!}
-
-        {{$benefiter->id}}
-
         {{-- get the benefiter id --}}
         {!! Form::hidden('benefiter_id', $benefiter->id) !!}
         {{-- get the doctor id --}}
@@ -43,108 +163,10 @@
         {{-- The medical_visit_id should probably be created when we get the form view --}}
         {{--{!! Form::hidden('medical_visit_id', $medical_visit_id) !!}--}}
 
-
-        {{-- GENERAL DETAILS  (Info that comes from DB) --}}
-        <div class="form-section no-bottom-border">
-            <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">1. Προσωπικά Στοιχεία</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="padding-left-right-15">
-                            {{-- LASTNAME --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('lastname', 'ΕΠΩΝΥΜΟ') !!}
-                                {!! Form::text('lastname', 'LASTNAME', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                            {{--NAME --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('name', 'ΟΝΟΜΑ') !!}
-                                {!! Form::text('name', 'NAME', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                            {{-- GENDER --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('gender', 'ΦΥΛΟ') !!}
-                                <div class="make-inline">
-                                    {!! Form::radio('gender', 1, true, array('class' => 'make-inline', 'disabled')) !!}
-                                    {!! Form::label('gender', 'Άνδρας', array('class' => 'radio-value')) !!}
-                                    {!! Form::radio('gender', 2, false, array('class' => 'make-inline', 'disabled')) !!}
-                                    {!! Form::label('gender', 'Γυναίκα', array('class' => 'radio-value')) !!}
-                                </div>
-                            </div>
-                            {{-- DATE OF BIRTH --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('birth_date', 'ΗΜΕΡ. ΓΕΝΝΗΣΗΣ') !!}
-                                <div class="make-inline">
-                                    {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="padding-left-right-15">
-                            {{-- FATHERS NAME --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('fathers_name', 'ΠΑΤΡΩΝΥΜΟ') !!}
-                                {!! Form::text('fathers_name', 'FATHERS NAME', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                            {{-- MOTHERS NAME --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('mothers_name', 'ΜΗΤΡΩΝΥΜΟ') !!}
-                                {!! Form::text('mothers_name', 'MOTHERS NAME', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                            {{-- NATIONALITY --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('nationality_country', 'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ') !!}
-                                {!! Form::text('nationality_country', 'NATIONALITY', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="padding-left-right-15">
-                            {{-- ARRIVAL DATE --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('arrival_date', 'ΗΜΕΡ. ΑΦΙΞΗΣ') !!}
-                                {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                            </div>
-                            {{-- ENTRY POINT --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('travel_route', 'Διαδρομή') !!}
-                                {!! Form::text('travel_route', 'ΣΗΜΕΙΟ ΕΙΣΟΔΟΥ', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                            {{-- DURATION OF TRAVEL --}}
-                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('travel_duration', 'Διάρκεια') !!}
-                                {!! Form::text('travel_duration', 'DURATION OF TRAVEL', array('class' => 'custom-input-text', 'disabled')) !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- MEDICAL FILE & VISIT NUMBER --}}
-            <div class="row padding-top-20">
-                <div class="col-md-12">
-                    <div class="row float-right">
-                        <div class="padding-left-right-15">
-                            <div class="form-group padding-left-right-15 float-left">
-                                {!! Form::label('folder_number', 'Αριθμός Φακέλου') !!}
-                                {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right')) !!}
-                            </div>
-                            <div class="form-group padding-left-right-15 float-left">
-                                {!! Form::label('medical_visit_id', 'Αριθμός επίσκεψης') !!}
-                                {!! Form::text('medical_visit_id', 'α/α', array('class' => 'custom-input-text text-align-right')) !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         {{-- BASIC MEDICAL DETAILS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">2. Βασικά Ιατρικά στοιχεία</h1>
+                <h1 class="record-section-header padding-left-right-15">3. Βασικά Ιατρικά στοιχεία</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -154,7 +176,7 @@
                             {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                                 {!! Form::label('doctor_name', 'ΟΝΟΜΑ ΙΑΤΡΟΥ') !!}
-                                {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text', 'disabled')) !!}
+                                {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text')) !!}
                             </div>
                             {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -242,7 +264,7 @@
         {{-- CLINICAL RESULTS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">3. Κλινικά αποτελέσματα</h1>
+                <h1 class="record-section-header padding-left-right-15">4. Κλινικά αποτελέσματα</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -318,7 +340,7 @@
         {{-- LABORATORY RESULTS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">4. Εργαστηριακά αποτελέσματα</h1>
+                <h1 class="record-section-header padding-left-right-15">5. Εργαστηριακά αποτελέσματα</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -348,7 +370,7 @@
         {{-- MEDICATION DETAILS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">5. Φαρμακευτική αγωγή</h1>
+                <h1 class="record-section-header padding-left-right-15">6. Φαρμακευτική αγωγή</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -378,7 +400,7 @@
         {{-- REFERRALS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">6. Παραπομπές</h1>
+                <h1 class="record-section-header padding-left-right-15">7. Παραπομπές</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -408,7 +430,7 @@
         {{-- UPLOAD FILE --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">7. Ανέβασμα αρχείου</h1>
+                <h1 class="record-section-header padding-left-right-15">8. Ανέβασμα αρχείου</h1>
             </div>
             <div id="upload_file">
                 <div class="uploadFile">

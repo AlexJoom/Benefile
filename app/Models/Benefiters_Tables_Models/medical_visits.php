@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class medical_visits extends Model
 {
     protected $table = 'medical_visits';
+    protected $fillable = ['medical_visit_date'];
+
 
     public function benefiter(){
         return $this->hasOne('App\Models\Benefiters_Tables_Models\Benefiter','id', 'benefiter_id');
