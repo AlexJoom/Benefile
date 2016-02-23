@@ -127,7 +127,7 @@ class RecordsController extends Controller
         }
     }
 
-    // post basic info referrals
+    //------ POST BASIC INFO REFERRALS ------------------------//
     public function postBasicInfoReferrals(Request $request){
         // update basic info referrals table
         $this->basicInfoService->basic_info_referrals($request);
@@ -172,16 +172,21 @@ class RecordsController extends Controller
     }
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
-    public function getMedicalFolder(){
-        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-        // brings the medical location array from db
-        $medical_locations = medical_location_lookup::get()->all();
-        $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
-        //TODO this benefiter id needs to be inserted from the respective url which includes it
-        $benefiter_folder_number = Benefiter::where('id','=', 1)->first()->folder_number;
-        $benefiter_id = 1;
-        $doctor_id = Auth::user()->id;
-        return view('benefiter.medical-folder', compact('ExamResultsLookup','medical_locations_array', 'benefiter_folder_number', 'benefiter_id', 'doctor_id'))->with('benefiter', new Benefiter());
+    public function getMedicalFolder($id){
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        if ($benefiter == null) {
+            return view('errors.404');
+        } else {
+            $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+            // brings the medical location array from db
+            $medical_locations = medical_location_lookup::get()->all();
+            $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
+            //TODO this benefiter id needs to be inserted from the respective url which includes it
+            $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
+            $doctor_id = Auth::user()->id;
+            return view('benefiter.medical-folder', compact('ExamResultsLookup', 'medical_locations_array', 'benefiter_folder_number', 'benefiter_id', 'doctor_id', 'benefiter'));
+
+        }
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request){
