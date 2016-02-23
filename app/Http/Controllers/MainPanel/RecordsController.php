@@ -215,6 +215,7 @@ class RecordsController extends Controller
 //            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
 //        } else {
 
+
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
             // chronic conditions table
@@ -229,6 +230,8 @@ class RecordsController extends Controller
             $this->medicalVisit->save_medical_medication($request->all(), $medicalVisit_id);
             // medical referrals
             $this->medicalVisit->save_medical_referrals($request->all(), $medicalVisit_id);
+            // medical file uploads
+            $this->medicalVisit->save_medical_uploads($request->all(), $medicalVisit_id);
 
 
             return view('benefiter.medical-folder', compact('benefiter',

@@ -10,7 +10,9 @@ use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_medication;
 use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\medical_referrals;
+use App\Models\Benefiters_Tables_Models\medical_uploads;
 use App\Services\DatesHelper;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use Carbon\Carbon;
 
@@ -297,12 +299,28 @@ class BenefiterMedicalFolderService
     // ------------------------------------------------------------ //
     //----------- medical_uploads table ----------------------------//
     // DB save
-    public function save_medical_uploads($request){
+    public function save_medical_uploads($request, $id){
+        $request_upload_file_description = $request['upload_file_description'];
+        $request_upload_file_title = $request['upload_file_title'];
 
-    }
-    // post request
-    private function medical_uploads($request){
+        $file = Input::file('upload_file_title');
 
+        $files_numbers = count($request_upload_file_title);
+
+        for($i=0 ; $i<$files_numbers; $i++){
+
+            $path = public_path() . '/uploads/medical-visit-uploads';
+            $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-'. $id;
+            $file[$i]->move($path, $fileName); // uploading file to given path
+
+            $medical_upload = new medical_uploads();
+            $medical_upload->title = $fileName;
+            $medical_upload->description = $request_upload_file_description[$i];
+            $medical_upload->path = $path;
+            $medical_upload->medical_visit_id = $id;
+
+            $medical_upload->save();
+        }
     }
 
     // ------------------------------------------------------------------ //
