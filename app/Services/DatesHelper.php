@@ -20,12 +20,13 @@ class DatesHelper
 
     // gets Carbon Formatted String from simple Date String
     public function getDateStringFromSimpleString($date){
-        return $this->makeDBFriendlyDate($date)->toDateTimeString();
+        $date = $this->makeDBFriendlyDate($date);
+        return ($date != "") ? $date->toDateTimeString() : "";
     }
 
     // gets finely formatted String from DB Date
     public function getFinelyFormattedStringDateFromDBDate($date){
-        if($date == "0000-00-00 "){
+        if($date == "0000-00-00" || $date == "0000-00-00 00:00:00"){
             $date = "";
             return $date;
         } else {
