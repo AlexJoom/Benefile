@@ -83,7 +83,7 @@ class TestBenefitersSeeder extends Seeder
         ));
 
         Benefiter::create(array(
-            'folder_number'                 => 'KK1',
+            'folder_number'                 => 'KK3',
             'name'                          => 'Ben-name-1',
             'lastname'                      => 'Ben-lastname-1',
             'fathers_name'                  => 'Bens-father-1',
@@ -118,7 +118,7 @@ class TestBenefitersSeeder extends Seeder
         ));
 
         Benefiter::create(array(
-            'folder_number'                 => 'KK3',
+            'folder_number'                 => 'KK4',
             'name'                          => 'Ben-name-3',
             'lastname'                      => 'Ben-lastname-3',
             'fathers_name'                  => 'Bens-father-3',
@@ -153,7 +153,7 @@ class TestBenefitersSeeder extends Seeder
         ));
 
         Benefiter::create(array(
-            'folder_number'                 => 'KK4',
+            'folder_number'                 => 'KK5',
             'name'                          => 'Ben-name-4',
             'lastname'                      => 'Ben-lastname-4',
             'fathers_name'                  => 'Bens-father-4',
@@ -188,7 +188,7 @@ class TestBenefitersSeeder extends Seeder
         ));
 
         Benefiter::create(array(
-            'folder_number'                 => 'KK5',
+            'folder_number'                 => 'KK6',
             'name'                          => 'Ben-name-5',
             'lastname'                      => 'Ben-lastname-5',
             'fathers_name'                  => 'Bens-father-5',
