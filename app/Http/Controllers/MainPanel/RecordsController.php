@@ -7,6 +7,7 @@ use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
+use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -98,6 +99,7 @@ class RecordsController extends Controller
                             'nationality_country' => $request->nationality_country,
                             'origin_country' => $request->origin_country,
                             'arrival_date' => $request->arrival_date,
+                            'ethnic_group' => $request->ethnic_group,
                             'telephone' => $request->telephone,
                             'address' => $request->address,
                             'marital_status' => $request->marital_status,
@@ -177,6 +179,7 @@ class RecordsController extends Controller
         if ($benefiter == null) {
             return view('errors.404');
         } else {
+            $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
             $ExamResultsLookup = medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
             $medical_locations = medical_location_lookup::get()->all();
@@ -184,12 +187,27 @@ class RecordsController extends Controller
             //TODO this benefiter id needs to be inserted from the respective url which includes it
             $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
             $doctor_id = Auth::user()->id;
-            return view('benefiter.medical-folder', compact('ExamResultsLookup', 'medical_locations_array', 'benefiter_folder_number', 'benefiter_id', 'doctor_id', 'benefiter'));
-
+            $benefiter_id = $benefiter->id;
+            return view('benefiter.medical-folder', compact('ExamResultsLookup',
+                                                            'medical_locations_array',
+                                                            'benefiter_folder_number',
+                                                            'benefiter_id',
+                                                            'doctor_id',
+                                                            'benefiter',
+                                                            'benefiter_medical_history_list'));
         }
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
-    public function postMedicalFolder(Request $request){
+    public function postMedicalFolder(Request $request, $id){
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
+        $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
+        $doctor_id = Auth::user()->id;
+        $benefiter_id = $benefiter->id;
+        // brings the medical location array from db
+        $medical_locations = medical_location_lookup::get()->all();
+        $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
+        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
 
 //        $validator = $this->medicalVisit->medicalValidation($request->all());
 //        if($validator->fails()){
@@ -212,7 +230,13 @@ class RecordsController extends Controller
             $this->medicalVisit->save_medical_referrals($request->all(), $medicalVisit_id);
 
 
-            return 'success';
+            return view('benefiter.medical-folder', compact('benefiter',
+                                                            'benefiter_folder_number',
+                                                            'benefiter_medical_history_list',
+                                                            'doctor_id',
+                                                            'benefiter_id',
+                                                            'medical_locations_array',
+                                                            'ExamResultsLookup'));
 //        }
 
 

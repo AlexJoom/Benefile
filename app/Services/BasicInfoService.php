@@ -17,13 +17,14 @@ class BasicInfoService{
     // validate the basic info
     public function basicInfoValidation($request){
         $rules = array(
-            'folder_number' => 'max:255|unique:benefiters',
+            'folder_number' => 'max:255|unique:benefiters|required',
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
             'mothers_name' => 'max:255',
             'nationality_country' => 'max:255',
             'origin_country' => 'max:255',
+            'ethnic_group' => 'max:255',
             'birth_date' => 'date',
             'arrival_date' => 'date',
             'address' => 'max:255',
@@ -59,7 +60,6 @@ class BasicInfoService{
         $benefiter = new Benefiter(
             $this->getBenefiterArrayForDBInsert($request)
         );
-        // dd($benefiter);
         $benefiter->save();
         $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
         // if legal status is not existent, add it
@@ -185,6 +185,7 @@ class BasicInfoService{
             "mothers_name" => $request['mothers_name'],
             "nationality_country" => $request['nationality_country'],
             "origin_country" => $request['origin_country'],
+            "ethnic_group" => $request['ethnic_group'],
             "arrival_date" => $this->datesHelper->makeDBFriendlyDate($request['arrival_date']),
             "telephone" => $request['telephone'],
             "address" => $request['address'],

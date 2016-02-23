@@ -10,6 +10,9 @@
     border: 20px solid #e6f4f4;
     border-bottom: none;
 }
+.no-top-border{
+    border-top: none;
+}
 
 .make-inline{
     display: inline-block;
@@ -95,11 +98,8 @@ input[type="radio"] {
     -moz-appearance: checkbox;    /* Firefox  */
     -ms-appearance: checkbox;     /* not currently supported */
     border-radius: 0;
-    margin-right: 10px;
 }
-input[type="checkbox"] {
-    margin-right: 10px;
-}
+
 .padding-20{
     padding: 20px;
 }
