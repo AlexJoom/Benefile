@@ -79,7 +79,7 @@ $(document).ready(function(){
     // Apply dataTable to benefiter referrals history
     $(function() {
         $('#benefiter_referrals_history').DataTable( {
-            "lengthMenu": [ [-1], ["All"] ]
+            //"lengthMenu": [ [-1], ["All"] ]
         });
     });
 });
