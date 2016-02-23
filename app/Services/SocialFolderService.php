@@ -8,7 +8,6 @@ class SocialFolderService{
     public function socialFolderValidation($request){
         return Validator::make($request, array(
             // 'children_names' => 'max:255',
-            'ethnic_group' => 'max:255',
             'comments' => 'max:2000',
             'session_date' => 'date',
             'session_comments' => 'max:2000',
@@ -44,7 +43,6 @@ class SocialFolderService{
     private function getSocialFolderArrayForDBInsert($request, $benefiterId){
         return array(
             'benefiter_id' => $benefiterId,
-            'ethnic_group' => $request['ethnic_group'],
             'comments' => $request['comments'],
         );
     }
@@ -82,6 +80,7 @@ class SocialFolderService{
             'session_date' => $datesHelper->makeDBFriendlyDate($request['session_date']),
             'session_comments' => $request['session_comments'],
             'psychosocial_theme_id' => $request['psychosocial_theme'],
+            'psychologist_id' => \Auth::user()->id,
         );
     }
 }

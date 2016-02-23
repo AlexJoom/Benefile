@@ -20,6 +20,8 @@ class CreatePsychosocialSessionsTable extends Migration
             $table->integer('psychosocial_theme_id')->unsigned();
             $table->foreign('social_folder_id')->references('id')->on('social_folder');
             $table->foreign('psychosocial_theme_id')->references('id')->on('psychosocial_support_lookup');
+            $table->integer('psychologist_id')->unsigned();
+            $table->foreign('psychologist_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
