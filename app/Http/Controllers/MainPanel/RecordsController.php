@@ -193,7 +193,7 @@ class RecordsController extends Controller
 
     // save a new session from social folder view
     public function postSessionSave(Request $request, $id){
-        $validator = $this->socialFolderService->newSessionValidation(array(
+        $validator = $this->socialFolderService->sessionValidation(array(
                                                                         'session_date' => $request->session_date,
                                                                         'session_comments' => $request->session_comments
                                                                      ));
@@ -206,7 +206,27 @@ class RecordsController extends Controller
                 ->with('psychosocialTheme', $request->psychosocial_theme)
                 ->withFlashMessage($validator->errors()->all());
         } else {
-            $this->socialFolderService->saveNewSessionToDB($request, $id);
+            $this->socialFolderService->saveNewSessionToDB($request->all(), $id);
+            return redirect('benefiter/'.$id.'/social-folder');
+        }
+    }
+
+    // update an edited session
+    public function postSessionEdit(Request $request, $id, $session_id){
+        $validator = $this->socialFolderService->sessionValidation(array(
+                                                                    'session_date' => $request->session_date,
+                                                                    'session_comments' => $request->session_comments
+                                                                  ));
+        if($validator->fails()){
+            return redirect('benefiter/'.$id.'/social-folder')
+                ->withInput(array(
+                    'session_comments' => $request->session_comments,
+                    'session_date' => $request->session_date,
+                ))
+                ->with('psychosocialTheme', $request->psychosocial_theme)
+                ->withFlashMessage($validator->errors()->all());
+        } else {
+            $this->socialFolderService->saveEditedSessionToDB($request->all(), $session_id);
             return redirect('benefiter/'.$id.'/social-folder');
         }
     }

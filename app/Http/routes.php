@@ -60,6 +60,7 @@ Route::post('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@postMe
 Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocialFolder');
 Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 Route::post('benefiter/{id}/session-save', 'MainPanel\RecordsController@postSessionSave');
+Route::post('benefiter/{id}/session-edit/{session_id}', 'MainPanel\RecordsController@postSessionEdit');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 

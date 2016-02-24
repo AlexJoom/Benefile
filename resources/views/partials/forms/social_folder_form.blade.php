@@ -174,9 +174,49 @@
                         <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
-                        <div class="col-sm-2"><button class="simple-button width-100-percent">@lang($p."edit")</button></div>
+                        <div class="col-sm-2"><button class="simple-button width-100-percent edit-session" value="{{ $benefiter_session->id }}">@lang($p."edit")</button></div>
                         <div class="col-sm-2"><button class="simple-button width-100-percent">@lang($p."delete")</button></div>
                     </div>
+                </div>
+                <div class="edit-session-div dynamic-form-section">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                    {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group padding-left-right-15 float-left col-md-2">
+                                        {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
+                                        {!! Form::text('session_date', $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date), array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
+                                    <div class="form-group padding-left-right-15 float-left col-md-2">
+                                        <div class="width-100-percent">
+                                            {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
+                                        </div>
+                                        <select name="psychosocial_theme">
+                                            @foreach($psychosocialSubjects as $subject)
+                                            <?php
+                                                $selected = "";
+                                                if($benefiter_session->psychosocial_theme_id == $subject->id) {
+                                                    $selected = "selected";
+                                                }
+                                            ?>
+                                            <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                        {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
+                                        {!! Form::textarea('session_comments', $benefiter_session->session_comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="align-text-center">
+                            {!! Form::submit(Lang::get('social_folder_form.save_edited_session'), array('class' => 'submit-button save-session')) !!}
+                        </div>
+                    </div>
+                   {!! Form::close() !!}
                 </div>
                 @endforeach
                 @endif
