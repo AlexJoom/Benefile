@@ -236,13 +236,20 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-        // TODO
-//        $validator = $this->medicalVisit->medicalValidation($request->all());
-//        if($validator->fails()){
-//            return view('benefiter.medical-folder')->withErrors($validator->errors()->all());
-//        } else {
 
-
+        // Post Validation
+        $validator = $this->medicalVisit->medicalValidation($request->all());
+//        dd($validator);
+        if($validator->fails()){
+            return view('benefiter.medical-folder', compact('benefiter',
+                'benefiter_folder_number',
+                'benefiter_medical_history_list',
+                'doctor_id',
+                'benefiter_id',
+                'medical_locations_array',
+                'ExamResultsLookup',
+                'medical_visits_number'))->withErrors($validator->errors()->all());
+        } else {
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
             // chronic conditions table
@@ -269,7 +276,7 @@ class RecordsController extends Controller
                                                             'medical_locations_array',
                                                             'ExamResultsLookup',
                                                             'medical_visits_number'));
-//        }
+        }
 
     }
 }

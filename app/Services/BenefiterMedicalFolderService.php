@@ -33,75 +33,69 @@ class BenefiterMedicalFolderService
     // PART 1 : validate the medical info frm the post
     //-----------------------------------------------//
     public function medicalValidation($request){
-        $this->requestForValidation = $this->getValidationArray($request);
         $rules = array(
-            'doctor_name' => 'max:255',
-            'examination_date' => 'date',
-            'examination_location' => 'integer',
+            'examination_date' => 'date|required',
+            'medical_location_id' => 'integer',
             'incident_type' => 'integer',
             'height' => 'digits:3',
             'weight' => 'digits:3',
             'temperature' => 'number',
             'blood_pressure_systolic' => 'number',
             'blood_pressure_diastolic' => 'number',
-            'skull-perimeter' => 'digits:3',
-            'respiratory_system' => 'max:2000',
-            'digestive_system' => 'max:2000',
-            'skin_tissue' => 'max:2000',
-            'cardiovascular_system' => 'max:2000',
-            'urinary_system' => 'max:2000',
-            'musculoskeletal_system' => 'max:2000',
-            'immunization_system' => 'max:2000',
-            'nervous_system' => 'max:2000',
-            'other' => 'max:2000',
+            'skull_perimeter' => 'digits:3'
         );
         // Push the dynamic elements into the rule array
-        $chronic_conditions = $request[('chronic_conditions')];
+        $chronic_conditions = $request['chronic_conditions'];
         foreach ($chronic_conditions as $cc){
             array_push($rules, [$cc=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $lab_results = $request->get('lab-results');
+        $examResultLoukup = $request['examResultLoukup'];
+        foreach ($examResultLoukup as $examResult){
+            array_push($rules, [$examResult=>'max:255']);
+        }
+
+        // Push the dynamic elements into the rule array
+        $lab_results = $request['lab_results'];
         foreach ($lab_results as $lr){
             array_push($rules, [$lr=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $medicationList = $request->get('medicationList');
+        $medicationList = $request['medicationList'];
         foreach ($medicationList as $ml){
             array_push($rules, [$ml=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $referrals = $request->get('referrals');
+        $referrals = $request['referrals'];
         foreach ($referrals as $ref){
             array_push($rules, [$ref=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $upload_file_title = $request->get('upload_file_title');
-        foreach ($upload_file_title as $ft){
-            array_push($rules, [$ft=>'max:255']);
+        $upload_file_description = $request['upload_file_description'];
+        foreach ($upload_file_description as $fd){
+            array_push($rules, [$fd=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $upload_file_path = $request->get('upload_file_path');
-        foreach ($upload_file_path as $fp){
-            array_push($rules, [$fp=>'max:255']);
+        $upload_file_title = $request['upload_file_title'];
+        foreach ($upload_file_title as $ft){
+            array_push($rules, [$ft=>'max:255']);
         }
-
-        return Validator::make($this->requestForValidation, $rules);
+        return Validator::make($request, $rules);
     }
 
-    // returns an array suitable for validation
-    private function getValidationArray($request){
-        return array(
-//            TODO
-//            "social_background" => $request['social_background'],
-//            "document_manager_id" => \Auth::user()->id,
-        );
-    }
+//    // returns an array suitable for validation
+//    private function getValidationArray($request){
+//        return array(
+////            TODO
+////            "social_background" => $request['social_background'],
+////            "document_manager_id" => \Auth::user()->id,
+//        );
+//    }
 
     //--------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
