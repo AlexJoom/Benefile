@@ -61,6 +61,7 @@ Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocia
 Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
 Route::post('benefiter/{id}/session-save', 'MainPanel\RecordsController@postSessionSave');
 Route::post('benefiter/{id}/session-edit/{session_id}', 'MainPanel\RecordsController@postSessionEdit');
+Route::get('benefiter/{id}/session-delete/{session_id}', 'MainPanel\RecordsController@getSessionDelete');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 

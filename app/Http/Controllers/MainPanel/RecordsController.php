@@ -231,6 +231,12 @@ class RecordsController extends Controller
         }
     }
 
+    // delete a session
+    public function getSessionDelete($id, $session_id){
+        $this->socialFolderService->deleteSessionById($session_id);
+        return redirect("benefiter/" . $id . "/social-folder");
+    }
+
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
