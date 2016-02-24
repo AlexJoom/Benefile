@@ -174,8 +174,8 @@
                         <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
-                        <div class="col-sm-2"><button class="simple-button width-100-percent edit-session" value="{{ $benefiter_session->id }}">@lang($p."edit")</button></div>
-                        <div class="col-sm-2"><button class="simple-button width-100-percent">@lang($p."delete")</button></div>
+                        <div class="col-sm-2"><button class="simple-button width-100-percent edit-session">@lang($p."edit")</button></div>
+                        <div class="col-sm-2"><button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button></div>
                     </div>
                 </div>
                 <div class="edit-session-div dynamic-form-section">
@@ -231,3 +231,23 @@
     </div>
 @endif
 </div>
+<!--delete session confirmation modal-->
+<div class="modal fade" id="delete-session-modal" aria-hidden="true" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="delete-session-form" action="" method="get">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" class="delete-session-path" name="path" value="{{ url("benefiter/".$benefiter->id."/session-delete/") }}">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@lang($p."delete_session_modal_title")</h4>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-3 col-md-offset-9">
+                        <button type="submit" class="simple-button">@lang($p."done")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal -->

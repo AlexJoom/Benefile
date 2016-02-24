@@ -21,17 +21,6 @@
                 }
             });
 
-            // Adjusts the height of the sidebar accordingly to the biggest screen height
-            $(function(){
-                var bodyHeight = $('body#main-layout').height() - $('div#header').height();
-                var windowHeight = $('div#results-list').height() + $('div#actions').height();
-                if(bodyHeight > windowHeight){
-                    $('div#sidebar').css({'height': bodyHeight +'px'});
-                }else{
-                    $('div#sidebar').css({'height': windowHeight +'px'})
-                }
-            });
-
             // ACTION TABS
             $('.col-md-4.userStatus div').click(function(){
                 if(!$(this).hasClass('pink-border-bottom white bold')){

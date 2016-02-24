@@ -38,6 +38,11 @@ class SocialFolderService{
         \DB::table('psychosocial_sessions')->where('id', $session_id)->update($this->getPsychosocialSessionArrayForDBEdit($request));
     }
 
+    // delete a session
+    public function deleteSessionById($session_id){
+        \DB::table('psychosocial_sessions')->where('id', $session_id)->delete();
+    }
+
     // gets all the rows from psychosocial_support_lookup DB table to display them in social folder view
     public function getAllPsychosocialSupportSubjects(){
         return \DB::table('psychosocial_support_lookup')->get();

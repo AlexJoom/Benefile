@@ -44,7 +44,7 @@
         <div class="newCont table-display">
             <div class="table-row height-100per">
                 {{-- sidebar --}}
-                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per" id="sidebar">
+                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per min-height-660px" id="sidebar">
 
                     {{-- NGO logo --}}
                     <div class="logo-ngo" id="ngo-logo">
