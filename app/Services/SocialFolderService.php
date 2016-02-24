@@ -7,10 +7,15 @@ class SocialFolderService{
     // validates the social folder view form input
     public function socialFolderValidation($request){
         return Validator::make($request, array(
-            // 'children_names' => 'max:255',
             'comments' => 'max:2000',
-//            'session_date' => 'date',
-//            'session_comments' => 'max:2000',
+        ));
+    }
+
+    // validates the social folder view form input
+    public function newSessionValidation($request){
+        return Validator::make($request, array(
+            'session_date' => 'date',
+            'session_comments' => 'max:2000',
         ));
     }
 
@@ -19,9 +24,12 @@ class SocialFolderService{
         if(!array_key_exists('psychosocial_statuses', $request)){
             $request['psychosocial_statuses'] = null;
         }
-        $socialFolderId = \DB::table('social_folder')->insertGetId($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
+        \DB::table('social_folder')->insert($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
 //        $this->savePsychosocialSupportToDB($request, $benefiterId);
-//        $this->savePsychosocialSessionToDB($request, $socialFolderId);
+    }
+
+    public function saveNewSessionToDB($request, $benefiterId){
+        $this->savePsychosocialSessionToDB($request, $this->getSocialFolderFromBenefiterId($benefiterId)->id);
     }
 
     // gets all the rows from psychosocial_support_lookup DB table to display them in social folder view
