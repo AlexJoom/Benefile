@@ -1,3 +1,7 @@
+<?PHP
+    $p = 'auth/login.';
+?>
+
 @extends('layouts.login-register-layout')
 
 @section('title')
@@ -24,14 +28,14 @@
             {{-- password --}}
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <div class="col-md-6 centerDiv">
-                    <input type="password" class="inputFields" name="password" placeholder="Κωδικός">
+                    <input type="password" class="inputFields" name="password" placeholder=@lang($p.'password')>
                     @if ($errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif
                     <div>
-                        <b><a class="clickMessage" href="{{ url('/password/email') }}">Ξεχάσατε τον κωδικό σας;</a></b>
+                        <b><a class="clickMessage" href="{{ url('/password/email') }}">@lang($p.'forgot_password')</a></b>
                     </div>
                 </div>
             </div>
@@ -40,11 +44,12 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <button type="submit" class="inputFields submitColor no-border" >
-                        Είσοδος
+                        @lang($p.'login')
                     </button>
                     <p class="clickMessage">
-                       Δεν έχετε λογαριασμό;&nbsp;
-                        <b><a class="white" href="{{ url('auth/register')}}">Εγγραφείτε εδώ.</a></b>
+                       @lang($p.'no_account')
+                       &nbsp;
+                        <b><a class="white" href="{{ url('auth/register')}}">@lang($p.'register_here')</a></b>
                     </p>
                 </div>
             </div>

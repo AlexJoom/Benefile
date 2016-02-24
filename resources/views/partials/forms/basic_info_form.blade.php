@@ -46,7 +46,7 @@
                             {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('gender', Lang::get('basic_info_form.gender')) !!}
+                            {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <?php
                                 $male = false;
                                 $female = false;
@@ -57,10 +57,10 @@
                                 }
                             ?>
                             <div class="make-inline">
-                                {!! Form::radio('gender', 1, $male, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender', 2, $female, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 1, $male, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, $female, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">

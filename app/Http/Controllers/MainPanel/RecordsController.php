@@ -63,6 +63,7 @@ class RecordsController extends Controller
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+
             if($benefiter == null) {
                 return view('errors.404');
             } else {

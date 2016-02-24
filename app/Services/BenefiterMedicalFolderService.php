@@ -322,6 +322,8 @@ class BenefiterMedicalFolderService
         }
     }
 
+
+
     // ------------------------------------------------------------------ //
     // PART 2 : END
     //--------------------------------------------------------------------//
@@ -330,13 +332,6 @@ class BenefiterMedicalFolderService
 
 
     // FUNCTIONS USED BY MANY
-
-    /*
-     * will return the medical visit id from the
-     */
-    private function get_medical_visit_id($id){
-
-    }
 
     public function reindex_array($array){
         $location_simplier_array = [];

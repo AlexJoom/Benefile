@@ -82,7 +82,7 @@ class BasicInfoService{
 
     // finds a benefiter from its id
     public function findExistentBenefiter($id){
-        return \DB::table('benefiters')->where('id', '=', $id)->first();
+        return Benefiter::where('id', '=', $id)->with('gender')->first();
     }
 
     // gets all benefiter's legal statuses
