@@ -1,3 +1,7 @@
+<?php
+    $p = 'auth/register.';
+?>
+
 @extends('layouts.login-register-layout')
 
 @section('title')
@@ -17,7 +21,7 @@
             {{-- name --}}
             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                 <div class="col-md-6 centerDiv">
-                    <input type="name" class="inputFields" name="name" value="{{ old('name') }}" placeholder="Όνομα">
+                    <input type="name" class="inputFields" name="name" value="{{ old('name') }}" placeholder=@lang($p.'name')>
                     @if ($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -29,7 +33,7 @@
             {{-- lastname --}}
             <div class="form-group {{ $errors->has('lastname') ? ' has-error' : '' }}">
                 <div class="col-md-6 centerDiv">
-                    <input type="lastname" class="inputFields" name="lastname" value="{{ old('lastname') }}" placeholder="Επίθετο">
+                    <input type="lastname" class="inputFields" name="lastname" value="{{ old('lastname') }}" placeholder=@lang($p.'lastname')>
                     @if ($errors->has('lastname'))
                         <span class="help-block">
                             <strong>{{ $errors->first('lastname') }}</strong>
@@ -53,7 +57,7 @@
              {{--Password--}}
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                 <div class="col-md-6 centerDiv">
-                    <input type="password" class="inputFields" name="password" placeholder="Κωδικός">
+                    <input type="password" class="inputFields" name="password" placeholder=@lang($p.'password')>
                     @if ($errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -65,7 +69,7 @@
             {{-- Confirm password --}}
             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                 <div class="col-md-6 centerDiv">
-                    <input type="password" class="inputFields" name="password_confirmation" placeholder="Επιβεβαίωση κωδικού">
+                    <input type="password" class="inputFields" name="password_confirmation" placeholder=@lang($p.'confirm_password')>
                     @if ($errors->has('password_confirmation'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -78,11 +82,11 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <select class="inputFields" id="user-role" onchange="showDiv(this)" name="user_role_id">
-                      <option value="0" disabled selected>Επιλογή ρόλου</option>
-                      <option value="2">Γιατρός</option>
-                      <option value="3">Νομικός Σύμβουλος</option>
-                      <option value="4">Κοινωνικός Σύμβουλος</option>
-                      <option value="5">Ψυχολόγος</option>
+                      <option value="0" disabled selected>@lang($p.'role')</option>
+                      <option value="2">@lang($p.'doctor')</option>
+                      <option value="3">@lang($p.'counsel')</option>
+                      <option value="4">@lang($p.'social_advisor')</option>
+                      <option value="5">@lang($p.'psychologist')</option>
                     </select>
                     @if ($errors->has('user_role_id'))
                         <span class="help-block">
@@ -96,7 +100,7 @@
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
                     <select class="inputFields" id="user-subrole" name="user_subrole_id">
-                        <option value="0" disabled selected>Επιλογή ειδικότητας</option>
+                        <option value="0" disabled selected>@lang($p.'specialty')</option>
 
                         @foreach ($subroles as $subrole)
                             <option value="{!! $subrole->id !!}">{!! $subrole->subrole !!}</option>
@@ -113,10 +117,10 @@
             {{--Register Button--}}
             <div class="form-group">
                 <div class="col-md-6 centerDiv">
-                    <button type="submit" class="inputFields submitColor no-border no-padding-left">Εγγραφή</button>
+                    <button type="submit" class="inputFields submitColor no-border no-padding-left">@lang($p.'register')</button>
                     <div class="clickMessage">
-                        <span class="font-weight-400">Έχετε ήδη λογαριασμό?</span>&nbsp;&nbsp;
-                        <a class="clickMessage font-weight-700" href="{{ url('auth/login')}}">Πατήστε εδώ.</a>
+                        <span class="font-weight-400">@lang($p.'registered')</span>&nbsp;&nbsp;
+                        <a class="clickMessage font-weight-700" href="{{ url('auth/login')}}">@lang($p.'click')</a>
                     </div>
                 </div>
             </div>

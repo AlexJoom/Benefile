@@ -60,4 +60,8 @@ class Benefiter extends Model
     {
         return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_visits', 'id', 'benefiter_id');
     }
+
+    public function gender(){
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\Genders_lookup', 'id', 'gender_id');
+    }
 }

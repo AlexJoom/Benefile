@@ -1,3 +1,7 @@
+<?php
+    $p = "layouts/mainPanel.";
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +55,7 @@
                     <div class="" id="search-bar">
                         <div class="">
                             <form>
-                                <input type="text" class="searchField dark-green-background" name="search" placeholder="Αναζήτηση ωφελουμένου">
+                                <input type="text" class="searchField dark-green-background" name="search" placeholder="@lang($p.'benefiter_search')">
                                 <button type="submit" class="glyphicon glyphicon-search searchButton"></button>
                             </form>
                         </div>
@@ -61,27 +65,27 @@
                     <div class="margin-top-60 white" id="menu">
                         <ul id="menu-first-layer">
                             <li id="benefiters-list">
-                                <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">Ωφελούμενοι</a>
+                                <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
                             </li>
                             <li id="register-benefiter">
-                                <div class="buttonMenu no-padding">Εγγραφή <i class="glyphicon glyphicon-chevron-right"></i></div>
+                                <div class="buttonMenu no-padding">@lang($p.'registration') <i class="glyphicon glyphicon-chevron-right"></i></div>
                             </li>
                             <li id="new-benefiter" class="child hide">
-                                <a href="{{ url('benefiter/-1/basic-info') }}">Νέα εγγραφή</a>
+                                <a href="{{ url('benefiter/-1/basic-info') }}">@lang($p.'new_registration')</a>
                             </li>
                             <li id="import-file" class="child hide">
-                                <a href="{{url('new-benefiter/uploadCSV')}}">Φόρτωση αρχείου</a>
+                                <a href="{{url('new-benefiter/uploadCSV')}}">@lang($p.'file_import')</a>
                             </li>
                             <li id="reports">
-                                <a>Αναφορά</a>
+                                <a>@lang($p.'reports')</a>
                             </li>
                             @if(Auth::user()->user_role_id == 1)
                             <li id="users-list">
-                                <a  href="{{url('main-panel/users-list')}}">Χρήστες</a>
+                                <a  href="{{url('main-panel/users-list')}}">@lang($p.'users')</a>
                             </li>
                             @endif
                             <li id="user-logout">
-                                <a href="{{ url('auth/logout') }}">Έξοδος</a>
+                                <a href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
                             </li>
                         </ul>
                     </div>
