@@ -2,8 +2,6 @@
  * Created by cdimitzas on 5/2/2016.
  */
 
-$('div#sidebar').css({'height':($('.table-row.height-100per').height())+'px'});
-
 $('#register-benefiter').click(function(){
     $('#new-benefiter').toggleClass('hide');
     $('#import-file').toggleClass('hide');
