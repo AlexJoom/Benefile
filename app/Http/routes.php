@@ -51,6 +51,8 @@ Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@
 //----------------------- MEDICAL FOLDER
 Route::get('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@getMedicalFolder');
 Route::post('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
+Route::get('benefiter/getIC10List', 'MainPanel\RecordsController@getICD10List');
+
 //----------------------- END MEDICAL FOLDER
 
 //----------------------- LEGAL FOLDER

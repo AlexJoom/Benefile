@@ -8,6 +8,7 @@ use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\medical_visits;
+use App\Models\Benefiters_Tables_Models\ICD10;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -231,6 +232,11 @@ class RecordsController extends Controller
         }
     }
 
+    public function getICD10List(Request $request)
+    {
+        // TODO
+        return ICD10::where("code","like", '%'.$request["q"] )->get();
+    }
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -238,23 +244,24 @@ class RecordsController extends Controller
         if ($benefiter == null) {
             return view('errors.404');
         } else {
+            // ICD10 list
+            $icd10 = $this->medicalVisit->general_reindex_array(ICD10::get());
+//            dd($icd10[0]['attributes']['description']);
+            $icd10_description = $this->medicalVisit->reindex_array(ICD10::get());
             $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
             $ExamResultsLookup = medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
-            $medical_locations = medical_location_lookup::get()->all();
+            $medical_locations = medical_location_lookup::get();
             $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
             //TODO this benefiter id needs to be inserted from the respective url which includes it
             $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
             $doctor_id = Auth::user()->id;
             $benefiter_id = $benefiter->id;
-            return view('benefiter.medical-folder', compact('ExamResultsLookup',
-                                                            'medical_locations_array',
-                                                            'benefiter_folder_number',
-                                                            'benefiter_id',
-                                                            'doctor_id',
-                                                            'benefiter',
-                                                            'benefiter_medical_history_list',
-                                                            'medical_visits_number'));
+            return view('benefiter.medical-folder', compact('ExamResultsLookup', 'medical_locations_array',
+                                                            'benefiter_folder_number', 'benefiter_id',
+                                                            'doctor_id', 'benefiter',
+                                                            'benefiter_medical_history_list', 'medical_visits_number',
+                                                            'icd10_description'));
         }
     }
     //------------ POST MEDICAL VISIT DATA -------------------------------//
@@ -269,6 +276,8 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+        // ICD10 list
+        $icd10 = ICD10::get()->all();
 
         // Post Validation
         $validator = $this->medicalVisit->medicalValidation($request->all());
@@ -301,15 +310,11 @@ class RecordsController extends Controller
             $this->medicalVisit->save_medical_uploads($request->all(), $medicalVisit_id);
 
 
-            return view('benefiter.medical-folder', compact('benefiter',
-                                                            'benefiter_folder_number',
-                                                            'benefiter_medical_history_list',
-                                                            'doctor_id',
-                                                            'benefiter_id',
-                                                            'medical_locations_array',
-                                                            'ExamResultsLookup',
-                                                            'medical_visits_number'));
+            return view('benefiter.medical-folder', compact('benefiter', 'benefiter_folder_number',
+                                                            'benefiter_medical_history_list', 'doctor_id',
+                                                            'benefiter_id', 'medical_locations_array',
+                                                            'ExamResultsLookup', 'medical_visits_number',
+                                                            'icd10'));
         }
-
     }
 }

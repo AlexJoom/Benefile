@@ -112,6 +112,47 @@ $(document).ready(function(){
     $('#new-med-visit-button').on('click', function(){
         $('#new-medical-visit').slideToggle();
     });
+
+    // SELECT2 option added for auto complete ICD10 medical conditions
+    $("#test-select").select2({
+        ajax: {
+            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term // search term
+                };
+            },
+            processResults: function (data, params) {
+                // parse the results into the format expected by Select2
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data, except to indicate that infinite
+                // scrolling can be used
+                params.page = params.page || 1;
+
+                var results =[];
+                $.each(data,function(index,item){
+                    results.push({
+                        id: item.id,
+                        text: item.code + ": " +item.description
+                    });
+                });
+                return {
+                    results: results
+                };
+            },
+            templateResult: function (item) {
+                return item.id;//.id +" " + item.description;
+            },
+            templateSelection:  function (item, container) {
+                return item.id;
+            },
+            cache: true
+        },
+        escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+        minimumInputLength: 3
+    });
 });
 
 //var $condition_count = 0;

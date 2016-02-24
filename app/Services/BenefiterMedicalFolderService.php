@@ -328,11 +328,20 @@ class BenefiterMedicalFolderService
     // FUNCTIONS USED BY MANY
 
     public function reindex_array($array){
-        $location_simplier_array = [];
+        $reindexed_array = [];
         for($i=0 ; $i<count($array) ; $i++){
-            $location_simplier_array[$i+1] = $array[$i]->description;
+            $reindexed_array[$i+1] = $array[$i]->description;
         }
-        return $location_simplier_array;
+        return $reindexed_array;
+    }
+
+    // keeps every element and reindex only the array from 1 to n
+    public function general_reindex_array($array){
+        $reindexed_array = [];
+        for($i=0 ; $i<count($array) ; $i++){
+            $reindexed_array[$i+1] = $array[$i];
+        }
+        return $reindexed_array;
     }
 
 }

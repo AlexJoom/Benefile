@@ -184,6 +184,10 @@
                         <div class="form-group padding-left-right-15 float-left">
                             {!! Form::label('medical_visit_id', Lang::get($p.'new_visit_number')) !!}
                             {!! Form::text('medical_visit_id', $medical_visits_number+1, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                            {{--{!! Form::select('icd10_id', $icd10_description) !!}--}}
+                            <select id="test-select" style="width:300px;">
+
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -302,6 +306,7 @@
                                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                                     {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                     {!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}
+
                                 </div>
                         @if($i%3 == 2)
                             </div>
