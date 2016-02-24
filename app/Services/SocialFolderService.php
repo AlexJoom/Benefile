@@ -12,7 +12,7 @@ class SocialFolderService{
     }
 
     // validates the social folder view form input
-    public function newSessionValidation($request){
+    public function sessionValidation($request){
         return Validator::make($request, array(
             'session_date' => 'date',
             'session_comments' => 'max:2000',
@@ -28,8 +28,14 @@ class SocialFolderService{
 //        $this->savePsychosocialSupportToDB($request, $benefiterId);
     }
 
+    // save a new session in DB
     public function saveNewSessionToDB($request, $benefiterId){
         $this->savePsychosocialSessionToDB($request, $this->getSocialFolderFromBenefiterId($benefiterId)->id);
+    }
+
+    // update an existing session in DB
+    public function saveEditedSessionToDB($request, $session_id){
+        \DB::table('psychosocial_sessions')->where('id', $session_id)->update($this->getPsychosocialSessionArrayForDBEdit($request));
     }
 
     // gets all the rows from psychosocial_support_lookup DB table to display them in social folder view
@@ -42,9 +48,14 @@ class SocialFolderService{
         return \DB::table('social_folder')->where('benefiter_id', '=', $id)->first();
     }
 
-    //
+    // gets all benefiter's psychosocial support by benefiter id
     public function getBenefiterPsychosocialSupport($id){
         return \DB::table('benefiters_psychosocial_support')->where('benefiter_id', '=', $id)->get();
+    }
+
+    // gets all benefiter's sessions by benefiter id
+    public function getAllSessionsFromBenefiterId($id){
+        return \DB::table('psychosocial_sessions')->where('social_folder_id', '=', $this->getSocialFolderFromBenefiterId($id)->id)->orderBy('session_date', 'desc')->get();
     }
 
     // returns an array suitable for social_folder DB insertion
@@ -82,13 +93,19 @@ class SocialFolderService{
 
     // gets array suitable for psychosocial_sessions DB table insertion
     private function getPsychosocialSessionArrayForDBInsert($request, $socialFolderId){
+        $temp = $this->getPsychosocialSessionArrayForDBEdit($request);
+        $temp['social_folder_id'] = $socialFolderId;
+        $temp['psychologist_id'] = \Auth::user()->id;
+        return $temp;
+    }
+
+    // get psychosocial session array for DB row edit
+    private function getPsychosocialSessionArrayForDBEdit($request){
         $datesHelper = new DatesHelper();
         return array(
-            'social_folder_id' => $socialFolderId,
             'session_date' => $datesHelper->makeDBFriendlyDate($request['session_date']),
-            'session_comments' => $request['session_comments'],
             'psychosocial_theme_id' => $request['psychosocial_theme'],
-            'psychologist_id' => \Auth::user()->id,
+            'session_comments' => $request['session_comments'],
         );
     }
 }
