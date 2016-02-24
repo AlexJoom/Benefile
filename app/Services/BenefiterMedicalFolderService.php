@@ -304,22 +304,21 @@ class BenefiterMedicalFolderService
         $request_upload_file_title = $request['upload_file_title'];
 
         $file = Input::file('upload_file_title');
-
         $files_numbers = count($request_upload_file_title);
+        for ($i = 0; $i < $files_numbers; $i++) {
+            while(!empty($file[$i])){
+                $path = public_path() . '/uploads/medical-visit-uploads';
+                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $id;
+                $file[$i]->move($path, $fileName); // uploading file to given path
 
-        for($i=0 ; $i<$files_numbers; $i++){
+                $medical_upload = new medical_uploads();
+                $medical_upload->title = $fileName;
+                $medical_upload->description = $request_upload_file_description[$i];
+                $medical_upload->path = $path;
+                $medical_upload->medical_visit_id = $id;
 
-            $path = public_path() . '/uploads/medical-visit-uploads';
-            $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-'. $id;
-            $file[$i]->move($path, $fileName); // uploading file to given path
-
-            $medical_upload = new medical_uploads();
-            $medical_upload->title = $fileName;
-            $medical_upload->description = $request_upload_file_description[$i];
-            $medical_upload->path = $path;
-            $medical_upload->medical_visit_id = $id;
-
-            $medical_upload->save();
+                $medical_upload->save();
+            }
         }
     }
 
