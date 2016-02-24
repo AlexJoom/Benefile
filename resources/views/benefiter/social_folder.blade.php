@@ -9,6 +9,7 @@
     <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/records/social_folder_form.css') }}" rel="stylesheet" type="text/css">
 @stop
 
 @section('main-window-content')

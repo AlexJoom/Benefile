@@ -80,9 +80,14 @@
             </div>
         </div>
     </div>
+    <div class="form-section align-text-center no-bottom-border">
+        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+    </div>
+{!! Form::close() !!}
     <div class="psychosocial-support form-section no-bottom-border">
-        <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">3. @lang($p."psychosocial_support")</h1>
+        <div class="underline-header row">
+            <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
+            <button class="float-right simple-button">ΝΕΑ ΣΥΝΕΔΡΙΑ</button>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -137,7 +142,7 @@
             </div>
         </div>
     </div>
-    <div class="new-session form-section no-bottom-border">
+    <div class="new-session form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">4. @lang($p."new_session")</h1>
         </div>
@@ -185,8 +190,4 @@
             </div>
         </div>
     </div>
-    <div class="form-section align-text-center">
-        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
-    </div>
-{!! Form::close() !!}
 </div>

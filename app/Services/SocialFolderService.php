@@ -9,8 +9,8 @@ class SocialFolderService{
         return Validator::make($request, array(
             // 'children_names' => 'max:255',
             'comments' => 'max:2000',
-            'session_date' => 'date',
-            'session_comments' => 'max:2000',
+//            'session_date' => 'date',
+//            'session_comments' => 'max:2000',
         ));
     }
 
@@ -20,8 +20,8 @@ class SocialFolderService{
             $request['psychosocial_statuses'] = null;
         }
         $socialFolderId = \DB::table('social_folder')->insertGetId($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
-        $this->savePsychosocialSupportToDB($request, $benefiterId);
-        $this->savePsychosocialSessionToDB($request, $socialFolderId);
+//        $this->savePsychosocialSupportToDB($request, $benefiterId);
+//        $this->savePsychosocialSessionToDB($request, $socialFolderId);
     }
 
     // gets all the rows from psychosocial_support_lookup DB table to display them in social folder view
