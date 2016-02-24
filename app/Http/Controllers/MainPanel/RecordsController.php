@@ -143,6 +143,9 @@ class RecordsController extends Controller
     public function getSocialFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $psychologist_id = Auth::user()->id;
+        // get psychosocial theme from session, else get null and afterwards forget session value
+        $session_theme = session()->get('psychosocialTheme', function() { return null; });
+        session()->forget('psychosocialTheme');
         if($benefiter == null) {
             return view('errors.404');
         } else {
@@ -152,7 +155,7 @@ class RecordsController extends Controller
                 return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("psychologist_id", $psychologist_id);
             } else {
                 $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
-                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with("psychologist_id", $psychologist_id);
+                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with("psychologist_id", $psychologist_id)->with("session_theme", $session_theme);
             }
         }
     }
@@ -171,6 +174,26 @@ class RecordsController extends Controller
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
             $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
             return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport);
+        }
+    }
+
+    // save a new session from social folder view
+    public function postSessionSave(Request $request, $id){
+        $validator = $this->socialFolderService->newSessionValidation(array(
+                                                                        'session_date' => $request->session_date,
+                                                                        'session_comments' => $request->session_comments
+                                                                     ));
+        if($validator->fails()){
+            return redirect('benefiter/'.$id.'/social-folder')
+                ->withInput(array(
+                                    'session_comments' => $request->session_comments,
+                                    'session_date' => $request->session_date,
+                                 ))
+                ->with('psychosocialTheme', $request->psychosocial_theme)
+                ->withFlashMessage($validator->errors()->all());
+        } else {
+            $this->socialFolderService->saveNewSessionToDB($request, $id);
+            return redirect('benefiter/'.$id.'/social-folder');
         }
     }
 

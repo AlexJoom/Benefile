@@ -1,7 +1,9 @@
 <div class="social-folder-form">
 <?php
     $p = "social_folder_form.";
+    $social_folder_is_null = false;
     if(!isset($social_folder) || $social_folder == null){
+        $social_folder_is_null = true;
         $social_folder = (object) array(
             'comments' => null,
         );
@@ -84,110 +86,128 @@
         {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
     </div>
 {!! Form::close() !!}
-    <div class="psychosocial-support form-section no-bottom-border">
+@if(!$social_folder_is_null)
+    <div class="psychosocial-support form-section">
         <div class="underline-header row">
             <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
-            <button class="float-right simple-button">ΝΕΑ ΣΥΝΕΔΡΙΑ</button>
+            <button id="add-new-session" class="float-right simple-button">@lang($p."add_new_session")</button>
+        </div>
+        <div class="new-session dynamic-form-section">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."new_session")</h1>
+            {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-save')) !!}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                {!! Form::label('psychologist_name', Lang::get('social_folder_form.created_by')) !!}
+                                {!! Form::text('psychologist_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                            </div>
+                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
+                                {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                            <div class="form-group padding-left-right-15 float-left col-md-3">
+                                <div class="width-100-percent">
+                                    {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
+                                </div>
+                                <select name="psychosocial_theme">
+                                    <?php
+                                        $first = true;
+                                    ?>
+                                    @foreach($psychosocialSubjects as $subject)
+                                    <?php
+                                        $selected = "";
+                                        if(!isset($session_theme)){
+                                            if($first) {
+                                                $selected = "selected";
+                                                $first = false;
+                                            }
+                                        } else {
+                                            if($session_theme == $subject->id) {
+                                                $selected = "selected";
+                                            }
+                                        }
+                                    ?>
+                                    <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
+                                {!! Form::textarea('session_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="align-text-center">
+                    {!! Form::submit(Lang::get('social_folder_form.save_session'), array('class' => 'submit-button save-session')) !!}
+                </div>
+            </div>
+           {!! Form::close() !!}
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <?php
-                        for($i = 0; $i < 6; $i++){
+                        /*for($i = 0; $i < 6; $i++){
                             $psychosocial_statuses[$i] = false;
                         }
                         if(isset($psychosocial_support) and $psychosocial_support != null){
                             foreach($psychosocial_support as $support){
                                 $psychosocial_statuses[$support->psychosocial_support_id - 1] = true;
                             }
-                        }
+                        }*/
                     ?>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 1, $psychosocial_statuses[0], array('class' => 'float-left', 'tabindex' => '1')) !!}
-                            {!! Form::label('individual_empowerment', Lang::get('social_folder_form.individual_empowerment'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 2, $psychosocial_statuses[1], array('class' => 'float-left', 'tabindex' => '2')) !!}
-                            {!! Form::label('self_esteem', Lang::get('social_folder_form.self_esteem'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 3, $psychosocial_statuses[2], array('class' => 'float-left', 'tabindex' => '3')) !!}
-                            {!! Form::label('family_problems', Lang::get('social_folder_form.family_problems'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 4, $psychosocial_statuses[3], array('class' => 'float-left', 'tabindex' => '4')) !!}
-                            {!! Form::label('education', Lang::get('social_folder_form.education'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 5, $psychosocial_statuses[4], array('class' => 'float-left', 'tabindex' => '5')) !!}
-                            {!! Form::label('legal_issues', Lang::get('social_folder_form.legal_issues'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('psychosocial_statuses[]', 6, $psychosocial_statuses[5], array('class' => 'float-left', 'tabindex' => '6')) !!}
-                            {!! Form::label('job_search', Lang::get('social_folder_form.job_search'), array('class' => 'float-left')) !!}
-                        </div>
-                    </div>
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 1, $psychosocial_statuses[0], array('class' => 'float-left', 'tabindex' => '1')) !!}--}}
+                            {{--{!! Form::label('individual_empowerment', Lang::get('social_folder_form.individual_empowerment'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 2, $psychosocial_statuses[1], array('class' => 'float-left', 'tabindex' => '2')) !!}--}}
+                            {{--{!! Form::label('self_esteem', Lang::get('social_folder_form.self_esteem'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 3, $psychosocial_statuses[2], array('class' => 'float-left', 'tabindex' => '3')) !!}--}}
+                            {{--{!! Form::label('family_problems', Lang::get('social_folder_form.family_problems'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 4, $psychosocial_statuses[3], array('class' => 'float-left', 'tabindex' => '4')) !!}--}}
+                            {{--{!! Form::label('education', Lang::get('social_folder_form.education'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 5, $psychosocial_statuses[4], array('class' => 'float-left', 'tabindex' => '5')) !!}--}}
+                            {{--{!! Form::label('legal_issues', Lang::get('social_folder_form.legal_issues'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group make-inline padding-left-right-15 float-left width-100-percent">--}}
+                            {{--{!! Form::checkbox('psychosocial_statuses[]', 6, $psychosocial_statuses[5], array('class' => 'float-left', 'tabindex' => '6')) !!}--}}
+                            {{--{!! Form::label('job_search', Lang::get('social_folder_form.job_search'), array('class' => 'float-left')) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="new-session form-section">
-        <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">4. @lang($p."new_session")</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group padding-left-right-15 float-left col-md-2">
-                            {!! Form::label('psychologist_name', Lang::get('social_folder_form.created_by')) !!}
-                            {!! Form::text('psychologist_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-80-percent', 'disabled' => 'disabled')) !!}
-                        </div>
-                        <div class="form-group padding-left-right-15 float-left col-md-2">
-                            {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
-                            {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                        </div>
-                        <div class="form-group padding-left-right-15 float-left col-md-3">
-                            <div class="width-100-percent">
-                                {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
-                            </div>
-                            <select name="psychosocial_theme">
-                                <?php
-                                    $first = true;
-                                ?>
-                                @foreach($psychosocialSubjects as $subject)
-                                <?php $selected = "";?>
-                                @if($first)
-                                    <?php $selected = "selected";
-                                          $first = false;
-                                    ?>
-                                @endif
-                                <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
-                            {!! Form::textarea('session_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
+@else
+    <div class="form-section no-bottom-border">
+        <div class="col-md-12 referral-info">
+            <p>@lang($p."psychosocial_support_info")</p>
         </div>
     </div>
+@endif
 </div>

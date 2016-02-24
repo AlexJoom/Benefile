@@ -16,12 +16,17 @@
 
     @include('partials.select-panel')
 
-    @if (count($errors) > 0)
+    @if (count($errors) > 0 || Session::has('flash_message'))
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
+                @if (Session::has('flash_message'))
+                    @foreach(Session::get('flash_message') as $msg)
+                        <li>{{$msg}}</li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     @endif

@@ -25,16 +25,9 @@ $(document).ready(function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
     });
 
-    // make field a datepicker
-    $(".date-input").datepicker({
-        format: 'dd-mm-yyyy'
-    });
-
-    // make datepicker fields not editable but clickable
-    $(".date-input").attr("readonly", "");
-
-    // clear date value
-    $(".clear-date").on("click", function(){
-        $(this).parents('div:first').find(".date-input").val("");
+    // slide toggle to add a new session
+    $(".new-session").hide()
+    $("#add-new-session").on("click", function(){
+        $(".new-session").slideToggle("slow");
     });
 });
