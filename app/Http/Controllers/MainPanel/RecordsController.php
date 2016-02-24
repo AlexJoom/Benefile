@@ -230,6 +230,7 @@ class RecordsController extends Controller
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
         $doctor_id = Auth::user()->id;
         $benefiter_id = $benefiter->id;
+        $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         // brings the medical location array from db
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
@@ -265,7 +266,8 @@ class RecordsController extends Controller
                                                             'doctor_id',
                                                             'benefiter_id',
                                                             'medical_locations_array',
-                                                            'ExamResultsLookup'));
+                                                            'ExamResultsLookup',
+                                                            'medical_visits_number'));
 //        }
 
     }
