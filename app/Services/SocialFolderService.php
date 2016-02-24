@@ -42,9 +42,14 @@ class SocialFolderService{
         return \DB::table('social_folder')->where('benefiter_id', '=', $id)->first();
     }
 
-    //
+    // gets all benefiter's psychosocial support by benefiter id
     public function getBenefiterPsychosocialSupport($id){
         return \DB::table('benefiters_psychosocial_support')->where('benefiter_id', '=', $id)->get();
+    }
+
+    // gets all benefiter's sessions by benefiter id
+    public function getAllSessionsFromBenefiterId($id){
+        return \DB::table('psychosocial_sessions')->where('social_folder_id', '=', $this->getSocialFolderFromBenefiterId($id)->id)->orderBy('session_date', 'desc')->get();
     }
 
     // returns an array suitable for social_folder DB insertion

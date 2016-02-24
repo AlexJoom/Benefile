@@ -152,10 +152,23 @@ class RecordsController extends Controller
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
             $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
             if($socialFolder == null){
-                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("psychologist_id", $psychologist_id);
+                return view('benefiter.social_folder')
+                    ->with("tab", "social")
+                    ->with("psychosocialSubjects", $psychosocialSubjects)
+                    ->with("benefiter", $benefiter)
+                    ->with("psychologist_id", $psychologist_id);
             } else {
+                $benefiter_sessions = $this->socialFolderService->getAllSessionsFromBenefiterId($id);
                 $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
-                return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with("psychologist_id", $psychologist_id)->with("session_theme", $session_theme);
+                return view('benefiter.social_folder')
+                    ->with("tab", "social")
+                    ->with("psychosocialSubjects", $psychosocialSubjects)
+                    ->with("benefiter", $benefiter)
+                    ->with("social_folder", $socialFolder)
+                    ->with("psychosocial_support", $psychosocialSupport)
+                    ->with("psychologist_id", $psychologist_id)
+                    ->with("session_theme", $session_theme)
+                    ->with('benefiter_sessions', $benefiter_sessions);
             }
         }
     }
