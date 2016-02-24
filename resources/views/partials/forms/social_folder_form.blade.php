@@ -174,7 +174,7 @@
                         <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
-                        <div class="col-sm-2"><button class="simple-button width-100-percent edit-session" value="{{ $benefiter_session->id }}">@lang($p."edit")</button></div>
+                        <div class="col-sm-2"><button class="simple-button width-100-percent edit-session">@lang($p."edit")</button></div>
                         <div class="col-sm-2"><button class="simple-button width-100-percent">@lang($p."delete")</button></div>
                     </div>
                 </div>
