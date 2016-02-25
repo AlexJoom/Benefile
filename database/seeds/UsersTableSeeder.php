@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // ADMIN USER
+        // ADMIN USER (DIMIZAS)
        User::create(array(
            'name' => 'Christos',
            'lastname' => 'Dimizas',
@@ -24,5 +24,17 @@ class UsersTableSeeder extends Seeder
            'activation_status' => 1,
            'is_deactivated' => 0,
        ));
+
+        // ADMIN USER (IASONIDIS)
+        User::create(array(
+            'name' => 'Theodoros',
+            'lastname' => 'Iasonidis',
+            'email' => 'tiasonidis.scify@gmail.com',
+            'password' => Hash::make('!1234qwer!'),
+            'user_role_id' => 1,
+            'user_subrole_id' => null,
+            'activation_status' => 1,
+            'is_deactivated' => 0,
+        ));
     }
 }

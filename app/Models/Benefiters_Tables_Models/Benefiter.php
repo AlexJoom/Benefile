@@ -19,6 +19,7 @@ class Benefiter extends Model
         'address',
         'telephone',
         'number_of_children',
+        'children_names',
         'relatives_residence',
         'other_language',
         'language_interpreter_needed',
@@ -34,6 +35,7 @@ class Benefiter extends Model
         'educational_reference_date',
         'origin_country',
         'nationality_country',
+        'ethnic_group',
         'document_manager_id',
         'social_history',
 
@@ -57,5 +59,9 @@ class Benefiter extends Model
     public function medical_visits()
     {
         return $this->hasMany('App\Models\Benefiters_Tables_Models\medical_visits', 'id', 'benefiter_id');
+    }
+
+    public function gender(){
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\Genders_lookup', 'id', 'gender_id');
     }
 }

@@ -25,16 +25,21 @@ $(document).ready(function(){
         $(this).parents(".form-group").first().find("label").removeClass("focused");
     });
 
-    // make field a datepicker
-    $(".date-input").datepicker({
-        format: 'dd-mm-yyyy'
+    // slide toggle to add a new session
+    $(".new-session").hide();
+    $("#add-new-session").on("click", function(){
+        $(".new-session").slideToggle("slow");
     });
 
-    // make datepicker fields not editable but clickable
-    $(".date-input").attr("readonly", "");
+    // slide toggle to edit a session
+    $(".edit-session-div").hide();
+    $(".edit-session").on("click", function(){
+        $(this).parents(".div-table-row:first").next().slideToggle("slow");
+    });
 
-    // clear date value
-    $(".clear-date").on("click", function(){
-        $(this).parents('div:first').find(".date-input").val("");
+    // display modal asking for session deletion confirmation
+    $(".delete-session").on("click", function(){
+        $("#delete-session-modal").modal('show');
+        $(".delete-session-form").attr("action", $(".delete-session-path").attr("value") + "/" + $(this).attr("name"));
     });
 });

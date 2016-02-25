@@ -71,6 +71,14 @@ table.display.dataTable td button{
     font-size: 18px;
     font-weight: 700;
 }
+.edit-button{
+    border: none;
+    width: 220px;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
 
 .light-red-background{
     background-color: #f6736d;

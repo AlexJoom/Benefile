@@ -1,3 +1,7 @@
+<?php
+    $p = 'auth/reset.';
+?>
+
 @extends('layouts.login-register-layout')
 
 @section('title')
@@ -6,7 +10,7 @@
 
 @section('log-content')
     <div id="reset">
-        <div class="reset-password-text margin-bottom-50">Επαναφορά κωδικού</div>
+        <div class="reset-password-text margin-bottom-50">@lang($p.'reset_pass')</div>
         <div class="panel-body">
 
             <form class="form-horizontal" role="form" method="POST" action="{{url('/password/reset')}}">
@@ -28,7 +32,7 @@
                 {{--Password--}}
                 <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="col-md-6 centerDiv">
-                        <input type="password" class="inputFields" name="password" placeholder="Κωδικός">
+                        <input type="password" class="inputFields" name="password" placeholder=@lang($p.'password')>
                         @if ($errors->has('password'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -40,7 +44,7 @@
                 {{-- Confirm password --}}
                 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                     <div class="col-md-6 centerDiv">
-                        <input type="password" class="inputFields" name="password_confirmation" placeholder="Επιβεβαίωση κωδικού">
+                        <input type="password" class="inputFields" name="password_confirmation" placeholder=@lang($p.'confirm_pass')>
                         @if ($errors->has('password_confirmation'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -52,7 +56,7 @@
                 {{--Register Button--}}
                 <div class="form-group">
                     <div class="col-md-6 centerDiv">
-                        <button type="submit" class="inputFields submitColor no-border no-padding-left">Επαναφορά κωδικού</button>
+                        <button type="submit" class="inputFields submitColor no-border no-padding-left">@lang($p.'reset_password')</button>
                     </div>
                 </div>
             </form>

@@ -45,11 +45,14 @@ Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
 //----------------------- BASIC INFO
 Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
 Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
+Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@postBasicInfoReferrals');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
-Route::get('/new-benefiter/medical-folder', 'MainPanel\RecordsController@getMedicalFolder');
-Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
+Route::get('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@getMedicalFolder');
+Route::post('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
+Route::get('benefiter/getIC10List', 'MainPanel\RecordsController@getICD10List');
+
 //----------------------- END MEDICAL FOLDER
 
 //----------------------- LEGAL FOLDER
@@ -58,6 +61,9 @@ Route::post('/new-benefiter/medical-folder', 'MainPanel\RecordsController@postMe
 //----------------------- SOCIAL FOLDER
 Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocialFolder');
 Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
+Route::post('benefiter/{id}/session-save', 'MainPanel\RecordsController@postSessionSave');
+Route::post('benefiter/{id}/session-edit/{session_id}', 'MainPanel\RecordsController@postSessionEdit');
+Route::get('benefiter/{id}/session-delete/{session_id}', 'MainPanel\RecordsController@getSessionDelete');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 

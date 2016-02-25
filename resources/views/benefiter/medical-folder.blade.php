@@ -9,6 +9,7 @@
     <link href="{{asset('css/uploadExcel/dropzone.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('select2-4.0.2-rc.1/css/select2.min.css')}}" rel="stylesheet" type="text/css">
 @stop
 
 @section('main-window-content')
@@ -21,4 +22,5 @@
     <script src={{ asset('js/dropzone.js')}}></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
     <script src="{{asset('js/records/medical_visit.js')}}"></script>
+    <script src="{{asset('select2-4.0.2-rc.1/js/select2.full.js')}}"></script>
 @stop

@@ -15,7 +15,6 @@ class CreateSocialFolderTable extends Migration
         Schema::create('social_folder', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('benefiter_id')->unsigned();
-            $table->string('ethnic_group')->nullable();
             $table->text('comments', 2000)->nullable();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->timestamps();

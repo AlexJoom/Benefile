@@ -15,7 +15,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('benefiters', function (Blueprint $table) {
             $table->increments('id');
             // Insert user that created the benefiter's file.
-            $table->string('folder_number');
+            $table->string('folder_number')->unique();
             $table->string('name');
             $table->string('lastname');
             $table->string('fathers_name');
@@ -25,6 +25,7 @@ class CreateBenefitersTable extends Migration
             $table->string('address');
             $table->string('telephone')->nullable();
             $table->integer('number_of_children')->unsigned()->nullable();
+            $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
             $table->text('other_language')->nullable();
             $table->boolean('language_interpreter_needed');
@@ -40,6 +41,7 @@ class CreateBenefitersTable extends Migration
             $table->date('educational_reference_date');
             $table->string('origin_country');
             $table->string('nationality_country');
+            $table->string('ethnic_group')->nullable();
             // Insert user that created the benefiter's file.
             $table->integer('document_manager_id');
             $table->text('social_history');
@@ -57,6 +59,25 @@ class CreateBenefitersTable extends Migration
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
         });
 
+        // Lookup for general reference table.
+        Schema::create('benefiter_referrals_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->timestamps();
+        });
+
+        Schema::create('benefiter_referrals', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description')->nullable();
+            $table->date('referral_date')->nullable();
+
+            $table->integer('benefiter_id')->unsigned();
+            $table->foreign('benefiter_id')->references('id')->on('benefiters');
+            $table->integer('referral_lookup_id')->unsigned();
+            $table->foreign('referral_lookup_id')->references('id')->on('benefiter_referrals_lookup');
+            $table->timestamps();
+        });
+        
         // Lookup for 'Legal Status' in basic info form.
         Schema::create('legal_status_lookup', function (Blueprint $table) {
             $table->increments('id');
@@ -68,7 +89,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('benefiters_legal_status', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description')->nullable();
-            $table->date('exp_date');
+            $table->date('exp_date')->nullable();
 
             $table->integer('benefiter_id')->unsigned()->nullable();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
@@ -135,6 +156,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->integer('medical_location_id')->unsigned();
             $table->foreign('medical_location_id')->references('id')->on('medical_location_lookup');
+
+            $table->date('medical_visit_date')->nullable();
 
             $table->timestamps();
         });
@@ -343,6 +366,8 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_chronic_conditions_lookup');
         Schema::dropIfExists('benefiters_legal_status');
         Schema::dropIfExists('legal_status_lookup');
+        Schema::dropIfExists('benefiter_referrals');
+        Schema::dropIfExists('benefiter_referrals_lookup');
         Schema::dropIfExists('benefiters');
     }
 }

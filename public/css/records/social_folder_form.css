@@ -1,0 +1,28 @@
+#psychosocial-history-title{
+    padding-top: 0.7em;
+}
+
+.dynamic-form-section{
+    border: #214b53 solid 1px;
+    margin-bottom: 1em;
+}
+
+.save-session{
+    margin: 1em;
+}
+
+.div-table-titles > div > div > p{
+    font-weight: 600;
+    text-align: center;
+}
+
+.div-table-row{
+    margin-bottom: 1em;
+}
+
+.social-info > p{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 20px;
+    text-align: center;
+}

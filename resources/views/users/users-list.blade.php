@@ -1,3 +1,6 @@
+<?php
+    $p = 'users/users-list.';
+?>
 @extends('layouts.mainPanel')
 
 @section('main-window-content')
@@ -5,19 +8,19 @@
     <div class="no-margin light-green-background pos-relative height-70" id="actions">
         <div class="col-md-4 userStatus">
             <div id="to-activate" class="height-70 active white bold pink-border-bottom">
-               ΠΡΟΣ ΕΝΕΡΓΟΠΟΙΗΣΗ
+               @lang($p.'to_activate')
             </div>
         </div>
 
         <div class="col-md-4 userStatus">
             <div id="active" class="height-70">
-                ΕΝΕΡΓΟΠΟΙΗΜΕΝΟΙ
+                @lang($p.'active')
             </div>
         </div>
 
         <div class="col-md-4 userStatus">
             <div id="inactive" class="height-70">
-                ΑΠΕΝΕΡΓΟΠΟΙΗΜΕΝΟΙ
+                @lang($p.'deactivated')
             </div>
         </div>
     </div>
@@ -30,19 +33,19 @@
             <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </tfoot>
@@ -62,7 +65,7 @@
                             <td>
                                 <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
-                                    <button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>
+                                    <button class="lighter-green-background">@lang($p.'activation')</button>
                                     {{ csrf_field() }}
                                 </form>
                             </td>
@@ -80,19 +83,19 @@
             <table id="usersTable-active" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </tfoot>
@@ -111,7 +114,7 @@
                             <td>
                                 <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
-                                    <button class="light-red-background">ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ</button>
+                                    <button class="light-red-background">@lang($p.'deactivation')</button>
                                     {{ csrf_field() }}
                                 </form>
                             </td>
@@ -129,19 +132,19 @@
             <table id="usersTable-deactivated" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ΕΠΩΝΥΜΟ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΡΟΛΟΣ</th>
-                    <th>ΗΜ. ΕΓΓΡΑΦΗΣ</th>
+                    <th>@lang($p.'lastname')</th>
+                    <th>@lang($p.'name')</th>
+                    <th>@lang($p.'role')</th>
+                    <th>@lang($p.'register_date')</th>
                     <th></th>
                 </tr>
                 </tfoot>
@@ -160,7 +163,7 @@
                             <td>
                                 <form method="post" action="{{action('MainPanel\UsersController@UserStatusUpdate')}}">
                                     <input type="hidden" name="user_id" value={{$user['id']}}>
-                                    <button class="lighter-green-background">ΕΝΕΡΓΟΠΟΙΗΣΗ</button>
+                                    <button class="lighter-green-background">@lang($p.'activation')</button>
                                     {{ csrf_field() }}
                                 </form>
                             </td>

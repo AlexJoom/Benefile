@@ -1,5 +1,7 @@
 {{-- actions refering to records --}}
-
+    <?php
+        $p = "partials/select_panel.";
+    ?>
     <?php
         /* check which tab is selected */
         $basic_selected = '';
@@ -27,19 +29,19 @@
     {{--<div style="width: 100%; background-color: red;">--}}
         <div class="row width-100-percent">
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $basic_selected }}" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/basic-info">ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ</a>
+                <a id="benefiter-basic-info" class="white {{ $basic_selected }}" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/basic-info">@lang($p.'basic_details')</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $medical_selected }}" href="{{ url('/new-benefiter/medical-folder') }}">ΙΑΤΡΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a id="benefiter-medical-folder" class="white {{ $medical_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/medical-folder">@lang($p.'medical_folder')</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $legal_selected }}" href="">ΝΟΜΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a id="benefiter-legal-folder" class="white {{ $legal_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="">@lang($p.'legal_folder')</a>
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a class="white {{ $social_selected }}" href="{{ url('/benefiter')}}/{{ $benefiter->id }}/social-folder">ΚΟΙΝΩΝΙΚΟΣ ΦΑΚΕΛΟΣ</a>
+                <a id="benefiter-social-folder" class="white {{ $social_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter')}}/{{ $benefiter->id }}/social-folder">@lang($p.'social_foder')</a>
             </div>
         </div>
         {{-- The abone three options will be removed in order to be added dynamically from another view. --}}

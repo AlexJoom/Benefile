@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSubrolesSeeder::class);
         $this->call(GendersSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(ReferenceSeeder::class);
         $this->call(MaritalStatusSeeder::class);
         $this->call(EducationTableSeeder::class);
         $this->call(LegalStatusTableSeeder::class);
@@ -26,9 +27,10 @@ class DatabaseSeeder extends Seeder
         $this->call(MedicalExaminaitonsSeeder::class);
         $this->call(TestUsersTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(TestBenefitersSeeder::class);
-        $this->call(TestUsersTableSeeder::class);
         $this->call(MedicalLocationSeeder::class);
+        $this->call(TestBenefitersSeeder::class);
+//        $this->call(ICDSeeder::class);
+
 
         Model::reguard();
     }

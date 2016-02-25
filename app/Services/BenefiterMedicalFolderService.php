@@ -10,7 +10,9 @@ use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_medication;
 use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\medical_referrals;
+use App\Models\Benefiters_Tables_Models\medical_uploads;
 use App\Services\DatesHelper;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use Carbon\Carbon;
 
@@ -31,75 +33,69 @@ class BenefiterMedicalFolderService
     // PART 1 : validate the medical info frm the post
     //-----------------------------------------------//
     public function medicalValidation($request){
-        $this->requestForValidation = $this->getValidationArray($request);
         $rules = array(
-            'doctor_name' => 'max:255',
-            'examination_date' => 'date',
-            'examination_location' => 'integer',
+            'examination_date' => 'date|required',
+            'medical_location_id' => 'integer',
             'incident_type' => 'integer',
             'height' => 'digits:3',
             'weight' => 'digits:3',
             'temperature' => 'number',
             'blood_pressure_systolic' => 'number',
             'blood_pressure_diastolic' => 'number',
-            'skull-perimeter' => 'digits:3',
-            'respiratory_system' => 'max:2000',
-            'digestive_system' => 'max:2000',
-            'skin_tissue' => 'max:2000',
-            'cardiovascular_system' => 'max:2000',
-            'urinary_system' => 'max:2000',
-            'musculoskeletal_system' => 'max:2000',
-            'immunization_system' => 'max:2000',
-            'nervous_system' => 'max:2000',
-            'other' => 'max:2000',
+            'skull_perimeter' => 'digits:3'
         );
         // Push the dynamic elements into the rule array
-        $chronic_conditions = $request[('chronic_conditions')];
+        $chronic_conditions = $request['chronic_conditions'];
         foreach ($chronic_conditions as $cc){
             array_push($rules, [$cc=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $lab_results = $request->get('lab-results');
+        $examResultLoukup = $request['examResultLoukup'];
+        foreach ($examResultLoukup as $examResult){
+            array_push($rules, [$examResult=>'max:255']);
+        }
+
+        // Push the dynamic elements into the rule array
+        $lab_results = $request['lab_results'];
         foreach ($lab_results as $lr){
             array_push($rules, [$lr=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $medicationList = $request->get('medicationList');
+        $medicationList = $request['medicationList'];
         foreach ($medicationList as $ml){
             array_push($rules, [$ml=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $referrals = $request->get('referrals');
+        $referrals = $request['referrals'];
         foreach ($referrals as $ref){
             array_push($rules, [$ref=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $upload_file_title = $request->get('upload_file_title');
-        foreach ($upload_file_title as $ft){
-            array_push($rules, [$ft=>'max:255']);
+        $upload_file_description = $request['upload_file_description'];
+        foreach ($upload_file_description as $fd){
+            array_push($rules, [$fd=>'max:255']);
         }
 
         // Push the dynamic elements into the rule array
-        $upload_file_path = $request->get('upload_file_path');
-        foreach ($upload_file_path as $fp){
-            array_push($rules, [$fp=>'max:255']);
+        $upload_file_title = $request['upload_file_title'];
+        foreach ($upload_file_title as $ft){
+            array_push($rules, [$ft=>'max:255']);
         }
-
-        return Validator::make($this->requestForValidation, $rules);
+        return Validator::make($request, $rules);
     }
 
-    // returns an array suitable for validation
-    private function getValidationArray($request){
-        return array(
-//            TODO
-            "social_background" => $request['social_background'],
-            "document_manager_id" => \Auth::user()->id,
-        );
-    }
+//    // returns an array suitable for validation
+//    private function getValidationArray($request){
+//        return array(
+////            TODO
+////            "social_background" => $request['social_background'],
+////            "document_manager_id" => \Auth::user()->id,
+//        );
+//    }
 
     //--------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
@@ -109,17 +105,13 @@ class BenefiterMedicalFolderService
 
 
     //TODO CREATE A FUNCTION THAT CALLS THE BELOW FUNCTIONS AND MAKE THE BELOW PRIVATE NOT PUBLIC
-
-
-
-
-
     //----------- medical_visit table ------------------------------------DONE//
     public function save_medical_visit($request){
         $newMedicalVisit = new medical_visits();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
         $newMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $newMedicalVisit->medical_visit_date = $request['examination_date'];
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
@@ -138,7 +130,7 @@ class BenefiterMedicalFolderService
                 $medical_chronic_conditions_lookup->description = $cc;
                 $medical_chronic_conditions_lookup->save();
                 // then to chronic conditions table
-                $medical_chronic_conditions->benefiters_id = $request['$benefiter_id'];
+                $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
                 $medical_chronic_conditions->description = $cc;
                 $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
                 $medical_chronic_conditions->save();
@@ -258,7 +250,6 @@ class BenefiterMedicalFolderService
                 $med_medication->medication_lookup_id = $med_medication_lookup->id;
                 $med_medication->save();
             }
-
         }
     }
     //post request
@@ -274,7 +265,7 @@ class BenefiterMedicalFolderService
 
 
     // -------------------------------------------------------------- //
-    //----------- medical_referrals table ---------------------------//
+    //----------- medical_referrals table ---------------------------DONE//
     // DB save
     public function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);
@@ -285,7 +276,6 @@ class BenefiterMedicalFolderService
                 $med_referral->medical_visit_id = $id;
                 $med_referral->save();
             }
-
         }
     }
     // post request
@@ -303,13 +293,30 @@ class BenefiterMedicalFolderService
     // ------------------------------------------------------------ //
     //----------- medical_uploads table ----------------------------//
     // DB save
-    public function save_medical_uploads($request){
+    public function save_medical_uploads($request, $id){
+        $request_upload_file_description = $request['upload_file_description'];
+        $request_upload_file_title = $request['upload_file_title'];
 
-    }
-    // post request
-    private function medical_uploads($request){
+        $file = Input::file('upload_file_title');
+        $files_numbers = count($request_upload_file_title);
+        for ($i = 0; $i < $files_numbers; $i++) {
+            while(!empty($file[$i])){
+                $path = public_path() . '/uploads/medical-visit-uploads';
+                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $id;
+                $file[$i]->move($path, $fileName); // uploading file to given path
 
+                $medical_upload = new medical_uploads();
+                $medical_upload->title = $fileName;
+                $medical_upload->description = $request_upload_file_description[$i];
+                $medical_upload->path = $path;
+                $medical_upload->medical_visit_id = $id;
+
+                $medical_upload->save();
+            }
+        }
     }
+
+
 
     // ------------------------------------------------------------------ //
     // PART 2 : END
@@ -320,19 +327,21 @@ class BenefiterMedicalFolderService
 
     // FUNCTIONS USED BY MANY
 
-    /*
-     * will return the medical visit id from the
-     */
-    private function get_medical_visit_id($id){
-
+    public function reindex_array($array){
+        $reindexed_array = [];
+        for($i=0 ; $i<count($array) ; $i++){
+            $reindexed_array[$i+1] = $array[$i]->description;
+        }
+        return $reindexed_array;
     }
 
-    public function medical_locations_simplier_array($locations_array){
-        $location_simplier_array = [];
-        for($i=0 ; $i<count($locations_array) ; $i++){
-            $location_simplier_array[$i+1] = $locations_array[$i]->description;
+    // keeps every element and reindex only the array from 1 to n
+    public function general_reindex_array($array){
+        $reindexed_array = [];
+        for($i=0 ; $i<count($array) ; $i++){
+            $reindexed_array[$i+1] = $array[$i];
         }
-        return $location_simplier_array;
+        return $reindexed_array;
     }
 
 }
