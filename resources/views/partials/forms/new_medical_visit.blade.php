@@ -203,7 +203,7 @@
                             {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                                 {!! Form::label('doctor_name', Lang::get($p.'doctor_name')) !!}
-                                {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text')) !!}
+                                {!! Form::text('doctor_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                             </div>
                             {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
