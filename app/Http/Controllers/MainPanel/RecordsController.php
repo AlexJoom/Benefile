@@ -240,19 +240,17 @@ class RecordsController extends Controller
         return redirect("benefiter/" . $id . "/social-folder");
     }
 
-<<<<<<< HEAD
     public function getICD10List(Request $request)
     {
         // TODO
         return ICD10::where("code","like", '%'.$request["q"] )->get();
     }    
-=======
+
     // delete a session
     public function getSessionDelete($id, $session_id){
         $this->socialFolderService->deleteSessionById($session_id);
         return redirect("benefiter/" . $id . "/social-folder");
     }
->>>>>>> d60ea58a6a0b36fb69f42b9fa24b23ec4fb13d73
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
