@@ -202,3 +202,12 @@ input[disabled]{
     border: none;
     margin: 0.5em;
 }
+
+#select-condition li{
+    white-space: normal;
+}
+
+.padding-left-right-30{
+    padding-left: 30px;
+    padding-right: 30px;
+}

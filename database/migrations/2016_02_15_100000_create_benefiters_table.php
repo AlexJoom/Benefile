@@ -204,11 +204,21 @@ class CreateBenefitersTable extends Migration
             $table->timestamps();
         });
 
+        // icd10 table
+        Schema::create('icd10', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('code');
+            $table->text('description', 2000);
+            $table->timestamps();
+        });
+
         // Benefiter's clinical examination results.
         Schema::create('medical_examination_results', function (Blueprint $table) {
             $table->increments('id');
             // Notes field.
-            $table->text('description')->nullable;
+//            $table->text('description')->nullable;
+            $table->integer('icd10_id')->unsigned();
+            $table->foreign('icd10_id')->references('id')->on('icd10');
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
@@ -357,6 +367,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_medication_lookup');
         Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
+        Schema::dropIfExists('icd10');
         Schema::dropIfExists('medical_examination_results');
         Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results_lookup');

@@ -185,9 +185,7 @@
                             {!! Form::label('medical_visit_id', Lang::get($p.'new_visit_number')) !!}
                             {!! Form::text('medical_visit_id', $medical_visits_number+1, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
                             {{--{!! Form::select('icd10_id', $icd10_description) !!}--}}
-                            <select id="test-select" style="width:300px;">
 
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -298,15 +296,16 @@
                 <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 padding-left-right-30">
                      @for($i=0; $i<count($ExamResultsLookup) ; $i++)
                         @if($i%3 == 0)
                             <div class="row">
                         @endif
-                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3" id="select-condition">
                                     {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
-                                    {!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}
-
+                                    {{--{!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}--}}
+                                    <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
+                                    </select>
                                 </div>
                         @if($i%3 == 2)
                             </div>
