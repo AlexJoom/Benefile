@@ -102,7 +102,7 @@
         <div class="underline-header row">
             <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
             <!-- ACCESS LEVEL -->
-            @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
+            @if (Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
                 <button id="add-new-session" class="float-right simple-button">@lang($p."add_new_session")</button>
             @endif
         </div>
@@ -188,7 +188,7 @@
                         <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <!-- ACCESS LEVEL -->
-                        @if(Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
+                        @if(Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
                             <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
                         @else
                             <div class="col-sm-4">----------------</div>
