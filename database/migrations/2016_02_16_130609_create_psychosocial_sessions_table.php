@@ -24,6 +24,7 @@ class CreatePsychosocialSessionsTable extends Migration
             $table->integer('psychologist_id')->unsigned();
             $table->foreign('psychologist_id')->references('id')->on('users');
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

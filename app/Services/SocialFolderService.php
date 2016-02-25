@@ -1,6 +1,7 @@
 <?php namespace app\Services;
 
 use Validator;
+use App\Models\PsychosocialSession;
 
 class SocialFolderService{
 
@@ -35,12 +36,12 @@ class SocialFolderService{
 
     // update an existing session in DB
     public function saveEditedSessionToDB($request, $session_id){
-        \DB::table('psychosocial_sessions')->where('id', $session_id)->update($this->getPsychosocialSessionArrayForDBEdit($request));
+        PsychosocialSession::where('id', $session_id)->update($this->getPsychosocialSessionArrayForDBEdit($request));
     }
 
     // delete a session
     public function deleteSessionById($session_id){
-        \DB::table('psychosocial_sessions')->where('id', $session_id)->delete();
+        PsychosocialSession::where('id', '=', $session_id)->delete();
     }
 
     // gets all the rows from psychosocial_support_lookup DB table to display them in social folder view
@@ -60,7 +61,7 @@ class SocialFolderService{
 
     // gets all benefiter's sessions by benefiter id
     public function getAllSessionsFromBenefiterId($id){
-        return \DB::table('psychosocial_sessions')->where('social_folder_id', '=', $this->getSocialFolderFromBenefiterId($id)->id)->orderBy('session_date', 'desc')->get();
+        return PsychosocialSession::where('social_folder_id', '=', $this->getSocialFolderFromBenefiterId($id)->id)->orderBy('session_date', 'desc')->get();
     }
 
     // returns an array suitable for social_folder DB insertion
@@ -92,7 +93,8 @@ class SocialFolderService{
     // saves a row to the psychosocial_sessions table in DB
     private function savePsychosocialSessionToDB($request, $socialFolderId){
         if(isset($request['session_date']) && isset($request['session_comments'])) {
-            \DB::table('psychosocial_sessions')->insert($this->getPsychosocialSessionArrayForDBInsert($request, $socialFolderId));
+            $psychosocialSession = new PsychosocialSession($this->getPsychosocialSessionArrayForDBInsert($request, $socialFolderId));
+			$psychosocialSession->save();
         }
     }
 
