@@ -50,11 +50,12 @@ class BenefiterMedicalFolderService
             array_push($rules, [$cc=>'max:255']);
         }
 
+        // TODO Change the way of exam results validation
         // Push the dynamic elements into the rule array
-        $examResultLoukup = $request['examResultLoukup'];
-        foreach ($examResultLoukup as $examResult){
-            array_push($rules, [$examResult=>'max:255']);
-        }
+//        $examResultLoukup = $request['examResultLoukup'];
+//        foreach ($examResultLoukup as $examResult){
+//            array_push($rules, [$examResult=>'max:255']);
+//        }
 
         // Push the dynamic elements into the rule array
         $lab_results = $request['lab_results'];
@@ -155,29 +156,26 @@ class BenefiterMedicalFolderService
     public function save_medical_examination_results($request, $id){
         $request_med_exams_results = $this->get_medical_examination_results($request);
         for($i=0; $i<count($request_med_exams_results) ; $i++){
-            if(!empty($request_med_exams_results[$i])){
-                $medical_examination_results = new medical_examination_results();
+            if(!empty($request_med_exams_results[$i])) {
+                for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
+                    if (!empty($request_med_exams_results[$i][$j])) {
+                        $medical_examination_results = new medical_examination_results();
+                        $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
+                        $medical_examination_results->medical_visit_id = $id;
+                        // get medical examinations list from the lookup table
+                        $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i + 1)->first()['attributes']['id'];
+                        $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
 
-                $medical_examination_results->description = $request_med_exams_results[$i];
-                $medical_examination_results->medical_visit_id = $id;
-                // get medical examinations list from the lookup table
-                $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i+1)->first()['attributes']['id'];
-                $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
-
-                $medical_examination_results->save();
+                        $medical_examination_results->save();
+                    }
+                }
             }
         }
     }
     // post request
     private function get_medical_examination_results($request){
-
-        //$count_medical_examination_results_lookup = count(medical_examination_results_lookup::get()->all());
-        $request_medical_examination_results_array = [];
         $examResults = $request['examResultLoukup'];
-        foreach($examResults as $exam){
-            array_push($request_medical_examination_results_array,$exam);
-        }
-        return $request_medical_examination_results_array;
+        return $examResults;
     }
 
 

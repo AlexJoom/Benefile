@@ -131,7 +131,7 @@ class RecordsController extends Controller
         }
     }
 
-    //------ POST BASIC INFO REFERRALS ------------------------//
+    //------ POST BASIC INFO REFERRALS -------------------------------//
     public function postBasicInfoReferrals(Request $request){
         // update basic info referrals table
         $this->basicInfoService->basic_info_referrals($request);
@@ -140,6 +140,8 @@ class RecordsController extends Controller
 
         return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals);
     }
+
+
 
     // get social folder view
     public function getSocialFolder($id){
@@ -232,11 +234,6 @@ class RecordsController extends Controller
         }
     }
 
-    public function getICD10List(Request $request)
-    {
-        // TODO
-        return ICD10::where("code","like", '%'.$request["q"] )->get();
-    }
     // delete a session
     public function getSessionDelete($id, $session_id){
         $this->socialFolderService->deleteSessionById($session_id);
@@ -270,8 +267,12 @@ class RecordsController extends Controller
                                                             'icd10_description'));
         }
     }
+
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
+
+//        dd($request->all());
+
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
@@ -285,19 +286,19 @@ class RecordsController extends Controller
         // ICD10 list
         $icd10 = ICD10::get()->all();
 
-        // Post Validation
-        $validator = $this->medicalVisit->medicalValidation($request->all());
-//        dd($validator);
-        if($validator->fails()){
-            return view('benefiter.medical-folder', compact('benefiter',
-                'benefiter_folder_number',
-                'benefiter_medical_history_list',
-                'doctor_id',
-                'benefiter_id',
-                'medical_locations_array',
-                'ExamResultsLookup',
-                'medical_visits_number'))->withErrors($validator->errors()->all());
-        } else {
+//        // Post Validation
+//        $validator = $this->medicalVisit->medicalValidation($request->all());
+////        dd($validator);
+//        if($validator->fails()){
+//            return view('benefiter.medical-folder', compact('benefiter',
+//                'benefiter_folder_number',
+//                'benefiter_medical_history_list',
+//                'doctor_id',
+//                'benefiter_id',
+//                'medical_locations_array',
+//                'ExamResultsLookup',
+//                'medical_visits_number'))->withErrors($validator->errors()->all());
+//        } else {
             // medical visit table
             $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
             // chronic conditions table
@@ -321,7 +322,12 @@ class RecordsController extends Controller
                                                             'benefiter_id', 'medical_locations_array',
                                                             'ExamResultsLookup', 'medical_visits_number',
                                                             'icd10'));
-        }
+//        }
 
+    }
+
+    //------ ICD10 SELECT LIST FETCH LIKE OBJECTS --------------------//
+    public function getICD10List(Request $request){
+        return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
 }

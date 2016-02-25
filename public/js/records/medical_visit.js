@@ -114,9 +114,10 @@ $(document).ready(function(){
     });
 
     // SELECT2 option added for auto complete ICD10 medical conditions
-    $("#test-select").select2({
+    //$('select[id^=clinical-select-]').hide()
+    $('select[id^=clinical-select-]').select2({
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            url: "http://localhost:8000/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
