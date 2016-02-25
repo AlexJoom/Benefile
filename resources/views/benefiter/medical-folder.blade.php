@@ -36,10 +36,11 @@
 @stop
 
 @section('panel-scripts')
-    <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
-    <script src={{ asset('js/dropzone.js')}}></script>
+    <script src="{{asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('select2-4.0.2-rc.1/js/select2.full.js')}}"></script>
+    <script src="{{asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
+    <script src="{{asset('js/dropzone.js')}}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
     <script src="{{asset('js/records/medical_visit.js')}}"></script>
-    <script src="{{asset('select2-4.0.2-rc.1/js/select2.full.js')}}"></script>
 @stop

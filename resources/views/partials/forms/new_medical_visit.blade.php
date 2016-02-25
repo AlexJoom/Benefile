@@ -497,3 +497,4 @@
         </div>
     {!! Form::close() !!}
 </div>
+<script src="{{asset('js/records/custom_datepicker.js') }}"></script>

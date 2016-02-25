@@ -16,8 +16,7 @@ trait RegistersUsers
      */
     public function getRegister()
     {
-        $subroles = \DB::table('users_subroles')->get();
-        return view('auth.register')->with('subroles', $subroles);
+        return view('auth.register');
     }
 
     /**

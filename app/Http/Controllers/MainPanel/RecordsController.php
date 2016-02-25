@@ -270,7 +270,6 @@ class RecordsController extends Controller
 
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
-
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
