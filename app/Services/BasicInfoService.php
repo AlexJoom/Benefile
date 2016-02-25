@@ -179,7 +179,7 @@ class BasicInfoService{
             "folder_number" => $request['folder_number'],
             "lastname" => $request['lastname'],
             "name" => $request['name'],
-            "gender_id" => $request['gender'],
+            "gender_id" => $request['gender_id'],
             "birth_date" => $this->datesHelper->makeDBFriendlyDate($request['birth_date']),
             "fathers_name" => $request['fathers_name'],
             "mothers_name" => $request['mothers_name'],
