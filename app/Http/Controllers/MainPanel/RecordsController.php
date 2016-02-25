@@ -271,8 +271,6 @@ class RecordsController extends Controller
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
 
-//        dd($request->all());
-
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
@@ -286,47 +284,29 @@ class RecordsController extends Controller
         // ICD10 list
         $icd10 = ICD10::get()->all();
 
-//        // Post Validation
-//        $validator = $this->medicalVisit->medicalValidation($request->all());
-////        dd($validator);
-//        if($validator->fails()){
-//            return view('benefiter.medical-folder', compact('benefiter',
-//                'benefiter_folder_number',
-//                'benefiter_medical_history_list',
-//                'doctor_id',
-//                'benefiter_id',
-//                'medical_locations_array',
-//                'ExamResultsLookup',
-//                'medical_visits_number'))->withErrors($validator->errors()->all());
-//        } else {
-            // medical visit table
-            $medicalVisit_id = $this->medicalVisit->save_medical_visit($request->all());
-            // chronic conditions table
-            $this->medicalVisit->save_medical_chronic_conditions($request->all());
-            //medical_examination_results table
-            $this->medicalVisit->save_medical_examination_results($request->all(), $medicalVisit_id);
-            //medical_examinations table
-            $this->medicalVisit->save_medical_examinations($request->all(), $medicalVisit_id);
-            // laboratory results
-            $this->medicalVisit->save_medical_laboratory_results($request->all(), $medicalVisit_id);
-            // medication table
-            $this->medicalVisit->save_medical_medication($request->all(), $medicalVisit_id);
-            // medical referrals
-            $this->medicalVisit->save_medical_referrals($request->all(), $medicalVisit_id);
-            // medical file uploads
-            $this->medicalVisit->save_medical_uploads($request->all(), $medicalVisit_id);
-
-
+        // Post Validation
+        $validator = $this->medicalVisit->medicalValidation($request->all());
+        if($validator->fails()){
+            return view('benefiter.medical-folder', compact('benefiter',
+                'benefiter_folder_number',
+                'benefiter_medical_history_list',
+                'doctor_id',
+                'benefiter_id',
+                'medical_locations_array',
+                'ExamResultsLookup',
+                'medical_visits_number'))->withErrors($validator->errors()->all());
+        } else {
+            $this->medicalVisit->save_new_medical_visit_tables($request->all());
             return view('benefiter.medical-folder', compact('benefiter', 'benefiter_folder_number',
                                                             'benefiter_medical_history_list', 'doctor_id',
                                                             'benefiter_id', 'medical_locations_array',
                                                             'ExamResultsLookup', 'medical_visits_number',
                                                             'icd10'));
-//        }
+        }
 
     }
 
-    //------ ICD10 SELECT LIST FETCH LIKE OBJECTS --------------------//
+    //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS --------------------//
     public function getICD10List(Request $request){
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
