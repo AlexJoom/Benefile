@@ -75,7 +75,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                            <!-- ACCESS LEVEL -->
+                            @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
+                                {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                            @else
+                            {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent', 'disabled' => 'disabled')) !!}
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -83,155 +88,167 @@
         </div>
     </div>
     <div class="form-section align-text-center no-bottom-border">
-        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        <!-- ACCESS LEVEL -->
+        @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
+            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        @else
+            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button', 'disabled' => 'disabled')) !!}
+        @endif
     </div>
 {!! Form::close() !!}
 
-@if(Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
-    @if(!$social_folder_is_null)
-        <div class="psychosocial-support form-section">
-            <div class="underline-header row">
-                <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
+@if(!$social_folder_is_null)
+    <div class="psychosocial-support form-section">
+        <div class="underline-header row">
+            <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
+            <!-- ACCESS LEVEL -->
+            @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
                 <button id="add-new-session" class="float-right simple-button">@lang($p."add_new_session")</button>
-            </div>
-            <div class="new-session dynamic-form-section">
-                <h1 class="record-section-header padding-left-right-15">@lang($p."new_session")</h1>
-                {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-save')) !!}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group padding-left-right-15 float-left col-md-2">
-                                    {!! Form::label('psychologist_name', Lang::get('social_folder_form.created_by')) !!}
-                                    {!! Form::text('psychologist_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+            @endif
+        </div>
+        <div class="new-session dynamic-form-section">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."new_session")</h1>
+            {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-save')) !!}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                {!! Form::label('psychologist_name', Lang::get('social_folder_form.created_by')) !!}
+                                {!! Form::text('psychologist_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                            </div>
+                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
+                                {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                            <div class="form-group padding-left-right-15 float-left col-md-3">
+                                <div class="width-100-percent">
+                                    {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
                                 </div>
-                                <div class="form-group padding-left-right-15 float-left col-md-2">
-                                    {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
-                                    {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                                </div>
-                                <div class="form-group padding-left-right-15 float-left col-md-3">
-                                    <div class="width-100-percent">
-                                        {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
-                                    </div>
-                                    <select name="psychosocial_theme">
-                                        <?php
-                                            $first = true;
-                                        ?>
-                                        @foreach($psychosocialSubjects as $subject)
-                                        <?php
-                                            $selected = "";
-                                            if(!isset($session_theme)){
-                                                if($first) {
-                                                    $selected = "selected";
-                                                    $first = false;
-                                                }
-                                            } else {
-                                                if($session_theme == $subject->id) {
-                                                    $selected = "selected";
-                                                }
+                                <select name="psychosocial_theme">
+                                    <?php
+                                        $first = true;
+                                    ?>
+                                    @foreach($psychosocialSubjects as $subject)
+                                    <?php
+                                        $selected = "";
+                                        if(!isset($session_theme)){
+                                            if($first) {
+                                                $selected = "selected";
+                                                $first = false;
                                             }
-                                        ?>
-                                        <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                                    {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
-                                    {!! Form::textarea('session_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
-                                </div>
+                                        } else {
+                                            if($session_theme == $subject->id) {
+                                                $selected = "selected";
+                                            }
+                                        }
+                                    ?>
+                                    <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="align-text-center">
-                        {!! Form::submit(Lang::get('social_folder_form.save_session'), array('class' => 'submit-button save-session')) !!}
-                    </div>
-                </div>
-               {!! Form::close() !!}
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="div-table-titles row">
+                    <div class="row">
                         <div class="col-md-12">
-                            <div class="col-sm-2"><p>@lang($p."date")</p></div>
-                            <div class="col-sm-2"><p>@lang($p."subject")</p></div>
-                            <div class="col-sm-4"><p>@lang($p."notes")</p></div>
+                            <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
+                                {!! Form::textarea('session_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="align-text-center">
+                    {!! Form::submit(Lang::get('social_folder_form.save_session'), array('class' => 'submit-button save-session')) !!}
+                </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    @if(!isset($benefiter_sessions) or $benefiter_sessions == null or $benefiter_sessions->count() == 0)
-                    <div class="social-info">
-                        <p>@lang($p."sessions_not_found")</p>
+           {!! Form::close() !!}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="div-table-titles row">
+                    <div class="col-md-12">
+                        <div class="col-sm-2"><p>@lang($p."date")</p></div>
+                        <div class="col-sm-2"><p>@lang($p."subject")</p></div>
+                        <div class="col-sm-4"><p>@lang($p."notes")</p></div>
                     </div>
-                    @else
-                    @foreach($benefiter_sessions as $benefiter_session)
-                    <div class="row div-table-row">
-                        <div class="col-md-12">
-                            <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
-                            <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if(!isset($benefiter_sessions) or $benefiter_sessions == null or $benefiter_sessions->count() == 0)
+                <div class="social-info">
+                    <p>@lang($p."sessions_not_found")</p>
+                </div>
+                @else
+                @foreach($benefiter_sessions as $benefiter_session)
+                <div class="row div-table-row">
+                    <div class="col-md-12">
+                        <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
+                        <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
+                        <!-- ACCESS LEVEL -->
+                        @if(Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
                             <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
-                            <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
-                            <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
-                        </div>
+                        @else
+                            <div class="col-sm-4">----------------</div>
+                        @endif
+                        <!-- ACCESS LEVEL END -->
+                        <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
+                        <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
                     </div>
-                    <div class="edit-session-div dynamic-form-section">
-                        <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
-                        {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group padding-left-right-15 float-left col-md-2">
-                                            {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
-                                            {!! Form::text('session_date', $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date), array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                </div>
+                <div class="edit-session-div dynamic-form-section">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                    {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group padding-left-right-15 float-left col-md-2">
+                                        {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
+                                        {!! Form::text('session_date', $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date), array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
+                                    <div class="form-group padding-left-right-15 float-left col-md-2">
+                                        <div class="width-100-percent">
+                                            {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
                                         </div>
-                                        <div class="form-group padding-left-right-15 float-left col-md-2">
-                                            <div class="width-100-percent">
-                                                {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
-                                            </div>
-                                            <select name="psychosocial_theme">
-                                                @foreach($psychosocialSubjects as $subject)
-                                                <?php
-                                                    $selected = "";
-                                                    if($benefiter_session->psychosocial_theme_id == $subject->id) {
-                                                        $selected = "selected";
-                                                    }
-                                                ?>
-                                                <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                                            {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
-                                            {!! Form::textarea('session_comments', $benefiter_session->session_comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
-                                        </div>
+                                        <select name="psychosocial_theme">
+                                            @foreach($psychosocialSubjects as $subject)
+                                            <?php
+                                                $selected = "";
+                                                if($benefiter_session->psychosocial_theme_id == $subject->id) {
+                                                    $selected = "selected";
+                                                }
+                                            ?>
+                                            <option value="{{ $subject->id }}" {{ $selected }}>{{ $subject->description }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                        {!! Form::label('session_comments', Lang::get('social_folder_form.session_comments')) !!}
+                                        {!! Form::textarea('session_comments', $benefiter_session->session_comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
                                     </div>
                                 </div>
                             </div>
-                            <div class="align-text-center">
-                                {!! Form::submit(Lang::get('social_folder_form.save_edited_session'), array('class' => 'submit-button save-session')) !!}
-                            </div>
                         </div>
-                       {!! Form::close() !!}
+                        <div class="align-text-center">
+                            {!! Form::submit(Lang::get('social_folder_form.save_edited_session'), array('class' => 'submit-button save-session')) !!}
+                        </div>
                     </div>
-                    @endforeach
-                    @endif
+                   {!! Form::close() !!}
                 </div>
+                @endforeach
+                @endif
             </div>
         </div>
-    @else
-        <div class="form-section no-bottom-border">
-            <div class="col-md-12 social-info">
-                <p>@lang($p."psychosocial_support_info")</p>
-            </div>
+    </div>
+@else
+    <div class="form-section no-bottom-border">
+        <div class="col-md-12 social-info">
+            <p>@lang($p."psychosocial_support_info")</p>
         </div>
-    @endif
+    </div>
 @endif
 </div>
 <!--delete session confirmation modal-->
