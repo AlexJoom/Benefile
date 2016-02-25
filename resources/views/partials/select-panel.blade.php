@@ -32,7 +32,7 @@
                 <a id="benefiter-basic-info" class="white {{ $basic_selected }}" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/basic-info">@lang($p.'basic_details')</a>
             </div>
 
-            @if(Auth::user()->user_role_id == 2)
+            @if(Auth::user()->user_role_id == 2 || Auth::user()->user_role_id == 1)
                 <div class="col-md-3 record-panel-title">
                     <a id="benefiter-medical-folder" class="white {{ $medical_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/medical-folder">@lang($p.'medical_folder')</a>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             @endif
 
-            @if(Auth::user()->user_role_id == 3)
+            @if(Auth::user()->user_role_id == 3 || Auth::user()->user_role_id == 1)
                 <div class="col-md-3 record-panel-title">
                     <a id="benefiter-legal-folder" class="white {{ $legal_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="">@lang($p.'legal_folder')</a>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             @endif
 
-            @if(Auth::user()->user_role_id == 3)
+            @if(Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
                 <div class="col-md-3 record-panel-title">
                     <a id="benefiter-social-folder" class="white {{ $social_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter')}}/{{ $benefiter->id }}/social-folder">@lang($p.'social_foder')</a>
                 </div>

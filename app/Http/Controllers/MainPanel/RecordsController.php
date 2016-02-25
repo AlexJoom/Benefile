@@ -233,14 +233,14 @@ class RecordsController extends Controller
             return redirect('benefiter/'.$id.'/social-folder');
         }
     }
-	
-	// delete a session
+
+    // delete a session
     public function getSessionDelete($id, $session_id){
         $this->socialFolderService->deleteSessionById($session_id);
         return redirect("benefiter/" . $id . "/social-folder");
     }
 
- //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
+    //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
