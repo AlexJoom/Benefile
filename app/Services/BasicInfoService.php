@@ -274,7 +274,7 @@ class BasicInfoService{
         for($i=0 ; $i<$ref_number; $i++){
             $basic_info_referral = new BenefiterReferrals();
             $basic_info_referral->description = $request_basic_info_referrals_text[$i];
-            $basic_info_referral->referral_date = $request_basic_info_referrals_date[$i];
+            $basic_info_referral->referral_date = $this->datesHelper->makeDBFriendlyDate($request_basic_info_referrals_date[$i]);
             $basic_info_referral->benefiter_id = $benefiter_id;
             $basic_info_referral->referral_lookup_id = $request_basic_info_referrals_id[$i];
 
