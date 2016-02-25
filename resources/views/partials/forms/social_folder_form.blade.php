@@ -79,7 +79,7 @@
                             @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
                                 {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent')) !!}
                             @else
-                            {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent', 'disabled' => 'disabled')) !!}
+                            {!! Form::textarea('comments', $social_folder->comments, array('class' => 'custom-input-textarea width-100-percent', 'disabled' => 'disabled', 'style' => 'color: #b8bcbb;')) !!}
                             @endif
                         </div>
                     </div>
