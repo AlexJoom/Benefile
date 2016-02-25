@@ -163,7 +163,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @if(!isset($benefiter_sessions) or $benefiter_sessions == null)
+                @if(!isset($benefiter_sessions) or $benefiter_sessions == null or $benefiter_sessions->count() == 0)
                 <div class="social-info">
                     <p>@lang($p."sessions_not_found")</p>
                 </div>
