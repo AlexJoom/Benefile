@@ -1,8 +1,6 @@
 <?php
-    $tab = "medical";
     $p = "partials/forms/new_medical_visit_form.";
 ?>
-@include('partials.select-panel')
 
 
 {{-- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) --}}

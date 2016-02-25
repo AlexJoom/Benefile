@@ -14,14 +14,11 @@ use App\Models\Benefiters_Tables_Models\medical_uploads;
 use App\Services\DatesHelper;
 use Illuminate\Support\Facades\Input;
 use Validator;
-use Carbon\Carbon;
 
 class BenefiterMedicalFolderService
 {
 
     private $datesHelper;
-    private $requestForValidation;
-    private $medical_visit_id = 1;
 
     public function __construct()
     {
@@ -52,11 +49,15 @@ class BenefiterMedicalFolderService
 
         // TODO Change the way of exam results validation
         // Push the dynamic elements into the rule array
-//        $examResultLoukup = $request['examResultLoukup'];
-//        foreach ($examResultLoukup as $examResult){
-//            array_push($rules, [$examResult=>'max:255']);
-//        }
 
+        if(!empty($request['examResultLoukup'])){
+            $examResults = $request['examResultLoukup'];
+            for($i=0; $i<count($examResults) ; $i++) {
+                for ($j = 0; $j < count($examResults[$i]); $j++) {
+                    array_push($rules, [$examResults[$i][$j]=>'required|max:255']);
+                }
+            }
+        }
         // Push the dynamic elements into the rule array
         $lab_results = $request['lab_results'];
         foreach ($lab_results as $lr){
@@ -89,30 +90,38 @@ class BenefiterMedicalFolderService
         return Validator::make($request, $rules);
     }
 
-//    // returns an array suitable for validation
-//    private function getValidationArray($request){
-//        return array(
-////            TODO
-////            "social_background" => $request['social_background'],
-////            "document_manager_id" => \Auth::user()->id,
-//        );
-//    }
-
     //--------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
     //--------------------------------------------------------------------//
     // TODO add transaction to public function (not now)
 
+    public function save_new_medical_visit_tables($request){
+        // medical visit table
+        $medicalVisit_id = $this->create_medical_visit($request);
+        // chronic conditions table
+        $this->save_medical_chronic_conditions($request);
+        //medical_examination_results table
+        $this->save_medical_examination_results($request, $medicalVisit_id);
+        //medical_examinations table
+        $this->save_medical_examinations($request, $medicalVisit_id);
+        // laboratory results
+        $this->save_medical_laboratory_results($request, $medicalVisit_id);
+        // medication table
+        $this->save_medical_medication($request, $medicalVisit_id);
+        // medical referrals
+        $this->save_medical_referrals($request, $medicalVisit_id);
+        // medical file uploads
+        $this->save_medical_uploads($request, $medicalVisit_id);
+    }
 
-
-    //TODO CREATE A FUNCTION THAT CALLS THE BELOW FUNCTIONS AND MAKE THE BELOW PRIVATE NOT PUBLIC
     //----------- medical_visit table ------------------------------------DONE//
-    public function save_medical_visit($request){
+
+    private function create_medical_visit($request){
         $newMedicalVisit = new medical_visits();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
         $newMedicalVisit->medical_location_id = $request['medical_location_id'];
-        $newMedicalVisit->medical_visit_date = $request['examination_date'];
+        $newMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
@@ -121,7 +130,7 @@ class BenefiterMedicalFolderService
 
     //----------- medical_chronic_conditions table -----------------------DONE//
     // DB save
-    public function save_medical_chronic_conditions($request){
+    private function save_medical_chronic_conditions($request){
         $request_medical_chronic_conditions = $this->get_medical_chronic_conditions($request);
         foreach($request_medical_chronic_conditions as $cc){
             if(!empty($cc)){
@@ -153,7 +162,7 @@ class BenefiterMedicalFolderService
     // ------------------------------------------------------------------ //
     //----------- medical_examination_results table ----------------------DONE//
     // DB save
-    public function save_medical_examination_results($request, $id){
+    private function save_medical_examination_results($request, $id){
         $request_med_exams_results = $this->get_medical_examination_results($request);
         for($i=0; $i<count($request_med_exams_results) ; $i++){
             if(!empty($request_med_exams_results[$i])) {
@@ -183,7 +192,7 @@ class BenefiterMedicalFolderService
     // ----------------------------------------------------------------- //
     //----------- medical_examinations table ----------------------------DONE//
     // DB save
-    public function save_medical_examinations($request, $id){
+    private function save_medical_examinations($request, $id){
         $medical_examination = new medical_examinations();
 
         $medical_examination->height = $request['height'];
@@ -192,7 +201,7 @@ class BenefiterMedicalFolderService
         $medical_examination->blood_pressure_systolic = $request['blood_pressure_systolic'];
         $medical_examination->blood_pressure_diastolic = $request['blood_pressure_diastolic'];
         $medical_examination->skull_perimeter = $request['skull_perimeter'];
-        $medical_examination->examination_date = $request['examination_date'];
+        $medical_examination->examination_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $medical_examination->medical_visit_id = $id;
 
         $medical_examination->save();
@@ -203,7 +212,7 @@ class BenefiterMedicalFolderService
     // ----------------------------------------------------------------- //
     //----------- medical_laboratory_results table ----------------------DONE//
     // DB save
-    public function save_medical_laboratory_results($request, $id){
+    private function save_medical_laboratory_results($request, $id){
         $request_lab_results = $this->medical_laboratory_results($request);
         foreach($request_lab_results as $rlr){
             if(!empty($rlr)){
@@ -232,7 +241,7 @@ class BenefiterMedicalFolderService
     // --------------------------------------------------------------- //
     //----------- medical_medication table ----------------------------DONE//
     // DB save
-    public function save_medical_medication($request, $id){
+    private function save_medical_medication($request, $id){
         $request_medical_medication = $this->medical_medication($request);
         foreach($request_medical_medication as $rmm){
             if(!empty($rmm)){
@@ -265,7 +274,7 @@ class BenefiterMedicalFolderService
     // -------------------------------------------------------------- //
     //----------- medical_referrals table ---------------------------DONE//
     // DB save
-    public function save_medical_referrals($request, $id){
+    private function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);
         foreach($request_medical_referrals as $rmr){
             if(!empty($rmr)){
@@ -291,7 +300,7 @@ class BenefiterMedicalFolderService
     // ------------------------------------------------------------ //
     //----------- medical_uploads table ----------------------------//
     // DB save
-    public function save_medical_uploads($request, $id){
+    private function save_medical_uploads($request, $id){
         $request_upload_file_description = $request['upload_file_description'];
         $request_upload_file_title = $request['upload_file_title'];
 
