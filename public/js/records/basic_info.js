@@ -63,6 +63,7 @@ $(document).ready(function(){
         // make the add button invisible and the remove button visible
         $copy.find(".color-green").hide();
         $copy.find(".color-red").show();
+        $copy.find("input").val('');
         // set new name to dropdowns so that the controller can view them all
         //$refs_count++;
         //$copy.find("#refList").attr("name", $copy.find("#refList").attr("name") + $refs_count);

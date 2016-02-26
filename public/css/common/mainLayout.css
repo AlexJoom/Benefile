@@ -174,8 +174,21 @@
     cursor: pointer;
 }
 
+.min-height-720px{
+    min-height: 720px;
+}
 
+.min-width-85px{
+    min-width: 85px;
+}
 
+.min-width-230px{
+    min-width: 230px;
+}
+
+.hide-overflow{
+    overflow: hidden;
+}
 
             /* END Menu */
 
@@ -212,7 +225,3 @@
         /*width: 100%;*/
     /*}*/
 /*}*/
-
-.min-height-660px{
-    min-height: 660px;
-}
