@@ -5,7 +5,11 @@
 $('#register-benefiter').click(function(){
     $('#new-benefiter').toggleClass('hide');
     $('#import-file').toggleClass('hide');
-    $('button.buttonMenu.no-padding i').toggleClass('glyphicon-chevron-down');
+    if($(this).find("div i").hasClass('glyphicon-chevron-right')) {
+        $(this).find("div i").removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+    } else {
+        $(this).find("div i").removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+    }
 });
 
 
