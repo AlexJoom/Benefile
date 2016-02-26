@@ -58,7 +58,7 @@
                         </form>
                     </div>
 
-                    <div class="min-width-225px">
+                    <div class="min-width-230px">
                         {{-- Menu --}}
                         <div class="margin-top-60 white" id="menu">
                             <ul id="menu-first-layer">

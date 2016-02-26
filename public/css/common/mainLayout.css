@@ -182,8 +182,8 @@
     min-width: 85px;
 }
 
-.min-width-225px{
-    min-width: 225px;
+.min-width-230px{
+    min-width: 230px;
 }
 
 .hide-overflow{
@@ -225,9 +225,3 @@
         /*width: 100%;*/
     /*}*/
 /*}*/
-
-@media (max-width: 800px){
-    .searchField{
-        width: 70%;
-    }
-}
