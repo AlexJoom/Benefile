@@ -87,10 +87,9 @@ class AuthController extends Controller
         ]);
     }
 
-//    public function test(){
-//        $user = DB::table('users')->where('email', 'dimizas1985@gmail.com')->first();
-//        if($user->activation_status == 0){
-//            return view('auth.awaitActivation');
-//        }
-//    }
+    // get the subroles correctly in register page
+    public function getRegister() {
+        $subroles = \DB::table('users_subroles')->get();
+        return view('auth.register')->with('subroles', $subroles);
+    }
 }
