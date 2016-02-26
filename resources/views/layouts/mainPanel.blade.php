@@ -44,60 +44,59 @@
         <div class="newCont table-display">
             <div class="table-row height-100per">
                 {{-- sidebar --}}
-                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per min-height-720px" id="sidebar">
-
+                <div class="col-md-2 col-xs-2 dark-green-background no-padding height-100per min-height-720px hide-overflow" id="sidebar">
                     {{-- NGO logo --}}
                     <div class="logo-ngo" id="ngo-logo">
                         <img width="35%" alt="Benefile logo" class="img-responsive min-width-85px" src={{asset('images/logo-praksis.png')}}>
                     </div>
 
                     {{-- Search bar --}}
-                    <div class="" id="search-bar">
-                        <div class="">
-                            <form>
-                                <input type="text" class="searchField dark-green-background" name="search" placeholder="@lang($p.'benefiter_search')">
-                                <button type="submit" class="glyphicon glyphicon-search searchButton"></button>
-                            </form>
+                    <div id="search-bar" class="table-row">
+                        <form>
+                            <input type="text" class="searchField dark-green-background table-cell" name="search" placeholder="@lang($p.'benefiter_search')">
+                            <button type="submit" class="glyphicon glyphicon-search searchButton table-cell"></button>
+                        </form>
+                    </div>
+
+                    <div class="min-width-225px">
+                        {{-- Menu --}}
+                        <div class="margin-top-60 white" id="menu">
+                            <ul id="menu-first-layer">
+                                <li id="benefiters-list">
+                                    <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
+                                </li>
+                                <li id="register-benefiter">
+                                    <div class="buttonMenu no-padding">@lang($p.'registration') <i class="glyphicon glyphicon-chevron-right"></i></div>
+                                </li>
+                                <li id="new-benefiter" class="child hide">
+                                    <a href="{{ url('benefiter/-1/basic-info') }}">@lang($p.'new_registration')</a>
+                                </li>
+                                <li id="import-file" class="child hide">
+                                    <a href="{{url('new-benefiter/uploadCSV')}}">@lang($p.'file_import')</a>
+                                </li>
+                                <li id="reports">
+                                    <a>@lang($p.'reports')</a>
+                                </li>
+                                @if(Auth::user()->user_role_id == 1)
+                                <li id="users-list">
+                                    <a  href="{{url('main-panel/users-list')}}">@lang($p.'users')</a>
+                                </li>
+                                @endif
+                                <li id="user-logout">
+                                    <a href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
 
-                    {{-- Menu --}}
-                    <div class="margin-top-60 white" id="menu">
-                        <ul id="menu-first-layer">
-                            <li id="benefiters-list">
-                                <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
-                            </li>
-                            <li id="register-benefiter">
-                                <div class="buttonMenu no-padding">@lang($p.'registration') <i class="glyphicon glyphicon-chevron-right"></i></div>
-                            </li>
-                            <li id="new-benefiter" class="child hide">
-                                <a href="{{ url('benefiter/-1/basic-info') }}">@lang($p.'new_registration')</a>
-                            </li>
-                            <li id="import-file" class="child hide">
-                                <a href="{{url('new-benefiter/uploadCSV')}}">@lang($p.'file_import')</a>
-                            </li>
-                            <li id="reports">
-                                <a>@lang($p.'reports')</a>
-                            </li>
-                            @if(Auth::user()->user_role_id == 1)
-                            <li id="users-list">
-                                <a  href="{{url('main-panel/users-list')}}">@lang($p.'users')</a>
-                            </li>
-                            @endif
-                            <li id="user-logout">
-                                <a href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {{-- Benefile logo --}}
-                    <div class="bottomLogo">
-                        <img alt="Benefile logo" class="img-responsive" src={{asset('images/BeneFile-logo.png')}}>
+                        {{-- Benefile logo --}}
+                        <div class="bottomLogo">
+                            <img alt="Benefile logo" class="img-responsive" src={{asset('images/BeneFile-logo.png')}}>
+                        </div>
                     </div>
                 </div>
 
                 {{-- main window --}}
-                <div class="col-md-10 col-xs-10 table-cell height-100per no-padding" id="main-window">
+                <div class="col-md-10 col-xs-10 height-100per no-padding" id="main-window">
                     @yield('main-window-content')
                 </div>
             </div>
