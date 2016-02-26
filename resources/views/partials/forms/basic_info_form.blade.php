@@ -681,7 +681,7 @@
                                         <tr>
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
-                                            <td>{{ $referral['referral_date'] }}</td>
+                                            <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
