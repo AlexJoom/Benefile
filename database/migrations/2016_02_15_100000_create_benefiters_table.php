@@ -258,6 +258,9 @@ class CreateBenefitersTable extends Migration
 
         Schema::create('medical_medication', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('dosage');
+            $table->string('duration');
+            $table->boolean('supply_from_praksis');
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');

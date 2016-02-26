@@ -31,7 +31,7 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date' => 'date|required',
+            'examination_date' => 'date',
             'medical_location_id' => 'integer',
             'incident_type' => 'integer',
             'height' => 'digits:3',
@@ -54,7 +54,7 @@ class BenefiterMedicalFolderService
             $examResults = $request['examResultLoukup'];
             for($i=0; $i<count($examResults) ; $i++) {
                 for ($j = 0; $j < count($examResults[$i]); $j++) {
-                    array_push($rules, [$examResults[$i][$j]=>'required|max:255']);
+                    array_push($rules, [$examResults[$i][$j]=>'max:255']);
                 }
             }
         }
@@ -65,10 +65,26 @@ class BenefiterMedicalFolderService
         }
 
         // Push the dynamic elements into the rule array
-        $medicationList = $request['medicationList'];
-        foreach ($medicationList as $ml){
-            array_push($rules, [$ml=>'max:255']);
+        if(!empty($request['medication_name']) && !empty($request->medication_dosage)
+                                               && !empty($request->medication_duration)
+                                               && !empty($request->supply_from_praksis)){
+            $request_medication_name = $request->medication_name;
+            $request_medication_dosage = $request->medication_dosage;
+            $request_medication_duration = $request->medication_duration;
+            $request_supply_from_praksis = $request->supply_from_praksis;
+
+            for($i=0 ; $i<count($request_medication_name) ; $i++){
+                array_push($rules, [$request_medication_name[$i]=>'max:255']);
+                array_push($rules, [$request_medication_dosage[$i]=>'max:255']);
+                array_push($rules, [$request_medication_duration[$i]=>'max:255']);
+                array_push($rules, [$request_supply_from_praksis[$i]=>'max:255']);
+            }
         }
+
+//        $medicationList = $request['medicationList'];
+//        foreach ($medicationList as $ml){
+//            array_push($rules, [$ml=>'max:255']);
+//        }
 
         // Push the dynamic elements into the rule array
         $referrals = $request['referrals'];
@@ -238,33 +254,56 @@ class BenefiterMedicalFolderService
     //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function save_medical_medication($request, $id){
-        $request_medical_medication = $this->medical_medication($request);
-        foreach($request_medical_medication as $rmm){
-            if(!empty($rmm)){
+        $request_medication_name = $request['medication_name'];
+        $request_medication_dosage = $request['medication_dosage'];
+        $request_medication_duration = $request['medication_duration'];
+        $request_supply_from_praksis = null;
+        if(!empty($request['supply_from_praksis'])){
+            $request_supply_from_praksis = $request['supply_from_praksis'];
+        }
+
+        $request_medication_Number = count($request_medication_name);
+
+        for($i=0; $i<$request_medication_Number ; $i++){
+            if($request_medication_name[$i] && $request_medication_dosage[$i] && $request_medication_duration[$i]){
                 $med_medication = new medical_medication();
 
-                // first write to lookup
-                $med_medication_lookup = new medical_medication_lookup();
-                $med_medication_lookup->description = $rmm;
-                $med_medication_lookup->save();
+                // first look to lookup for the matched medicine. If not found add it to lookup
+                $find_for_match_id = medical_medication_lookup::where('id','=', $request_medication_name[$i])->select('id')->first()->id;
+                if(!empty($find_for_match_id)){
+                    // then continue to medication table
+                    $med_medication->dosage = $request_medication_dosage[$i];
+                    $med_medication->duration = $request_medication_duration[$i];
+                    if(!empty($request_supply_from_praksis)){
+                        $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                    }else{
+                        $med_medication->supply_from_praksis = 0;
+                    }
+                    $med_medication->medical_visit_id = $id;
+                    $med_medication->medication_lookup_id = $find_for_match_id;
 
-                // then continue to medication table
-                $med_medication->medical_visit_id = $id;
-                $med_medication->medication_lookup_id = $med_medication_lookup->id;
-                $med_medication->save();
+                    $med_medication->save();
+                }else{
+                    $med_medication_lookup = new medical_medication_lookup();
+                    $med_medication_lookup->description = $request_medication_name[$i];
+                    $med_medication_lookup->save();
+
+                    // then continue to medication table
+                    $med_medication->dosage = $request_medication_dosage[$i];
+                    $med_medication->duration = $request_medication_duration[$i];
+                    if(!empty($request_supply_from_praksis)){
+                        $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                    }else{
+                        $med_medication->supply_from_praksis = 0;
+                    }
+                    $med_medication->medical_visit_id = $id;
+                    $med_medication->medication_lookup_id = $med_medication_lookup->id;
+
+                    $med_medication->save();
+                }
             }
         }
     }
-    //post request
-    private function medical_medication($request){
-        $medicationList = $request['medicationList'];
-        $medication_array =[];
-        foreach ($medicationList as $ml){
-            array_push($medication_array, $ml);
-        }
-        return $medication_array;
-    }
-
 
 
     // -------------------------------------------------------------- //

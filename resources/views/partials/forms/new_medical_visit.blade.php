@@ -395,7 +395,6 @@
                 </div>
             </div>
         </div>
-
         {{-- MEDICATION DETAILS --}}
         <div class="form-section no-bottom-border">
             <div class="underline-header">
@@ -407,9 +406,18 @@
                         <div  class="padding-left-right-15 medicationList">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
-                                <div class="make-inline col-md-10">
+                                <div class="make-inline col-md-12">
                                     {!! Form::label('medicationList', Lang::get($p.'medication_info')) !!}
-                                    {!! Form::text('medicationList[]', null, array('id'=>'medList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+
+                                    <select id="medicinal_name-[]" class="js-example-basic-multiple " name="medication_name[]" style="width:30%;" >
+                                        <option value="0">Other</option>
+                                    </select>
+                                    {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                    {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                    {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class' => 'make-inline')) !!}
+                                    {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+
+
                                     {{-- add --}}
                                     <a class="color-green add-med" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -418,6 +426,10 @@
                                     <a class="color-red remove-med hide-element" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                     </a>
+
+                                    <div id="medication_other_name" class="col-md-4 margin-left-9dot333per">
+                                        {!! Form::text('medication_other_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
