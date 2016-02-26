@@ -189,9 +189,9 @@
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <!-- ACCESS LEVEL -->
                         @if(Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
-                            <div class="col-sm-4">{{ $benefiter_session->session_comments }}</div>
+                            <div class="col-sm-4 text-align-center">{{ $benefiter_session->session_comments }}</div>
                         @else
-                            <div class="col-sm-4">----------------</div>
+                            <div class="col-sm-4 text-align-center">----------------</div>
                         @endif
                         <!-- ACCESS LEVEL END -->
                         <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
