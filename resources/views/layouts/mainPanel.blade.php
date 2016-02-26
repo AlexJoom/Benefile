@@ -44,11 +44,11 @@
         <div class="newCont table-display">
             <div class="table-row height-100per">
                 {{-- sidebar --}}
-                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per min-height-660px" id="sidebar">
+                <div class="col-md-2 col-xs-2 dark-green-background no-padding table-cell height-100per min-height-720px" id="sidebar">
 
                     {{-- NGO logo --}}
                     <div class="logo-ngo" id="ngo-logo">
-                        <img width="35%" alt="Benefile logo" class="img-responsive" src={{asset('images/logo-praksis.png')}}>
+                        <img width="35%" alt="Benefile logo" class="img-responsive min-width-85px" src={{asset('images/logo-praksis.png')}}>
                     </div>
 
                     {{-- Search bar --}}
