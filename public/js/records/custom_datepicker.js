@@ -10,7 +10,7 @@ $(document).ready(function(){
     $(".date-input").attr("readonly", "");
 
     // clear date value
-    $(".clear-date").on("click", function(){
+    $("body").on("click", ".clear-date", function(){
         $(this).parents('div:first').find(".date-input").val("");
     });
 });

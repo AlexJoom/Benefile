@@ -702,12 +702,15 @@
                                 <div class="form-group float-left width-100-percent">
 
                                     {{-- ΠΑΡΑΠΟΜΠΗ --}}
-                                    <div class="make-inline col-md-10">
+                                    <div class="form-group make-inline float-left col-md-9">
                                         {!! Form::label('basic_info_referrals', Lang::get('basic_info_form.referral_label')) !!}
                                         {!! Form::select('basic_info_referrals_id[]', $basic_info_referral_array) !!}
-
                                         {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
-
+                                    </div>
+                                    <div class="form-group make-inline float-left col-md-2">
+                                        {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
+                                    <div class="col-md-1">
                                         {{-- add --}}
                                         <a class="color-green add-ref float-right" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -716,9 +719,6 @@
                                         <a class="color-red remove-ref hide-element float-right" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                         </a>
-                                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-right col-md-2">
-                                            {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
