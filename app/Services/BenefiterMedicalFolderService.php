@@ -254,7 +254,11 @@ class BenefiterMedicalFolderService
     //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function save_medical_medication($request, $id){
-        $request_medication_name = $request['medication_name'];
+
+        $request_medication_name_from_lookup = $request['medication_name_from_lookup'];
+        $request_medication_new_name = $request['medication_new_name'];
+        $request_medication_name = [];
+
         $request_medication_dosage = $request['medication_dosage'];
         $request_medication_duration = $request['medication_duration'];
         $request_supply_from_praksis = null;
@@ -262,16 +266,17 @@ class BenefiterMedicalFolderService
             $request_supply_from_praksis = $request['supply_from_praksis'];
         }
 
-        $request_medication_Number = count($request_medication_name);
+        $request_medication_Number = count($request_medication_dosage);
 
         for($i=0; $i<$request_medication_Number ; $i++){
-            if($request_medication_name[$i] && $request_medication_dosage[$i] && $request_medication_duration[$i]){
+            // Medicinal condition DB entry (save to DB only if all fields are filled)
+            if(!empty($request_medication_dosage[$i]) && !empty($request_medication_duration[$i])) {
                 $med_medication = new medical_medication();
 
-                // first look to lookup for the matched medicine. If not found add it to lookup
-                $find_for_match_id = medical_medication_lookup::where('id','=', $request_medication_name[$i])->select('id')->first()->id;
-                if(!empty($find_for_match_id)){
-                    // then continue to medication table
+                // check if the request comes from the auto complete select (from lookup)
+                if (!empty($request_medication_name_from_lookup[$i]) && empty($request_medication_new_name[$i])) {
+                    $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
+
                     $med_medication->dosage = $request_medication_dosage[$i];
                     $med_medication->duration = $request_medication_duration[$i];
                     if(!empty($request_supply_from_praksis)){
@@ -280,10 +285,14 @@ class BenefiterMedicalFolderService
                         $med_medication->supply_from_praksis = 0;
                     }
                     $med_medication->medical_visit_id = $id;
-                    $med_medication->medication_lookup_id = $find_for_match_id;
+                    $med_medication->medication_lookup_id = $request_medication_name[$i];
 
                     $med_medication->save();
-                }else{
+                }
+                // check if the request comes from the input field.
+                elseif (empty($request_medication_name_from_lookup[$i]) && !empty($request_medication_new_name[$i])) {
+                    $request_medication_name[$i] = $request_medication_new_name[$i];
+
                     $med_medication_lookup = new medical_medication_lookup();
                     $med_medication_lookup->description = $request_medication_name[$i];
                     $med_medication_lookup->save();
@@ -300,7 +309,13 @@ class BenefiterMedicalFolderService
                     $med_medication->medication_lookup_id = $med_medication_lookup->id;
 
                     $med_medication->save();
+                } else {
+                    echo 'DOUBLE FIELD ENTRY';
+                    break;
                 }
+            }else{
+                echo 'NOT ALL FIELDS ARE COMPLETE';
+                break;
             }
         }
     }

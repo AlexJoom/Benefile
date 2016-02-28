@@ -407,11 +407,11 @@
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
                                 <div class="make-inline col-md-12">
-                                    {!! Form::label('medicationList', Lang::get($p.'medication_info')) !!}
-
-                                    <select id="medicinal_name-[]" class="js-example-basic-multiple " name="medication_name[]" style="width:30%;" >
-                                        <option value="0">Other</option>
-                                    </select>
+                                    {!! Form::label('medicinal_name-[]', Lang::get($p.'medication_info')) !!}
+                                    {!! Form::select('medication_name_from_lookup[]', ['0'=>'Other'], null, array('id'=>'medicinal_name-[]', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}
+                                    {{--<select id="medicinal_name-[]" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >--}}
+                                        {{--<option value="0">Other</option>--}}
+                                    {{--</select>--}}
                                     {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
                                     {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
                                     {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class' => 'make-inline')) !!}
@@ -428,7 +428,7 @@
                                     </a>
 
                                     <div id="medication_other_name" class="col-md-4 margin-left-9dot333per">
-                                        {!! Form::text('medication_other_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                        {!! Form::text('medication_new_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
                                     </div>
                                 </div>
                             </div>

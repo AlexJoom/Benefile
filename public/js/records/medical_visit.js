@@ -117,7 +117,7 @@ $(document).ready(function(){
     //$('select[id^=clinical-select-]').hide()
     $('select[id^=clinical-select-]').select2({
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            url: "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -161,7 +161,7 @@ $(document).ready(function(){
     $('select[id^=medicinal_name-]').select2({
         placeholder: 'Εμπορική ονομασία φαρμάκου',
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+            url: "/benefiter/getMedicationList",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -205,10 +205,10 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     // In medication list if "other" option is selected then show input div. Else hide div
-    if($('select[id^=medicinal_name-]').val() == 0){
-        $('#medication_other_name').show();
-    }else{
+    if($('select[id^=medicinal_name-]').val() == '0'){
         $('#medication_other_name').hide();
+    }else{
+        $('#medication_other_name').show();
     }
 });
 
