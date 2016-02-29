@@ -83,7 +83,7 @@ class BasicInfoService{
         if(!array_key_exists('legal_status' ,$request)){
             $request['legal_status'] = null;
         }
-        $this->saveLegalStatusesToDB($id, $request);
+        $this->editLegalStatusesInDB($id, $request);
     }
 
     // get all languages from languages DB table
@@ -263,6 +263,42 @@ class BasicInfoService{
             // if not found delete DB row
             if(!$found){
                 \DB::table('benefiters_languages')->where('benefiter_id', '=', $benefiterId)->where('language_id', '=', $lang_in_db->language_id)->delete();
+            }
+        }
+    }
+
+    // edit legal statuses in DB
+    private function editLegalStatusesInDB($benefiterId, $request){
+        $legal_statuses_checked = $request['legal_status'];
+        $temp = \DB::table('benefiters_legal_status')->where('benefiter_id', '=', $benefiterId)->get();
+        $ids_inserted = array();
+        if($legal_statuses_checked != null) {
+            foreach ($legal_statuses_checked as $legal_status_checked) {
+                $legalStatusInserted = false;
+                foreach ($temp as $legal_status_db){
+                    if($legal_status_db->legal_lookup_id == $legal_status_checked){
+                        \DB::table('benefiters_legal_status')->where('id', '=', $legal_status_db->legal_lookup_id)->update($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked), $request));
+                        array_push($ids_inserted, $legal_status_checked);
+                        $legalStatusInserted = true;
+                        break;
+                    }
+                }
+                if(!$legalStatusInserted) {
+                    \DB::table('benefiters_legal_status')->insert($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked), $request));
+                }
+            }
+        }
+        // delete all removed legal statuses
+        foreach($temp as $legal_status_db){
+            $found = false;
+            foreach($ids_inserted as $legal_id){
+                if($legal_status_db->legal_lookup_id == $legal_id){
+                    $found = true;
+                }
+            }
+            // if not found delete DB row
+            if(!$found){
+                \DB::table('benefiters_legal_status')->where('benefiter_id', '=', $benefiterId)->where('legal_lookup_id', '=', $legal_status_db->legal_lookup_id)->delete();
             }
         }
     }
