@@ -2,6 +2,50 @@
  * Created by cdimitzas on 16/2/2016.
  */
 $(document).ready(function(){
+    // Function that starts an ajax in order to add select2 functionality to the selected variable
+    function createSelect2($selectBox){
+        $selectBox.select2({
+            placeholder: 'Εμπορική ονομασία φαρμάκου',
+            ajax: {
+                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term // search term
+                    };
+                },
+                processResults: function (data, params) {
+                    // parse the results into the format expected by Select2
+                    // since we are using custom formatting functions we do not need to
+                    // alter the remote JSON data, except to indicate that infinite
+                    // scrolling can be used
+                    params.page = params.page || 1;
+
+                    var results =[];
+                    $.each(data,function(index,item){
+                        results.push({
+                            id: item.id,
+                            text:item.description
+                        });
+                    });
+                    return {
+                        results: results
+                    };
+                },
+                templateResult: function (item) {
+                    return item.id;//.id +" " + item.description;
+                },
+                templateSelection:  function (item, container) {
+                    return item.id;
+                },
+                cache: true
+            },
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 3
+        });
+    }
+
         // add more chronic conditions
     $("body").on("click", ".add-condition", function(){
         var $copy = $(".chronicConditions").clone();
@@ -45,21 +89,33 @@ $(document).ready(function(){
     });
 
     // add more medication
-    $("body").on("click", ".add-med", function(){
-        var $copy = $(".medicationList").clone();
-        // change the class so they won't be cloned every time all of them
-        $copy.removeClass("medicationList").addClass("med-added-div");
-        // make the add button invisible and the remove button visible
-        $copy.find(".color-green").hide();
-        $copy.find(".color-red").show();
-        // set new name to dropdowns so that the controller can view them all
-        //$meds_count++;
-        //$copy.find("#medList").attr("name", $copy.find("#medList").attr("name") + $meds_count);
+    // calls two functions
+    $("body").on("click", ".add-med",
+        // first clone the medicine row, in order to add another
+        function(){
+            var $copy = $(".medicationList").clone();
+            // change the class so they won't be cloned every time all of them
 
-        // append cloned element to parent
-        var $parent = $("#medication");
-        $copy.appendTo($parent);
-    });
+            $copy.removeClass("medicationList").addClass("med-added-div");
+            // make the add button invisible and the remove button visible
+            $copy.find(".color-green").hide();
+            $copy.find(".color-red").show();
+            // set new name to dropdowns so that the controller can view them all
+            var $temp = $clickCount;
+            $clickCount++;
+            // append cloned element to parent
+            var $parent = $("#medication");
+            $copy.appendTo($parent);
+
+            // change the select id name
+            $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
+            $copy.find(".select2.select2-container").remove();
+            // then calls the select2 functionality
+            createSelect2($('#medicinal_name_' + $temp));
+        }
+
+        );
+
     // remove medication element after remove button is clicked
     $("body").on("click", ".remove-med", function(){
         $(this).parents(".med-added-div").remove();
@@ -118,7 +174,7 @@ $(document).ready(function(){
 
     // SELECT2 option added for auto complete ICD10 medical conditions
     //$('select[id^=clinical-select-]').hide()
-    $('select[id^=clinical-select-]').select2({
+    $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
             url: "http://localhost/benefile/index.php/benefiter/getIC10List",
@@ -161,59 +217,23 @@ $(document).ready(function(){
 
 
     // SELECT2 option added for auto complete MEDICATION
-    //$('select[id^=clinical-select-]').hide()
-    $('select[id^=medicinal_name-]').select2({
-        placeholder: 'Εμπορική ονομασία φαρμάκου',
-        ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-                return {
-                    q: params.term // search term
-                };
-            },
-            processResults: function (data, params) {
-                // parse the results into the format expected by Select2
-                // since we are using custom formatting functions we do not need to
-                // alter the remote JSON data, except to indicate that infinite
-                // scrolling can be used
-                params.page = params.page || 1;
+    createSelect2($('#medicinal_name_1'));
 
-                var results =[];
-                $.each(data,function(index,item){
-                    results.push({
-                        id: item.id,
-                        text:item.description
-                    });
-                });
-                return {
-                    results: results
-                };
-            },
-            templateResult: function (item) {
-                return item.id;//.id +" " + item.description;
-            },
-            templateSelection:  function (item, container) {
-                return item.id;
-            },
-            cache: true
-        },
-        escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-        minimumInputLength: 3
-    });
+    //$('select[id^="medicinal_name"]').each(function(){
+    //    $('#add-medicine').on('click',  createSelect2($(this)));
+    //});
 
 
-
-});
-
-$(document).ready(function(){
     // In medication list if "other" option is selected then show input div. Else hide div
-    if($('select[id^=medicinal_name-]').val() == '0'){
-        $('#medication_other_name').hide();
-    }else{
+    if($('select[id^=medicinal_name-]').val() == '1'){
         $('#medication_other_name').show();
+    }else{
+        $('#medication_other_name').hide();
     }
+
+
+
+
 });
 
 //var $condition_count = 0;
@@ -221,3 +241,4 @@ $(document).ready(function(){
 //var $meds_count = 0;
 //var $refs_count = 0;
 //var $file_count = 0;
+var $clickCount =2;
