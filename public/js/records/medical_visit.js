@@ -111,6 +111,9 @@ $(document).ready(function(){
     $('#new-medical-visit').hide();
     $('#new-med-visit-button').on('click', function(){
         $('#new-medical-visit').slideToggle();
+        $('html, body').animate({
+            scrollTop: $("#new-medical-visit").offset().top
+        }, 500);
     });
 
     // SELECT2 option added for auto complete ICD10 medical conditions

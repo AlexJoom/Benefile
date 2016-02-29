@@ -188,6 +188,14 @@ input:focus, textarea:focus {
     color: white;
     font-size: 18px;
     font-weight: 700;
+    /*text-align: center;*/
+    /*line-height: 50px;*/
+    /*cursor: pointer;*/
+}
+a.new-visit-button:hover,
+a.new-visit-button:focus{
+    color: white;
+    text-decoration: none;
 }
 
 .referral-info{
