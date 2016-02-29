@@ -20,23 +20,14 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
         </div>
-        {{-- BENEFITER FOLDER NUMBER --}}
-            <div class="row padding-top-20">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="padding-left-right-15">
-                            <div class="form-group padding-left-right-15 float-left">
-                                {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
-                                {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
+                            {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
+                        </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
@@ -638,7 +629,11 @@
         </div>
     </div>
     <div class="form-section align-text-center no-bottom-border">
+    @if($benefiter->id == -1)
         {!! Form::submit(Lang::get('basic_info_form.save_basic_info'), array('class' => 'submit-button')) !!}
+    @else
+        {!! Form::submit(Lang::get('basic_info_form.update_basic_info'), array('class' => 'submit-button')) !!}
+    @endif
     </div>
 {!! Form::close() !!}
     {{-- BASIC INFO REFERRALS --}}
@@ -650,12 +645,11 @@
         </div>
     @else
         {{-- REFERRALS --}}
-        <div class="form-section no-bottom-border">
+        <div class="referrals-list form-section no-bottom-border">
             <div class="underline-header">
                 <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>
             {{-- OLDER REFERRALS LIST --}}
-            <h5 class="text-align-center">@lang($p."referrals_history")</h5>
             <div class="row">
                 <div class="col-md-12">
                     <div id="basic_info_referrals-list" class="row padding-bottom-30">
@@ -691,11 +685,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="add-new-referral form-section no-bottom-border">
+             <div class="underline-header">
+                <h1 class="record-section-header padding-left-right-15">12. @lang($p."new_referral")</h1>
+            </div>
             {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
                 {!! Form::hidden('benefiter_id', $benefiter->id) !!}
                 {{-- ADD NEW REFERRAL --}}
                 <div class="row">
-                    <h5 class="text-align-center">ΝΕΑ ΠΑΡΑΠΟΜΠΗ</h5>
                     <div class="col-md-12">
                         <div id="basic_info_referrals" class="row padding-bottom-30">
                             <div  class="padding-left-right-15 basic_info_referral">

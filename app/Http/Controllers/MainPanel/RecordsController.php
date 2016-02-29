@@ -50,11 +50,9 @@ class RecordsController extends Controller
         // brings the referrals options array from db to view
         $basic_info_referral = BenefiterReferrals_lookup::get()->all();
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
-
         // brinks all referrals saved to db for this benefiter id
         $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')
                                                         ->get();
-
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         // get legal statuses from session, else get null and afterwards forget session value
@@ -62,10 +60,11 @@ class RecordsController extends Controller
         session()->forget('legalStatuses');
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
         session()->forget('benefiter_languages');
+        $successMsg = session()->get('success', function() { return null; });
+        session()->forget('successMsg');
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-
             if($benefiter == null) {
                 return view('errors.404');
             } else {
@@ -81,16 +80,17 @@ class RecordsController extends Controller
                                            ->with("legalStatuses", $legal_statuses)
                                            ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                                            ->with('basic_info_referral_array', $basic_info_referral_array)
-                                           ->with('benefiter_referrals_list', $benefiter_referrals_list);
+                                           ->with('benefiter_referrals_list', $benefiter_referrals_list)
+                                           ->with('success', $successMsg);
     }
 
     // post from basic info form
-    public function postBasicInfo(Request $request){
-        $validator = $this->basicInfoService->basicInfoValidation($request->all());
-        if($validator->fails()){
+    public function postBasicInfo(Request $request, $id){
+        $validator = $this->basicInfoService->basicInfoValidation($request->all(), $id);
+        if($validator->fails()){// and count($validator->errors()) != 1 and strpos($validator->errors()->all()[0], 'folder number') == false and $id < 0){
             $legal_statuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsFromRequest($request->all());
-            return redirect('benefiter/-1/basic-info')
+            return redirect('benefiter/'.$id.'/basic-info')
                         ->withInput(array(
                             'folder_number' => $request->folder_number,
                             'lastname' => $request->lastname,
@@ -123,12 +123,21 @@ class RecordsController extends Controller
                         ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                         ->withErrors($validator->errors()->all());
         } else {
-            $benefiter = $this->basicInfoService->saveBasicInfoToDB($request->all());
+            if($id > 0){
+                $this->basicInfoService->editBasicInfo($request->all(), $id);
+                $benefiter = new Benefiter();
+                $benefiter->id = $id;
+                $successMsg = \Lang::get('records_controller_messages.basic_info_edit_success');
+            } else {
+                $benefiter = $this->basicInfoService->saveBasicInfoToDB($request->all());
+                $successMsg = \Lang::get('records_controller_messages.basic_info_create_success');
+            }
             $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($benefiter->id);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsByBenefiterId($benefiter->id);
             return redirect('benefiter/'.$benefiter->id.'/basic-info')
                     ->with("legalStatuses", $legal_statuses)
-                    ->with("benefiter_languages", $benefiterLanguagesAndLevels);
+                    ->with("benefiter_languages", $benefiterLanguagesAndLevels)
+                    ->with("success", $successMsg);
         }
     }
 
