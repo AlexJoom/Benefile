@@ -8,7 +8,7 @@ class medical_examination_results extends Model
 {
     protected $table = 'medical_examination_results';
     protected $primaryKey = 'id';
-    protected $fillable = ['icd10_id'];
+    protected $fillable = ['icd10_id', 'description'];
 
     public function medical_visits(){
         return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_visits','id', 'medical_visit_id');

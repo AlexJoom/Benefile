@@ -344,9 +344,10 @@
                         @endif
                                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3" id="select-condition">
                                     {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
-                                    {{--{!! Form::textarea('examResultLoukup[]', null, ['size' => '35x5']) !!}--}}
+
                                     <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                                     </select>
+                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20']) !!}
                                 </div>
                         @if($i%3 == 2)
                             </div>

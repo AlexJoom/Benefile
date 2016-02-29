@@ -119,8 +119,9 @@ $(document).ready(function(){
     // SELECT2 option added for auto complete ICD10 medical conditions
     //$('select[id^=clinical-select-]').hide()
     $('select[id^=clinical-select-]').select2({
+        placeholder: 'Πάθηση',
         ajax: {
-            url: "/benefiter/getIC10List",
+            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -164,7 +165,7 @@ $(document).ready(function(){
     $('select[id^=medicinal_name-]').select2({
         placeholder: 'Εμπορική ονομασία φαρμάκου',
         ajax: {
-            url: "/benefiter/getMedicationList",
+            url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
             dataType: 'json',
             delay: 250,
             data: function (params) {

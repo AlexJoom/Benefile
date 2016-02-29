@@ -51,10 +51,14 @@ class BenefiterMedicalFolderService
         // Push the dynamic elements into the rule array
 
         if(!empty($request['examResultLoukup'])){
+            $examResultsDescription = $request['examResultDescription'];
             $examResults = $request['examResultLoukup'];
             for($i=0; $i<count($examResults) ; $i++) {
-                for ($j = 0; $j < count($examResults[$i]); $j++) {
-                    array_push($rules, [$examResults[$i][$j]=>'max:255']);
+                if(!empty($examResults[$i]) && !empty($examResultsDescription[$i])){
+                    for ($j = 0; $j < count($examResults[$i]); $j++) {
+                        array_push($rules, [$examResultsDescription[$i]=>'max:255']);
+                        array_push($rules, [$examResults[$i][$j]=>'max:255']);
+                    }
                 }
             }
         }
@@ -181,11 +185,13 @@ class BenefiterMedicalFolderService
     private function save_medical_examination_results($request, $id){
         if(!empty($request['examResultLoukup'])){
             $request_med_exams_results = $request['examResultLoukup'];
+            $request_med_exams_description = $request['examResultDescription'];
             for($i=0; $i<count($request_med_exams_results) ; $i++){
                 if(!empty($request_med_exams_results[$i])) {
                     for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
                         if (!empty($request_med_exams_results[$i][$j])) {
                             $medical_examination_results = new medical_examination_results();
+                            $medical_examination_results->description = $request_med_exams_description[$i];
                             $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
                             $medical_examination_results->medical_visit_id = $id;
                             // get medical examinations list from the lookup table

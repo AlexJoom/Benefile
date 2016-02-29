@@ -216,7 +216,8 @@ class CreateBenefitersTable extends Migration
         Schema::create('medical_examination_results', function (Blueprint $table) {
             $table->increments('id');
             // Notes field.
-//            $table->text('description')->nullable;
+            $table->text('description')->nullable;
+
             $table->integer('icd10_id')->unsigned();
             $table->foreign('icd10_id')->references('id')->on('icd10');
 

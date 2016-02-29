@@ -272,7 +272,7 @@ class RecordsController extends Controller
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
 //        dd(empty(medical_medication_lookup::where('id','=', 10)->select('id')->first()->id));
-//        dd($request['medication_name_from_lookup']);
+//        dd($request['examResultDescription']);
 
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
