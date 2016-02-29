@@ -8,6 +8,22 @@
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
     </div>
+    <div class="row padding-top-20">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group padding-left-right-15 float-left">
+                            {!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}
+                            {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                        </div>
+                        {{--<div class="form-group padding-left-right-15 float-left">--}}
+                            {{--{!! Form::label('medical_visit_id', Lang::get($p.'total_visits_number')) !!}--}}
+                            {{--{!! Form::text('medical_visit_id', $medical_visits_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}--}}
+                        {{--</div>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="row">
         <div class="col-md-12">
             <div class="row">
@@ -66,6 +82,11 @@
                         {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                         {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                     </div>
+                    {{-- ORIGIN COUNTRY --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
+                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -75,16 +96,38 @@
                         {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                         {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                     </div>
+                    {{-- TELEPHONE --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
+                        <?php
+                            if($benefiter->telephone == 0){
+                                $benefiter->telephone = "";
+                            }
+                        ?>
+                        {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
+                    </div>
+                    {{-- ADDRESS --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
+                        {!! Form::text('address', null, array('class' => 'custom-input-text address')) !!}
+                    </div>
+
+                    {{-- ETHNICITY --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
+                        {!! Form::text('ethnic_group', null, array('class' => 'custom-input-text')) !!}
+                    </div>
+
                     {{-- ENTRY POINT --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('travel_route', Lang::get($p.'travel_route')) !!}
-                        {!! Form::text('travel_route', $benefiter->travel_route, array('class' => 'custom-input-text' , 'disabled')) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
+                        {{--{!! Form::label('travel_route', Lang::get($p.'travel_route')) !!}--}}
+                        {{--{!! Form::text('travel_route', $benefiter->travel_route, array('class' => 'custom-input-text' , 'disabled')) !!}--}}
+                    {{--</div>--}}
                     {{-- DURATION OF TRAVEL --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('travel_duration', Lang::get($p.'travel_duration')) !!}
-                        {!! Form::text('travel_duration', $benefiter->travel_duration, array('class' => 'custom-input-text' , 'disabled')) !!}
-                    </div>
+                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
+                        {{--{!! Form::label('travel_duration', Lang::get($p.'travel_duration')) !!}--}}
+                        {{--{!! Form::text('travel_duration', $benefiter->travel_duration, array('class' => 'custom-input-text' , 'disabled')) !!}--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -94,10 +137,10 @@
         <div class="col-md-12">
             <div class="row float-right">
                 <div class="padding-left-right-15">
-                    <div class="form-group padding-left-right-15 float-left">
-                        {!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}
-                        {!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
-                    </div>
+                    {{--<div class="form-group padding-left-right-15 float-left">--}}
+                        {{--{!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}--}}
+                        {{--{!! Form::text('folder_number', $benefiter_folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}--}}
+                    {{--</div>--}}
                     <div class="form-group padding-left-right-15 float-left">
                         {!! Form::label('medical_visit_id', Lang::get($p.'total_visits_number')) !!}
                         {!! Form::text('medical_visit_id', $medical_visits_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
