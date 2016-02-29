@@ -347,7 +347,7 @@
 
                                     <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                                     </select>
-                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20']) !!}
+                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent']) !!}
                                 </div>
                         @if($i%3 == 2)
                             </div>

@@ -7,7 +7,8 @@ $(document).ready(function(){
         $selectBox.select2({
             placeholder: 'Εμπορική ονομασία φαρμάκου',
             ajax: {
-                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                //url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                url: "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -112,6 +113,13 @@ $(document).ready(function(){
             $copy.find(".select2.select2-container").remove();
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
+
+            // In medication list if no option is selected then show input div. Else hide div
+            if($('select[id^="medicinal_name_"]').find(":selected").val() == 0 || typeof $('select[id^="medicinal_name_"]').find(":selected").val() === 'undefined'){
+                $('#medication_other_name').show();
+            }else{
+                $('#medication_other_name').hide();
+            }
         }
 
         );
@@ -177,7 +185,8 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            //url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            url: "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -216,24 +225,14 @@ $(document).ready(function(){
     });
 
 
-    // SELECT2 option added for auto complete MEDICATION
+    // SELECT2 option added for auto complete MEDICATION (or the initial select filed)
     createSelect2($('#medicinal_name_1'));
-
-    //$('select[id^="medicinal_name"]').each(function(){
-    //    $('#add-medicine').on('click',  createSelect2($(this)));
-    //});
-
-
-    // In medication list if "other" option is selected then show input div. Else hide div
-    if($('select[id^=medicinal_name-]').val() == '1'){
+    // In medication list if no option is selected then show input div. Else hide div
+    if($('select[id^="medicinal_name_"]').find(":selected").val() == 0 || typeof $('select[id^="medicinal_name_"]').find(":selected").val() === 'undefined'){
         $('#medication_other_name').show();
     }else{
         $('#medication_other_name').hide();
     }
-
-
-
-
 });
 
 //var $condition_count = 0;

@@ -260,8 +260,14 @@ class BenefiterMedicalFolderService
     //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function save_medical_medication($request, $id){
-        $request_medication_name_from_lookup = $request['medication_name_from_lookup'];
-        $request_medication_new_name = $request['medication_new_name'];
+        if(!empty($request['medication_name_from_lookup'])){
+            $request_medication_name_from_lookup = $request['medication_name_from_lookup'];
+        }
+
+        if(!empty($request['medication_new_name'])){
+            $request_medication_new_name = $request['medication_new_name'];
+        }
+
         $request_medication_name = [];
 
         $request_medication_dosage = $request['medication_dosage'];
