@@ -1,9 +1,11 @@
 $(document).ready(function(){
     // at startup check if "yes" is checked and then display the working legally div
-    if ($("#show_work_legally:checked").val())
+    if ($("#show_work_legally:checked").val()){
         $("#working_legally_div").show();
-    else
+    }
+    else{
         $("#working_legally_div").hide();
+    }
 
     // listeners that decide if working legally div should be displayed
     $("body").on("change", "#show_work_legally", function(){
@@ -46,7 +48,7 @@ $(document).ready(function(){
         if($(this).attr("type") == "text") {
             var $labelParent = $(this).parents(".form-group").first();
             var $label = $labelParent.find("label").first();
-            $label.addClass("focused")
+            $label.addClass("focused");
         }
     });
 

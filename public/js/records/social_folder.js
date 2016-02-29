@@ -4,7 +4,7 @@ $(document).ready(function(){
         if($(this).attr("type") == "text") {
             var $labelParent = $(this).parents(".form-group").first();
             var $label = $labelParent.find("label").first();
-            $label.addClass("focused")
+            $label.addClass("focused");
         }
     });
 

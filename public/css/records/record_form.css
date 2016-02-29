@@ -35,6 +35,19 @@
 .margin-right-30{
     margin-right: 30px;
 }
+.margin-left-right-10px{
+    margin: 0px 10px;
+}
+.margin-right-10px{
+    margin-right: 10px;
+}
+
+.margin-left-9dot333per{
+    margin-left: 9.333%;
+}
+.margin-top-20{
+    margin-top: 20px;
+}
 
 .float-left{
     float: left;
@@ -134,6 +147,7 @@ input[type="radio"] {
 .width-30-percent{
     width: 30%;
 }
+
 .padding-bottom-30{
     padding-bottom: 30px;
 }
@@ -177,6 +191,14 @@ input:focus, textarea:focus {
     color: white;
     font-size: 18px;
     font-weight: 700;
+    /*text-align: center;*/
+    /*line-height: 50px;*/
+    /*cursor: pointer;*/
+}
+a.new-visit-button:hover,
+a.new-visit-button:focus{
+    color: white;
+    text-decoration: none;
 }
 
 .referral-info{

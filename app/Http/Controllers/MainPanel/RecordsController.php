@@ -9,6 +9,7 @@ use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\ICD10;
+use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -279,6 +280,9 @@ class RecordsController extends Controller
 
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
+//        dd(empty(medical_medication_lookup::where('id','=', 10)->select('id')->first()->id));
+//        dd($request['examResultDescription']);
+
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
@@ -313,6 +317,12 @@ class RecordsController extends Controller
         }
 
     }
+
+    //------ MEDICATION LIST FETCH "LIKE" OBJECTS --------------------//
+    public function getMedicationList(Request $request){
+        return medical_medication_lookup::where('description','LIKE', '%'.$request['m'].'%' )->get();
+    }
+
 
     //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS --------------------//
     public function getICD10List(Request $request){

@@ -111,13 +111,17 @@ $(document).ready(function(){
     $('#new-medical-visit').hide();
     $('#new-med-visit-button').on('click', function(){
         $('#new-medical-visit').slideToggle();
+        $('html, body').animate({
+            scrollTop: $("#new-medical-visit").offset().top
+        }, 500);
     });
 
     // SELECT2 option added for auto complete ICD10 medical conditions
     //$('select[id^=clinical-select-]').hide()
     $('select[id^=clinical-select-]').select2({
+        placeholder: 'Πάθηση',
         ajax: {
-            url: "http://localhost:8000/benefiter/getIC10List",
+            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -154,6 +158,62 @@ $(document).ready(function(){
         escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
         minimumInputLength: 3
     });
+
+
+    // SELECT2 option added for auto complete MEDICATION
+    //$('select[id^=clinical-select-]').hide()
+    $('select[id^=medicinal_name-]').select2({
+        placeholder: 'Εμπορική ονομασία φαρμάκου',
+        ajax: {
+            url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term // search term
+                };
+            },
+            processResults: function (data, params) {
+                // parse the results into the format expected by Select2
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data, except to indicate that infinite
+                // scrolling can be used
+                params.page = params.page || 1;
+
+                var results =[];
+                $.each(data,function(index,item){
+                    results.push({
+                        id: item.id,
+                        text:item.description
+                    });
+                });
+                return {
+                    results: results
+                };
+            },
+            templateResult: function (item) {
+                return item.id;//.id +" " + item.description;
+            },
+            templateSelection:  function (item, container) {
+                return item.id;
+            },
+            cache: true
+        },
+        escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+        minimumInputLength: 3
+    });
+
+
+
+});
+
+$(document).ready(function(){
+    // In medication list if "other" option is selected then show input div. Else hide div
+    if($('select[id^=medicinal_name-]').val() == '0'){
+        $('#medication_other_name').hide();
+    }else{
+        $('#medication_other_name').show();
+    }
 });
 
 //var $condition_count = 0;

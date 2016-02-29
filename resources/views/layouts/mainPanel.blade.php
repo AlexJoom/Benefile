@@ -120,6 +120,7 @@
     <!-- JavaScripts -->
 
     <script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('bootstrap-3.3.6/dist/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('DataTables/datatables.min.js')}}" type="text/javascript" ></script>
     <script src="{{asset('DataTables/DataTables-1.10.10/js/jquery.dataTables.min.js')}}" type="text/javascript" ></script>

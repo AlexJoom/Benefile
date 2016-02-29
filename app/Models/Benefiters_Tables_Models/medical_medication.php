@@ -10,6 +10,9 @@ class medical_medication extends Model
 
     protected $fillable = [
         'medical_visit_id',
+        'dosage',
+        'duration',
+        'supply_from_praksis',
         'medication_lookup_id'];
 
     public function medical_visits()
@@ -19,6 +22,6 @@ class medical_medication extends Model
 
     public function medical_medication_lookup()
     {
-        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_medication_lookup');
+        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_medication_lookup', 'id', 'medication_lookup_id');
     }
 }
