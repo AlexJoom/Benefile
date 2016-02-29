@@ -15,9 +15,9 @@ class BasicInfoService{
     }
 
     // validate the basic info
-    public function basicInfoValidation($request){
+    public function basicInfoValidation($request, $id){
         $rules = array(
-            'folder_number' => 'max:255|unique:benefiters|required',
+            'folder_number' => 'max:255|required|unique:benefiters,folder_number,'.$id,
             'name' => 'max:255',
             'lastname' => 'max:255',
             'fathers_name' => 'max:255',
@@ -68,6 +68,22 @@ class BasicInfoService{
         }
         $this->saveLegalStatusesToDB($benefiter->id, $request);
         return $benefiter;
+    }
+
+    // edit an already saved benefiter
+    public function editBasicInfo($request, $id){
+        // if interpreter checkbox has no value, it should have '0' value
+        if(!array_key_exists('interpreter' ,$request)){
+            $request['interpreter'] = 0;
+        }
+        Benefiter::where('id', '=', $id)->update($this->getBenefiterArrayForDBInsert($request));
+        $this->editLanguagesInDB($id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+//        $this->saveLanguagesToDB($id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+        // if legal status is not existent, add it
+        if(!array_key_exists('legal_status' ,$request)){
+            $request['legal_status'] = null;
+        }
+        $this->saveLegalStatusesToDB($id, $request);
     }
 
     // get all languages from languages DB table
@@ -211,6 +227,43 @@ class BasicInfoService{
         $languagesAndLevelsDBFriendly = $this->getLanguagesArrayForDBInsert($benefiterId, $languagesAndLevels);
         foreach($languagesAndLevelsDBFriendly as $languageAndLevel){
             \DB::table('benefiters_languages')->insert($languageAndLevel);
+        }
+    }
+
+    // edit languages and languages level for benefiter with $benefiterId to DB
+    private function editLanguagesInDB($benefiterId, $languagesAndLevels){
+        $languagesAndLevelsDBFriendly = $this->getLanguagesArrayForDBInsert($benefiterId, $languagesAndLevels);
+        $temp = \DB::table('benefiters_languages')->where('benefiter_id', '=', $benefiterId)->get();
+        $ids_inserted = array();
+        foreach($languagesAndLevelsDBFriendly as $languageAndLevel){
+            $languageInserted = false;
+            foreach($temp as $lang_in_db) {
+                // if language and level already exist in DB update the row
+                if($languageAndLevel['language_id'] == $lang_in_db->language_id){
+                    \DB::table('benefiters_languages')->where('id', '=', $lang_in_db->id)->update($languageAndLevel);
+                    array_push($ids_inserted, $languageAndLevel['language_id']);
+                    $languageInserted = true;
+                    break;
+                }
+            }
+            // insert a new row
+            if(!$languageInserted){
+                \DB::table('benefiters_languages')->insert($languageAndLevel);
+                array_push($ids_inserted, $languageAndLevel['language_id']);
+            }
+        }
+        // delete all removed languages
+        foreach($temp as $lang_in_db){
+            $found = false;
+            foreach($ids_inserted as $language_id){
+                if($lang_in_db->language_id == $language_id){
+                    $found = true;
+                }
+            }
+            // if not found delete DB row
+            if(!$found){
+                \DB::table('benefiters_languages')->where('benefiter_id', '=', $benefiterId)->where('language_id', '=', $lang_in_db->language_id)->delete();
+            }
         }
     }
 

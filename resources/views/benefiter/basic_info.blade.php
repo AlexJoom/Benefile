@@ -23,6 +23,14 @@
                 @endforeach
             </ul>
         </div>
+    @else
+        @if(isset($success) and $success != null)
+        <div class="alert alert-success">
+            <ul>
+                <li>{{ $success }}</li>
+            </ul>
+        </div>
+        @endif
     @endif
 
     @include('partials.forms.basic_info_form')
