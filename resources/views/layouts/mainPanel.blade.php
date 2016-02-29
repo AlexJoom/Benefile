@@ -62,6 +62,9 @@
                         {{-- Menu --}}
                         <div class="margin-top-60 white" id="menu">
                             <ul id="menu-first-layer">
+                                <li id="edit-benefiter" class="hide">
+                                    <a href="#" class="buttonMenu no-padding">@lang($p.'folder_number') {{$benefiter->folder_number}}</a>
+                                </li>
                                 <li id="benefiters-list">
                                     <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
                                 </li>
