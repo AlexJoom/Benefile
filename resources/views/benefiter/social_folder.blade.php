@@ -37,12 +37,8 @@
 @section('panel-scripts')
     <script src="{{ asset('/bootstrap-3.3.6/js/modal.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
-    @if($benefiter->id == -1)
-    <script src="{{ asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
-    {{-- ...else select the edit benefiter option --}}
-    @else
     <script src="{{asset('js/records/selectEditRecordInMainPanel.js')}}"></script>
-    @endif
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/records/social_folder.js')}}"></script>
 @stop
