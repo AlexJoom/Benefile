@@ -2,13 +2,17 @@
  * Created by cdimitzas on 16/2/2016.
  */
 $(document).ready(function(){
+
+    // In medication list if no option is selected then show input div. Else hide div
+
     // Function that starts an ajax in order to add select2 functionality to the selected variable
     function createSelect2($selectBox){
         $selectBox.select2({
             placeholder: 'Εμπορική ονομασία φαρμάκου',
+            allowClear: true,
             ajax: {
-                //url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
-                url: "/benefiter/getMedicationList",
+                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                //url: "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -34,6 +38,7 @@ $(document).ready(function(){
                         results: results
                     };
                 },
+
                 templateResult: function (item) {
                     return item.id;//.id +" " + item.description;
                 },
@@ -44,6 +49,14 @@ $(document).ready(function(){
             },
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 3
+        }).on('select2:select', function(){
+            if($selectBox.find(":selected").val() == 0 || typeof $selectBox.find(":selected").val() === 'undefined'){
+                $selectBox.parent().find('.medication_other_name').show();
+            }else{
+                $selectBox.parent().find('.medication_other_name').hide();
+            }
+        }).on('select2:unselect', function(){
+            $selectBox.parent().find('.medication_other_name').show();
         });
     }
 
@@ -58,10 +71,12 @@ $(document).ready(function(){
         // set new name to dropdowns so that the controller can view them all
         //$condition_count++;
         //$copy.find("#chronCon").attr("name", $copy.find("#chronCon").attr("name") + $condition_count);
-
         // append cloned element to parent
         var $parent = $("#chronic-cond");
         $copy.appendTo($parent);
+        $copy.find("select option").remove();
+
+
     });
     // remove chronic condition element after remove button is clicked
     $("body").on("click", ".remove-condition", function(){
@@ -96,7 +111,6 @@ $(document).ready(function(){
         function(){
             var $copy = $(".medicationList").clone();
             // change the class so they won't be cloned every time all of them
-
             $copy.removeClass("medicationList").addClass("med-added-div");
             // make the add button invisible and the remove button visible
             $copy.find(".color-green").hide();
@@ -107,22 +121,18 @@ $(document).ready(function(){
             // append cloned element to parent
             var $parent = $("#medication");
             $copy.appendTo($parent);
-
             // change the select id name
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
+            //$copy.find('#medication_other_name').show();
+
+            // Empty selection and show input field
+
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
+        });
 
-            // In medication list if no option is selected then show input div. Else hide div
-            if($('select[id^="medicinal_name_"]').find(":selected").val() == 0 || typeof $('select[id^="medicinal_name_"]').find(":selected").val() === 'undefined'){
-                $('#medication_other_name').show();
-            }else{
-                $('#medication_other_name').hide();
-            }
-        }
 
-        );
 
     // remove medication element after remove button is clicked
     $("body").on("click", ".remove-med", function(){
@@ -229,9 +239,9 @@ $(document).ready(function(){
     createSelect2($('#medicinal_name_1'));
     // In medication list if no option is selected then show input div. Else hide div
     if($('select[id^="medicinal_name_"]').find(":selected").val() == 0 || typeof $('select[id^="medicinal_name_"]').find(":selected").val() === 'undefined'){
-        $('#medication_other_name').show();
+        $('.medication_other_name').show();
     }else{
-        $('#medication_other_name').hide();
+        $('.medication_other_name').hide();
     }
 });
 

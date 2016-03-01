@@ -42,8 +42,8 @@
     margin-right: 10px;
 }
 
-.margin-left-9dot333per{
-    margin-left: 9.333%;
+.margin-left-11dot333per{
+    margin-left: 11.333%;
 }
 .margin-top-20{
     margin-top: 20px;
@@ -87,6 +87,9 @@
 .bold-slash{
     color: #53585f;
     font-weight: 700;
+}
+.border-1-grey{
+    border: 1px solid #b8bcbb
 }
 
 label{
