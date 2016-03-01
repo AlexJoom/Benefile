@@ -174,17 +174,17 @@
                                 {!! Form::label('penalty', Lang::get('legal_folder_form.penalty')) !!}
                             </div>
                             <div class="col-md-1 make-inline">
-                                {!! Form::radio('penalty', 1, true, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('penalty', 1, true, array('class' => 'make-inline', 'id' => 'penalty-yes')) !!}
                                 {!! Form::label('penalty', Lang::get('legal_folder_form.yes'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-1 make-inline">
-                                {!! Form::radio('penalty', 2, false, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('penalty', 2, false, array('class' => 'make-inline', 'id' => 'penalty-no')) !!}
                                 {!! Form::label('penalty', Lang::get('legal_folder_form.no'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="penalty-text row hide">
                     <div class="padding-left-right-15">
                         <div class="padding-left-right-15">
                             <div class="form-group float-left width-100-percent">
