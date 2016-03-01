@@ -333,4 +333,11 @@ class RecordsController extends Controller
         $this->basicInfoService->deleteBenefiter($id);
         return redirect('benefiters-list');
     }
+
+    //
+    public function getLegalFolder($id){
+        return view('benefiter.legal_folder')
+            ->with('benefiter', $this->basicInfoService->findExistentBenefiter($id))
+            ->with('tab', 'legal');
+    }
 }
