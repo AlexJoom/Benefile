@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-md-3 record-panel-title">
-                <a id="benefiter-legal-folder" class="white {{ $legal_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="">@lang($p.'legal_folder')</a>
+                <a id="benefiter-legal-folder" class="white {{ $legal_selected }} @if($benefiter->id == -1) disable-anchor @endif" href="{{ url('/benefiter') }}/{{ $benefiter->id }}/legal-folder">@lang($p.'legal_folder')</a>
             </div>
 
             <div class="col-md-3 record-panel-title">

@@ -9,7 +9,6 @@
     <link href="{{asset('css/records/new_record_panel.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/records/social_folder_form.css') }}" rel="stylesheet" type="text/css">
 @stop
 
 @section('main-window-content')
@@ -31,7 +30,8 @@
         </div>
     @endif
 
-    @include('partials.forms.social_folder_form')
+    @include('partials.forms.legal_folder_form')
+
 @stop
 
 @section('panel-scripts')
@@ -40,5 +40,5 @@
     <script src="{{asset('js/records/selectEditRecordInMainPanel.js')}}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
-    <script src="{{asset('js/records/social_folder.js')}}"></script>
+    <script src="{{ asset('js/records/legal_folder.js') }}"></script>
 @stop

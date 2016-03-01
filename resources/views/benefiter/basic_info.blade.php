@@ -46,5 +46,6 @@
     <script src="{{asset('js/records/selectEditRecordInMainPanel.js')}}"></script>
     @endif
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
 @stop
