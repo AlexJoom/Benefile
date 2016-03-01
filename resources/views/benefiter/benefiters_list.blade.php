@@ -15,19 +15,19 @@
             <table id="usersTable-to-activate" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΕΠΙΘΕΤΟ</th>
-                    <th>ΕΠΙΚΟΙΝΩΝΙΑ</th>
+                    <th>@lang("basic_info_form.folder_number")</th>
+                    <th>@lang("basic_info_form.name")</th>
+                    <th>@lang("basic_info_form.lastname")</th>
+                    <th>@lang($p."contact")</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ</th>
-                    <th>ΟΝΟΜΑ</th>
-                    <th>ΕΠΙΘΕΤΟ</th>
-                    <th>ΕΠΙΚΟΙΝΩΝΙΑ</th>
+                    <th>@lang("basic_info_form.folder_number")</th>
+                    <th>@lang("basic_info_form.name")</th>
+                    <th>@lang("basic_info_form.lastname")</th>
+                    <th>@lang($p."contact")</th>
                     <th></th>
                 </tr>
                 </tfoot>
@@ -41,7 +41,7 @@
                             <td>
                                 {!! Form::open(array('url' => 'benefiter/'. $benefiter['id'] .'/basic-info', 'method' => 'get')) !!}
                                     {!! Form::hidden('benefiter_id', $benefiter['id']) !!}
-                                    {!! Form::submit('Επεξεργασία', array('class' => 'edit-button lighter-green-background')) !!}
+                                    {!! Form::submit(\Lang::get('benefiters_list.edit'), array('class' => 'edit-button lighter-green-background')) !!}
                                     @if(\Auth::user()->user_role_id == 1)
                                     <a href="javascript:void(0)" data-url="{{ url('/benefiter/'.$benefiter['id'].'/delete') }}" class="delete-benefiter display-inline margin-left-10px gray" title="@lang($p."delete_benefiter")"><span class="glyphicon glyphicon-trash"></span></a>
                                     @endif
