@@ -66,11 +66,11 @@
                     <div class="padding-left-right-15">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('legal_folder_status', 1, true, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('legal_folder_status', 1, true, array('class' => 'make-inline', 'id' => 'asylum')) !!}
                                 {!! Form::label('legal_folder_status', Lang::get('legal_folder_form.asylum'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('legal_folder_status', 2, false, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('legal_folder_status', 2, false, array('class' => 'make-inline', 'id' => 'no-legal')) !!}
                                 {!! Form::label('legal_folder_status', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
@@ -78,18 +78,18 @@
                 </div>
                 <div class="row">
                     <div class="padding-left-right-15">
-                        <div class="asylum-request dynamic-form-section">
+                        <div class="asylum-request dynamic-form-section hide">
                             <h1 class="record-section-header padding-left-right-15">@lang($p."asylum")</h1>
                             <div class="form-group float-left width-100-percent">
                                 <div class="col-md-3 make-inline">
-                                    {!! Form::radio('procedure', 1, true, array('class' => 'make-inline')) !!}
+                                    {!! Form::radio('procedure', 1, true, array('class' => 'make-inline', 'id' => 'procedure-old')) !!}
                                     {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_old'), array('class' => 'radio-value')) !!}
                                 </div>
                                 <div class="col-md-3 make-inline">
-                                    {!! Form::radio('procedure', 2, false, array('class' => 'make-inline')) !!}
+                                    {!! Form::radio('procedure', 2, false, array('class' => 'make-inline', 'id' => 'procedure-new')) !!}
                                     {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_new'), array('class' => 'radio-value')) !!}
                                 </div>
-                                <div class="col-md-6 make-inline">
+                                <div class="request-status col-md-6 make-inline hide">
                                     {!! Form::label('request_status', Lang::get('legal_folder_form.request_status')) !!}
                                     <select name="request_status" class="request-status-selection">
                                         <option value="1">α'</option>
@@ -107,30 +107,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="no-legal dynamic-form-section">
+                        <div class="no-legal dynamic-form-section hide">
                             <h1 class="record-section-header padding-left-right-15">@lang($p."no_legal")</h1>
-                            <div class="form-group float-left width-100-percent">
-                                <div class="col-md-3 make-inline">
-                                    {!! Form::radio('action', 1, true, array('class' => 'make-inline')) !!}
-                                    {!! Form::label('action', Lang::get('legal_folder_form.action_none'), array('class' => 'radio-value')) !!}
-                                </div>
-                                <div class="col-md-3 make-inline">
-                                    {!! Form::radio('action', 2, false, array('class' => 'make-inline')) !!}
-                                    {!! Form::label('action', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
+                            <div class="row">
+                                <div class="form-group padding-left-right-15 float-left width-100-percent">
+                                    <div class="col-md-3 make-inline">
+                                        {!! Form::radio('action', 1, true, array('class' => 'make-inline', 'id' => 'action-none')) !!}
+                                        {!! Form::label('action', Lang::get('legal_folder_form.action_none'), array('class' => 'radio-value')) !!}
+                                    </div>
+                                    <div class="col-md-3 make-inline">
+                                        {!! Form::radio('action', 2, false, array('class' => 'make-inline', 'id' => 'action-refusal')) !!}
+                                        {!! Form::label('action', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group padding-left-right-15">
-                                    <div class="col-md-1 make-inline">
-                                        {!! Form::label('result', Lang::get('legal_folder_form.result')) !!}
-                                    </div>
-                                    <div class="col-md-2 make-inline">
-                                        {!! Form::radio('result', 1, true, array('class' => 'make-inline')) !!}
-                                        {!! Form::label('result', Lang::get('legal_folder_form.positive'), array('class' => 'radio-value')) !!}
-                                    </div>
-                                    <div class="col-md-2 make-inline">
-                                        {!! Form::radio('result', 2, false, array('class' => 'make-inline')) !!}
-                                        {!! Form::label('result', Lang::get('legal_folder_form.negative'), array('class' => 'radio-value')) !!}
+                            <div class="results hide">
+                                <div class="row">
+                                    <div class="form-group padding-left-right-15">
+                                        <div class="col-md-1 make-inline">
+                                            {!! Form::label('result', Lang::get('legal_folder_form.result')) !!}
+                                        </div>
+                                        <div class="col-md-2 make-inline">
+                                            {!! Form::radio('result', 1, true, array('class' => 'make-inline')) !!}
+                                            {!! Form::label('result', Lang::get('legal_folder_form.positive'), array('class' => 'radio-value')) !!}
+                                        </div>
+                                        <div class="col-md-2 make-inline">
+                                            {!! Form::radio('result', 2, false, array('class' => 'make-inline')) !!}
+                                            {!! Form::label('result', Lang::get('legal_folder_form.negative'), array('class' => 'radio-value')) !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
