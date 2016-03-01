@@ -62,9 +62,11 @@
                         {{-- Menu --}}
                         <div class="margin-top-60 white" id="menu">
                             <ul id="menu-first-layer">
+                               @if(!empty($benefiter))
                                 <li id="edit-benefiter" class="hide">
                                     <a href="#" class="buttonMenu no-padding">@lang($p.'folder_number')@if(isset($benefiter) and $benefiter != null){{$benefiter->folder_number}}@endif</a>
                                 </li>
+                                @endif
                                 <li id="benefiters-list">
                                     <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
                                 </li>

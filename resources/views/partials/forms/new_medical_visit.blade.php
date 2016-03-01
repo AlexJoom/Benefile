@@ -347,7 +347,7 @@
 
                                     <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                                     </select>
-                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20']) !!}
+                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent']) !!}
                                 </div>
                         @if($i%3 == 2)
                             </div>
@@ -450,9 +450,9 @@
                         <div  class="padding-left-right-15 medicationList">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
-                                <div class="make-inline col-md-12">
+                                <div class="select-lists make-inline col-md-12">
                                     {!! Form::label('medicinal_name-[]', Lang::get($p.'medication_info')) !!}
-                                    {!! Form::select('medication_name_from_lookup[]', ['0'=>'Other'], null, array('id'=>'medicinal_name-[]', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}
+                                    {!! Form::select('medication_name_from_lookup[]', [], null, array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}
                                     {{--<select id="medicinal_name-[]" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >--}}
                                         {{--<option value="0">Other</option>--}}
                                     {{--</select>--}}
@@ -463,11 +463,11 @@
 
 
                                     {{-- add --}}
-                                    <a class="color-green add-med" href="javascript:void(0)">
+                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-plus-sign make-inline"></span>
                                     </a>
                                     {{-- remove --}}
-                                    <a class="color-red remove-med hide-element" href="javascript:void(0)">
+                                    <a id="remove-medicine" class="color-red remove-med hide-element" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                     </a>
 
