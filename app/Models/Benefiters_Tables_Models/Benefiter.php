@@ -3,11 +3,15 @@
 namespace App\Models\Benefiters_Tables_Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Benefiter extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'benefiters';
     protected $primaryKey = 'id';
+    protected $dates = ['deleted_at'];
     protected $fillable = [
         'folder_number',
         'name',

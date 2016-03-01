@@ -26,6 +26,10 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
+                            {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right', 'disabled' => 'disabled')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>

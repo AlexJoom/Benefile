@@ -37,7 +37,13 @@
 
 @section('panel-scripts')
     <script src="{{asset('select2-4.0.2-rc.1/js/select2.full.js')}}"></script>
-    <script src="{{asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
+    {{-- select new record in side-panel if you are creating a new benefiter's basic info... --}}
+    @if($benefiter->id == -1)
+    <script src="{{ asset('js/records/selectNewRecordInMainPanel.js') }}"></script>
+    {{-- ...else select the edit benefiter option --}}
+    @else
+    <script src="{{asset('js/records/selectEditRecordInMainPanel.js')}}"></script>
+    @endif
     <script src="{{asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>

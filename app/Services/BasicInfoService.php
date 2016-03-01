@@ -131,6 +131,14 @@ class BasicInfoService{
         return $languages_levels;
     }
 
+    // delete a benefiter from his id
+    public function deleteBenefiter($benefiterId){
+        $benefiter = Benefiter::where('id', '=', $benefiterId)->first();
+        $benefiter->folder_number = $this->datesHelper->getCurrentTimeString() . "_" . $benefiter->folder_number;
+        $benefiter->save();
+        Benefiter::where('id', '=', $benefiterId)->delete();
+    }
+
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys

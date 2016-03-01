@@ -64,7 +64,7 @@
                             <ul id="menu-first-layer">
                                @if(!empty($benefiter))
                                 <li id="edit-benefiter" class="hide">
-                                    <a href="#" class="buttonMenu no-padding">@lang($p.'folder_number') {{$benefiter->folder_number}}</a>
+                                    <a href="#" class="buttonMenu no-padding">@lang($p.'folder_number')@if(isset($benefiter) and $benefiter != null){{$benefiter->folder_number}}@endif</a>
                                 </li>
                                 @endif
                                 <li id="benefiters-list">
