@@ -17,6 +17,7 @@ return array(
     'folder_number'        =>  'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
     'total_visits_number'  =>  'ΑΡΙΘΜΟΣ ΕΠΙΣΚΕΨΕΩΝ',
 
+    'success_visit'        =>  'Η επίσκεψη δημιουργήθηκε επιτυχώς',
     'medical_history'      =>  'Ιατρικό Ιστορικό οφελούμενου',
     'doctor'               =>  'ΓΙΑΤΡΟΣ',
     'exam_location'        =>  'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
