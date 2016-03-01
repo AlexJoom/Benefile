@@ -77,8 +77,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="asylum-request padding-left-right-15">
-                        <div class="padding-left-right-15">
+                    <div class="padding-left-right-15">
+                        <div class="asylum-request dynamic-form-section">
+                            <h1 class="record-section-header padding-left-right-15">@lang($p."asylum")</h1>
                             <div class="form-group float-left width-100-percent">
                                 <div class="col-md-3 make-inline">
                                     {!! Form::radio('procedure', 1, true, array('class' => 'make-inline')) !!}
@@ -97,9 +98,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="padding-left-right-15">
+                            <div class="row">
                                 <div class="padding-left-right-15">
                                     <div class="form-group padding-left-right-15">
                                         {!! Form::label('request_progress', Lang::get('legal_folder_form.request_progress')) !!}
@@ -108,9 +107,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="no-legal padding-left-right-15">
-                        <div class="padding-left-right-15">
+                        <div class="no-legal dynamic-form-section">
+                            <h1 class="record-section-header padding-left-right-15">@lang($p."no_legal")</h1>
                             <div class="form-group float-left width-100-percent">
                                 <div class="col-md-3 make-inline">
                                     {!! Form::radio('action', 1, true, array('class' => 'make-inline')) !!}
@@ -121,9 +119,7 @@
                                     {!! Form::label('action', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="padding-left-right-15">
+                            <div class="row">
                                 <div class="form-group padding-left-right-15">
                                     <div class="col-md-1 make-inline">
                                         {!! Form::label('result', Lang::get('legal_folder_form.result')) !!}
