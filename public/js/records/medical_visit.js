@@ -124,9 +124,16 @@ $(document).ready(function(){
             // change the select id name
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
-            //$copy.find('#medication_other_name').show();
 
-            // Empty selection and show input field
+            $('.supply_from_praksis').change(function(){
+                console.log('hell');
+                if($(this).is(':checked')){
+                    $(this).siblings('.supply_from_praksis_hidden').val(1);
+                }else {
+                    $(this).siblings('.supply_from_praksis_hidden').val(0);
+                }
+            });
+
 
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
@@ -195,8 +202,8 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-            //url: "http://localhost/benefile/index.php/benefiter/getIC10List",
-            url: "/benefiter/getIC10List",
+            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            //url: "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -246,7 +253,19 @@ $(document).ready(function(){
 
     // Fade out success visit submit messge
     $('div.success-message').delay(5000).fadeOut(400);
+    $('div.unsuccess-message').delay(5000).fadeOut(400);
+
+    // Change value to hidden field
+    $('.supply_from_praksis').change(function(){
+        console.log('hell');
+        if($(this).is(':checked')){
+            $(this).siblings('.supply_from_praksis_hidden').val(1);
+        }else {
+            $(this).siblings('.supply_from_praksis_hidden').val(0);
+        }
+    });
 });
+
 
 //var $condition_count = 0;
 //var $result_count = 0;

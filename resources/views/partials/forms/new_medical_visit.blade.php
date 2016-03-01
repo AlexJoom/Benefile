@@ -153,8 +153,10 @@
 
 {{-- 2. MEDICAL HISTORY TABLE --}}
 <div class="form-section">
-    @if(($visit_submited_succesfully == true))
-    <div class="record-section-header padding-left-right-15 success-message">@lang($p.'success_visit')</div>
+    @if(($visit_submited_succesfully == 1))
+        <div class="record-section-header padding-left-right-15 success-message">@lang($p.'success_visit')</div>
+    @elseif($visit_submited_succesfully == 2)
+        <div class="record-section-header padding-left-right-15 unsuccess-message">@lang($p.'unsuccess_visit')</div>
     @endif
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">2. @lang($p.'medical_history')</h1>
@@ -214,7 +216,7 @@
 
 
 <div id="new-medical-visit" class="basic-info-form">
-    {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder', 'files'=>true)) !!}
+    {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder', 'files'=>true, 'id'=>'medical_visit_submit')) !!}
         {{-- get the benefiter id --}}
         {!! Form::hidden('benefiter_id', $benefiter->id) !!}
         {{-- get the doctor id --}}
@@ -461,8 +463,16 @@
                                     {{--</select>--}}
                                     {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
                                     {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-                                    {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class' => 'make-inline')) !!}
+
                                     {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+                                    {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
+                                    {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
+
+
+                                    {{--{!! Form::radio('supply_from_praksis[]', 1, true, array('class' => 'make-inline')) !!}--}}
+                                    {{--{!! Form::label('supply_from_praksis[]', Lang::get($p.'yes'), array('class' => 'radio-value' )) !!}--}}
+                                    {{--{!! Form::radio('supply_from_praksis[]', 0, false, array('class' => 'make-inline')) !!}--}}
+                                    {{--{!! Form::label('supply_from_praksis[]', Lang::get($p.'no'), array('class' => 'radio-value')) !!}--}}
 
 
                                     {{-- add --}}
