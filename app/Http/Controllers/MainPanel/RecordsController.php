@@ -328,4 +328,10 @@ class RecordsController extends Controller
     public function getICD10List(Request $request){
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
+
+    // delete a benefiter from id
+    public function getDeleteBenefiter($id){
+        $this->basicInfoService->deleteBenefiter($id);
+        return redirect('benefiters-list');
+    }
 }

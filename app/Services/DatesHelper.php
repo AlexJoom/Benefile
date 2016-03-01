@@ -42,4 +42,9 @@ class DatesHelper
             }
         }
     }
+
+    // gets current time string
+    public function getCurrentTimeString(){
+        return Carbon::now()->toDateTimeString();
+    }
 }

@@ -57,6 +57,7 @@ class CreateBenefitersTable extends Migration
             // Lookup table for work field.
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
+            $table->softDeletes();
         });
 
         // Lookup for general reference table.
