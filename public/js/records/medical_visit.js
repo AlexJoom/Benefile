@@ -243,6 +243,9 @@ $(document).ready(function(){
     }else{
         $('.medication_other_name').hide();
     }
+
+    // Fade out success visit submit messge
+    $('div.success-message').delay(5000).fadeOut(400);
 });
 
 //var $condition_count = 0;

@@ -153,6 +153,9 @@
 
 {{-- 2. MEDICAL HISTORY TABLE --}}
 <div class="form-section">
+    @if(($visit_submited_succesfully == true))
+    <div class="record-section-header padding-left-right-15 success-message">@lang($p.'success_visit')</div>
+    @endif
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">2. @lang($p.'medical_history')</h1>
     </div>
