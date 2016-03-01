@@ -47,4 +47,5 @@
 
 @section('panel-scripts')
     <script src="{{asset('js/main-panel/users-list.js')}}"></script>
+    <script src="{{asset('js/main-panel/selectBenefitersListInMainPanel.js')}}"></script>
 @stop
