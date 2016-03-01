@@ -43,7 +43,7 @@
                                     {!! Form::hidden('benefiter_id', $benefiter['id']) !!}
                                     {!! Form::submit('Επεξεργασία', array('class' => 'edit-button lighter-green-background')) !!}
                                     @if(\Auth::user()->user_role_id == 1)
-                                    <a href="{{ url('/benefiter/'.$benefiter['id'].'/delete') }}" class="display-inline margin-left-10px gray" title="@lang($p."delete_benefiter")"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="javascript:void(0)" data-url="{{ url('/benefiter/'.$benefiter['id'].'/delete') }}" class="delete-benefiter display-inline margin-left-10px gray" title="@lang($p."delete_benefiter")"><span class="glyphicon glyphicon-trash"></span></a>
                                     @endif
                                 {!! Form::close() !!}
                             </td>
@@ -53,10 +53,31 @@
             </table>
         </div>
     </div>
+    <!--delete session confirmation modal-->
+    <div class="modal fade" id="delete-benefiter-modal" aria-hidden="true" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form class="delete-benefiter-form" action="" method="get">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">@lang($p."delete_benefiter_modal_title")</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-3 col-md-offset-9">
+                            <button type="submit" class="simple-button">@lang($p."done")</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- /.modal -->
 
 @stop
 
 @section('panel-scripts')
+    <script src="{{ asset('/bootstrap-3.3.6/js/modal.js') }}"></script>
     <script src="{{asset('js/main-panel/users-list.js')}}"></script>
     <script src="{{asset('js/main-panel/selectBenefitersListInMainPanel.js')}}"></script>
+    <script src="{{ asset('js/main-panel/benefiters_list.js') }}"></script>
 @stop
