@@ -25,8 +25,12 @@ class SocialFolderService{
         if(!array_key_exists('psychosocial_statuses', $request)){
             $request['psychosocial_statuses'] = null;
         }
-        \DB::table('social_folder')->insert($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
-//        $this->savePsychosocialSupportToDB($request, $benefiterId);
+        $social_folder = \DB::table('social_folder')->where('benefiter_id', '=', $benefiterId)->first();
+        if($social_folder == null) {
+            \DB::table('social_folder')->insert($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
+        } else {
+            \DB::table('social_folder')->where('benefiter_id', '=', $benefiterId)->update($this->getSocialFolderArrayForDBInsert($request, $benefiterId));
+        }
     }
 
     // save a new session in DB
