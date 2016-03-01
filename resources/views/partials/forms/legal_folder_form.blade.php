@@ -1,6 +1,13 @@
 <div class="legal-folder-form">
 <?php
     $p = "legal_folder_form.";
+    // format correctly the dates!
+    $datesHelper = new \app\Services\DatesHelper();
+    if (isset($benefiter) and $benefiter != null){
+        if ($benefiter->birth_date != null) {
+            $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        }
+    }
 ?>
 {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/social-folder')) !!}
     <div class="personal-family-info form-section no-bottom-border">
@@ -80,22 +87,32 @@
                     <div class="padding-left-right-15">
                         <div class="asylum-request dynamic-form-section hide">
                             <h1 class="record-section-header padding-left-right-15">@lang($p."asylum")</h1>
-                            <div class="form-group float-left width-100-percent">
-                                <div class="col-md-3 make-inline">
-                                    {!! Form::radio('procedure', 1, true, array('class' => 'make-inline', 'id' => 'procedure-old')) !!}
-                                    {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_old'), array('class' => 'radio-value')) !!}
+                            <div class="row">
+                                <div class="form-group float-left padding-left-right-15 width-100-percent">
+                                    <div class="col-md-2 make-inline">
+                                        {!! Form::label('asylum_request_date', Lang::get('legal_folder_form.asylum_request_date')) !!}
+                                        {!! Form::text('asylum_request_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 make-inline">
-                                    {!! Form::radio('procedure', 2, false, array('class' => 'make-inline', 'id' => 'procedure-new')) !!}
-                                    {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_new'), array('class' => 'radio-value')) !!}
-                                </div>
-                                <div class="request-status col-md-6 make-inline hide">
-                                    {!! Form::label('request_status', Lang::get('legal_folder_form.request_status')) !!}
-                                    <select name="request_status" class="request-status-selection">
-                                        <option value="1">α'</option>
-                                        <option value="2">β'</option>
-                                        <option value="3">μεταγενέστερο</option>
-                                    </select>
+                            </div>
+                            <div class="row">
+                                <div class="form-group float-left padding-left-right-15 width-100-percent">
+                                    <div class="col-md-2 make-inline">
+                                        {!! Form::radio('procedure', 1, true, array('class' => 'make-inline', 'id' => 'procedure-old')) !!}
+                                        {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_old'), array('class' => 'radio-value')) !!}
+                                    </div>
+                                    <div class="col-md-2 make-inline">
+                                        {!! Form::radio('procedure', 2, false, array('class' => 'make-inline', 'id' => 'procedure-new')) !!}
+                                        {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_new'), array('class' => 'radio-value')) !!}
+                                    </div>
+                                    <div class="request-status col-md-6 make-inline hide">
+                                        {!! Form::label('request_status', Lang::get('legal_folder_form.request_status')) !!}
+                                        <select name="request_status" class="request-status-selection">
+                                            <option value="1">α'</option>
+                                            <option value="2">β'</option>
+                                            <option value="3">μεταγενέστερο</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

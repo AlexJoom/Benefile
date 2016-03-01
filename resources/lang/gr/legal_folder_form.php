@@ -4,6 +4,7 @@
         'legal_info' => 'Νομικές Πληροφορίες',
         'asylum' => 'Αίτημα Ασύλου',
         'no_legal' => 'Εκτός Νομικού Πλαισίου',
+        'asylum_request_date' => 'ΗΜ. ΑΙΤΗΜΑΤΟΣ',
         'request_progress' => 'ΣΤΑΔΙΟ ΑΙΤΗΣΗΣ',
         'procedure_old' => 'Παλιά Διαδικασία',
         'procedure_new' => 'Νέα Διαδικασία',
