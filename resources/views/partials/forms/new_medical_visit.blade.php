@@ -471,8 +471,8 @@
                                         <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                     </a>
 
-                                    <div id="medication_other_name" class="col-md-4 margin-left-9dot333per">
-                                        {!! Form::text('medication_new_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                    <div class="medication_other_name col-md-4 margin-left-11dot333per">
+                                        {!! Form::textarea('medication_new_name[]', null, array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
                                     </div>
                                 </div>
                             </div>

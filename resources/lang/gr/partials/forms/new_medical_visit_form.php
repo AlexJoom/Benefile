@@ -40,7 +40,7 @@ return array(
 
     'clinical_results'     =>  'Κλινικά αποτελέσματα',
 
-    'medicinal_name'       =>  'Εμπορική ονομασία φαρμάκου',
+    'medicinal_name'       =>  'Πληκτρολογίστε την ονομασία του φαρμάκου αν δεν υπάρχει στην λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',
     'medicinal_duration'   =>  'Διάρκεια θεραπείας',
     'supply_from_praksis'  =>  'Προμήθεια από Praxis',
