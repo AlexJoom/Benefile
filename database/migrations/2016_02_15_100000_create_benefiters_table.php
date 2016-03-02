@@ -372,7 +372,6 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_medication_lookup');
         Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
-        Schema::dropIfExists('icd10');
         Schema::dropIfExists('medical_examination_results');
         Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results_lookup');
@@ -385,5 +384,6 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('benefiter_referrals');
         Schema::dropIfExists('benefiter_referrals_lookup');
         Schema::dropIfExists('benefiters');
+        Schema::dropIfExists('icd10');
     }
 }
