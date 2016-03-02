@@ -34,11 +34,11 @@ class BenefiterMedicalFolderService
             'examination_date' => 'date',
             'medical_location_id' => 'integer',
             'incident_type' => 'integer',
-            'height' => 'digits:3',
-            'weight' => 'digits:3',
-            'temperature' => 'number',
-            'blood_pressure_systolic' => 'number',
-            'blood_pressure_diastolic' => 'number',
+            'height' => 'numeric',
+            'weight' => 'numeric',
+            'temperature' => 'numeric',
+            'blood_pressure_systolic' => 'numeric',
+            'blood_pressure_diastolic' => 'numeric',
             'skull_perimeter' => 'digits:3'
         );
         // Push the dynamic elements into the rule array
@@ -49,7 +49,6 @@ class BenefiterMedicalFolderService
 
         // TODO Change the way of exam results validation
         // Push the dynamic elements into the rule array
-
         if(!empty($request['examResultLoukup'])){
             $examResultsDescription = $request['examResultDescription'];
             $examResults = $request['examResultLoukup'];
@@ -71,11 +70,11 @@ class BenefiterMedicalFolderService
         // Push the dynamic elements into the rule array
         if(!empty($request['medication_name']) && !empty($request->medication_dosage)
                                                && !empty($request->medication_duration)
-                                               && !empty($request->supply_from_praksis)){
+                                               && !empty($request->supply_from_praksis_hidden)){
             $request_medication_name = $request->medication_name;
             $request_medication_dosage = $request->medication_dosage;
             $request_medication_duration = $request->medication_duration;
-            $request_supply_from_praksis = $request->supply_from_praksis;
+            $request_supply_from_praksis = $request->supply_from_praksis_hidden;
 
             for($i=0 ; $i<count($request_medication_name) ; $i++){
                 array_push($rules, [$request_medication_name[$i]=>'max:255']);
@@ -273,8 +272,8 @@ class BenefiterMedicalFolderService
         $request_medication_dosage = $request['medication_dosage'];
         $request_medication_duration = $request['medication_duration'];
         $request_supply_from_praksis = null;
-        if(!empty($request['supply_from_praksis'])){
-            $request_supply_from_praksis = $request['supply_from_praksis'];
+        if(!empty($request['supply_from_praksis_hidden'])){
+            $request_supply_from_praksis = $request['supply_from_praksis_hidden'];
         }
 
         $request_medication_Number = count($request_medication_dosage);
@@ -322,11 +321,11 @@ class BenefiterMedicalFolderService
                     $med_medication->save();
                 } else {
                     echo 'DOUBLE FIELD ENTRY';
-                    break;
+
                 }
             }else{
                 echo 'NOT ALL FIELDS ARE COMPLETE';
-                break;
+
             }
         }
     }

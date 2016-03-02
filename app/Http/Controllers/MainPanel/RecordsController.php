@@ -252,7 +252,7 @@ class RecordsController extends Controller
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
-        $visit_submited_succesfully = false;
+        $visit_submited_succesfully = 0; // 0:initial value, 1:Success, 2:Unsuccess
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
@@ -281,12 +281,13 @@ class RecordsController extends Controller
 
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
-//        dd(empty(medical_medication_lookup::where('id','=', 10)->select('id')->first()->id));
-        $visit_submited_succesfully = false;
+        dd($request->all());
+        $visit_submited_succesfully = 0; // 0:initial value, 1:Success, 2:Unsuccess
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
         $doctor_id = Auth::user()->id;
+
         $benefiter_id = $benefiter->id;
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         // brings the medical location array from db
@@ -299,54 +300,41 @@ class RecordsController extends Controller
         // Post Validation
         $validator = $this->medicalVisit->medicalValidation($request->all());
         if($validator->fails()){
+            $visit_submited_succesfully = 2;
 //            return redirect('benefiter/'.$id.'/basic-info')
 //                ->withInput(array(
 //                    'folder_number' => $request->folder_number,
 //                    'lastname' => $request->lastname,
-//                    'name' => $request->name,
-//                    'gender' => $request->gender,
-//                    'birth_date' => $request->birth_date,
-//                    'fathers_name' => $request->fathers_name,
-//                    'mothers_name' => $request->mothers_name,
-//                    'nationality_country' => $request->nationality_country,
-//                    'origin_country' => $request->origin_country,
-//                    'arrival_date' => $request->arrival_date,
-//                    'ethnic_group' => $request->ethnic_group,
-//                    'telephone' => $request->telephone,
-//                    'address' => $request->address,
-//                    'marital_status' => $request->marital_status,
-//                    'number_of_children' => $request->number_of_children,
-//                    'relatives_residence' => $request->relatives_residence,
-//                    'children_names' => $request->children_names,
-//                    'education_status' => $request->education_status,
-//                    'interpreter' => $request->interpreter,
-//                    'working' => $request->working,
-//                    'working_legally' => $request->working_legally,
-//                    'country_abandon_reason' => $request->country_abandon_reason,
-//                    'travel_route' => $request->travel_route,
-//                    'travel_duration' => $request->travel_duration,
-//                    'detention_duration' => $request->detention_duration,
-//                    'social_history' => $request->social_history,
 //                ))
 //                ->with("legalStatuses", $legal_statuses)
 //                ->with("benefiter_languages", $benefiterLanguagesAndLevels)
 //                ->withErrors($validator->errors()->all());
-            return view('benefiter.medical-folder', compact('benefiter',
-                'benefiter_folder_number',
-                'benefiter_medical_history_list',
-                'doctor_id',
-                'benefiter_id',
-                'medical_locations_array',
-                'ExamResultsLookup',
-                'medical_visits_number'))->withErrors($validator->errors()->all());
+            return redirect('benefiter/'.$benefiter_id.'/medical-folder')
+                ->with('benefiter', $benefiter)
+                ->with('benefiter_folder_number', $benefiter_folder_number)
+                ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
+                ->with('doctor_id', $doctor_id)
+                ->with('benefiter_id', $benefiter_id)
+                ->with('medical_locations_array', $medical_locations_array)
+                ->with('ExamResultsLookup', $ExamResultsLookup)
+                ->with('medical_visits_number', $medical_visits_number)
+//                ->with('icd10', $icd10)
+                ->with('visit_submited_succesfully', $visit_submited_succesfully)
+                ->withErrors($validator->errors()->all());
         } else {
             $this->medicalVisit->save_new_medical_visit_tables($request->all());
-            $visit_submited_succesfully = true;
-            return view('benefiter.medical-folder', compact('benefiter', 'benefiter_folder_number',
-                                                            'benefiter_medical_history_list', 'doctor_id',
-                                                            'benefiter_id', 'medical_locations_array',
-                                                            'ExamResultsLookup', 'medical_visits_number',
-                                                            'icd10', 'visit_submited_succesfully'));
+            $visit_submited_succesfully = 1;
+            return redirect('benefiter/'.$benefiter_id.'/medical-folder')
+                ->with('benefiter', $benefiter)
+                ->with('benefiter_folder_number', $benefiter_folder_number)
+                ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
+                ->with('doctor_id', $doctor_id)
+                ->with('benefiter_id', $benefiter_id)
+                ->with('medical_locations_array', $medical_locations_array)
+                ->with('ExamResultsLookup', $ExamResultsLookup)
+                ->with('medical_visits_number', $medical_visits_number)
+//                ->with('icd10', $icd10)
+                ->with('visit_submited_succesfully', $visit_submited_succesfully);
         }
 
     }
