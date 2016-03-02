@@ -13,6 +13,7 @@ use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
+use App\Services\LegalFolderService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -26,6 +27,7 @@ class RecordsController extends Controller
     private $basicInfoService;
     private $socialFolderService;
     private $medicalVisit;
+    private $legalFolderService;
     private $benefiterList = null;
 
     public function __construct(){
@@ -37,6 +39,8 @@ class RecordsController extends Controller
         $this->socialFolderService = new SocialFolderService();
         // initialize medical visit service
         $this->medicalVisit = new BenefiterMedicalFolderService();
+        // initialize legal folder service
+        $this->legalFolderService = new LegalFolderService();
     }
 
     //------------ GET BENEFITERS LIST -------------------------------//
@@ -62,13 +66,16 @@ class RecordsController extends Controller
         session()->forget('benefiter_languages');
         $successMsg = session()->get('success', function() { return null; });
         session()->forget('successMsg');
+        $errors = session()->get('errors' , function() { return null; });
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
             if($benefiter == null) {
                 return view('errors.404');
             } else {
-                $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($id);
+                if ($errors == null) {
+                    $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($id);
+                }
                 $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsByBenefiterId($id);
             }
         } else {
@@ -87,7 +94,7 @@ class RecordsController extends Controller
     // post from basic info form
     public function postBasicInfo(Request $request, $id){
         $validator = $this->basicInfoService->basicInfoValidation($request->all(), $id);
-        if($validator->fails()){// and count($validator->errors()) != 1 and strpos($validator->errors()->all()[0], 'folder number') == false and $id < 0){
+        if($validator->fails()){
             $legal_statuses = $this->basicInfoService->getLegalStatusesArrayFromRequest($request->legal_status, $request->legal_status_text, $request->legal_status_exp_date);
             $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsFromRequest($request->all());
             return redirect('benefiter/'.$id.'/basic-info')
@@ -403,10 +410,37 @@ class RecordsController extends Controller
         return redirect('benefiters-list');
     }
 
-    //
+    // returns view of legal folder
     public function getLegalFolder($id){
+        $legalFolder = $this->legalFolderService->findLegalFolderFromBenefiterId($id);
+        $asylumRequest = null;
+        $noLegalStatus = null;
+        $lawyerActions = null;
+        // if the legal folder exists return all things connected with it
+        if($legalFolder != null){
+            $asylumRequest = $this->legalFolderService->findAsylumRequestFromLegalFolderId($legalFolder->id);
+            $noLegalStatus = $this->legalFolderService->findNoLegalStatusFromLegalFolderId($legalFolder->id);
+            $lawyerActions = $this->legalFolderService->findLawyerActionsFromLegalFolderId($legalFolder->id);
+        }
         return view('benefiter.legal_folder')
+            ->with('legal_folder', $legalFolder)
             ->with('benefiter', $this->basicInfoService->findExistentBenefiter($id))
+            ->with('asylum_request', $asylumRequest)
+            ->with('no_legal_status', $noLegalStatus)
+            ->with('lawyer_action', $lawyerActions)
             ->with('tab', 'legal');
+    }
+
+    // gets data from legal folder form
+    public function postLegalFolder(Request $request, $id){
+        $validator = $this->legalFolderService->legalFolderValidator($request->all());
+        if ($validator->fails()){
+            return redirect('benefiter/'.$id.'/legal-folder')
+                ->withInput($request->all())
+                ->withErrors($validator->errors()->all());
+        } else {
+            $this->legalFolderService->saveLegalFolderToDB($request->all(), $id);
+            return redirect('benefiter/'.$id.'/legal-folder');
+        }
     }
 }
