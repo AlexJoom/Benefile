@@ -365,8 +365,22 @@ class RecordsController extends Controller
 
     // returns view of legal folder
     public function getLegalFolder($id){
+        $legalFolder = $this->legalFolderService->findLegalFolderFromBenefiterId($id);
+        $asylumRequest = null;
+        $noLegalStatus = null;
+        $lawyerActions = null;
+        // if the legal folder exists return all things connected with it
+        if($legalFolder != null){
+            $asylumRequest = $this->legalFolderService->findAsylumRequestFromLegalFolderId($legalFolder->id);
+            $noLegalStatus = $this->legalFolderService->findNoLegalStatusFromLegalFolderId($legalFolder->id);
+            $lawyerActions = $this->legalFolderService->findLawyerActionsFromLegalFolderId($legalFolder->id);
+        }
         return view('benefiter.legal_folder')
+            ->with('legal_folder', $legalFolder)
             ->with('benefiter', $this->basicInfoService->findExistentBenefiter($id))
+            ->with('asylum_request', $asylumRequest)
+            ->with('no_legal_status', $noLegalStatus)
+            ->with('lawyer_action', $lawyerActions)
             ->with('tab', 'legal');
     }
 
@@ -374,13 +388,12 @@ class RecordsController extends Controller
     public function postLegalFolder(Request $request, $id){
         $validator = $this->legalFolderService->legalFolderValidator($request->all());
         if ($validator->fails()){
-            return view('benefiter.legal_folder')
-                ->with('benefiter', $this->basicInfoService->findExistentBenefiter($id))
-                ->with('tab', 'legal')
+            return redirect('benefiter/'.$id.'/legal-folder')
+                ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
         } else {
             $this->legalFolderService->saveLegalFolderToDB($request->all(), $id);
-            return 'Validator passes!';
+            return redirect('benefiter/'.$id.'/legal-folder');
         }
     }
 }

@@ -52,7 +52,7 @@ class CreateLegalFolderTable extends Migration
             $table->increments('id');
             $table->date('request_date');
             $table->integer('procedure_id')->unsigned();
-            $table->integer('request_status_id')->unsigned();
+            $table->integer('request_status_id')->unsigned()->nullable();
             $table->text('request_progress')->nullable();
             $table->integer('legal_folder_id')->unsigned();
             $table->foreign('procedure_id')->references('id')->on('procedure_lookup');
@@ -76,7 +76,7 @@ class CreateLegalFolderTable extends Migration
         Schema::create('no_legal_status', function(Blueprint $table){
             $table->increments('id');
             $table->integer('action_id')->unsigned();
-            $table->integer('result_id')->unsigned();
+            $table->integer('result_id')->unsigned()->nullable();
             $table->integer('legal_folder_id')->unsigned();
             $table->foreign('action_id')->references('id')->on('action_lookup');
             $table->foreign('result_id')->references('id')->on('result_lookup');

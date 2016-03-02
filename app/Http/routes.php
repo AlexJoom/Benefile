@@ -59,6 +59,7 @@ Route::get('benefiter/getMedicationList', 'MainPanel\RecordsController@getMedica
 
 //----------------------- LEGAL FOLDER
 Route::get('benefiter/{id}/legal-folder', 'MainPanel\RecordsController@getLegalFolder');
+Route::post('benefiter/{id}/legal-folder', 'MainPanel\RecordsController@postLegalFolder');
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
