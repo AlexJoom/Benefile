@@ -75,6 +75,7 @@ $(document).ready(function(){
         var $parent = $("#chronic-cond");
         $copy.appendTo($parent);
         $copy.find("select option").remove();
+        $copy.find("#chronCon").val("");
 
 
     });
@@ -98,6 +99,7 @@ $(document).ready(function(){
         // append cloned element to parent
         var $parent = $("#lab-result");
         $copy.appendTo($parent);
+        $copy.find('#labRes').val("");
     });
     // remove lab result element after remove button is clicked
     $("body").on("click", ".remove-lab-result", function(){
@@ -124,6 +126,12 @@ $(document).ready(function(){
             // change the select id name
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
+
+            //Clear copied fields
+            $copy.find("input:text[name='medication_dosage[]']").val('');
+            $copy.find("textarea[name='medication_new_name[]']").val('');
+            $copy.find("input:text[name='medication_duration[]']").val('');
+            $copy.find("input:checkbox[name='supply_from_praksis[]']").attr('checked', false);
 
             $('.supply_from_praksis').change(function(){
                 console.log('hell');
@@ -161,6 +169,9 @@ $(document).ready(function(){
         // append cloned element to parent
         var $parent = $("#referrals");
         $copy.appendTo($parent);
+
+        // Clear copied fields+
+        $copy.find('#refList').val('');
     });
     // remove referral element after remove button is clicked
     $("body").on("click", ".remove-ref", function(){
@@ -182,6 +193,10 @@ $(document).ready(function(){
         // append cloned element to parent
         var $parent = $("#upload_file");
         $copy.appendTo($parent);
+
+        // Clear copied fields+
+        $copy.find('#file').val('');
+        $copy.find("input:file[name='upload_file_title[]']").val('');
     });
     // remove file element after remove button is clicked
     $("body").on("click", ".remove-file", function(){
