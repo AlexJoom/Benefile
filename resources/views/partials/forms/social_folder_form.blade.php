@@ -95,8 +95,6 @@
         <!-- ACCESS LEVEL -->
         @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
             {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
-        @else
-            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button', 'disabled' => 'disabled')) !!}
         @endif
     </div>
 {!! Form::close() !!}
