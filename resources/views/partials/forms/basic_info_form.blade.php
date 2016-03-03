@@ -58,7 +58,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('arrival_date', Lang::get('basic_info_form.arrival_date')) !!}
-                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
@@ -213,7 +213,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[0], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[0], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[1], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[1], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[2], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[2], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[3], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[3], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[4], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[4], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -298,7 +298,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[5], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[5], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -315,7 +315,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -332,7 +332,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8', 'disabled' => 'disabled')) !!}
                             </div>
                         </div>
                     </div>
@@ -442,8 +442,6 @@
                                     <option value="{{ $level->id }}" {{ $selected }}>{{ $level->description }}</option>
                                     @endforeach
                                 </select>
-                                <a class="color-green add-lang" href="javascript:void(0)"><span class="glyphicon glyphicon-plus-sign make-inline"></span></a>
-                                <a class="color-red remove-lang hide-element" href="javascript:void(0)"><span class="glyphicon glyphicon-minus-sign make-inline"></span></a>
                             </div>
                         </div>
                     </div>
