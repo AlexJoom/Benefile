@@ -440,10 +440,10 @@
                                     </div>
                                     <div class="request-status col-md-6 make-inline hide">
                                         {!! Form::label('request_status', Lang::get('legal_folder_form.request_status')) !!}
-                                        <select name="request_status" class="request-status-selection">
-                                            <option value="1" {{ $request_status[0] }}>α'</option>
-                                            <option value="2" {{ $request_status[1] }}>β'</option>
-                                            <option value="3" {{ $request_status[2] }}>μεταγενέστερο</option>
+                                        <select name="request_status" class="request-status-selection" disabled>
+                                            <option value="1" {{ $request_status[0] }} disabled>α'</option>
+                                            <option value="2" {{ $request_status[1] }} disabled>β'</option>
+                                            <option value="3" {{ $request_status[2] }} disabled>μεταγενέστερο</option>
                                         </select>
                                     </div>
                                 </div>
@@ -476,11 +476,11 @@
                             <div class="row">
                                 <div class="form-group padding-left-right-15 float-left width-100-percent">
                                     <div class="col-md-3 make-inline">
-                                        {!! Form::radio('action', 1, $action[0], array('class' => 'make-inline', 'id' => 'action-none')) !!}
+                                        {!! Form::radio('action', 1, $action[0], array('class' => 'make-inline', 'id' => 'action-none', 'disabled' => 'disabled')) !!}
                                         {!! Form::label('action', Lang::get('legal_folder_form.action_none'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-md-3 make-inline">
-                                        {!! Form::radio('action', 2, $action[1], array('class' => 'make-inline', 'id' => 'action-refusal')) !!}
+                                        {!! Form::radio('action', 2, $action[1], array('class' => 'make-inline', 'id' => 'action-refusal', 'disabled' => 'disabled')) !!}
                                         {!! Form::label('action', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
                                     </div>
                                 </div>
@@ -492,11 +492,11 @@
                                             {!! Form::label('result', Lang::get('legal_folder_form.result')) !!}
                                         </div>
                                         <div class="col-md-2 make-inline">
-                                            {!! Form::radio('result', 1, $result[0], array('class' => 'make-inline')) !!}
+                                            {!! Form::radio('result', 1, $result[0], array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
                                             {!! Form::label('result', Lang::get('legal_folder_form.positive'), array('class' => 'radio-value')) !!}
                                         </div>
                                         <div class="col-md-2 make-inline">
-                                            {!! Form::radio('result', 2, $result[1], array('class' => 'make-inline')) !!}
+                                            {!! Form::radio('result', 2, $result[1], array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
                                             {!! Form::label('result', Lang::get('legal_folder_form.negative'), array('class' => 'radio-value')) !!}
                                         </div>
                                     </div>
