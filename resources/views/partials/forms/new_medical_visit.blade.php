@@ -58,7 +58,7 @@
                     </div>
                     {{-- DATE OF BIRTH --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('birth_date', Lang::get($p.'birth_date')) !!}
+                        {!! Form::label('birth_date', Lang::get($p.'birth_date'), array('disabled')) !!}
                         <div class="make-inline">
                             {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
@@ -85,7 +85,7 @@
                     {{-- ORIGIN COUNTRY --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
-                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
+                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
                 </div>
             </div>
@@ -213,7 +213,9 @@
 {{-- 3. NEW MEDICAL VISIT BUTTON (dropsdown the form) --}}
 <div class="row padding-top-20">
     <div class="col-md-12">
-        <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
+        @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
+            <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
+        @endif
     </div>
 </div>
 
