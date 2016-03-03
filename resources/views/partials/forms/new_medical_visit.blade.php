@@ -468,6 +468,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         {{-- LABORATORY RESULTS --}}
         <div class="form-section no-bottom-border">
