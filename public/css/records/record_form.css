@@ -145,6 +145,9 @@ input[type="radio"] {
 .padding-top-none{
     padding-top: 0;
 }
+.padding-left{
+    padding-left: 20px;
+}
 
 .radio-value{
     font-size: 1.1em;
@@ -172,6 +175,9 @@ input[type="radio"] {
 }
 .width-30-percent{
     width: 30%;
+}
+.width-1200{
+    width: 1200px;
 }
 
 .padding-bottom-30{

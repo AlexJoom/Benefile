@@ -264,22 +264,22 @@ class RecordsController extends Controller
         $visit_submited_succesfully = session()->get('visit_submited_succesfully', function() { return 0; });
         session()->forget('visit_submited_succesfully'); // 0:initial value, 1:Success, 2:Unsuccess
 
-        //Fetch all array posts (if validation fails)
-        // chronic conditions
+        // ------ VALIDATION FAILURE SAVE TYPED DATA ------------------ //
+            // chronic conditions
         $chronic_conditions_sesssion = session()->get('chronic_conditions_session');
         session()->forget('chronic_conditions_session');
-        // lab results
+            // lab results
         $lab_results_session = session()->get('lab_results_session');
         session()->forget('lab_results_session');
-        // referrals
+            // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
-        //Examination results (consists of selected conditions & descriptions)
+            //Examination results (consists of selected conditions & descriptions)
         $examResultDescription_session = session()->get('examResultDescription_session');
         session()->forget('examResultDescription_session');
         $examResultLoukup_session = session()->get('examResultLoukup_session');
         session()->forget('examResultLoukup_session');
-        // TRANSFORM THE ABOVE SESSION ICD10 IDs INTO WORDS
+            // transform the above session ICD10 ids into respective description
         $examResultLoukup_session_description =[[]];
         for($i=0 ; $i<count($examResultLoukup_session) ; $i++){
             for ($j=0 ; $j<count($examResultLoukup_session[$i]) ; $j++){
@@ -288,14 +288,13 @@ class RecordsController extends Controller
                 }
             }
         }
-        // mecication (consists of lookup select options or typed name, dosage, duration, supplied from PRAKSIS checkbox )
+            // medication (consists of lookup select options or typed name, dosage, duration, supplied from PRAKSIS checkbox )
         $medication_name_from_lookup_session = session()->get('medication_name_from_lookup_session');
         session()->forget('medication_name_from_lookup_session');
         $medication_name_from_lookup_session_description = [];
         for($i=0; $i<count($medication_name_from_lookup_session) ; $i++){
             $medication_name_from_lookup_session_description[$i] = $this->medicalVisit->getMedicationLookupBy_id($medication_name_from_lookup_session[$i]);
         }
-
         $medication_new_name_session = session()->get('medication_new_name_session');
         session()->forget('medication_new_name_session');
         $medication_dosage_session = session()->get('medication_dosage_session');
@@ -308,12 +307,18 @@ class RecordsController extends Controller
 //        session()->forget('upload_file_description_session');
 //        $upload_file_title_session = session()->get('upload_file_title_session');
 //        session()->forget('upload_file_title_session');
+
+        // ------ END VALIDATION FAILURE SAVE TYPED DATA ------------------ //
+
+        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+
+
+        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
             return view('errors.404');
         } else {
-//            $icd10_description = $this->medicalVisit->reindex_array(ICD10::get());
             $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
             $ExamResultsLookup = medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
