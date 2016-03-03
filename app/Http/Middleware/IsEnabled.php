@@ -15,7 +15,14 @@ class IsEnabled
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::user()->activation_status != 1) {
+        if (\Auth::user()->activation_status != 1 and \Auth::user()->is_deactivated != 0) {
+            if ($request->ajax()) {
+                return response('Forbidden.', 403);
+            } else {
+                return redirect()->guest('disabledUser');
+            }
+        }
+        if (\Auth::user()->activation_status != 1 and \Auth::user()->is_deactivated != 1) {
             if ($request->ajax()) {
                 return response('Forbidden.', 403);
             } else {

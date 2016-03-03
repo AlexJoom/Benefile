@@ -24,6 +24,11 @@ Route::get('home', 'HomeController@index');
 Route::get('awaitingActivation', function () {
     return view('auth.awaitActivation');
 });
+
+Route::get('disabledUser', function(){
+    return view('auth.disabledUser');
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
