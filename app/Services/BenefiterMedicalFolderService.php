@@ -11,6 +11,7 @@ use App\Models\Benefiters_Tables_Models\medical_medication;
 use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\medical_referrals;
 use App\Models\Benefiters_Tables_Models\medical_uploads;
+use App\Models\Benefiters_Tables_Models\ICD10;
 use App\Services\DatesHelper;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -31,7 +32,7 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date' => 'date',
+            'examination_date' => 'required|date',
             'medical_location_id' => 'integer',
             'incident_type' => 'integer',
             'height' => 'numeric',
@@ -102,10 +103,15 @@ class BenefiterMedicalFolderService
         }
 
         // Push the dynamic elements into the rule array
-        $upload_file_title = $request['upload_file_title'];
-        foreach ($upload_file_title as $ft){
-            array_push($rules, [$ft=>'max:255']);
-        }
+        // TODO ADD IF NESSESARY VALIDATION FOR FILE UPLOADS
+//        $upload_file_title = $request['upload_file_title'];
+//        if(!empty($upload_file_title)){
+//            for ($i=0 ; $i<count($upload_file_title) ; $i++){
+//                $ft = $upload_file_title[$i]; //->getClientOriginalName();
+//                array_push($rules, [$ft =>'max:255']);
+//            }
+//        }
+
         return Validator::make($request, $rules);
     }
 
@@ -409,6 +415,10 @@ class BenefiterMedicalFolderService
             $reindexed_array[$i+1] = $array[$i];
         }
         return $reindexed_array;
+    }
+
+    public function getICD10By_id($id){
+        ICD10::where('id', '=', $id)->first()->description;
     }
 
 }

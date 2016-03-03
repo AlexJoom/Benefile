@@ -160,8 +160,6 @@ class RecordsController extends Controller
         return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals);
     }
 
-
-
     // get social folder view
     public function getSocialFolder($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -261,37 +259,63 @@ class RecordsController extends Controller
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
-        $visit_submited_succesfully = 0; // 0:initial value, 1:Success, 2:Unsuccess
+        $visit_submited_succesfully = session()->get('visit_submited_succesfully', function() { return 0; });
+        session()->forget('visit_submited_succesfully'); // 0:initial value, 1:Success, 2:Unsuccess
+
+        //Fetch all array posts (if validation fails)
+        $chronic_conditions_sesssion = session()->get('chronic_conditions_session');
+        session()->forget('chronic_conditions_session');
+        $lab_results_session = session()->get('lab_results_session');
+        session()->forget('lab_results_session');
+        $referrals_session = session()->get('referrals_session');
+        session()->forget('referrals_session');
+        $examResultDescription_session = session()->get('examResultDescription_session');
+        session()->forget('examResultDescription_session');
+        $examResultLoukup_session = session()->get('examResultLoukup_session');
+        session()->forget('examResultLoukup_session');
+
+//        $upload_file_description_session = session()->get('upload_file_description_session');
+//        session()->forget('upload_file_description_session');
+//        $upload_file_title_session = session()->get('upload_file_title_session');
+//        session()->forget('upload_file_title_session');
+
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
             return view('errors.404');
         } else {
-            // ICD10 list
-            $icd10 = $this->medicalVisit->general_reindex_array(ICD10::get());
-//            dd($icd10[0]['attributes']['description']);
-            $icd10_description = $this->medicalVisit->reindex_array(ICD10::get());
+//            $icd10_description = $this->medicalVisit->reindex_array(ICD10::get());
             $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
             $ExamResultsLookup = medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
             $medical_locations = medical_location_lookup::get();
             $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
-            //TODO this benefiter id needs to be inserted from the respective url which includes it
             $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
             $doctor_id = Auth::user()->id;
             $benefiter_id = $benefiter->id;
-            return view('benefiter.medical-folder', compact('ExamResultsLookup', 'medical_locations_array',
-                                                            'benefiter_folder_number', 'benefiter_id',
-                                                            'doctor_id', 'benefiter',
-                                                            'benefiter_medical_history_list', 'medical_visits_number',
-                                                            'icd10_description', 'visit_submited_succesfully'));
+            return view('benefiter.medical-folder')
+                        ->with('ExamResultsLookup', $ExamResultsLookup)
+                        ->with('medical_locations_array', $medical_locations_array)
+                        ->with('benefiter_folder_number', $benefiter_folder_number)
+                        ->with('benefiter_id', $benefiter_id)
+                        ->with('doctor_id', $doctor_id)
+                        ->with('benefiter', $benefiter)
+                        ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
+                        ->with('medical_visits_number', $medical_visits_number)
+                        ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
+                        ->with('lab_results_session', $lab_results_session)
+                        ->with('referrals_session', $referrals_session)
+                        ->with('examResultDescription_session', $examResultDescription_session)
+                        ->with('examResultLoukup_session', $examResultLoukup_session)
+//                        ->with('upload_file_description_session', $upload_file_description_session)
+//                        ->with('upload_file_title_session', $upload_file_title_session)
+                        ->with('visit_submited_succesfully', $visit_submited_succesfully);
         }
     }
 
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
-        dd($request->all());
-        $visit_submited_succesfully = 0; // 0:initial value, 1:Success, 2:Unsuccess
+//        dd($request->all());
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
@@ -303,22 +327,39 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-        // ICD10 list
-        $icd10 = ICD10::get()->all();
 
         // Post Validation
         $validator = $this->medicalVisit->medicalValidation($request->all());
         if($validator->fails()){
-            $visit_submited_succesfully = 2;
-//            return redirect('benefiter/'.$id.'/basic-info')
-//                ->withInput(array(
-//                    'folder_number' => $request->folder_number,
-//                    'lastname' => $request->lastname,
-//                ))
-//                ->with("legalStatuses", $legal_statuses)
-//                ->with("benefiter_languages", $benefiterLanguagesAndLevels)
-//                ->withErrors($validator->errors()->all());
+            //Fetch all array posts (if validation fails)
+            $chronic_conditions_session = $request['chronic_conditions'];
+            $lab_results_session = $request['lab_results'];
+            $referrals_session = $request['referrals'];
+            $examResultDescription_session = $request['examResultDescription'];
+            $examResultLoukup_session = $request['examResultLoukup'];
+//            $upload_file_description_session = $request['upload_file_description'];
+//            $upload_file_title_session = $request['upload_file_title'];
+
+
+            $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
+                ->withInput(array(
+                    'examination_date' => $request['examination_date'],
+                    'medical_location_id' => $request['medical_location_id'],
+                    'incident_type' => $request['incident_type'],
+                    'height' => $request['height'],
+                    'weight' => $request['weight'],
+                    'temperature' => $request['temperature'],
+                    'blood_pressure_systolic' => $request['blood_pressure_systolic'],
+                    'blood_pressure_diastolic' => $request['blood_pressure_diastolic'],
+                    'skull_perimeter' => $request['skull_perimeter'],
+
+//                    'medication_dosage' => $request['medication_dosage'],
+//                    'medication_duration' => $request['medication_duration'],
+//                    'supply_from_praksis_hidden' => $request['supply_from_praksis_hidden'],
+//                    'supply_from_praksis' => $request['supply_from_praksis'],
+//                    'medication_new_name' => $request['medication_new_name'],
+                ))
                 ->with('benefiter', $benefiter)
                 ->with('benefiter_folder_number', $benefiter_folder_number)
                 ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
@@ -327,12 +368,18 @@ class RecordsController extends Controller
                 ->with('medical_locations_array', $medical_locations_array)
                 ->with('ExamResultsLookup', $ExamResultsLookup)
                 ->with('medical_visits_number', $medical_visits_number)
-//                ->with('icd10', $icd10)
                 ->with('visit_submited_succesfully', $visit_submited_succesfully)
+                ->with('chronic_conditions_session', $chronic_conditions_session)
+                ->with('lab_results_session', $lab_results_session)
+                ->with('referrals_session', $referrals_session)
+                ->with('examResultDescription_session', $examResultDescription_session)
+                ->with('examResultLoukup_session', $examResultLoukup_session)
+//                ->with('upload_file_description_session', $upload_file_description_session)
+//                ->with('upload_file_title_session', $upload_file_title_session)
                 ->withErrors($validator->errors()->all());
         } else {
             $this->medicalVisit->save_new_medical_visit_tables($request->all());
-            $visit_submited_succesfully = 1;
+            $visit_submited_succesfully = 1; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
                 ->with('benefiter', $benefiter)
                 ->with('benefiter_folder_number', $benefiter_folder_number)
