@@ -635,7 +635,7 @@
         </div>
     @else
         {{-- REFERRALS --}}
-        <div class="referrals-list form-section no-bottom-border">
+        <div class="referrals-list form-section">
             <div class="underline-header">
                 <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>

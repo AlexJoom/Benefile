@@ -91,14 +91,16 @@
             </div>
         </div>
     </div>
+    <!-- ACCESS LEVEL -->
+    @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
     <div class="form-section align-text-center no-bottom-border">
-        <!-- ACCESS LEVEL -->
-        @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
-            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        @if($social_folder_is_null)
+        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
         @else
-            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button', 'disabled' => 'disabled')) !!}
+        {!! Form::submit(Lang::get('social_folder_form.edit_social_folder'), array('class' => 'submit-button')) !!}
         @endif
     </div>
+    @endif
 {!! Form::close() !!}
 
 @if(!$social_folder_is_null)
@@ -193,7 +195,7 @@
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <!-- ACCESS LEVEL -->
                         @if(Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
-                            <div class="col-sm-4 text-align-center">{{ $benefiter_session->session_comments }}</div>
+                            <div class="col-sm-4 text-align-center">{!! nl2br(e($benefiter_session->session_comments)) !!}</div>
                         @else
                             <div class="col-sm-4 text-align-center">----------------</div>
                         @endif
@@ -202,6 +204,7 @@
                         <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
                     </div>
                 </div>
+                <hr>
                 <div class="edit-session-div dynamic-form-section">
                     <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
                     {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}
