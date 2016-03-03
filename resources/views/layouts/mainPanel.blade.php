@@ -70,26 +70,18 @@
                                 <li id="benefiters-list">
                                     <a href="{{ url('benefiters-list') }}" class="buttonMenu no-padding">@lang($p.'benefiters')</a>
                                 </li>
-                                @if (Auth::user()->user_role_id == 2)
-                                    <li id="register-benefiter">
-                                        <div class="buttonMenu no-padding">@lang($p.'registration') <i class="glyphicon glyphicon-chevron-right"></i></div>
-                                    </li>
-                                    <li id="new-benefiter" class="child hide">
-                                        <a href="#" class="disabled">@lang($p.'new_registration')</a>
-                                    </li>
-                                    <li id="import-file" class="child hide">
-                                        <a href="#" class="disabled">@lang($p.'file_import')</a>
-                                    </li>
-                                @else
+                                @if (\Auth::user()->user_role_id == 1 or \Auth::user()->user_role_id == 4)
                                     <li id="register-benefiter">
                                         <div class="buttonMenu no-padding">@lang($p.'registration') <i class="glyphicon glyphicon-chevron-right"></i></div>
                                     </li>
                                     <li id="new-benefiter" class="child hide">
                                         <a href="{{ url('benefiter/-1/basic-info') }}">@lang($p.'new_registration')</a>
                                     </li>
+                                    @if (\Auth::user()->user_role_id == 1)
                                     <li id="import-file" class="child hide">
                                         <a href="{{url('new-benefiter/uploadCSV')}}">@lang($p.'file_import')</a>
                                     </li>
+                                    @endif
                                 @endif
                                 <li id="reports">
                                     <a>@lang($p.'reports')</a>
