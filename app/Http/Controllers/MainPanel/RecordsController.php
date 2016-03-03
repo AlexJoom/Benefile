@@ -31,6 +31,8 @@ class RecordsController extends Controller
     private $benefiterList = null;
 
     public function __construct(){
+        // only for logged in users
+        $this->middleware('activated');
         // initialize benefiters list service
         $this->benefiterList = new BenefitersService();
         // initialize basic info service

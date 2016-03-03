@@ -8,6 +8,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -33,7 +34,7 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
-    protected $redirectTo = '/main-panel';
+    protected $redirectTo = '/benefiters-list';
     /**
      * Get a validator for an incoming registration request.
      *
@@ -91,5 +92,21 @@ class AuthController extends Controller
     public function getRegister() {
         $subroles = \DB::table('users_subroles')->get();
         return view('auth.register')->with('subroles', $subroles);
+    }
+
+    // get redirection after registration
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $this->create($request->all());
+
+        return redirect('/');
     }
 }

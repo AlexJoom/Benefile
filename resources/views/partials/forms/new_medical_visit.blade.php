@@ -44,15 +44,15 @@
                         {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                         <div class="make-inline">
                             @if($benefiter->gender_id==1)
-                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value' , 'disabled')) !!}
-                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value' , 'disabled')) !!}
+                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
                             @else
-                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value' , 'disabled')) !!}
-                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value' , 'disabled')) !!}
+                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
                             @endif
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('birth_date', Lang::get($p.'birth_date')) !!}
                         <div class="make-inline">
-                            {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                     {{-- ORIGIN COUNTRY --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
-                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
+                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     {{-- ARRIVAL DATE --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
-                        {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                        {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                     </div>
                     {{-- TELEPHONE --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -104,18 +104,18 @@
                                 $benefiter->telephone = "";
                             }
                         ?>
-                        {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
+                        {!! Form::text('telephone', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
                     {{-- ADDRESS --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
-                        {!! Form::text('address', null, array('class' => 'custom-input-text address')) !!}
+                        {!! Form::text('address', null, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                     </div>
 
                     {{-- ETHNICITY --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
-                        {!! Form::text('ethnic_group', null, array('class' => 'custom-input-text')) !!}
+                        {!! Form::text('ethnic_group', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
 
                     {{-- ENTRY POINT --}}
@@ -213,7 +213,9 @@
 {{-- 3. NEW MEDICAL VISIT BUTTON (dropsdown the form) --}}
 <div class="row padding-top-20">
     <div class="col-md-12">
-        <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
+        @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
+            <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
+        @endif
     </div>
 </div>
 
@@ -411,6 +413,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         {{-- LABORATORY RESULTS --}}
         <div class="form-section no-bottom-border">
