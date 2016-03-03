@@ -1,5 +1,15 @@
 <?php
     $p = "partials/forms/new_medical_visit_form.";
+    // format correctly the dates!
+    $datesHelper = new \app\Services\DatesHelper();
+    if (isset($benefiter) and $benefiter != null){
+        if ($benefiter->birth_date != null) {
+            $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        }
+        if ($benefiter->arrival_date != null) {
+            $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
+        }
+    }
 ?>
 
 
@@ -85,7 +95,7 @@
                     {{-- ORIGIN COUNTRY --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
-                        {!! Form::text('origin_country', null, array('class' => 'custom-input-text', 'disabled')) !!}
+                        {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
                 </div>
             </div>
@@ -104,18 +114,18 @@
                                 $benefiter->telephone = "";
                             }
                         ?>
-                        {!! Form::text('telephone', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                        {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
                     {{-- ADDRESS --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
-                        {!! Form::text('address', null, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
+                        {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                     </div>
 
                     {{-- ETHNICITY --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
-                        {!! Form::text('ethnic_group', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                        {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
 
                     {{-- ENTRY POINT --}}
@@ -192,9 +202,9 @@
                                 <td>{{ $benefiter_medical_history_list[$i]['doctor']['name'] }} {{ $benefiter_medical_history_list[$i]['doctor']['lastname'] }}</td>
                                 <td>{{ $benefiter_medical_history_list[$i]['medicalLocation']['description'] }}</td>
                                 @if($benefiter_medical_history_list[$i]['medical_visit_date'] == null)
-                                <td>{{ $benefiter_medical_history_list[$i]['created_at'] }}</td>
+                                <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_history_list[$i]['created_at']) }}</td>
                                 @else
-                                <td>{{ $benefiter_medical_history_list[$i]['medical_visit_date'] }}</td>
+                                <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_history_list[$i]['medical_visit_date']) }}</td>
                                 @endif
                                 <th><button>Εμφάνιση</button></th>
                             </tr>
