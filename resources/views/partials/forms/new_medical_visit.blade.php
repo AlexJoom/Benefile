@@ -44,15 +44,15 @@
                         {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                         <div class="make-inline">
                             @if($benefiter->gender_id==1)
-                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value' , 'disabled')) !!}
-                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value' , 'disabled')) !!}
+                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
                             @else
-                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value' , 'disabled')) !!}
-                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value' , 'disabled')) !!}
+                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
                             @endif
                         </div>
                     </div>
