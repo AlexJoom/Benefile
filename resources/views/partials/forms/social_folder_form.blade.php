@@ -198,8 +198,8 @@
                             <div class="col-sm-4 text-align-center">----------------</div>
                         @endif
                         <!-- ACCESS LEVEL END -->
-                        <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
-                        <div class="col-sm-2">@if(\Auth::user()->id == $benefiter_session->psychologist_id || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
+                        <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
+                        <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
                     </div>
                 </div>
                 <div class="edit-session-div dynamic-form-section">
