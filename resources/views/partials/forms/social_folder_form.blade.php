@@ -91,12 +91,16 @@
             </div>
         </div>
     </div>
+    <!-- ACCESS LEVEL -->
+    @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
     <div class="form-section align-text-center no-bottom-border">
-        <!-- ACCESS LEVEL -->
-        @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
-            {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        @if($social_folder_is_null)
+        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        @else
+        {!! Form::submit(Lang::get('social_folder_form.edit_social_folder'), array('class' => 'submit-button')) !!}
         @endif
     </div>
+    @endif
 {!! Form::close() !!}
 
 @if(!$social_folder_is_null)

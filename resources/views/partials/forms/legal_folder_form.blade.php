@@ -311,7 +311,11 @@
         </div>
     </div>
     <div class="form-section align-text-center">
+        @if($legal_folder == null)
         {!! Form::submit(Lang::get('legal_folder_form.save_legal_folder'), array('class' => 'submit-button')) !!}
+        @else
+        {!! Form::submit(Lang::get('legal_folder_form.edit_legal_folder'), array('class' => 'submit-button')) !!}
+        @endif
     </div>
 @else
     <div class="personal-family-info form-section no-bottom-border">
@@ -554,7 +558,7 @@
             </div>
         </div>
     </div>
-    <div class="lawyer-actions form-section no-bottom-border">
+    <div class="lawyer-actions form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">4. @lang($p."lawyer_actions")</h1>
         </div>
@@ -612,8 +616,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-section align-text-center">
     </div>
 @endif
 {!! Form::close() !!}
