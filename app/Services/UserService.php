@@ -36,7 +36,7 @@ class UserService {
     }
 
     public function getAllUsers(){
-        $users = User::with('role', 'subrole')->get();
+        $users = User::with('role', 'subrole')->where('user_role_id', '<>', 1)->get();
         return $users;
     }
 } 
