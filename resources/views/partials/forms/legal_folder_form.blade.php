@@ -554,7 +554,7 @@
             </div>
         </div>
     </div>
-    <div class="lawyer-actions form-section no-bottom-border">
+    <div class="lawyer-actions form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">4. @lang($p."lawyer_actions")</h1>
         </div>
@@ -612,8 +612,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-section align-text-center">
     </div>
 @endif
 {!! Form::close() !!}
