@@ -103,6 +103,18 @@
     color: rgba(222, 11, 11, 0.54);
 }
 
+.clinical-results{
+    padding: 20px;
+    border: 2px solid rgb(140, 140, 140);
+    border-radius: 10px;
+}
+.width-32-percent{
+    width: 32.333%
+}
+.left-20{
+    left: 20px;
+}
+
 label{
     color: #5a5f66;
     font-weight: 100;
