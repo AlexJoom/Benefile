@@ -1,5 +1,15 @@
 <?php
     $p = "partials/forms/new_medical_visit_form.";
+    // format correctly the dates!
+    $datesHelper = new \app\Services\DatesHelper();
+    if (isset($benefiter) and $benefiter != null){
+        if ($benefiter->birth_date != null) {
+            $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        }
+        if ($benefiter->arrival_date != null) {
+            $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
+        }
+    }
 ?>
 
 
@@ -192,9 +202,9 @@
                                 <td>{{ $benefiter_medical_history_list[$i]['doctor']['name'] }} {{ $benefiter_medical_history_list[$i]['doctor']['lastname'] }}</td>
                                 <td>{{ $benefiter_medical_history_list[$i]['medicalLocation']['description'] }}</td>
                                 @if($benefiter_medical_history_list[$i]['medical_visit_date'] == null)
-                                <td>{{ $benefiter_medical_history_list[$i]['created_at'] }}</td>
+                                <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_history_list[$i]['created_at']) }}</td>
                                 @else
-                                <td>{{ $benefiter_medical_history_list[$i]['medical_visit_date'] }}</td>
+                                <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_history_list[$i]['medical_visit_date']) }}</td>
                                 @endif
                                 <th><button>Εμφάνιση</button></th>
                             </tr>
