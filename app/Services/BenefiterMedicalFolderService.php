@@ -418,7 +418,15 @@ class BenefiterMedicalFolderService
     }
 
     public function getICD10By_id($id){
-        ICD10::where('id', '=', $id)->first()->description;
+        $description = ICD10::where('id', '=', $id)->first()->description;
+        $code = ICD10::where('id', '=', $id)->first()->code;
+        $result = $code .': '. $description;
+        return $result;
+    }
+
+    public function getMedicationLookupBy_id($id){
+        $medicine_name = medical_medication_lookup::where('id', '=', $id)->first()->description;
+        return $medicine_name;
     }
 
 }

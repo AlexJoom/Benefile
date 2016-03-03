@@ -255,28 +255,57 @@ class RecordsController extends Controller
         return redirect("benefiter/" . $id . "/social-folder");
     }
 
+
+
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         $visit_submited_succesfully = session()->get('visit_submited_succesfully', function() { return 0; });
         session()->forget('visit_submited_succesfully'); // 0:initial value, 1:Success, 2:Unsuccess
 
         //Fetch all array posts (if validation fails)
+        // chronic conditions
         $chronic_conditions_sesssion = session()->get('chronic_conditions_session');
         session()->forget('chronic_conditions_session');
+        // lab results
         $lab_results_session = session()->get('lab_results_session');
         session()->forget('lab_results_session');
+        // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
+        //Examination results (consists of selected conditions & descriptions)
         $examResultDescription_session = session()->get('examResultDescription_session');
         session()->forget('examResultDescription_session');
         $examResultLoukup_session = session()->get('examResultLoukup_session');
         session()->forget('examResultLoukup_session');
+        // TRANSFORM THE ABOVE SESSION ICD10 IDs INTO WORDS
+        $examResultLoukup_session_description =[[]];
+        for($i=0 ; $i<count($examResultLoukup_session) ; $i++){
+            for ($j=0 ; $j<count($examResultLoukup_session[$i]) ; $j++){
+                if(!empty($examResultLoukup_session[$i][$j])){
+                    $examResultLoukup_session_description[$i][$j] = $this->medicalVisit->getICD10By_id($examResultLoukup_session[$i][$j]);
+                }
+            }
+        }
+        // mecication (consists of lookup select options or typed name, dosage, duration, supplied from PRAKSIS checkbox )
+        $medication_name_from_lookup_session = session()->get('medication_name_from_lookup_session');
+        session()->forget('medication_name_from_lookup_session');
+        $medication_name_from_lookup_session_description = [];
+        for($i=0; $i<count($medication_name_from_lookup_session) ; $i++){
+            $medication_name_from_lookup_session_description[$i] = $this->medicalVisit->getMedicationLookupBy_id($medication_name_from_lookup_session[$i]);
+        }
 
+        $medication_new_name_session = session()->get('medication_new_name_session');
+        session()->forget('medication_new_name_session');
+        $medication_dosage_session = session()->get('medication_dosage_session');
+        session()->forget('medication_dosage_session');
+        $medication_duration_session = session()->get('medication_duration_session');
+        session()->forget('medication_duration_session');
+        $supply_from_praksis_hidden_session = session()->get('supply_from_praksis_hidden_session');
+        session()->forget('supply_from_praksis_hidden_session');
 //        $upload_file_description_session = session()->get('upload_file_description_session');
 //        session()->forget('upload_file_description_session');
 //        $upload_file_title_session = session()->get('upload_file_title_session');
 //        session()->forget('upload_file_title_session');
-
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
@@ -305,6 +334,13 @@ class RecordsController extends Controller
                         ->with('referrals_session', $referrals_session)
                         ->with('examResultDescription_session', $examResultDescription_session)
                         ->with('examResultLoukup_session', $examResultLoukup_session)
+                        ->with('examResultLoukup_session_description', $examResultLoukup_session_description)
+                        ->with('medication_name_from_lookup_session', $medication_name_from_lookup_session)
+                        ->with('medication_name_from_lookup_session_description', $medication_name_from_lookup_session_description)
+                        ->with('medication_new_name_session', $medication_new_name_session)
+                        ->with('medication_dosage_session', $medication_dosage_session)
+                        ->with('medication_duration_session', $medication_duration_session)
+                        ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
 //                        ->with('upload_file_description_session', $upload_file_description_session)
 //                        ->with('upload_file_title_session', $upload_file_title_session)
                         ->with('visit_submited_succesfully', $visit_submited_succesfully);
@@ -335,6 +371,12 @@ class RecordsController extends Controller
             $referrals_session = $request['referrals'];
             $examResultDescription_session = $request['examResultDescription'];
             $examResultLoukup_session = $request['examResultLoukup'];
+            $medication_name_from_lookup_session = $request['medication_name_from_lookup'];
+            $medication_new_name_session = $request['medication_new_name'];
+            $medication_dosage_session = $request['medication_dosage'];
+            $medication_duration_session = $request['medication_duration'];
+            $supply_from_praksis_hidden_session = $request['supply_from_praksis_hidden'];
+
 //            $upload_file_description_session = $request['upload_file_description'];
 //            $upload_file_title_session = $request['upload_file_title'];
 
@@ -351,13 +393,8 @@ class RecordsController extends Controller
                     'blood_pressure_systolic' => $request['blood_pressure_systolic'],
                     'blood_pressure_diastolic' => $request['blood_pressure_diastolic'],
                     'skull_perimeter' => $request['skull_perimeter'],
-
-//                    'medication_dosage' => $request['medication_dosage'],
-//                    'medication_duration' => $request['medication_duration'],
-//                    'supply_from_praksis_hidden' => $request['supply_from_praksis_hidden'],
-//                    'supply_from_praksis' => $request['supply_from_praksis'],
-//                    'medication_new_name' => $request['medication_new_name'],
                 ))
+                // ALL THE BELLOW ARE SEND BACK TO THE FORM IF THE POST FAIL
                 ->with('benefiter', $benefiter)
                 ->with('benefiter_folder_number', $benefiter_folder_number)
                 ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
@@ -372,6 +409,11 @@ class RecordsController extends Controller
                 ->with('referrals_session', $referrals_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
+                ->with('medication_name_from_lookup_session', $medication_name_from_lookup_session)
+                ->with('medication_new_name_session', $medication_new_name_session)
+                ->with('medication_dosage_session', $medication_dosage_session)
+                ->with('medication_duration_session', $medication_duration_session)
+                ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
 //                ->with('upload_file_description_session', $upload_file_description_session)
 //                ->with('upload_file_title_session', $upload_file_title_session)
                 ->withErrors($validator->errors()->all());

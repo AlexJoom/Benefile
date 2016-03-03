@@ -50,10 +50,10 @@ $(document).ready(function(){
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 3
         }).on('select2:select', function(){
-            if($selectBox.find(":selected").val() == 0 || typeof $selectBox.find(":selected").val() === 'undefined'){
-                $selectBox.parent().find('.medication_other_name').show();
-            }else{
+            if( $selectBox.find(":selected").val() != -1){
                 $selectBox.parent().find('.medication_other_name').hide();
+            }else{
+                $selectBox.parent().find('.medication_other_name').show();
             }
         }).on('select2:unselect', function(){
             $selectBox.parent().find('.medication_other_name').show();
@@ -131,18 +131,16 @@ $(document).ready(function(){
             $copy.find("input:text[name='medication_dosage[]']").val('');
             $copy.find("textarea[name='medication_new_name[]']").val('');
             $copy.find("input:text[name='medication_duration[]']").val('');
-            $copy.find("input:checkbox[name='supply_from_praksis[]']").attr('checked', false);
+            //$copy.find("input:checkbox[name='supply_from_praksis[]']").attr('checked', false);
 
             $('.supply_from_praksis').change(function(){
-                console.log('hell');
+                //console.log('hell');
                 if($(this).is(':checked')){
                     $(this).siblings('.supply_from_praksis_hidden').val(1);
                 }else {
                     $(this).siblings('.supply_from_praksis_hidden').val(0);
                 }
             });
-
-
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
         });
@@ -258,9 +256,9 @@ $(document).ready(function(){
 
 
     // SELECT2 option added for auto complete MEDICATION (or the initial select filed)
-    createSelect2($('#medicinal_name_1'));
+    createSelect2($('select[id^="medicinal_name_"]'));
     // In medication list if no option is selected then show input div. Else hide div
-    if($('select[id^="medicinal_name_"]').find(":selected").val() == 0 || typeof $('select[id^="medicinal_name_"]').find(":selected").val() === 'undefined'){
+    if($('select[id^="medicinal_name_"]').find(":selected").val() == -1){
         $('.medication_other_name').show();
     }else{
         $('.medication_other_name').hide();
@@ -279,6 +277,8 @@ $(document).ready(function(){
             $(this).siblings('.supply_from_praksis_hidden').val(0);
         }
     });
+
+
 });
 
 
