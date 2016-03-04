@@ -179,6 +179,14 @@ input[type="radio"] {
 .width-1200{
     width: 1200px;
 }
+.max-width-100per{
+    max-width: 100%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
 .padding-bottom-30{
     padding-bottom: 30px;
@@ -256,6 +264,10 @@ input[disabled]{
 .padding-left-right-30{
     padding-left: 30px;
     padding-right: 30px;
+}
+.padding-top-bottom-15{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .dynamic-form-section{
