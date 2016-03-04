@@ -6,6 +6,7 @@
         'deactivated'    =>  'ΑΠΕΝΕΡΓΟΠΟΙΗΜΕΝΟΙ',
         'lastname'       =>  'ΕΠΩΝΥΜΟ',
         'name'           =>  'ΟΝΟΜΑ',
+        'email'          =>  'EMAIL',
         'role'           =>  'ΡΟΛΟΣ',
         'register_date'  =>  'ΗΜΕΡ. ΕΓΓΡΑΦΗΣ',
         'activation'     =>  'ΕΝΕΡΓΟΠΟΙΗΣΗ',

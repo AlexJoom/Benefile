@@ -471,9 +471,13 @@ class RecordsController extends Controller
             $noLegalStatus = $this->legalFolderService->findNoLegalStatusFromLegalFolderId($legalFolder->id);
             $lawyerActions = $this->legalFolderService->findLawyerActionsFromLegalFolderId($legalFolder->id);
         }
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        if($benefiter == null){
+            return view('errors.404');
+        }
         return view('benefiter.legal_folder')
             ->with('legal_folder', $legalFolder)
-            ->with('benefiter', $this->basicInfoService->findExistentBenefiter($id))
+            ->with('benefiter', $benefiter)
             ->with('asylum_request', $asylumRequest)
             ->with('no_legal_status', $noLegalStatus)
             ->with('lawyer_action', $lawyerActions)

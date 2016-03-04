@@ -124,10 +124,22 @@
     background-color: #4c2a47;
     border: none;
     height: 57px;
-    width: 20%;
+    width: 19.9%;
     padding: 0px;
     right: 7px;
     top: 2px;
+}
+.searchField::-webkit-input-placeholder {
+    font-style: italic;
+}
+.searchField:-moz-placeholder {
+    font-style: italic;
+}
+.searchField::-moz-placeholder {
+    font-style: italic;
+}
+.searchField:-ms-input-placeholder {
+    font-style: italic;
 }
             /* END Search Bar*/
 
