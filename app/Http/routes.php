@@ -83,9 +83,8 @@ Route::post('new-benefiter/uploadCSV', 'UploadFileController@excelUpload');
 //--- END ΕΓΓΡΑΦΗ
 
 //--- ΑΝΑΖΗΤΗΣΗ
-Route::get('search', function(){
-   return view('search.search');
-});
+Route::get('search', 'MainPanel\SearchController@getSearch');
+Route::get('results', 'MainPanel\SearchController@getResults');
 //--- END ΑΝΑΖΗΤΗΣΗ
 
 //--- ΑΝΑΦΟΡΑ

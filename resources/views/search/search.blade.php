@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(array('url' => 'search?')) !!}
+                {!! Form::open(array('url' => 'results', 'id' => 'search-form', 'method' => 'get')) !!}
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -47,7 +47,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <div>
-                                {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline')) !!}
+                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
                                 {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
@@ -74,7 +74,16 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('medical_location_id', Lang::get('partials/forms/new_medical_visit_form.exam_location')) !!}
                             <div>
-                                <select><option value="0">-- none</option></select>
+                                <select name="medical_location_id">
+                                    <option value=0></option>
+                                    <?php
+                                        if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -86,6 +95,9 @@
                 {!! Form::submit(Lang::get('layouts/mainPanel.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
             </div>
         </div>
+        {!! Form::close() !!}
+    </div>
+    <div id="search-results" class="form-section hide">
     </div>
 @stop
 
@@ -94,4 +106,5 @@
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{ asset('js/search/search.js') }}"></script>
 @stop
