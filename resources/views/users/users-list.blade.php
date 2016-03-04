@@ -35,6 +35,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -44,6 +45,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -55,6 +57,7 @@
                         <tr>
                             <td>{{ $user['lastname'] }}</td>
                             <td>{{ $user['name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
                             @if($user['user_role_id'] == 2)
                                 <td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>
                             @else
@@ -85,6 +88,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -94,6 +98,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -105,6 +110,7 @@
                         <tr>
                             <td>{{ $user['lastname'] }}</td>
                             <td>{{ $user['name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
                             @if($user['user_role_id'] == 2)
                                 <td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>
                             @else
@@ -134,6 +140,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -143,6 +150,7 @@
                 <tr>
                     <th>@lang($p.'lastname')</th>
                     <th>@lang($p.'name')</th>
+                    <th>@lang($p.'email')</th>
                     <th>@lang($p.'role')</th>
                     <th>@lang($p.'register_date')</th>
                     <th></th>
@@ -154,6 +162,7 @@
                         <tr>
                             <td>{{ $user['lastname'] }}</td>
                             <td>{{ $user['name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
                             @if($user['user_role_id'] == 2)
                                 <td>{{$user['role']['role']}} ({{$user['subrole']['subrole']}})</td>
                             @else
