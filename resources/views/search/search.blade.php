@@ -3,6 +3,10 @@
 ?>
 @extends('layouts.mainPanel')
 
+@section('panel-title')
+    @lang('layouts/mainPanel.search')
+@stop
+
 @section('panel-headLinks')
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
