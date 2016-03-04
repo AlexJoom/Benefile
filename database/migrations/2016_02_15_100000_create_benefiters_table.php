@@ -147,6 +147,12 @@ class CreateBenefitersTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('medical_incident_type_lookup', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->timestamps();
+        });
+
         Schema::create('medical_visits', function (Blueprint $table) {
             $table->increments('id');
 
@@ -378,6 +384,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_examinations');
         Schema::dropIfExists('medical_visits');
         Schema::dropIfExists('medical_location_lookup');
+        Schema::dropIfExists('medical_incident_type_lookup');
         Schema::dropIfExists('medical_chronic_conditions_lookup');
         Schema::dropIfExists('benefiters_legal_status');
         Schema::dropIfExists('legal_status_lookup');

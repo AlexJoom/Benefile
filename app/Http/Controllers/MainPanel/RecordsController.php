@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MainPanel;
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
+use App\Models\Benefiters_Tables_Models\medical_incident_type_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\medical_visits;
@@ -257,7 +258,8 @@ class RecordsController extends Controller
         return redirect("benefiter/" . $id . "/social-folder");
     }
 
-
+//-------------------------------------------------------------------------------------------------//
+//---------------------------- MEDICAL FOLDER -----------------------------------------------------//
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
@@ -307,34 +309,40 @@ class RecordsController extends Controller
 //        session()->forget('upload_file_description_session');
 //        $upload_file_title_session = session()->get('upload_file_title_session');
 //        session()->forget('upload_file_title_session');
-
         // ------ END VALIDATION FAILURE SAVE TYPED DATA ------------------ //
 
-        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
 
 
         // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+        $current_benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
+
+
+        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+
+
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         if ($benefiter == null) {
             return view('errors.404');
         } else {
-            $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
             $ExamResultsLookup = medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
             $medical_locations = medical_location_lookup::get();
+            $medical_incident_type = medical_incident_type_lookup::get();
             $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
+            $medical_incident_type_array = $this->medicalVisit->reindex_array($medical_incident_type);
             $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
             $doctor_id = Auth::user()->id;
             $benefiter_id = $benefiter->id;
             return view('benefiter.medical-folder')
                         ->with('ExamResultsLookup', $ExamResultsLookup)
                         ->with('medical_locations_array', $medical_locations_array)
+                        ->with('medical_incident_type_array', $medical_incident_type_array)
                         ->with('benefiter_folder_number', $benefiter_folder_number)
                         ->with('benefiter_id', $benefiter_id)
                         ->with('doctor_id', $doctor_id)
                         ->with('benefiter', $benefiter)
-                        ->with('benefiter_medical_history_list', $benefiter_medical_history_list)
+                        ->with('current_benefiter_medical_history_list', $current_benefiter_medical_history_list)
                         ->with('medical_visits_number', $medical_visits_number)
                         ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
                         ->with('lab_results_session', $lab_results_session)
@@ -447,11 +455,18 @@ class RecordsController extends Controller
         return medical_medication_lookup::where('description','LIKE', '%'.$request['m'].'%' )->get();
     }
 
-
     //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS --------------------//
     public function getICD10List(Request $request){
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
+
+    public function fetch_medical_visits_data($id){
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+    }
+
+//-------------------------------------------------------------------------------------------------//
+//---------------------------- END MEDICAL FOLDER -------------------------------------------------//
+
 
     // delete a benefiter from id
     public function getDeleteBenefiter($id){
