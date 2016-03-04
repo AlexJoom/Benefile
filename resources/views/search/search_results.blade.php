@@ -15,5 +15,6 @@
 </head>
 <body>
     Testing here!
+    {{$results}}
 </body>
 </html>
