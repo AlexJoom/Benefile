@@ -40,7 +40,7 @@ class BenefiterMedicalFolderService
             'temperature' => 'numeric',
             'blood_pressure_systolic' => 'numeric',
             'blood_pressure_diastolic' => 'numeric',
-            'skull_perimeter' => 'digits:3'
+            'skull_perimeter' => 'numeric'
         );
         // Push the dynamic elements into the rule array
         $chronic_conditions = $request['chronic_conditions'];
