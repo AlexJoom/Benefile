@@ -12,6 +12,7 @@ use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\medical_referrals;
 use App\Models\Benefiters_Tables_Models\medical_uploads;
 use App\Models\Benefiters_Tables_Models\ICD10;
+use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Services\DatesHelper;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -427,6 +428,12 @@ class BenefiterMedicalFolderService
     public function getMedicationLookupBy_id($id){
         $medicine_name = medical_medication_lookup::where('id', '=', $id)->first()->description;
         return $medicine_name;
+    }
+
+
+    // return all the medical locations
+    public function getAllMedicalLocations(){
+        return medical_location_lookup::get()->all();
     }
 
 }
