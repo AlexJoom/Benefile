@@ -53,7 +53,7 @@
                     {{-- Search bar --}}
                     <div id="search-bar" class="table-row">
                         <form>
-                            <input type="text" class="searchField dark-green-background table-cell" name="search" placeholder="@lang($p.'benefiter_search')">
+                            <input type="text" class="searchField dark-green-background table-cell" name="search" placeholder="@lang($p.'folder_number_search')">
                             <button type="submit" class="glyphicon glyphicon-search searchButton table-cell"></button>
                         </form>
                     </div>
@@ -83,6 +83,9 @@
                                     </li>
                                     @endif
                                 @endif
+                                <li id="search">
+                                    <a href="{{ url('search') }}">@lang($p.'search')</a>
+                                </li>
                                 <li id="reports">
                                     <a>@lang($p.'reports')</a>
                                 </li>

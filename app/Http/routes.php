@@ -82,6 +82,12 @@ Route::post('new-benefiter/uploadCSV', 'UploadFileController@excelUpload');
 //----------- END ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
 //--- END ΕΓΓΡΑΦΗ
 
+//--- ΑΝΑΖΗΤΗΣΗ
+Route::get('search', function(){
+   return view('search.search');
+});
+//--- END ΑΝΑΖΗΤΗΣΗ
+
 //--- ΑΝΑΦΟΡΑ
 Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
 //--- END ΑΝΑΦΟΡΑ
