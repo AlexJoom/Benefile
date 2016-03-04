@@ -11,7 +11,8 @@ class GendersSeeder extends Seeder
         \DB::table('genders_lookup')->insert(
           array(
               array('gender' => "Άντρας"),
-              array('gender' => "Γυναίκα")
+              array('gender' => "Γυναίκα"),
+              array('gender' => "Άλλο")
           )
         );
     }
