@@ -460,8 +460,11 @@ class RecordsController extends Controller
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
 
+    // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
     public function fetch_medical_visits_data($id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $current_benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
+        return $current_benefiter_medical_history_list;
     }
 
 //-------------------------------------------------------------------------------------------------//

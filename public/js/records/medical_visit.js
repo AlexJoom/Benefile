@@ -11,8 +11,8 @@ $(document).ready(function(){
             placeholder: 'Εμπορική ονομασία φαρμάκου',
             allowClear: true,
             ajax: {
-                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
-                //url: "/benefiter/getMedicationList",
+                //url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -215,8 +215,8 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
-            //url: "/benefiter/getIC10List",
+            //url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -278,7 +278,12 @@ $(document).ready(function(){
         }
     });
 
-
+    // Fetch via ajax request each medical visit in oredr to get Modal info & Edit previous visit
+    $("button.medical_visit_from_history").on("click", function(){
+        // get the clicked attribute->value
+        var medical_visit_id = $(this).val();
+        console.log(medical_visit_id);
+    });
 });
 
 

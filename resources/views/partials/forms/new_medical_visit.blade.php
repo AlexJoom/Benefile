@@ -52,17 +52,21 @@
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                         <div class="make-inline">
-                            @if($benefiter->gender_id==1)
-                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
-                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
-                            @else
-                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
-                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
-                            @endif
+                            <?php
+                                $male = false;
+                                $female = false;
+                                if($benefiter->gender_id == 2){
+                                    $female = true;
+                                } else {
+                                    $male = true;
+                                }
+                            ?>
+                            <div class="make-inline">
+                                {!! Form::radio('gender_id', 1, $male, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, $female, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                            </div>
                         </div>
                     </div>
                     {{-- DATE OF BIRTH --}}
@@ -187,6 +191,7 @@
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'exam_date')</th>
                                 <th>@lang($p.'show_visit')</th>
+                                <th>@lang($p.'edit_visit_info')</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -196,6 +201,7 @@
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'exam_date')</th>
                                 <th>@lang($p.'show_visit')</th>
+                                <th>@lang($p.'edit_visit_info')</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -209,7 +215,8 @@
                                     @else
                                     <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($current_benefiter_medical_history_list[$i]['medical_visit_date']) }}</td>
                                     @endif
-                                    <td><button value="{{$current_benefiter_medical_history_list[$i]['id']}}" type="button" class="medical_visit_hist btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button></td>
+                                    <td><button value="{{$current_benefiter_medical_history_list[$i]['id']}}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button></td>
+                                    <td><button value="{{$current_benefiter_medical_history_list[$i]['id']}}" type="button" >@lang($p.('edit_visit'))</button></td>
                                 </tr>
                             @endfor
                         </tbody>
@@ -302,7 +309,7 @@
                                 <div  class="padding-left-right-15 chronicConditions condition-added-div">
                                     <div class="form-group float-left width-100-percent">
                                         {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
-                                        <div class="make-inline col-md-4">
+                                        <div class="make-inline col-md-6">
                                         {{-- if post fail then reprint what was entered in the fields --}}
                                             {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
                                             {!! Form::text('chronic_conditions[]', "$chronic_conditions_sesssion[$i]", array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
@@ -322,7 +329,7 @@
                             <div  class="padding-left-right-15 chronicConditions">
                                 <div class="form-group float-left width-100-percent">
                                     {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
-                                    <div class="make-inline col-md-4">
+                                    <div class="make-inline col-md-6">
                                     {{-- if post fail then reprint what was entered in the fields --}}
                                         {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
                                         {!! Form::text('chronic_conditions[]', null, array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
@@ -700,7 +707,7 @@
 
 
 {{--------------- 4. MODAL: Display Medical visit info from history -------------------}}
-<div class="modal fade" id="medicalHistory" role="dialog">
+<div class="modal fade" id="medicalHistory" role="dialog" tabindex=-1">
     <div class="modal-dialog width-1200">
         <div class="modal-content">
             <div class="modal-header">
@@ -743,17 +750,21 @@
                                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                                         {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                                         <div class="make-inline">
-                                            @if($benefiter->gender_id==1)
-                                            {!! Form::radio('gender_id', 1, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
-                                            {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
-                                            @else
-                                            {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                                            {!! Form::label('gender_id', Lang::get($p.'man'), array('class' => 'radio-value')) !!}
-                                            {!! Form::radio('gender_id', 2, true, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
-                                            {!! Form::label('gender_id', Lang::get($p.'woman'), array('class' => 'radio-value')) !!}
-                                            @endif
+                                            <?php
+                                            $male = false;
+                                            $female = false;
+                                            if($benefiter->gender_id == 2){
+                                                $female = true;
+                                            } else {
+                                                $male = true;
+                                            }
+                                            ?>
+                                            <div class="make-inline">
+                                                {!! Form::radio('gender_idm', 1, $male, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                                {!! Form::label('gender_idm', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                                {!! Form::radio('gender_idf', 2, $female, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                                {!! Form::label('gender_idf', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                            </div>
                                         </div>
                                     </div>
                                     {{-- DATE OF BIRTH --}}
@@ -882,7 +893,7 @@
                                         <div  class="padding-left-right-15">
                                             <div class="form-group float-left width-100-percent">
                                                 {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
-                                                <div class="make-inline col-md-4">
+                                                <div class="make-inline col-md-6">
                                                 {{-- if post fail then reprint what was entered in the fields --}}
                                                     {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
                                                     {!! Form::text('chronic_conditions[]', null, array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
