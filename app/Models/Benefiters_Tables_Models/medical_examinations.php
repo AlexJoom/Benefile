@@ -13,7 +13,8 @@ class medical_examinations extends Model
         'weight',
         'skull_perimeter',
         'temperature',
-        'blood_pressure',
+        'blood_pressure_systolic',
+        'blood_pressure_diastolic',
         'description',
         'medical_visit_id',
         'examination_date'];

@@ -270,7 +270,6 @@ $(document).ready(function(){
 
     // Change value to hidden field
     $('.supply_from_praksis').change(function(){
-        console.log('hell');
         if($(this).is(':checked')){
             $(this).siblings('.supply_from_praksis_hidden').val(1);
         }else {
@@ -282,7 +281,22 @@ $(document).ready(function(){
     $("button.medical_visit_from_history").on("click", function(){
         // get the clicked attribute->value
         var medical_visit_id = $(this).val();
-        console.log(medical_visit_id);
+        $.ajax({
+            url: window.location.protocol + "//" + window.location.host + "/" + "benefiter/getEachMedicalVisit",
+            type: "get",
+            data: {current_medical_visit: medical_visit_id},
+            //datatype: "json",
+            success:
+                function(data){
+                    return data;
+                }
+        });
+    });
+    // MODAL CLINICAL RESULTS TABLE
+    $(function() {
+        $('#clinical-results-modal').DataTable( {
+            //"lengthMenu": [ [-1], ["All"] ]
+        });
     });
 });
 

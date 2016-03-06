@@ -17,11 +17,11 @@ class medical_medication extends Model
 
     public function medical_visits()
     {
-        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_visits', 'medical_visit_id');
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_visits', 'medical_visit_id');
     }
 
     public function medical_medication_lookup()
     {
-        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_medication_lookup', 'id', 'medication_lookup_id');
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_medication_lookup', 'id', 'medication_lookup_id');
     }
 }

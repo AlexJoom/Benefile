@@ -22,5 +22,9 @@ class medical_visits extends Model
     {
         return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_location_lookup', 'id', 'medical_location_id');
     }
+    public function medicalIncidentType()
+    {
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_incident_type_lookup', 'id', 'medical_incident_id');
+    }
 
 }

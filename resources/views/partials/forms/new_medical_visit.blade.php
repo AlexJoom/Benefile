@@ -182,13 +182,14 @@
         <div class="col-md-12">
             <div class="no-margin pos-relative" id="results-to-activate">
                 <div class="display padding-20">
-                    @if(count($current_benefiter_medical_history_list)>0)
+                    @if(count($current_benefiter_medical_visits_list)>0)
                     <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Α/Α</th>
                                 <th>@lang($p.'doctor')</th>
                                 <th>@lang($p.'exam_location')</th>
+                                <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
                                 <th>@lang($p.'show_visit')</th>
                                 <th>@lang($p.'edit_visit_info')</th>
@@ -199,24 +200,26 @@
                                 <th>Α/Α</th>
                                 <th>@lang($p.'doctor')</th>
                                 <th>@lang($p.'exam_location')</th>
+                                <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
                                 <th>@lang($p.'show_visit')</th>
                                 <th>@lang($p.'edit_visit_info')</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @for($i=0 ; $i<count($current_benefiter_medical_history_list) ; $i++)
+                            @for($i=0 ; $i<count($current_benefiter_medical_visits_list) ; $i++)
                                 <tr>
                                     <td>{{ $i+1 }}</td>
-                                    <td>{{ $current_benefiter_medical_history_list[$i]['doctor']['name'] }} {{ $current_benefiter_medical_history_list[$i]['doctor']['lastname'] }}</td>
-                                    <td>{{ $current_benefiter_medical_history_list[$i]['medicalLocation']['description'] }}</td>
-                                    @if($current_benefiter_medical_history_list[$i]['medical_visit_date'] == null)
-                                    <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($current_benefiter_medical_history_list[$i]['created_at']) }}</td>
+                                    <td>{{ $current_benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $current_benefiter_medical_visits_list[$i]['doctor']['lastname'] }}</td>
+                                    <td>{{ $current_benefiter_medical_visits_list[$i]['medicalLocation']['description'] }}</td>
+                                    <td>{{ $current_benefiter_medical_visits_list[$i]['medicalIncidentType']['description'] }}</td>
+                                    @if($current_benefiter_medical_visits_list[$i]['medical_visit_date'] == null)
+                                    <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($current_benefiter_medical_visits_list[$i]['created_at']) }}</td>
                                     @else
-                                    <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($current_benefiter_medical_history_list[$i]['medical_visit_date']) }}</td>
+                                    <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($current_benefiter_medical_visits_list[$i]['medical_visit_date']) }}</td>
                                     @endif
-                                    <td><button value="{{$current_benefiter_medical_history_list[$i]['id']}}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button></td>
-                                    <td><button value="{{$current_benefiter_medical_history_list[$i]['id']}}" type="button" >@lang($p.('edit_visit'))</button></td>
+                                    <td><button value="{{$current_benefiter_medical_visits_list[$i]['id']}}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button></td>
+                                    <td><button value="{{$current_benefiter_medical_visits_list[$i]['id']}}" type="button" >@lang($p.('edit_visit'))</button></td>
                                 </tr>
                             @endfor
                         </tbody>
@@ -239,6 +242,8 @@
         @endif
     </div>
 </div>
+
+
 {{-- New medical visit form --}}
 <div id="new-medical-visit" class="basic-info-form">
     {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/medical-folder', 'files'=>true, 'id'=>'medical_visit_submit')) !!}
@@ -289,8 +294,8 @@
                             </div>
                             {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                {!! Form::label('incident_type', Lang::get($p.'incident_type')) !!}
-                                {!! Form::select('incident_type', $medical_incident_type_array) !!}
+                                {!! Form::label('medical_incident_id', Lang::get($p.'incident_type')) !!}
+                                {!! Form::select('medical_incident_id', $medical_incident_type_array) !!}
                             </div>
                             {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ - ΠΕΡΙΣΤΑΤΙΚΟ --}}
                             {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
@@ -694,19 +699,16 @@
                 </div>
             </div>
         </div>
-
         {{-- SUBMIT --}}
         <div class="form-section align-text-center">
             {!! Form::submit(Lang::get($p.'save_medical_visit'), array('class' => 'submit-button')) !!}
         </div>
-
     {!! Form::close() !!}
     {{--</div>--}}
 </div>
 
 
-
-{{--------------- 4. MODAL: Display Medical visit info from history -------------------}}
+{{--------------- 4. MODAL: Display Medical visit info from history FOR LATER -------------------}}
 <div class="modal fade" id="medicalHistory" role="dialog" tabindex=-1">
     <div class="modal-dialog width-1200">
         <div class="modal-content">
@@ -834,120 +836,242 @@
                     </div>
                 </div>
 
-                {{-- The below id will take the value of the val() of show history button.
-                     The medical visit id is unique for each benefiter. --}}
-                <?php $medical_visit_id = 1; ?>
-
-                @foreach($current_benefiter_medical_history_list as $med_visit)
-                    @if($med_visit['id'] == $medical_visit_id)
-                        {{-- 2. BASIC MEDICAL INFO -----}}
-                        <div class="form-section no-bottom-border">
-                            <div class="underline-header">
-                                <h1 class="record-section-header padding-left-right-15">3. @lang($p.'medical_info')</h1>
-                            </div>
+                {{-- 2. BASIC MEDICAL INFO -----}}
+                <div class="form-section no-bottom-border">
+                    <div class="underline-header">
+                        <h1 class="record-section-header padding-left-right-15">3. @lang($p.'medical_info')</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{-- general medical info --}}
                             <div class="row">
-                                <div class="col-md-12">
-                                    {{-- general medical info --}}
-                                    <div class="row">
-                                        <div class="padding-left-right-15">
+                                <div class="padding-left-right-15">
 
-                                            {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('doctor_name', Lang::get($p.'doctor_name')) !!}
-                                                <div class="custom-input-text">
-                                                    {{$med_visit['doctor']['name'].' '.$med_visit['doctor']['lastname']}}
-                                                </div>
-                                            </div>
-                                            {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('examination_date', Lang::get($p.'exam_date')) !!}
-                                                <div class="custom-input-text">
-                                                    @if($med_visit['medical_visit_date'] == null)
-                                                        {{ $datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['created_at']) }}
-                                                    @else
-                                                        {{ $datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['medical_visit_date']) }}
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                                                {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
-                                                <div class="custom-input-text">
-                                                {{ $med_visit['medicalLocation']['description'] }}
-                                                </div>
-                                            </div>
-                                            {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('incident_type', Lang::get($p.'incident_type')) !!}
-                                                {!! Form::select('incident_type', ['Αντιμετώπιση στο ιατρείο',
-                                                                                    'Δόθηκαν συστάσεις',
-                                                                                    'Παραπομπή για διαγνωστικές',
-                                                                                    'Παραπομπή σε ειδικευμένο γιατρό']) !!}
-                                            </div>
+                                    {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                        {!! Form::label('doctor_name', Lang::get($p.'doctor_name')) !!}
+                                        <div class="custom-input-text">
+                                            {{$med_visit_doctor}}
                                         </div>
                                     </div>
+                                    {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                        {!! Form::label('examination_date', Lang::get($p.'exam_date')) !!}
+                                        <div class="custom-input-text">
+                                            {{$med_visit_date}}
+                                        </div>
+                                    </div>
+                                    {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                                        {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
+                                        <div class="custom-input-text">
+                                        {{ $med_visit_location }}
+                                        </div>
+                                    </div>
+                                    {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
+                                    <div class="form-group make-inline padding-left-right-15 float-left col-md-4">
+                                        {!! Form::label('incident_type', Lang::get($p.'incident_type')) !!}
+                                        <div class="custom-input-text">
+                                            {{$med_visit_incident_type}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    {{-- main medical info --}}
-                                    <hr>
-                                    <div id="chronic-cond-visit" class="row padding-bottom-30">
-                                        <div  class="padding-left-right-15">
-                                            <div class="form-group float-left width-100-percent">
-                                                {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
-                                                <div class="make-inline col-md-6">
-                                                {{-- if post fail then reprint what was entered in the fields --}}
-                                                    {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
-                                                    {!! Form::text('chronic_conditions[]', null, array('id'=>'chronCon', 'class' => 'custom-input-text display-inline')) !!}
+                            {{-- main medical info --}}
+                            <hr>
+                            @if(!empty($med_visit_chronic_conditions))
+                                @foreach($med_visit_chronic_conditions as $cron_con)
+                                    @if(!empty($cron_con))
+                                        <div id="chronic-cond-visit" class="row padding-bottom-30">
+                                            <div  class="padding-left-right-15">
+                                                <div class="form-group float-left width-100-percent">
+                                                    {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
+                                                    <div class="make-inline col-md-3">
+                                                    {{-- if post fail then reprint what was entered in the fields --}}
+                                                        {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
+                                                        <div class="custom-input-text">
+                                                            {{$cron_con['description']}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    @endif
+                                @endforeach
+                            @endif
+                            <hr>
+                            {{-- physical examinations --}}
+                            <div class="row">
+                                <div class="padding-left-right-15">
+                                    {{-- ΥΨΟΣ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-1">
+                                        {!! Form::label('height', Lang::get($p.'height')) !!}
+                                        <div class="custom-input-text">
+                                            {{ $med_visit_height }}
+                                        </div>
                                     </div>
-                                    <hr>
-                                    {{-- physical examinations --}}
-                                    <div class="row">
-                                        <div class="padding-left-right-15">
-                                            {{-- ΥΨΟΣ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('height', Lang::get($p.'height')) !!}
-                                                {!! Form::text('height', null, array('class' => 'custom-input-text')) !!}
-                                            </div>
-                                            {{-- ΒΑΡΟΣ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('weight', Lang::get($p.'weight')) !!}
-                                                {!! Form::text('weight', null, array('class' => 'custom-input-text')) !!}
-                                            </div>
-                                            {{-- ΘΕΡΜΟΚΡΑΣΙΑ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('temperature', Lang::get($p.'temperature')) !!}
-                                                {!! Form::text('temperature', null, array('class' => 'custom-input-text')) !!}
-                                            </div>
-                                            {{-- ΑΡΤΗΡΙΑΚΗ ΠΙΕΣΗ --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                                                {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure')) !!}
-                                                {!! Form::text('blood_pressure_systolic', null, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'systolic'))) !!}
-                                                {!! Form::text('blood_pressure_diastolic', null, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'diastolic'))) !!}
-                                            </div>
-                                            {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
-                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                                                {!! Form::label('skull_perimeter', Lang::get($p.'skull_perimeter')) !!}
-                                                {!! Form::text('skull_perimeter', null, array('class' => 'custom-input-text')) !!}
-                                            </div>
+                                    {{-- ΒΑΡΟΣ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-1">
+                                        {!! Form::label('weight', Lang::get($p.'weight')) !!}
+                                        <div class="custom-input-text">
+                                           {{ $med_visit_weight }}
+                                        </div>
+                                    </div>
+                                    {{-- ΘΕΡΜΟΚΡΑΣΙΑ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-2">
+                                        {!! Form::label('temperature', Lang::get($p.'temperature')) !!}
+                                        <div class="custom-input-text">
+                                            {{ $med_visit_temperature }}
+                                        </div>
+                                    </div>
+                                    {{-- ΑΡΤΗΡΙΑΚΗ ΠΙΕΣΗ --}}
+                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-3">
+                                        {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure')) !!}
+                                        <div class="custom-input-text display-inline width-30-percent">
+                                            {!! Form::label('blood_pressure', Lang::get($p.'diastolic')) !!}
+                                            {{ $med_visit_blood_pressure_diastolic }}
+                                        </div>
+
+                                        <div class="custom-input-text display-inline width-30-percent">
+                                            {!! Form::label('blood_pressure', Lang::get($p.'systolic')) !!}
+                                            {{ $med_visit_blood_pressure_systolic }}
+                                        </div>
+                                    </div>
+                                    {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
+                                    <div class="form-group make-inline padding-left-right-15 float-left col-sm-3">
+                                        {!! Form::label('skull_perimeter', Lang::get($p.'skull_perimeter')) !!}
+                                        <div class="custom-input-text">
+                                            {{ $med_visit_skull_perimeter }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        {{-- 3. CLINICAL RESULTS INFO --}}
+                {{-- 3. CLINICAL RESULTS INFO --}}
+                <div class="form-section no-bottom-border">
+                        <div class="underline-header">
+                            <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
+                        </div>
 
-                        {{-- 4. LAB RESULTS INFO -------}}
+                        @foreach($ExamResultsLookup as $med_exam)
+                            <div class="row padding-left-right-30 padding-top-bottom-15">
+                                <div class="form-group padding-left-right-15 margin-right-30 col-md-2">
+                                    <label> {{ $med_exam['description'] }} </label>
+                                </div>
+                                <?php $duplicity_counter = 0; ?>
+                                @foreach($med_visit_exam_results as $med_exam_result)
+                                    @if($med_exam_result['results_lookup_id'] == $med_exam['id'])
+                                        <div class=" form-group padding-left-right-15 margin-right-30 col-md-6">
+                                            @if(!empty($med_exam_result['icd10_id']))
+                                                {{ $med_exam_result['icd10']['description'] }}
+                                            @endif
+                                        </div>
+                                        @if($duplicity_counter < 1)
+                                            <div class=" form-group padding-left-right-15 col-md-2">
+                                                {{ $med_exam_result['description'] }}
+                                            </div>
+                                        @endif
+                                        <?php $duplicity_counter++; ?>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
 
-                        {{-- 5. MEDICINAL LIST INFO ----}}
+                {{-- 4. LAB RESULTS INFO -------}}
+                <div class="form-section no-bottom-border">
+                    <div class="underline-header">
+                        <h1 class="record-section-header padding-left-right-15">5. @lang($p.'lab_results')</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="lab-result-visit" class="row padding-bottom-30">
+                                <div class="padding-left-right-15 ">
+                                    <div class="form-group float-left width-100-percent">
+                                        {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
+                                        @foreach($med_visit_lab_results as $lab_result)
+                                            <div class="make-inline col-md-10">
+                                                {!! Form::label('lab_results', Lang::get($p.'lab_results_info')) !!}
+                                                <div class="custom-input-text display-inline width-50-percent">
+                                                    {{ $lab_result['laboratory_results'] }}
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        {{-- 6. REFERALS INFO ----------}}
+                {{-- 5. MEDICINAL LIST INFO ----}}
+                <div class="form-section no-bottom-border">
+                    <div class="underline-header">
+                        <h1 class="record-section-header padding-left-right-15">6. @lang($p.'medication')</h1>
+                    </div>
+                    @foreach($med_visit_medication as $med_medication)
+                        <div class="row padding-bottom-30">
+                            {{-- medicine name --}}
+                            <div class="col-md-5">
+                                {!! Form::label('medication_name', Lang::get($p.'medication_info')) !!}
+                                <div class="custom-input-text display-inline">
+                                    {{ $med_medication['medical_medication_lookup']['description'] }}
+                                </div>
 
-                        {{-- 7. UPLOADED FILES LIST ----}}
-                    @endif
-                @endforeach
+                            </div>
+                            {{-- medicine dosage --}}
+                            <div class="col-md-2">
+                                {!! Form::label('medicinal_dosage', Lang::get($p.'medicinal_dosage')) !!}
+                                <div class="custom-input-text display-inline">
+                                    {{ $med_medication['dosage'] }}
+                                </div>
+
+                            </div>
+                            {{-- medicine duration --}}
+                            <div class="col-md-2">
+                                {!! Form::label('medicinal_duration', Lang::get($p.'medicinal_duration')) !!}
+                                <div class="custom-input-text display-inline">
+                                    {{ $med_medication['duration'] }}
+                                </div>
+
+                            </div>
+                            {{-- supplied from PRAKSIS --}}
+                            <div class="col-md-2">
+                                {!! Form::label('supply', Lang::get($p.'supply_from_praksis')) !!}
+                                @if($med_medication['supply_from_praksis'] == 1)
+                                    {!! Form::checkbox('supply', 1, true, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
+                                @else
+                                    {!! Form::checkbox('supply', 0, false, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- 6. REFERALS INFO ----------}}
+                <div class="form-section no-bottom-border">
+                    <div class="underline-header">
+                        <h1 class="record-section-header padding-left-right-15">7. @lang($p.'referrals')</h1>
+                    </div>
+                    @foreach($med_visit_referrals as $med_referral)
+                        <div class="row padding-bottom-30">
+                            {{-- referral name --}}
+                            <div class="col-md-6">
+                                {!! Form::label('medication_name', Lang::get($p.'referrals_info')) !!}
+                                <div class="custom-input-text display-inline">
+                                    {{ $med_referral['referrals'] }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- 7. UPLOADED FILES LIST ----}}
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

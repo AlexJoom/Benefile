@@ -14,6 +14,6 @@ class medical_referrals extends Model
 
     public function medical_visits()
     {
-        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_visits', 'medical_visit_id');
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_visits', 'medical_visit_id');
     }
 }

@@ -33,15 +33,15 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date' => 'required|date',
-            'medical_location_id' => 'integer',
-            'incident_type' => 'integer',
-            'height' => 'numeric',
-            'weight' => 'numeric',
-            'temperature' => 'numeric',
-            'blood_pressure_systolic' => 'numeric',
+            'examination_date'         => 'required|date',
+            'medical_location_id'      => 'integer',
+            'medical_incident_id'      => 'integer',
+            'height'                   => 'numeric',
+            'weight'                   => 'numeric',
+            'temperature'              => 'numeric',
+            'blood_pressure_systolic'  => 'numeric',
             'blood_pressure_diastolic' => 'numeric',
-            'skull_perimeter' => 'numeric'
+            'skull_perimeter'          => 'numeric'
         );
         // Push the dynamic elements into the rule array
         $chronic_conditions = $request['chronic_conditions'];
@@ -125,7 +125,7 @@ class BenefiterMedicalFolderService
         // medical visit table
         $medicalVisit_id = $this->create_medical_visit($request);
         // chronic conditions table
-        $this->save_medical_chronic_conditions($request);
+        $this->save_medical_chronic_conditions($request, $medicalVisit_id);
         //medical_examination_results table
         $this->save_medical_examination_results($request, $medicalVisit_id);
         //medical_examinations table
@@ -147,6 +147,7 @@ class BenefiterMedicalFolderService
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
         $newMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $newMedicalVisit->medical_incident_id = $request['medical_incident_id'];
         $newMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
@@ -156,7 +157,7 @@ class BenefiterMedicalFolderService
 
     //----------- medical_chronic_conditions table -----------------------DONE//
     // DB save
-    private function save_medical_chronic_conditions($request){
+    private function save_medical_chronic_conditions($request, $id){
         $request_medical_chronic_conditions = $this->get_medical_chronic_conditions($request);
         foreach($request_medical_chronic_conditions as $cc){
             if(!empty($cc)){
@@ -167,6 +168,7 @@ class BenefiterMedicalFolderService
                 $medical_chronic_conditions_lookup->save();
                 // then to chronic conditions table
                 $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
+                $medical_chronic_conditions->medical_visit_id = $id;
                 $medical_chronic_conditions->description = $cc;
                 $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
                 $medical_chronic_conditions->save();
@@ -291,7 +293,7 @@ class BenefiterMedicalFolderService
                 $med_medication = new medical_medication();
 
                 // check if the request comes from the auto complete select (from lookup)
-                if (!empty($request_medication_name_from_lookup[$i]) && empty($request_medication_new_name[$i])) {
+                if (empty($request_medication_new_name[$i])) {
                     $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
 
                     $med_medication->dosage = $request_medication_dosage[$i];
@@ -307,7 +309,7 @@ class BenefiterMedicalFolderService
                     $med_medication->save();
                 }
                 // check if the request comes from the input field.
-                elseif (empty($request_medication_name_from_lookup[$i]) && !empty($request_medication_new_name[$i])) {
+                else{
                     $request_medication_name[$i] = $request_medication_new_name[$i];
 
                     $med_medication_lookup = new medical_medication_lookup();
@@ -326,13 +328,7 @@ class BenefiterMedicalFolderService
                     $med_medication->medication_lookup_id = $med_medication_lookup->id;
 
                     $med_medication->save();
-                } else {
-                    echo 'DOUBLE FIELD ENTRY';
-
                 }
-            }else{
-                echo 'NOT ALL FIELDS ARE COMPLETE';
-
             }
         }
     }
