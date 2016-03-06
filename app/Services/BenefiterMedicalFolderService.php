@@ -371,7 +371,7 @@ class BenefiterMedicalFolderService
         $files_numbers = count($request_upload_file_title);
         for ($i = 0; $i < $files_numbers; $i++) {
             while(!empty($file[$i])){
-                $path = public_path() . '/uploads/medical-visit-uploads';
+                $path = base_path() . '/public/uploads/medical-visit-uploads/';
                 $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $id;
                 $file[$i]->move($path, $fileName); // uploading file to given path
 

@@ -344,15 +344,14 @@ class RecordsController extends Controller
         $current_benefiter_medical_visit_id = 10;
         $current_benefiter_medical_visits_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
         // for every medical visit of the benefiter fetch the corresponding medical data from DB
-        foreach($current_benefiter_medical_visits_list as $med_visit){
-            if($med_visit['id'] == $current_benefiter_medical_visit_id){
+        foreach($current_benefiter_medical_visits_list as $med_visit) {
+            if ($med_visit['id'] == $current_benefiter_medical_visit_id) {
                 //Doctor Name
-                $med_visit_doctor = $med_visit['doctor']['name'].' '.$med_visit['doctor']['lastname'];
+                $med_visit_doctor = $med_visit['doctor']['name'] . ' ' . $med_visit['doctor']['lastname'];
                 // Examination date
-                if($med_visit['medical_visit_date'] == null){
+                if ($med_visit['medical_visit_date'] == null) {
                     $med_visit_date = $this->datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['created_at']);
-                }
-                else{
+                } else {
                     $med_visit_date = $this->datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['medical_visit_date']);
                 }
                 // Visit location
@@ -360,23 +359,19 @@ class RecordsController extends Controller
                 // Visit incident type
                 $med_visit_incident_type = $med_visit['medicalIncidentType']['description'];
                 // Chronic Conditions
-                $med_visit_chronic_conditions = medical_chronic_conditions::where('benefiters_id', $id)->
-                                                                            where('medical_visit_id', $med_visit['id'])->
-                                                                            with('chronic_conditions_lookup')->
-                                                                            get();
-
+                $med_visit_chronic_conditions = medical_chronic_conditions::where('benefiters_id', $id)->where('medical_visit_id', $med_visit['id'])->with('chronic_conditions_lookup')->get();
                 // physical examinations
                 $med_visit_examination = medical_examinations::where('medical_visit_id', $med_visit['id'])->first();
-                //      height
+                    // height
                 $med_visit_height = $med_visit_examination['height'];
-                //      weight
+                    // weight
                 $med_visit_weight = $med_visit_examination['weight'];
-                //      temperature
+                    // temperature
                 $med_visit_temperature = $med_visit_examination['temperature'];
-                //      blood pressure
+                    // blood pressure
                 $med_visit_blood_pressure_systolic = $med_visit_examination['blood_pressure_systolic'];
                 $med_visit_blood_pressure_diastolic = $med_visit_examination['blood_pressure_diastolic'];
-                //      skull_perimeter
+                    // skull_perimeter
                 $med_visit_skull_perimeter = $med_visit_examination['skull_perimeter'];
 
                 // Examination results
@@ -388,10 +383,7 @@ class RecordsController extends Controller
                 // Referrals
                 $med_visit_referrals = medical_referrals::where('medical_visit_id', $med_visit['id'])->get();
             }
-
         }
-
-
         // ------ END MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
 
 
