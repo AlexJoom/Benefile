@@ -36,6 +36,11 @@ $(document).ready(function(){
 
     // initialize DataTable
     $('#results').DataTable({});
+
+    // if folder_number is already put, then auto submit form to get results
+    if($('input[name="folder_number"]').val().length != 0) {
+        $('#search-form').trigger('submit');
+    }
 });
 
 // make the ajax call to get a response
