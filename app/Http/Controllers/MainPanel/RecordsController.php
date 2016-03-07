@@ -65,6 +65,13 @@ class RecordsController extends Controller
     public function getBasicInfo($id){
         // brings the referrals options array from db to view
         $basic_info_referral = BenefiterReferrals_lookup::get()->all();
+        $basic_info_referral_attributes = BenefiterReferrals::all();
+        /*
+         * foreach ($basic_info_referral_attributes as $attributes)
+         * {
+         *     var_dump($attributes->id);
+         * }
+         */
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
         // brinks all referrals saved to db for this benefiter id
         $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')
@@ -168,6 +175,12 @@ class RecordsController extends Controller
         $basic_info_referrals = BenefiterReferrals::get()->all();
 
         return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals);
+    }
+
+    public function deleteBasicInfoReferral($id, $referral_id){
+        BenefiterReferrals::where('id', '=', $referral_id)->delete();
+
+        return redirect('benefiter/'.$id.'/basic-info');
     }
 
     // get social folder view
