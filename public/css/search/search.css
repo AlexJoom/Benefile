@@ -5,3 +5,30 @@
     padding: 0.2em 1.4em;
     background: #4c2a47;
 }
+
+.state-no-results > h1{
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.min-height-150px{
+    min-height: 150px;
+}
+
+.state-loading{
+    margin: 0 !important;
+}
+
+.fa-loading-wrapper{
+    margin: 0 15px !important;
+}
+
+.fa-loading-bg{
+    margin-left: 15px;/*: 0 15px !important;*/
+    margin-right: 15px;
+}
+
+.fa-loading-bg, .fa-loading-icon-wrapper{
+    right: 0;
+    width: auto;
+}

@@ -8,6 +8,8 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
@@ -101,7 +103,7 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section">
+    <div id="search-results" class="form-section" style="display: none;">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
         </div>
@@ -133,11 +135,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="state state-loading">
-
+                <div class="state state-loading min-height-150px padding-left-right-15">
                 </div>
                 <div class="state state-no-results">
-                    @lang($p."no_results")
+                    <h1>@lang($p."no_results")</h1>
                 </div>
                 <div class="state state-error">
 
@@ -148,6 +149,7 @@
 @stop
 
 @section('panel-scripts')
+    <script src="{{ asset('plugins/faloading/jquery.faloading-0.1.min.js') }}"></script>
     <script src="{{asset('js/main-panel/selectSearchInMainPanel.js')}}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>

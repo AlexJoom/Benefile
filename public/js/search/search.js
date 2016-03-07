@@ -35,7 +35,11 @@ $(document).ready(function(){
     });
 
     // initialize DataTable
-    $('#results').DataTable({});
+    $('#results').DataTable({
+        searching: false,
+        ordering: false,
+        paging: false
+    });
 
     // if folder_number is already put, then auto submit form to get results
     if($('input[name="folder_number"]').val().length != 0) {
@@ -45,6 +49,7 @@ $(document).ready(function(){
 
 // make the ajax call to get a response
 function MakeAjaxSearchCall($url, $values){
+    var $loader;
     $.ajax({
         url: $url,
         type: 'get',
@@ -59,19 +64,23 @@ function MakeAjaxSearchCall($url, $values){
                 'medical_location_id': $values.medical_location_id
             },
         beforeSend: function () {
+            $('#search-results').show();
+            $('.state').hide();
+            $('.state-loading').show();
             // spinner start
-            //$loader = $("body").faLoadingAdd('fa-cog');
-            // remove all rows from results table
-            $("#results > tbody > tr").remove();
+            $loader = $('.state-loading').faLoadingAdd('fa-circle-o-notch');
         },
         success: function ($response) {
+            // remove all rows from results table
+            $("#results > tbody > tr").remove();
             DisplayResults($response);
         },
         error: function ($response) {
 
         },
         complete: function () {
-            //$loader.remove(); //stop the loading screen
+            $loader.remove(); //stop the loading screen
+            $('.state-loading').hide();
         }
     });
 }
@@ -80,11 +89,13 @@ function MakeAjaxSearchCall($url, $values){
 function DisplayResults($response){
     // if nothing is returned, display "No results found" message
     if($response == ''){
-        $("#results > tbody").append("<tr class=\"odd\"><td class=\"dataTables_empty\" valign=\"top\" colspan=\"4\">No results found</td></tr>");
+        //$("#results > tbody").append("<tr class=\"odd\"><td class=\"dataTables_empty\" valign=\"top\" colspan=\"4\">No results found</td></tr>");
+        $('.state-no-results').show();
     } else { // else display results returned
         for (var i in $response) {
             $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td></tr>";
             $("#results > tbody").append($row);
         }
+        $('.state-results').show();
     }
 }
