@@ -163,6 +163,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->integer('medical_location_id')->unsigned();
             $table->foreign('medical_location_id')->references('id')->on('medical_location_lookup');
+            $table->integer('medical_incident_id')->unsigned();
+            $table->foreign('medical_incident_id')->references('id')->on('medical_incident_type_lookup');
 
             $table->date('medical_visit_date')->nullable();
 
@@ -207,6 +209,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('chronic_condition_id')->references('id')->on('medical_chronic_conditions_lookup');
             $table->integer('benefiters_id')->unsigned();
             $table->foreign('benefiters_id')->references('id')->on('benefiters');
+            $table->integer('medical_visit_id')->unsigned();
+            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
 
             $table->timestamps();
         });

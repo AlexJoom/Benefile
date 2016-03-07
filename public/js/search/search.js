@@ -41,14 +41,14 @@ function MakeAjaxSearchCall($url, $values){
         url: $url,
         type: 'get',
         data: {'folder_number': $values.folder_number,
-            'lastname': $values.lastname,
-            'name': $values.fname,
-            'fathers_name': $values.fathers_name,
-            'gender_id': $values.gender_id,
-            'telephone': $values.telephone,
-            'birth_date': $values.birth_date,
-            'origin_country': $values.origin_country,
-            'medical_location_id': $values.medical_location_id
+                'lastname': $values.lastname,
+                'name': $values.fname,
+                'fathers_name': $values.fathers_name,
+                'gender_id': $values.gender_id,
+                'telephone': $values.telephone,
+                'birth_date': $values.birth_date,
+                'origin_country': $values.origin_country,
+                'medical_location_id': $values.medical_location_id
             },
         beforeSend: function () {
             // spinner start

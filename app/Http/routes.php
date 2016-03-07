@@ -59,6 +59,7 @@ Route::get('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@getMedi
 Route::post('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
 Route::get('benefiter/getIC10List', 'MainPanel\RecordsController@getICD10List');
 Route::get('benefiter/getMedicationList', 'MainPanel\RecordsController@getMedicationList');
+Route::get('benefiter/getEachMedicalVisit', 'MainPanel\RecordsController@fetch_medical_visits_data');
 
 //----------------------- END MEDICAL FOLDER
 

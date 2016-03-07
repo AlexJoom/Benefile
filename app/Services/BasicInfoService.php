@@ -139,6 +139,73 @@ class BasicInfoService{
         Benefiter::where('id', '=', $benefiterId)->delete();
     }
 
+    // searches the DB for benefiters with those values and returns them
+    public function searchBenefitersTable($folder_number, $lastname, $name, $fathers_name, $gender_id, $telephone, $birth_date, $origin_country, $medical_location_id){
+        $firstWhereParameter = true;
+        $queryString = "select * from benefiters where ";
+        if ($folder_number != ""){
+            $queryString = $queryString . "folder_number=" . $folder_number;
+            $firstWhereParameter = false;
+        }
+        if ($lastname != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "lastname like '%" . $lastname . "%'";
+            $firstWhereParameter = false;
+        }
+        if ($name != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "name like '%" . $name . "%'";
+            $firstWhereParameter = false;
+        }
+        if ($fathers_name != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "fathers_name like '%" . $fathers_name . "%'";
+            $firstWhereParameter = false;
+        }
+        if ($gender_id != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "gender_id=" . $gender_id;
+            $firstWhereParameter = false;
+        }
+        if ($telephone != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "telephone=" . $telephone;
+            $firstWhereParameter = false;
+        }
+        if ($birth_date != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "birth_date='" . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($birth_date)) . "'";
+            $firstWhereParameter = false;
+        }
+        if ($origin_country != ""){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "origin_country=" . $origin_country;
+            $firstWhereParameter = false;
+        }
+//        if ($medical_location_id != "0"){
+//            if (!$firstWhereParameter){
+//                $queryString = $queryString . " and ";
+//            }
+//            $queryString = $queryString . "medical_location_id=" . $medical_location_id;
+//            $firstWhereParameter = false;
+//        }
+        return $queryString;
+    }
+
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys

@@ -18,6 +18,16 @@ class DatesHelper
         }
     }
 
+    // get date String appropriate for DB search
+    public function makeDBSearchFriendlyDate($date)
+    {
+        if ($date != "") {
+            return strtok($date, " ");
+        } else {
+            return $date;
+        }
+    }
+
     // gets Carbon Formatted String from simple Date String
     public function getDateStringFromSimpleString($date){
         $date = $this->makeDBFriendlyDate($date);
