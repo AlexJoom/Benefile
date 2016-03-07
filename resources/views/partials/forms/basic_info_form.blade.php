@@ -651,24 +651,28 @@
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>@lang($p."referral")</th>
-                                        <th>@lang($p."description")</th>
-                                        <th>@lang($p."referral_date")</th>
-                                    </tr>
-                                    </tfoot>
                                     <tbody>
                                     @foreach($benefiter_referrals_list as $referral)
+                                    @if(!empty($referral))
                                         <tr>
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
                                         </tr>
+                                    @endif
                                     @endforeach
                                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>@lang($p."referral")</th>
+                                        <th>@lang($p."description")</th>
+                                        <th>@lang($p."referral_date")</th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -1323,29 +1327,31 @@
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>@lang($p."referral")</th>
-                                        <th>@lang($p."description")</th>
-                                        <th>@lang($p."referral_date")</th>
-                                    </tr>
-                                    </tfoot>
                                     <tbody>
                                     @foreach($benefiter_referrals_list as $referral)
+                                    @if(!empty($referral))
                                         <tr>
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
                                             <td>
-                                                {!! Form::open(['action' => ['MainPanel\RecordsController@deleteBasicInfoReferral', $benefiter->id, $referral->id], 'method' => 'delete', 'method' => 'post']) !!}
-                                                {!! Form::submit('Delete', ['class' => 'simple-button width-100-percent delete-session']) !!}
-                                                {!! Form::close() !!}
+                                                <button class="submit-button delete-session" name="{{ $referral->id }}">delete session</button>
                                             </td>
                                         </tr>
+                                    @endif
                                     @endforeach
                                     </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>@lang($p."referral")</th>
+                                        <th>@lang($p."description")</th>
+                                        <th>@lang($p."referral_date")</th>
+                                        <th></th>
+                                    </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -1398,3 +1404,25 @@
     @endif
 @endif
 </div>
+<!--delete session confirmation modal-->
+<div class="modal fade" id="delete-session-modal" aria-hidden="true" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="delete-session-form" action="" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @if(!empty($referral))
+                <input type="hidden" class="delete-session-path" name="path" value="{{ url("public/benefiter/".$benefiter->id."/basic-info/referral-delete/".$referral->id) }}">
+                @endif
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@lang($p."delete_session_modal_title")</h4>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-3 col-md-offset-9">
+                        <button type="submit" class="simple-button">@lang($p."done")</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal -->
