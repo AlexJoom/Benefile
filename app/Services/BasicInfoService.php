@@ -445,4 +445,10 @@ class BasicInfoService{
             $basic_info_referral->save();
         }
     }
+
+    /*
+     * public function deleteBasicInfoReferral($id, $referral_id){
+     *     BenefiterReferrals::where('id', '=', $referral_id)->delete();
+     * }
+     */
 }
