@@ -189,7 +189,7 @@
                 </div>
                 @else
                 @foreach($benefiter_sessions as $benefiter_session)
-                <div class="row div-table-row">
+                <div class="row div-table-row div-hr">
                     <div class="col-md-12">
                         <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
                         <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
@@ -204,7 +204,6 @@
                         <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
                     </div>
                 </div>
-                <hr>
                 <div class="edit-session-div dynamic-form-section">
                     <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
                     {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}
