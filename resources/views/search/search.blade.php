@@ -103,7 +103,7 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section" style="display: none;">
+    <div id="search-results" class="form-section" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
         </div>
@@ -115,18 +115,20 @@
                             <table id="results" class="display" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
-                                    <th>@lang("basic_info_form.folder_number")</th>
+                                    <th>@lang($p."folder_number")</th>
                                     <th>@lang("basic_info_form.name")</th>
                                     <th>@lang("basic_info_form.lastname")</th>
                                     <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang($p."view")</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>@lang("basic_info_form.folder_number")</th>
+                                    <th>@lang($p."folder_number")</th>
                                     <th>@lang("basic_info_form.name")</th>
                                     <th>@lang("basic_info_form.lastname")</th>
                                     <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang($p."view")</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>

@@ -95,8 +95,10 @@ function DisplayResults($response){
     if($response == ''){
         $('.state-no-results').show();
     } else { // else display results returned
+        $view_folders = $('#search-results').data('view-folders');
         for (var i in $response) {
-            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td></tr>";
+            $anchor = $('#search-results').data('url').replace('-1', $response[i].id);
+            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
             $("#results > tbody").append($row);
         }
         $('.state-results').show();

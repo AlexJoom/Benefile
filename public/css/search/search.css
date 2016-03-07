@@ -32,3 +32,8 @@
     right: 0;
     width: auto;
 }
+
+a.simple-button:hover, a.simple-button:focus{
+    color: white;
+    text-decoration: none;
+}
