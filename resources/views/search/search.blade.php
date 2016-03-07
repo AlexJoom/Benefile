@@ -97,7 +97,40 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section hide">
+    <div id="search-results" class="form-section">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="search-results-benefiters-list" class="row padding-bottom-30">
+                    <div class="no-margin pos-relative" id="results-to-activate">
+                        <div class="display padding-20">
+                            <table id="results" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>@lang("basic_info_form.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>@lang("basic_info_form.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 

@@ -31,6 +31,6 @@ class SearchController extends Controller
                 $request->origin_country,
                 $request->medical_location_id
             );
-        return view('search.search_results')->with('results', $results);
+        return $results;
     }
 }
