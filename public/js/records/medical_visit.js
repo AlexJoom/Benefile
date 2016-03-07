@@ -11,8 +11,8 @@ $(document).ready(function(){
             placeholder: 'Εμπορική ονομασία φαρμάκου',
             allowClear: true,
             ajax: {
-                //url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
-                url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getMedicationList",
+                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -215,8 +215,8 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-            //url: "http://localhost/benefile/index.php/benefiter/getIC10List",
-            url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getIC10List",
+            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+            //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
@@ -290,22 +290,9 @@ $(document).ready(function(){
             //datatype: "json",
             success:
                 function(data){
-                    $('#medical-visit-modal-content').append(data);
+                    $('#medical-visit-modal-content').html(data);
                 }
         });
     });
-    // MODAL CLINICAL RESULTS TABLE
-    //$(function() {
-    //    $('#clinical-results-modal').DataTable( {
-    //        //"lengthMenu": [ [-1], ["All"] ]
-    //    });
-    //});
 });
-
-
-//var $condition_count = 0;
-//var $result_count = 0;
-//var $meds_count = 0;
-//var $refs_count = 0;
-//var $file_count = 0;
 var $clickCount =2;
