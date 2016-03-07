@@ -38,7 +38,8 @@ $(document).ready(function(){
     $('#results').DataTable({
         searching: false,
         ordering: false,
-        paging: false
+        paging: false,
+        bInfo: false
     });
 
     // if folder_number is already put, then auto submit form to get results
@@ -78,7 +79,7 @@ function MakeAjaxSearchCall($url, $values){
             DisplayResults($response);
         },
         error: function ($response) {
-
+            $('.state-error').show();
         },
         complete: function () {
             $loader.remove(); //stop the loading screen

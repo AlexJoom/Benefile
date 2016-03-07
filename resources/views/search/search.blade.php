@@ -141,7 +141,7 @@
                     <h1>@lang($p."no_results")</h1>
                 </div>
                 <div class="state state-error">
-
+                    <h1>@lang($p."error")</h1>
                 </div>
             </div>
         </div>
