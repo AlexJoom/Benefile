@@ -415,39 +415,70 @@ class BenefiterMedicalFolderService
         }
         return $reindexed_array;
     }
-
+    // medical visits for each benefiter
     public function findMedicalVisitsForBenefiter($id){
         return medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
     }
-
+    // chronic conditions for each benefiter
     public function findMedicalChronicConditionsForBenefiter($benefiter_id, $medical_visit_id){
         return medical_chronic_conditions::where('benefiters_id', $benefiter_id)->where('medical_visit_id', $medical_visit_id)->with('chronic_conditions_lookup')->get();;
     }
-
+    // number of medical visits foreach benefiter
     public function benefiter_medical_visits_number($id){
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         return $medical_visits_number;
     }
-
+    // examination results
     public function examinationsResultsLookup(){
         $examResultsLookup = medical_examination_results_lookup::get()->all();
         return $examResultsLookup;
     }
-
+    // Medical Visit location
     public function medicalLocationsLookup(){
         $medical_locations = medical_location_lookup::get();
         return $medical_locations;
     }
-
+    // Incident type
     public function medicalIncidentTypeLookup(){
         $medical_incident_type = medical_incident_type_lookup::get();
         return $medical_incident_type;
     }
-
+    // doctor id
     public function findDoctorId(){
         $doctor_id = Auth::user()->id;
         return $doctor_id;
     }
+    // physical examinations
+    public function findMedicalVisitExamination($med_visit_id){
+        $med_visit_examination = medical_examinations::where('medical_visit_id', $med_visit_id)->first();
+        return $med_visit_examination;
+    }
+    // Examination results
+    public function findMedicalVisitExaminationResults($med_visit_id){
+        $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit_id)->with('icd10')->get();
+        return $med_visit_exam_results;
+    }
+    // Lab results
+    public function findMedicalVisitLabResults($med_visit_id){
+        $med_visit_lab_results = medical_laboratory_results::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_lab_results;
+    }
+    // Medication
+    public function findMedicalVisitMedication($med_visit_id){
+        $med_visit_medication = medical_medication::where('medical_visit_id', $med_visit_id)->with('medical_medication_lookup')->get();
+        return $med_visit_medication;
+    }
+    // Referrals
+    public function findMedicalVisitReferrals($med_visit_id){
+        $med_visit_referrals = medical_referrals::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_referrals;
+    }
+    // Uploads
+    public function findMedicalVisitUploads($med_visit_id){
+        $med_visit_uploads = medical_uploads::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_uploads;
+    }
+
 
     public function getICD10By_id($id){
         $description = ICD10::where('id', '=', $id)->first()->description;
