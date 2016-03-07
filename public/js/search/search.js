@@ -64,6 +64,7 @@ function MakeAjaxSearchCall($url, $values){
                 'medical_location_id': $values.medical_location_id
             },
         beforeSend: function () {
+            // shows the results div and the loading state section, hiding all others
             $('#search-results').show();
             $('.state').hide();
             $('.state-loading').show();
@@ -73,6 +74,7 @@ function MakeAjaxSearchCall($url, $values){
         success: function ($response) {
             // remove all rows from results table
             $("#results > tbody > tr").remove();
+            // display results returned
             DisplayResults($response);
         },
         error: function ($response) {
@@ -80,6 +82,7 @@ function MakeAjaxSearchCall($url, $values){
         },
         complete: function () {
             $loader.remove(); //stop the loading screen
+            // hide loading section
             $('.state-loading').hide();
         }
     });
@@ -89,7 +92,6 @@ function MakeAjaxSearchCall($url, $values){
 function DisplayResults($response){
     // if nothing is returned, display "No results found" message
     if($response == ''){
-        //$("#results > tbody").append("<tr class=\"odd\"><td class=\"dataTables_empty\" valign=\"top\" colspan=\"4\">No results found</td></tr>");
         $('.state-no-results').show();
     } else { // else display results returned
         for (var i in $response) {
