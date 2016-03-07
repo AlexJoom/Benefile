@@ -52,10 +52,12 @@
 
                     {{-- Search bar --}}
                     <div id="search-bar" class="table-row">
-                        <form>
+                        {!! Form::open(array('url' => 'search', 'method' => 'get')) !!}
+{{--                        <form action="{{ url('search') }}" method="post">--}}
                             <input type="text" class="searchField dark-green-background table-cell" name="search" placeholder="@lang($p.'folder_number_search')">
                             <button type="submit" class="glyphicon glyphicon-search searchButton table-cell"></button>
-                        </form>
+                        {{--</form>--}}
+                        {!! Form::close() !!}
                     </div>
 
                     <div class="min-width-230px">

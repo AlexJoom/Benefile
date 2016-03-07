@@ -52,6 +52,7 @@ Route::get('benefiter/{id}/delete', 'MainPanel\RecordsController@getDeleteBenefi
 Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
 Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
 Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@postBasicInfoReferrals');
+Route::post('benefiter/{id}/basic-info/referral-delete/{referral_id}', 'MainPanel\RecordsController@deleteBasicInfoReferral');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER

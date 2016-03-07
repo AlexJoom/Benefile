@@ -142,9 +142,13 @@ class BasicInfoService{
     // searches the DB for benefiters with those values and returns them
     public function searchBenefitersTable($folder_number, $lastname, $name, $fathers_name, $gender_id, $telephone, $birth_date, $origin_country, $medical_location_id){
         $firstWhereParameter = true;
-        $queryString = "select * from benefiters where ";
+        if ($medical_location_id != "0"){
+            $queryString = "select distinct benefiters.id, benefiters.folder_number, benefiters.name, benefiters.lastname, benefiters.telephone from benefiters join medical_visits on benefiters.id = medical_visits.benefiter_id where ";
+        } else {
+            $queryString = "select id, folder_number, name, lastname, telephone from benefiters where ";
+        }
         if ($folder_number != ""){
-            $queryString = $queryString . "folder_number=" . $folder_number;
+            $queryString = $queryString . "folder_number='" . $folder_number . "'";
             $firstWhereParameter = false;
         }
         if ($lastname != ""){
@@ -179,7 +183,7 @@ class BasicInfoService{
             if (!$firstWhereParameter){
                 $queryString = $queryString . " and ";
             }
-            $queryString = $queryString . "telephone=" . $telephone;
+            $queryString = $queryString . "telephone='" . $telephone . "'";
             $firstWhereParameter = false;
         }
         if ($birth_date != ""){
@@ -193,17 +197,16 @@ class BasicInfoService{
             if (!$firstWhereParameter){
                 $queryString = $queryString . " and ";
             }
-            $queryString = $queryString . "origin_country=" . $origin_country;
+            $queryString = $queryString . "origin_country='" . $origin_country . "'";
             $firstWhereParameter = false;
         }
-//        if ($medical_location_id != "0"){
-//            if (!$firstWhereParameter){
-//                $queryString = $queryString . " and ";
-//            }
-//            $queryString = $queryString . "medical_location_id=" . $medical_location_id;
-//            $firstWhereParameter = false;
-//        }
-        return $queryString;
+        if ($medical_location_id != "0"){
+            if (!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            }
+            $queryString = $queryString . "medical_location_id=" . $medical_location_id;
+        }
+        return \DB::select(\DB::raw($queryString));
     }
 
     // get all languages keys from basic info's form $request
@@ -445,4 +448,10 @@ class BasicInfoService{
             $basic_info_referral->save();
         }
     }
+
+    /*
+     * public function deleteBasicInfoReferral($id, $referral_id){
+     *     BenefiterReferrals::where('id', '=', $referral_id)->delete();
+     * }
+     */
 }

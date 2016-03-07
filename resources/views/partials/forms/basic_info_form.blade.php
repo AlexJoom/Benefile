@@ -1338,6 +1338,11 @@
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
+                                            <td>
+                                                {!! Form::open(['action' => ['MainPanel\RecordsController@deleteBasicInfoReferral', $benefiter->id, $referral->id], 'method' => 'delete', 'method' => 'post']) !!}
+                                                {!! Form::submit('Delete', ['class' => 'simple-button width-100-percent delete-session']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

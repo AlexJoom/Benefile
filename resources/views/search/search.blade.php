@@ -8,6 +8,8 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
@@ -26,7 +28,11 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
+                            @if(isset($_GET['search']))
+                            {!! Form::text('folder_number', $_GET['search'], array('class' => 'custom-input-text')) !!}
+                            @else
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text')) !!}
+                            @endif
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
@@ -97,11 +103,55 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section hide">
+    <div id="search-results" class="form-section" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="state state-results" class="row padding-bottom-30">
+                    <div class="no-margin pos-relative" id="results-to-activate">
+                        <div class="display padding-20">
+                            <table id="results" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>@lang($p."folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang($p."view")</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>@lang($p."folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang($p."view")</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="state state-loading min-height-150px padding-left-right-15">
+                </div>
+                <div class="state state-no-results">
+                    <h1>@lang($p."no_results")</h1>
+                </div>
+                <div class="state state-error">
+                    <h1>@lang($p."error")</h1>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
 @section('panel-scripts')
+    <script src="{{ asset('plugins/faloading/jquery.faloading-0.1.min.js') }}"></script>
     <script src="{{asset('js/main-panel/selectSearchInMainPanel.js')}}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
