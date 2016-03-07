@@ -30,7 +30,7 @@ class BasicInfoService{
             'address' => 'max:255',
             'telephone' => 'min:5|max:20',
             'number_of_children' => 'integer',
-            'chidren_names' => 'max:2000|required',
+            'chidren_names' => 'max:2000',
             'relatives_residence' => 'max:255',
             'country_abandon_reason' => 'max:255',
             'travel_route' => 'max:255',
