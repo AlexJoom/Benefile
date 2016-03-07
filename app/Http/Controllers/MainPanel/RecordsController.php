@@ -228,12 +228,12 @@ class RecordsController extends Controller
         $psychosocialSupport = null;
         $validator = $this->socialFolderService->socialFolderValidation($request->all());
         if($validator->fails()){
-            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->withErrors($validator->errors()->all());
+            return redirect('benefiter/' . $id . '/social-folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->withErrors($validator->errors()->all());
         } else {
             $this->socialFolderService->saveSocialFolderToDB($request->all(), $id);
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
             $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
-            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with('success', \Lang::get('records_controller_messages.social_folder_create_success'));
+            return redirect('benefiter/' . $id . '/social-folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with('success', \Lang::get('records_controller_messages.social_folder_create_success'));
         }
     }
 
