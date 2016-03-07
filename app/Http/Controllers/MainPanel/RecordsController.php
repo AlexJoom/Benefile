@@ -11,6 +11,12 @@ use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\ICD10;
 use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
+use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
+use App\Models\Benefiters_Tables_Models\medical_examinations;
+use App\Models\Benefiters_Tables_Models\medical_examination_results;
+use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
+use App\Models\Benefiters_Tables_Models\medical_medication;
+use App\Models\Benefiters_Tables_Models\medical_referrals;
 use App\Services\SocialFolderService;
 use App\Services\BenefiterMedicalFolderService;
 use App\Services\BenefitersService;
@@ -29,6 +35,7 @@ class RecordsController extends Controller
     private $socialFolderService;
     private $medicalVisit;
     private $legalFolderService;
+    private $datesHelper;
     private $benefiterList = null;
 
     public function __construct(){
@@ -44,6 +51,8 @@ class RecordsController extends Controller
         $this->medicalVisit = new BenefiterMedicalFolderService();
         // initialize legal folder service
         $this->legalFolderService = new LegalFolderService();
+
+        $this->datesHelper = new \app\Services\DatesHelper();
     }
 
     //------------ GET BENEFITERS LIST -------------------------------//
@@ -258,11 +267,13 @@ class RecordsController extends Controller
         return redirect("benefiter/" . $id . "/social-folder");
     }
 
-//-------------------------------------------------------------------------------------------------//
+
 //---------------------------- MEDICAL FOLDER -----------------------------------------------------//
+//-------------------------------------------------------------------------------------------------//
 
     //------------ GET MEDICAL VISIT DATA FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
+        // POST result message
         $visit_submited_succesfully = session()->get('visit_submited_succesfully', function() { return 0; });
         session()->forget('visit_submited_succesfully'); // 0:initial value, 1:Success, 2:Unsuccess
 
@@ -313,15 +324,10 @@ class RecordsController extends Controller
 
 
 
-        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
-        $current_benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
-
-
-        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
-
-
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
+        $current_benefiter_medical_visits_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
         if ($benefiter == null) {
             return view('errors.404');
         } else {
@@ -342,7 +348,6 @@ class RecordsController extends Controller
                         ->with('benefiter_id', $benefiter_id)
                         ->with('doctor_id', $doctor_id)
                         ->with('benefiter', $benefiter)
-                        ->with('current_benefiter_medical_history_list', $current_benefiter_medical_history_list)
                         ->with('medical_visits_number', $medical_visits_number)
                         ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
                         ->with('lab_results_session', $lab_results_session)
@@ -356,15 +361,101 @@ class RecordsController extends Controller
                         ->with('medication_dosage_session', $medication_dosage_session)
                         ->with('medication_duration_session', $medication_duration_session)
                         ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
+                        ->with('current_benefiter_medical_visits_list', $current_benefiter_medical_visits_list)
 //                        ->with('upload_file_description_session', $upload_file_description_session)
 //                        ->with('upload_file_title_session', $upload_file_title_session)
                         ->with('visit_submited_succesfully', $visit_submited_succesfully);
         }
     }
+    public function getMedicalVisit(Request $request, $id){
+        // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+        // initialize
+        $med_visit_doctor = '';
+        $med_visit_date = '';
+        $med_visit_location = '';
+        $med_visit_incident_type = '';
+        $med_visit_chronic_conditions = '';
+        $med_visit_height = '';
+        $med_visit_weight = '';
+        $med_visit_temperature = '';
+        $med_visit_blood_pressure_systolic = '';
+        $med_visit_blood_pressure_diastolic = '';
+        $med_visit_skull_perimeter = '';
+        $med_visit_exam_results = '';
+        $med_visit_lab_results = '';
+        $med_visit_medication = '';
+        $med_visit_referrals = '';
+
+        $current_benefiter_medical_visit_id = $request['current_medical_visit'];
+        $current_benefiter_medical_visits_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
+        $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+        // for every medical visit of the benefiter fetch the corresponding medical data from DB
+        foreach($current_benefiter_medical_visits_list as $med_visit) {
+            if ($med_visit['id'] == $current_benefiter_medical_visit_id) {
+                //Doctor Name
+                $med_visit_doctor = $med_visit['doctor']['name'] . ' ' . $med_visit['doctor']['lastname'];
+                // Examination date
+                if ($med_visit['medical_visit_date'] == null) {
+                    $med_visit_date = $this->datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['created_at']);
+                } else {
+                    $med_visit_date = $this->datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit['medical_visit_date']);
+                }
+                // Visit location
+                $med_visit_location = $med_visit['medicalLocation']['description'];
+                // Visit incident type
+                $med_visit_incident_type = $med_visit['medicalIncidentType']['description'];
+                // Chronic Conditions
+                $med_visit_chronic_conditions = medical_chronic_conditions::where('benefiters_id', $id)->where('medical_visit_id', $med_visit['id'])->with('chronic_conditions_lookup')->get();
+                // physical examinations
+                $med_visit_examination = medical_examinations::where('medical_visit_id', $med_visit['id'])->first();
+                // height
+                $med_visit_height = $med_visit_examination['height'];
+                // weight
+                $med_visit_weight = $med_visit_examination['weight'];
+                // temperature
+                $med_visit_temperature = $med_visit_examination['temperature'];
+                // blood pressure
+                $med_visit_blood_pressure_systolic = $med_visit_examination['blood_pressure_systolic'];
+                $med_visit_blood_pressure_diastolic = $med_visit_examination['blood_pressure_diastolic'];
+                // skull_perimeter
+                $med_visit_skull_perimeter = $med_visit_examination['skull_perimeter'];
+
+                // Examination results
+                $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit['id'])->with('icd10')->get();
+                // Lab results
+                $med_visit_lab_results = medical_laboratory_results::where('medical_visit_id', $med_visit['id'])->get();
+                // Medication
+                $med_visit_medication = medical_medication::where('medical_visit_id', $med_visit['id'])->with('medical_medication_lookup')->get();
+                // Referrals
+                $med_visit_referrals = medical_referrals::where('medical_visit_id', $med_visit['id'])->get();
+            }
+        }
+        // ------ END MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+        return  view('partials.modals.medical_visit_info')->with('current_benefiter_medical_visits_list', $current_benefiter_medical_visits_list)
+                                                    ->with('med_visit_doctor', $med_visit_doctor)
+                                                    ->with('med_visit_location', $med_visit_location)
+                                                    ->with('med_visit_incident_type', $med_visit_incident_type)
+                                                    ->with('med_visit_chronic_conditions', $med_visit_chronic_conditions)
+                                                    ->with('med_visit_height', $med_visit_height)
+                                                    ->with('med_visit_weight', $med_visit_weight)
+                                                    ->with('med_visit_temperature', $med_visit_temperature)
+                                                    ->with('med_visit_blood_pressure_systolic', $med_visit_blood_pressure_systolic)
+                                                    ->with('med_visit_blood_pressure_diastolic', $med_visit_blood_pressure_diastolic)
+                                                    ->with('med_visit_skull_perimeter', $med_visit_skull_perimeter)
+                                                    ->with('med_visit_exam_results', $med_visit_exam_results)
+                                                    ->with('med_visit_lab_results', $med_visit_lab_results)
+                                                    ->with('med_visit_medication', $med_visit_medication)
+                                                    ->with('med_visit_referrals', $med_visit_referrals)
+                                                    ->with('benefiter_folder_number', $benefiter_folder_number)
+                                                    ->with('benefiter', $benefiter)
+                                                    ->with('ExamResultsLookup', $ExamResultsLookup)
+                                                    ->with('med_visit_date', $med_visit_date);
+    }
 
     //------------ POST MEDICAL VISIT DATA -------------------------------//
     public function postMedicalFolder(Request $request, $id){
-//        dd($request->all());
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
         $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
@@ -376,6 +467,7 @@ class RecordsController extends Controller
         $medical_locations = medical_location_lookup::get()->all();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
         $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+
 
         // Post Validation
         $validator = $this->medicalVisit->medicalValidation($request->all());
@@ -394,7 +486,6 @@ class RecordsController extends Controller
 
 //            $upload_file_description_session = $request['upload_file_description'];
 //            $upload_file_title_session = $request['upload_file_title'];
-
 
             $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
@@ -460,8 +551,10 @@ class RecordsController extends Controller
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
 
-    public function fetch_medical_visits_data($id){
-        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
+    // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+    public function fetch_medical_visits_data(Request $request){
+        $current_benefiter_medical_visit_id = $request['current_medical_visit'];
+        return $current_benefiter_medical_visit_id;
     }
 
 //-------------------------------------------------------------------------------------------------//
