@@ -84,7 +84,7 @@ class RecordsController extends Controller
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
         session()->forget('benefiter_languages');
         $successMsg = session()->get('success', function() { return null; });
-        session()->forget('successMsg');
+        session()->forget('success');
         $errors = session()->get('errors' , function() { return null; });
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
@@ -174,13 +174,13 @@ class RecordsController extends Controller
         // fetch all saved referrals
         $basic_info_referrals = BenefiterReferrals::get()->all();
 
-        return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals);
+        return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals)->with("success", \Lang::get('records_controller_messages.referrals_create_success'));
     }
 
     public function deleteBasicInfoReferral($id, $referral_id){
         BenefiterReferrals::where('id', '=', $referral_id)->delete();
 
-        return redirect('benefiter/'.$id.'/basic-info');
+        return redirect('benefiter/'.$id.'/basic-info')->with("success", \Lang::get('records_controller_messages.referrals_delete_success'));
     }
 
     // get social folder view
@@ -190,6 +190,8 @@ class RecordsController extends Controller
         // get psychosocial theme from session, else get null and afterwards forget session value
         $session_theme = session()->get('psychosocialTheme', function() { return null; });
         session()->forget('psychosocialTheme');
+        $successMsg = session()->get('success', function() { return null; });
+        session()->forget('success');
         if($benefiter == null) {
             return view('errors.404');
         } else {
@@ -212,7 +214,8 @@ class RecordsController extends Controller
                     ->with("psychosocial_support", $psychosocialSupport)
                     ->with("psychologist_id", $psychologist_id)
                     ->with("session_theme", $session_theme)
-                    ->with('benefiter_sessions', $benefiter_sessions);
+                    ->with('benefiter_sessions', $benefiter_sessions)
+                    ->with('success', $successMsg);
             }
         }
     }
@@ -230,7 +233,7 @@ class RecordsController extends Controller
             $this->socialFolderService->saveSocialFolderToDB($request->all(), $id);
             $socialFolder = $this->socialFolderService->getSocialFolderFromBenefiterId($id);
             $psychosocialSupport = $this->socialFolderService->getBenefiterPsychosocialSupport($id);
-            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport);
+            return view('benefiter.social_folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->with('success', \Lang::get('records_controller_messages.social_folder_create_success'));
         }
     }
 
@@ -247,10 +250,10 @@ class RecordsController extends Controller
                                     'session_date' => $request->session_date,
                                  ))
                 ->with('psychosocialTheme', $request->psychosocial_theme)
-                ->withFlashMessage($validator->errors()->all());
+                ->withErrors($validator->errors()->all());
         } else {
             $this->socialFolderService->saveNewSessionToDB($request->all(), $id);
-            return redirect('benefiter/'.$id.'/social-folder');
+            return redirect('benefiter/'.$id.'/social-folder')->with('success', \Lang::get('records_controller_messages.session_create_success'));
         }
     }
 
@@ -267,17 +270,17 @@ class RecordsController extends Controller
                     'session_date' => $request->session_date,
                 ))
                 ->with('psychosocialTheme', $request->psychosocial_theme)
-                ->withFlashMessage($validator->errors()->all());
+                ->withErrors($validator->errors()->all());
         } else {
             $this->socialFolderService->saveEditedSessionToDB($request->all(), $session_id);
-            return redirect('benefiter/'.$id.'/social-folder');
+            return redirect('benefiter/'.$id.'/social-folder')->with('success', \Lang::get('records_controller_messages.session_edit_success'));
         }
     }
 
     // delete a session
     public function getSessionDelete($id, $session_id){
         $this->socialFolderService->deleteSessionById($session_id);
-        return redirect("benefiter/" . $id . "/social-folder");
+        return redirect("benefiter/" . $id . "/social-folder")->with('success', \Lang::get('records_controller_messages.session_delete_success'));
     }
 
 
@@ -610,6 +613,8 @@ class RecordsController extends Controller
         $asylumRequest = null;
         $noLegalStatus = null;
         $lawyerActions = null;
+        $successMsg = session()->get('success', function() { return null; });
+        session()->forget('success');
         // if the legal folder exists return all things connected with it
         if($legalFolder != null){
             $asylumRequest = $this->legalFolderService->findAsylumRequestFromLegalFolderId($legalFolder->id);
@@ -626,7 +631,8 @@ class RecordsController extends Controller
             ->with('asylum_request', $asylumRequest)
             ->with('no_legal_status', $noLegalStatus)
             ->with('lawyer_action', $lawyerActions)
-            ->with('tab', 'legal');
+            ->with('tab', 'legal')
+            ->with('success', $successMsg);
     }
 
     // gets data from legal folder form
@@ -638,7 +644,7 @@ class RecordsController extends Controller
                 ->withErrors($validator->errors()->all());
         } else {
             $this->legalFolderService->saveLegalFolderToDB($request->all(), $id);
-            return redirect('benefiter/'.$id.'/legal-folder');
+            return redirect('benefiter/'.$id.'/legal-folder')->with('success', \Lang::get('records_controller_messages.legal_folder_create_success'));
         }
     }
 }

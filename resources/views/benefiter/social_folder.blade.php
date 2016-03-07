@@ -22,13 +22,16 @@
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
-                @if (Session::has('flash_message'))
-                    @foreach(Session::get('flash_message') as $msg)
-                        <li>{{$msg}}</li>
-                    @endforeach
-                @endif
             </ul>
         </div>
+    @else
+        @if(isset($success) and $success != null)
+        <div class="alert alert-success">
+            <ul>
+                <li>{{ $success }}</li>
+            </ul>
+        </div>
+        @endif
     @endif
 
     @include('partials.forms.social_folder_form')
