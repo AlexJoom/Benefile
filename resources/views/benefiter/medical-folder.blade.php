@@ -30,9 +30,7 @@
             </ul>
         </div>
     @endif
-
-
-    @include('partials.forms.new_medical_visit')
+        @include('partials.forms.medical-visit.new_medical_visit')
 @stop
 
 @section('panel-scripts')
