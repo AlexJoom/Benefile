@@ -281,23 +281,25 @@ $(document).ready(function(){
     $("button.medical_visit_from_history").on("click", function(){
         // get the clicked attribute->value
         var medical_visit_id = $(this).val();
+        var medical_visit_url = $(this).data('url');
         $.ajax({
-            url: window.location.protocol + "//" + window.location.host + "/" + "benefiter/getEachMedicalVisit",
+            //url: window.location.protocol + "//" + window.location.host + "/" + "benefiter/getEachMedicalVisit",
+            url: medical_visit_url,
             type: "get",
             data: {current_medical_visit: medical_visit_id},
             //datatype: "json",
             success:
                 function(data){
-                    return data;
+                    $('#medical-visit-modal-content').append(data);
                 }
         });
     });
     // MODAL CLINICAL RESULTS TABLE
-    $(function() {
-        $('#clinical-results-modal').DataTable( {
-            //"lengthMenu": [ [-1], ["All"] ]
-        });
-    });
+    //$(function() {
+    //    $('#clinical-results-modal').DataTable( {
+    //        //"lengthMenu": [ [-1], ["All"] ]
+    //    });
+    //});
 });
 
 
