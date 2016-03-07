@@ -70,5 +70,8 @@
         'description' => 'ΠΕΡΙΓΡΑΦΗ',
         'referral_date' => 'ΗΜ. ΠΑΡΑΠΟΜΠΗΣ',
         'referral_label' => 'ΠΑΡΑΠΟΜΠΗ: ',
+        'delete_referral' => 'Διαγραφή',
+        'delete_session_modal_title' => 'Είστε σίγουρος πως θέλετε να διαγράψετε την παραπομπή;',
+        'done' => 'Διαγραφή',
         'save_referral' => 'Αποθήκευση Παραπομπών',
     );

@@ -1338,7 +1338,7 @@
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
                                             <td>
-                                                <button class="submit-button delete-session" name="{{ $referral->id }}">delete session</button>
+                                                <button class="submit-button delete-session" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                             </td>
                                         </tr>
                                     @endif
