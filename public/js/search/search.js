@@ -33,6 +33,9 @@ $(document).ready(function(){
         MakeAjaxSearchCall($url, $temp);
         return false;
     });
+
+    // initialize DataTable
+    $('#results').DataTable({});
 });
 
 // make the ajax call to get a response
@@ -53,6 +56,8 @@ function MakeAjaxSearchCall($url, $values){
         beforeSend: function () {
             // spinner start
             //$loader = $("body").faLoadingAdd('fa-cog');
+            // remove all rows from results table
+            $("#results > tbody > tr").remove();
         },
         success: function ($response) {
             DisplayResults($response);
@@ -68,5 +73,13 @@ function MakeAjaxSearchCall($url, $values){
 
 // show the results returned from the ajax call
 function DisplayResults($response){
-    console.log($response);
+    // if nothing is returned, display "No results found" message
+    if($response == ''){
+        $("#results > tbody").append("<tr class=\"odd\"><td class=\"dataTables_empty\" valign=\"top\" colspan=\"4\">No results found</td></tr>");
+    } else { // else display results returned
+        for (var i in $response) {
+            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td></tr>";
+            $("#results > tbody").append($row);
+        }
+    }
 }

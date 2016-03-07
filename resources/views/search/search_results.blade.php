@@ -15,6 +15,10 @@
 </head>
 <body>
     Testing here!
-    {{$results}}
+    @if(!empty($results))
+        @foreach($results as $result)
+            {{$result->folder_number}}
+        @endforeach
+    @endif
 </body>
 </html>
