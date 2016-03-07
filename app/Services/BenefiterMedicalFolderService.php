@@ -11,10 +11,12 @@ use App\Models\Benefiters_Tables_Models\medical_medication;
 use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\medical_referrals;
 use App\Models\Benefiters_Tables_Models\medical_uploads;
+use App\Models\Benefiters_Tables_Models\medical_incident_type_lookup;
 use App\Models\Benefiters_Tables_Models\ICD10;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Services\DatesHelper;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class BenefiterMedicalFolderService
@@ -414,6 +416,39 @@ class BenefiterMedicalFolderService
         return $reindexed_array;
     }
 
+    public function findMedicalVisitsForBenefiter($id){
+        return medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
+    }
+
+    public function findMedicalChronicConditionsForBenefiter($benefiter_id, $medical_visit_id){
+        return medical_chronic_conditions::where('benefiters_id', $benefiter_id)->where('medical_visit_id', $medical_visit_id)->with('chronic_conditions_lookup')->get();;
+    }
+
+    public function benefiter_medical_visits_number($id){
+        $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
+        return $medical_visits_number;
+    }
+
+    public function examinationsResultsLookup(){
+        $examResultsLookup = medical_examination_results_lookup::get()->all();
+        return $examResultsLookup;
+    }
+
+    public function medicalLocationsLookup(){
+        $medical_locations = medical_location_lookup::get();
+        return $medical_locations;
+    }
+
+    public function medicalIncidentTypeLookup(){
+        $medical_incident_type = medical_incident_type_lookup::get();
+        return $medical_incident_type;
+    }
+
+    public function findDoctorId(){
+        $doctor_id = Auth::user()->id;
+        return $doctor_id;
+    }
+
     public function getICD10By_id($id){
         $description = ICD10::where('id', '=', $id)->first()->description;
         $code = ICD10::where('id', '=', $id)->first()->code;
@@ -425,7 +460,6 @@ class BenefiterMedicalFolderService
         $medicine_name = medical_medication_lookup::where('id', '=', $id)->first()->description;
         return $medicine_name;
     }
-
 
     // return all the medical locations
     public function getAllMedicalLocations(){
