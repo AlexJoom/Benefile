@@ -21,3 +21,9 @@
     padding: 20px;
     text-align: center;
 }
+
+.div-hr {
+	border-bottom: 1px solid #f7f7f7;
+	width: 99%;
+	margin-left: 10px;
+}
