@@ -37,6 +37,13 @@ $(document).ready(function(){
         $(this).parents(".added-div").remove();
     });
 
+    // display modal asking for session deletion confirmation
+    $(".delete-session").on("click", function(e){
+        $("#delete-session-modal").modal('show');
+        var delSessionPath = $(".delete-session-path").attr("value") + "/";
+        $(".delete-session-form").attr("action", delSessionPath);
+    });
+
     // make added-div languages display remove and not add button
     $(".added-div").each(function(){
         $(this).find(".color-green").hide();
