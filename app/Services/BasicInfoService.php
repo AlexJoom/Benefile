@@ -206,7 +206,11 @@ class BasicInfoService{
             }
             $queryString = $queryString . "medical_location_id=" . $medical_location_id;
         }
-        return \DB::select(\DB::raw($queryString));
+        if (!$firstWhereParameter) {
+            return \DB::select(\DB::raw($queryString));
+        } else {
+            return null;
+        }
     }
 
     // get all languages keys from basic info's form $request
