@@ -1,6 +1,8 @@
 <?php
 
     return array(
+        'new_benefiter' => 'Νέος Ωφελούμενος',
+        'basic_info' => 'Βασικά Στοιχεία',
         'personal_info' => 'Προσωπικά Στοιχεία',
         'folder_number' => 'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
         'lastname' => 'ΕΠΩΝΥΜΟ',

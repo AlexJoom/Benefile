@@ -1,7 +1,7 @@
 @extends('layouts.mainPanel')
 
 @section('panel-title')
-    Νέος Ωφελούμενος
+    @if($benefiter->id == null) @lang('basic_info_form.new_benefiter') @else @lang('basic_info_form.basic_info') @endif
 @stop
 
 @section('panel-headLinks')

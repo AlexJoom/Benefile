@@ -8,6 +8,10 @@
     <link href="{{asset('css/main-panel/benefiters-list.css')}}" rel="stylesheet" type="text/css">
 @endsection
 
+@section('panel-title')
+    @lang($p."benefiters_list")
+@endsection
+
 @section('main-window-content')
 
     <div class="no-margin pos-relative" id="results-to-activate">
