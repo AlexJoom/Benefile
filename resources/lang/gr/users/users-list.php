@@ -1,6 +1,7 @@
 <?php
 
     return array(
+        'users_list'     =>  'Λίστα Χρηστών',
         'to_activate'    =>  'ΠΡΟΣ ΕΝΕΡΓΟΠΟΙΗΣΗ',
         'active'         =>  'ΕΝΕΡΓΟΠΟΙΗΜΕΝΟΙ',
         'deactivated'    =>  'ΑΠΕΝΕΡΓΟΠΟΙΗΜΕΝΟΙ',

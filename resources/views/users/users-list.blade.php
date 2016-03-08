@@ -3,6 +3,10 @@
 ?>
 @extends('layouts.mainPanel')
 
+@section('panel-title')
+    @lang($p.'users_list')
+@endsection
+
 @section('main-window-content')
     {{-- actions refering to users --}}
     <div class="no-margin light-green-background pos-relative height-70" id="actions">
