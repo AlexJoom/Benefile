@@ -205,6 +205,7 @@ class BasicInfoService{
                 $queryString = $queryString . " and ";
             }
             $queryString = $queryString . "medical_location_id=" . $medical_location_id;
+            $firstWhereParameter = false;
         }
         if (!$firstWhereParameter) {
             return \DB::select(\DB::raw($queryString));
