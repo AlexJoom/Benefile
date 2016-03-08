@@ -16,10 +16,10 @@ class UploadFileController extends Controller
         // get the file from the post request
         $file = Input::file('file');
         // set file name
-        $filename =Carbon::now('Europe/Athens') .'-' . $file->getClientOriginalName();
+        $filename = Carbon::now('Europe/Athens') . '-' . $file->getClientOriginalName();
         // move file to correct location
-        $file->move('../uploadedExcels', $filename);
-        $filePath = '/uploadedExcels/'. $filename;
+        $file->move(public_path() . '/uploads/uploadedExcels', $filename);
+        $filePath = '/public/uploads/uploadedExcels/'. $filename;
 
         return $this->fileImport($filePath);
     }

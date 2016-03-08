@@ -17,7 +17,7 @@
     @section('main-window-content')
         <div class="title">Upload Excel file here</div>
         <div>
-            <form action="{{url('uploadCSV')}}" id="dropzone" class="dropzone">
+            <form action="{{url('new-benefiter/uploadCSV')}}" id="dropzone" class="dropzone">
                 <div>
                     <div class="dz-message needsclick">
                         <strong>
