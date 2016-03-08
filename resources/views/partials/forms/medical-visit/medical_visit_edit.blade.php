@@ -172,6 +172,8 @@
             {!! Form::hidden('benefiter_id', $benefiter->id) !!}
             {{-- get the doctor id --}}
             {!! Form::hidden('doctor_id', $doctor_id) !!}
+            {{-- get medical visit id --}}
+            {!! Form::hidden('selected_medical_visit_id', $selected_medical_visit_id) !!}
 
             {{-- BASIC MEDICAL DETAILS --}}
             <div class="form-section no-bottom-border">
@@ -215,7 +217,7 @@
                         {{-- main medical info --}}
                         <div id="chronic-cond" class="row padding-bottom-30">
                             {{-- Fetch the posted input values if the post fails --}}
-                            @if(!empty($med_visit_chronic_conditions))
+                            @if(!empty($med_visit_chronic_conditions) && count($med_visit_chronic_conditions) !=0)
                                 @for($i=0; $i< count($med_visit_chronic_conditions) ; $i++)
                                     <div  class="padding-left-right-15 chronicConditions condition-added-div">
                                         <div class="form-group float-left width-100-percent">
@@ -298,42 +300,42 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
                 </div>
-                    @if(!empty($med_visit_exam_results) && count($med_visit_exam_results) != 0)
-                        @for($i=0; $i<count($ExamResultsLookup) ; $i++)
-                            <div class="row padding-left-right-30 padding-top-bottom-15">
-                                <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition">
-                                    {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
-                                    <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
-                                        <option selected="selected" style="display: none"></option>
-                                            @for($j=0; $j<count($med_visit_exam_results); $j++)
-                                                @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
-                                                    <option selected="selected" value="{{$med_visit_exam_results[$j]['icd10_id']}}" >{{$med_visit_exam_results[$j]['icd10']['code']}}: {{$med_visit_exam_results[$j]['icd10']['description']}}</option>
-                                                @endif
-                                            @endfor
-                                    </select>
-                                    <?php $duplicity_counter = 0; ?>
-                                    @for($j=0; $j<count($med_visit_exam_results); $j++)
-                                        @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'] && $duplicity_counter < 1)
-                                            {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
-                                            <?php $duplicity_counter++; ?>
-                                        @endif
-                                    @endfor
-                                </div>
+                @if(!empty($med_visit_exam_results) && count($med_visit_exam_results) != 0)
+                    @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                        <div class="row padding-left-right-30 padding-top-bottom-15">
+                            <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition">
+                                {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
+                                <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
+                                    <option selected="selected" style="display: none"></option>
+                                        @for($j=0; $j<count($med_visit_exam_results); $j++)
+                                            @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
+                                                <option selected="selected" value="{{$med_visit_exam_results[$j]['icd10_id']}}" >{{$med_visit_exam_results[$j]['icd10']['code']}}: {{$med_visit_exam_results[$j]['icd10']['description']}}</option>
+                                            @endif
+                                        @endfor
+                                </select>
+                                <?php $duplicity_counter = 0; ?>
+                                @for($j=0; $j<count($med_visit_exam_results); $j++)
+                                    @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'] && $duplicity_counter < 1)
+                                        {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                        <?php $duplicity_counter++; ?>
+                                    @endif
+                                @endfor
                             </div>
-                         @endfor
-                    @else
-                        @for($i=0; $i<count($ExamResultsLookup) ; $i++)
-                            <div class="row padding-left-right-30 padding-top-bottom-15">
-                                <div class=" form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">
-                                    {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
-                                    <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
-                                        <option selected="selected" style="display: none"></option>
-                                    </select>
-                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
-                                </div>
+                        </div>
+                     @endfor
+                @else
+                    @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                        <div class="row padding-left-right-30 padding-top-bottom-15">
+                            <div class=" form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">
+                                {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
+                                <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
+                                    <option selected="selected" style="display: none"></option>
+                                </select>
+                                {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
                             </div>
-                         @endfor
-                    @endif
+                        </div>
+                     @endfor
+                @endif
             </div>
 
             {{-- LABORATORY RESULTS --}}

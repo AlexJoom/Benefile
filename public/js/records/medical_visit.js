@@ -267,6 +267,7 @@ $(document).ready(function(){
     // Fade out success visit submit messge
     $('div.success-message').delay(5000).fadeOut(400);
     $('div.unsuccess-message').delay(5000).fadeOut(400);
+    $('i.glyphicon.glyphicon-ok.updated-visit').delay(5000).fadeOut(400);
 
     // Change value to hidden field
     $('.supply_from_praksis').change(function(){
