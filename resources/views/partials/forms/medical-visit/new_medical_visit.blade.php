@@ -219,7 +219,14 @@
                                     <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_visits_list[$i]['medical_visit_date']) }}</td>
                                     @endif
                                     <td><button value="{{$benefiter_medical_visits_list[$i]['id']}}" data-url="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/getEachMedicalVisit') }}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button></td>
-                                    <td><a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg" type="button" >@lang($p.('edit_visit'))</a></td>
+                                    <td>
+                                        <a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg" type="button" >
+                                            @lang($p.('edit_visit'))
+                                        </a>
+                                        @if($benefiter_medical_visits_list[$i]['id'] == $selected_medical_visit_id && $visit_submited_succesfully == 3)
+                                            <i class="glyphicon glyphicon-ok updated-visit"></i>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>

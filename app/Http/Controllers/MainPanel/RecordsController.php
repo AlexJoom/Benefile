@@ -283,13 +283,13 @@ class RecordsController extends Controller
         return redirect("benefiter/" . $id . "/social-folder")->with('success', \Lang::get('records_controller_messages.session_delete_success'));
     }
 
-
 //---------------------------- MEDICAL FOLDER -----------------------------------------------------//
 //-------------------------------------------------------------------------------------------------//
 
     //------------ GET MEDICAL FOLDER FOR BENEFITER -------------------------------//
     public function getMedicalFolder($id){
         // POST result message
+        $selected_medical_visit_id = session()->get('selected_medical_visit_id', function() { return 0; });
         $visit_submited_succesfully = session()->get('visit_submited_succesfully', function() { return 0; });
         session()->forget('visit_submited_succesfully'); // 0:initial value, 1:Success, 2:Unsuccess
 
@@ -355,6 +355,7 @@ class RecordsController extends Controller
             $doctor_id = $this->medicalVisit->findDoctorId();  //Auth::user()->id;
             $benefiter_id = $benefiter->id;
             return view('benefiter.medical-folder')
+                        ->with('selected_medical_visit_id', $selected_medical_visit_id)
                         ->with('ExamResultsLookup', $ExamResultsLookup)
                         ->with('medical_locations_array', $medical_locations_array)
                         ->with('medical_incident_type_array', $medical_incident_type_array)
@@ -654,8 +655,25 @@ class RecordsController extends Controller
     }
 
     //------------ POST: EDIT MEDICAL VISIT ---------------------------------------//
-    public function postMedicalVisitFromEditing(){
-        //TODO check before save to dbif doctor has changed
+    public function postMedicalVisitFromEditing(Request $request){
+        $selected_medical_visit_id = $request['selected_medical_visit_id'];
+        $benefiter_id = $request['benefiter_id'];
+//        dd($request->all());
+
+        // Post Validation
+        $validator = $this->medicalVisit->medicalValidation($request->all());
+        if($validator->fails()){
+            $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
+            return redirect('benefiter/'.$benefiter_id.'/editMedicalVisit?medical_visit_id='.$selected_medical_visit_id)
+                ->with('visit_submited_succesfully', $visit_submited_succesfully)
+                ->withErrors($validator->errors()->all());
+        } else {
+            $this->medicalVisit->update_medical_visit_tables($request->all(), $selected_medical_visit_id);
+            $visit_submited_succesfully = 3; // 0:initial value, 1:Success, 2:Unsuccess, 3: Success update
+            return redirect('benefiter/'.$benefiter_id.'/medical-folder')
+                ->with('selected_medical_visit_id', $selected_medical_visit_id)
+                ->with('visit_submited_succesfully', $visit_submited_succesfully);
+        }
 
     }
 

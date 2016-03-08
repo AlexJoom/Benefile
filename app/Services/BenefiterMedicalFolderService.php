@@ -143,7 +143,6 @@ class BenefiterMedicalFolderService
     }
 
     //----------- medical_visit table ------------------------------------DONE//
-
     private function create_medical_visit($request){
         $newMedicalVisit = new medical_visits();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
@@ -154,8 +153,6 @@ class BenefiterMedicalFolderService
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
-
-
 
     //----------- medical_chronic_conditions table -----------------------DONE//
     // DB save
@@ -187,9 +184,6 @@ class BenefiterMedicalFolderService
         return $chronic_conditions_array;
     }
 
-
-
-    // ------------------------------------------------------------------ //
     //----------- medical_examination_results table ----------------------DONE//
     // DB save
     private function save_medical_examination_results($request, $id){
@@ -216,8 +210,6 @@ class BenefiterMedicalFolderService
         }
     }
 
-
-    // ----------------------------------------------------------------- //
     //----------- medical_examinations table ----------------------------DONE//
     // DB save
     private function save_medical_examinations($request, $id){
@@ -235,9 +227,6 @@ class BenefiterMedicalFolderService
         $medical_examination->save();
     }
 
-
-
-    // ----------------------------------------------------------------- //
     //----------- medical_laboratory_results table ----------------------DONE//
     // DB save
     private function save_medical_laboratory_results($request, $id){
@@ -262,11 +251,7 @@ class BenefiterMedicalFolderService
         }
         return $lab_results_array;
     }
-    // other lookup tables
 
-
-
-    // --------------------------------------------------------------- //
     //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function save_medical_medication($request, $id){
@@ -335,8 +320,6 @@ class BenefiterMedicalFolderService
         }
     }
 
-
-    // -------------------------------------------------------------- //
     //----------- medical_referrals table ---------------------------DONE//
     // DB save
     private function save_medical_referrals($request, $id){
@@ -360,9 +343,6 @@ class BenefiterMedicalFolderService
         return $referrals_array;
     }
 
-
-
-    // ------------------------------------------------------------ //
     //----------- medical_uploads table ----------------------------//
     // DB save
     private function save_medical_uploads($request, $id){
@@ -388,14 +368,162 @@ class BenefiterMedicalFolderService
         }
     }
 
-
-
     // ------------------------------------------------------------------ //
     // PART 2 : END
     //--------------------------------------------------------------------//
 
 
 
+    // ------------------------------------------------------------------ //
+    // PART 3 : EDIT SAVED MEDICAL VISIT
+    //--------------------------------------------------------------------//
+
+
+    public function update_medical_visit_tables($request, $selected_medical_visit_id){
+        // medical visit table
+        $updatedMedicalVisit_id = $this->update_medical_visit($request, $selected_medical_visit_id);
+        // chronic conditions table
+        $this->update_medical_chronic_conditions($request, $updatedMedicalVisit_id);
+        //medical_examination_results table
+        $this->update_medical_examination_results($request, $updatedMedicalVisit_id);
+        //medical_examinations table
+        $this->update_medical_examinations($request, $updatedMedicalVisit_id);
+        // laboratory results
+
+        // medication table
+
+        // medical referrals
+
+        // medical file uploads
+
+    }
+
+    //----------- medical_visit table ------------------------------------DONE//
+    private function update_medical_visit($request, $selected_medical_visit_id){
+        $updateddMedicalVisit = medical_visits::find($selected_medical_visit_id);
+
+        $updateddMedicalVisit->benefiter_id = $request['benefiter_id'];
+        $updateddMedicalVisit->doctor_id = $request['doctor_id'];
+        $updateddMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $updateddMedicalVisit->medical_incident_id = $request['medical_incident_id'];
+        $updateddMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
+        $updateddMedicalVisit->save();
+        return $updateddMedicalVisit->id;
+    }
+
+    //----------- medical_chronic_conditions table -----------------------DONE//
+    // DB save
+    private function update_medical_chronic_conditions($request, $selected_medical_visit_id){
+        $request_medical_chronic_conditions = $this->get_updated_chronic_conditions($request);
+        $saved_medical_chronic_conditions = medical_chronic_conditions::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $already_saved_count = count($saved_medical_chronic_conditions);
+        $counter = 0;
+        foreach($request_medical_chronic_conditions as $cc){
+            if(!empty($cc)){
+                if($counter < $already_saved_count){
+                    $medical_chronic_condition = medical_chronic_conditions::find($saved_medical_chronic_conditions[$counter]['id']);
+                    // save to lookup first
+                    $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+                    $medical_chronic_conditions_lookup->description = $cc;
+                    $medical_chronic_conditions_lookup->save();
+                    // then update chronic conditions table
+                    $medical_chronic_condition->benefiters_id = $request['benefiter_id'];
+                    $medical_chronic_condition->medical_visit_id = $selected_medical_visit_id;
+                    $medical_chronic_condition->description = $cc;
+                    $medical_chronic_condition->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+                    $medical_chronic_condition->save();
+                    $counter++;
+                }else{
+                    $medical_chronic_conditions = new medical_chronic_conditions();
+                    // save to lookup first
+                    $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+                    $medical_chronic_conditions_lookup->description = $cc;
+                    $medical_chronic_conditions_lookup->save();
+                    // then to chronic conditions table
+                    $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
+                    $medical_chronic_conditions->medical_visit_id = $selected_medical_visit_id;
+                    $medical_chronic_conditions->description = $cc;
+                    $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+                    $medical_chronic_conditions->save();
+                }
+            }
+        }
+    }
+    // post request
+    private function get_updated_chronic_conditions($request){
+        $chronic_conditions = $request['chronic_conditions'];
+        $chronic_conditions_array = [];
+        foreach ($chronic_conditions as $cc){
+            array_push($chronic_conditions_array, $cc);
+        }
+        return $chronic_conditions_array;
+    }
+
+    //----------- medical_examination_results table ----------------------DONE//
+    // DB save
+    private function update_medical_examination_results($request, $selected_medical_visit_id){
+        if(!empty($request['examResultLoukup'])){
+            $request_med_exams_results = $request['examResultLoukup'];
+            $request_med_exams_description = $request['examResultDescription'];
+            // all results saved for this visit
+            $saved_med_exams_results = medical_examination_results::where("medical_visit_id", $selected_medical_visit_id)->get();
+            $already_saved_count = count($saved_med_exams_results);
+            $counter = 0;
+            for($i=0; $i<count($request_med_exams_results) ; $i++){
+                if(!empty($request_med_exams_results[$i])) {
+                    for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
+                        if (!empty($request_med_exams_results[$i][$j])) {
+                            if($counter < $already_saved_count){
+                                $medical_examination_result = medical_examination_results::find($saved_med_exams_results[$counter]['id']);
+
+                                $medical_examination_result->description = $request_med_exams_description[$i];
+                                $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
+                                $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
+                                // get medical examinations list from the lookup table
+                                $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i + 1)->first()['attributes']['id'];
+                                $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
+
+                                $medical_examination_result->save();
+                                $counter++;
+                            }else{
+                                $medical_examination_results = new medical_examination_results();
+                                $medical_examination_results->description = $request_med_exams_description[$i];
+                                $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
+                                $medical_examination_results->medical_visit_id = $selected_medical_visit_id;
+                                // get medical examinations list from the lookup table
+                                $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i + 1)->first()['attributes']['id'];
+                                $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
+
+                                $medical_examination_results->save();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //----------- medical_examinations table ----------------------------DONE//
+    // DB save
+    private function update_medical_examinations($request, $selected_medical_visit_id){
+        $medical_examination = medical_examinations::where("medical_visit_id", $selected_medical_visit_id)->first();
+//        $medical_examination = new medical_examinations();
+        $medical_examination->height = $request['height'];
+        $medical_examination->weight = $request['weight'];
+        $medical_examination->temperature = $request['temperature'];
+        $medical_examination->blood_pressure_systolic = $request['blood_pressure_systolic'];
+        $medical_examination->blood_pressure_diastolic = $request['blood_pressure_diastolic'];
+        $medical_examination->skull_perimeter = $request['skull_perimeter'];
+        $medical_examination->examination_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
+        $medical_examination->medical_visit_id = $selected_medical_visit_id;
+
+        $medical_examination->save();
+    }
+
+
+    // ------------------------------------------------------------------ //
+    // PART 3 : END EDIT SAVED MEDICAL VISIT
+    //--------------------------------------------------------------------//
 
     // FUNCTIONS USED BY MANY
 
@@ -478,20 +606,18 @@ class BenefiterMedicalFolderService
         $med_visit_uploads = medical_uploads::where('medical_visit_id', $med_visit_id)->get();
         return $med_visit_uploads;
     }
-
-
+    // find name of ICD10 list by id
     public function getICD10By_id($id){
         $description = ICD10::where('id', '=', $id)->first()->description;
         $code = ICD10::where('id', '=', $id)->first()->code;
         $result = $code .': '. $description;
         return $result;
     }
-
+    // find medication name by id
     public function getMedicationLookupBy_id($id){
         $medicine_name = medical_medication_lookup::where('id', '=', $id)->first()->description;
         return $medicine_name;
     }
-
     // return all the medical locations
     public function getAllMedicalLocations(){
         return medical_location_lookup::get()->all();
