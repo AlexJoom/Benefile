@@ -389,12 +389,13 @@ class BenefiterMedicalFolderService
         //medical_examinations table
         $this->update_medical_examinations($request, $updatedMedicalVisit_id);
         // laboratory results
-
+        $this->update_medical_laboratory_results($request, $updatedMedicalVisit_id);
         // medication table
-
+        $this->update_medical_medication($request, $updatedMedicalVisit_id);
         // medical referrals
-
+        $this->update_medical_referrals($request, $updatedMedicalVisit_id);
         // medical file uploads
+        $this->upload_medical_uploads($request, $updatedMedicalVisit_id);
 
     }
 
@@ -415,37 +416,67 @@ class BenefiterMedicalFolderService
     // DB save
     private function update_medical_chronic_conditions($request, $selected_medical_visit_id){
         $request_medical_chronic_conditions = $this->get_updated_chronic_conditions($request);
+        $requests_count = count($request_medical_chronic_conditions);
         $saved_medical_chronic_conditions = medical_chronic_conditions::where("medical_visit_id", $selected_medical_visit_id)->get();
-        $already_saved_count = count($saved_medical_chronic_conditions);
+        $saved_count = count($saved_medical_chronic_conditions);
         $counter = 0;
-        foreach($request_medical_chronic_conditions as $cc){
-            if(!empty($cc)){
-                if($counter < $already_saved_count){
-                    $medical_chronic_condition = medical_chronic_conditions::find($saved_medical_chronic_conditions[$counter]['id']);
-                    // save to lookup first
-                    $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
-                    $medical_chronic_conditions_lookup->description = $cc;
-                    $medical_chronic_conditions_lookup->save();
-                    // then update chronic conditions table
-                    $medical_chronic_condition->benefiters_id = $request['benefiter_id'];
-                    $medical_chronic_condition->medical_visit_id = $selected_medical_visit_id;
-                    $medical_chronic_condition->description = $cc;
-                    $medical_chronic_condition->chronic_condition_id = $medical_chronic_conditions_lookup->id;
-                    $medical_chronic_condition->save();
-                    $counter++;
-                }else{
-                    $medical_chronic_conditions = new medical_chronic_conditions();
-                    // save to lookup first
-                    $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
-                    $medical_chronic_conditions_lookup->description = $cc;
-                    $medical_chronic_conditions_lookup->save();
-                    // then to chronic conditions table
-                    $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
-                    $medical_chronic_conditions->medical_visit_id = $selected_medical_visit_id;
-                    $medical_chronic_conditions->description = $cc;
-                    $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
-                    $medical_chronic_conditions->save();
+
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                if ($counter < $saved_count) {
+                    if(!empty($request_medical_chronic_conditions[$i])){
+                        $medical_chronic_condition = medical_chronic_conditions::find($saved_medical_chronic_conditions[$counter]['id']);
+                        // save to lookup first
+                        $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+                        $medical_chronic_conditions_lookup->description = $request_medical_chronic_conditions[$i];
+                        $medical_chronic_conditions_lookup->save();
+                        // then update chronic conditions table
+                        $medical_chronic_condition->benefiters_id = $request['benefiter_id'];
+                        $medical_chronic_condition->medical_visit_id = $selected_medical_visit_id;
+                        $medical_chronic_condition->description = $request_medical_chronic_conditions[$i];
+                        $medical_chronic_condition->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+                        $medical_chronic_condition->save();
+                    }
+                } else {
+                    if(!empty($request_medical_chronic_conditions[$i])){
+                        $medical_chronic_conditions = new medical_chronic_conditions();
+                        // save to lookup first
+                        $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+                        $medical_chronic_conditions_lookup->description = $request_medical_chronic_conditions[$i];
+                        $medical_chronic_conditions_lookup->save();
+                        // then to chronic conditions table
+                        $medical_chronic_conditions->benefiters_id = $request['benefiter_id'];
+                        $medical_chronic_conditions->medical_visit_id = $selected_medical_visit_id;
+                        $medical_chronic_conditions->description = $request_medical_chronic_conditions[$i];
+                        $medical_chronic_conditions->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+                        $medical_chronic_conditions->save();
+                    }
                 }
+                $counter++;
+            }
+        // if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_count; $j++){
+                if ($counter < $requests_count) {
+                    if(!empty($request_medical_chronic_conditions[$j])){
+                        $medical_chronic_condition = medical_chronic_conditions::find($saved_medical_chronic_conditions[$counter]['id']);
+                        // save to lookup first
+                        $medical_chronic_conditions_lookup = new medical_chronic_conditions_lookup();
+                        $medical_chronic_conditions_lookup->description = $request_medical_chronic_conditions[$j];
+                        $medical_chronic_conditions_lookup->save();
+                        // then update chronic conditions table
+                        $medical_chronic_condition->benefiters_id = $request['benefiter_id'];
+                        $medical_chronic_condition->medical_visit_id = $selected_medical_visit_id;
+                        $medical_chronic_condition->description = $request_medical_chronic_conditions[$j];
+                        $medical_chronic_condition->chronic_condition_id = $medical_chronic_conditions_lookup->id;
+                        $medical_chronic_condition->save();
+                    }
+                } else {
+                    $medical_chronic_condition = medical_chronic_conditions::find($saved_medical_chronic_conditions[$counter]['id']);
+                    $medical_chronic_condition->delete();
+                }
+                $counter++;
             }
         }
     }
@@ -484,7 +515,6 @@ class BenefiterMedicalFolderService
                                 $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
 
                                 $medical_examination_result->save();
-                                $counter++;
                             }else{
                                 $medical_examination_results = new medical_examination_results();
                                 $medical_examination_results->description = $request_med_exams_description[$i];
@@ -496,6 +526,7 @@ class BenefiterMedicalFolderService
 
                                 $medical_examination_results->save();
                             }
+                            $counter++;
                         }
                     }
                 }
@@ -507,7 +538,6 @@ class BenefiterMedicalFolderService
     // DB save
     private function update_medical_examinations($request, $selected_medical_visit_id){
         $medical_examination = medical_examinations::where("medical_visit_id", $selected_medical_visit_id)->first();
-//        $medical_examination = new medical_examinations();
         $medical_examination->height = $request['height'];
         $medical_examination->weight = $request['weight'];
         $medical_examination->temperature = $request['temperature'];
@@ -519,6 +549,406 @@ class BenefiterMedicalFolderService
 
         $medical_examination->save();
     }
+
+    //----------- medical_laboratory_results table ----------------------DONE//
+    // DB save
+    private function update_medical_laboratory_results($request, $selected_medical_visit_id){
+        $request_lab_results = $this->update_laboratory_results($request);
+        $requests_count = count($request_lab_results);
+        $saved_lab_results = medical_laboratory_results::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_lab_results_count = count($saved_lab_results);
+        $counter = 0;
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_lab_results_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                if ($counter < $saved_lab_results_count) {
+                    if(!empty($request_lab_results[$i])){
+                        $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
+                        $lab_result->laboratory_results = $request_lab_results[$i];
+                        $lab_result->medical_visit_id = $selected_medical_visit_id;
+                        $lab_result->save();
+                    }
+                } else {
+                    if(!empty($request_lab_results[$i])){
+                        $lab_results = new medical_laboratory_results();
+                        $lab_results->laboratory_results = $request_lab_results[$i];
+                        $lab_results->medical_visit_id = $selected_medical_visit_id;
+                        $lab_results->save();
+                    }
+                }
+                $counter++;
+            }
+            // if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_lab_results_count; $j++){
+                if ($counter < $requests_count) {
+                    if(!empty($request_lab_results[$j])){
+                        $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
+                        $lab_result->laboratory_results = $request_lab_results[$j];
+                        $lab_result->medical_visit_id = $selected_medical_visit_id;
+                        $lab_result->save();
+                    }
+                } else {
+                    $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
+                    $lab_result->delete();
+                }
+                $counter++;
+            }
+        }
+    }
+    // post request
+    private function update_laboratory_results($request){
+        $lab_results = $request['lab_results'];
+        $lab_results_array = [];
+        foreach ($lab_results as $lr){
+            array_push($lab_results_array, $lr);
+        }
+        return $lab_results_array;
+    }
+
+    //----------- medical_medication table ----------------------------DONE//
+    // DB save
+    private function update_medical_medication($request, $selected_medical_visit_id){
+//        dd($request);
+        if(!empty($request['medication_name_from_lookup'])){
+            $request_medication_name_from_lookup = $request['medication_name_from_lookup'];
+        }
+        if(!empty($request['medication_new_name'])){
+            $request_medication_new_name = $request['medication_new_name'];
+        }
+        $request_medication_name = [];
+        $request_medication_dosage = $request['medication_dosage'];
+        $request_medication_duration = $request['medication_duration'];
+        $request_supply_from_praksis = null;
+
+        $requests_count = count($request_medication_dosage);
+        $saved_medication = medical_medication::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_medication_count = count($saved_medication);
+        $counter = 0;
+
+        if(!empty($request['supply_from_praksis_hidden'])){
+            $request_supply_from_praksis = $request['supply_from_praksis_hidden'];
+        }
+
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_medication_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                if ($counter < $saved_medication_count) {
+                    if(!empty($request_medication_name_from_lookup[$i])){
+                        $med_medication = medical_medication::find($saved_medication[$counter]['id']);
+                        // check if the request comes from the auto complete select (from lookup)
+                        if (empty($request_medication_new_name[$i])) {
+                            $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
+                            $med_medication->dosage = $request_medication_dosage[$i];
+                            $med_medication->duration = $request_medication_duration[$i];
+                            if(!empty($request_supply_from_praksis)){
+                                $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                            }else{
+                                $med_medication->supply_from_praksis = 0;
+                            }
+                            $med_medication->medical_visit_id = $selected_medical_visit_id;
+                            $med_medication->medication_lookup_id = $request_medication_name[$i];
+                            $med_medication->save();
+                        }
+                        // check if the request comes from the input field.
+                        else{
+                            $request_medication_name[$i] = $request_medication_new_name[$i];
+                            $med_medication_lookup = new medical_medication_lookup();
+                            $med_medication_lookup->description = $request_medication_name[$i];
+                            $med_medication_lookup->save();
+
+                            // then continue to medication table
+                            $med_medication->dosage = $request_medication_dosage[$i];
+                            $med_medication->duration = $request_medication_duration[$i];
+                            if(!empty($request_supply_from_praksis)){
+                                $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                            }else{
+                                $med_medication->supply_from_praksis = 0;
+                            }
+                            $med_medication->medical_visit_id = $selected_medical_visit_id;
+                            $med_medication->medication_lookup_id = $med_medication_lookup->id;
+                            $med_medication->save();
+                        }
+                    }
+                    // here new rows are added
+                } else {
+//                    if(!empty($request_lab_results[$i])){
+                        if(!empty($request_medication_dosage[$i]) && !empty($request_medication_duration[$i])) {
+                            $med_medication = new medical_medication();
+                            // check if the request comes from the auto complete select (from lookup)
+                            if (empty($request_medication_new_name[$i])) {
+                                $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
+                                $med_medication->dosage = $request_medication_dosage[$i];
+                                $med_medication->duration = $request_medication_duration[$i];
+                                if(!empty($request_supply_from_praksis)){
+                                    $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                                }else{
+                                    $med_medication->supply_from_praksis = 0;
+                                }
+                                $med_medication->medical_visit_id = $selected_medical_visit_id;
+                                $med_medication->medication_lookup_id = $request_medication_name[$i];
+                                $med_medication->save();
+                            }
+                            // check if the request comes from the input field.
+                            else{
+                                $request_medication_name[$i] = $request_medication_new_name[$i];
+                                $med_medication_lookup = new medical_medication_lookup();
+                                $med_medication_lookup->description = $request_medication_name[$i];
+                                $med_medication_lookup->save();
+
+                                // then continue to medication table
+                                $med_medication->dosage = $request_medication_dosage[$i];
+                                $med_medication->duration = $request_medication_duration[$i];
+                                if(!empty($request_supply_from_praksis)){
+                                    $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+                                }else{
+                                    $med_medication->supply_from_praksis = 0;
+                                }
+                                $med_medication->medical_visit_id = $selected_medical_visit_id;
+                                $med_medication->medication_lookup_id = $med_medication_lookup->id;
+                                $med_medication->save();
+                            }
+                        }
+//                    }
+                }
+                $counter++;
+            }
+            // if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_medication_count; $j++){
+                if ($counter < $requests_count) {
+//                    if(!empty($request_lab_results[$j])){
+                        $med_medication = medical_medication::find($saved_medication[$counter]['id']);
+                        // check if the request comes from the auto complete select (from lookup)
+                        if (empty($request_medication_new_name[$j])) {
+                            $request_medication_name[$j] = $request_medication_name_from_lookup[$j];
+                            $med_medication->dosage = $request_medication_dosage[$j];
+                            $med_medication->duration = $request_medication_duration[$j];
+                            if(!empty($request_supply_from_praksis)){
+                                $med_medication->supply_from_praksis = $request_supply_from_praksis[$j];
+                            }else{
+                                $med_medication->supply_from_praksis = 0;
+                            }
+                            $med_medication->medical_visit_id = $selected_medical_visit_id;
+                            $med_medication->medication_lookup_id = $request_medication_name[$j];
+                            $med_medication->save();
+                        }
+                        // check if the request comes from the input field.
+                        else{
+                            $request_medication_name[$j] = $request_medication_new_name[$j];
+                            $med_medication_lookup = new medical_medication_lookup();
+                            $med_medication_lookup->description = $request_medication_name[$j];
+                            $med_medication_lookup->save();
+
+                            // then continue to medication table
+                            $med_medication->dosage = $request_medication_dosage[$j];
+                            $med_medication->duration = $request_medication_duration[$i];
+                            if(!empty($request_supply_from_praksis)){
+                                $med_medication->supply_from_praksis = $request_supply_from_praksis[$j];
+                            }else{
+                                $med_medication->supply_from_praksis = 0;
+                            }
+                            $med_medication->medical_visit_id = $selected_medical_visit_id;
+                            $med_medication->medication_lookup_id = $med_medication_lookup->id;
+                            $med_medication->save();
+                        }
+//                    }
+                } else {
+                    $med_medication = medical_medication::find($saved_medication[$counter]['id']);
+                    $med_medication->delete();
+                }
+                $counter++;
+            }
+        }
+
+
+
+
+        // if new elements added
+//        for($i=0; $i<$request_medication_Number ; $i++){
+//            // Medicinal condition DB entry (save to DB only if all fields are filled)
+//            if(!empty($request_medication_dosage[$i]) && !empty($request_medication_duration[$i])) {
+//                $med_medication = new medical_medication();
+//                // check if the request comes from the auto complete select (from lookup)
+//                if (empty($request_medication_new_name[$i])) {
+//                    $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
+//                    $med_medication->dosage = $request_medication_dosage[$i];
+//                    $med_medication->duration = $request_medication_duration[$i];
+//                    if(!empty($request_supply_from_praksis)){
+//                        $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+//                    }else{
+//                        $med_medication->supply_from_praksis = 0;
+//                    }
+//                    $med_medication->medical_visit_id = $selected_medical_visit_id;
+//                    $med_medication->medication_lookup_id = $request_medication_name[$i];
+//                    $med_medication->save();
+//                }
+//                // check if the request comes from the input field.
+//                else{
+//                    $request_medication_name[$i] = $request_medication_new_name[$i];
+//                    $med_medication_lookup = new medical_medication_lookup();
+//                    $med_medication_lookup->description = $request_medication_name[$i];
+//                    $med_medication_lookup->save();
+//
+//                    // then continue to medication table
+//                    $med_medication->dosage = $request_medication_dosage[$i];
+//                    $med_medication->duration = $request_medication_duration[$i];
+//                    if(!empty($request_supply_from_praksis)){
+//                        $med_medication->supply_from_praksis = $request_supply_from_praksis[$i];
+//                    }else{
+//                        $med_medication->supply_from_praksis = 0;
+//                    }
+//                    $med_medication->medical_visit_id = $selected_medical_visit_id;
+//                    $med_medication->medication_lookup_id = $med_medication_lookup->id;
+//                    $med_medication->save();
+//                }
+//            }
+//        }
+    }
+
+    //----------- medical_referrals table ---------------------------DONE//
+    // DB save
+    private function update_medical_referrals($request, $selected_medical_visit_id){
+        $request_medical_referrals = $this->update_requested_medical_referrals($request);
+        $requests_count = count($request_medical_referrals);
+        $saved_medical_referrals = medical_referrals::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_medical_referrals_count = count($saved_medical_referrals);
+        $counter = 0;
+
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_medical_referrals_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                if ($counter < $saved_medical_referrals_count) {
+                    if(!empty($request_medical_referrals[$i])){
+                        $med_referral = medical_referrals::find($saved_medical_referrals[$counter]['id']);
+                        $med_referral->referrals = $request_medical_referrals[$i];
+                        $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->save();
+                    }
+                } else {
+                    if(!empty($request_medical_referrals[$i])){
+                        $med_referral = new medical_referrals();
+                        $med_referral->referrals = $request_medical_referrals[$i];
+                        $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->save();
+                    }
+                }
+                $counter++;
+            }
+        // if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_medical_referrals_count; $j++){
+                if ($counter < $requests_count) {
+                    if(!empty($request_medical_referrals[$j])){
+                        $med_referral = medical_referrals::find($saved_medical_referrals[$counter]['id']);
+                        $med_referral->referrals = $request_medical_referrals[$j];
+                        $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->save();
+                    }
+                } else {
+                    $med_referral = medical_referrals::find($saved_medical_referrals[$counter]['id']);
+                    $med_referral->delete();
+                }
+                $counter++;
+            }
+        }
+    }
+    // post request
+    private function update_requested_medical_referrals($request){
+        $referrals = $request['referrals'];
+        $referrals_array = [];
+        foreach ($referrals as $ref){
+            array_push($referrals_array, $ref);
+        }
+        return $referrals_array;
+    }
+
+    //----------- medical_uploads table ----------------------------//
+    // DB save
+    private function upload_medical_uploads($request, $selected_medical_visit_id){
+        $path = base_path() . '/public/uploads/medical-visit-uploads/';
+        $request_upload_file_description = $request['upload_file_description'];
+        $request_upload_file_title = $request['upload_file_title'];
+        $file = Input::file('upload_file_title');
+        $requests_count = count($request_upload_file_title);
+
+        $saved_files = medical_uploads::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_files_count = count($saved_files);
+        $counter = 0;
+
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_files_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                if ($counter < $saved_files_count) {
+                    if(!empty($file[$i])){
+                        $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                        $file[$i]->move($path, $fileName); // uploading file to given path
+                        $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
+                        $medical_upload->title = $fileName;
+                        $medical_upload->description = $request_upload_file_description[$i];
+                        $medical_upload->path = $path;
+                        $medical_upload->medical_visit_id = $selected_medical_visit_id;
+                        $medical_upload->save();
+                    }
+                } else {
+                    if(!empty($request_medical_referrals[$i])){
+                        $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                        $file[$i]->move($path, $fileName); // uploading file to given path
+                        $medical_upload = new medical_uploads();
+                        $medical_upload->title = $fileName;
+                        $medical_upload->description = $request_upload_file_description[$i];
+                        $medical_upload->path = $path;
+                        $medical_upload->medical_visit_id = $selected_medical_visit_id;
+                        $medical_upload->save();
+                    }
+                }
+                $counter++;
+            }
+            // if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_files_count; $j++){
+                if ($counter < $requests_count) {
+                    if(!empty($file[$j])){
+                        $fileName = $file[$j]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                        $file[$j]->move($path, $fileName); // uploading file to given path
+                        $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
+                        $medical_upload->title = $fileName;
+                        $medical_upload->description = $request_upload_file_description[$j];
+                        $medical_upload->path = $path;
+                        $medical_upload->medical_visit_id = $selected_medical_visit_id;
+                        $medical_upload->save();
+                    }
+                } else {
+                    $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
+                    $medical_upload->delete();
+                }
+                $counter++;
+            }
+        }
+
+
+
+
+
+
+        for ($i = 0; $i < $requests_count; $i++) {
+            while(!empty($file[$i])){
+                $path = base_path() . '/public/uploads/medical-visit-uploads/';
+                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                $file[$i]->move($path, $fileName); // uploading file to given path
+
+                $medical_upload = new medical_uploads();
+                $medical_upload->title = $fileName;
+                $medical_upload->description = $request_upload_file_description[$i];
+                $medical_upload->path = $path;
+                $medical_upload->medical_visit_id = $selected_medical_visit_id;
+
+                $medical_upload->save();
+            }
+        }
+    }
+
+
 
 
     // ------------------------------------------------------------------ //
