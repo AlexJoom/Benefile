@@ -20,6 +20,6 @@ class medical_chronic_conditions extends Model
     }
 
     public function medical_visits(){
-        return $this->belongsTo('App\Models\Benefiters_Tables_Models\medical_visits','id', 'medical_visit_id');
+        return $this->hasOne('App\Models\Benefiters_Tables_Models\medical_visits','id', 'medical_visit_id');
     }
 }
