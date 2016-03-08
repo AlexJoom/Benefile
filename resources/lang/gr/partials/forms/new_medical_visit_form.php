@@ -1,6 +1,8 @@
 <?php
 
 return array(
+    'medical_folder'       => 'Ιατρικός Φάκελος',
+
     'personal_info'        =>  'Προσωπικά Στοιχεία',
     'lastname'             =>  'ΕΠΩΝΥΜΟ',
     'name'                 =>  'ΟΝΟΜΑ',

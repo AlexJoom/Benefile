@@ -1,7 +1,7 @@
 @extends('layouts.mainPanel')
 
 @section('panel-title')
-    Νέος Ωφελούμενος
+    @lang('partials/forms/new_medical_visit_form.medical_folder')
 @stop
 
 @section('panel-headLinks')

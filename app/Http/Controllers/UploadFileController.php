@@ -16,12 +16,14 @@ class UploadFileController extends Controller
         // get the file from the post request
         $file = Input::file('file');
         // set file name
-        $filename =Carbon::now('Europe/Athens') .'-' . $file->getClientOriginalName();
+        $filename = Carbon::now('Europe/Athens') . '-' . $file->getClientOriginalName();
+        // set file path
+        $filepath = public_path() . '/uploads/uploadedExcels/';
         // move file to correct location
-        $file->move('../uploadedExcels', $filename);
-        $filePath = '/uploadedExcels/'. $filename;
+        $file->move($filepath, $filename);
+        $fullFilePath = $filepath . $filename;
 
-        return $this->fileImport($filePath);
+        return $this->fileImport($fullFilePath);
     }
 
     public function fileImport($filePath){
@@ -41,8 +43,7 @@ class UploadFileController extends Controller
         ];
 
         // Import csv
-//        $filePath = "/uploadedExcels/2016-01-22 17:13:25-ΠΑΡΑΡΤΗΜΑ_2-ΚΑΤΑΓΡΑΦΗ_ΔΕΔΟΜΕΝΩΝ.csv";
-        $csvFile = file(base_path() . $filePath);
+        $csvFile = file($filePath);
         // Iterate between all rows of the csv file and add each value to the benefiters table
         for($i=1; $i<count($csvFile); $i++) {
             $colValues = str_getcsv( $csvFile[$i]);
