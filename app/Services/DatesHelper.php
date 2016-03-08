@@ -9,6 +9,7 @@ class DatesHelper
     public function makeDBFriendlyDate($date)
     {
         if ($date != null) {
+            $date = str_replace('/', '-', $date);
             $day = strtok($date, "-");
             $month = strtok("-");
             $year = strtok("-");
