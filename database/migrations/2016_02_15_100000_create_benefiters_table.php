@@ -12,6 +12,16 @@ class CreateBenefitersTable extends Migration
      */
     public function up()
     {
+        Schema::create('binary_lookup', function (Blueprint $table){
+            $table->integer('id')->unsigned();
+            $table->string('description');
+        });
+
+        Schema::create('working_legally_lookup', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('description');
+        });
+
         Schema::create('benefiters', function (Blueprint $table) {
             $table->increments('id');
             // Insert user that created the benefiter's file.

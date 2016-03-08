@@ -106,6 +106,7 @@ class UploadFileController extends Controller
                 'travel_duration' => $singleRow->travel_duration,
                 'detention_duration' => $singleRow->detention_duration,
                 'social_history' => $singleRow->social_history,
+                'document_manager_id' => \Auth::user()->id,
             );
     }
 

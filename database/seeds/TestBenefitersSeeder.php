@@ -12,6 +12,26 @@ class TestBenefitersSeeder extends Seeder
      */
     public function run()
     {
+        \DB::table('binary_lookup')->insert(
+            array(
+                array(
+                    'id' => 0,
+                    'description' => 'όχι',
+                ),
+                array(
+                    'id' => 1,
+                    'description' => 'ναι',
+                ),
+            )
+        );
+
+        \DB::table('working_legally_lookup')->insert(
+            array(
+                array('description' => 'Νόμιμη'),
+                array('description' => 'Παράνομη'),
+            )
+        );
+
         Benefiter::create(array(
                 'folder_number'                 => 'KK1',
                 'name'                          => 'Ben-name-1',
