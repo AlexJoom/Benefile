@@ -426,7 +426,7 @@
                                     @if($benefiter_language->language_id == $language->id)
                                         <?php $selected = "selected"; ?>
                                     @endif
-                                    <option value="{{ $language->id }}" {{ $selected }}>{{ $language->description }}</option>
+                                    <option value="{{ $language->id }}" {{ $selected }}>@lang($t.$language->description)</option>
                                     @endforeach
                                 </select>
                             </div>
