@@ -1,6 +1,7 @@
 <?php
 
     return array(
+        'social_folder' => 'Κοινωνικός Φάκελος',
         'personal_family_info' => 'Προσωπικά Στοιχεία Ατόμου-Οικογένειας',
         'comments' => 'Σχόλια',
         'psychosocial_support_history' => 'Ιστορικό Ψυχοκοινωνικής Στήριξης',

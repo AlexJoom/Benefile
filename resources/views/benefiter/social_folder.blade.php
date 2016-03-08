@@ -1,7 +1,7 @@
 @extends('layouts.mainPanel')
 
 @section('panel-title')
-    Νέος Ωφελούμενος
+    @lang('social_folder_form.social_folder')
 @stop
 
 @section('panel-headLinks')

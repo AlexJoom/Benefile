@@ -1,7 +1,7 @@
 @extends('layouts.mainPanel')
 
 @section('panel-title')
-    Νέος Ωφελούμενος
+    @lang('legal_folder_form.legal_folder')
 @stop
 
 @section('panel-headLinks')
