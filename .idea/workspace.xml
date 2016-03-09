@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/records/selectImportCSV.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/main-panel/common.js" afterPath="$PROJECT_DIR$/public/js/main-panel/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -48,95 +54,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
+      <file leaf-file-name="uploadExcel.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667" vertical-offset="2625" max-vertical-offset="4853">
-              <caret line="670" column="48" selection-start-line="670" selection-start-column="48" selection-end-line="670" selection-end-column="48" />
-              <folding>
-                <element signature="e#50#100#0#PHP" expanded="true" />
-                <element signature="e#2575#5380#0#PHP" expanded="false" />
-                <element signature="e#5419#9141#0#PHP" expanded="false" />
-                <element signature="e#10032#12014#0#PHP" expanded="false" />
-                <element signature="e#12056#13444#0#PHP" expanded="false" />
-                <element signature="e#13500#14663#0#PHP" expanded="false" />
-                <element signature="e#14701#15826#0#PHP" expanded="false" />
-                <element signature="e#15856#16128#0#PHP" expanded="false" />
-                <element signature="e#16425#23274#0#PHP" expanded="false" />
-                <element signature="e#23366#28801#0#PHP" expanded="false" />
-                <element signature="e#28899#34948#0#PHP" expanded="false" />
-                <element signature="e#35040#40845#0#PHP" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-11.074074" vertical-offset="184" max-vertical-offset="1380">
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BenefiterMedicalFolderService.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
+      <file leaf-file-name="uploadExcelPage.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7233468" vertical-offset="6433" max-vertical-offset="13800">
-              <caret line="765" column="0" selection-start-line="765" selection-start-column="0" selection-end-line="765" selection-end-column="0" />
-              <folding>
-                <element signature="e#1121#1245#0#PHP" expanded="false" />
-                <element signature="e#1418#5295#0#PHP" expanded="false" />
-                <element signature="e#1480#1978#0#PHP" expanded="false" />
-                <element signature="e#2107#2204#0#PHP" expanded="false" />
-                <element signature="e#2329#2940#0#PHP" expanded="false" />
-                <element signature="e#2513#2930#0#PHP" expanded="false" />
-                <element signature="e#2572#2916#0#PHP" expanded="false" />
-                <element signature="e#2661#2898#0#PHP" expanded="false" />
-                <element signature="e#3054#3144#0#PHP" expanded="false" />
-                <element signature="e#3211#4182#0#PHP" expanded="false" />
-                <element signature="e#3778#4172#0#PHP" expanded="false" />
-                <element signature="e#4184#4239#0#PHP" expanded="false" />
-                <element signature="e#4458#4548#0#PHP" expanded="false" />
-                <element signature="e#4687#4789#0#PHP" expanded="false" />
-                <element signature="e#4799#4847#0#PHP" expanded="false" />
-                <element signature="e#6550#7131#0#PHP" expanded="false" />
-                <element signature="e#7233#8290#0#PHP" expanded="false" />
-                <element signature="e#7401#8284#0#PHP" expanded="false" />
-                <element signature="e#7466#8274#0#PHP" expanded="false" />
-                <element signature="e#8315#8635#0#PHP" expanded="false" />
-                <element signature="e#8484#8587#0#PHP" expanded="false" />
-                <element signature="e#8737#10172#0#PHP" expanded="false" />
-                <element signature="e#8811#10166#0#PHP" expanded="false" />
-                <element signature="e#9016#10156#0#PHP" expanded="false" />
-                <element signature="e#9088#10142#0#PHP" expanded="false" />
-                <element signature="e#9153#10124#0#PHP" expanded="false" />
-                <element signature="e#9242#10102#0#PHP" expanded="false" />
-                <element signature="e#10273#11061#0#PHP" expanded="false" />
-                <element signature="e#11162#11625#0#PHP" expanded="false" />
-                <element signature="e#11311#11619#0#PHP" expanded="false" />
-                <element signature="e#11362#11609#0#PHP" expanded="false" />
-                <element signature="e#11650#11924#0#PHP" expanded="false" />
-                <element signature="e#11794#11883#0#PHP" expanded="false" />
-                <element signature="e#12088#12242#0#PHP" expanded="false" />
-                <element signature="e#12252#12382#0#PHP" expanded="false" />
-                <element signature="e#12617#12761#0#PHP" expanded="false" />
-                <element signature="e#12844#15160#0#PHP" expanded="false" />
-                <element signature="e#12992#15150#0#PHP" expanded="false" />
-                <element signature="e#13248#15136#0#PHP" expanded="false" />
-                <element signature="e#13569#13822#0#PHP" expanded="false" />
-                <element signature="e#13729#13822#0#PHP" expanded="false" />
-                <element signature="e#14122#15136#0#PHP" expanded="false" />
-                <element signature="e#14670#14923#0#PHP" expanded="false" />
-                <element signature="e#14830#14923#0#PHP" expanded="false" />
-                <element signature="e#15263#15704#0#PHP" expanded="false" />
-                <element signature="e#15400#15698#0#PHP" expanded="false" />
-                <element signature="e#15457#15688#0#PHP" expanded="false" />
-                <element signature="e#15729#15984#0#PHP" expanded="false" />
-                <element signature="e#15858#15945#0#PHP" expanded="false" />
-                <element signature="e#16076#17100#0#PHP" expanded="false" />
-                <element signature="e#16397#17094#0#PHP" expanded="false" />
-                <element signature="e#16451#17084#0#PHP" expanded="false" />
-                <element signature="e#18586#19264#0#PHP" expanded="false" />
-                <element signature="e#19366#23950#0#PHP" expanded="false" />
-                <element signature="e#23975#24295#0#PHP" expanded="false" />
-                <element signature="e#24397#27231#0#PHP" expanded="false" />
-                <element signature="e#27332#28225#0#PHP" expanded="false" />
-                <element signature="e#28326#30756#0#PHP" expanded="false" />
-                <element signature="e#30781#31054#0#PHP" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.7198917" vertical-offset="756" max-vertical-offset="1495">
+              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dropzone.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/dropzone.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.392858" vertical-offset="3765" max-vertical-offset="9085">
+              <caret line="180" column="19" selection-start-line="180" selection-start-column="19" selection-end-line="180" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,6 +105,13 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" />
         <option value="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
+        <option value="$PROJECT_DIR$/public/js/main-panel/common.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/records/selectNewRecordInMainPanel.js" />
+        <option value="$PROJECT_DIR$/public/js/records/selectImportCSV.js" />
+        <option value="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
+        <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
       </list>
     </option>
   </component>
@@ -285,110 +235,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modals" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medical-visit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -412,102 +258,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="benefiter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -593,29 +343,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="records" />
+              <option name="myItemId" value="uploadExcel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,28 +366,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="records" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -843,6 +553,120 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/seeds/TestBenefitersSeeder.php</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -854,20 +678,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -876,6 +697,9 @@
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="benefile" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="benefile" start_url="/benefile/index.php">
@@ -926,28 +750,28 @@
     <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1129386" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18351649" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15714286" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19762352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15604396" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22013758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15604396" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22263914" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15714286" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -968,54 +792,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="86" />
+      <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10320">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1120" max-vertical-offset="1264">
-          <caret line="70" column="25" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3333335" vertical-offset="18455" max-vertical-offset="23644">
-          <caret line="818" column="0" selection-start-line="818" selection-start-column="0" selection-end-line="818" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="27776" max-vertical-offset="32614">
-          <caret line="1231" column="0" selection-start-line="1231" selection-start-column="0" selection-end-line="1231" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Response.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3322314" vertical-offset="4192" max-vertical-offset="26979">
-          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/AliasLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1266" max-vertical-offset="4002">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46121296" vertical-offset="14485" max-vertical-offset="17227">
@@ -1026,13 +807,6 @@
     <entry file="file://$PROJECT_DIR$/resources/views/partials/select-panel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.5948276" vertical-offset="414" max-vertical-offset="1265">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.038081806" vertical-offset="27" max-vertical-offset="1081">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -1220,13 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.039072" vertical-offset="1863" max-vertical-offset="3151">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40350878" vertical-offset="0" max-vertical-offset="1265">
@@ -1299,7 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="920" max-vertical-offset="2415">
           <caret line="64" column="103" selection-start-line="64" selection-start-column="103" selection-end-line="64" selection-end-column="103" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1326,10 +1092,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667" vertical-offset="2625" max-vertical-offset="4853">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2625" max-vertical-offset="4853">
           <caret line="670" column="48" selection-start-line="670" selection-start-column="48" selection-end-line="670" selection-end-column="48" />
           <folding>
-            <element signature="e#50#100#0#PHP" expanded="true" />
+            <element signature="e#50#100#0#PHP" expanded="false" />
             <element signature="e#2575#5380#0#PHP" expanded="false" />
             <element signature="e#5419#9141#0#PHP" expanded="false" />
             <element signature="e#10032#12014#0#PHP" expanded="false" />
@@ -1349,14 +1115,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5106" max-vertical-offset="14766">
           <caret line="222" column="93" selection-start-line="222" selection-start-column="93" selection-end-line="222" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7233468" vertical-offset="6433" max-vertical-offset="13800">
-          <caret line="765" column="0" selection-start-line="765" selection-start-column="0" selection-end-line="765" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.7412791" vertical-offset="1493" max-vertical-offset="3772">
+          <caret line="957" column="4" selection-start-line="957" selection-start-column="4" selection-end-line="957" selection-end-column="4" />
           <folding>
             <element signature="e#1121#1245#0#PHP" expanded="false" />
             <element signature="e#1418#5295#0#PHP" expanded="false" />
@@ -1373,6 +1138,7 @@
             <element signature="e#4458#4548#0#PHP" expanded="false" />
             <element signature="e#4687#4789#0#PHP" expanded="false" />
             <element signature="e#4799#4847#0#PHP" expanded="false" />
+            <element signature="e#5569#6463#0#PHP" expanded="false" />
             <element signature="e#6550#7131#0#PHP" expanded="false" />
             <element signature="e#7233#8290#0#PHP" expanded="false" />
             <element signature="e#7401#8284#0#PHP" expanded="false" />
@@ -1391,6 +1157,7 @@
             <element signature="e#11362#11609#0#PHP" expanded="false" />
             <element signature="e#11650#11924#0#PHP" expanded="false" />
             <element signature="e#11794#11883#0#PHP" expanded="false" />
+            <element signature="e#12023#15166#0#PHP" expanded="false" />
             <element signature="e#12088#12242#0#PHP" expanded="false" />
             <element signature="e#12252#12382#0#PHP" expanded="false" />
             <element signature="e#12617#12761#0#PHP" expanded="false" />
@@ -1410,14 +1177,191 @@
             <element signature="e#16076#17100#0#PHP" expanded="false" />
             <element signature="e#16397#17094#0#PHP" expanded="false" />
             <element signature="e#16451#17084#0#PHP" expanded="false" />
+            <element signature="e#17480#18499#0#PHP" expanded="false" />
             <element signature="e#18586#19264#0#PHP" expanded="false" />
             <element signature="e#19366#23950#0#PHP" expanded="false" />
+            <element signature="e#19977#23944#0#PHP" expanded="false" />
+            <element signature="e#20025#22356#0#PHP" expanded="false" />
+            <element signature="e#20080#22314#0#PHP" expanded="false" />
+            <element signature="e#20131#21215#0#PHP" expanded="false" />
+            <element signature="e#21234#22314#0#PHP" expanded="false" />
+            <element signature="e#21261#22296#0#PHP" expanded="false" />
+            <element signature="e#22451#23944#0#PHP" expanded="false" />
+            <element signature="e#22469#23934#0#PHP" expanded="false" />
+            <element signature="e#22519#23892#0#PHP" expanded="false" />
+            <element signature="e#22573#23657#0#PHP" expanded="false" />
+            <element signature="e#23676#23892#0#PHP" expanded="false" />
             <element signature="e#23975#24295#0#PHP" expanded="false" />
+            <element signature="e#24144#24247#0#PHP" expanded="false" />
             <element signature="e#24397#27231#0#PHP" expanded="false" />
+            <element signature="e#24496#27225#0#PHP" expanded="false" />
+            <element signature="e#24973#27215#0#PHP" expanded="false" />
+            <element signature="e#25045#27201#0#PHP" expanded="false" />
+            <element signature="e#25110#27183#0#PHP" expanded="false" />
+            <element signature="e#25199#27161#0#PHP" expanded="false" />
+            <element signature="e#25277#27095#0#PHP" expanded="false" />
+            <element signature="e#26220#27095#0#PHP" expanded="false" />
             <element signature="e#27332#28225#0#PHP" expanded="false" />
             <element signature="e#28326#30756#0#PHP" expanded="false" />
+            <element signature="e#28883#30750#0#PHP" expanded="false" />
+            <element signature="e#28943#29895#0#PHP" expanded="false" />
+            <element signature="e#28998#29853#0#PHP" expanded="false" />
+            <element signature="e#29061#29441#0#PHP" expanded="false" />
+            <element signature="e#29460#29853#0#PHP" expanded="false" />
+            <element signature="e#29487#29835#0#PHP" expanded="false" />
+            <element signature="e#29994#30750#0#PHP" expanded="false" />
+            <element signature="e#30012#30740#0#PHP" expanded="false" />
+            <element signature="e#30074#30698#0#PHP" expanded="false" />
+            <element signature="e#30128#30508#0#PHP" expanded="false" />
+            <element signature="e#30527#30698#0#PHP" expanded="false" />
             <element signature="e#30781#31054#0#PHP" expanded="false" />
+            <element signature="e#30924#31013#0#PHP" expanded="false" />
+            <element signature="e#31153#43242#0#PHP" expanded="false" />
+            <element signature="e#31267#31421#0#PHP" expanded="false" />
+            <element signature="e#31430#31560#0#PHP" expanded="false" />
+            <element signature="e#32048#32192#0#PHP" expanded="false" />
+            <element signature="e#32328#40755#0#PHP" expanded="false" />
+            <element signature="e#32387#37823#0#PHP" expanded="false" />
+            <element signature="e#32442#37781#0#PHP" expanded="false" />
+            <element signature="e#32504#34975#0#PHP" expanded="false" />
+            <element signature="e#32783#34953#0#PHP" expanded="false" />
+            <element signature="e#33135#33420#0#PHP" expanded="false" />
+            <element signature="e#33311#33420#0#PHP" expanded="false" />
+            <element signature="e#33790#34953#0#PHP" expanded="false" />
+            <element signature="e#34401#34686#0#PHP" expanded="false" />
+            <element signature="e#34577#34686#0#PHP" expanded="false" />
+            <element signature="e#35041#37781#0#PHP" expanded="false" />
+            <element signature="e#35132#37739#0#PHP" expanded="false" />
+            <element signature="e#35423#37713#0#PHP" expanded="false" />
+            <element signature="e#35791#36092#0#PHP" expanded="false" />
+            <element signature="e#35975#36092#0#PHP" expanded="false" />
+            <element signature="e#36486#37713#0#PHP" expanded="false" />
+            <element signature="e#37129#37430#0#PHP" expanded="false" />
+            <element signature="e#37313#37430#0#PHP" expanded="false" />
+            <element signature="e#37922#40755#0#PHP" expanded="false" />
+            <element signature="e#37940#40745#0#PHP" expanded="false" />
+            <element signature="e#38001#40703#0#PHP" expanded="false" />
+            <element signature="e#38320#40490#0#PHP" expanded="false" />
+            <element signature="e#38672#38957#0#PHP" expanded="false" />
+            <element signature="e#38848#38957#0#PHP" expanded="false" />
+            <element signature="e#39327#40490#0#PHP" expanded="false" />
+            <element signature="e#39938#40223#0#PHP" expanded="false" />
+            <element signature="e#40114#40223#0#PHP" expanded="false" />
+            <element signature="e#40533#40703#0#PHP" expanded="false" />
+            <element signature="e#40768#40792#0#PHP" expanded="false" />
+            <element signature="e#43339#45820#0#PHP" expanded="false" />
+            <element signature="e#43918#45814#0#PHP" expanded="false" />
+            <element signature="e#43984#44948#0#PHP" expanded="false" />
+            <element signature="e#44039#44906#0#PHP" expanded="false" />
+            <element signature="e#44108#44496#0#PHP" expanded="false" />
+            <element signature="e#44515#44906#0#PHP" expanded="false" />
+            <element signature="e#44542#44888#0#PHP" expanded="false" />
+            <element signature="e#45043#45814#0#PHP" expanded="false" />
+            <element signature="e#45061#45804#0#PHP" expanded="false" />
+            <element signature="e#45129#45762#0#PHP" expanded="false" />
+            <element signature="e#45183#45571#0#PHP" expanded="false" />
+            <element signature="e#45590#45762#0#PHP" expanded="false" />
+            <element signature="e#45845#46117#0#PHP" expanded="false" />
+            <element signature="e#45991#46078#0#PHP" expanded="false" />
+            <element signature="e#46209#50505#0#PHP" expanded="false" />
+            <element signature="e#46929#49740#0#PHP" expanded="false" />
+            <element signature="e#46983#48584#0#PHP" expanded="false" />
+            <element signature="e#47038#48542#0#PHP" expanded="false" />
+            <element signature="e#47095#47791#0#PHP" expanded="false" />
+            <element signature="e#47810#48542#0#PHP" expanded="false" />
+            <element signature="e#47837#48524#0#PHP" expanded="false" />
+            <element signature="e#48683#49740#0#PHP" expanded="false" />
+            <element signature="e#48701#49730#0#PHP" expanded="false" />
+            <element signature="e#48757#49688#0#PHP" expanded="false" />
+            <element signature="e#48811#49507#0#PHP" expanded="false" />
+            <element signature="e#49526#49688#0#PHP" expanded="false" />
+            <element signature="e#49755#50499#0#PHP" expanded="false" />
+            <element signature="e#49810#50489#0#PHP" expanded="false" />
+            <element signature="e#50721#50946#0#PHP" expanded="false" />
+            <element signature="e#50799#50907#0#PHP" expanded="false" />
+            <element signature="e#51018#51238#0#PHP" expanded="false" />
+            <element signature="e#51104#51199#0#PHP" expanded="false" />
+            <element signature="e#51284#51465#0#PHP" expanded="false" />
+            <element signature="e#51515#51783#0#PHP" expanded="false" />
+            <element signature="e#51838#52022#0#PHP" expanded="false" />
+            <element signature="e#52054#52218#0#PHP" expanded="false" />
+            <element signature="e#52253#52396#0#PHP" expanded="false" />
+            <element signature="e#52422#52581#0#PHP" expanded="false" />
+            <element signature="e#52603#52706#0#PHP" expanded="false" />
+            <element signature="e#52740#52950#0#PHP" expanded="false" />
+            <element signature="e#52982#53221#0#PHP" expanded="false" />
+            <element signature="e#53245#53458#0#PHP" expanded="false" />
+            <element signature="e#53481#53719#0#PHP" expanded="false" />
+            <element signature="e#53741#53940#0#PHP" expanded="false" />
+            <element signature="e#53960#54151#0#PHP" expanded="false" />
+            <element signature="e#54193#54439#0#PHP" expanded="false" />
+            <element signature="e#54478#54658#0#PHP" expanded="false" />
+            <element signature="e#54703#54804#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/records/selectEditRecordInMainPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/main-panel/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.035714" vertical-offset="0" max-vertical-offset="667">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/records/selectImportCSV.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18673883" vertical-offset="0" max-vertical-offset="739">
+          <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/records/selectNewRecordInMainPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="276">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40772533" vertical-offset="2498" max-vertical-offset="3197">
+          <caret line="121" column="24" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/dropzone.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.392858" vertical-offset="3765" max-vertical-offset="9085">
+          <caret line="180" column="19" selection-start-line="180" selection-start-column="19" selection-end-line="180" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.074074" vertical-offset="184" max-vertical-offset="1380">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7198917" vertical-offset="756" max-vertical-offset="1495">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

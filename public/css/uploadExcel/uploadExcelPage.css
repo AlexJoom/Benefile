@@ -8,3 +8,52 @@
 .greyBorder{
     border: 2px solid rgba(0, 0, 0, 0.3);
 }
+.margin-5per{
+    margin: 5%;
+}
+.custom-style{
+    background-color: #cfc8d3;
+}
+
+.adsPos-height100per{
+    position: absolute;
+    height: 100%;
+}
+
+.relPos{
+    position: relative;
+}
+
+.dropzone-title{
+    text-align: center;
+    color: #ffffff;
+}
+
+.button-row-style{
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+.title-row-style{
+    padding: 100px 50px;
+}
+
+.dropzone-button-custom-style{
+    float: right;
+    padding: 20px 55px;
+    font-size: 24px;
+    background-color: #4b2a46;
+    color: white;
+    margin: 10px !important;
+}
+
+@media (max-width: 991px){
+    .dropzone{
+        max-width: 66%;
+    }
+    .button-row-style {
+        position: absolute;
+        bottom: 15px;
+    }
+}

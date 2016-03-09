@@ -949,11 +949,12 @@ class BenefiterMedicalFolderService
     }
 
 
-
-
     // ------------------------------------------------------------------ //
-    // PART 3 : END EDIT SAVED MEDICAL VISIT
+    // PART 3 : END
     //--------------------------------------------------------------------//
+
+
+
 
     // FUNCTIONS USED BY MANY
 
