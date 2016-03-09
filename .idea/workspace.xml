@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/records/selectImportCSV.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/main-panel/common.js" afterPath="$PROJECT_DIR$/public/js/main-panel/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main-panel/users-list.css" afterPath="$PROJECT_DIR$/public/css/main-panel/users-list.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -54,32 +50,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="uploadExcel.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.074074" vertical-offset="184" max-vertical-offset="1380">
-              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+            <state vertical-scroll-proportion="-3.909091" vertical-offset="981" max-vertical-offset="5359">
+              <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+              <folding>
+                <element signature="e#5419#9141#0#PHP" expanded="false" />
+                <element signature="e#10032#12014#0#PHP" expanded="false" />
+                <element signature="e#12056#13444#0#PHP" expanded="false" />
+                <element signature="e#13500#14663#0#PHP" expanded="false" />
+                <element signature="e#14701#15826#0#PHP" expanded="false" />
+                <element signature="e#15856#16128#0#PHP" expanded="false" />
+                <element signature="e#16425#23274#0#PHP" expanded="false" />
+                <element signature="e#23366#28801#0#PHP" expanded="false" />
+                <element signature="e#28899#34948#0#PHP" expanded="false" />
+                <element signature="e#35040#40845#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BenefiterReferrals.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="598">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadExcelPage.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
+      <file leaf-file-name="users-list.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7198917" vertical-offset="756" max-vertical-offset="1495">
-              <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1266" max-vertical-offset="2185">
+              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dropzone.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/dropzone.css">
+      <file leaf-file-name="basic_info_form.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.392858" vertical-offset="3765" max-vertical-offset="9085">
-              <caret line="180" column="19" selection-start-line="180" selection-start-column="19" selection-end-line="180" selection-end-column="19" />
-              <folding />
+            <state vertical-scroll-proportion="0.717037" vertical-offset="16398" max-vertical-offset="19044">
+              <caret line="1341" column="100" selection-start-line="1341" selection-start-column="100" selection-end-line="1341" selection-end-column="100" />
+              <folding>
+                <element signature="tag#div#8" expanded="false" />
+                <element signature="tag#div#9" expanded="false" />
+                <element signature="tag#div#10" expanded="false" />
+                <element signature="tag#div#11" expanded="false" />
+                <element signature="tag#div#12" expanded="false" />
+                <element signature="tag#div#13" expanded="false" />
+                <element signature="tag#div#14" expanded="false" />
+                <element signature="tag#div#15" expanded="false" />
+                <element signature="tag#div#16" expanded="false" />
+                <element signature="tag#div#17" expanded="false" />
+                <element signature="tag#div#18" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,6 +141,8 @@
         <option value="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
         <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
         <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
+        <option value="$PROJECT_DIR$/public/css/main-panel/users-list.css" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
       </list>
     </option>
   </component>
@@ -214,6 +245,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -366,6 +445,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main-panel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -569,8 +670,6 @@
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/seeds/TestBenefitersSeeder.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -578,6 +677,7 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/UploadFileService.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -751,8 +851,8 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18351649" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15714286" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18351649" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15714286" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19762352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -797,27 +897,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46121296" vertical-offset="14485" max-vertical-offset="17227">
-          <caret line="654" column="13" selection-start-line="654" selection-start-column="13" selection-end-line="654" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/select-panel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5948276" vertical-offset="414" max-vertical-offset="1265">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/MedicalLocationSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43396226" vertical-offset="0" max-vertical-offset="690">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/MedicalIncidentTypesSeeders.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12921348" vertical-offset="0" max-vertical-offset="712">
@@ -980,13 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8106996" vertical-offset="375" max-vertical-offset="1656">
-          <caret line="1003" column="0" selection-start-line="1003" selection-start-column="0" selection-end-line="1003" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/legal_folder_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5898491" vertical-offset="7" max-vertical-offset="736">
@@ -1087,27 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.6848073" vertical-offset="0" max-vertical-offset="6992">
           <caret line="218" column="89" selection-start-line="218" selection-start-column="89" selection-end-line="218" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2625" max-vertical-offset="4853">
-          <caret line="670" column="48" selection-start-line="670" selection-start-column="48" selection-end-line="670" selection-end-column="48" />
-          <folding>
-            <element signature="e#50#100#0#PHP" expanded="false" />
-            <element signature="e#2575#5380#0#PHP" expanded="false" />
-            <element signature="e#5419#9141#0#PHP" expanded="false" />
-            <element signature="e#10032#12014#0#PHP" expanded="false" />
-            <element signature="e#12056#13444#0#PHP" expanded="false" />
-            <element signature="e#13500#14663#0#PHP" expanded="false" />
-            <element signature="e#14701#15826#0#PHP" expanded="false" />
-            <element signature="e#15856#16128#0#PHP" expanded="false" />
-            <element signature="e#16425#23274#0#PHP" expanded="false" />
-            <element signature="e#23366#28801#0#PHP" expanded="false" />
-            <element signature="e#28899#34948#0#PHP" expanded="false" />
-            <element signature="e#35040#40845#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1349,19 +1400,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9440559" vertical-offset="613" max-vertical-offset="1495">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.074074" vertical-offset="184" max-vertical-offset="1380">
+        <state vertical-scroll-proportion="0.43459302" vertical-offset="184" max-vertical-offset="1380">
           <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7198917" vertical-offset="756" max-vertical-offset="1495">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+        <state vertical-scroll-proportion="-0.7020349" vertical-offset="483" max-vertical-offset="1334">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.909091" vertical-offset="981" max-vertical-offset="5359">
+          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+          <folding>
+            <element signature="e#5419#9141#0#PHP" expanded="false" />
+            <element signature="e#10032#12014#0#PHP" expanded="false" />
+            <element signature="e#12056#13444#0#PHP" expanded="false" />
+            <element signature="e#13500#14663#0#PHP" expanded="false" />
+            <element signature="e#14701#15826#0#PHP" expanded="false" />
+            <element signature="e#15856#16128#0#PHP" expanded="false" />
+            <element signature="e#16425#23274#0#PHP" expanded="false" />
+            <element signature="e#23366#28801#0#PHP" expanded="false" />
+            <element signature="e#28899#34948#0#PHP" expanded="false" />
+            <element signature="e#35040#40845#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="598">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1266" max-vertical-offset="2185">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.717037" vertical-offset="16398" max-vertical-offset="19044">
+          <caret line="1341" column="100" selection-start-line="1341" selection-start-column="100" selection-end-line="1341" selection-end-column="100" />
+          <folding>
+            <element signature="tag#div#8" expanded="false" />
+            <element signature="tag#div#9" expanded="false" />
+            <element signature="tag#div#10" expanded="false" />
+            <element signature="tag#div#11" expanded="false" />
+            <element signature="tag#div#12" expanded="false" />
+            <element signature="tag#div#13" expanded="false" />
+            <element signature="tag#div#14" expanded="false" />
+            <element signature="tag#div#15" expanded="false" />
+            <element signature="tag#div#16" expanded="false" />
+            <element signature="tag#div#17" expanded="false" />
+            <element signature="tag#div#18" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
