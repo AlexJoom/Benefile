@@ -24,14 +24,13 @@ class ConversionsForFileUpload{
     }
 
     // match country of origin
-    public function getOriginCountry($countryFromFile) {
-        $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($countryFromFile);
+    public function getOriginCountry($originCountryFromFile) {
+        $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($originCountryFromFile);
         $countryList = \DB::table('countries_lookup')->get();
         // Find if country is listed in table. If not, output error
         foreach ($countryList as $country){
             $countryRes = \Lang::get('country_list.' . $country->country_name);
             $countryResUpper = $this->greekStringConversion->grstrtoupper($countryRes);
-            // $country->country_name = $this->greekStringConversion->grstrtoupper($country->country_name);
             if (strcasecmp($countryFromFileUpper, $countryResUpper) == 0) {
                 return $countryFromFileUpper;
             }
@@ -39,6 +38,22 @@ class ConversionsForFileUpload{
         }
     }
 
+
+    // match nationality country
+    public function getNationalityCountry($natCountryFromFile) {
+        $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($natCountryFromFile);
+        // TODO: Do not call twice to populate country list.
+        $countryList = \DB::table('countries_lookup')->get();
+        // Find if country is listed in table. If not, output error
+        foreach ($countryList as $country){
+            $countryRes = \Lang::get('country_list.' . $country->country_name);
+            $countryResUpper = $this->greekStringConversion->grstrtoupper($countryRes);
+            if (strcasecmp($countryFromFileUpper, $countryResUpper) == 0) {
+                return $countryFromFileUpper;
+            }
+            // TODO: } else { return $error }
+        }
+    }
     // get id from marital status name
     public function getMaritalStatusId($maritalStatusFromFile){
         $maritalStatusFromFile = $this->greekStringConversion->grstrtoupper($maritalStatusFromFile);
