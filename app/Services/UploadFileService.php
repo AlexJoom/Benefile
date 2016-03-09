@@ -67,6 +67,7 @@ class UploadFileService{
         $singleRow->language_interpreter_needed = $conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
         $singleRow->is_benefiter_working = $conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
         $singleRow->working_legally = $conversionForFile->getLegalWorkId($singleRow->working_legally);
+        $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
         return array(
             'folder_number' => $singleRow->folder_number,
             'name' => $singleRow->name,
