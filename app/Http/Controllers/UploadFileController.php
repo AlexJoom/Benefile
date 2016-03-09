@@ -39,26 +39,26 @@ class UploadFileController extends Controller
         // insert values to DB
         $uploadFileService->fileImport($fullFilePath);
     }
-
-
-    //---------------------------------------------------//
-    //---- TO BE DELETED LATER (test outputs) -----------//
-
-    public function testData(){
-        $benefiter_id = 2;
-        $singleRowTestArray = array('folder_number' => 'ΚΚ1',
-            'has_social_reference' => 'ναι',
-            'social_reference_actions' => 'Κ-ενεργεια α',
-            'social_reference_date' => '14-5-2016',
-            'has_medical_reference' => 'ναι',
-            'medical_reference_actions' => 'ι-ενεργεια α',
-            'medical_reference_date' => '14-5-2016',
-            'has_legal_reference' => 'ναι',
-            'legal_reference_actions' => 'ν-ενεργεια α',
-            'legal_reference_date' => '14-5-2016',
-            'has_educational_reference' => 'οχι',
-            'educational_reference_actions' => 'ν-ενεργεια β',
-            'educational_reference_date' => '14-5-2016',);
-        $this->uploadFileService->selectOnlyReferrals($singleRowTestArray, $benefiter_id);
-    }
+//
+//
+//    //---------------------------------------------------//
+//    //---- TO BE DELETED LATER (test outputs) -----------//
+//
+//    public function testData(){
+//        $benefiter_id = 2;
+//        $singleRowTestArray = array('folder_number' => 'ΚΚ1',
+//            'has_social_reference' => 'ναι',
+//            'social_reference_actions' => 'Κ-ενεργεια α',
+//            'social_reference_date' => '14-5-2016',
+//            'has_medical_reference' => 'ναι',
+//            'medical_reference_actions' => 'ι-ενεργεια α',
+//            'medical_reference_date' => '14-5-2016',
+//            'has_legal_reference' => 'ναι',
+//            'legal_reference_actions' => 'ν-ενεργεια α',
+//            'legal_reference_date' => '14-5-2016',
+//            'has_educational_reference' => 'οχι',
+//            'educational_reference_actions' => 'ν-ενεργεια β',
+//            'educational_reference_date' => '14-5-2016',);
+//        $this->uploadFileService->selectOnlyReferrals($singleRowTestArray, $benefiter_id);
+//    }
 }

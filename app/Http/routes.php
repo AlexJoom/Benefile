@@ -84,8 +84,8 @@ Route::get('benefiter/{id}/session-delete/{session_id}', 'MainPanel\RecordsContr
 Route::get('new-benefiter/uploadCSV', 'UploadFileController@getUploadCSV');
 Route::post('new-benefiter/uploadCSV', 'UploadFileController@excelUpload');
 
-// --- to be deleted later  ---//
-Route::get('new-benefiter/uploadCSV/dataTester', 'UploadFileController@testData');
+//// --- to be deleted later  ---//
+//Route::get('new-benefiter/uploadCSV/dataTester', 'UploadFileController@testData');
 
 //----------- END ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
 //--- END ΕΓΓΡΑΦΗ
