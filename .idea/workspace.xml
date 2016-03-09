@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main-panel/users-list.css" afterPath="$PROJECT_DIR$/public/css/main-panel/users-list.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -70,21 +71,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BenefiterReferrals.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BenefiterReferrals.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2005814" vertical-offset="0" max-vertical-offset="688">
+            <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="598">
               <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_info_form.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="users-list.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1266" max-vertical-offset="2185">
+              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic_info_form.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.962963" vertical-offset="16398" max-vertical-offset="19044">
-              <caret line="1334" column="70" selection-start-line="1334" selection-start-column="45" selection-end-line="1334" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.717037" vertical-offset="16398" max-vertical-offset="19044">
+              <caret line="1341" column="100" selection-start-line="1341" selection-start-column="100" selection-end-line="1341" selection-end-column="100" />
               <folding>
                 <element signature="tag#div#8" expanded="false" />
                 <element signature="tag#div#9" expanded="false" />
@@ -131,6 +142,7 @@
         <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
         <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
         <option value="$PROJECT_DIR$/public/css/main-panel/users-list.css" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
       </list>
     </option>
   </component>
@@ -658,7 +670,6 @@
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
             <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -666,8 +677,7 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/GreekStringConversionHelper.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/UploadFileService.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -1390,14 +1400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43377" vertical-offset="1266" max-vertical-offset="2185">
-          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9440559" vertical-offset="613" max-vertical-offset="1495">
@@ -1422,26 +1424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.962963" vertical-offset="16398" max-vertical-offset="19044">
-          <caret line="1334" column="70" selection-start-line="1334" selection-start-column="45" selection-end-line="1334" selection-end-column="70" />
-          <folding>
-            <element signature="tag#div#8" expanded="false" />
-            <element signature="tag#div#9" expanded="false" />
-            <element signature="tag#div#10" expanded="false" />
-            <element signature="tag#div#11" expanded="false" />
-            <element signature="tag#div#12" expanded="false" />
-            <element signature="tag#div#13" expanded="false" />
-            <element signature="tag#div#14" expanded="false" />
-            <element signature="tag#div#15" expanded="false" />
-            <element signature="tag#div#16" expanded="false" />
-            <element signature="tag#div#17" expanded="false" />
-            <element signature="tag#div#18" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.909091" vertical-offset="981" max-vertical-offset="5359">
@@ -1463,9 +1445,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2005814" vertical-offset="0" max-vertical-offset="688">
+        <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="598">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1266" max-vertical-offset="2185">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.717037" vertical-offset="16398" max-vertical-offset="19044">
+          <caret line="1341" column="100" selection-start-line="1341" selection-start-column="100" selection-end-line="1341" selection-end-column="100" />
+          <folding>
+            <element signature="tag#div#8" expanded="false" />
+            <element signature="tag#div#9" expanded="false" />
+            <element signature="tag#div#10" expanded="false" />
+            <element signature="tag#div#11" expanded="false" />
+            <element signature="tag#div#12" expanded="false" />
+            <element signature="tag#div#13" expanded="false" />
+            <element signature="tag#div#14" expanded="false" />
+            <element signature="tag#div#15" expanded="false" />
+            <element signature="tag#div#16" expanded="false" />
+            <element signature="tag#div#17" expanded="false" />
+            <element signature="tag#div#18" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
