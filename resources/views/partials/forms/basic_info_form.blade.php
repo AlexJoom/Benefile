@@ -430,7 +430,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2 make-inline">
+                            <div class="col-md-3 make-inline">
                                 <select disabled name="language_level{{$counter}}" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -468,7 +468,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2 make-inline">
+                            <div class="col-md-3 make-inline">
                                 <select disabled name="language_level" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -1095,7 +1095,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2 make-inline">
+                            <div class="col-md-3 make-inline">
                                 <select name="language_level{{$counter}}" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -1135,7 +1135,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2 make-inline">
+                            <div class="col-md-3 make-inline">
                                 <select name="language_level" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -1339,7 +1339,7 @@
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
                                             <td>
-                                                <button class="submit-button delete-session" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
+                                                <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                             </td>
                                         </tr>
                                     @endif

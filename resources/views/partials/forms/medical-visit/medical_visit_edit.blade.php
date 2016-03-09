@@ -400,7 +400,7 @@
                         <div id="medication" class="row padding-bottom-30">
                             @if(!empty($med_visit_medication) && count($med_visit_medication) !=0)
                                 @for($i=0 ; $i<count($med_visit_medication) ; $i++)
-                                    <div  class="padding-left-right-15 medicationList med-added-div">
+                                    <div  class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
                                         <div class="form-group float-left width-100-percent">
                                              {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
                                             <div class="select-lists make-inline col-md-12">
@@ -428,9 +428,11 @@
                                                      <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
                                                 @endif
                                                 {{--add--}}
-                                                <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                                </a>
+                                                @if($i==0)
+                                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                    </a>
+                                                @endif
                                                  {{--remove--}}
                                                 <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
                                                     <span class="glyphicon glyphicon-minus-sign make-inline"></span>
