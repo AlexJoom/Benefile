@@ -37,18 +37,18 @@ class CreateBenefitersTable extends Migration
             $table->integer('number_of_children')->unsigned()->nullable();
             $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
-            $table->text('other_language')->nullable();
+//            $table->text('other_language')->nullable();
             $table->boolean('language_interpreter_needed');
             $table->boolean('is_benefiter_working')->nullable();
-            $table->string('legal_status_details')->nullable();
+//            $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
             $table->text('country_abandon_reason')->nullable();
             $table->text('travel_route')->nullable();
             $table->text('travel_duration')->nullable();
             $table->text('detention_duration')->nullable();
-            $table->boolean('has_educational_reference');
-            $table->text('educational_reference_actions');
-            $table->date('educational_reference_date');
+//            $table->boolean('has_educational_reference');
+//            $table->text('educational_reference_actions');
+//            $table->date('educational_reference_date');
             $table->string('origin_country');
             $table->string('nationality_country');
             $table->string('ethnic_group')->nullable();
@@ -406,5 +406,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('benefiter_referrals_lookup');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('icd10');
+        Schema::dropIfExists('working_legally_lookup');
+        Schema::dropIfExists('binary_lookup');
     }
 }
