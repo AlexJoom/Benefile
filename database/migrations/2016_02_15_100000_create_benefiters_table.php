@@ -28,17 +28,17 @@ class CreateBenefitersTable extends Migration
             $table->string('folder_number')->unique();
             $table->string('name');
             $table->string('lastname');
-            $table->string('fathers_name');
-            $table->string('mothers_name');
-            $table->date('birth_date');
-            $table->date('arrival_date');
-            $table->string('address');
+            $table->string('fathers_name')->nullable();
+            $table->string('mothers_name')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->date('arrival_date')->nullable();
+            $table->string('address')->nullable();
             $table->string('telephone')->nullable();
             $table->integer('number_of_children')->unsigned()->nullable();
             $table->text('children_names')->nullable();
             $table->text('relatives_residence')->nullable();
 //            $table->text('other_language')->nullable();
-            $table->boolean('language_interpreter_needed');
+            $table->boolean('language_interpreter_needed')->nullable();
             $table->boolean('is_benefiter_working')->nullable();
 //            $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
@@ -49,12 +49,12 @@ class CreateBenefitersTable extends Migration
 //            $table->boolean('has_educational_reference');
 //            $table->text('educational_reference_actions');
 //            $table->date('educational_reference_date');
-            $table->string('origin_country');
-            $table->string('nationality_country');
+            $table->string('origin_country')->nullable();
+            $table->string('nationality_country')->nullable();
             $table->string('ethnic_group')->nullable();
             // Insert user that created the benefiter's file.
             $table->integer('document_manager_id');
-            $table->text('social_history');
+            $table->text('social_history')->nullable();
             $table->timestamps();
 
             // Foreign keys
