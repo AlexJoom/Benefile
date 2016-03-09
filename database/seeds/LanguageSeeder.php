@@ -303,11 +303,11 @@ class LanguageSeeder extends Seeder
 
         \DB::table('language_levels')->insert(
             array(
-                array('description'   => 'Poor'),
-                array('description'   => 'Below average'),
-                array('description'   => 'Average'),
-                array('description'   => 'Good'),
-                array('description'   => 'Excellent'),
+                array('description'   => 'Κακό'),
+                array('description'   => 'Κάτω του μετρίου'),
+                array('description'   => 'Μέτριο'),
+                array('description'   => 'Καλό'),
+                array('description'   => 'Εξαιρετικό'),
             )
         );
     }
