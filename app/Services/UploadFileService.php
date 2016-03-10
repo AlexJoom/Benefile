@@ -244,10 +244,10 @@ class UploadFileService{
         // Check whether level exists in the DB
         $id = array_search($languageName, $this->__langNames);
         if($id !== false) {
-            try{ // out of border exception safety
+            // if language is not existent in $languagesAndLevels array
+            // ignore it
+            if(array_key_exists($id, $languagesAndLevels)) {
                 $languagesAndLevels[$id] = $levelID;
-            } catch(\Exception $e){
-                // do nothing...
             }
         }
     }
