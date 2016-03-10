@@ -13,11 +13,11 @@ class LegalStatusTableSeeder extends Seeder
     {
         \DB::table('legal_status_lookup')->insert(
             array(
-                array('description' => "Διοικητική απόφαση απέλασης"),
-                array('description' => "Αριθμός Δελτίου αιτήσαντος ασύλου"),
-                array('description' => "Αριθμός Δελτίου Πρόσφυγα"),
-                array('description' => "Βεβαίωση άδειας διαμονής (Χρόνος/Λήξη)"),
-                array('description' => "Άδεια παραμονής (μετανάστη)"),
+                array('description' => "Απέλαση"),
+                array('description' => "Αιτών Άσυλο"),
+                array('description' => "Πρόσφυγας"),
+                array('description' => "Άδεια Διαμονής"),
+                array('description' => "Άδεια Παραμονής"),
                 array('description' => 'Ευρωπαίος πολίτης'),
                 array('description' => 'Ανθρωπιστικό'),
                 array('description' => 'Εκτός νομικού πλαισίου')
