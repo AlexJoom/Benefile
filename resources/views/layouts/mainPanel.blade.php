@@ -33,6 +33,9 @@
             {{-- do nothing --}}
             @else
             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+
+            @yield('benefiter-info')
+
             <div class="userName">
                 <a href="#" class="white" role="button" aria-expanded="false">
                     {{ Auth::user()->name }} {{ Auth::user()->lastname }}

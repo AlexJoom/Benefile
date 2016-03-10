@@ -69,6 +69,17 @@
     /*top: -82px;*/
 /*}*/
 
+.benefiter-info{
+    color: white;
+    font-size: 20px;
+    padding: 0 20px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
 .userName{
     float: right;
     font-size: 20px;

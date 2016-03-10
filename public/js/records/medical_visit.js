@@ -9,6 +9,7 @@ $(document).ready(function(){
     function createSelect2($selectBox){
         $selectBox.select2({
             placeholder: 'Εμπορική ονομασία φαρμάκου',
+            maximumSelectionSize: 1,
             allowClear: true,
             ajax: {
                 url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
@@ -26,7 +27,6 @@ $(document).ready(function(){
                     // alter the remote JSON data, except to indicate that infinite
                     // scrolling can be used
                     params.page = params.page || 1;
-
                     var results =[];
                     $.each(data,function(index,item){
                         results.push({
@@ -38,7 +38,6 @@ $(document).ready(function(){
                         results: results
                     };
                 },
-
                 templateResult: function (item) {
                     return item.id;//.id +" " + item.description;
                 },
@@ -50,12 +49,13 @@ $(document).ready(function(){
             escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 3
         }).on('select2:select', function(){
-            if( $selectBox.find(":selected").val() != -1){
+            if( $selectBox.find(":selected").val() != null){
                 $selectBox.parent().find('.medication_other_name').hide();
             }else{
                 $selectBox.parent().find('.medication_other_name').show();
             }
-        }).on('select2:unselect', function(){
+        })
+        .on('select2:unselect', function(){
             $selectBox.parent().find('.medication_other_name').show();
         });
     }
@@ -118,7 +118,7 @@ $(document).ready(function(){
             $copy.find(".color-green").hide();
             $copy.find(".color-red").show();
             // set new name to dropdowns so that the controller can view them all
-            var $temp = $clickCount;
+            var $temp = $clickCount+1;
             $clickCount++;
             // append cloned element to parent
             var $parent = $("#medication");
@@ -127,11 +127,23 @@ $(document).ready(function(){
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
 
+            // then calls the select2 functionality
+            createSelect2($('#medicinal_name_' + $temp));
+
             //Clear copied fields
             $copy.find("input:text[name='medication_dosage[]']").val('');
             $copy.find("textarea[name='medication_new_name[]']").val('');
             $copy.find("input:text[name='medication_duration[]']").val('');
+            //$copy.find($('#medicinal_name_' + $temp)).select2("val", "");
+
+            if($('#medicinal_name_' + $temp).val() != null){
+                $('.medication_other_name').hide();
+            }else{
+                $('.medication_other_name').show();
+            }
+
             //$copy.find("input:checkbox[name='supply_from_praksis[]']").attr('checked', false);
+
 
             $('.supply_from_praksis').change(function(){
                 //console.log('hell');
@@ -141,8 +153,9 @@ $(document).ready(function(){
                     $(this).siblings('.supply_from_praksis_hidden').val(0);
                 }
             });
-            // then calls the select2 functionality
-            createSelect2($('#medicinal_name_' + $temp));
+
+
+
         });
 
 
@@ -258,11 +271,15 @@ $(document).ready(function(){
     // SELECT2 option added for auto complete MEDICATION (or the initial select filed)
     createSelect2($('select[id^="medicinal_name_"]'));
     // In medication list if no option is selected then show input div. Else hide div
-    if($('select[id^="medicinal_name_"]').find(":selected").val() == -1){
-        $('.medication_other_name').show();
-    }else{
+    if($('select[id^="medicinal_name_"]').val() != null){
         $('.medication_other_name').hide();
+    }else{
+        $('.medication_other_name').show();
     }
+
+    //$('select2-selection__clear').on('click', function(){
+    //    $('select[id^="medicinal_name_"]').select2("data", null);
+    //});
 
     // Fade out success visit submit messge
     $('div.success-message').delay(5000).fadeOut(400);
@@ -296,4 +313,4 @@ $(document).ready(function(){
         });
     });
 });
-var $clickCount =2;
+var $clickCount = $('#medication select').length;

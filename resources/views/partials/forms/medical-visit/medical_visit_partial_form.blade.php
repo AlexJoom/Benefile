@@ -242,7 +242,7 @@
                 @if(!empty($medication_dosage_session) && !empty($medication_duration_session))
 
                     @for($i=0 ; $i<count($supply_from_praksis_hidden_session) ; $i++)
-                        <div  class="padding-left-right-15 medicationList med-added-div">
+                        <div  class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
                             <div class="form-group float-left width-100-percent">
                                  {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
                                 <div class="select-lists make-inline col-md-12">
@@ -266,9 +266,11 @@
                                          <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
                                     @endif
                                     {{--add--}}
-                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                    </a>
+                                    @if($i<1)
+                                        <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                        </a>
+                                    @endif
                                      {{--remove--}}
                                     <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-minus-sign make-inline"></span>
@@ -293,7 +295,7 @@
                                 {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
                                 {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
                                 <select id="medicinal_name_1" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >
-                                    <option value="-1" selected="selected">Επιλέξτε αγωγή</option>
+                                    {{--<option value="-1" selected="selected">Επιλέξτε αγωγή</option>--}}
                                 </select>
                                 {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
                                 {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
