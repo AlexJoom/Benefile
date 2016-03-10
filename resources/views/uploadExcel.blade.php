@@ -56,6 +56,11 @@
         <div class="padding-left-right-15 unsuccess-message">
             @lang($p.'unsuccess_upload')
         </div>
+        
+        <div>
+            <ul id="error-list">
+            </ul>
+        </div>
 
         <div class="row">
             <div class="col-md-12 text-align-center">
@@ -85,6 +90,7 @@
                 </table>
             </div>
         </div>
+        
     @stop
 
     @section('panel-scripts')

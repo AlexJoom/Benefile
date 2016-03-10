@@ -40,7 +40,7 @@ class UploadFileController extends Controller
         // Insert upload main info (file name & date) to DB
         $uploadFileService->importedFilesTable($file->getClientOriginalName());
         // insert values to DB
-        $uploadFileService->fileImport($fullFilePath);
+        return $uploadFileService->fileImport($fullFilePath);
     }
 //
 //

@@ -47,7 +47,8 @@ class UploadFileService{
             try {
                 $file_import->save();
             } catch (\Exception $e){
-                // do nothing
+                // TODO: add translation for message.
+                return ("Cvs upload error.");
             }
         }
         $this->selectAppropriateDBTableForEachFileRowColumns();
