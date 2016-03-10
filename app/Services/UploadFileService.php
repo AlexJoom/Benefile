@@ -4,6 +4,7 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\File_import_schema;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
+use App\Models\Benefiters_Tables_Models\ImportCSV_BasicInfo;
 use App\Services\ConversionsForFileUpload;
 use App\Services\DatesHelper;
 use App\Services\GreekStringConversionHelper;
@@ -54,8 +55,16 @@ class UploadFileService{
 
     // ----------------------------------------------------------------- //
     // Insert upload main info (file name & date) to DB
-    public function importedFilesTable(){
+    public function importedFilesTable($filename){
+        $importedFile = new ImportCSV_BasicInfo();
+        $importedFile->csv_name = $filename;
+        $importedFile->save();
+    }
 
+    // fetch all CSV import history from DB
+    public function findImportedHistory(){
+        $importedHistory = ImportCSV_BasicInfo::get();
+        return $importedHistory;
     }
 
     // selects the appropriate DB table for each column of a row

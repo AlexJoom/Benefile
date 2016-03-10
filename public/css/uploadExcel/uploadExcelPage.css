@@ -95,6 +95,39 @@ h1.record-section-header{
 }
 
 
+table#imported-info {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    width: 100%;
+
+}
+#imported-info td, #imported-info th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+
+}
+#imported-info tr:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+#imported-info th {
+    background-color: #18454b;
+    color: white;
+    padding-bottom: 11px;
+    padding-top: 11px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.margin-top-20{
+    margin-top: 20px;
+}
+
 @media (max-width: 991px){
     .dropzone{
         max-width: 66%;
