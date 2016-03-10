@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        {{-- Progress Bar --}}
+        {{-- Progress Bar (NOT FOR NOW) --}}
         {{--<div class="row margin-0per-5per-0per-5per">--}}
             {{--<div class="col-md-12">--}}
                 {{--<div class="row progress progress-custom">--}}
@@ -56,36 +56,46 @@
         <div class="padding-left-right-15 unsuccess-message">
             @lang($p.'unsuccess_upload')
         </div>
+        
+        <div>
+            <ul id="error-list">
+            </ul>
+        </div>
 
         <div class="row">
             <div class="col-md-12 text-align-center">
                 <button class="importButton btn btn-warning" onclick="refreshPage()">@lang($p.'add-another')</button>
             </div>
         </div>
-        <div>
-            <ul id="error-list">
-            </ul>
+
+        <div class="row margin-top-20">
+            <div class="col-md-6 col-centered">
+                 <table id="imported-info" style="width:100%">
+                  <thead>
+                      <tr>
+                          <th>Α/Α</th>
+                          <th>@lang($p.'filename')</th>
+                          <th>@lang($p.'import-date')</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @for($i=0 ; $i<count($importedCSVFiles_basic_info) ; $i++)
+                          <tr>
+                              <td>{{ $i+1 }}</td>
+                              <td>{{ $importedCSVFiles_basic_info[$i]['csv_name'] }}</td>
+                              <td>{{ substr($importedCSVFiles_basic_info[$i]['created_at'], 0, -8) }}</td>
+                          </tr>
+                      @endfor
+                  </tbody>
+                </table>
+            </div>
         </div>
+        
     @stop
 
     @section('panel-scripts')
         <script src={{ asset('js/dropzone.js')}}></script>
         <script src="{{asset('js/records/selectImportCSV.js')}}"></script>
-        <script>
-            Dropzone.options.dropzone = {
-                acceptedFiles: ".csv",
-                maxFiles: 1,
-                success: function(file, data) {
-                            html = "<li>" + data + "</li>";
-                            $("#error-list").html(html);
-                }
-            }
-        </script>
-        <script>
-        function refreshPage() {
-            location.reload();
-        }
-        </script>
         <script src="{{asset('js/importCSV/importCSV.js')}}"></script>
     @stop
 
