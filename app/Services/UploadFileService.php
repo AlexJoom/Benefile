@@ -55,15 +55,18 @@ class UploadFileService{
         if($allFileRows != null) {
             foreach ($allFileRows as $singleRow) {
                 try {
+                    // TODO for each row log if the current row is added to DB. If no then print the benefiter's name & folder number that failed to be added to DB
                     $imported_benefiter_id = \DB::table('benefiters')->insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
                     $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
-                    // do nothing
+                    echo 'Exception found';
                 }
-
+                // TODO (not for now) Add table to view to display the files that uploaded successfully. Only names and dates, to help while uploading.
 //                $benefiterReferralsColumns = $this->selectBenefitersReferralsColumnsAndValuesFromFileRow($singleRow);
             }
         }
+        // delete all content form the imported data after populating all relative tables
+//        File_import_schema::truncate();
     }
 
     // selects and returns all the columns - values inserted from file that correspond to the benefiters DB table
