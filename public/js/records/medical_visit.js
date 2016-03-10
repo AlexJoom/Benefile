@@ -12,9 +12,7 @@ $(document).ready(function(){
             maximumSelectionSize: 1,
             allowClear: true,
             ajax: {
-                // url: "http://dev.benefile/public/benefiter/getMedicationList",
 		url: $("#medicationajax").data("url")+"/benefiter/getMedicationList",
-                //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -230,7 +228,6 @@ $(document).ready(function(){
         placeholder: 'Πάθηση',
         ajax: {
 	    url: $("#examajax").data("url")+"/benefiter/getIC10List",
-            //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
