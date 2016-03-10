@@ -71,7 +71,6 @@
     @section('panel-scripts')
         <script src={{ asset('js/dropzone.js')}}></script>
         <script src="{{asset('js/records/selectImportCSV.js')}}"></script>
-<<<<<<< HEAD
         <script>
             Dropzone.options.dropzone = {
                 acceptedFiles: ".csv",
@@ -87,8 +86,6 @@
             location.reload();
         }
         </script>
-=======
         <script src="{{asset('js/importCSV/importCSV.js')}}"></script>
->>>>>>> 671f2841e8ad9c9a9502cf954a89705b06db39e8
     @stop
 
