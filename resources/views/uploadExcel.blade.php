@@ -34,6 +34,10 @@
                 <button class="importButton" onclick="refreshPage()">Add another file</button>
             </div>
         </div>
+        <div>
+            <ul id="error-list">
+            </ul>
+        </div>
     @stop
 
     @section('panel-scripts')
@@ -41,8 +45,12 @@
         <script src="{{asset('js/records/selectImportCSV.js')}}"></script>
         <script>
             Dropzone.options.dropzone = {
-            acceptedFiles: ".csv",
-            maxFiles: 1
+                acceptedFiles: ".csv",
+                maxFiles: 1,
+                success: function(file, data) {
+                            html = "<li>" + data + "</li>";
+                            $("#error-list").html(html);
+                }
             }
         </script>
         <script>
