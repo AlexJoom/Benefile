@@ -12,6 +12,7 @@ class UploadFileService{
 
     private $__langNames = array();
     private $__levelNames = array();
+    private $__legalStatuses = array();
 
     public function __construct(){
         $this->greekStringConversion = new GreekStringConversionHelper();
@@ -57,9 +58,9 @@ class UploadFileService{
         if($allFileRows != null) {
             foreach ($allFileRows as $singleRow) {
                 try {
-                    $id = Benefiter::insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
-                    $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $id);
                     $imported_benefiter_id = \DB::table('benefiters')->insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
+                    $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $imported_benefiter_id);
+                    $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
                     $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
                     // do nothing
@@ -169,8 +170,10 @@ class UploadFileService{
     // inserts languages to DB
     private function insertLanguagesToDBFromFile($languages, $languages_levels, $id){
         $languagesAndLevels = $this->getLanguagesArrayForDBInsert($languages, $languages_levels, $id);
-        foreach($languagesAndLevels as $languageAndLevel){
-            \DB::table('benefiters_languages')->insert($languageAndLevel);
+        if($languagesAndLevels != null) {
+            foreach ($languagesAndLevels as $languageAndLevel) {
+                \DB::table('benefiters_languages')->insert($languageAndLevel);
+            }
         }
     }
 
@@ -288,5 +291,62 @@ class UploadFileService{
 
         // return result array
         return $resultArray;
+    }
+
+    // inserts legal statuses to DB
+    private function insertLegalStatusToDBFromFile($legal_status, $legal_description, $legal_exp_date, $id){
+        // get array for DB insert
+        $legalStatus = $this->getLegalStatusArrayForDBInsert($legal_status, $legal_description, $legal_exp_date, $id);
+        // if array has been returned successfully, insert it into DB
+        if ($legalStatus != null){
+            try {
+                \DB::table('benefiters_legal_status')->insert($legalStatus);
+            } catch(\Exception $e){
+                // TODO: display appropriate msg
+            }
+        } else { // else display an error message
+            // TODO: display appropriate msg
+        }
+    }
+
+    // returns the legal status id from legal status name
+    private function findLegalStatusIdFromName($legal_status){
+        // if $__legalStatuses is empty, then fill it with normalized legal statuses from DB...
+        if(empty($this->__legalStatuses)){
+            $allLegalStatuses = \DB::table('legal_status_lookup')->get();
+            foreach($allLegalStatuses as $legalStatus){
+                $this->__legalStatuses[$legalStatus->id] = $this->greekStringConversion->grstrtoupper($legalStatus->description);
+            }
+        }
+        // ...else use the existent array
+        // normalize $legal_status
+        $tmp = $this->greekStringConversion->grstrtoupper($legal_status);
+        $id = array_search($tmp, $this->__legalStatuses);
+        // if legal status was not found in $legalStatuses array
+        // return null
+        if(!$id){
+            $id = null;
+        }
+        return $id;
+    }
+
+    // returns an array suitable for legal status DB insert
+    private function getLegalStatusArrayForDBInsert($legal_status, $legal_description, $legal_exp_date, $id){
+        // get legal id using the legal name
+        $legal_id = $this->findLegalStatusIdFromName($legal_status);
+        // if legal id is found return an array suitable for DB insertion
+        if($legal_id != null) {
+            // get date for DB insert
+            $datesHelper = new DatesHelper();
+            $legal_exp_date = $datesHelper->makeDBFriendlyDate($legal_exp_date);
+            return array(
+                'legal_lookup_id' => $legal_id,
+                'description' => $legal_description,
+                'exp_date' => $legal_exp_date,
+                'benefiter_id' => $id,
+            );
+        } else { // return null if legal status was not found
+            return null;
+        }
     }
 }
