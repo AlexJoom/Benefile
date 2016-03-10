@@ -12,7 +12,8 @@ $(document).ready(function(){
             maximumSelectionSize: 1,
             allowClear: true,
             ajax: {
-                url: "http://localhost/benefile/index.php/benefiter/getMedicationList",
+                // url: "http://dev.benefile/public/benefiter/getMedicationList",
+		url: $("#medicationajax").data("url")+"/benefiter/getMedicationList",
                 //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
@@ -228,7 +229,7 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-            url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+	    url: $("#examajax").data("url")+"/benefiter/getIC10List",
             //url: window.location.protocol + "//" + window.location.host + "/" + "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
