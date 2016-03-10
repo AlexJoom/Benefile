@@ -15,6 +15,7 @@
     @stop
 
     @section('main-window-content')
+        {{-- Dropzone --}}
         <div class="row">
             <div class="col-md-12">
                 <form action="{{url('new-benefiter/uploadCSV')}}" id="dropzone" class="dropzone margin-5per custom-style relPos">
@@ -62,12 +63,14 @@
             </ul>
         </div>
 
+        {{-- Refresh button --}}
         <div class="row">
             <div class="col-md-12 text-align-center">
                 <button class="importButton btn btn-warning" onclick="refreshPage()">@lang($p.'add-another')</button>
             </div>
         </div>
 
+        {{-- Imported files info --}}
         <div class="row margin-top-20">
             <div class="col-md-6 col-centered">
                  <table id="imported-info" style="width:100%">
