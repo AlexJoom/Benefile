@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/UploadFileService.php" afterPath="$PROJECT_DIR$/app/Services/UploadFileService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" afterPath="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -56,8 +53,29 @@
       <file leaf-file-name="UploadFileService.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13609467" vertical-offset="828" max-vertical-offset="3841">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.6647315" vertical-offset="2" max-vertical-offset="2714">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding>
+                <element signature="e#681#2504#0#PHP" expanded="false" />
+                <element signature="e#2757#4216#0#PHP" expanded="false" />
+                <element signature="e#4336#7022#0#PHP" expanded="false" />
+                <element signature="e#7215#9397#0#PHP" expanded="false" />
+                <element signature="e#9489#9954#0#PHP" expanded="false" />
+                <element signature="e#9991#10391#0#PHP" expanded="false" />
+                <element signature="e#10543#11657#0#PHP" expanded="false" />
+                <element signature="e#11713#12747#0#PHP" expanded="false" />
+                <element signature="e#12817#13361#0#PHP" expanded="false" />
+                <element signature="e#13429#15092#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadFileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.222222" vertical-offset="525" max-vertical-offset="1610">
+              <caret line="38" column="59" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -112,8 +130,9 @@
         <option value="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
         <option value="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
         <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
-        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
         <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
+        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
       </list>
     </option>
   </component>
@@ -371,6 +390,123 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/UploadFileService.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/seeds/LanguageSeeder.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/seeds/LegalStatusTableSeeder.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/records/medical_visit.js</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -462,7 +598,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15515289" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -496,7 +632,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="88" />
+      <option name="time" value="89" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1001,14 +1137,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71629214" vertical-offset="410" max-vertical-offset="1564">
-          <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32904148" vertical-offset="0" max-vertical-offset="699">
@@ -1052,6 +1180,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.851852" vertical-offset="553" max-vertical-offset="1794">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
@@ -1062,19 +1198,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.851852" vertical-offset="553" max-vertical-offset="1794">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        <state vertical-scroll-proportion="-11.222222" vertical-offset="525" max-vertical-offset="1610">
+          <caret line="38" column="59" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13609467" vertical-offset="828" max-vertical-offset="3841">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-          <folding />
+        <state vertical-scroll-proportion="0.6647315" vertical-offset="2" max-vertical-offset="2714">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#681#2504#0#PHP" expanded="false" />
+            <element signature="e#2757#4216#0#PHP" expanded="false" />
+            <element signature="e#4336#7022#0#PHP" expanded="false" />
+            <element signature="e#7215#9397#0#PHP" expanded="false" />
+            <element signature="e#9489#9954#0#PHP" expanded="false" />
+            <element signature="e#9991#10391#0#PHP" expanded="false" />
+            <element signature="e#10543#11657#0#PHP" expanded="false" />
+            <element signature="e#11713#12747#0#PHP" expanded="false" />
+            <element signature="e#12817#13361#0#PHP" expanded="false" />
+            <element signature="e#13429#15092#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
