@@ -72,6 +72,7 @@
 
         {{-- Imported files info --}}
         <div class="row margin-top-20">
+            <h3 class="text-align-center">Αρχεία που εχουν είδη φορτωθεί στην πλατφόρμα</h3>
             <div class="col-md-6 col-centered">
                  <table id="imported-info" style="width:100%">
                   <thead>
