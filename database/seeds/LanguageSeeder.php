@@ -307,7 +307,7 @@ class LanguageSeeder extends Seeder
                 array('description'   => 'Κάτω του μετρίου'),
                 array('description'   => 'Μέτριο'),
                 array('description'   => 'Καλό'),
-                array('description'   => 'Εξαιρετικό'),
+                array('description'   => 'Άριστο'),
             )
         );
     }
