@@ -36,6 +36,8 @@ class UploadFileController extends Controller
         // move file to correct location
         $file->move($filepath, $filename);
         $fullFilePath = $filepath . $filename;
+        // Insert upload main info (file name & date) to DB
+        $uploadFileService->importedFilesTable();
         // insert values to DB
         return $uploadFileService->fileImport($fullFilePath);
     }

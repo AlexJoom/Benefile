@@ -1,8 +1,11 @@
+
+
 .importButton{
     font-size: 30px;
-    margin: 20px;
+    margin: 40px;
     padding: 10px 20px;
-    color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: 700;
 }
 
 .greyBorder{
@@ -11,6 +14,11 @@
 .margin-5per{
     margin: 5%;
 }
+
+.margin-0per-5per-0per-5per{
+    margin: 0% 5% 0% 5%;
+}
+
 .custom-style{
     background-color: #cfc8d3;
 }
@@ -47,6 +55,45 @@
     color: white;
     margin: 10px !important;
 }
+
+.success-message{
+    font-size: 2.2em;
+    text-align: center;
+    color: rgba(3, 107, 3, 0.54);
+}
+
+.padding-left-right-15{
+    padding: 0px 15px;
+}
+
+h1.record-section-header{
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 1em 0 0;
+    color: #53585f;
+}
+
+.unsuccess-message{
+    font-size: 2.2em;
+    text-align: center;
+    color: rgba(222, 11, 11, 0.54);
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.progress-custom{
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    height: 40px;
+}
+
+.progress-bar-custom {
+    font-size: 20px;
+    height: 100%;
+    line-height: 40px;
+}
+
 
 @media (max-width: 991px){
     .dropzone{
