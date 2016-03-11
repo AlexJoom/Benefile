@@ -14,6 +14,7 @@ class UploadFileService{
     private $__langNames = array();
     private $__levelNames = array();
     private $__legalStatuses = array();
+    private $__errors = array();
 
     public function __construct(){
         $this->greekStringConversion = new GreekStringConversionHelper();
@@ -34,7 +35,11 @@ class UploadFileService{
             'medical_reference_date', 'has_legal_reference', 'legal_reference_actions', 'legal_reference_date',
             'has_educational_reference', 'educational_reference_actions', 'educational_reference_date', 'social_history'
         ];
-
+        // get max id in File_import_schema so that it won't try to insert benefiters already inserted via file
+        $maxIdInFileImportSchema = File_import_schema::max('id');
+        if($maxIdInFileImportSchema == null){
+            $maxIdInFileImportSchema = 0;
+        }
         // Import csv
         $csvFile = file($filePath);
         // Iterate between all rows of the csv file and add each value to the benefiters table
@@ -47,11 +52,11 @@ class UploadFileService{
             try {
                 $file_import->save();
             } catch (\Exception $e){
-                // TODO: add translation for message.
-                return ("Cvs upload error.");
+                array_push($this->__errors, \Lang::get('upload_file_errors.import_csv_row_error1') . $file_import->folder_number . \Lang::get('upload_file_errors.import_csv_row_error2'));
             }
         }
-        $this->selectAppropriateDBTableForEachFileRowColumns();
+        $this->selectAppropriateDBTableForEachFileRowColumns($maxIdInFileImportSchema);
+        return $this->__errors;
     }
 
     // ----------------------------------------------------------------- //
@@ -69,8 +74,8 @@ class UploadFileService{
     }
 
     // selects the appropriate DB table for each column of a row
-    private function selectAppropriateDBTableForEachFileRowColumns(){
-        $allFileRows = File_import_schema::get();
+    private function selectAppropriateDBTableForEachFileRowColumns($maxIdInFileImportSchema){
+        $allFileRows = File_import_schema::where('id', '>', $maxIdInFileImportSchema)->get();
         if($allFileRows != null) {
             foreach ($allFileRows as $singleRow) {
                 try {
@@ -80,7 +85,7 @@ class UploadFileService{
                     $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
                     $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
-                    echo 'Exception found';
+                    array_push($this->__errors, \Lang::get('upload_file_errors.insert_benefiter_error') . $singleRow->folder_number);
                 }
                 // TODO (not for now) Add table to view to display the files that uploaded successfully. Only names and dates, to help while uploading.
 //                $benefiterReferralsColumns = $this->selectBenefitersReferralsColumnsAndValuesFromFileRow($singleRow);
@@ -214,7 +219,6 @@ class UploadFileService{
         if(!$id){
             $id = null;
         }
-        // TODO: Determine whether we want to simply output error if not in DB
         // return the ID
         return $id;
     }
@@ -244,8 +248,8 @@ class UploadFileService{
             // else
         if(!$id){
             $id = null;
+            array_push($this->__errors, \Lang::get('upload_file_errors.level_not_found_error') . $sLevel);
         }
-        // TODO: Determine whether we want to simply output error if not in DB
         // return the ID
         return $id;
     }
@@ -311,10 +315,10 @@ class UploadFileService{
             try {
                 \DB::table('benefiters_legal_status')->insert($legalStatus);
             } catch(\Exception $e){
-                // TODO: display appropriate msg
+                array_push($this->__errors, \Lang::get('upload_file_errors.insert_legal_status_error') . $legal_status . \Lang::get('upload_file_errors.benefiter_with_id') . $id);
             }
         } else { // else display an error message
-            // TODO: display appropriate msg
+            array_push($this->__errors, \Lang::get('upload_file_errors.legal_status_not_found_error') . $legal_status);
         }
     }
 

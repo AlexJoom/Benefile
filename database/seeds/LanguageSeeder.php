@@ -14,6 +14,7 @@ class LanguageSeeder extends Seeder
     {
         \DB::table('languages')->insert(
             array(
+                // array('description' => '---'),
                 array('description' => 'abq'),
                 array('description' => 'av'),
                 array('description' => 'en'),
