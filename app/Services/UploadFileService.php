@@ -55,6 +55,7 @@ class UploadFileService{
                 array_push($this->__errors, \Lang::get('upload_file_errors.import_csv_row_error1') . $file_import->folder_number . \Lang::get('upload_file_errors.import_csv_row_error2'));
             }
         }
+        \DB::insert(\DB::raw('insert into work_title_list_lookup (work_title) select distinct f.work_title  from  File_Import_Schema f left outer join work_title_list_lookup work_title on f.work_title = work_title.work_title where work_title.id is null;'));
         $this->selectAppropriateDBTableForEachFileRowColumns($maxIdInFileImportSchema);
         return $this->__errors;
     }
@@ -106,6 +107,7 @@ class UploadFileService{
         $singleRow->working_legally = $conversionForFile->getLegalWorkId($singleRow->working_legally);
         $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
         $singleRow->nationality_country = $conversionForFile->getNationalityCountry($singleRow->nationality_country);
+        $singleRow->work_title = $conversionForFile->getWorkTitleId($singleRow->work_title);
         return array(
             'folder_number' => $singleRow->folder_number,
             'name' => $singleRow->name,
@@ -125,7 +127,7 @@ class UploadFileService{
             'education_id' => $singleRow->education,
             'language_interpreter_needed' => $singleRow->language_interpreter_needed,
             'is_benefiter_working' => $singleRow->is_benefiter_working,
-//                'work_title_id' => $singleRow->work_title,// make it id
+            'work_title_id' => $singleRow->work_title,
             'working_legally' => $singleRow->working_legally,
             'country_abandon_reason' => $singleRow->country_abandon_reason,
             'travel_route' => $singleRow->travel_route,

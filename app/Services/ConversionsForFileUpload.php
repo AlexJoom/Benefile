@@ -113,4 +113,19 @@ class ConversionsForFileUpload{
         // no legal work found
         return null;
     }
+
+    // get work title id
+    public function getWorkTitleId($workTitleFromFile){
+        $workTitleFromFile = $this->greekStringConversion->grstrtoupper($workTitleFromFile);
+        $workTitles = \DB::table('work_title_list_lookup')->get();
+        // change from work title name to work title id
+        foreach($workTitles as $workTitle){
+            $workTitle->work_title = $this->greekStringConversion->grstrtoupper($workTitle->work_title);
+            if(strcasecmp($workTitleFromFile, $workTitle->work_title) == 0){
+                return $workTitle->id;
+            }
+        }
+        // no work title found
+        return null;
+    }
 }
