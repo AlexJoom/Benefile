@@ -7,7 +7,7 @@
     @section('panel-headLinks')
         <link href={{asset('css/uploadExcel/uploadExcelPage.css')}} rel="stylesheet" type="text/css">
         <link href={{asset('css/uploadExcel/dropzone.css')}} rel="stylesheet" type="text/css">
-        <link href={{asset('css/uploadExcel/uploadExcelPage.css')}} rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     @stop
 
     @section('panel-title')
