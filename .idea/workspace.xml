@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/loginRegister.css" afterPath="$PROJECT_DIR$/public/css/common/loginRegister.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" afterPath="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -50,43 +51,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="uploadExcel.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="uploadExcel.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35450518" vertical-offset="1462" max-vertical-offset="2553">
-              <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="uploadExcelPage.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="3335">
-              <caret line="81" column="1" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="importCSV.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="759">
-              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state vertical-scroll-proportion="-10.84" vertical-offset="945" max-vertical-offset="1776">
+              <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="62" />
               <folding>
-                <element signature="e#0#45#0" expanded="false" />
+                <element signature="e#2980#2998#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload_excel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
+      <file leaf-file-name="loginRegister.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.26126125" vertical-offset="466" max-vertical-offset="2608">
+              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -104,26 +85,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/ImportCSV_BasicInfo.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php" />
-        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
-        <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
-        <option value="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
-        <option value="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
         <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+        <option value="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
+        <option value="$PROJECT_DIR$/public/css/common/loginRegister.css" />
       </list>
     </option>
   </component>
   <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
     <gulpfiles>
       <GulpfileState>
         <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
       </GulpfileState>
     </gulpfiles>
-    <initial>false</initial>
   </component>
   <component name="PhpServers">
     <servers>
@@ -137,10 +113,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="39" />
-    <option name="y" value="21" />
-    <option name="width" value="1641" />
-    <option name="height" value="1029" />
+    <option name="x" value="-1" />
+    <option name="width" value="1682" />
+    <option name="height" value="1023" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -151,9 +126,6 @@
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
-  </component>
-  <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -168,7 +140,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -269,6 +240,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploadedExcels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medical-visit-uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -332,6 +347,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -435,6 +472,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -479,118 +517,6 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
-  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -602,28 +528,29 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
-      <pass-parent-env-vars>false</pass-parent-env-vars>
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="benefile" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="benefile" start_url="/benefile/index.php">
@@ -671,31 +598,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
+    <frame x="-1" y="0" width="1682" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18131869" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1816118" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19762352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31894934" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32295483" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2758242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2758242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -721,21 +648,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/legal_folder_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5898491" vertical-offset="7" max-vertical-offset="736">
-          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.82629675" vertical-offset="435" max-vertical-offset="1264">
@@ -1018,175 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4144144" vertical-offset="2692" max-vertical-offset="3887">
           <caret line="1052" column="20" selection-start-line="1052" selection-start-column="20" selection-end-line="1052" selection-end-column="20" />
-          <folding>
-            <element signature="e#1121#1245#0#PHP" expanded="false" />
-            <element signature="e#1418#5295#0#PHP" expanded="false" />
-            <element signature="e#1480#1978#0#PHP" expanded="false" />
-            <element signature="e#2107#2204#0#PHP" expanded="false" />
-            <element signature="e#2329#2940#0#PHP" expanded="false" />
-            <element signature="e#2513#2930#0#PHP" expanded="false" />
-            <element signature="e#2572#2916#0#PHP" expanded="false" />
-            <element signature="e#2661#2898#0#PHP" expanded="false" />
-            <element signature="e#3054#3144#0#PHP" expanded="false" />
-            <element signature="e#3211#4182#0#PHP" expanded="false" />
-            <element signature="e#3778#4172#0#PHP" expanded="false" />
-            <element signature="e#4184#4239#0#PHP" expanded="false" />
-            <element signature="e#4458#4548#0#PHP" expanded="false" />
-            <element signature="e#4687#4789#0#PHP" expanded="false" />
-            <element signature="e#4799#4847#0#PHP" expanded="false" />
-            <element signature="e#5569#6463#0#PHP" expanded="false" />
-            <element signature="e#6550#7131#0#PHP" expanded="false" />
-            <element signature="e#7233#8290#0#PHP" expanded="false" />
-            <element signature="e#7401#8284#0#PHP" expanded="false" />
-            <element signature="e#7466#8274#0#PHP" expanded="false" />
-            <element signature="e#8315#8635#0#PHP" expanded="false" />
-            <element signature="e#8484#8587#0#PHP" expanded="false" />
-            <element signature="e#8737#10172#0#PHP" expanded="false" />
-            <element signature="e#10273#11061#0#PHP" expanded="false" />
-            <element signature="e#11162#11625#0#PHP" expanded="false" />
-            <element signature="e#11311#11619#0#PHP" expanded="false" />
-            <element signature="e#11362#11609#0#PHP" expanded="false" />
-            <element signature="e#11650#11924#0#PHP" expanded="false" />
-            <element signature="e#11794#11883#0#PHP" expanded="false" />
-            <element signature="e#12023#15166#0#PHP" expanded="false" />
-            <element signature="e#12088#12242#0#PHP" expanded="false" />
-            <element signature="e#12252#12382#0#PHP" expanded="false" />
-            <element signature="e#12617#12761#0#PHP" expanded="false" />
-            <element signature="e#12844#15160#0#PHP" expanded="false" />
-            <element signature="e#12992#15150#0#PHP" expanded="false" />
-            <element signature="e#13248#15136#0#PHP" expanded="false" />
-            <element signature="e#13569#13822#0#PHP" expanded="false" />
-            <element signature="e#13729#13822#0#PHP" expanded="false" />
-            <element signature="e#14122#15136#0#PHP" expanded="false" />
-            <element signature="e#14670#14923#0#PHP" expanded="false" />
-            <element signature="e#14830#14923#0#PHP" expanded="false" />
-            <element signature="e#15263#15704#0#PHP" expanded="false" />
-            <element signature="e#15400#15698#0#PHP" expanded="false" />
-            <element signature="e#15457#15688#0#PHP" expanded="false" />
-            <element signature="e#15729#15984#0#PHP" expanded="false" />
-            <element signature="e#15858#15945#0#PHP" expanded="false" />
-            <element signature="e#16076#17100#0#PHP" expanded="false" />
-            <element signature="e#16397#17094#0#PHP" expanded="false" />
-            <element signature="e#16451#17084#0#PHP" expanded="false" />
-            <element signature="e#17480#18499#0#PHP" expanded="false" />
-            <element signature="e#18586#19264#0#PHP" expanded="false" />
-            <element signature="e#19366#23950#0#PHP" expanded="false" />
-            <element signature="e#19977#23944#0#PHP" expanded="false" />
-            <element signature="e#20025#22356#0#PHP" expanded="false" />
-            <element signature="e#20080#22314#0#PHP" expanded="false" />
-            <element signature="e#20131#21215#0#PHP" expanded="false" />
-            <element signature="e#21234#22314#0#PHP" expanded="false" />
-            <element signature="e#21261#22296#0#PHP" expanded="false" />
-            <element signature="e#22451#23944#0#PHP" expanded="false" />
-            <element signature="e#22469#23934#0#PHP" expanded="false" />
-            <element signature="e#22519#23892#0#PHP" expanded="false" />
-            <element signature="e#22573#23657#0#PHP" expanded="false" />
-            <element signature="e#23676#23892#0#PHP" expanded="false" />
-            <element signature="e#23975#24295#0#PHP" expanded="false" />
-            <element signature="e#24144#24247#0#PHP" expanded="false" />
-            <element signature="e#24397#27231#0#PHP" expanded="false" />
-            <element signature="e#24496#27225#0#PHP" expanded="false" />
-            <element signature="e#24973#27215#0#PHP" expanded="false" />
-            <element signature="e#25045#27201#0#PHP" expanded="false" />
-            <element signature="e#25110#27183#0#PHP" expanded="false" />
-            <element signature="e#25199#27161#0#PHP" expanded="false" />
-            <element signature="e#25277#27095#0#PHP" expanded="false" />
-            <element signature="e#26220#27095#0#PHP" expanded="false" />
-            <element signature="e#27332#28225#0#PHP" expanded="false" />
-            <element signature="e#28326#30756#0#PHP" expanded="false" />
-            <element signature="e#28883#30750#0#PHP" expanded="false" />
-            <element signature="e#28943#29895#0#PHP" expanded="false" />
-            <element signature="e#28998#29853#0#PHP" expanded="false" />
-            <element signature="e#29061#29441#0#PHP" expanded="false" />
-            <element signature="e#29460#29853#0#PHP" expanded="false" />
-            <element signature="e#29487#29835#0#PHP" expanded="false" />
-            <element signature="e#29994#30750#0#PHP" expanded="false" />
-            <element signature="e#30012#30740#0#PHP" expanded="false" />
-            <element signature="e#30074#30698#0#PHP" expanded="false" />
-            <element signature="e#30128#30508#0#PHP" expanded="false" />
-            <element signature="e#30527#30698#0#PHP" expanded="false" />
-            <element signature="e#30781#31054#0#PHP" expanded="false" />
-            <element signature="e#30924#31013#0#PHP" expanded="false" />
-            <element signature="e#31153#43242#0#PHP" expanded="false" />
-            <element signature="e#31267#31421#0#PHP" expanded="false" />
-            <element signature="e#31430#31560#0#PHP" expanded="false" />
-            <element signature="e#32048#32192#0#PHP" expanded="false" />
-            <element signature="e#32328#40755#0#PHP" expanded="false" />
-            <element signature="e#32387#37823#0#PHP" expanded="false" />
-            <element signature="e#32442#37781#0#PHP" expanded="false" />
-            <element signature="e#32504#34975#0#PHP" expanded="false" />
-            <element signature="e#32783#34953#0#PHP" expanded="false" />
-            <element signature="e#33135#33420#0#PHP" expanded="false" />
-            <element signature="e#33311#33420#0#PHP" expanded="false" />
-            <element signature="e#33790#34953#0#PHP" expanded="false" />
-            <element signature="e#34401#34686#0#PHP" expanded="false" />
-            <element signature="e#34577#34686#0#PHP" expanded="false" />
-            <element signature="e#35041#37781#0#PHP" expanded="false" />
-            <element signature="e#35132#37739#0#PHP" expanded="false" />
-            <element signature="e#35423#37713#0#PHP" expanded="false" />
-            <element signature="e#35791#36092#0#PHP" expanded="false" />
-            <element signature="e#35975#36092#0#PHP" expanded="false" />
-            <element signature="e#36486#37713#0#PHP" expanded="false" />
-            <element signature="e#37129#37430#0#PHP" expanded="false" />
-            <element signature="e#37313#37430#0#PHP" expanded="false" />
-            <element signature="e#37922#40755#0#PHP" expanded="false" />
-            <element signature="e#37940#40745#0#PHP" expanded="false" />
-            <element signature="e#38001#40703#0#PHP" expanded="false" />
-            <element signature="e#38320#40490#0#PHP" expanded="false" />
-            <element signature="e#38672#38957#0#PHP" expanded="false" />
-            <element signature="e#38848#38957#0#PHP" expanded="false" />
-            <element signature="e#39327#40490#0#PHP" expanded="false" />
-            <element signature="e#39938#40223#0#PHP" expanded="false" />
-            <element signature="e#40114#40223#0#PHP" expanded="false" />
-            <element signature="e#40533#40703#0#PHP" expanded="false" />
-            <element signature="e#40768#40792#0#PHP" expanded="false" />
-            <element signature="e#43339#45820#0#PHP" expanded="false" />
-            <element signature="e#43918#45814#0#PHP" expanded="false" />
-            <element signature="e#43984#44948#0#PHP" expanded="false" />
-            <element signature="e#44039#44906#0#PHP" expanded="false" />
-            <element signature="e#44108#44496#0#PHP" expanded="false" />
-            <element signature="e#44515#44906#0#PHP" expanded="false" />
-            <element signature="e#44542#44888#0#PHP" expanded="false" />
-            <element signature="e#45043#45814#0#PHP" expanded="false" />
-            <element signature="e#45061#45804#0#PHP" expanded="false" />
-            <element signature="e#45129#45762#0#PHP" expanded="false" />
-            <element signature="e#45183#45571#0#PHP" expanded="false" />
-            <element signature="e#45590#45762#0#PHP" expanded="false" />
-            <element signature="e#45845#46117#0#PHP" expanded="false" />
-            <element signature="e#45991#46078#0#PHP" expanded="false" />
-            <element signature="e#46209#50505#0#PHP" expanded="false" />
-            <element signature="e#46929#49740#0#PHP" expanded="false" />
-            <element signature="e#46983#48584#0#PHP" expanded="false" />
-            <element signature="e#47038#48542#0#PHP" expanded="false" />
-            <element signature="e#47095#47791#0#PHP" expanded="false" />
-            <element signature="e#47810#48542#0#PHP" expanded="false" />
-            <element signature="e#47837#48524#0#PHP" expanded="false" />
-            <element signature="e#48683#49740#0#PHP" expanded="false" />
-            <element signature="e#48701#49730#0#PHP" expanded="false" />
-            <element signature="e#48757#49688#0#PHP" expanded="false" />
-            <element signature="e#48811#49507#0#PHP" expanded="false" />
-            <element signature="e#49526#49688#0#PHP" expanded="false" />
-            <element signature="e#49755#50499#0#PHP" expanded="false" />
-            <element signature="e#49810#50489#0#PHP" expanded="false" />
-            <element signature="e#50721#50946#0#PHP" expanded="false" />
-            <element signature="e#50799#50907#0#PHP" expanded="false" />
-            <element signature="e#51018#51238#0#PHP" expanded="false" />
-            <element signature="e#51104#51199#0#PHP" expanded="false" />
-            <element signature="e#51284#51465#0#PHP" expanded="false" />
-            <element signature="e#51515#51783#0#PHP" expanded="false" />
-            <element signature="e#51838#52022#0#PHP" expanded="false" />
-            <element signature="e#52054#52218#0#PHP" expanded="false" />
-            <element signature="e#52422#52581#0#PHP" expanded="false" />
-            <element signature="e#52603#52706#0#PHP" expanded="false" />
-            <element signature="e#52740#52950#0#PHP" expanded="false" />
-            <element signature="e#52982#53221#0#PHP" expanded="false" />
-            <element signature="e#53245#53458#0#PHP" expanded="false" />
-            <element signature="e#53481#53719#0#PHP" expanded="false" />
-            <element signature="e#53741#53940#0#PHP" expanded="false" />
-            <element signature="e#53960#54151#0#PHP" expanded="false" />
-            <element signature="e#54193#54439#0#PHP" expanded="false" />
-            <element signature="e#54478#54658#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1194,7 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5870871" vertical-offset="1840" max-vertical-offset="2714">
           <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,7 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20029028" vertical-offset="0" max-vertical-offset="689">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,7 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28550297" vertical-offset="4062" max-vertical-offset="6693">
           <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,14 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="759">
@@ -1267,14 +999,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6685879" vertical-offset="0" max-vertical-offset="694">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26307923" vertical-offset="0" max-vertical-offset="669">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35450518" vertical-offset="1462" max-vertical-offset="2553">
-          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
+        <state vertical-scroll-proportion="-10.84" vertical-offset="945" max-vertical-offset="1776">
+          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="62" />
+          <folding>
+            <element signature="e#2980#2998#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26126125" vertical-offset="466" max-vertical-offset="2608">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
   </component>
 </project>
-
