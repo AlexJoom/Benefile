@@ -20,7 +20,8 @@ class UploadFileController extends Controller
 
     // returns upload csv view
     public function getUploadCSV(){
-        return view('uploadExcel');
+        $importedCSVFiles_basic_info = $this->uploadFileService->findImportedHistory();
+        return view('uploadExcel')->with('importedCSVFiles_basic_info', $importedCSVFiles_basic_info);
     }
 
     // uploads the file to server
@@ -36,8 +37,10 @@ class UploadFileController extends Controller
         // move file to correct location
         $file->move($filepath, $filename);
         $fullFilePath = $filepath . $filename;
+        // Insert upload main info (file name & date) to DB
+        $uploadFileService->importedFilesTable($file->getClientOriginalName());
         // insert values to DB
-        $uploadFileService->fileImport($fullFilePath);
+        return $uploadFileService->fileImport($fullFilePath);
     }
 //
 //

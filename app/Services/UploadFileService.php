@@ -4,6 +4,7 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\File_import_schema;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
+use App\Models\Benefiters_Tables_Models\ImportCSV_BasicInfo;
 use App\Services\ConversionsForFileUpload;
 use App\Services\DatesHelper;
 use App\Services\GreekStringConversionHelper;
@@ -46,10 +47,25 @@ class UploadFileService{
             try {
                 $file_import->save();
             } catch (\Exception $e){
-                // do nothing
+                // TODO: add translation for message.
+                return ("Cvs upload error.");
             }
         }
         $this->selectAppropriateDBTableForEachFileRowColumns();
+    }
+
+    // ----------------------------------------------------------------- //
+    // Insert upload main info (file name & date) to DB
+    public function importedFilesTable($filename){
+        $importedFile = new ImportCSV_BasicInfo();
+        $importedFile->csv_name = $filename;
+        $importedFile->save();
+    }
+
+    // fetch all CSV import history from DB
+    public function findImportedHistory(){
+        $importedHistory = ImportCSV_BasicInfo::get();
+        return $importedHistory;
     }
 
     // selects the appropriate DB table for each column of a row
@@ -58,17 +74,20 @@ class UploadFileService{
         if($allFileRows != null) {
             foreach ($allFileRows as $singleRow) {
                 try {
+                    // TODO for each row log if the current row is added to DB. If no then print the benefiter's name & folder number that failed to be added to DB
                     $imported_benefiter_id = \DB::table('benefiters')->insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
                     $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $imported_benefiter_id);
                     $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
                     $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
-                    // do nothing
+                    echo 'Exception found';
                 }
-
+                // TODO (not for now) Add table to view to display the files that uploaded successfully. Only names and dates, to help while uploading.
 //                $benefiterReferralsColumns = $this->selectBenefitersReferralsColumnsAndValuesFromFileRow($singleRow);
             }
         }
+        // delete all content form the imported data after populating all relative tables
+//        File_import_schema::truncate();
     }
 
     // selects and returns all the columns - values inserted from file that correspond to the benefiters DB table
@@ -119,42 +138,32 @@ class UploadFileService{
     // ---------------------------------------------------------------------------------- //
     // for current imported benefiter add the respective referrals, from csv, to DB tables
     public function importReferrals($singleRow, $benefiter_id){
-        // all fields will come with this way but
-        $referralsFileRows = File_import_schema::get();
         // referrals lookup ids
         $social_referrence_lookup_id = BenefiterReferrals_lookup::where('description', 'LIKE', '%οινων%')->first()->id;
         $medical_referrence_lookup_id = BenefiterReferrals_lookup::where('description', 'LIKE', '%ατρικ%')->first()->id;
         $legal_referrence_lookup_id = BenefiterReferrals_lookup::where('description', 'LIKE', '%ομικ%')->first()->id;
         $educational_referrence_lookup_id = BenefiterReferrals_lookup::where('description', 'LIKE', '%δευση%')->first()->id;
 
-//        if($referralsFileRows != null) {
-//            foreach ($referralsFileRows as $singleRow) {
-//                try {
-                    // if social referral
-                    if($this->greekStringConversion->grstrtoupper($singleRow->has_social_reference) == 'ΝΑΙ') {
-                        BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->social_reference_actions,
-                                                                                $singleRow->social_reference_date, $benefiter_id, $social_referrence_lookup_id));
-                    }
-                    // if medical referral
-                    if($this->greekStringConversion->grstrtoupper($singleRow->has_medical_reference) == 'ΝΑΙ'){
-                        BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->medical_reference_actions,
-                                                                                $singleRow->medical_reference_date, $benefiter_id, $medical_referrence_lookup_id));
-                    }
-                    // if legal referral
-                    if($this->greekStringConversion->grstrtoupper($singleRow->has_legal_reference) == 'ΝΑΙ') {
-                        BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->legal_reference_actions,
-                                                                                $singleRow->legal_reference_date, $benefiter_id, $legal_referrence_lookup_id));
-                    }
-                    // if educational referral
-                    if($this->greekStringConversion->grstrtoupper($singleRow->has_educational_reference) == 'ΝΑΙ') {
-                        BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->educational_reference_actions,
-                                                                                $singleRow->educational_reference_date, $benefiter_id, $educational_referrence_lookup_id));
-                    }
-//                } catch(\Exception $e) {
-//                    // do nothing
-//                }
-//            }
-//        }
+        // if social referral
+        if($this->greekStringConversion->grstrtoupper($singleRow->has_social_reference) == 'ΝΑΙ') {
+            BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->social_reference_actions,
+                                                                    $singleRow->social_reference_date, $benefiter_id, $social_referrence_lookup_id));
+        }
+        // if medical referral
+        if($this->greekStringConversion->grstrtoupper($singleRow->has_medical_reference) == 'ΝΑΙ'){
+            BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->medical_reference_actions,
+                                                                    $singleRow->medical_reference_date, $benefiter_id, $medical_referrence_lookup_id));
+        }
+        // if legal referral
+        if($this->greekStringConversion->grstrtoupper($singleRow->has_legal_reference) == 'ΝΑΙ') {
+            BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->legal_reference_actions,
+                                                                    $singleRow->legal_reference_date, $benefiter_id, $legal_referrence_lookup_id));
+        }
+        // if educational referral
+        if($this->greekStringConversion->grstrtoupper($singleRow->has_educational_reference) == 'ΝΑΙ') {
+            BenefiterReferrals::insert($this->selectOnlyReferrals($singleRow->educational_reference_actions,
+                                                                    $singleRow->educational_reference_date, $benefiter_id, $educational_referrence_lookup_id));
+        }
     }
 
     // select the appropriate table columns for referrals and return them as an array

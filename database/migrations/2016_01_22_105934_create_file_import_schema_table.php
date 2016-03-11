@@ -92,6 +92,13 @@ class CreateFileImportSchemaTable extends Migration
             $table->timestamps();
 
         });
+
+        // Basic import info table
+        Schema::create('import_csv_basic_info', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('csv_name')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

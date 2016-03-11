@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/UploadFileService.php" afterPath="$PROJECT_DIR$/app/Services/UploadFileService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,33 +50,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UploadFileService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
+      <file leaf-file-name="uploadExcel.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.32" vertical-offset="689" max-vertical-offset="2720">
-              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <element signature="e#31#81#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UploadFileController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4011976" vertical-offset="372" max-vertical-offset="1088">
-              <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.35450518" vertical-offset="1462" max-vertical-offset="2553">
+              <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <file leaf-file-name="uploadExcelPage.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.24" vertical-offset="1051" max-vertical-offset="1744">
-              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="3335">
+              <caret line="81" column="1" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="importCSV.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="759">
+              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#45#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload_excel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -94,21 +104,26 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
+    <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
+        <option value="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/ImportCSV_BasicInfo.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php" />
+        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
+        <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
+        <option value="$PROJECT_DIR$/resources/lang/gr/upload_excel.php" />
+        <option value="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
+        <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
       </list>
     </option>
   </component>
   <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
     <gulpfiles>
       <GulpfileState>
         <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
       </GulpfileState>
     </gulpfiles>
+    <initial>false</initial>
   </component>
   <component name="PhpServers">
     <servers>
@@ -122,8 +137,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1680" />
-    <option name="height" value="1022" />
+    <option name="x" value="39" />
+    <option name="y" value="21" />
+    <option name="width" value="1641" />
+    <option name="height" value="1029" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -134,6 +151,9 @@
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -177,7 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -195,7 +215,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -213,95 +237,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="benefiter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="lang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -316,50 +252,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploadedExcels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="medical-visit-uploads" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -399,7 +291,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="records" />
+              <option name="myItemId" value="importCSV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,28 +345,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -494,46 +364,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefiters_Tables_Models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -649,6 +479,118 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -677,8 +619,7 @@
       <node-options />
       <gulpfile />
       <tasks />
-      <arguments />
-      <pass-parent-envs>true</pass-parent-envs>
+      <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
       <method />
     </configuration>
@@ -730,24 +671,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1022" extended-state="6" />
+    <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18274687" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18131869" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19762352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24358974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31894934" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15515289" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15714286" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2758242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26043957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -775,59 +716,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="87" />
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_medication_lookup.php">
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4879725" vertical-offset="34" max-vertical-offset="400">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_referrals.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25507247" vertical-offset="0" max-vertical-offset="690">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Tests/File/UploadedFileTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="250" max-vertical-offset="4336">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/FileBag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34492755" vertical-offset="1058" max-vertical-offset="2304">
-          <caret line="88" column="123" selection-start-line="88" selection-start-column="123" selection-end-line="88" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/InteractsWithPages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8289125" vertical-offset="18097" max-vertical-offset="18975">
-          <caret line="820" column="19" selection-start-line="820" selection-start-column="19" selection-end-line="820" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/File/UploadedFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5175" max-vertical-offset="6670">
-          <caret line="234" column="18" selection-start-line="234" selection-start-column="14" selection-end-line="234" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6555">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -849,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11580217" vertical-offset="0" max-vertical-offset="829">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42460796" vertical-offset="0" max-vertical-offset="829">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -865,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11580217" vertical-offset="0" max-vertical-offset="829">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11580217" vertical-offset="0" max-vertical-offset="829">
           <caret line="6" column="21" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,21 +782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4204244" vertical-offset="5" max-vertical-offset="759">
           <caret line="14" column="28" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5983" max-vertical-offset="6808">
-          <caret line="277" column="1" selection-start-line="277" selection-start-column="1" selection-end-line="278" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63870096" vertical-offset="4680" max-vertical-offset="6693">
-          <caret line="224" column="44" selection-start-line="224" selection-start-column="44" selection-end-line="224" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -941,38 +820,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9440559" vertical-offset="613" max-vertical-offset="1495">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43459302" vertical-offset="184" max-vertical-offset="1380">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/main-panel/users-list.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44895104" vertical-offset="1266" max-vertical-offset="2185">
           <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/records/medical_visit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6736402" vertical-offset="2415" max-vertical-offset="4140">
-          <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13589364" vertical-offset="5405" max-vertical-offset="10442">
-          <caret line="239" column="31" selection-start-line="239" selection-start-column="31" selection-end-line="239" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -990,9 +841,182 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/common/mainLayout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="5888">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42005813" vertical-offset="56" max-vertical-offset="1265">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6522411" vertical-offset="245" max-vertical-offset="33005">
+          <caret line="29" column="51" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53488374" vertical-offset="69" max-vertical-offset="1518">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18814814" vertical-offset="678" max-vertical-offset="3266">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4011628" vertical-offset="138" max-vertical-offset="851">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/BasicInfoService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.035714" vertical-offset="7586" max-vertical-offset="10695">
+          <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/GreekStringConversionHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23" vertical-offset="0" max-vertical-offset="805">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29032257" vertical-offset="414" max-vertical-offset="2093">
+          <caret line="27" column="76" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3548387" vertical-offset="0" max-vertical-offset="1518">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals_lookup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19354838" vertical-offset="0" max-vertical-offset="713">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06451613" vertical-offset="0" max-vertical-offset="6601">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4714285" vertical-offset="1835" max-vertical-offset="5911">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/uploads/uploadedExcels/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.038600724" vertical-offset="0" max-vertical-offset="829">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.333333" vertical-offset="1357" max-vertical-offset="2507">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="8.131657" vertical-offset="0" max-vertical-offset="10442">
+          <caret line="239" column="31" selection-start-line="239" selection-start-column="31" selection-end-line="239" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/records/medical_visit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6535859" vertical-offset="6049" max-vertical-offset="7383">
+          <caret line="284" column="54" selection-start-line="284" selection-start-column="4" selection-end-line="284" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33236152" vertical-offset="2739" max-vertical-offset="6808">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="134" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2477.31" vertical-offset="1662275" max-vertical-offset="1664533">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/records/basic_info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8010825" vertical-offset="1331" max-vertical-offset="2070">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bootstrap-3.3.6/dist/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1584022" vertical-offset="0" max-vertical-offset="726">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2762763" vertical-offset="483" max-vertical-offset="9591">
+          <caret line="30" column="54" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Benefiter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24924925" vertical-offset="64" max-vertical-offset="1748">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4834835" vertical-offset="0" max-vertical-offset="666">
+          <caret line="14" column="30" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7383721" vertical-offset="3057" max-vertical-offset="3818">
+        <state vertical-scroll-proportion="1.4144144" vertical-offset="2692" max-vertical-offset="3887">
           <caret line="1052" column="20" selection-start-line="1052" selection-start-column="20" selection-end-line="1052" selection-end-column="20" />
           <folding>
             <element signature="e#1121#1245#0#PHP" expanded="false" />
@@ -1018,11 +1042,6 @@
             <element signature="e#8315#8635#0#PHP" expanded="false" />
             <element signature="e#8484#8587#0#PHP" expanded="false" />
             <element signature="e#8737#10172#0#PHP" expanded="false" />
-            <element signature="e#8811#10166#0#PHP" expanded="false" />
-            <element signature="e#9016#10156#0#PHP" expanded="false" />
-            <element signature="e#9088#10142#0#PHP" expanded="false" />
-            <element signature="e#9153#10124#0#PHP" expanded="false" />
-            <element signature="e#9242#10102#0#PHP" expanded="false" />
             <element signature="e#10273#11061#0#PHP" expanded="false" />
             <element signature="e#11162#11625#0#PHP" expanded="false" />
             <element signature="e#11311#11619#0#PHP" expanded="false" />
@@ -1157,7 +1176,6 @@
             <element signature="e#51515#51783#0#PHP" expanded="false" />
             <element signature="e#51838#52022#0#PHP" expanded="false" />
             <element signature="e#52054#52218#0#PHP" expanded="false" />
-            <element signature="e#52253#52396#0#PHP" expanded="false" />
             <element signature="e#52422#52581#0#PHP" expanded="false" />
             <element signature="e#52603#52706#0#PHP" expanded="false" />
             <element signature="e#52740#52950#0#PHP" expanded="false" />
@@ -1172,171 +1190,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common/mainLayout.css">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="5888">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42005813" vertical-offset="56" max-vertical-offset="1265">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6522411" vertical-offset="245" max-vertical-offset="33005">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53488374" vertical-offset="69" max-vertical-offset="1518">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18814814" vertical-offset="678" max-vertical-offset="3266">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uploadedExcels/2016-01-26 10:52:11-ΠΑΡΑΡΤΗΜΑ_2-ΚΑΤΑΓΡΑΦΗ.csv">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4011628" vertical-offset="138" max-vertical-offset="851">
-          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/BasicInfoService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.035714" vertical-offset="7586" max-vertical-offset="10695">
-          <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/GreekStringConversionHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23" vertical-offset="0" max-vertical-offset="805">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29032257" vertical-offset="414" max-vertical-offset="2093">
-          <caret line="27" column="76" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3548387" vertical-offset="0" max-vertical-offset="1518">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.5870871" vertical-offset="1840" max-vertical-offset="2714">
+          <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals_lookup.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/ImportCSV_BasicInfo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19354838" vertical-offset="0" max-vertical-offset="713">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.20029028" vertical-offset="0" max-vertical-offset="689">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4516129" vertical-offset="0" max-vertical-offset="713">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06451613" vertical-offset="0" max-vertical-offset="6601">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4714285" vertical-offset="1835" max-vertical-offset="5911">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding>
-            <element signature="e#50#100#0#PHP" expanded="false" />
-            <element signature="e#5419#9141#0#PHP" expanded="false" />
-            <element signature="e#10032#12014#0#PHP" expanded="false" />
-            <element signature="e#12056#13444#0#PHP" expanded="false" />
-            <element signature="e#13500#14663#0#PHP" expanded="false" />
-            <element signature="e#14701#15826#0#PHP" expanded="false" />
-            <element signature="e#15856#16128#0#PHP" expanded="false" />
-            <element signature="e#16425#23274#0#PHP" expanded="false" />
-            <element signature="e#23366#28801#0#PHP" expanded="false" />
-            <element signature="e#28899#34948#0#PHP" expanded="false" />
-            <element signature="e#35040#40845#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/uploads/uploadedExcels/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.038600724" vertical-offset="0" max-vertical-offset="829">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Benefiter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23952095" vertical-offset="0" max-vertical-offset="1216">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.28550297" vertical-offset="4062" max-vertical-offset="6693">
+          <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.32" vertical-offset="689" max-vertical-offset="2720">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5088757" vertical-offset="1013" max-vertical-offset="3772">
+          <caret line="59" column="31" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="31" />
           <folding>
             <element signature="e#31#81#0#PHP" expanded="true" />
+            <element signature="e#3205#4664#0#PHP" expanded="false" />
+            <element signature="e#4784#7470#0#PHP" expanded="false" />
+            <element signature="e#7663#9845#0#PHP" expanded="false" />
+            <element signature="e#9937#10402#0#PHP" expanded="false" />
+            <element signature="e#10439#10839#0#PHP" expanded="false" />
+            <element signature="e#10991#12105#0#PHP" expanded="false" />
+            <element signature="e#12161#13195#0#PHP" expanded="false" />
+            <element signature="e#13265#13809#0#PHP" expanded="false" />
+            <element signature="e#13877#15540#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.24" vertical-offset="1051" max-vertical-offset="1744">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4011976" vertical-offset="372" max-vertical-offset="1088">
-          <caret line="42" column="2" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.20609578" vertical-offset="318" max-vertical-offset="1633">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/upload_excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="414">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="759">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="3335">
+          <caret line="81" column="1" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35450518" vertical-offset="1462" max-vertical-offset="2553">
+          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
   </component>
 </project>
+
