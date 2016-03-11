@@ -1412,7 +1412,7 @@
             <form class="delete-session-form" action="" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 @if(!empty($referral))
-                <input type="hidden" class="delete-session-path" name="path" value="{{ url("public/benefiter/".$benefiter->id."/basic-info/referral-delete/".$referral->id) }}">
+                <input type="hidden" class="delete-session-path" name="path" value="{{ url("benefiter/".$benefiter->id."/basic-info/referral-delete/".$referral->id) }}">
                 @endif
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
