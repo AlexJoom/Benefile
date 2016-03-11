@@ -79,7 +79,6 @@ class UploadFileService{
         if($allFileRows != null) {
             foreach ($allFileRows as $singleRow) {
                 try {
-                    // TODO for each row log if the current row is added to DB. If no then print the benefiter's name & folder number that failed to be added to DB
                     $imported_benefiter_id = \DB::table('benefiters')->insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
                     $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $imported_benefiter_id);
                     $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
@@ -218,6 +217,7 @@ class UploadFileService{
         // else
         if(!$id){
             $id = null;
+            array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
         }
         // return the ID
         return $id;
