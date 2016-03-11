@@ -217,7 +217,9 @@ class UploadFileService{
         // else
         if(!$id){
             $id = null;
-            array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
+            if($sLang != '') {
+                array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
+            }
         }
         // return the ID
         return $id;
@@ -287,13 +289,18 @@ class UploadFileService{
         }
         // Extract language levels map from language_levels
         $languagesLevels = array_map('trim', explode(',', $languages_levels));
-        // For every language level
-        foreach($languagesLevels as $languageLevel) {
-            // Update corresponding language with the given language level
-            $tmp = array_map('trim', explode('(', $languageLevel)); // '0' => language_description, '1' => language_level_description
-            $tmp[1] = str_replace(')', '', $tmp[1]);
-            $sLevelID = $this->getLanguageLevelID($tmp[1]);
-            $this->setLanguageLevel($tmp[0], $sLevelID, $languagesAndLevels);
+        // if $languagesAndLevels are not empty update the corresponding language level
+        if($languagesAndLevels != "") {
+            // For every language level
+            foreach ($languagesLevels as $languageLevel) {
+                // Update corresponding language with the given language level
+                $tmp = array_map('trim', explode('(', $languageLevel)); // '0' => language_description, '1' => language_level_description
+                if($tmp[0] != "") {
+                    $tmp[1] = str_replace(')', '', $tmp[1]);
+                    $sLevelID = $this->getLanguageLevelID($tmp[1]);
+                    $this->setLanguageLevel($tmp[0], $sLevelID, $languagesAndLevels);
+                }
+            }
         }
 
         // for every key-value pair in the map
