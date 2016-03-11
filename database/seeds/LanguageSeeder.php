@@ -14,7 +14,7 @@ class LanguageSeeder extends Seeder
     {
         \DB::table('languages')->insert(
             array(
-                // array('description' => '---'),
+                array('description' => '---'),
                 array('description' => 'abq'),
                 array('description' => 'av'),
                 array('description' => 'en'),
@@ -304,6 +304,7 @@ class LanguageSeeder extends Seeder
 
         \DB::table('language_levels')->insert(
             array(
+                array('description'   => 'Επιλέξτε επίπεδο'),
                 array('description'   => 'Κακό'),
                 array('description'   => 'Κάτω του μετρίου'),
                 array('description'   => 'Μέτριο'),

@@ -61,7 +61,11 @@ class BasicInfoService{
             $this->getBenefiterArrayForDBInsert($request)
         );
         $benefiter->save();
-        $this->saveLanguagesToDB($benefiter->id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
+        $languagesLevelsMerge = $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request);
+        // if $languagesLevelsMerge is not an empty array, save them to DB
+        if(!empty($languagesLevelsMerge)) {
+            $this->saveLanguagesToDB($benefiter->id, $languagesLevelsMerge);
+        }
         // if legal status is not existent, add it
         if(!array_key_exists('legal_status' ,$request)){
             $request['legal_status'] = null;
@@ -261,13 +265,20 @@ class BasicInfoService{
         $keys = array_keys($languagesUnique);
         $merge = array();
         foreach($keys as $key){
-            // make array containing language id and level id and...
-            $temp = array(
-                'language_id' => $languagesUnique[$key],
-                'language_level_id' =>$levelsUnique[$key],
-            );
-            // ...push it into the $merge array
-            array_push($merge, $temp);
+            // if a correct language is selected
+            if($languagesUnique[$key] != 1) {
+                // if a non correct language level is selected, make it null
+                if($levelsUnique[$key] == 1){
+                    $levelsUnique[$key] = null;
+                }
+                // make array containing language id and level id and...
+                $temp = array(
+                    'language_id' => $languagesUnique[$key],
+                    'language_level_id' => $levelsUnique[$key],
+                );
+                // ...push it into the $merge array
+                array_push($merge, $temp);
+            }
         }
         return $merge;
     }
