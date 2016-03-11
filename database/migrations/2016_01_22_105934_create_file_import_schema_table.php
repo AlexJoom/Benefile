@@ -15,7 +15,7 @@ class CreateFileImportSchemaTable extends Migration
         Schema::create('File_Import_Schema', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('folder_number');
+            $table->string('folder_number')->unique();
 
             $table->string('name');
 
@@ -108,6 +108,7 @@ class CreateFileImportSchemaTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('import_csv_basic_info');
         Schema::dropIfExists('File_Import_Schema');
     }
 }
