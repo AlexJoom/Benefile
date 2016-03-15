@@ -92,7 +92,7 @@
                                     <a href="{{ url('search') }}">@lang($p.'search')</a>
                                 </li>
                                 <li id="reports">
-                                    <a>@lang($p.'reports')</a>
+                                    <a href="{{ url('reports') }}">@lang($p.'reports')</a>
                                 </li>
                                 @if(Auth::user()->user_role_id == 1)
                                 <li id="users-list">

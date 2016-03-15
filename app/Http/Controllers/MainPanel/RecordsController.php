@@ -76,6 +76,7 @@ class RecordsController extends Controller
         // brinks all referrals saved to db for this benefiter id
         $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')
                                                         ->get();
+        $workTitle = null;
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         // get legal statuses from session, else get null and afterwards forget session value

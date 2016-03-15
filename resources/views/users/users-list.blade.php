@@ -9,22 +9,24 @@
 
 @section('main-window-content')
     {{-- actions refering to users --}}
-    <div class="no-margin light-green-background pos-relative height-70" id="actions">
-        <div class="col-md-4 userStatus">
-            <div id="to-activate" class="height-70 active white bold pink-border-bottom">
-               @lang($p.'to_activate')
+    <div class="no-margin light-green-background width-100-percent" id="actions">
+        <div class="width-100-percent row">
+            <div class="col-md-4 userStatus">
+                <div id="to-activate" class="height-70 active white bold pink-border-bottom">
+                   @lang($p.'to_activate')
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4 userStatus">
-            <div id="active" class="height-70">
-                @lang($p.'active')
+            <div class="col-md-4 userStatus">
+                <div id="active" class="height-70">
+                    @lang($p.'active')
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4 userStatus">
-            <div id="inactive" class="height-70">
-                @lang($p.'deactivated')
+            <div class="col-md-4 userStatus">
+                <div id="inactive" class="height-70">
+                    @lang($p.'deactivated')
+                </div>
             </div>
         </div>
     </div>

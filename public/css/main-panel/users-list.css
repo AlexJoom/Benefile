@@ -43,22 +43,34 @@
 
 .userStatus{
     text-align: center;
-    font-size: 22px;
-    padding: 0px 80px;
+    font-size: 1.4em;
+    font-weight: 700;
+    /*padding: 0 1em;*/
     height: 70px;
-    line-height: 70px;
+    display: inline-table;
 }
+
 .userStatus div{
-    color: #dcdee0;
+    /*color: #dcdee0;*/
+    color: #FFFFFF;
     text-decoration: none;
     cursor: pointer;
+    display: table-cell;
+    vertical-align: middle;
 }
-.userStatus div:hover{
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
 
+.userStatus div:hover{
+    color: #FFFFFF;
+    text-decoration: none;
+    border-bottom: 5px solid #b269a7;
+    padding-top: 5px;
+    cursor: pointer;
 }
+
+.userStatus .active{
+    padding-top: 5px;
+}
+
 /****** END USER STATUS (top bar) ******/
 
 /****** USER LIST TABLE ***************/
