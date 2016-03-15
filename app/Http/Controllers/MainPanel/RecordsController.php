@@ -626,6 +626,8 @@ class RecordsController extends Controller
                 $med_visit_referrals = $this->medicalVisit->findMedicalVisitReferrals($med_visit['id']);
                 // Uploads
                 $med_visit_uploads = $this->medicalVisit->findMedicalVisitUploads($med_visit['id']);
+
+//                dd($med_visit_uploads[0]['title']);
             }
         }
         return view('partials.forms.medical-visit.medical_visit_edit')

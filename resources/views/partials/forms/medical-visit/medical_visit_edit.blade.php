@@ -219,7 +219,7 @@
                             {{-- Fetch the posted input values if the post fails --}}
                             @if(!empty($med_visit_chronic_conditions) && count($med_visit_chronic_conditions) !=0)
                                 @for($i=0; $i< count($med_visit_chronic_conditions) ; $i++)
-                                    <div  class="padding-left-right-15 chronicConditions condition-added-div">
+                                    <div  class="padding-left-right-15 @if($i==0) chronicConditions @endif @if($i!=0) condition-added-div @endif">
                                         <div class="form-group float-left width-100-percent">
                                             {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
                                             <div class="make-inline col-md-6">
@@ -300,13 +300,13 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
                 </div>
-                @if(!empty($med_visit_exam_results) && count($med_visit_exam_results) != 0)
-                    @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                    @if(!empty($med_visit_exam_results) && count($med_visit_exam_results) != 0)
                         <div class="row padding-left-right-30 padding-top-bottom-15">
                             <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition">
                                 {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                 <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
-                                    <option selected="selected" style="display: none"></option>
+                                    {{--<option selected="selected" style="display: none"></option>--}}
                                         @for($j=0; $j<count($med_visit_exam_results); $j++)
                                             @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
                                                 <option selected="selected" value="{{$med_visit_exam_results[$j]['icd10_id']}}" >{{$med_visit_exam_results[$j]['icd10']['code']}}: {{$med_visit_exam_results[$j]['icd10']['description']}}</option>
@@ -315,27 +315,31 @@
                                 </select>
                                 <?php $duplicity_counter = 0; ?>
                                 @for($j=0; $j<count($med_visit_exam_results); $j++)
-                                    @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'] && $duplicity_counter < 1)
-                                        {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                    @if($duplicity_counter < 1)
+                                        @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
+                                            {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                        @else
+                                            {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                        @endif
                                         <?php $duplicity_counter++; ?>
                                     @endif
                                 @endfor
                             </div>
                         </div>
-                     @endfor
-                @else
-                    @for($i=0; $i<count($ExamResultsLookup) ; $i++)
+                    @else
+                    {{--@for($i=0; $i<count($ExamResultsLookup) ; $i++)--}}
                         <div class="row padding-left-right-30 padding-top-bottom-15">
                             <div class=" form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">
                                 {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                 <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
-                                    <option selected="selected" style="display: none"></option>
+                                    {{--<option selected="selected" style="display: none"></option>--}}
                                 </select>
                                 {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
                             </div>
                         </div>
-                     @endfor
-                @endif
+                     {{--@endfor--}}
+                    @endif
+                @endfor
             </div>
 
             {{-- LABORATORY RESULTS --}}
@@ -348,7 +352,7 @@
                         <div id="lab-result" class="row padding-bottom-30">
                             @if(!empty($med_visit_lab_results) && count($med_visit_lab_results) !=0)
                                 @for($i=0 ; $i<count($med_visit_lab_results) ; $i++)
-                                    <div class="padding-left-right-15 lab-results lab-added-div">
+                                    <div class="padding-left-right-15 @if($i==0) lab-results @endif @if($i!=0) lab-added-div @endif">
                                         <div class="form-group float-left width-100-percent">
                                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                             <div class="make-inline col-md-10">
@@ -400,7 +404,7 @@
                         <div id="medication" class="row padding-bottom-30">
                             @if(!empty($med_visit_medication) && count($med_visit_medication) !=0)
                                 @for($i=0 ; $i<count($med_visit_medication) ; $i++)
-                                    <div  class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
+                                    <div class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
                                         <div class="form-group float-left width-100-percent">
                                              {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
                                             <div class="select-lists make-inline col-md-12">
@@ -493,7 +497,7 @@
                         <div id="referrals" class="row padding-bottom-30">
                             @if(!empty($med_visit_referrals) && count($med_visit_referrals) !=0)
                                 @for($i=0; $i<count($med_visit_referrals) ; $i++)
-                                    <div class="padding-left-right-15 referral ref-added-div">
+                                    <div class="padding-left-right-15 @if($i==0) referral @endif @if($i!=0) ref-added-div @endif">
                                         <div class="form-group float-left width-100-percent">
                                             {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                             <div class="make-inline col-md-10">
@@ -545,13 +549,13 @@
                         <div id="upload_file">
                             @if(!empty($med_visit_uploads) && count($med_visit_uploads)!=0)
                                 @for($i=0 ; $i<count($med_visit_uploads) ; $i++)
-                                    <div class="uploadFile file-added-div">
+                                    <div class="@if($i==0) uploadFile @endif @if($i!=0) file-added-div @endif">
                                         <div class="row">
                                             <div class="padding-left-right-15">
                                                 {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
                                                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
                                                     {!! Form::label('upload_file_title', Lang::get($p.'file_details')) !!}
-                                                    {!! Form::text('upload_file_description[]', $med_visit_uploads[$i]['path'], array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                                    {!! Form::text('upload_file_description[]', $med_visit_uploads[$i]['description'], array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                                     {{-- add --}}
                                                     <a class="color-green add-file" href="javascript:void(0)">
                                                         <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -565,9 +569,15 @@
                                         </div>
                                         <div class="row">
                                             <div class="padding-left-right-15">
-                                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                                                    {!! Form::file('upload_file_title[]', $med_visit_uploads[$i]['title'], array('class' => 'custom-input-text')) !!}
-                                                </div>
+                                                {{--@if(!empty($med_visit_uploads[$i]['title']))--}}
+                                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4 saved-file">
+                                                        {{ $med_visit_uploads[$i]['title'] }} &nbsp; &nbsp; <a><i class="glyphicon glyphicon-remove color-red remove-uploaded-file"></i></a>
+                                                    </div>
+                                                {{--@else--}}
+                                                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4 new-upload-file">
+                                                        {!! Form::file('upload_file_title[]', null, array('class' => 'custom-input-text')) !!}
+                                                    </div>
+                                                {{--@endif--}}
                                             </div>
                                         </div>
                                     </div>

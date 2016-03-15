@@ -17,6 +17,7 @@ use App\Models\Benefiters_Tables_Models\medical_location_lookup;
 use App\Services\DatesHelper;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use Mockery\CountValidator\Exception;
 use Validator;
 
 class BenefiterMedicalFolderService
@@ -118,6 +119,14 @@ class BenefiterMedicalFolderService
         return Validator::make($request, $rules);
     }
 
+
+
+
+
+
+
+
+
     //--------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
     //--------------------------------------------------------------------//
@@ -184,7 +193,7 @@ class BenefiterMedicalFolderService
         return $chronic_conditions_array;
     }
 
-    //----------- medical_examination_results table ----------------------DONE//
+    //----------- clinical_examination_results table ----------------------DONE//
     // DB save
     private function save_medical_examination_results($request, $id){
         if(!empty($request['examResultLoukup'])){
@@ -350,13 +359,14 @@ class BenefiterMedicalFolderService
         $request_upload_file_title = $request['upload_file_title'];
 
         $file = Input::file('upload_file_title');
+
         $files_numbers = count($request_upload_file_title);
         for ($i = 0; $i < $files_numbers; $i++) {
-            while(!empty($file[$i])){
-                $path = base_path() . '/public/uploads/medical-visit-uploads/';
-                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $id;
-                $file[$i]->move($path, $fileName); // uploading file to given path
+            if(!empty($file[$i])){
 
+                $path = base_path() . '/public/uploads/medical-visit-uploads/';
+                $fileName = 'medical_visit-' . $id . $file[$i]->getClientOriginalName();
+                $file[$i]->move($path, $fileName); // uploading file to given path
                 $medical_upload = new medical_uploads();
                 $medical_upload->title = $fileName;
                 $medical_upload->description = $request_upload_file_description[$i];
@@ -368,9 +378,13 @@ class BenefiterMedicalFolderService
         }
     }
 
-    // ------------------------------------------------------------------ //
-    // PART 2 : END
-    //--------------------------------------------------------------------//
+
+
+
+
+
+
+
 
 
 
@@ -490,7 +504,7 @@ class BenefiterMedicalFolderService
         return $chronic_conditions_array;
     }
 
-    //----------- medical_examination_results table ----------------------DONE//
+    //----------- clinical_examination_results table ----------------------DONE//
     // DB save
     private function update_medical_examination_results($request, $selected_medical_visit_id){
         if(!empty($request['examResultLoukup'])){
@@ -561,6 +575,7 @@ class BenefiterMedicalFolderService
         // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
         if($requests_count > $saved_lab_results_count){
             for($i=0; $i<$requests_count ; $i++) {
+                // update what is saved
                 if ($counter < $saved_lab_results_count) {
                     if(!empty($request_lab_results[$i])){
                         $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
@@ -568,6 +583,7 @@ class BenefiterMedicalFolderService
                         $lab_result->medical_visit_id = $selected_medical_visit_id;
                         $lab_result->save();
                     }
+                    //add new rows for the new requests
                 } else {
                     if(!empty($request_lab_results[$i])){
                         $lab_results = new medical_laboratory_results();
@@ -742,7 +758,7 @@ class BenefiterMedicalFolderService
 
                             // then continue to medication table
                             $med_medication->dosage = $request_medication_dosage[$j];
-                            $med_medication->duration = $request_medication_duration[$i];
+                            $med_medication->duration = $request_medication_duration[$j];
                             if(!empty($request_supply_from_praksis)){
                                 $med_medication->supply_from_praksis = $request_supply_from_praksis[$j];
                             }else{
@@ -881,7 +897,7 @@ class BenefiterMedicalFolderService
             for($i=0; $i<$requests_count ; $i++) {
                 if ($counter < $saved_files_count) {
                     if(!empty($file[$i])){
-                        $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                        $fileName = 'medical_visit-' . $selected_medical_visit_id . $file[$i]->getClientOriginalName();
                         $file[$i]->move($path, $fileName); // uploading file to given path
                         $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                         $medical_upload->title = $fileName;
@@ -909,7 +925,7 @@ class BenefiterMedicalFolderService
             for($j=0; $j<$saved_files_count; $j++){
                 if ($counter < $requests_count) {
                     if(!empty($file[$j])){
-                        $fileName = $file[$j]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                        $fileName = 'medical_visit-' . $selected_medical_visit_id . $file[$j]->getClientOriginalName();
                         $file[$j]->move($path, $fileName); // uploading file to given path
                         $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                         $medical_upload->title = $fileName;
@@ -926,26 +942,21 @@ class BenefiterMedicalFolderService
             }
         }
 
-
-
-
-
-
-        for ($i = 0; $i < $requests_count; $i++) {
-            while(!empty($file[$i])){
-                $path = base_path() . '/public/uploads/medical-visit-uploads/';
-                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
-                $file[$i]->move($path, $fileName); // uploading file to given path
-
-                $medical_upload = new medical_uploads();
-                $medical_upload->title = $fileName;
-                $medical_upload->description = $request_upload_file_description[$i];
-                $medical_upload->path = $path;
-                $medical_upload->medical_visit_id = $selected_medical_visit_id;
-
-                $medical_upload->save();
-            }
-        }
+//        for ($i = 0; $i < $requests_count; $i++) {
+//            if(!empty($file[$i])){
+//                $path = base_path() . '/public/uploads/medical-visit-uploads/';
+//                $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+//                $file[$i]->move($path, $fileName); // uploading file to given path
+//
+//                $medical_upload = new medical_uploads();
+//                $medical_upload->title = $fileName;
+//                $medical_upload->description = $request_upload_file_description[$i];
+//                $medical_upload->path = $path;
+//                $medical_upload->medical_visit_id = $selected_medical_visit_id;
+//
+//                $medical_upload->save();
+//            }
+//        }
     }
 
 
