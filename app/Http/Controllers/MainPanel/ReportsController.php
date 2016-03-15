@@ -19,8 +19,10 @@ class ReportsController extends Controller
         $this->reportsService = new ReportsService();
     }
 
+    // return reports view with all necessary data
     public function getReports(){
-        // do stuff with reports service here
-        return View('reports.reports');
+        $usersRolesCount = $this->reportsService->getReportDataForUsersRoles();
+        return View('reports.reports')
+            ->with('users_roles_count', $usersRolesCount);
     }
 }
