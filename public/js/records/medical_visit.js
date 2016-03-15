@@ -213,6 +213,13 @@ $(document).ready(function(){
         $(this).parents(".file-added-div").remove();
     });
 
+    // hide upload option if saved found $ show if the present is removed
+    $('.new-upload-file').hide();
+    $('.remove-uploaded-file').on('click', function(){
+        $(this).parents('.padding-left-right-15').find('.new-upload-file').show();
+        $(this).parents('.saved-file').hide();
+    });
+
     // By clicking the new visit button the form should be slide down
     $('#new-medical-visit').hide();
     $('#new-med-visit-button').on('click', function(){

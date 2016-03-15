@@ -2,6 +2,10 @@
     border: 20px solid #e6f4f4;
 }
 
+.color-red{
+    color: red;
+}
+
 .text-align-center{
     text-align: center;
 }
@@ -287,4 +291,14 @@ input[disabled]{
     font-size: 20px;
     padding-left: 10px;
 
+}
+
+#remove-file{
+    cursor: pointer;
+}
+
+.select2-selection__rendered{
+    word-wrap: break-word !important;
+    text-overflow: inherit !important;
+    white-space: normal !important;
 }
