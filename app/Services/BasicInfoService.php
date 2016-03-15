@@ -2,6 +2,7 @@
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
+use App\Services\GreekStringConversionHelper;
 use App\Services\DatesHelper;
 use Validator;
 
@@ -32,6 +33,7 @@ class BasicInfoService{
             'number_of_children' => 'integer',
             'chidren_names' => 'max:2000',
             'relatives_residence' => 'max:255',
+            'working_title' => 'max:255',
             'country_abandon_reason' => 'max:255',
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
@@ -57,6 +59,8 @@ class BasicInfoService{
         if(!array_key_exists('interpreter' ,$request)){
            $request['interpreter'] = 0;
         }
+        // get work title id from work title name
+        $request['working_title'] = $this->getWorkTitleIdFromDBAndInsertNewWorkTitleIfNeeded($request['working_title']);
         $benefiter = new Benefiter(
             $this->getBenefiterArrayForDBInsert($request)
         );
@@ -80,6 +84,8 @@ class BasicInfoService{
         if(!array_key_exists('interpreter' ,$request)){
             $request['interpreter'] = 0;
         }
+        // get work title id from work title name
+        $request['working_title'] = $this->getWorkTitleIdFromDBAndInsertNewWorkTitleIfNeeded($request['working_title']);
         Benefiter::where('id', '=', $id)->update($this->getBenefiterArrayForDBInsert($request));
         $this->editLanguagesInDB($id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
 //        $this->saveLanguagesToDB($id, $this->mergeUniqueLanguagesLevelWithNoDuplicatedLanguageArrays($request));
@@ -218,6 +224,18 @@ class BasicInfoService{
         }
     }
 
+    // returns the work title name using the benefiter's id
+    public function getWorkTitleNameFromBenefiterId($id){
+        $benefiter = \DB::table('benefiters')->where('id' , '=', $id)->first();
+        if ($benefiter != null) {
+            $workTitle = \DB::table('work_title_list_lookup')->where('id', '=', $benefiter->work_title_id)->first();
+            if ($workTitle != null){
+                return $workTitle->work_title;
+            }
+        }
+        return null;
+    }
+
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys
@@ -306,6 +324,7 @@ class BasicInfoService{
             "language_interpreter_needed" => $request['interpreter'],
             "education_id" => $request['education_status'],
             "is_benefiter_working" => $request['working'],
+            "work_title_id" => $request['working_title'],
             "working_legally" => $request['working_legally'],
             "country_abandon_reason" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
@@ -441,6 +460,32 @@ class BasicInfoService{
             "description" => $legal_text,
             "legal_lookup_id" => $legal_status,
         );
+    }
+
+    // returns the work title id of a work title name
+    private function getWorkTitleIdFromDBAndInsertNewWorkTitleIfNeeded($workTitleFromForm){
+        // initialize the GreekStringConversionHelper service
+        $greekStringConversion = new GreekStringConversionHelper();
+        $workTitleId = null;
+        $allWorkTitlesAvailable = \DB::table('work_title_list_lookup')->get();
+        $workTitleFromForm = $greekStringConversion->grstrtoupper($workTitleFromForm);
+        // if there are some work titles in DB
+        if ($allWorkTitlesAvailable != null){
+            // check for each one if the names are the same after greek string conversion to uppercase
+            foreach($allWorkTitlesAvailable as $work_title){
+                $work_title->work_title = $greekStringConversion->grstrtoupper($work_title->work_title);
+                // if strings are the same set the $workTitleId to the DB's id
+                if(strcasecmp($work_title->work_title, $workTitleFromForm) == 0){
+                    $workTitleId = $work_title->id;
+                    break;
+                }
+            }
+        }
+        // if work title was not found in DB
+        if ($workTitleId == null) {
+            $workTitleId = \DB::table('work_title_list_lookup')->insertGetId(array('work_title' => $workTitleFromForm));
+        }
+        return $workTitleId;
     }
 
     // -------------------------------------------------------------- //
