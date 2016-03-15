@@ -33,6 +33,8 @@
         @lang($p.'edit-visit')
     </div>
     {{--------------- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) ---------------}}
+    <!-- ACCESS LEVEL -->
+    @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
     <div class="form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
@@ -622,6 +624,7 @@
         {!! Form::close() !!}
         {{--</div>--}}
     </div>
+    @endif
 
 
 @stop
