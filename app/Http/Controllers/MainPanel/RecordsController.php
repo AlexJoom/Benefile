@@ -96,6 +96,7 @@ class RecordsController extends Controller
                     $legal_statuses = $this->basicInfoService->getLegalStatusesByBenefiterId($id);
                 }
                 $benefiterLanguagesAndLevels = $this->basicInfoService->getLanguagesAndLanguagesLevelsByBenefiterId($id);
+                $workTitle = $this->basicInfoService->getWorkTitleNameFromBenefiterId($id);
             }
         } else {
             $benefiter = new Benefiter();
@@ -107,6 +108,7 @@ class RecordsController extends Controller
                                            ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                                            ->with('basic_info_referral_array', $basic_info_referral_array)
                                            ->with('benefiter_referrals_list', $benefiter_referrals_list)
+                                           ->with('workTitle', $workTitle)
                                            ->with('success', $successMsg);
     }
 
@@ -138,6 +140,7 @@ class RecordsController extends Controller
                             'education_status' => $request->education_status,
                             'interpreter' => $request->interpreter,
                             'working' => $request->working,
+                            'working_title' => $request->working_title,
                             'working_legally' => $request->working_legally,
                             'country_abandon_reason' => $request->country_abandon_reason,
                             'travel_route' => $request->travel_route,

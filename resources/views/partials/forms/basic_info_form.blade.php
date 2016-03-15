@@ -539,6 +539,10 @@
                             {!! Form::radio('working', 2, $not_working, array('id' => 'hide_work_legally', 'disabled' => 'disabled')) !!}
                             {!! Form::label('working', Lang::get('basic_info_form.no'), array('class' => 'radio-value')) !!}
                         </div>
+                        <div id="working_title_div" class="form-group float-left col-md-8">
+                            {!! Form::label('working_title', Lang::get('basic_info_form.working_title'), array('class' => 'make-inline')) !!}
+                            {!! Form::text('working_title', $workTitle, array('class' => 'custom-input-text display-inline', 'disabled' => 'disabled')) !!}
+                        </div>
                     </div>
                 </div>
                 <div id="working_legally_div" class="row">
@@ -1207,6 +1211,10 @@
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working', 2, $not_working, array('id' => 'hide_work_legally')) !!}
                             {!! Form::label('working', Lang::get('basic_info_form.no'), array('class' => 'radio-value')) !!}
+                        </div>
+                        <div id="working_title_div" class="form-group float-left col-md-8">
+                            {!! Form::label('working_title', Lang::get('basic_info_form.working_title'), array('class' => 'make-inline')) !!}
+                            {!! Form::text('working_title', $workTitle, array('class' => 'custom-input-text display-inline')) !!}
                         </div>
                     </div>
                 </div>
