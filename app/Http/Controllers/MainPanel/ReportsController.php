@@ -15,6 +15,6 @@ class ReportsController extends Controller
     }
 
     public function getReports(){
-        return View('userPanel.reports');
+        return View('reports.reports');
     }
 }

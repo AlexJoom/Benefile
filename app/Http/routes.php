@@ -96,7 +96,7 @@ Route::get('results', 'MainPanel\SearchController@getResults');
 //--- END ΑΝΑΖΗΤΗΣΗ
 
 //--- ΑΝΑΦΟΡΑ
-Route::get('main-panel/reports', 'MainPanel\ReportsController@getReports');
+Route::get('reports', 'MainPanel\ReportsController@getReports');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ
