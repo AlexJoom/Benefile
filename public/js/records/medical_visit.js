@@ -234,7 +234,8 @@ $(document).ready(function(){
     $('select[id^="clinical-select-"]').select2({
         placeholder: 'Πάθηση',
         ajax: {
-	    url: $("#examajax").data("url")+"/benefiter/getIC10List",
+	    //url: $("#examajax").data("url")+"/benefiter/getIC10List",
+	    url: "http://localhost/benefile/index.php/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {

@@ -315,15 +315,15 @@
                                 </select>
                                 <?php $duplicity_counter = 0; ?>
                                 @for($j=0; $j<count($med_visit_exam_results); $j++)
-                                    @if($duplicity_counter < 1)
-                                        @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
-                                            {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
-                                        @else
-                                            {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
-                                        @endif
+                                    @if($duplicity_counter < 1 && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
+                                        {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
                                         <?php $duplicity_counter++; ?>
                                     @endif
                                 @endfor
+
+                                @if($duplicity_counter ==0)
+                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                @endif
                             </div>
                         </div>
                     @else

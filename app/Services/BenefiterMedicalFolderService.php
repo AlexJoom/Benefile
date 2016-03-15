@@ -511,40 +511,71 @@ class BenefiterMedicalFolderService
             $request_med_exams_results = $request['examResultLoukup'];
             $request_med_exams_description = $request['examResultDescription'];
             // all results saved for this visit
-            $saved_med_exams_results = medical_examination_results::where("medical_visit_id", $selected_medical_visit_id)->get();
-            $already_saved_count = count($saved_med_exams_results);
-            $counter = 0;
+
+            // for every clinical result
             for($i=0; $i<count($request_med_exams_results) ; $i++){
                 if(!empty($request_med_exams_results[$i])) {
-                    for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
-                        if (!empty($request_med_exams_results[$i][$j])) {
-                            if($counter < $already_saved_count){
-                                $medical_examination_result = medical_examination_results::find($saved_med_exams_results[$counter]['id']);
+                    $requests_icd10_count = count($request_med_exams_results[$i]);
+                    $saved_examinations_with_same_clinical_result= medical_examination_results::where("medical_visit_id", $selected_medical_visit_id)
+                                                                                        ->where("results_lookup_id", $this->find_medical_examination_results_lookup_id($i+1))->get();
+                    $counter = 0;
+                    // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+                    if($requests_icd10_count > count($saved_examinations_with_same_clinical_result)){
+                        // for every icd10 condition
+                        for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
+                            if (!empty($request_med_exams_results[$i][$j])) {
+                                // update what is saved
+                                if($counter < count($saved_examinations_with_same_clinical_result)){
+                                    $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
+                                    $medical_examination_result->description = $request_med_exams_description[$i];
+                                    $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
+                                    $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
+                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                                    $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
 
-                                $medical_examination_result->description = $request_med_exams_description[$i];
-                                $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
-                                $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
-                                // get medical examinations list from the lookup table
-                                $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i + 1)->first()['attributes']['id'];
-                                $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
+                                    $medical_examination_result->save();
+                                    //add new rows for the new requests
+                                }else{
+                                    $medical_examination_results = new medical_examination_results();
+                                    $medical_examination_results->description = $request_med_exams_description[$i];
+                                    $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
+                                    $medical_examination_results->medical_visit_id = $selected_medical_visit_id;
+                                    // get medical examinations list from the lookup table
+                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                                    $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
 
-                                $medical_examination_result->save();
-                            }else{
-                                $medical_examination_results = new medical_examination_results();
-                                $medical_examination_results->description = $request_med_exams_description[$i];
-                                $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
-                                $medical_examination_results->medical_visit_id = $selected_medical_visit_id;
-                                // get medical examinations list from the lookup table
-                                $med_exams_lookup_item = medical_examination_results_lookup::where('id', '=', $i + 1)->first()['attributes']['id'];
-                                $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
+                                    $medical_examination_results->save();
+                                }
+                                $counter++;
+                            }
+                        } // end for every icd10 condition
+                    }
+                    // else if the request array is smaller then update some rows and delete the rest
+                    else{
+                        for($j=0; $j<count($saved_examinations_with_same_clinical_result); $j++){
+                            // update already saved rows
+                            if ($counter < $requests_icd10_count) {
+                                if(!empty($request_med_exams_results[$i][$j])){
+                                    $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
+                                    $medical_examination_result->description = $request_med_exams_description[$i];
+                                    $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
+                                    $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
+                                    // get medical examinations list from the lookup table
+                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                                    $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
 
-                                $medical_examination_results->save();
+                                    $medical_examination_result->save();
+                                }
+                                // else delete extra rows
+                            } else {
+                                $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
+                                $medical_examination_result->delete();
                             }
                             $counter++;
                         }
                     }
                 }
-            }
+            } // end for every clinical result
         }
     }
 
@@ -594,9 +625,10 @@ class BenefiterMedicalFolderService
                 }
                 $counter++;
             }
-            // if the request array is smaller then update some rows and delete the rest
+            // else if the request array is smaller then update some rows and delete the rest
         }else{
             for($j=0; $j<$saved_lab_results_count; $j++){
+                // update already saved rows
                 if ($counter < $requests_count) {
                     if(!empty($request_lab_results[$j])){
                         $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
@@ -604,6 +636,7 @@ class BenefiterMedicalFolderService
                         $lab_result->medical_visit_id = $selected_medical_visit_id;
                         $lab_result->save();
                     }
+                    // else delete extra rows
                 } else {
                     $lab_result = medical_laboratory_results::find($saved_lab_results[$counter]['id']);
                     $lab_result->delete();
@@ -1027,6 +1060,11 @@ class BenefiterMedicalFolderService
     public function findMedicalVisitExaminationResults($med_visit_id){
         $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit_id)->with('icd10')->get();
         return $med_visit_exam_results;
+    }
+
+    public function find_medical_examination_results_lookup_id($id){
+        $medical_examination_results_lookup_id = medical_examination_results_lookup::where('id', '=', $id)->first()['attributes']['id'];
+        return $medical_examination_results_lookup_id;
     }
     // Lab results
     public function findMedicalVisitLabResults($med_visit_id){
