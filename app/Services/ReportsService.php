@@ -164,6 +164,10 @@ class ReportsService{
         // count benefiters regarding each education type
 
         // return array with education_type => number
+        $results = array('illiterate' => 2, 'primary_school'=> 10, 'high_school'=>26,
+                        'lyceum'=> 46, 'TEE'=>89, 'TEI'=>27, 'AEI'=>19,
+                        'master'=>73, 'phd'=>53);
+        return $results;
     }
 
     // ------------------------------------------------------------------------------------------------ //

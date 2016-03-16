@@ -141,6 +141,21 @@
                 </div>
             </div>
         </div>
+
+        {{-- REPORT: Benefiters vs education --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'report-education')</h1>
+                </div>
+                <div id="benefiter_vs_education" class="col-md-6">
+                    {{-- hidden values from controller (are used from js) --}}
+                    <input type="hidden" id="illiterate" value="{{ $report_benefiters_vs_education['illiterate'] }}" />
+
+                    <canvas id="benefiter_vs_education_canvas" height="400" width="700"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
