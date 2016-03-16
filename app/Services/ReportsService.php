@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use App\Models\Benefiters_Tables_Models\Benefiter;
 
 class ReportsService{
 
@@ -99,9 +100,25 @@ class ReportsService{
     // ----------------------- REPORT: Benefiters vs gender ------------------------------------------- //
     public function getReport_benefiters_vs_gender(){
         // count benefiters regarding each gender type
+        // male
+        $males_count = count(Benefiter::where('gender_id',1)->get());
+        $females_count = count(Benefiter::where('gender_id',2)->get());
+        $others_count = count(Benefiter::where('gender_id',3)->get());
 
+        // percentages
+        $total = $males_count + $females_count + $others_count;
+        $male_percentage = round(($males_count/$total) * 100);
+        $female_percentage = round(($females_count/$total) * 100);
+        $other_percentage = round(($others_count/$total) * 100);
+
+        $total_icons = $male_percentage + $female_percentage + $other_percentage;
+
+        $result = array('male'=>$males_count, 'male_percentage'=>$male_percentage,
+                        'female'=>$females_count,'female_percentage'=>$female_percentage,
+                        'other'=>$others_count, 'other_percentage'=>$other_percentage,
+                        'total_icons'=>$total_icons);
         // return array with gender_type => number
-        return array('male'=>2, 'female'=>1, 'other'=>1);
+        return $result;
     }
 
     // ------------------------------------------------------------------------------------------------ //
