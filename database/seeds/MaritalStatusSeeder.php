@@ -17,7 +17,7 @@ class MaritalStatusSeeder extends Seeder
                 array('marital_status_title' => "Έγγαμος"),
                 array('marital_status_title' => "Διαζευγμένος"),
                 array('marital_status_title' => "Χήρος"),
-                array('marital_status_title' => "Εν διαστάση")
+                array('marital_status_title' => "Εν διαστάσει")
             )
         );
     }
