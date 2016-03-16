@@ -30,14 +30,14 @@ class ReportsService{
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){
         try {
-            $usersCountByWork = \DB::select(\DB::raw("select work_title_id, count(work_title_id) as counter from benefiters group by work_title_id"));
+            $benefitersCountByWork = \DB::select(\DB::raw("select work_title_id, count(work_title_id) as counter from benefiters group by work_title_id"));
             $workTitles = \DB::table('work_title_list_lookup')->get();
         } catch(\Exception $e){
             Log::error("A problem occurred while trying to count the users based on their work title.\n" . $e);
             return null;
         }
         // get array of the form 'work_title' => 'counter'
-        $result = $this->getBenefitersWorkTitleNameCountArray($usersCountByWork, $workTitles);
+        $result = $this->getBenefitersWorkTitleNameCountArray($benefitersCountByWork, $workTitles);
         Log::info("Returning results with users based on their work title.");
         // return the newly created array
         return $result;
@@ -45,21 +45,24 @@ class ReportsService{
 
     // returns an array of the form 'work_title' => 'counter' using
     // the users count by work and the work titles in the DB
-    private function getBenefitersWorkTitleNameCountArray($usersCountByWork, $workTitles){
+    private function getBenefitersWorkTitleNameCountArray($benefitersCountByWork, $workTitles){
         // if there are no users working
-        if($usersCountByWork == null or $workTitles == null){
+        if($benefitersCountByWork == null or $workTitles == null){
             Log::error("Problem with getBenefitersWorkTitleNameCountArray function input. Returning null.");
             return null;
-        } else {
+        } else { // else create the requested array
             $tmp = array();
-            foreach ($usersCountByWork as $usersCount) {
+            foreach ($benefitersCountByWork as $benefitersCount) {
                 foreach ($workTitles as $workTitle) {
-                    if ($workTitle->id == $usersCount->work_title_id) {
-                        $tmp[$workTitle->work_title] = $usersCount->counter;
+                    // compare the work title id with the benefiters work title id
+                    // to make the array as it been needed for the view's chart creation
+                    if ($workTitle->id == $benefitersCount->work_title_id) {
+                        $tmp[$workTitle->work_title] = $benefitersCount->counter;
                         break;
                     }
                 }
             }
+            // return the correctly formatted array
             Log::info("Array of the form 'work_title' => 'counter' created and will be returned right now.");
             return $tmp;
         }
