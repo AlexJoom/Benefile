@@ -37,6 +37,8 @@ class ReportsController extends Controller
         $benefitersLegalStatuses = $this->reportsService->getReportDataForBenefitersLegalStatus();
         // count benefiters per medical visits number
         $benefitersPerMedicalVisits = $this->reportsService->getReportDataForBenefitersPerMedicalVisitsCount();
+        // count benefiters based on registration date
+        $benefitersCount = $this->reportsService->getReportDataForRegisteredBenefiters();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -45,6 +47,7 @@ class ReportsController extends Controller
             ->with('report_benefiters_vs_gender', $report_benefiters_vs_gender)
             ->with('medical_visits_location', $medicalVisitsByLocation)
             ->with('benefiters_legal_statuses', $benefitersLegalStatuses)
-            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits);
+            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
+            ->with('benefiters_count', $benefitersCount);
     }
 }

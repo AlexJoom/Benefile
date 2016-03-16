@@ -141,12 +141,44 @@
                 </div>
             </div>
         </div>
+        {{-- Benefiters registration numbers per month --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
 <script src="{{ asset('js/reports/reports.js') }}"></script>
+    {{-- Benefiter counter status graph --}}
+	<script>
+		(function() {
+			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
+			 var chart = {
+labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
+				datasets: [
+					{
+					label: "My Data",                    
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_count as $count) {!! json_encode($count->idcounter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
     {{-- Legal status graph --}}
 	<script>
 		(function() {
