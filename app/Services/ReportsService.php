@@ -26,5 +26,18 @@ class ReportsService{
         );
     }
 
+    public function getReportDataForUsersMaritalStatus() {
+        try {
+            // $maritalStatuses = \DB::select(\DB::raw("select id, marital_status_title from marital_status_lookup group by id"));
+            $benefitersMaritalStatuses = \DB::select(\DB::raw("select marital_status_lookup.id, marital_status_lookup.marital_status_title, count(benefiters.marital_status_id) as marital_counter from marital_status_lookup left join benefiters on (marital_status_lookup.id = benefiters.marital_status_id) group by marital_status_lookup.id"));
+        } catch (\Exception $e) {
+            Log::error("A problem occured while trying to count the users based on marital status.");
+            return null;
+        }
+        Log::info("Returning result with users based on their marital status.");
+        // dd($benefitersMaritalStatuses);
+        return $benefitersMaritalStatuses;
+    }
+
 }
 

@@ -22,7 +22,9 @@ class ReportsController extends Controller
     // return reports view with all necessary data
     public function getReports(){
         $usersRolesCount = $this->reportsService->getReportDataForUsersRoles();
+        $benefitersMaritalStatus = $this->reportsService->getReportDataForUsersMaritalStatus();
         return View('reports.reports')
-            ->with('users_roles_count', $usersRolesCount);
+            ->with('users_roles_count', $usersRolesCount)
+            ->with('benefitersMaritalStatuses', $benefitersMaritalStatus);
     }
 }

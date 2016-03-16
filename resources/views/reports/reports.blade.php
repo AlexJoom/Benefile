@@ -18,6 +18,7 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."users")</h1>
         </div>
+	<!-- Users -->
         <div class="row">
             <div class="col-md-12">
                 <div id="doctors" class="col-md-3">
@@ -51,4 +52,34 @@
             </div>
         </div>
     </div>
+	<!-- Users end-->
+
+    <div class="users-report form-section">{{-- no-bottom-border"> --}}
+	<!-- Benefiters marital statuses -->
+	<div class="row">
+		<canvas id="maritalStatusReport" width="400" height="400"></canvas>
+	</div>
+	<!-- Benefiters marital statuses end -->
+    </div>
+@stop
+
+@section('panel-scripts')
+<script src="{{ asset('js/chart.min.js') }}"></script>
+	<script>
+		(function() {
+			 var ctx = document.getElementById("maritalStatusReport").getContext("2d");
+			 var chart = {
+				labels: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_status_title) !!}, @endforeach ],
+				datasets: [
+					{
+					label: "My Data",                    
+					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Line(chart, {
+			bezierCurve: false
+			});
+		})();
+	</script>
 @stop
