@@ -27,6 +27,6 @@ class ReportsController extends Controller
         $benefitersByWorkTitle = $this->reportsService->getReportDataForBenefitersWorkTitle();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
-            ->with('benefitersByWorkTitle', $benefitersByWorkTitle);
+            ->with('benefiters_work_title', $benefitersByWorkTitle);
     }
 }
