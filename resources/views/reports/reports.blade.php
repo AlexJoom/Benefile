@@ -65,11 +65,22 @@
             </div>
         </div>
         {{-- Benefiters marital statuses end --}}
+        {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
                     <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
                 </div>
+            </div>
+        </div>
+        {{-- Benefiters work titles end --}}
+        <div class="row">
+            <div class="col-md-12">
+                {{-- Medical visits location --}}
+                <div id="medical-visits-location" class="col-md-6">
+                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
+                </div>
+                {{-- Medical visits location end --}}
             </div>
         </div>
     </div>
@@ -127,7 +138,7 @@
     </script>
     <script>
         (function(){
-            var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
+            var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
             var $data = {
                 @if(!empty($benefiters_work_title))
                 labels: [ @foreach($benefiters_work_title as $key => $value) @if($key != "") "{!! $key !!}", @else "-", @endif @endforeach ],
@@ -155,7 +166,47 @@
                 ]
                 @endif
             };
-            new Chart($benefiters_work_title).Bar($data, {});
+            new Chart($benefiters_work_title_canvas).Bar($data, {});
+        })();
+    </script>
+    <script>
+        (function(){
+            var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
+            var colors = [
+                {fill: "rgba(255,0,0,0.5)", highlight: "rgba(255,0,0,0.75)"},
+                {fill: "rgba(0,255,0,0.5)", highlight: "rgba(0,255,0,0.75)"},
+                {fill: "rgba(0,0,255,0.5)", highlight: "rgba(0,0,255,0.75)"},
+                {fill: "rgba(125,125,0,0.5)", highlight: "rgba(125,125,0,0.75)"},
+                {fill: "rgba(125,0,125,0.5)", highlight: "rgba(125,0,125,0.75)"},
+            ];
+            var $data = [
+                @if(!empty($medical_visits_location))
+                    <?php
+                         $i = 0;
+                         $colors = array(
+                                         array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
+                                         array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
+                                         array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
+                                         array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
+                                         array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
+                                     );
+                    ?>
+                    @foreach($medical_visits_location as $single_medical_visits_location)
+                        {
+                            value: {!! $single_medical_visits_location->counter !!},
+                            color: "{!! $colors[$i]['fill'] !!}",
+                            highlight: "{!! $colors[$i]['highlight'] !!}",
+                            @if($key == "")
+                            label: "-"
+                            @else
+                            label: "{!! $single_medical_visits_location->location !!}"
+                            @endif
+                        },
+                        <?php $i++; ?>
+                    @endforeach
+                @endif
+            ];
+            new Chart($medical_visits_location_canvas).Pie($data, {});
         })();
     </script>
 @stop
