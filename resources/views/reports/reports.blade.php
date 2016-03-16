@@ -205,13 +205,6 @@ labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !
     <script>
         (function(){
             var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
-            var colors = [
-                {fill: "rgba(255,0,0,0.5)", highlight: "rgba(255,0,0,0.75)"},
-                {fill: "rgba(0,255,0,0.5)", highlight: "rgba(0,255,0,0.75)"},
-                {fill: "rgba(0,0,255,0.5)", highlight: "rgba(0,0,255,0.75)"},
-                {fill: "rgba(125,125,0,0.5)", highlight: "rgba(125,125,0,0.75)"},
-                {fill: "rgba(125,0,125,0.5)", highlight: "rgba(125,0,125,0.75)"},
-            ];
             var $data = [
                 @if(!empty($medical_visits_location))
                     <?php
@@ -237,6 +230,13 @@ labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !
                         },
                         <?php $i++; ?>
                     @endforeach
+                @else
+                    {
+                        value: -1,
+                        color: "rgba(125,125,125,0.5)",
+                        highlight: "rgba(125,125,125,0.75)",
+                        label: "-"
+                    },
                 @endif
             ];
             new Chart($medical_visits_location_canvas).Pie($data, {});
