@@ -39,6 +39,19 @@ class ReportsService{
         return $benefitersMaritalStatuses;
     }
 
+    public function getReportDataForBenefitersAge() {
+        try {
+            // $benefitersAge = \DB::select(\DB::raw("select datediff(current_date, str_to_date(t.birth_date, '%Y-%m-%d'))/365 as ageInYears from benefiters t"));
+            $benefitersAge = \DB::select(\DB::raw(" select count(*) as counter, floor(datediff(current_date, str_to_date(t.birth_date, '%Y-%m-%d'))/365/10)*10 as ageInYears from benefiters t group by ageInYears"));
+            // dd($benefitersAge);
+        } catch (\Exception $e) {
+            return null;
+        }
+
+        return $benefitersAge;
+    }
+
+
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){
         try {
@@ -91,6 +104,49 @@ class ReportsService{
             Log::info("Array of the form 'work_title' => 'counter' created and will be returned right now.");
             return $tmp;
         }
+    }
+
+
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs gender ------------------------------------------- //
+    public function getReport_benefiters_vs_gender(){
+        // count benefiters regarding each gender type
+
+        // return array with gender_type => number
+        return array('male'=>2, 'female'=>1, 'other'=>1);
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_education(){
+        // count benefiters regarding each education type
+
+        // return array with education_type => number
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_doctor(){
+        // count benefiters regarding which doctor have visit
+
+        // return array with doctor => number of benefiters
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_medical_condition(){
+        // count benefiters regarding their medical condition
+
+        // return array with medical condition => number of benefiters with this medical condition
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_medical_visits_vs_date(){
+        // count medical visits regarding time period (from , to)
+
+        // return array with time_period => number of medical visits
     }
 }
 
