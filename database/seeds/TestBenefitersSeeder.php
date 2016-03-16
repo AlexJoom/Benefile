@@ -96,7 +96,7 @@ class TestBenefitersSeeder extends Seeder
 
             'origin_country'                => 'origin country',
             'nationality_country'           => 'nationality country',
-            'gender_id'                     => 1,
+            'gender_id'                     => 2,
             'marital_status_id'             => 1,
             'education_id'                  => 1,
             'work_title_id'                 => 1
@@ -131,7 +131,7 @@ class TestBenefitersSeeder extends Seeder
 
             'origin_country'                => 'origin country',
             'nationality_country'           => 'nationality country',
-            'gender_id'                     => 1,
+            'gender_id'                     => 3,
             'marital_status_id'             => 1,
             'education_id'                  => 1,
             'work_title_id'                 => 1
@@ -201,7 +201,7 @@ class TestBenefitersSeeder extends Seeder
 
             'origin_country'                => 'origin country',
             'nationality_country'           => 'nationality country',
-            'gender_id'                     => 1,
+            'gender_id'                     => 3,
             'marital_status_id'             => 1,
             'education_id'                  => 1,
             'work_title_id'                 => 1
