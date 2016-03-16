@@ -25,13 +25,17 @@ class ReportsController extends Controller
         $usersRolesCount = $this->reportsService->getReportDataForUsersRoles();
         $benefitersMaritalStatus = $this->reportsService->getReportDataForUsersMaritalStatus();
         $benefitersByWorkTitle = $this->reportsService->getReportDataForBenefitersWorkTitle();
+        $benefitersAge = $this->reportsService->getReportDataForBenefitersAge();
         $report_benefiters_vs_gender = $this->reportsService->getReport_benefiters_vs_gender();
         $medicalVisitsByLocation = $this->reportsService->getReportDataForMedicalVisitsLocation();
+        $benefitersLegalStatuses = $this->reportsService->getReportDataForBenefitersLegalStatus();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
             ->with('benefiters_work_title', $benefitersByWorkTitle)
+            ->with('benefiters_age', $benefitersAge)
             ->with('report_benefiters_vs_gender', $report_benefiters_vs_gender)
-            ->with('medical_visits_location', $medicalVisitsByLocation);
+            ->with('medical_visits_location', $medicalVisitsByLocation)
+            ->with('benefiters_legal_statuses', $benefitersLegalStatuses);
     }
 }

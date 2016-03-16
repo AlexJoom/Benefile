@@ -89,15 +89,16 @@
             </div>
         </div>
 
+        {{-- Benefiters marital statuses --}}
         <div class="row">
             <div class="col-md-12">
-                {{-- Benefiters marital statuses --}}
                 <div class="col-md-6">
                     <canvas id="maritalStatusReport" height="400" width="400"></canvas>
                 </div>
             </div>
         </div>
         {{-- Benefiters marital statuses end --}}
+        {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
@@ -105,14 +106,62 @@
                 </div>
             </div>
         </div>
-
-
+        {{-- Benefiters work titles end --}}
+        <div class="row">
+            <div class="col-md-12">
+                {{-- Medical visits location --}}
+                <div id="medical-visits-location" class="col-md-6">
+                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
+                </div>
+                {{-- Medical visits location end --}}
+            </div>
+        </div>
+        {{-- Benefiters age report end --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div id="benefiters-age-report" class="col-md-12">
+                    <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
+        {{-- Benefiters legal statuses --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <canvas id="legalStatusReport" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
 <script src="{{ asset('js/reports/reports.js') }}"></script>
+    {{-- Legal status graph --}}
+	<script>
+		(function() {
+			 var ctx = document.getElementById("legalStatusReport").getContext("2d");
+			 var chart = {
+                labels: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->description) !!}, @endforeach ],
+				datasets: [
+					{
+					label: "My Data",                    
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->legal_counter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
     {{-- Marital status graph --}}
 	<script>
 		(function() {
@@ -127,6 +176,30 @@
                     highlightFill: "rgba(220,220,220,0.75)",
                     highlightStroke: "rgba(220,220,220,1)",
 					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
+    {{-- Age graph --}}
+	<script>
+		(function() {
+			 var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
+			 var chart = {
+labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
+				datasets: [
+					{
+					label: "My Data",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_age as $age) {!! json_encode($age->counter) !!}, @endforeach ],
 					}
 				]
 			};
@@ -163,7 +236,7 @@
     </script>
     <script>
         (function(){
-            var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
+            var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
             var $data = {
                 @if(!empty($benefiters_work_title))
                 labels: [ @foreach($benefiters_work_title as $key => $value) @if($key != "") "{!! $key !!}", @else "-", @endif @endforeach ],
@@ -191,7 +264,47 @@
                 ]
                 @endif
             };
-            new Chart($benefiters_work_title).Bar($data, {});
+            new Chart($benefiters_work_title_canvas).Bar($data, {});
+        })();
+    </script>
+    <script>
+        (function(){
+            var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
+            var $data = [
+                @if(!empty($medical_visits_location))
+                    <?php
+                         $i = 0;
+                         $colors = array(
+                                         array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
+                                         array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
+                                         array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
+                                         array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
+                                         array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
+                                     );
+                    ?>
+                    @foreach($medical_visits_location as $single_medical_visits_location)
+                        {
+                            value: {!! $single_medical_visits_location->counter !!},
+                            color: "{!! $colors[$i]['fill'] !!}",
+                            highlight: "{!! $colors[$i]['highlight'] !!}",
+                            @if($key == "")
+                            label: "-"
+                            @else
+                            label: "{!! $single_medical_visits_location->location !!}"
+                            @endif
+                        },
+                        <?php $i++; ?>
+                    @endforeach
+                @else
+                    {
+                        value: -1,
+                        color: "rgba(125,125,125,0.5)",
+                        highlight: "rgba(125,125,125,0.75)",
+                        label: "-"
+                    },
+                @endif
+            ];
+            new Chart($medical_visits_location_canvas).Pie($data, {});
         })();
     </script>
 @stop
