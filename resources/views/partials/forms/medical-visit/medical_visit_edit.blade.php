@@ -303,17 +303,22 @@
                     <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
                 </div>
                 @for($i=0; $i<count($ExamResultsLookup) ; $i++)
-                    @if(!empty($med_visit_exam_results) && count($med_visit_exam_results) != 0)
+                    {{--@if(!empty($med_visit_exam_results) )--}}
                         <div class="row padding-left-right-30 padding-top-bottom-15">
-                            <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition">
+                            <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition-{{$i}}">
                                 {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                 <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
-                                    {{--<option selected="selected" style="display: none"></option>--}}
-                                        @for($j=0; $j<count($med_visit_exam_results); $j++)
-                                            @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
-                                                <option selected="selected" value="{{$med_visit_exam_results[$j]['icd10_id']}}" >{{$med_visit_exam_results[$j]['icd10']['code']}}: {{$med_visit_exam_results[$j]['icd10']['description']}}</option>
-                                            @endif
-                                        @endfor
+                                    <?php $with_select_options = false;?>
+                                    @for($j=0; $j<count($med_visit_exam_results); $j++)
+                                        @if(!empty($med_visit_exam_results[$j]['results_lookup_id']) && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
+                                            <option selected="selected" value="{{$med_visit_exam_results[$j]['icd10_id']}}" >{{$med_visit_exam_results[$j]['icd10']['code']}}: {{$med_visit_exam_results[$j]['icd10']['description']}}</option>
+                                            <?php $with_select_options = true;?>
+                                        @endif
+                                    @endfor
+
+                                    @if($with_select_options == false)
+                                        <option selected="selected" style="display: none"></option>
+                                    @endif
                                 </select>
                                 <?php $duplicity_counter = 0; ?>
                                 @for($j=0; $j<count($med_visit_exam_results); $j++)
@@ -328,19 +333,19 @@
                                 @endif
                             </div>
                         </div>
-                    @else
+                    {{--@else--}}
                     {{--@for($i=0; $i<count($ExamResultsLookup) ; $i++)--}}
-                        <div class="row padding-left-right-30 padding-top-bottom-15">
-                            <div class=" form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">
-                                {!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
-                                <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
+                        {{--<div class="row padding-left-right-30 padding-top-bottom-15">--}}
+                            {{--<div class=" form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">--}}
+                                {{--{!! Form::label('examResultLoukup[]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}--}}
+                                {{--<select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">--}}
                                     {{--<option selected="selected" style="display: none"></option>--}}
-                                </select>
-                                {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
-                            </div>
-                        </div>
+                                {{--</select>--}}
+                                {{--{!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                      {{--@endfor--}}
-                    @endif
+                    {{--@endif--}}
                 @endfor
             </div>
 
