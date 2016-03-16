@@ -60,10 +60,19 @@
         {{-- REPORT: Benefiters VS gerder --}}
         <div id="benefiters_vs_gerder" class="row padding-30 row-eq-height display-table ">
             <div class="col-md-10 col-equal-height">
-            {{-- the loop will from 0 to 100 with three if conditions (and a counter) that will change the color class according to the gender type --}}
-               @for($i=0 ; $i<100 ; $i++)
-                    <icon class="glyphicon glyphicon-user gender-icon"></icon>
+                {{-- male icons --}}
+                @for($i=0 ; $i< $report_benefiters_vs_gender['male_percentage'] ; $i++)
+                    <icon class="glyphicon glyphicon-user gender-icon male-color"></icon>
                 @endfor
+                {{-- female icons --}}
+                @for($i=0 ; $i< $report_benefiters_vs_gender['female_percentage'] ; $i++)
+                    <icon class="glyphicon glyphicon-user gender-icon female-color"></icon>
+                @endfor
+                {{-- others icons --}}
+                @for($i=0 ; $i< $report_benefiters_vs_gender['other_percentage'] ; $i++)
+                    <icon class="glyphicon glyphicon-user gender-icon other-color"></icon>
+                @endfor
+
             </div>
 
             <div class="col-md-2 col-equal-height">
