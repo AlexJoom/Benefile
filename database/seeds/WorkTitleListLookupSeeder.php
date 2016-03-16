@@ -13,7 +13,7 @@ class WorkTitleListLookupSeeder extends Seeder
     {
         \DB::table('work_title_list_lookup')->insert(
             array(
-                array('work_title' => "Εργάτης"),
+                array('work_title' => ""),
             )
         );
     }
