@@ -98,15 +98,20 @@
             </div>
         </div>
 
-        {{-- Benefiters marital statuses --}}
         <div class="row">
             <div class="col-md-12">
+                {{-- Benefiters marital statuses --}}
                 <div class="col-md-6">
                     <canvas id="maritalStatusReport" height="400" width="400"></canvas>
                 </div>
+                {{-- Benefiters marital statuses end --}}
+                {{-- Medical visits location --}}
+                <div id="medical-visits-location" class="col-md-6">
+                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
+                </div>
+                {{-- Medical visits location end --}}
             </div>
         </div>
-        {{-- Benefiters marital statuses end --}}
         {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
@@ -118,11 +123,9 @@
         {{-- Benefiters work titles end --}}
         <div class="row">
             <div class="col-md-12">
-                {{-- Medical visits location --}}
-                <div id="medical-visits-location" class="col-md-6">
-                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
+                <div id="benefiters-per-medical-visits" class="col-md-12">
+                    <canvas id="benefiters-per-medical-visits-canvas" height="400" width="1000"></canvas>
                 </div>
-                {{-- Medical visits location end --}}
             </div>
         </div>
         {{-- Benefiters age report end --}}
@@ -138,6 +141,14 @@
             <div class="col-md-12">
                 <div class="col-md-6">
                     <canvas id="legalStatusReport" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
+        {{-- Benefiters registration numbers per month --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
                 </div>
             </div>
         </div>
@@ -162,6 +173,30 @@
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
 <script src="{{ asset('js/reports/reports.js') }}"></script>
+    {{-- Benefiter counter status graph --}}
+	<script>
+		(function() {
+			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
+			 var chart = {
+labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
+				datasets: [
+					{
+					label: "My Data",                    
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_count as $count) {!! json_encode($count->idcounter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
     {{-- Legal status graph --}}
 	<script>
 		(function() {
@@ -213,9 +248,9 @@
     {{-- Age graph --}}
 	<script>
 		(function() {
-			 var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
-			 var chart = {
-labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
+			var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
+			var chart = {
+            labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
 				datasets: [
 					{
 					label: "My Data",
@@ -234,30 +269,6 @@ labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !
              */
 		})();
 	</script>
-	<script>
-	// TODO REMOVE!!! left for new pie charts reference ONLY!!!
-        /*(function(){
-            var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
-            var $data = [
-                @if(!empty($benefiters_work_title))
-                    @foreach($benefiters_work_title as $key => $value)
-                        {
-                            value: {!! $value !!},
-                            color: "#46BFBD",
-                            highlight: "#46BFBD",
-                            @if($key == "")
-                            label: "-"
-                            @else
-                            label: "{!! $key !!}"
-                            @endif
-                        },
-                    @endforeach
-                @endif
-            ];
-            var $options = {segmentShowStroke: true};
-            new Chart($benefiters_work_title).Pie($data, $options);
-        })();*/
-    </script>
     <script>
         (function(){
             var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
@@ -329,6 +340,39 @@ labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !
                 @endif
             ];
             new Chart($medical_visits_location_canvas).Pie($data, {});
+        })();
+    </script>
+    <script>
+        (function(){
+            var $benefiters_per_medical_visits_canvas = $("#benefiters-per-medical-visits-canvas").get(0).getContext("2d");
+            var $data = {
+                @if(!empty($benefiters_medical_visits))
+                labels: [ @foreach($benefiters_medical_visits as $single_benefiters_medical_visits) "{!! $single_benefiters_medical_visits->visits_counter !!}@if($single_benefiters_medical_visits->visits_counter == "1") @lang($p."visit")", @else @lang($p."visits")", @endif @endforeach ],
+                datasets: [
+                    {
+                        label: "",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: [ @foreach($benefiters_medical_visits as $single_benefiters_medical_visits) {!! $single_benefiters_medical_visits->benefiters_counter !!}, @endforeach ]
+                    }
+                ]
+                @else
+                labels: [ "" ],
+                datasets: [
+                    {
+                        label: "-",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: [ 0 ]
+                    }
+                ]
+                @endif
+            };
+            new Chart($benefiters_per_medical_visits_canvas).Bar($data, {});
         })();
     </script>
 @stop
