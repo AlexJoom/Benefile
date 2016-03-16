@@ -56,6 +56,39 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
         </div>
+
+        {{-- REPORT: Benefiters VS gerder --}}
+        <div id="benefiters_vs_gerder" class="row padding-30 row-eq-height display-table ">
+            <div class="col-md-10 col-equal-height">
+            {{-- the loop will from 0 to 100 with three if conditions (and a counter) that will change the color class according to the gender type --}}
+               @for($i=0 ; $i<100 ; $i++)
+                    <icon class="glyphicon glyphicon-user gender-icon"></icon>
+                @endfor
+            </div>
+
+            <div class="col-md-2 col-equal-height">
+                {{-- male --}}
+                <div class=" male-color padding-bottom-30">
+                    <div class="gender-number">{{ $report_benefiters_vs_gender['male'] }}</div>
+
+                    <div class="gender-text">@lang($p.'male')</div>
+                </div>
+                {{-- female --}}
+                <div class=" female-color padding-bottom-30">
+                    <div class="gender-number">{{ $report_benefiters_vs_gender['female'] }}</div>
+
+                    <div class="gender-text">@lang($p.'female')</div>
+                </div>
+                {{-- other --}}
+                <div class=" other-color">
+                    <div class="gender-number">{{ $report_benefiters_vs_gender['other'] }}</div>
+
+                    <div class="gender-text">@lang($p.'other')</div>
+                </div>
+
+            </div>
+        </div>
+
         {{-- Benefiters marital statuses --}}
         <div class="row">
             <div class="col-md-12">
