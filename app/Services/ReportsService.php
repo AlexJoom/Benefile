@@ -39,7 +39,6 @@ class ReportsService{
         return $benefitersMaritalStatuses;
     }
 
-
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){
         try {
@@ -54,6 +53,19 @@ class ReportsService{
         Log::info("Returning results with users based on their work title.");
         // return the newly created array
         return $result;
+    }
+
+    // returns data needed to display the medical visits location report
+    public function getReportDataForMedicalVisitsLocation(){
+        try{
+            $medicalVisitsByLocation = \DB::select(\DB::raw("select mll.description as location, count(mv.medical_location_id) as counter from medical_location_lookup as mll left join medical_visits as mv on mv.medical_location_id = mll.id group by mll.id"));
+        } catch(\Exception $e) {
+            Log::error("A problem occurred while trying to count the medical visits based on their location.\n" . $e);
+            return null;
+        }
+        // return the results to the controller
+        Log::info("Returning results with medical visits based on their location.");
+        return $medicalVisitsByLocation;
     }
 
     // returns an array of the form 'work_title' => 'counter' using

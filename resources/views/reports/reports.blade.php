@@ -56,15 +56,19 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
         </div>
-	<!-- Benefiters marital statuses -->
-	<div class="row">
+        <div class="row">
             <div class="col-md-12">
-		<canvas id="maritalStatusReport" width="400" height="400"></canvas>
-	    </div>
-	</div>
-	<!-- Benefiters marital statuses end -->
-                <div id="benefiters-work-title" class="col-md-6">
-                    <canvas id="benefiters-work-title-canvas"></canvas>
+                {{-- Benefiters marital statuses --}}
+                <div class="col-md-6">
+                    <canvas id="maritalStatusReport" height="400" width="400"></canvas>
+                </div>
+            </div>
+        </div>
+        {{-- Benefiters marital statuses end --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div id="benefiters-work-title" class="col-md-12">
+                    <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
         </div>
@@ -73,7 +77,7 @@
 
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
-    <!-- Marital status graph -->
+    {{-- Marital status graph --}}
 	<script>
 		(function() {
 			 var ctx = document.getElementById("maritalStatusReport").getContext("2d");
@@ -97,23 +101,61 @@
              */
 		})();
 	</script>
-    <!-- Work title graph -->
-    <script>
-        (function(){
+	<script>
+	// TODO REMOVE!!! left for new pie charts reference ONLY!!!
+        /*(function(){
             var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
             var $data = [
                 @if(!empty($benefiters_work_title))
                     @foreach($benefiters_work_title as $key => $value)
                         {
-                            value: {{ $value }},
+                            value: {!! $value !!},
                             color: "#46BFBD",
-                            label: {{ $key }}
+                            highlight: "#46BFBD",
+                            @if($key == "")
+                            label: "-"
+                            @else
+                            label: "{!! $key !!}"
+                            @endif
                         },
                     @endforeach
                 @endif
             ];
             var $options = {segmentShowStroke: true};
             new Chart($benefiters_work_title).Pie($data, $options);
+        })();*/
+    </script>
+    <script>
+        (function(){
+            var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
+            var $data = {
+                @if(!empty($benefiters_work_title))
+                labels: [ @foreach($benefiters_work_title as $key => $value) @if($key != "") "{!! $key !!}", @else "-", @endif @endforeach ],
+                datasets: [
+                    {
+                        label: "",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: [ @foreach($benefiters_work_title as $key => $value) {!! $value !!}, @endforeach ]
+                    }
+                ]
+                @else
+                labels: [ "" ],
+                datasets: [
+                    {
+                        label: "-",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: [ 0 ]
+                    }
+                ]
+                @endif
+            };
+            new Chart($benefiters_work_title).Bar($data, {});
         })();
     </script>
 @stop
