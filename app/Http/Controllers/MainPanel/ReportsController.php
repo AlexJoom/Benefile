@@ -31,7 +31,7 @@ class ReportsController extends Controller
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
             ->with('benefiters_work_title', $benefitersByWorkTitle)
-            ->with('report_benefiters_vs_gender', $report_benefiters_vs_gender);
+            ->with('report_benefiters_vs_gender', $report_benefiters_vs_gender)
             ->with('medical_visits_location', $medicalVisitsByLocation);
     }
 }

@@ -77,6 +77,7 @@
 
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
+<script src="{{ asset('js/reports/reports.js') }}"></script>
     {{-- Marital status graph --}}
 	<script>
 		(function() {
