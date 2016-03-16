@@ -96,7 +96,7 @@ class ReportsService{
     // returns data needed to display the number of benefiters per medical visits number report
     public function getReportDataForBenefitersPerMedicalVisitsCount(){
         try{
-            $benefitersPerMedicalVisits = \DB::select(\DB::raw("select visits_counter, count(*) as benefiters_counter from ( select benefiter_id, count(*) as visits_counter from medical_visits group by benefiter_id) as count_visits_table group by visits_counter order by benefiters_counter desc"));
+            $benefitersPerMedicalVisits = \DB::select(\DB::raw("select visits_counter, count(*) as benefiters_counter from ( select benefiter_id, count(*) as visits_counter from medical_visits group by benefiter_id) as count_visits_table group by visits_counter order by visits_counter asc"));
         } catch(\Exception $e){
             Log::error("A problem occurred while trying to count the number of benefiters per medical visits number.\n" . $e);
             return null;
