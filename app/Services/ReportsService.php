@@ -68,6 +68,19 @@ class ReportsService{
         return $result;
     }
 
+    // returns data needed to display the medical visits location report
+    public function getReportDataForMedicalVisitsLocation(){
+        try{
+            $medicalVisitsByLocation = \DB::select(\DB::raw("select mll.description as location, count(mv.medical_location_id) as counter from medical_location_lookup as mll left join medical_visits as mv on mv.medical_location_id = mll.id group by mll.id"));
+        } catch(\Exception $e) {
+            Log::error("A problem occurred while trying to count the medical visits based on their location.\n" . $e);
+            return null;
+        }
+        // return the results to the controller
+        Log::info("Returning results with medical visits based on their location.");
+        return $medicalVisitsByLocation;
+    }
+
     // returns an array of the form 'work_title' => 'counter' using
     // the users count by work and the work titles in the DB
     private function getBenefitersWorkTitleNameCountArray($benefitersCountByWork, $workTitles){
@@ -91,6 +104,49 @@ class ReportsService{
             Log::info("Array of the form 'work_title' => 'counter' created and will be returned right now.");
             return $tmp;
         }
+    }
+
+
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs gender ------------------------------------------- //
+    public function getReport_benefiters_vs_gender(){
+        // count benefiters regarding each gender type
+
+        // return array with gender_type => number
+        return array('male'=>2, 'female'=>1, 'other'=>1);
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_education(){
+        // count benefiters regarding each education type
+
+        // return array with education_type => number
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_doctor(){
+        // count benefiters regarding which doctor have visit
+
+        // return array with doctor => number of benefiters
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_benefiters_vs_medical_condition(){
+        // count benefiters regarding their medical condition
+
+        // return array with medical condition => number of benefiters with this medical condition
+    }
+
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    public function getReport_medical_visits_vs_date(){
+        // count medical visits regarding time period (from , to)
+
+        // return array with time_period => number of medical visits
     }
 }
 
