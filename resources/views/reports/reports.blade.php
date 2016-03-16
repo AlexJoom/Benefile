@@ -19,7 +19,6 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."users")</h1>
         </div>
-	<!-- Users -->
         <div class="row">
             <div class="col-md-12">
                 <div id="doctors" class="col-md-3">
@@ -53,8 +52,6 @@
             </div>
         </div>
     </div>
-	<!-- Users end-->
-
     <div class="benefiters-report form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
@@ -66,6 +63,11 @@
 	    </div>
 	</div>
 	<!-- Benefiters marital statuses end -->
+                <div id="benefiters-work-title" class="col-md-6">
+                    <canvas id="benefiters-work-title-canvas"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
@@ -88,4 +90,22 @@
 			});
 		})();
 	</script>
+    <script>
+        (function(){
+            var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
+            var $data = [
+                @if(!empty($benefiters_work_title))
+                    @foreach($benefiters_work_title as $key => $value)
+                        {
+                            value: {{ $value }},
+                            color: "#46BFBD",
+                            label: {{ $key }}
+                        },
+                    @endforeach
+                @endif
+            ];
+            var $options = {segmentShowStroke: true};
+            new Chart($benefiters_work_title).Pie($data, $options);
+        })();
+    </script>
 @stop

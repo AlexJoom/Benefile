@@ -28,7 +28,6 @@ class ReportsController extends Controller
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
-            ->with('benefitersByWorkTitle', $benefitersByWorkTitle);
             ->with('benefiters_work_title', $benefitersByWorkTitle);
     }
 }
