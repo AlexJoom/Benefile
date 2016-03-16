@@ -39,6 +39,18 @@ class ReportsService{
         return $benefitersMaritalStatuses;
     }
 
+    public function getReportDataForBenefitersAge() {
+        try {
+            // $benefitersAge = \DB::select(\DB::raw("select datediff(current_date, str_to_date(t.birth_date, '%Y-%m-%d'))/365 as ageInYears from benefiters t"));
+            $benefitersAge = \DB::select(\DB::raw(" select count(*) as counter, floor(datediff(current_date, str_to_date(t.birth_date, '%Y-%m-%d'))/365/10)*10 as ageInYears from benefiters t group by ageInYears"));
+            // dd($benefitersAge);
+        } catch (\Exception $e) {
+            return null;
+        }
+
+        return $benefitersAge;
+    }
+
 
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){

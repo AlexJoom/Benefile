@@ -72,6 +72,14 @@
                 </div>
             </div>
         </div>
+        {{-- Benefiters age report end --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div id="benefiters-age-report" class="col-md-12">
+                    <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
@@ -91,6 +99,30 @@
                     highlightFill: "rgba(220,220,220,0.75)",
                     highlightStroke: "rgba(220,220,220,1)",
 					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
+    {{-- Age graph --}}
+	<script>
+		(function() {
+			 var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
+			 var chart = {
+labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
+				datasets: [
+					{
+					label: "My Data",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_age as $age) {!! json_encode($age->counter) !!}, @endforeach ],
 					}
 				]
 			};

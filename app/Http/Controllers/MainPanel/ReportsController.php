@@ -25,9 +25,11 @@ class ReportsController extends Controller
         $usersRolesCount = $this->reportsService->getReportDataForUsersRoles();
         $benefitersMaritalStatus = $this->reportsService->getReportDataForUsersMaritalStatus();
         $benefitersByWorkTitle = $this->reportsService->getReportDataForBenefitersWorkTitle();
+        $benefitersAge = $this->reportsService->getReportDataForBenefitersAge();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
-            ->with('benefiters_work_title', $benefitersByWorkTitle);
+            ->with('benefiters_work_title', $benefitersByWorkTitle)
+            ->with('benefiters_age', $benefitersAge);
     }
 }
