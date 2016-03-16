@@ -507,76 +507,75 @@ class BenefiterMedicalFolderService
     //----------- clinical_examination_results table ----------------------DONE//
     // DB save
     private function update_medical_examination_results($request, $selected_medical_visit_id){
-        if(!empty($request['examResultLoukup'])){
-            $request_med_exams_results = $request['examResultLoukup'];
-            $request_med_exams_description = $request['examResultDescription'];
-            // all results saved for this visit
-
-            // for every clinical result
-            for($i=0; $i<count($request_med_exams_results) ; $i++){
+        $request_med_exams_results = $request['examResultLoukup'];
+        $request_med_exams_description = $request['examResultDescription'];
+        // for every clinical result
+        for($i=0; $i<count($request_med_exams_description) ; $i++){
+            // in case where everything is removed from the form
+            $requests_icd10_count = 0;
+            if(!empty($request_med_exams_results[$i])) {
+                $requests_icd10_count = count($request_med_exams_results[$i]);
+            }
+            $saved_examinations_with_same_clinical_result= medical_examination_results::where("medical_visit_id", $selected_medical_visit_id)
+                                                                                ->where("results_lookup_id", $this->find_medical_examination_results_lookup_id($i+1))->get();
+            $counter = 0;
+            // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+            if($requests_icd10_count > count($saved_examinations_with_same_clinical_result)){
                 if(!empty($request_med_exams_results[$i])) {
-                    $requests_icd10_count = count($request_med_exams_results[$i]);
-                    $saved_examinations_with_same_clinical_result= medical_examination_results::where("medical_visit_id", $selected_medical_visit_id)
-                                                                                        ->where("results_lookup_id", $this->find_medical_examination_results_lookup_id($i+1))->get();
-                    $counter = 0;
-                    // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
-                    if($requests_icd10_count > count($saved_examinations_with_same_clinical_result)){
-                        // for every icd10 condition
-                        for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
-                            if (!empty($request_med_exams_results[$i][$j])) {
-                                // update what is saved
-                                if($counter < count($saved_examinations_with_same_clinical_result)){
-                                    $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
-                                    $medical_examination_result->description = $request_med_exams_description[$i];
-                                    $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
-                                    $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
-                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
-                                    $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
-
-                                    $medical_examination_result->save();
-                                    //add new rows for the new requests
-                                }else{
-                                    $medical_examination_results = new medical_examination_results();
-                                    $medical_examination_results->description = $request_med_exams_description[$i];
-                                    $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
-                                    $medical_examination_results->medical_visit_id = $selected_medical_visit_id;
-                                    // get medical examinations list from the lookup table
-                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
-                                    $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
-
-                                    $medical_examination_results->save();
-                                }
-                                $counter++;
-                            }
-                        } // end for every icd10 condition
-                    }
-                    // else if the request array is smaller then update some rows and delete the rest
-                    else{
-                        for($j=0; $j<count($saved_examinations_with_same_clinical_result); $j++){
-                            // update already saved rows
-                            if ($counter < $requests_icd10_count) {
-                                if(!empty($request_med_exams_results[$i][$j])){
-                                    $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
-                                    $medical_examination_result->description = $request_med_exams_description[$i];
-                                    $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
-                                    $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
-                                    // get medical examinations list from the lookup table
-                                    $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
-                                    $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
-
-                                    $medical_examination_result->save();
-                                }
-                                // else delete extra rows
-                            } else {
+                    // for every icd10 condition
+                    for ($j = 0; $j < count($request_med_exams_results[$i]); $j++) {
+                        if (!empty($request_med_exams_results[$i][$j])) {
+                            // update what is saved
+                            if($counter < count($saved_examinations_with_same_clinical_result)){
                                 $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
-                                $medical_examination_result->delete();
+                                $medical_examination_result->description = $request_med_exams_description[$i];
+                                $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
+                                $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
+                                $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                                $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
+
+                                $medical_examination_result->save();
+                            //add new rows for the new requests
+                            }else{
+                                $medical_examination_results = new medical_examination_results();
+                                $medical_examination_results->description = $request_med_exams_description[$i];
+                                $medical_examination_results->icd10_id = $request_med_exams_results[$i][$j];
+                                $medical_examination_results->medical_visit_id = $selected_medical_visit_id;
+                                // get medical examinations list from the lookup table
+                                $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                                $medical_examination_results->results_lookup_id = $med_exams_lookup_item;
+
+                                $medical_examination_results->save();
                             }
                             $counter++;
                         }
-                    }
+                    } // end for every icd10 condition
                 }
-            } // end for every clinical result
-        }
+            // else if the request array is smaller then for the saved ones, update some rows and delete the rest
+            }else{
+                for($j=0; $j<count($saved_examinations_with_same_clinical_result); $j++){
+                    // update already saved rows
+                    if ($counter < $requests_icd10_count) {
+                        if(!empty($request_med_exams_results[$i][$j])){
+                            $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
+                            $medical_examination_result->description = $request_med_exams_description[$i];
+                            $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
+                            $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
+                            // get medical examinations list from the lookup table
+                            $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                            $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
+
+                            $medical_examination_result->save();
+                        }
+                    // else delete extra rows
+                    } else {
+                        $medical_examination_result = medical_examination_results::find($saved_examinations_with_same_clinical_result[$counter]['id']);
+                        $medical_examination_result->delete();
+                    }
+                    $counter++;
+                }
+            }
+        } // end for every clinical result
     }
 
     //----------- medical_examinations table ----------------------------DONE//
