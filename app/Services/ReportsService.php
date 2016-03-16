@@ -51,6 +51,17 @@ class ReportsService{
         return $benefitersAge;
     }
 
+    public function getReportDataForBenefitersLegalStatus() {
+        try {
+            $benefitersLegalStatuses = \DB::select(\DB::raw("select legal_status_lookup.id, legal_status_lookup.description, count(benefiters_legal_status.id) as legal_counter from legal_status_lookup left join benefiters_legal_status on (legal_status_lookup.id = benefiters_legal_status.legal_lookup_id) group by legal_status_lookup.id"));
+        } catch (\Exception $e) {
+            Log::error("A problem occured while trying to count the benefiters based on their legal status.\n" . $e);
+            return null;
+        }
+
+        return $benefitersLegalStatuses;
+    }
+
 
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){
