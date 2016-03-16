@@ -73,6 +73,7 @@
 
 @section('panel-scripts')
 <script src="{{ asset('js/chart.min.js') }}"></script>
+    <!-- Marital status graph -->
 	<script>
 		(function() {
 			 var ctx = document.getElementById("maritalStatusReport").getContext("2d");
@@ -81,15 +82,22 @@
 				datasets: [
 					{
 					label: "My Data",                    
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
 					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
 					}
 				]
 			};
-			var myLineChart = new Chart(ctx).Line(chart, {
-			bezierCurve: false
-			});
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
 		})();
 	</script>
+    <!-- Work title graph -->
     <script>
         (function(){
             var $benefiters_work_title = $("#benefiters-work-title-canvas").get(0).getContext("2d");
