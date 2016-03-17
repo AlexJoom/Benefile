@@ -43,6 +43,7 @@
                             <?php
                                 $male = false;
                                 $female = false;
+                                $other = false;
                                 if($benefiter->gender_id == 1){
                                     $male = true;
                                 } elseif ($benefiter->gender_id == 2) {
