@@ -104,11 +104,13 @@
             <div class="col-md-12">
                 {{-- Benefiters marital statuses --}}
                 <div class="col-md-6">
+                    <h3>@lang($p.'h3-marital-status')</h3>
                     <canvas id="maritalStatusReport" height="400" width="400"></canvas>
                 </div>
                 {{-- Benefiters marital statuses end --}}
                 {{-- Medical visits location --}}
                 <div id="medical-visits-location" class="col-md-6">
+                    <h3>@lang($p.'h3-medical-visits-location')</h3>
                     <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
                 </div>
                 {{-- Medical visits location end --}}
@@ -118,6 +120,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
+                    <h3>@lang($p.'h3-work-title')</h3>
                     <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -126,6 +129,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
+                    <h3>@lang($p.'h3-medical-visits')</h3>
                     <canvas id="benefiters-per-medical-visits-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -134,6 +138,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-age-report" class="col-md-12">
+                    <h3>@lang($p.'h3-age-report')</h3>
                     <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -142,8 +147,41 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
+                    <h3>@lang($p.'h3-legal-status')</h3>
                     <canvas id="legalStatusReport" height="400" width="1000"></canvas>
                 </div>
+            </div>
+        </div>
+        {{-- Benefiters registration numbers per month --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h3>@lang($p.'h3-registration-status')</h3>
+                    <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
+                </div>
+            </div>
+        </div>
+
+        {{-- REPORT: Benefiters vs education --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'report-education')</h1>
+                </div>
+                {{--<div id="benefiter_vs_education" class="col-md-6">--}}
+                     {{--hidden values from controller (are used from js)--}}
+                    {{--<input type="hidden" id="illiterate" value="{{ $report_benefiters_vs_education['illiterate'] }}" />--}}
+
+                    {{--<canvas id="benefiter_vs_education_canvas" height="400" width="700"></canvas>--}}
+                {{--</div>--}}
+
+                {{-- second way--}}
+                <div id="benefiter_vs_education"></div>
+
+
+                {{-- third way--}}
+                {{--<div id="chartContainer" style="height: 400px; width: 100%;">--}}
+
             </div>
         </div>
     </div>
@@ -343,6 +381,39 @@
 @stop
 
 @section('panel-scripts')
+<script src="{{ asset('js/chart.min.js') }}"></script>
+<script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
+<script src="{{ asset('js/amcharts/pie.js') }}"></script>
+<script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
+<script src="{{ asset('js/reports/reports.js') }}"></script>
+<script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    {{-- Benefiter counter status graph --}}
+	<script>
+        /* Make charts responsive. */
+        Chart.defaults.global.responsive = true;
+
+		(function() {
+			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
+			 var chart = {
+             labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
+				datasets: [
+					{
+					label: "My Data",                    
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [ @foreach ($benefiters_count as $count) {!! json_encode($count->idcounter) !!}, @endforeach ],
+					}
+				]
+			};
+			var myLineChart = new Chart(ctx).Bar(chart);
+            /*
+			 * bezierCurve: false
+			 * });
+             */
+		})();
+	</script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>

@@ -106,6 +106,21 @@ class ReportsService{
         return $benefitersPerMedicalVisits;
     }
 
+    // returns how many benefiters joined by month
+    public function getReportDataForRegisteredBenefiters() {
+        try {
+            // get benefiter registration number for any particular month.
+            $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by date_format(created_at, '%Y%m')"));
+            // $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by year(created_at), month(created_at)"));
+        } catch (\Exception $e) {
+            Log::error("A problem occured while trying to count the users based on registration date.\n" . $e);
+            return null;
+        }
+
+        Log::info("Returning result with users based on their registration date.");
+        return $benefitersCount;
+    }
+
     // returns an array of the form 'work_title' => 'counter' using
     // the users count by work and the work titles in the DB
     private function getBenefitersWorkTitleNameCountArray($benefitersCountByWork, $workTitles){
@@ -164,6 +179,10 @@ class ReportsService{
         // count benefiters regarding each education type
 
         // return array with education_type => number
+        $results = array('illiterate' => 2, 'primary_school'=> 10, 'high_school'=>26,
+                        'lyceum'=> 46, 'TEE'=>89, 'TEI'=>27, 'AEI'=>19,
+                        'master'=>73, 'phd'=>53);
+        return $results;
     }
 
     // ------------------------------------------------------------------------------------------------ //
