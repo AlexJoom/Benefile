@@ -55,6 +55,8 @@ class ReportsController extends Controller
         $allMedicalLocations = $this->reportsService->getAllMedicalLocations();
         // all the medical examination results
         $allMedicalExaminationResults = $this->reportsService->getAllMedicalExaminationResults();
+
+        $report_benefiters_vs_doctor_type = $this->reportsService->getReport_benefiters_vs_doctor();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -72,7 +74,8 @@ class ReportsController extends Controller
             ->with('work_titles', $allWorkTitles)
             ->with('medical_incident_types', $allMedicalIncidentTypes)
             ->with('medical_locations', $allMedicalLocations)
-            ->with('medical_examination_results', $allMedicalExaminationResults);
+            ->with('medical_examination_results', $allMedicalExaminationResults)
+            ->with('report_benefiters_vs_doctor_type', $report_benefiters_vs_doctor_type);
     }
 
     // gets the search query and returns the search results

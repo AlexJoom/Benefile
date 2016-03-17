@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\EducationLookup;
+use App\Models\Benefiters_Tables_Models\medical_visits;
 
 class ReportsService{
 
@@ -209,8 +210,8 @@ class ReportsService{
         return $result;
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs education ------------------------------------------------ //
     public function getReport_benefiters_vs_education(){
         // count benefiters regarding each education type
         $results = array();
@@ -218,32 +219,49 @@ class ReportsService{
         $education_lookup = EducationLookup::get();
         // for each education level add to results array a pair of the total count of benefiters with this edu. level and the title of the education level.
         foreach($education_lookup as $edu_lookup){
-            $benefiters_count_with_this_education_title = count(Benefiter::where('education_id',$edu_lookup['id'])->get());
-            $education_level_result = ['benefiters_count_with_this_education_title'=> $benefiters_count_with_this_education_title,
+            $count_benefiters_with_this_education_title = count(Benefiter::where('education_id',$edu_lookup['id'])->get());
+            $education_level_result = ['benefiters_count_with_this_education_title'=> $count_benefiters_with_this_education_title,
                                 'education_title'=>$edu_lookup['education_title']];
             array_push($results,$education_level_result);
         }
         return $results;
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs doctor specialty ----------------------------------------- //
     public function getReport_benefiters_vs_doctor(){
         // count benefiters regarding which doctor have visit
+        $results = array();
+        $color_array = ["#FF0F00", "#FF6600", "#FF9E01", "#FCD202", "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", "#0D52D1", "#2A0CD0", "#8A0CCF",
+                        "#CD0D74", "#710935", "#80AF44", "#A33D27", "#477709", "#3399ff", "#ff9933", "#663300", "#996633", "#267326", "#7300e6",
+                        "#ff80ff", "#666699", "#66ccff", "#993300", "#3399ff", "#999966", "#ff6600", "#008080", "#00e68a", "#cc33ff", "#333300"];
+        $counter = 0;
+        // get all doctors from user table
+        $subscribed_doctors = User::with('subrole')->where('user_role_id', 2)->get();
+        foreach($subscribed_doctors as $doctor){
+            $count_benefiters_with_same_doctor = count(medical_visits::where('doctor_id', $doctor['id'])->get());
 
+            $doctor_type_result = ['doctor_specialty'=>$doctor['subrole']['subrole'],
+                                    'count_benefiters_with_same_doctor'=>$count_benefiters_with_same_doctor,
+                                    'color'=> $color_array[$counter]];
+            array_push($results, $doctor_type_result);
+            $counter++;
+        }
         // return array with doctor => number of benefiters
+        dd($results);
+        return $results;
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs medical condition category ------------------------------- //
     public function getReport_benefiters_vs_medical_condition(){
         // count benefiters regarding their medical condition
 
         // return array with medical condition => number of benefiters with this medical condition
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs medical visits per month --------------------------------- //
     public function getReport_medical_visits_vs_date(){
         // count medical visits regarding time period (from , to)
 
