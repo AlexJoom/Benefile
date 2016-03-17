@@ -102,11 +102,13 @@
             <div class="col-md-12">
                 {{-- Benefiters marital statuses --}}
                 <div class="col-md-6">
+                    <h3>@lang($p.'h3-marital-status')</h3>
                     <canvas id="maritalStatusReport" height="400" width="400"></canvas>
                 </div>
                 {{-- Benefiters marital statuses end --}}
                 {{-- Medical visits location --}}
                 <div id="medical-visits-location" class="col-md-6">
+                    <h3>@lang($p.'h3-medical-visits-location')</h3>
                     <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
                 </div>
                 {{-- Medical visits location end --}}
@@ -116,6 +118,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
+                    <h3>@lang($p.'h3-work-title')</h3>
                     <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -124,6 +127,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
+                    <h3>@lang($p.'h3-medical-visits')</h3>
                     <canvas id="benefiters-per-medical-visits-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -132,6 +136,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-age-report" class="col-md-12">
+                    <h3>@lang($p.'h3-age-report')</h3>
                     <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -140,6 +145,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
+                    <h3>@lang($p.'h3-legal-status')</h3>
                     <canvas id="legalStatusReport" height="400" width="1000"></canvas>
                 </div>
             </div>
@@ -148,6 +154,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
+                    <h3>@lang($p.'h3-registration-status')</h3>
                     <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
                 </div>
             </div>
