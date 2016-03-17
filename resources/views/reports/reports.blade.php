@@ -100,6 +100,7 @@
             </div>
         </div>
 
+        {{-- =1= --}}
         <hr>
         <div class="row">
             {{-- Benefiters marital statuses --}}
@@ -108,16 +109,17 @@
             </div>
             {{-- Benefiters marital statuses end --}}
         </div>
+        {{-- =2= --}}
         <hr>
         <div class="row">
             {{-- Medical visits location --}}
-            <!-- <div class="col&#45;md&#45;6"> -->
             <h4>@lang($p.'h3-medical-visits-location')</h4>
                 <div id="medicalStatusReport" class="col-md-12">
             </div>
             <!-- </div> -->
             {{-- Medical visits location end --}}
         </div>
+        {{-- =3= --}}
         <hr>
         {{-- Benefiters work titles --}}
         <div class="row">
@@ -129,6 +131,7 @@
             </div>
         </div>
         {{-- Benefiters work titles end --}}
+        {{-- =4= --}}
         <hr>
         <div class="row">
             <div class="col-md-12">
@@ -139,6 +142,7 @@
             </div>
         </div>
         {{-- Benefiters age report end --}}
+        {{-- =5= --}}
         <hr>
         <div class="row">
             <div class="col-md-12">
@@ -150,6 +154,7 @@
             </div>
         </div>
         {{-- Benefiters legal statuses --}}
+        {{-- =6= --}}
         <hr>
         <div class="row">
             <div class="col-md-12">
@@ -159,6 +164,7 @@
             </div>
         </div>
         {{-- Benefiters registration numbers per month --}}
+        {{-- =7= --}}
         <hr>
         <div class="row">
             <div class="col-md-12">
@@ -169,6 +175,7 @@
             </div>
         </div>
 
+        {{-- =8= --}}
         {{-- REPORT: Benefiters vs education --}}
         <hr>
         <div class="row">
