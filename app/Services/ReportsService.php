@@ -111,7 +111,7 @@ class ReportsService{
     public function getReportDataForRegisteredBenefiters() {
         try {
             // get benefiter registration number for any particular month.
-            $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by date_format(created_at, '%Y%m')"));
+            $benefitersCount = \DB::select(\DB::raw("select date_format(created_at, '%Y-%m') as created_at, count(id) as idcounter from benefiters group by date_format(created_at, '%Y %m')"));
             // $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by year(created_at), month(created_at)"));
         } catch (\Exception $e) {
             Log::error("A problem occured while trying to count the users based on registration date.\n" . $e);
@@ -120,6 +120,41 @@ class ReportsService{
 
         Log::info("Returning result with users based on their registration date.");
         return $benefitersCount;
+    }
+
+    // returns all the marital statuses stored in DB
+    public function getAllMaritalStatuses(){
+        return \DB::table('marital_status_lookup')->get();
+    }
+
+    // returns all the legal statuses stored in DB
+    public function getAllLegalStatuses(){
+        return \DB::table('legal_status_lookup')->get();
+    }
+
+    // returns all the education titles stored in DB
+    public function getAllEducationTitles(){
+        return \DB::table('education_lookup')->get();
+    }
+
+    // returns all the work titles stored in DB
+    public function getAllWorkTitles(){
+        return \DB::table('work_title_list_lookup')->get();
+    }
+
+    // returns all the medical incident types stored in DB
+    public function getAllMedicalIncidentTypes(){
+        return \DB::table('medical_incident_type_lookup')->get();
+    }
+
+    // returns all the medical locations stored in DB
+    public function getAllMedicalLocations(){
+        return \DB::table('medical_location_lookup')->get();
+    }
+
+    // returns all the medical examination results stored in DB
+    public function getAllMedicalExaminationResults(){
+        return \DB::table('medical_examination_results_lookup')->get();
     }
 
     // returns an array of the form 'work_title' => 'counter' using

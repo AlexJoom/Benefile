@@ -9,7 +9,9 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/record_form.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/search/search.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/reports/reports.css') }}" rel="stylesheet" type="text/css">
 @stop
 
@@ -52,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="benefiters-report form-section">
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
         </div>
@@ -98,89 +100,291 @@
             </div>
         </div>
 
+        <hr>
         <div class="row">
-            <div class="col-md-12">
-                {{-- Benefiters marital statuses --}}
-                <div class="col-md-6">
-                    <h3>@lang($p.'h3-marital-status')</h3>
-                    <canvas id="maritalStatusReport" height="400" width="400"></canvas>
-                </div>
-                {{-- Benefiters marital statuses end --}}
-                {{-- Medical visits location --}}
-                <div id="medical-visits-location" class="col-md-6">
-                    <h3>@lang($p.'h3-medical-visits-location')</h3>
-                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
-                </div>
-                {{-- Medical visits location end --}}
+            {{-- Benefiters marital statuses --}}
+            <h4>@lang($p.'h3-marital-status')</h4>
+                <div id="maritalStatusReport" class="col-md-12">
             </div>
+            {{-- Benefiters marital statuses end --}}
         </div>
+        <hr>
+        <div class="row">
+            {{-- Medical visits location --}}
+            <!-- <div class="col&#45;md&#45;6"> -->
+            <h4>@lang($p.'h3-medical-visits-location')</h4>
+                <div id="medicalStatusReport" class="col-md-12">
+            </div>
+            <!-- </div> -->
+            {{-- Medical visits location end --}}
+        </div>
+        <hr>
         {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
-                    <h3>@lang($p.'h3-work-title')</h3>
-                    <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-work-title')</h4>
+                    <canvas id="benefiters-work-title-canvas" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
         {{-- Benefiters work titles end --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
-                    <h3>@lang($p.'h3-medical-visits')</h3>
-                    <canvas id="benefiters-per-medical-visits-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-medical-visits')</h4>
+                    <canvas id="benefiters-per-medical-visits-canvas" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
         {{-- Benefiters age report end --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-age-report" class="col-md-12">
-                    <h3>@lang($p.'h3-age-report')</h3>
-                    <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-age-report')</h4>
+                    <div id="ageReport" class="col-md-12">
+                    </div>
                 </div>
             </div>
         </div>
         {{-- Benefiters legal statuses --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-6">
-                    <h3>@lang($p.'h3-legal-status')</h3>
-                    <canvas id="legalStatusReport" height="400" width="1000"></canvas>
-                </div>
+                    <h4>@lang($p.'h3-legal-status')</h4>
+                    <!-- <canvas id="legalStatusReport" height="300" width="1000"></canvas> -->
+                    <div id="legalStatusReport"></div>
             </div>
         </div>
         {{-- Benefiters registration numbers per month --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h3>@lang($p.'h3-registration-status')</h3>
-                    <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-registration-status')</h4>
+                    <canvas id="registrationStatusReport" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
 
         {{-- REPORT: Benefiters vs education --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-education')</h1>
                 </div>
-                {{--hidden values from controller (are used from js)--}}
-                {{--<input type="hidden" id="illiterate" value="{{ $report_benefiters_vs_education['illiterate'] }}" />--}}
                 <div id="benefiter_vs_education"></div>
+            </div>
+        </div>
+    </div>
+    <div class="benefiters-report form-section">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."search")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            {!! Form::open(array('url' => 'reports-search-results', 'id' => 'search-form', 'method' => 'get')) !!}
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
+                            <div>
+                                <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($marital_statuses)){
+                                            foreach($marital_statuses as $marital_status){
+                                                echo "<option value=" . $marital_status->id . ">" . $marital_status->marital_status_title . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('age', Lang::get('reports.age')) !!}
+                            {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
+                            <div>
+                                <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($legal_statuses)){
+                                            foreach($legal_statuses as $legal_status){
+                                                echo "<option value=" . $legal_status->id . ">" . $legal_status->description . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('education_id', Lang::get('reports.education')) !!}
+                            <div>
+                                <select name="education_id" id="education-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($education_titles)){
+                                            foreach($education_titles as $education_title){
+                                                echo "<option value=" . $education_title->id . ">" . $education_title->education_title . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('gender_id', Lang::get('reports.gender')) !!}
+                            <div>
+                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
+                            <div>
+                                <select name="work_title_id" id="work-title-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($work_titles)){
+                                            foreach($work_titles as $work_title){
+                                                if($work_title->work_title == ""){
+                                                    $work_title->work_title = "-";
+                                                }
+                                                echo "<option value=" . $work_title->id . ">" . $work_title->work_title . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('drug', Lang::get('reports.drug')) !!}
+                            {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
+                            <div>
+                                <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($medical_incident_types)){
+                                            foreach($medical_incident_types as $medical_incident_type){
+                                                echo "<option value=" . $medical_incident_type->id . ">" . $medical_incident_type->description . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('location_id', Lang::get('reports.location')) !!}
+                            <div>
+                                <select name="location_id" id="location-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($medical_locations)){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('doctor_name', Lang::get('reports.doctor_name')) !!}
+                            {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('incidents_number', Lang::get('reports.incidents_number')) !!}
+                            {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                            {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
+                            <div>
+                                <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
+                                    <option value=0></option>
+                                    <?php
+                                        if(!empty($medical_examination_results)){
+                                            foreach($medical_examination_results as $medical_examination_result){
+                                                echo "<option value=" . $medical_examination_result->id . ">" . $medical_examination_result->description . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.insertion_date')) !!}
+                            <div>
+                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="padding-left-right-15">
+                            {!! Form::label(Lang::get('reports.incident_dates_range')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.from')) !!}
+                            <div>
+                                {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.to')) !!}
+                            <div>
+                                {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                        {!! Form::submit(Lang::get('reports.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
+                    </div>
+                </div>
+            {!! Form::close() !!}
             </div>
         </div>
     </div>
 @stop
 
 @section('panel-scripts')
-<script src="{{ asset('js/chart.min.js') }}"></script>
-<script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
-<script src="{{ asset('js/amcharts/pie.js') }}"></script>
-<script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
-<script src="{{ asset('js/reports/reports.js') }}"></script>
-<script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
+    <script src="{{ asset('js/amcharts/pie.js') }}"></script>
+    <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
+    <script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/reports/reports-search.js') }}"></script>
+    <script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     {{-- Benefiter counter status graph --}}
 	<script>
         /* Make charts responsive. */
@@ -192,7 +396,7 @@
              labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
 				datasets: [
 					{
-					label: "My Data",                    
+					label: "My Data",
                     fillColor: "rgba(220,220,220,0.5)",
                     strokeColor: "rgba(220,220,220,0.8)",
                     highlightFill: "rgba(220,220,220,0.75)",
@@ -208,78 +412,286 @@
              */
 		})();
 	</script>
+    <script>
+    {{-- Age report status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("ageReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefiters_age as $age)
+                "benefiters": {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
+                "counter": {!! json_encode($age->counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
+    {{-- Marital report status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("maritalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefitersMaritalStatuses as $maritalStatus)
+                "benefiters": {!! json_encode($maritalStatus->marital_status_title) !!},
+                "counter": {!! json_encode($maritalStatus->marital_counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
     {{-- Legal status graph --}}
-	<script>
-		(function() {
-			 var ctx = document.getElementById("legalStatusReport").getContext("2d");
-			 var chart = {
-                labels: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->description) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",                    
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->legal_counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
-    {{-- Marital status graph --}}
-	<script>
-		(function() {
-			 var ctx = document.getElementById("maritalStatusReport").getContext("2d");
-			 var chart = {
-				labels: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_status_title) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",                    
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
-    {{-- Age graph --}}
-	<script>
-		(function() {
-			var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
-			var chart = {
-            labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
-				datasets: [
-					{
-					label: "My Data",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_age as $age) {!! json_encode($age->counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("legalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefiters_legal_statuses as $legalStatus)
+                "benefiters": {!! json_encode($legalStatus->description) !!},
+                "litres": {!! json_encode($legalStatus->legal_counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "litres",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
+    {{-- Medical report status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("medicalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($medical_visits_location as $medicalVisit)
+                "benefiters": {!! json_encode($medicalVisit->location) !!},
+                "counter": {!! json_encode($medicalVisit->counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
     <script>
         (function(){
             var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
@@ -311,46 +723,6 @@
                 @endif
             };
             new Chart($benefiters_work_title_canvas).Bar($data, {});
-        })();
-    </script>
-    <script>
-        (function(){
-            var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
-            var $data = [
-                @if(!empty($medical_visits_location))
-                    <?php
-                         $i = 0;
-                         $colors = array(
-                                         array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
-                                         array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
-                                         array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
-                                         array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
-                                         array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
-                                     );
-                    ?>
-                    @foreach($medical_visits_location as $single_medical_visits_location)
-                        {
-                            value: {!! $single_medical_visits_location->counter !!},
-                            color: "{!! $colors[$i]['fill'] !!}",
-                            highlight: "{!! $colors[$i]['highlight'] !!}",
-                            @if($key == "")
-                            label: "-"
-                            @else
-                            label: "{!! $single_medical_visits_location->location !!}"
-                            @endif
-                        },
-                        <?php $i++; ?>
-                    @endforeach
-                @else
-                    {
-                        value: -1,
-                        color: "rgba(125,125,125,0.5)",
-                        highlight: "rgba(125,125,125,0.75)",
-                        label: "-"
-                    },
-                @endif
-            ];
-            new Chart($medical_visits_location_canvas).Pie($data, {});
         })();
     </script>
     <script>
