@@ -175,10 +175,13 @@
 <script src="{{ asset('js/reports/reports.js') }}"></script>
     {{-- Benefiter counter status graph --}}
 	<script>
+        /* Make charts responsive. */
+        Chart.defaults.global.responsive = true;
+
 		(function() {
 			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
 			 var chart = {
-labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
+             labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
 				datasets: [
 					{
 					label: "My Data",                    
