@@ -649,48 +649,6 @@
             new Chart($benefiters_work_title_canvas).Bar($data, {});
         })();
     </script>
-    <!--
-      <script>
-          (function(){
-              var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
-              var $data = [
-                  @if(!empty($medical_visits_location))
-                      <?php
-                           $i = 0;
-                           $colors = array(
-                                           array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
-                                           array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
-                                           array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
-                                           array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
-                                           array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
-                                       );
-                      ?>
-                      @foreach($medical_visits_location as $single_medical_visits_location)
-                          {
-                              value: {!! $single_medical_visits_location->counter !!},
-                              color: "{!! $colors[$i]['fill'] !!}",
-                              highlight: "{!! $colors[$i]['highlight'] !!}",
-                              @if($key == "")
-                              label: "-"
-                              @else
-                              label: "{!! $single_medical_visits_location->location !!}"
-                              @endif
-                          },
-                          <?php $i++; ?>
-                      @endforeach
-                  @else
-                      {
-                          value: -1,
-                          color: "rgba(125,125,125,0.5)",
-                          highlight: "rgba(125,125,125,0.75)",
-                          label: "-"
-                      },
-                  @endif
-              ];
-              new Chart($medical_visits_location_canvas).Pie($data, {});
-          })();
-      </script>
-    -->
     <script>
         (function(){
             var $benefiters_per_medical_visits_canvas = $("#benefiters-per-medical-visits-canvas").get(0).getContext("2d");
