@@ -381,12 +381,15 @@
 @stop
 
 @section('panel-scripts')
-<script src="{{ asset('js/chart.min.js') }}"></script>
-<script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
-<script src="{{ asset('js/amcharts/pie.js') }}"></script>
-<script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
-<script src="{{ asset('js/reports/reports.js') }}"></script>
-<script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
+    <script src="{{ asset('js/amcharts/pie.js') }}"></script>
+    <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
+    <script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/canvasjs.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     {{-- Benefiter counter status graph --}}
 	<script>
         /* Make charts responsive. */
@@ -414,11 +417,6 @@
              */
 		})();
 	</script>
-    <script src="{{ asset('js/chart.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
-    <script src="{{asset('js/forms.js')}}"></script>
-    <script src="{{ asset('js/reports/reports.js') }}"></script>
     {{-- Legal status graph --}}
 	<script>
 		(function() {
