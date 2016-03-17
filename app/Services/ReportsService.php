@@ -110,7 +110,7 @@ class ReportsService{
     public function getReportDataForRegisteredBenefiters() {
         try {
             // get benefiter registration number for any particular month.
-            $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by date_format(created_at, '%Y%m')"));
+            $benefitersCount = \DB::select(\DB::raw("select date_format(created_at, '%Y-%m') as created_at, count(id) as idcounter from benefiters group by date_format(created_at, '%Y %m')"));
             // $benefitersCount = \DB::select(\DB::raw("select created_at, count(id) as idcounter from benefiters group by year(created_at), month(created_at)"));
         } catch (\Exception $e) {
             Log::error("A problem occured while trying to count the users based on registration date.\n" . $e);
