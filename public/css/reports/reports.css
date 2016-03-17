@@ -78,7 +78,7 @@ p.users-counter{
     display: none !important;
 }
 
-#legalStatusReport {
+#legalStatusReport, #medicalStatusReport {
 	width: 100%;
 	height: 500px;
 }

@@ -109,13 +109,17 @@
                     <canvas id="maritalStatusReport" height="400" width="400"></canvas>
                 </div>
                 {{-- Benefiters marital statuses end --}}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
                 {{-- Medical visits location --}}
-                <div id="medical-visits-location" class="col-md-6">
+                <div class="col-md-12">
                     <h3>@lang($p.'h3-medical-visits-location')</h3>
-                    <canvas id="medical-visits-location-canvas" height="400" width="400"></canvas>
+                    <div id="medicalStatusReport" class="col-md-6">
+                    </div>
                 </div>
                 {{-- Medical visits location end --}}
-            </div>
         </div>
         <hr>
         {{-- Benefiters work titles --}}
@@ -408,7 +412,7 @@
              labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
 				datasets: [
 					{
-					label: "My Data",                    
+					label: "My Data",
                     fillColor: "rgba(220,220,220,0.5)",
                     strokeColor: "rgba(220,220,220,0.8)",
                     highlightFill: "rgba(220,220,220,0.75)",
@@ -471,6 +475,76 @@
             @endforeach
             }],
             "valueField": "litres",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
+    {{-- Location status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("medicalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($medical_visits_location as $medicalVisit)
+                "benefiters": {!! json_encode($medicalVisit->location) !!},
+                "counter": {!! json_encode($medicalVisit->counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
             "titleField": "benefiters",
             "export": {
                 "enabled": true
@@ -575,46 +649,48 @@
             new Chart($benefiters_work_title_canvas).Bar($data, {});
         })();
     </script>
-    <script>
-        (function(){
-            var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
-            var $data = [
-                @if(!empty($medical_visits_location))
-                    <?php
-                         $i = 0;
-                         $colors = array(
-                                         array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
-                                         array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
-                                         array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
-                                         array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
-                                         array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
-                                     );
-                    ?>
-                    @foreach($medical_visits_location as $single_medical_visits_location)
-                        {
-                            value: {!! $single_medical_visits_location->counter !!},
-                            color: "{!! $colors[$i]['fill'] !!}",
-                            highlight: "{!! $colors[$i]['highlight'] !!}",
-                            @if($key == "")
-                            label: "-"
-                            @else
-                            label: "{!! $single_medical_visits_location->location !!}"
-                            @endif
-                        },
-                        <?php $i++; ?>
-                    @endforeach
-                @else
-                    {
-                        value: -1,
-                        color: "rgba(125,125,125,0.5)",
-                        highlight: "rgba(125,125,125,0.75)",
-                        label: "-"
-                    },
-                @endif
-            ];
-            new Chart($medical_visits_location_canvas).Pie($data, {});
-        })();
-    </script>
+    <!--
+      <script>
+          (function(){
+              var $medical_visits_location_canvas = $("#medical-visits-location-canvas").get(0).getContext("2d");
+              var $data = [
+                  @if(!empty($medical_visits_location))
+                      <?php
+                           $i = 0;
+                           $colors = array(
+                                           array("fill" => "rgba(255,0,0,0.5)", "highlight" =>  "rgba(255,0,0,0.75)"),
+                                           array("fill" => "rgba(0,255,0,0.5)", "highlight" =>  "rgba(0,255,0,0.75)"),
+                                           array("fill" => "rgba(0,0,255,0.5)", "highlight" =>  "rgba(0,0,255,0.75)"),
+                                           array("fill" => "rgba(125,125,0,0.5)", "highlight" =>  "rgba(125,125,0,0.75)"),
+                                           array("fill" => "rgba(125,0,125,0.5)", "highlight" =>  "rgba(125,0,125,0.75)"),
+                                       );
+                      ?>
+                      @foreach($medical_visits_location as $single_medical_visits_location)
+                          {
+                              value: {!! $single_medical_visits_location->counter !!},
+                              color: "{!! $colors[$i]['fill'] !!}",
+                              highlight: "{!! $colors[$i]['highlight'] !!}",
+                              @if($key == "")
+                              label: "-"
+                              @else
+                              label: "{!! $single_medical_visits_location->location !!}"
+                              @endif
+                          },
+                          <?php $i++; ?>
+                      @endforeach
+                  @else
+                      {
+                          value: -1,
+                          color: "rgba(125,125,125,0.5)",
+                          highlight: "rgba(125,125,125,0.75)",
+                          label: "-"
+                      },
+                  @endif
+              ];
+              new Chart($medical_visits_location_canvas).Pie($data, {});
+          })();
+      </script>
+    -->
     <script>
         (function(){
             var $benefiters_per_medical_visits_canvas = $("#benefiters-per-medical-visits-canvas").get(0).getContext("2d");
