@@ -100,6 +100,7 @@
             </div>
         </div>
 
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 {{-- Benefiters marital statuses --}}
@@ -116,6 +117,7 @@
                 {{-- Medical visits location end --}}
             </div>
         </div>
+        <hr>
         {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
@@ -126,6 +128,7 @@
             </div>
         </div>
         {{-- Benefiters work titles end --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
@@ -135,6 +138,7 @@
             </div>
         </div>
         {{-- Benefiters age report end --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-age-report" class="col-md-12">
@@ -144,6 +148,7 @@
             </div>
         </div>
         {{-- Benefiters legal statuses --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12">
@@ -154,6 +159,7 @@
             </div>
         </div>
         {{-- Benefiters registration numbers per month --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
@@ -164,6 +170,7 @@
         </div>
 
         {{-- REPORT: Benefiters vs education --}}
+        <hr>
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
