@@ -97,6 +97,7 @@ Route::get('results', 'MainPanel\SearchController@getResults');
 
 //--- ΑΝΑΦΟΡΑ
 Route::get('reports', 'MainPanel\ReportsController@getReports');
+Route::get('benefites-VS-education-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSeducationdata');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ

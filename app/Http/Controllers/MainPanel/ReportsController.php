@@ -39,8 +39,7 @@ class ReportsController extends Controller
         $benefitersPerMedicalVisits = $this->reportsService->getReportDataForBenefitersPerMedicalVisitsCount();
         // count benefiters based on registration date
         $benefitersCount = $this->reportsService->getReportDataForRegisteredBenefiters();
-        // count benefiters by education type
-        $report_benefiters_vs_education = $this->reportsService->getReport_benefiters_vs_education();
+
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -51,7 +50,13 @@ class ReportsController extends Controller
             ->with('benefiters_legal_statuses', $benefitersLegalStatuses)
             ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
             ->with('benefiters_count', $benefitersCount)
-            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
-            ->with('report_benefiters_vs_education', $report_benefiters_vs_education);
+            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits);
+    }
+
+    public function getBenefitesVSeducationdata(){
+        // count benefiters by education type
+        $report_benefiters_vs_education = $this->reportsService->getReport_benefiters_vs_education();
+
+        return $report_benefiters_vs_education;
     }
 }

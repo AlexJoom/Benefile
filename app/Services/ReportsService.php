@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Models\Benefiters_Tables_Models\Benefiter;
+use App\Models\Benefiters_Tables_Models\EducationLookup;
 
 class ReportsService{
 
@@ -177,11 +178,16 @@ class ReportsService{
     // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
     public function getReport_benefiters_vs_education(){
         // count benefiters regarding each education type
-
-        // return array with education_type => number
-        $results = array('illiterate' => 2, 'primary_school'=> 10, 'high_school'=>26,
-                        'lyceum'=> 46, 'TEE'=>89, 'TEI'=>27, 'AEI'=>19,
-                        'master'=>73, 'phd'=>53);
+        $results = array();
+        // get all lookup education levels
+        $education_lookup = EducationLookup::get();
+        // for each education level add to results array a pair of the total count of benefiters with this edu. level and the title of the education level.
+        foreach($education_lookup as $edu_lookup){
+            $benefiters_count_with_this_education_title = count(Benefiter::where('education_id',$edu_lookup['id'])->get());
+            $education_level_result = ['benefiters_count_with_this_education_title'=> $benefiters_count_with_this_education_title,
+                                'education_title'=>$edu_lookup['education_title']];
+            array_push($results,$education_level_result);
+        }
         return $results;
     }
 
