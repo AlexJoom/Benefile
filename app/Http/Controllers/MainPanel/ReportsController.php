@@ -77,4 +77,9 @@ class ReportsController extends Controller
             ->with('medical_locations', $allMedicalLocations)
             ->with('medical_examination_results', $allMedicalExaminationResults);
     }
+
+    // gets the search query and returns the search results
+    public function getBenefiterSearchResults(Request $request){
+        dd($request->all());
+    }
 }

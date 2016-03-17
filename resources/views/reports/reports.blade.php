@@ -199,13 +199,13 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-            {!! Form::open(array('url' => 'results', 'id' => 'search-form', 'method' => 'get')) !!}
+            {!! Form::open(array('url' => 'reports-search-results', 'id' => 'search-form', 'method' => 'get')) !!}
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
                             <div>
-                                <select name="marital_status_id" class="width-100-percent">
+                                <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($marital_statuses)){
@@ -224,7 +224,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
                             <div>
-                                <select name="legal_status_id" class="width-100-percent">
+                                <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($legal_statuses)){
@@ -239,7 +239,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('education_id', Lang::get('reports.education')) !!}
                             <div>
-                                <select name="education_id" class="width-100-percent">
+                                <select name="education_id" id="education-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($education_titles)){
@@ -273,7 +273,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
                             <div>
-                                <select name="work_title_id" class="width-100-percent">
+                                <select name="work_title_id" id="work-title-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($work_titles)){
@@ -295,7 +295,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
                             <div>
-                                <select name="incident_type_id" class="width-100-percent">
+                                <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($medical_incident_types)){
@@ -310,7 +310,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                             {!! Form::label('location_id', Lang::get('reports.location')) !!}
                             <div>
-                                <select name="location_id" class="width-100-percent">
+                                <select name="location_id" id="location-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($medical_locations)){
@@ -337,7 +337,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
                             {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
                             <div>
-                                <select name="examination_results_id" class="width-100-percent">
+                                <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
                                     <option value=0></option>
                                     <?php
                                         if(!empty($medical_examination_results)){
@@ -393,6 +393,7 @@
     <script src="{{ asset('js/amcharts/pie.js') }}"></script>
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/reports/reports-search.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
