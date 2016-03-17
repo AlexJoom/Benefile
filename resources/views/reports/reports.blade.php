@@ -9,7 +9,9 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/record_form.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/search/search.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/reports/reports.css') }}" rel="stylesheet" type="text/css">
 @stop
 
@@ -52,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="benefiters-report form-section">
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
         </div>
@@ -145,11 +147,207 @@
             </div>
         </div>
     </div>
+    <div class="benefiters-report form-section">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang($p."search")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            {!! Form::open(array('url' => 'results', 'id' => 'search-form', 'method' => 'get')) !!}
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
+                            <div>
+                                <select name="marital_status_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('age', Lang::get('reports.age')) !!}
+                            {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
+                            <div>
+                                <select name="legal_status_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('education_id', Lang::get('reports.education')) !!}
+                            <div>
+                                <select name="education_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('gender_id', Lang::get('reports.gender')) !!}
+                            <div>
+                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
+                            <div>
+                                <select name="work_title_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('drug', Lang::get('reports.drug')) !!}
+                            {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
+                            <div>
+                                <select name="incident_type_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('location_id', Lang::get('reports.location')) !!}
+                            <div>
+                                <select name="location_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('doctor_name', Lang::get('reports.doctor_name')) !!}
+                            {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label('incidents_number', Lang::get('reports.incidents_number')) !!}
+                            {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                            {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
+                            <div>
+                                <select name="examination_results_id">
+                                    <option value=0></option>
+                                    <?php
+                                        /*if(isset($medical_locations) and $medical_locations != null){
+                                            foreach($medical_locations as $location){
+                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                            }
+                                        }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.insertion_date')) !!}
+                            <div>
+                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="padding-left-right-15">
+                            {!! Form::label(Lang::get('reports.incident_dates_range')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.from')) !!}
+                            <div>
+                                {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                            {!! Form::label(Lang::get('reports.to')) !!}
+                            <div>
+                                {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            </div>
+                        </div>
+                        {!! Form::submit(Lang::get('reports.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
+                    </div>
+                </div>
+            {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('panel-scripts')
-<script src="{{ asset('js/chart.min.js') }}"></script>
-<script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/chart.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{ asset('js/reports/reports.js') }}"></script>
     {{-- Legal status graph --}}
 	<script>
 		(function() {
