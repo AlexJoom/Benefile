@@ -144,9 +144,10 @@
         {{-- Benefiters legal statuses --}}
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h3>@lang($p.'h3-legal-status')</h3>
-                    <canvas id="legalStatusReport" height="400" width="1000"></canvas>
+                    <!-- <canvas id="legalStatusReport" height="400" width="1000"></canvas> -->
+                    <div id="legalStatusReport"></div>
                 </div>
             </div>
         </div>
@@ -219,30 +220,76 @@
              */
 		})();
 	</script>
+    <script>
     {{-- Legal status graph --}}
-	<script>
-		(function() {
-			 var ctx = document.getElementById("legalStatusReport").getContext("2d");
-			 var chart = {
-                labels: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->description) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",                    
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_legal_statuses as $legalStatus) {!! json_encode($legalStatus->legal_counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("legalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefiters_legal_statuses as $legalStatus)
+                "benefiters": {!! json_encode($legalStatus->description) !!},
+                "litres": {!! json_encode($legalStatus->legal_counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "litres",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
     {{-- Marital status graph --}}
 	<script>
 		(function() {

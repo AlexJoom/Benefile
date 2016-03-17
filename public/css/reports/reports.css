@@ -78,6 +78,15 @@ p.users-counter{
     display: none !important;
 }
 
+#legalStatusReport {
+	width: 100%;
+	height: 500px;
+}
+
+.amcharts-chart-div > a {
+	display: none !important;
+}
+
 .amcharts-pie-slice {
     transform: scale(1);
     transform-origin: 50% 50%;
