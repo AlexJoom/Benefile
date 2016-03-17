@@ -40,6 +40,7 @@
 //    ---------- SECOND WAY --------------
 $(document).ready(function(){
     var chart = AmCharts.makeChart("benefiter_vs_education", {
+        "titles":[{'text':'Chart','size':22}],
         "type": "pie",
         "startDuration": 0,
         "theme": "light",
@@ -48,6 +49,7 @@ $(document).ready(function(){
             "position":"right",
             "marginRight":100,
             "autoMargins":false
+
         },
         "innerRadius": "30%",
         "defs": {
@@ -107,7 +109,7 @@ $(document).ready(function(){
             "enabled": true
         }
     });
-});
+
 
 chart.addListener("init", handleInit);
 
@@ -123,7 +125,7 @@ function handleRollOver(e){
     var wedge = e.dataItem.wedge.node;
     wedge.parentNode.appendChild(wedge);
 }
-
+});
 // ------------- THIRD WAY -------------------------------
 
 //window.onload = function () {
