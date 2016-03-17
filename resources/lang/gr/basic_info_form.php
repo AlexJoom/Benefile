@@ -10,6 +10,7 @@
         'gender' => 'ΦΥΛΟ',
         'male' => 'Άνδρας',
         'female' => 'Γυναίκα',
+        'other' => 'Άλλο',
         'birth_date' => 'ΗΜΕΡ. ΓΕΝΝΗΣΗΣ',
         'fathers_name' => 'ΠΑΤΡΩΝΥΜΟ',
         'mothers_name' => 'ΜΗΤΡΩΝΥΜΟ',
