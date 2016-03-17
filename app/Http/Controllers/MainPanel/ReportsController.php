@@ -66,7 +66,6 @@ class ReportsController extends Controller
             ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
             ->with('benefiters_count', $benefitersCount)
             ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
-            ->with('report_benefiters_vs_education', $report_benefiters_vs_education)
             ->with('marital_statuses', $allMaritalStatuses)
             ->with('legal_statuses', $allLegalStatuses)
             ->with('education_titles', $allEducationTitles)
