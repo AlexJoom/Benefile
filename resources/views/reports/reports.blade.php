@@ -102,32 +102,29 @@
 
         <hr>
         <div class="row">
-            <div class="col-md-12">
-                {{-- Benefiters marital statuses --}}
-                <div class="col-md-6">
-                    <h3>@lang($p.'h3-marital-status')</h3>
-                    <canvas id="maritalStatusReport" height="400" width="400"></canvas>
-                </div>
-                {{-- Benefiters marital statuses end --}}
+            {{-- Benefiters marital statuses --}}
+            <h4>@lang($p.'h3-marital-status')</h4>
+                <div id="maritalStatusReport" class="col-md-12">
             </div>
+            {{-- Benefiters marital statuses end --}}
         </div>
         <hr>
         <div class="row">
-                {{-- Medical visits location --}}
-                <div class="col-md-12">
-                    <h3>@lang($p.'h3-medical-visits-location')</h3>
-                    <div id="medicalStatusReport" class="col-md-6">
-                    </div>
-                </div>
-                {{-- Medical visits location end --}}
+            {{-- Medical visits location --}}
+            <!-- <div class="col&#45;md&#45;6"> -->
+            <h4>@lang($p.'h3-medical-visits-location')</h4>
+                <div id="medicalStatusReport" class="col-md-12">
+            </div>
+            <!-- </div> -->
+            {{-- Medical visits location end --}}
         </div>
         <hr>
         {{-- Benefiters work titles --}}
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
-                    <h3>@lang($p.'h3-work-title')</h3>
-                    <canvas id="benefiters-work-title-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-work-title')</h4>
+                    <canvas id="benefiters-work-title-canvas" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
@@ -136,8 +133,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
-                    <h3>@lang($p.'h3-medical-visits')</h3>
-                    <canvas id="benefiters-per-medical-visits-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-medical-visits')</h4>
+                    <canvas id="benefiters-per-medical-visits-canvas" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
@@ -146,8 +143,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="benefiters-age-report" class="col-md-12">
-                    <h3>@lang($p.'h3-age-report')</h3>
-                    <canvas id="benefiters-age-canvas" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-age-report')</h4>
+                    <div id="ageReport" class="col-md-12">
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,11 +153,9 @@
         <hr>
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-12">
-                    <h3>@lang($p.'h3-legal-status')</h3>
-                    <!-- <canvas id="legalStatusReport" height="400" width="1000"></canvas> -->
+                    <h4>@lang($p.'h3-legal-status')</h4>
+                    <!-- <canvas id="legalStatusReport" height="300" width="1000"></canvas> -->
                     <div id="legalStatusReport"></div>
-                </div>
             </div>
         </div>
         {{-- Benefiters registration numbers per month --}}
@@ -167,8 +163,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <h3>@lang($p.'h3-registration-status')</h3>
-                    <canvas id="registrationStatusReport" height="400" width="1000"></canvas>
+                    <h4>@lang($p.'h3-registration-status')</h4>
+                    <canvas id="registrationStatusReport" height="300" width="1000"></canvas>
                 </div>
             </div>
         </div>
@@ -184,7 +180,7 @@
                      {{--hidden values from controller (are used from js)--}}
                     {{--<input type="hidden" id="illiterate" value="{{ $report_benefiters_vs_education['illiterate'] }}" />--}}
 
-                    {{--<canvas id="benefiter_vs_education_canvas" height="400" width="700"></canvas>--}}
+                    {{--<canvas id="benefiter_vs_education_canvas" height="300" width="700"></canvas>--}}
                 {{--</div>--}}
 
                 {{-- second way--}}
@@ -192,7 +188,7 @@
 
 
                 {{-- third way--}}
-                {{--<div id="chartContainer" style="height: 400px; width: 100%;">--}}
+                {{--<div id="chartContainer" style="height: 300px; width: 100%;">--}}
 
             </div>
         </div>
@@ -429,6 +425,146 @@
 		})();
 	</script>
     <script>
+    {{-- Age report status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("ageReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefiters_age as $age)
+                "benefiters": {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
+                "counter": {!! json_encode($age->counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
+    {{-- Marital report status graph --}}
+    $(document).ready(function(){
+        var chart = AmCharts.makeChart("maritalStatusReport", {
+            "titles":[{'text':'','size':22}],
+            "type": "pie",
+            "startDuration": 0,
+            "theme": "light",
+            "addClassNames": true,
+            "legend":{
+                "position":"right",
+                "marginRight":100,
+                "autoMargins":false
+
+            },
+            "innerRadius": "30%",
+            "defs": {
+                "filter": [{
+                    "id": "shadow",
+                    "width": "200%",
+                    "height": "200%",
+                    "feOffset": {
+                        "result": "offOut",
+                        "in": "SourceAlpha",
+                        "dx": 0,
+                        "dy": 0
+                    },
+                    "feGaussianBlur": {
+                        "result": "blurOut",
+                        "in": "offOut",
+                        "stdDeviation": 5
+                    },
+                    "feBlend": {
+                        "in": "SourceGraphic",
+                        "in2": "blurOut",
+                        "mode": "normal"
+                    }
+                }]
+            },
+            "dataProvider": [{
+            @foreach ($benefitersMaritalStatuses as $maritalStatus)
+                "benefiters": {!! json_encode($maritalStatus->marital_status_title) !!},
+                "counter": {!! json_encode($maritalStatus->marital_counter) !!}
+            }, {
+            @endforeach
+            }],
+            "valueField": "counter",
+            "titleField": "benefiters",
+            "export": {
+                "enabled": true
+            }
+        });
+
+
+    chart.addListener("init", handleInit);
+
+    chart.addListener("rollOverSlice", function(e) {
+        handleRollOver(e);
+    });
+
+    function handleInit(){
+        chart.legend.addListener("rollOverItem", handleRollOver);
+    }
+
+    function handleRollOver(e){
+        var wedge = e.dataItem.wedge.node;
+        wedge.parentNode.appendChild(wedge);
+    }
+    });
+    </script>
+    <script>
     {{-- Legal status graph --}}
     $(document).ready(function(){
         var chart = AmCharts.makeChart("legalStatusReport", {
@@ -499,7 +635,7 @@
     });
     </script>
     <script>
-    {{-- Location status graph --}}
+    {{-- Medical report status graph --}}
     $(document).ready(function(){
         var chart = AmCharts.makeChart("medicalStatusReport", {
             "titles":[{'text':'','size':22}],
@@ -568,54 +704,6 @@
     }
     });
     </script>
-    {{-- Marital status graph --}}
-	<script>
-		(function() {
-			 var ctx = document.getElementById("maritalStatusReport").getContext("2d");
-			 var chart = {
-				labels: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_status_title) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",                    
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-					data: [ @foreach ($benefitersMaritalStatuses as $maritalStatus) {!! json_encode($maritalStatus->marital_counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
-    {{-- Age graph --}}
-	<script>
-		(function() {
-			var ctx = document.getElementById("benefiters-age-canvas").getContext("2d");
-			var chart = {
-            labels: [ @foreach ($benefiters_age as $age) {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} , @endforeach ],
-				datasets: [
-					{
-					label: "My Data",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_age as $age) {!! json_encode($age->counter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
-	</script>
     <script>
         (function(){
             var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
