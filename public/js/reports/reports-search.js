@@ -89,6 +89,7 @@ function DisplayResults($response){
     if($response == ''){
         $('.state-no-results').show();
     } else { // else display results returned
+        $('#json-formed-text').val(JSON.stringify($response));
         $view_folders = $('#search-results').data('view-folders');
         for (var i in $response) {
             $anchor = $('#search-results').data('url').replace('-1', $response[i].id);

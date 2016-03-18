@@ -426,7 +426,10 @@
                                 </tbody>
                             </table>
                             <div class="text-align-center margin-top-60">
+                                {!! Form::open(array('url' => 'download-csv', 'id' => 'download-csv-form', 'method' => 'get')) !!}
+                                {!! Form::hidden('json_formed_text', null, array('id' => 'json-formed-text')) !!}
                                 <button class="simple-button">@lang($p."download_csv")</button>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
