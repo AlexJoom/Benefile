@@ -460,14 +460,15 @@ class ReportsService{
 
         // count benefiters regarding their medical condition
         foreach($clinical_conditions_lookup as $condition){
+            // TODO benefiters with same clinical condition
+//            $benefiters_with_same_clinical_condition =
             $current_clinical_condition_counter = 0;
             foreach($medical_visits as $visit){
-                // TODO (MAYBE) if the same benfiter_id appears more than once, then check if the logged clinical result appears more than once
                 // benefiter duplicity counter for the same clinical condition
-
+//                $benefiter_duplicity_counter = 0;
                 foreach($medical_examination_results as $med_result){
-                    $benefiter_duplicity_counter = 0;
-                    if($med_result['medical_visit_id'] == $visit['id'] && $med_result['results_lookup_id'] == $condition['id']){
+                    if( $med_result['medical_visit_id'] == $visit['id'] && $med_result['results_lookup_id'] == $condition['id']){
+
                         $current_clinical_condition_counter++;
                     }
                 }
