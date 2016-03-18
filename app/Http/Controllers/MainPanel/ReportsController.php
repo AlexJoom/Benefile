@@ -76,6 +76,13 @@ class ReportsController extends Controller
             ->with('medical_examination_results', $allMedicalExaminationResults);
     }
 
+    
+    // gets the search query and returns the search results
+    public function getBenefiterSearchResults(Request $request) {
+        $request->request->gender_id = "";
+        return $this->reportsService->getSearchResults($request->all());
+    }    
+    
     // fetch benefiters vs education data from service in order to be used by an ajax call
     public function getBenefitesVSeducationdata(){
         $report_benefiters_vs_education = $this->reportsService->getReport_benefiters_vs_education();

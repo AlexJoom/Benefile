@@ -54,6 +54,11 @@ class DatesHelper
         }
     }
 
+    // gets the difference between two dates in days
+    public function getDifferenceInDays($date1, $date2){
+        return $this->makeDBFriendlyDate($date1)->diffInDays($this->makeDBFriendlyDate($date2));
+    }
+
     // gets current time string
     public function getCurrentTimeString(){
         return Carbon::now()->toDateTimeString();
