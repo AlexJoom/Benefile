@@ -763,8 +763,8 @@
     var chart = AmCharts.makeChart("registrationStatusReport", {
         "type": "serial",
         "theme": "light",
-        "fontSize": 16,
-        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontFamily": "Arial",
         "marginRight": 70,
         "dataProvider": [
         @foreach ($benefiters_count as $count)
