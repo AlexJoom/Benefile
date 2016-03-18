@@ -128,7 +128,7 @@
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
                     <h4>@lang($p.'h3-work-title')</h4>
-                    <div id="benefiters-work-title-chart" style="height: 500px; width: 100%;"></div>
+                    <div id="benefiters-work-title-chart"></div>
                 </div>
             </div>
         </div>
