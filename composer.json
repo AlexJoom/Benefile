@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "twbs/bootstrap": "^3.3",
         "laravelcollective/html": "5.1.*",
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "mariuzzo/laravel-js-localization": "1.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

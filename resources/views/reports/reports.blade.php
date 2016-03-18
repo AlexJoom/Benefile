@@ -172,7 +172,7 @@
             <div class="col-md-12">
                 <div class="col-md-6">
                     <h4>@lang($p.'h3-registration-status')</h4>
-                    <canvas id="registrationStatusReport" height="300" width="1000"></canvas>
+                    <div id="registrationStatusReport"></div>
                 </div>
             </div>
         </div>
@@ -454,32 +454,12 @@
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{asset('js/reports/reports-messages.js')}}"></script>
+    <script>
+        Lang.setLocale('gr');
+    </script>
     {{-- Benefiter counter status graph --}}
 	<script>
-        /* Make charts responsive. */
-        Chart.defaults.global.responsive = true;
-
-		(function() {
-			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
-			 var chart = {
-             labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_count as $count) {!! json_encode($count->idcounter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
 	</script>
     <script>
     {{-- Age report status graph --}}
@@ -826,5 +806,51 @@
             };
             new Chart($benefiters_per_medical_visits_canvas).Bar($data, {});
         })();
+    </script>
+    <script>
+    var chart = AmCharts.makeChart("registrationStatusReport", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 20,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach ($benefiters_count as $count)
+            {
+            "benefiters": {!! json_encode($count->created_at) !!},
+            "registrations": {!! json_encode($count->idcounter) !!},
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "Benefiters registered",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "registrations"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
     </script>
 @stop

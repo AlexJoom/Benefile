@@ -150,6 +150,11 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
 
+        /*
+         * Laravel JS Localization
+         */
+        Mariuzzo\LaravelJsLocalization\LaravelJsLocalizationServiceProvider::class,
+
     ],
 
     /*

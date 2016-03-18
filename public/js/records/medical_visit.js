@@ -12,7 +12,7 @@ $(document).ready(function(){
             maximumSelectionSize: 1,
             allowClear: true,
             ajax: {
-		url: $("#medicationajax").data("url")+"/benefiter/getMedicationList",
+		url: $('body').attr('data-url') + "/benefiter/getMedicationList",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -235,7 +235,7 @@ $(document).ready(function(){
         placeholder: 'Πάθηση',
         ajax: {
 	    //url: $("#examajax").data("url")+"/benefiter/getIC10List",
-	    url: "http://localhost/benefile/index.php/benefiter/getIC10List",
+	    url: $('body').attr('data-url') + "/benefiter/getIC10List",
             dataType: 'json',
             delay: 250,
             data: function (params) {
