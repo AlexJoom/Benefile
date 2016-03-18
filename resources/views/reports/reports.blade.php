@@ -406,6 +406,10 @@
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{asset('js/reports/reports-messages.js')}}"></script>
+    <script>
+        Lang.setLocale('gr');
+    </script>
     {{-- Benefiter counter status graph --}}
 	<script>
         /* Make charts responsive. */
