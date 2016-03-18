@@ -25,7 +25,7 @@
 
     @yield('panel-headLinks')
 </head>
-<body id="main-layout">
+<body id="main-layout" data-url="{{ URL::to('/') }}">
     <div class="panel-container">
         {{-- User name row --}}
         <div class="no-margin purple-background pos-relative height-6per" id="header">

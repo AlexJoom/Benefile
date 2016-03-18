@@ -46,7 +46,7 @@
     /*display: table-row;*/
 }
 
-#login, .logo-padding, #register, #reset-password{
+#login, .logo-padding, #register, #reset-password, #reset{
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);

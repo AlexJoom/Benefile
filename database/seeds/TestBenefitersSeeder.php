@@ -98,7 +98,7 @@ class TestBenefitersSeeder extends Seeder
             'nationality_country'           => 'nationality country',
             'gender_id'                     => 2,
             'marital_status_id'             => 1,
-            'education_id'                  => 1,
+            'education_id'                  => 4,
             'work_title_id'                 => 1
         ));
 
@@ -133,7 +133,7 @@ class TestBenefitersSeeder extends Seeder
             'nationality_country'           => 'nationality country',
             'gender_id'                     => 3,
             'marital_status_id'             => 1,
-            'education_id'                  => 1,
+            'education_id'                  => 6,
             'work_title_id'                 => 1
         ));
 
@@ -168,7 +168,7 @@ class TestBenefitersSeeder extends Seeder
             'nationality_country'           => 'nationality country',
             'gender_id'                     => 1,
             'marital_status_id'             => 1,
-            'education_id'                  => 1,
+            'education_id'                  => 2,
             'work_title_id'                 => 1
         ));
 
@@ -203,7 +203,7 @@ class TestBenefitersSeeder extends Seeder
             'nationality_country'           => 'nationality country',
             'gender_id'                     => 3,
             'marital_status_id'             => 1,
-            'education_id'                  => 1,
+            'education_id'                  => 5,
             'work_title_id'                 => 1
         ));
 
@@ -238,7 +238,7 @@ class TestBenefitersSeeder extends Seeder
             'nationality_country'           => 'nationality country',
             'gender_id'                     => 1,
             'marital_status_id'             => 1,
-            'education_id'                  => 1,
+            'education_id'                  => 9,
             'work_title_id'                 => 1
         ));
     }
