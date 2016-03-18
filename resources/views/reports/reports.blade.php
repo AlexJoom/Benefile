@@ -9,6 +9,8 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/record_form.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/search/search.css')}}" rel="stylesheet" type="text/css">
@@ -200,7 +202,7 @@
     </div>
 
     {{-- SEARCH --}}
-    <div class="benefiters-report form-section">
+    <div id="benefiters-search" class="margin-bottom-300px form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search")</h1>
         </div>
@@ -392,9 +394,55 @@
             </div>
         </div>
     </div>
+    <div id="search-results" class="form-section min-height-300px" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get("search/search.view_folders") }}">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang("search/search.search_results")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="state state-results" class="row padding-bottom-30">
+                    <div class="no-margin pos-relative" id="results-to-activate">
+                        <div class="display padding-20">
+                            <table id="results" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>@lang("search/search.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang("search/search.view")</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>@lang("search/search.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang("search/search.view")</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="state state-loading min-height-150px padding-left-right-15">
+                </div>
+                <div class="state state-no-results">
+                    <h1>@lang("search/search.no_results")</h1>
+                </div>
+                <div class="state state-error">
+                    <h1>@lang("search/search.error")</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('panel-scripts')
+    <script src="{{ asset('plugins/faloading/jquery.faloading-0.1.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
     <script src="{{ asset('js/amcharts/pie.js') }}"></script>
