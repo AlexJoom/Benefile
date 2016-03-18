@@ -39,25 +39,62 @@ $(document).ready(function(){
         return false;
     });
 
+    // initialize DataTable
+    $('#results').DataTable({
+        searching: false,
+        ordering: false,
+        paging: false,
+        bInfo: false
+    });
 });
 
 // make the ajax call to get a response
 function MakeAjaxBenefiterSearchCall($url, $values){
+    var $loader;
     $.ajax({
         url: $url,
         type: 'get',
         data: $values,
         beforeSend: function () {
-            // start loader
+            // remove margin below the search form
+            $('#benefiters-search').removeClass('margin-bottom-300px');
+            // shows the results div and the loading state section, hiding all others
+            $('#search-results').show();
+            $('.state').hide();
+            $('.state-loading').show();
+            // spinner start
+            $loader = $('.state-loading').faLoadingAdd('fa-circle-o-notch');
         },
-        success: function() {
-            // display results
+        success: function($response) {
+            // remove all rows from results table
+            $("#results > tbody > tr").remove();
+            // display results returned
+            DisplayResults($response);
         },
         error: function() {
             // display error msg
+            $('.state-error').show();
         },
         complete: function() {
-            // stop loader
+            $loader.remove(); //stop the loading screen
+            // hide loading section
+            $('.state-loading').hide();
         }
     });
+}
+
+// show the results returned from the ajax call
+function DisplayResults($response){
+    // if nothing is returned, display "No results found" message
+    if($response == ''){
+        $('.state-no-results').show();
+    } else { // else display results returned
+        $view_folders = $('#search-results').data('view-folders');
+        for (var i in $response) {
+            $anchor = $('#search-results').data('url').replace('-1', $response[i].id);
+            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
+            $("#results > tbody").append($row);
+        }
+        $('.state-results').show();
+    }
 }

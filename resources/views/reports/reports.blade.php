@@ -9,6 +9,8 @@
 @stop
 
 @section('panel-headLinks')
+    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/record_form.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/search/search.css')}}" rel="stylesheet" type="text/css">
@@ -126,7 +128,7 @@
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
                     <h4>@lang($p.'h3-work-title')</h4>
-                    <canvas id="benefiters-work-title-canvas" height="300" width="1000"></canvas>
+                    <div id="benefiters-work-title-chart"></div>
                 </div>
             </div>
         </div>
@@ -137,7 +139,7 @@
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
                     <h4>@lang($p.'h3-medical-visits')</h4>
-                    <canvas id="benefiters-per-medical-visits-canvas" height="300" width="1000"></canvas>
+                    <div id="benefiters-per-medical-visits-chart"></div>
                 </div>
             </div>
         </div>
@@ -170,7 +172,7 @@
             <div class="col-md-12">
                 <div class="col-md-6">
                     <h4>@lang($p.'h3-registration-status')</h4>
-                    <canvas id="registrationStatusReport" height="300" width="1000"></canvas>
+                    <div id="registrationStatusReport"></div>
                 </div>
             </div>
         </div>
@@ -220,7 +222,7 @@
 
 
     {{-- SEARCH --}}
-    <div class="benefiters-report form-section">
+    <div id="benefiters-search" class="margin-bottom-300px form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search")</h1>
         </div>
@@ -412,9 +414,58 @@
             </div>
         </div>
     </div>
+    <div id="search-results" class="form-section min-height-300px" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get("search/search.view_folders") }}">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">@lang("search/search.search_results")</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="state state-results" class="row padding-bottom-30">
+                    <div class="no-margin pos-relative" id="results-to-activate">
+                        <div class="display padding-20">
+                            <table id="results" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th>@lang("search/search.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang("search/search.view")</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>@lang("search/search.folder_number")</th>
+                                    <th>@lang("basic_info_form.name")</th>
+                                    <th>@lang("basic_info_form.lastname")</th>
+                                    <th>@lang("basic_info_form.telephone")</th>
+                                    <th>@lang("search/search.view")</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="text-align-center margin-top-60">
+                                <button class="simple-button">@lang($p."download_csv")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="state state-loading min-height-150px padding-left-right-15">
+                </div>
+                <div class="state state-no-results">
+                    <h1>@lang("search/search.no_results")</h1>
+                </div>
+                <div class="state state-error">
+                    <h1>@lang("search/search.error")</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('panel-scripts')
+    <script src="{{ asset('plugins/faloading/jquery.faloading-0.1.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
     <script src="{{ asset('js/amcharts/pie.js') }}"></script>
@@ -433,30 +484,6 @@
     </script>
     {{-- Benefiter counter status graph --}}
 	<script>
-        /* Make charts responsive. */
-        Chart.defaults.global.responsive = true;
-
-		(function() {
-			 var ctx = document.getElementById("registrationStatusReport").getContext("2d");
-			 var chart = {
-             labels: [ @foreach ($benefiters_count as $count) {!! json_encode($count->created_at) !!}, @endforeach ],
-				datasets: [
-					{
-					label: "My Data",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [ @foreach ($benefiters_count as $count) {!! json_encode($count->idcounter) !!}, @endforeach ],
-					}
-				]
-			};
-			var myLineChart = new Chart(ctx).Bar(chart);
-            /*
-			 * bezierCurve: false
-			 * });
-             */
-		})();
 	</script>
     <script>
     {{-- Age report status graph --}}
@@ -739,37 +766,97 @@
     });
     </script>
     <script>
-        (function(){
-            var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
-            var $data = {
-                @if(!empty($benefiters_work_title))
-                labels: [ @foreach($benefiters_work_title as $key => $value) @if($key != "") "{!! $key !!}", @else "-", @endif @endforeach ],
-                datasets: [
-                    {
-                        label: "",
-                        fillColor: "rgba(151,187,205,0.5)",
-                        strokeColor: "rgba(151,187,205,0.8)",
-                        highlightFill: "rgba(151,187,205,0.75)",
-                        highlightStroke: "rgba(151,187,205,1)",
-                        data: [ @foreach($benefiters_work_title as $key => $value) {!! $value !!}, @endforeach ]
-                    }
-                ]
-                @else
-                labels: [ "" ],
-                datasets: [
-                    {
-                        label: "-",
-                        fillColor: "rgba(151,187,205,0.5)",
-                        strokeColor: "rgba(151,187,205,0.8)",
-                        highlightFill: "rgba(151,187,205,0.75)",
-                        highlightStroke: "rgba(151,187,205,1)",
-                        data: [ 0 ]
-                    }
-                ]
-                @endif
-            };
-            new Chart($benefiters_work_title_canvas).Bar($data, {});
-        })();
+    var chart = AmCharts.makeChart("benefiters-work-title-chart", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 12,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach($benefiters_work_title as $key => $value)
+            {
+            "benefiters": @if ($key != "") "{!! $key !!}" @else "-" @endif,
+            "work description": "{!! $value !!}",
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "Benefiters registered",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "work description"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
+    </script>
+    <script>
+    var chart = AmCharts.makeChart("benefiters-per-medical-visits-chart", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 12,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach($benefiters_medical_visits as $single_benefiters_medical_visit)
+            {
+            "benefiters": "{!! $single_benefiters_medical_visit->visits_counter !!}",
+            "work description": "{!! $single_benefiters_medical_visit->benefiters_counter !!}",
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "@lang($p."medical-visit-y-title")",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "work description"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "title": "@lang($p."medical-visit-x-title")",
+            "gridPosition": "start",
+            "labelRotation": 0
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
     </script>
     <script>
         (function(){
@@ -803,5 +890,51 @@
             };
             new Chart($benefiters_per_medical_visits_canvas).Bar($data, {});
         })();
+    </script>
+    <script>
+    var chart = AmCharts.makeChart("registrationStatusReport", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 20,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach ($benefiters_count as $count)
+            {
+            "benefiters": {!! json_encode($count->created_at) !!},
+            "registrations": {!! json_encode($count->idcounter) !!},
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "Benefiters registered",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "registrations"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
     </script>
 @stop
