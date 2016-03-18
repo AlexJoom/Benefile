@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/ReportsService.php" afterPath="$PROJECT_DIR$/app/Services/ReportsService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/reports/reports.css" afterPath="$PROJECT_DIR$/public/css/reports/reports.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/reports/reports.js" afterPath="$PROJECT_DIR$/public/js/reports/reports.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -53,19 +54,21 @@
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-17.037037" vertical-offset="1679" max-vertical-offset="2599">
-              <caret line="102" column="59" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="59" />
+              <caret line="102" column="59" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.348974" vertical-offset="20662" max-vertical-offset="21758">
-              <caret line="206" column="47" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+            <state vertical-scroll-proportion="-4.0" vertical-offset="5162" max-vertical-offset="16284">
+              <caret line="475" column="63" selection-start-line="475" selection-start-column="63" selection-end-line="475" selection-end-column="63" />
               <folding>
+                <element signature="tag#div#5" expanded="false" />
                 <element signature="e#22354#22376#0#HTML" expanded="true" />
+                <element signature="tag#div#6" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,8 +77,8 @@
       <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.777778" vertical-offset="1537" max-vertical-offset="2392">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.7037036" vertical-offset="1606" max-vertical-offset="2392">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,8 +87,8 @@
       <file leaf-file-name="ReportsService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.814815" vertical-offset="3550" max-vertical-offset="4485">
-              <caret line="462" column="16" selection-start-line="462" selection-start-column="16" selection-end-line="462" selection-end-column="16" />
+            <state vertical-scroll-proportion="-15.111111" vertical-offset="8263" max-vertical-offset="9292">
+              <caret line="470" column="51" selection-start-line="470" selection-start-column="51" selection-end-line="470" selection-end-column="51" />
               <folding>
                 <element signature="e#31#51#0#PHP" expanded="true" />
                 <element signature="e#486#1559#0#PHP" expanded="false" />
@@ -96,27 +99,20 @@
                 <element signature="e#4633#5329#0#PHP" expanded="false" />
                 <element signature="e#5431#6152#0#PHP" expanded="false" />
                 <element signature="e#6209#7015#0#PHP" expanded="false" />
-                <element signature="e#8227#15858#0#PHP" expanded="false" />
-                <element signature="e#15993#17146#0#PHP" expanded="false" />
-                <element signature="e#17603#18055#0#PHP" expanded="false" />
-                <element signature="e#18275#19370#0#PHP" expanded="false" />
-                <element signature="e#19590#20468#0#PHP" expanded="false" />
-                <marker date="1458312263612" expanded="true" signature="596:656" placeholder="select count..users..." />
-                <marker date="1458312263612" expanded="true" signature="710:770" placeholder="select count..users..." />
-                <marker date="1458312263612" expanded="true" signature="825:885" placeholder="select count..users..." />
-                <marker date="1458312263612" expanded="true" signature="946:1006" placeholder="select count..users..." />
-                <marker date="1458312263612" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
-                <marker date="1458312263612" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
-                <marker date="1458312263612" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
-                <marker date="1458312263612" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
-                <marker date="1458312263612" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
-                <marker date="1458312263612" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
-                <marker date="1458312263612" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
-                <marker date="1458312263612" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
-                <marker date="1458312263612" expanded="true" signature="8337:8846" placeholder="select b.id,..." />
-                <marker date="1458312263612" expanded="true" signature="8915:9350" placeholder="select b.fol..." />
-                <marker date="1458312263612" expanded="true" signature="14308:14376" placeholder="select * fro..queryString..." />
-                <marker date="1458312263612" expanded="true" signature="14471:14539" placeholder="select * fro..queryString..." />
+                <marker date="1458312525948" expanded="true" signature="596:656" placeholder="select count..users..." />
+                <marker date="1458312525948" expanded="true" signature="710:770" placeholder="select count..users..." />
+                <marker date="1458312525948" expanded="true" signature="825:885" placeholder="select count..users..." />
+                <marker date="1458312525948" expanded="true" signature="946:1006" placeholder="select count..users..." />
+                <marker date="1458312525948" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
+                <marker date="1458312525948" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
+                <marker date="1458312525948" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
+                <marker date="1458312525948" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
+                <marker date="1458312525948" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
+                <marker date="1458312525948" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
+                <marker date="1458312525948" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
+                <marker date="1458312525948" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
+                <marker date="1458312525948" expanded="true" signature="8337:8800" placeholder="select b.*, ..." />
+                <marker date="1458312525948" expanded="true" signature="14262:14330" placeholder="select * fro..queryString..." />
               </folding>
             </state>
           </provider>
@@ -125,23 +121,19 @@
       <file leaf-file-name="reports.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2935" max-vertical-offset="4623">
-              <caret line="181" column="53" selection-start-line="181" selection-start-column="53" selection-end-line="181" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3370" max-vertical-offset="4186">
+              <caret line="154" column="51" selection-start-line="154" selection-start-column="51" selection-end-line="154" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reports.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="3059">
-              <caret line="114" column="13" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
-              <folding>
-                <marker date="1458311252344" expanded="true" signature="1436:1645" placeholder="{...}" />
-                <marker date="1458311252344" expanded="true" signature="1746:1766" placeholder="{...}" />
-                <marker date="1458311252344" expanded="true" signature="1869:1941" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.8093923" vertical-offset="1300" max-vertical-offset="3082">
+              <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -149,11 +141,9 @@
       <file leaf-file-name="reports.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/lang/gr/reports.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.666666" vertical-offset="362" max-vertical-offset="1219">
+            <state vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="1219">
               <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-              <folding>
-                <marker date="1458311266788" expanded="true" signature="24:2800" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,12 +176,12 @@
         <option value="$PROJECT_DIR$/public/js/records/medical_visit.js" />
         <option value="$PROJECT_DIR$/database/seeds/TestUsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/resources/lang/gr/reports.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
-        <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
-        <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" />
         <option value="$PROJECT_DIR$/app/Services/ReportsService.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
+        <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
       </list>
     </option>
   </component>
@@ -246,6 +236,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -470,50 +461,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="records" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amcharts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -644,7 +591,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -689,122 +635,6 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/ReportsService.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/reports/reports.css</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/reports/reports-search.js</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/lang/gr/reports.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/reports/reports.blade.php</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
-  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -816,20 +646,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -838,6 +665,9 @@
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="benefile" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="benefile" start_url="/benefile/index.php">
@@ -890,13 +720,13 @@
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17582418" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1754386" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19762352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22076298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22326455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1215,7 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.222222" vertical-offset="0" max-vertical-offset="1426">
           <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1223,7 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6959654" vertical-offset="3105" max-vertical-offset="4991">
           <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,7 +1059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3509015" vertical-offset="5175" max-vertical-offset="7544">
           <caret line="236" column="67" selection-start-line="236" selection-start-column="67" selection-end-line="236" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1261,46 +1088,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/gr/reports.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.666666" vertical-offset="362" max-vertical-offset="1219">
+        <state vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="1219">
           <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding>
-            <marker date="1458311266788" expanded="true" signature="24:2800" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.037037" vertical-offset="1679" max-vertical-offset="2599">
-          <caret line="102" column="59" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="59" />
+          <caret line="102" column="59" selection-start-line="102" selection-start-column="59" selection-end-line="102" selection-end-column="59" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="3059">
-          <caret line="114" column="13" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
-          <folding>
-            <marker date="1458311252344" expanded="true" signature="1436:1645" placeholder="{...}" />
-            <marker date="1458311252344" expanded="true" signature="1746:1766" placeholder="{...}" />
-            <marker date="1458311252344" expanded="true" signature="1869:1941" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.777778" vertical-offset="1537" max-vertical-offset="2392">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.7037036" vertical-offset="1606" max-vertical-offset="2392">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.814815" vertical-offset="3550" max-vertical-offset="4485">
-          <caret line="462" column="16" selection-start-line="462" selection-start-column="16" selection-end-line="462" selection-end-column="16" />
+        <state vertical-scroll-proportion="-15.111111" vertical-offset="8263" max-vertical-offset="9292">
+          <caret line="470" column="51" selection-start-line="470" selection-start-column="51" selection-end-line="470" selection-end-column="51" />
           <folding>
             <element signature="e#31#51#0#PHP" expanded="true" />
             <element signature="e#486#1559#0#PHP" expanded="false" />
@@ -1311,46 +1124,49 @@
             <element signature="e#4633#5329#0#PHP" expanded="false" />
             <element signature="e#5431#6152#0#PHP" expanded="false" />
             <element signature="e#6209#7015#0#PHP" expanded="false" />
-            <element signature="e#8227#15858#0#PHP" expanded="false" />
-            <element signature="e#15993#17146#0#PHP" expanded="false" />
-            <element signature="e#17603#18055#0#PHP" expanded="false" />
-            <element signature="e#18275#19370#0#PHP" expanded="false" />
-            <element signature="e#19590#20468#0#PHP" expanded="false" />
-            <marker date="1458312263612" expanded="true" signature="596:656" placeholder="select count..users..." />
-            <marker date="1458312263612" expanded="true" signature="710:770" placeholder="select count..users..." />
-            <marker date="1458312263612" expanded="true" signature="825:885" placeholder="select count..users..." />
-            <marker date="1458312263612" expanded="true" signature="946:1006" placeholder="select count..users..." />
-            <marker date="1458312263612" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
-            <marker date="1458312263612" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
-            <marker date="1458312263612" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
-            <marker date="1458312263612" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
-            <marker date="1458312263612" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
-            <marker date="1458312263612" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
-            <marker date="1458312263612" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
-            <marker date="1458312263612" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
-            <marker date="1458312263612" expanded="true" signature="8337:8846" placeholder="select b.id,..." />
-            <marker date="1458312263612" expanded="true" signature="8915:9350" placeholder="select b.fol..." />
-            <marker date="1458312263612" expanded="true" signature="14308:14376" placeholder="select * fro..queryString..." />
-            <marker date="1458312263612" expanded="true" signature="14471:14539" placeholder="select * fro..queryString..." />
+            <marker date="1458312525948" expanded="true" signature="596:656" placeholder="select count..users..." />
+            <marker date="1458312525948" expanded="true" signature="710:770" placeholder="select count..users..." />
+            <marker date="1458312525948" expanded="true" signature="825:885" placeholder="select count..users..." />
+            <marker date="1458312525948" expanded="true" signature="946:1006" placeholder="select count..users..." />
+            <marker date="1458312525948" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
+            <marker date="1458312525948" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
+            <marker date="1458312525948" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
+            <marker date="1458312525948" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
+            <marker date="1458312525948" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
+            <marker date="1458312525948" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
+            <marker date="1458312525948" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
+            <marker date="1458312525948" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
+            <marker date="1458312525948" expanded="true" signature="8337:8800" placeholder="select b.*, ..." />
+            <marker date="1458312525948" expanded="true" signature="14262:14330" placeholder="select * fro..queryString..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3624" max-vertical-offset="4623">
-          <caret line="181" column="53" selection-start-line="181" selection-start-column="53" selection-end-line="181" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3370" max-vertical-offset="4186">
+          <caret line="154" column="51" selection-start-line="154" selection-start-column="51" selection-end-line="154" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.348974" vertical-offset="20662" max-vertical-offset="21758">
-          <caret line="206" column="47" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+        <state vertical-scroll-proportion="-4.0" vertical-offset="5162" max-vertical-offset="16284">
+          <caret line="475" column="63" selection-start-line="475" selection-start-column="63" selection-end-line="475" selection-end-column="63" />
           <folding>
+            <element signature="tag#div#5" expanded="false" />
             <element signature="e#22354#22376#0#HTML" expanded="true" />
+            <element signature="tag#div#6" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8093923" vertical-offset="1300" max-vertical-offset="3082">
+          <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

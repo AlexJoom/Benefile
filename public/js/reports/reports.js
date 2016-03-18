@@ -153,25 +153,6 @@ function fetchClinicalConditionsDataReport() {
             "theme": "none",
             "fontSize": 12,
             "dataProvider": clinicalConditionsData,
-            //[ {
-            //    "country": "Czech Republic",
-            //    "litres": 156.9
-            //}, {
-            //    "country": "Ireland",
-            //    "litres": 131.1
-            //}, {
-            //    "country": "Germany",
-            //    "litres": 115.8
-            //}, {
-            //    "country": "Australia",
-            //    "litres": 109.9
-            //}, {
-            //    "country": "Austria",
-            //    "litres": 108.3
-            //}, {
-            //    "country": "UK",
-            //    "litres": 99
-            //} ],
             "valueAxes": [ {
                 "axisTitleOffset": 20,
                 "minimum": 0,
