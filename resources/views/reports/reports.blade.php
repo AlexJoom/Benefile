@@ -126,7 +126,7 @@
             <div class="col-md-12">
                 <div id="benefiters-work-title" class="col-md-12">
                     <h4>@lang($p.'h3-work-title')</h4>
-                    <canvas id="benefiters-work-title-canvas" height="300" width="1000"></canvas>
+                    <div id="benefiters-work-title-chart" style="height: 500px; width: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -694,37 +694,50 @@
     });
     </script>
     <script>
-        (function(){
-            var $benefiters_work_title_canvas = $("#benefiters-work-title-canvas").get(0).getContext("2d");
-            var $data = {
-                @if(!empty($benefiters_work_title))
-                labels: [ @foreach($benefiters_work_title as $key => $value) @if($key != "") "{!! $key !!}", @else "-", @endif @endforeach ],
-                datasets: [
-                    {
-                        label: "",
-                        fillColor: "rgba(151,187,205,0.5)",
-                        strokeColor: "rgba(151,187,205,0.8)",
-                        highlightFill: "rgba(151,187,205,0.75)",
-                        highlightStroke: "rgba(151,187,205,1)",
-                        data: [ @foreach($benefiters_work_title as $key => $value) {!! $value !!}, @endforeach ]
-                    }
-                ]
-                @else
-                labels: [ "" ],
-                datasets: [
-                    {
-                        label: "-",
-                        fillColor: "rgba(151,187,205,0.5)",
-                        strokeColor: "rgba(151,187,205,0.8)",
-                        highlightFill: "rgba(151,187,205,0.75)",
-                        highlightStroke: "rgba(151,187,205,1)",
-                        data: [ 0 ]
-                    }
-                ]
-                @endif
-            };
-            new Chart($benefiters_work_title_canvas).Bar($data, {});
-        })();
+    var chart = AmCharts.makeChart("benefiters-work-title-chart", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 12,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach($benefiters_work_title as $key => $value)
+            {
+            "benefiters": @if ($key != "") "{!! $key !!}" @else "-" @endif,
+            "work description": "{!! $value !!}",
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "Benefiters registered",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "work description"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
     </script>
     <script>
         (function(){
