@@ -425,6 +425,9 @@
                                 <tbody>
                                 </tbody>
                             </table>
+                            <div class="text-align-center margin-top-60">
+                                <button class="simple-button">@lang($p."download_csv")</button>
+                            </div>
                         </div>
                     </div>
                 </div>
