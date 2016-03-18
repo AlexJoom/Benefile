@@ -40,4 +40,6 @@
         'to'                            => 'ΜΕΧΡΙ:',
         'benefiters-Vs-doctors-tile'    => 'Αριθμός ωφελούμενων ανά γιατρό',
         'download_csv'                  => 'Κατέβασμα Αποτελεσμάτων σε Αρχείο .csv',
+        'medical-visit-x-title'         => 'Ωφελούμενοι',
+        'medical-visit-y-title'         => 'Αριθμός περιστατικών',
     );

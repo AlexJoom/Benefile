@@ -139,7 +139,7 @@
             <div class="col-md-12">
                 <div id="benefiters-per-medical-visits" class="col-md-12">
                     <h4>@lang($p.'h3-medical-visits')</h4>
-                    <canvas id="benefiters-per-medical-visits-canvas" height="300" width="1000"></canvas>
+                    <div id="benefiters-per-medical-visits-chart"></div>
                 </div>
             </div>
         </div>
@@ -783,6 +783,53 @@
         "categoryAxis": {
             "gridPosition": "start",
             "labelRotation": 45
+        },
+        "export": {
+            "enabled": true
+        }
+
+    });
+    </script>
+    <script>
+    var chart = AmCharts.makeChart("benefiters-per-medical-visits-chart", {
+        "type": "serial",
+        "theme": "light",
+        "fontSize": 12,
+        "fontFamily": "Arial",
+        "marginRight": 70,
+        "dataProvider": [
+        @foreach($benefiters_medical_visits as $single_benefiters_medical_visit)
+            {
+            "benefiters": "{!! $single_benefiters_medical_visit->visits_counter !!}",
+            "work description": "{!! $single_benefiters_medical_visit->benefiters_counter !!}",
+            },
+        @endforeach
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "@lang($p."medical-visit-y-title")",
+            "fontSize": 16
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b> benefiters",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "work description"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "benefiters",
+        "categoryAxis": {
+            "title": "@lang($p."medical-visit-x-title")",
+            "gridPosition": "start",
+            "labelRotation": 0
         },
         "export": {
             "enabled": true
