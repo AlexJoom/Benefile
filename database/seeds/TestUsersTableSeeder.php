@@ -15,8 +15,8 @@ class TestUsersTableSeeder extends Seeder
 
         // TEST USERS (WAIT TO BE ACTIVE)
         User::create(array(
-            'name' => 'Doctor_Name_1',
-            'lastname' => 'DoctorLastname_1',
+            'name' => 'Doc_N_1',
+            'lastname' => 'Doct_L_1',
             'email' => 'chris.tosdimi.z.a.s@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 2,
@@ -64,8 +64,8 @@ class TestUsersTableSeeder extends Seeder
 
         // TEST USERS (ACTIVE)
         User::create(array(
-            'name' => 'Doctor_Name_1',
-            'lastname' => 'DoctorLastname_1',
+            'name' => 'Doc_N_2',
+            'lastname' => 'Doc_L_2',
             'email' => 'christosdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 2,
@@ -112,8 +112,8 @@ class TestUsersTableSeeder extends Seeder
 
         // TEST USERS (DEACTIVATED)
         User::create(array(
-            'name' => 'Doctor_Name_1',
-            'lastname' => 'DoctorLastname_1',
+            'name' => 'Doc_N_3',
+            'lastname' => 'Doc_L_3',
             'email' => 'chris.to.sdimizas@gmail.com',
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 2,

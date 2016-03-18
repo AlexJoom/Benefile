@@ -100,6 +100,7 @@ Route::get('reports', 'MainPanel\ReportsController@getReports');
 Route::get('reports-search-results', 'MainPanel\ReportsController@getBenefiterSearchResults');
 Route::get('benefites-VS-education-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSeducationdata');
 Route::get('benefites-VS-doctor-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSdoctorsData');
+Route::get('benefites-VS-ClinicalConditions-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSClinicalConditionsData');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ

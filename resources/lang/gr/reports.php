@@ -40,4 +40,8 @@
         'to'                            => 'ΜΕΧΡΙ:',
         'benefiters-Vs-doctors-tile'    => 'Αριθμός ωφελούμενων ανά γιατρό',
         'download_csv'                  => 'Κατέβασμα Αποτελεσμάτων σε Αρχείο .csv',
+        'medical-visit-x-title'         => 'Ωφελούμενοι',
+        'medical-visit-y-title'         => 'Αριθμός περιστατικών',
+        'report-clinical-condition'     => 'Αριθμός ωφελούμενων ανά κατηγορία παθήσεων',
+        'report-med-visits-per-month'   => 'Αριθμός περιστατικών ανά μήνα',
     );
