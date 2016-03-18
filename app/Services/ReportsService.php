@@ -285,7 +285,7 @@ class ReportsService{
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . 'incidents_counterz=' . $request['incidents_number'];
+            $queryString = $queryString . 'incidents_counter=' . $request['incidents_number'];
             $firstWhereParameter = false;
         }
         if($request['insertion_date'] != ""){
