@@ -134,7 +134,62 @@ fetchPerDoctorDataReport();
 // -------- END REPORT: Benefiters vs doctor type needed (script) --------------------------------------//
 
 
-// ------------------------------------------------------------------------------------------------ //
+// ---------------------------------------------------------------------------------------------------- //
 
 
+
+// -------- REPORT: Benefiters vs clinical condition type (script) -------------------------------------//
+var clinicalConditionsData = [];
+
+function fetchClinicalConditionsDataReport() {
+    $.ajax({
+        url: $('body').attr('data-url') + "/benefites-VS-ClinicalConditions-Report-get-data",
+        success: function (response) {
+            clinicalConditionsData = response;
+        }
+    }).done(function () {
+        var chart = AmCharts.makeChart( "benefiter_vs_clinical_conditions", {
+            "type": "radar",
+            "theme": "none",
+            "fontSize": 12,
+            "dataProvider": clinicalConditionsData,
+            //[ {
+            //    "country": "Czech Republic",
+            //    "litres": 156.9
+            //}, {
+            //    "country": "Ireland",
+            //    "litres": 131.1
+            //}, {
+            //    "country": "Germany",
+            //    "litres": 115.8
+            //}, {
+            //    "country": "Australia",
+            //    "litres": 109.9
+            //}, {
+            //    "country": "Austria",
+            //    "litres": 108.3
+            //}, {
+            //    "country": "UK",
+            //    "litres": 99
+            //} ],
+            "valueAxes": [ {
+                "axisTitleOffset": 20,
+                "minimum": 0,
+                "axisAlpha": 0.15
+            } ],
+            "startDuration": 2,
+            "graphs": [ {
+                "balloonText": "[[value]] ωφελούμενοι",
+                "bullet": "round",
+                "valueField": "clinical_condition_count"
+            } ],
+            "categoryField": "clinical_condition_name",
+            "export": {
+                "enabled": true
+            }
+        } );
+    });
+}
+fetchClinicalConditionsDataReport();
+// -------- END REPORT: Benefiters vs clinical condition type (script) -------------------------------------//
 

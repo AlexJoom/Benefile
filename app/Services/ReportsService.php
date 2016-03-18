@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\EducationLookup;
 use App\Models\Benefiters_Tables_Models\medical_visits;
+use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
+use App\Models\Benefiters_Tables_Models\medical_examination_results;
 
 class ReportsService{
 
@@ -378,8 +380,8 @@ class ReportsService{
         return $result;
     }
 
-    // -------------------------------------------------------------------------------------------------------- //
-    // ----------------------- REPORT: Benefiters vs education ------------------------------------------------ //
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
     public function getReport_benefiters_vs_education(){
         // count benefiters regarding each education type
         $results = array();
@@ -395,8 +397,8 @@ class ReportsService{
         return $results;
     }
 
-    // -------------------------------------------------------------------------------------------------------- //
-    // ----------------------- REPORT: Benefiters vs doctor specialty ----------------------------------------- //
+    // ------------------------------------------------------------------------------------------------ //
+    // ----------------------- REPORT: Benefiters vs doctor specialty --------------------------------- //
     public function getReport_benefiters_vs_doctor(){
         // count benefiters regarding which doctor have visit
         $results = array();
@@ -420,18 +422,24 @@ class ReportsService{
         $color_array = ["#FF0F00", "#FF6600", "#FF9E01", "#FCD202", "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", "#0D52D1", "#2A0CD0", "#8A0CCF",
                         "#CD0D74", "#710935", "#80AF44", "#A33D27", "#477709", "#3399ff", "#ff9933", "#663300", "#996633", "#267326", "#7300e6",
                         "#ff80ff", "#666699", "#66ccff", "#993300", "#3399ff", "#999966", "#ff6600", "#008080", "#00e68a", "#cc33ff", "#333300"];
-        $counter = 0;
         // get all doctors from user table
-        $subscribed_doctors = User::with('subrole')->where('user_role_id', 2)->get();
+        $subscribed_doctors = User::with('subrole')->where('user_role_id', 2)->orWhere('user_role_id', 1)->get();
         foreach($subscribed_doctors as $doctor){
             $count_benefiters_with_same_doctor = count(medical_visits::where('doctor_id', $doctor['id'])->get());
-            $doctor_name = $doctor['name'] . " " . $doctor['lastname'];
-            $doctor_specialty = $doctor['subrole']['subrole'];
-            $doctor_type_result = [ 'doctor' =>  $doctor_name. '<br>' .'('. $doctor_specialty . ')',
-                                    'count_benefiters_with_same_doctor' => $count_benefiters_with_same_doctor,
-                                    'color' => $color_array[array_rand($color_array)]];
-            array_push($results, $doctor_type_result);
-            $counter++;
+            if($count_benefiters_with_same_doctor != 0){
+                $doctor_name = $doctor['name'] . " " . $doctor['lastname'];
+
+                if($doctor['user_role_id'] == 1){
+                    $doctor_specialty = 'Διαχειριστής ';
+                }else{
+                    $doctor_specialty = $doctor['subrole']['subrole'];
+                }
+
+                $doctor_type_result = [ 'doctor' =>  $doctor_name. '<br>' .'('. $doctor_specialty . ')',
+                    'count_benefiters_with_same_doctor' => $count_benefiters_with_same_doctor,
+                    'color' => $color_array[array_rand($color_array)]];
+                array_push($results, $doctor_type_result);
+            }
         }
         // return array with doctor => number of benefiters
         return $results;
@@ -439,10 +447,32 @@ class ReportsService{
 
     // -------------------------------------------------------------------------------------------------------- //
     // ----------------------- REPORT: Benefiters vs medical condition category ------------------------------- //
-    public function getReport_benefiters_vs_medical_condition(){
-        // count benefiters regarding their medical condition
+    public function getReport_benefiters_vs_clinical_conditions(){
+        $results = array();
+        // get all clinical conditions from lookup
+        $clinical_conditions_lookup = medical_examination_results_lookup::get();
+        // get all medical examination results from DB
+        $medical_examination_results = medical_examination_results::get();
+        // get all benefiters who have at list one medical visit
+        $medical_visits = medical_visits::select('id','benefiter_id')->get();
 
+        // count benefiters regarding their medical condition
+        foreach($clinical_conditions_lookup as $condition){
+            $counter = 0;
+            foreach($medical_visits as $visit){
+                // TODO (MAYBE) if the same benfiter_id appears more than once, then check if the logged clinical result appears more than once
+                foreach($medical_examination_results as $med_result){
+                    if($med_result['medical_visit_id'] == $visit['id'] && $med_result['results_lookup_id'] == $condition['id']){
+                        $counter++;
+                    }
+                }
+            }
+            $clinical_conditions_result = [ 'clinical_condition_name' => $condition['description'],
+                                            'clinical_condition_count' => $counter];
+            array_push($results, $clinical_conditions_result);
+        }
         // return array with medical condition => number of benefiters with this medical condition
+        return $results;
     }
 
     // -------------------------------------------------------------------------------------------------------- //

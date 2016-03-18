@@ -39,4 +39,6 @@
         'from'                          => 'ΑΠΟ:',
         'to'                            => 'ΜΕΧΡΙ:',
         'benefiters-Vs-doctors-tile'    => 'Αριθμός ωφελούμενων ανά γιατρό',
+        'report-clinical-condition'     => 'Αριθμός ωφελούμενων ανά κατηγορία παθήσεων',
+        'report-med-visits-per-month'   => 'Αριθμός περιστατικών ανά μήνα',
     );

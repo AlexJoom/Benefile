@@ -187,7 +187,7 @@
         </div>
     </div>
 
-    {{-- REPORT: Benefiters vs education --}}
+    {{-- REPORT: Benefiters vs doctor --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12">
@@ -198,6 +198,26 @@
             </div>
         </div>
     </div>
+
+    {{-- REPORT: Benefiters vs clinical conditions --}}
+    <div class="benefiters-report form-section no-bottom-border">
+        <div class="row">
+            <div class="col-md-8 right-border">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'report-clinical-condition')</h1>
+                </div>
+                <div id="benefiter_vs_clinical_conditions"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'report-med-visits-per-month')</h1>
+                </div>
+                <div id="benefiter_vs_medical_visits_per_month"></div>
+            </div>
+
+        </div>
+    </div>
+
 
     {{-- SEARCH --}}
     <div class="benefiters-report form-section">
@@ -399,6 +419,7 @@
     <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
     <script src="{{ asset('js/amcharts/pie.js') }}"></script>
     <script src="{{ asset('js/amcharts/serial.js') }}"></script>
+    <script src="{{ asset('js/amcharts/radar.js') }}"></script>
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
     <script src="{{ asset('js/reports/reports-search.js') }}"></script>

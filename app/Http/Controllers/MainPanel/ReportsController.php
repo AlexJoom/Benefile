@@ -93,4 +93,10 @@ class ReportsController extends Controller
         $report_benefiters_vs_doctor_type = $this->reportsService->getReport_benefiters_vs_doctor();
         return $report_benefiters_vs_doctor_type;
     }
+    // fetch benefiters vs clinical conditions data from service in order to be used by an ajax call
+    public function getBenefitesVSClinicalConditionsData(){
+        $report_benefiters_vs_clinical_conditions = $this->reportsService->getReport_benefiters_vs_clinical_conditions();
+        return $report_benefiters_vs_clinical_conditions;
+    }
+
 }
