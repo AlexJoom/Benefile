@@ -80,92 +80,61 @@ fetchEducationDataReport();
 
 
 // -------- REPORT: Benefiters vs doctor type needed (script) --------------------------------------//
-var chart = AmCharts.makeChart("benefiter_vs_doctor_type", {
-    "type": "serial",
-    "theme": "light",
-    "fontSize": 16,
-    "fontFamily": "Helvetica Neue",
-    "marginRight": 70,
-    "dataProvider": [
-            {
-            "country": "USA",
-            "visits": 3025,
-            //"color": "#FF0F00"
-        }, {
-            "country": "China",
-            "visits": 1882,
-            //"color": "#FF6600"
-        }, {
-            "country": "Japan",
-            "visits": 1809,
-            //"color": "#FF9E01"
-        }, {
-            "country": "Germany",
-            "visits": 1322,
-            //"color": "#FCD202"
-        }, {
-            "country": "UK",
-            "visits": 1122,
-            //"color": "#F8FF01"
-        }, {
-            "country": "France",
-            "visits": 1114,
-            //"color": "#B0DE09"
-        }, {
-            "country": "India",
-            "visits": 984,
-            //"color": "#04D215"
-        }, {
-            "country": "Spain",
-            "visits": 711,
-            //"color": "#0D8ECF"
-        }, {
-            "country": "Netherlands",
-            "visits": 665,
-            //"color": "#0D52D1"
-        }, {
-            "country": "Russia",
-            "visits": 580,
-            //"color": "#2A0CD0"
-        }, {
-            "country": "South Korea",
-            "visits": 443,
-            //"color": "#8A0CCF"
-        }, {
-            "country": "Canada",
-            "visits": 441,
-            //"color": "#CD0D74"
-        }
-    ],
-    "valueAxes": [{
-        "axisAlpha": 0,
-        "position": "left",
-        "title": "Visitors from country",
-        "fontSize": 16
-    }],
-    "startDuration": 1,
-    "graphs": [{
-        "balloonText": "<b>[[category]]: [[value]]</b>",
-        "fillColorsField": "color",
-        "fillAlphas": 0.9,
-        "lineAlpha": 0.2,
-        "type": "column",
-        "valueField": "visits"
-    }],
-    "chartCursor": {
-        "categoryBalloonEnabled": false,
-        "cursorAlpha": 0,
-        "zoomable": false
-    },
-    "categoryField": "country",
-    "categoryAxis": {
-        "gridPosition": "start",
-        "labelRotation": 45
-    },
-    "export": {
-        "enabled": true
-    }
+var doctorData = [];
 
-});
+function fetchPerDoctorDataReport(){
+    $.ajax({
+        url: $('body').attr('data-url') + "/benefites-VS-doctor-Report-get-data",
+        success:function(response){
+            doctorData = response;
+        }
+    }).done(function(){
+        var chart = AmCharts.makeChart("benefiter_vs_doctor_type", {
+            "type": "serial",
+            "theme": "light",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "marginRight": 70,
+            "dataProvider": doctorData,
+            "valueAxes": [{
+                "axisAlpha": 0,
+                "position": "left",
+                //"title": Lang.get('reports.benefiters-Vs-doctors-tile'),
+                "title": Lang.get('reports.benefiters-Vs-doctors-tile'),
+                "fontSize": 16
+            }],
+            "startDuration": 1,
+            "graphs": [{
+                "balloonText": "<b>[[category]]: [[value]]</b>",
+                "fillColorsField": "color",
+                "fillAlphas": 0.9,
+                "lineAlpha": 0.2,
+                "type": "column",
+                "valueField": "count_benefiters_with_same_doctor"
+            }],
+            "chartCursor": {
+                "categoryBalloonEnabled": false,
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "categoryField": "doctor",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "labelRotation": 0,
+                "fontSize": 16
+            },
+            "export": {
+                "enabled": true
+            }
+
+        });
+    });
+}
+fetchPerDoctorDataReport();
+// -------- END REPORT: Benefiters vs doctor type needed (script) --------------------------------------//
+
+
+// ------------------------------------------------------------------------------------------------ //
+
 
 

@@ -56,7 +56,6 @@ class ReportsController extends Controller
         // all the medical examination results
         $allMedicalExaminationResults = $this->reportsService->getAllMedicalExaminationResults();
 
-        $report_benefiters_vs_doctor_type = $this->reportsService->getReport_benefiters_vs_doctor();
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -74,18 +73,24 @@ class ReportsController extends Controller
             ->with('work_titles', $allWorkTitles)
             ->with('medical_incident_types', $allMedicalIncidentTypes)
             ->with('medical_locations', $allMedicalLocations)
-            ->with('medical_examination_results', $allMedicalExaminationResults)
-            ->with('report_benefiters_vs_doctor_type', $report_benefiters_vs_doctor_type);
+            ->with('medical_examination_results', $allMedicalExaminationResults);
     }
 
+    
     // gets the search query and returns the search results
-//    public function getBenefiterSearchResults(Request $request){
-//            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits);
-//    }
-
+    public function getBenefiterSearchResults(Request $request) {
+        $request->request->gender_id = "";
+        return $this->reportsService->getSearchResults($request->all());
+    }    
+    
+    // fetch benefiters vs education data from service in order to be used by an ajax call
     public function getBenefitesVSeducationdata(){
-        // count benefiters by education type
         $report_benefiters_vs_education = $this->reportsService->getReport_benefiters_vs_education();
         return $report_benefiters_vs_education;
+    }
+    // fetch benefiters vs per doctor distribution data from service in order to be used by an ajax call
+    public function getBenefitesVSdoctorsData(){
+        $report_benefiters_vs_doctor_type = $this->reportsService->getReport_benefiters_vs_doctor();
+        return $report_benefiters_vs_doctor_type;
     }
 }

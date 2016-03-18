@@ -158,6 +158,152 @@ class ReportsService{
         return \DB::table('medical_examination_results_lookup')->get();
     }
 
+    // perform search
+    public function getSearchResults($request){
+        $datesHelper = new DatesHelper();
+        $queryString = "select b.folder_number, b.name, b.lastname, b.telephone, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at from benefiters as b left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id";
+        $queryString2 = " group by b.id";
+//        $queryStringTest = "select * from (select b.folder_number, b.name, b.lastname, b.telephone, count(mv.id) as incidents_counter from benefiters as b left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id group by b.id) as median_table";
+        $firstWhereParameter = true;
+        $firstWhereParameterExternalSelect = true;
+        if($request['marital_status_id'] != 0) {
+            $queryString = $queryString . " where ";
+            $queryString = $queryString . 'b.marital_status_id=' . $request['marital_status_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['legal_status_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'bls.legal_lookup_id=' . $request['legal_status_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['education_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'b.education_id=' . $request['education_id'];
+            $firstWhereParameter = false;
+        }
+        if(!empty($request['gender_id'])){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'b.gender_id=' . $request['gender_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['work_title_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'b.work_title_id=' . $request['work_title_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['drug'] != ""){
+            $drugId = $this->getMedicationIdFromName($request['drug']);
+            if($drugId != null) {
+                if (!$firstWhereParameter) {
+                    $queryString = $queryString . " and ";
+                } else {
+                    $queryString = $queryString . " where ";
+                }
+                $queryString = $queryString . 'mm.medication_lookup_id=' . $drugId;
+                $firstWhereParameter = false;
+            }
+        }
+        if($request['incident_type_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'mv.medical_incident_id=' . $request['incident_type_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['location_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'mv.medical_location_id=' . $request['location_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['doctor_name'] != ""){
+            $doctorId = $this->getDoctorIdFromName($request['doctor_name']);
+            if($doctorId != null) {
+                if (!$firstWhereParameter) {
+                    $queryString = $queryString . " and ";
+                } else {
+                    $queryString = $queryString . " where ";
+                }
+                $queryString = $queryString . 'mv.doctor_id=' . $doctorId;
+                $firstWhereParameter = false;
+            }
+        }
+        if($request['examination_results_id'] != 0){
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'mer.results_lookup_id=' . $request['examination_results_id'];
+            $firstWhereParameter = false;
+        }
+        if($request['incident_from'] != "" and $request['incident_to'] != ""){
+            // if difference in days between the two dates is negative, the incident_to date is earlier
+            if($datesHelper->getDifferenceInDays($request['incident_from'], $request['incident_to']) < 0){
+                $tmp = $request['incident_from'];
+                $request['incident_from'] = $request['incident_to'];
+                $request['incident_to'] = $tmp;
+            }
+            if(!$firstWhereParameter){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'mv.medical_visit_date between \'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['incident_from'])) . '\' and \'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['incident_to'])) . '\'';
+            $firstWhereParameter = false;
+        }
+        $queryString = "select * from (" . $queryString . $queryString2 . ") as median_table";
+        if($request['age'] != "" and is_numeric($request['age'])) {
+            $queryString = $queryString . " where ";
+            $queryString = $queryString . 'age_in_years=' . $request['age'];
+            $firstWhereParameterExternalSelect = false;
+        }
+        if($request['incidents_number'] != ""){
+            if(!$firstWhereParameterExternalSelect){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'incidents_counter=' . $request['incidents_number'];
+            $firstWhereParameter = false;
+        }
+        if($request['insertion_date'] != ""){
+            if(!$firstWhereParameterExternalSelect){
+                $queryString = $queryString . " and ";
+            } else {
+                $queryString = $queryString . " where ";
+            }
+            $queryString = $queryString . 'created_at=\'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['insertion_date'])). '\'';
+            $firstWhereParameterExternalSelect = false;
+        }
+        if(!$firstWhereParameter or !$firstWhereParameterExternalSelect) {
+            return \DB::select(\DB::raw($queryString));
+        } else {
+            return null;
+        }
+    }
+
     // returns an array of the form 'work_title' => 'counter' using
     // the users count by work and the work titles in the DB
     private function getBenefitersWorkTitleNameCountArray($benefitersCountByWork, $workTitles){
@@ -183,7 +329,29 @@ class ReportsService{
         }
     }
 
+    // get medication id from name
+    private function getMedicationIdFromName($drug){
+        $tmp = \DB::table('medical_medication_lookup')->where('description', 'like', '%' . $drug . '%')->first();
+        if($tmp != null) {
+            Log::info("Returning the drug id.");
+            return $tmp->id;
+        } else {
+            Log::error("Couldn't find the drug id.");
+            return null;
+        }
+    }
 
+    // get doctor id from name
+    private function getDoctorIdFromName($doctorName){
+        $tmp = \DB::table('users')->where('user_role_id', '=', 2)->where('lastname', 'like', '%' . $doctorName . '%')->orWhere('name', 'like', '%' . $doctorName . '%')->first();
+        if($tmp != null) {
+            Log::info("Returning the doctor's id.");
+            return $tmp->id;
+        } else {
+            Log::error("Couldn't find the doctor's id");
+            return null;
+        }
+    }
 
     // ------------------------------------------------------------------------------------------------ //
     // ----------------------- REPORT: Benefiters vs gender ------------------------------------------- //
@@ -232,6 +400,23 @@ class ReportsService{
     public function getReport_benefiters_vs_doctor(){
         // count benefiters regarding which doctor have visit
         $results = array();
+        $CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet",
+                            "Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan",
+                            "DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen",
+                            "Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey",
+                            "DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite",
+                            "ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew",
+                            "HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue",
+                            "LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon",
+                            "LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen",
+                            "Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen",
+                            "MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose",
+                            "Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod",
+                            "PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple",
+                            "Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver",
+                            "SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato",
+                            "Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+
         $color_array = ["#FF0F00", "#FF6600", "#FF9E01", "#FCD202", "#F8FF01", "#B0DE09", "#04D215", "#0D8ECF", "#0D52D1", "#2A0CD0", "#8A0CCF",
                         "#CD0D74", "#710935", "#80AF44", "#A33D27", "#477709", "#3399ff", "#ff9933", "#663300", "#996633", "#267326", "#7300e6",
                         "#ff80ff", "#666699", "#66ccff", "#993300", "#3399ff", "#999966", "#ff6600", "#008080", "#00e68a", "#cc33ff", "#333300"];
@@ -240,15 +425,15 @@ class ReportsService{
         $subscribed_doctors = User::with('subrole')->where('user_role_id', 2)->get();
         foreach($subscribed_doctors as $doctor){
             $count_benefiters_with_same_doctor = count(medical_visits::where('doctor_id', $doctor['id'])->get());
-
-            $doctor_type_result = ['doctor_specialty'=>$doctor['subrole']['subrole'],
-                                    'count_benefiters_with_same_doctor'=>$count_benefiters_with_same_doctor,
-                                    'color'=> $color_array[$counter]];
+            $doctor_name = $doctor['name'] . " " . $doctor['lastname'];
+            $doctor_specialty = $doctor['subrole']['subrole'];
+            $doctor_type_result = [ 'doctor' =>  $doctor_name. '<br>' .'('. $doctor_specialty . ')',
+                                    'count_benefiters_with_same_doctor' => $count_benefiters_with_same_doctor,
+                                    'color' => $color_array[array_rand($color_array)]];
             array_push($results, $doctor_type_result);
             $counter++;
         }
         // return array with doctor => number of benefiters
-        dd($results);
         return $results;
     }
 
