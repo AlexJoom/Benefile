@@ -447,7 +447,7 @@
                             </table>
                             <div class="text-align-center margin-top-60">
                                 {!! Form::open(array('url' => 'download-csv', 'id' => 'download-csv-form', 'method' => 'get')) !!}
-                                {!! Form::hidden('json_formed_text', null, array('id' => 'json-formed-text')) !!}
+                                {!! Form::hidden('benefiters_found_ids', null, array('id' => 'benefiters-found-ids')) !!}
                                 <button class="simple-button">@lang($p."download_csv")</button>
                                 {!! Form::close() !!}
                             </div>
@@ -476,6 +476,7 @@
     <script src="{{ asset('js/amcharts/radar.js') }}"></script>
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/reports/download_csv.js') }}"></script>
     <script src="{{ asset('js/reports/reports-search.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
