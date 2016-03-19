@@ -56,6 +56,9 @@ class ReportsController extends Controller
         // all the medical examination results
         $allMedicalExaminationResults = $this->reportsService->getAllMedicalExaminationResults();
 
+
+        $report_medical_visits_vs_date = $this->reportsService->getReport_medical_visits_vs_date();
+
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -73,7 +76,8 @@ class ReportsController extends Controller
             ->with('work_titles', $allWorkTitles)
             ->with('medical_incident_types', $allMedicalIncidentTypes)
             ->with('medical_locations', $allMedicalLocations)
-            ->with('medical_examination_results', $allMedicalExaminationResults);
+            ->with('medical_examination_results', $allMedicalExaminationResults)
+            ->with('report_medical_visits_vs_date', $report_medical_visits_vs_date);
     }
 
     
@@ -97,6 +101,12 @@ class ReportsController extends Controller
     public function getBenefitesVSClinicalConditionsData(){
         $report_benefiters_vs_clinical_conditions = $this->reportsService->getReport_benefiters_vs_clinical_conditions();
         return $report_benefiters_vs_clinical_conditions;
+    }
+
+    //fetch all medical visits destributed per month
+    public function getMedicalVisitsVSMonthDate(){
+        $report_medical_visits_vs_date = $this->reportsService->getReport_medical_visits_vs_date();
+        return $report_medical_visits_vs_date;
     }
 
 }

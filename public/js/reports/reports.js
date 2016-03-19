@@ -183,13 +183,14 @@ fetchClinicalConditionsDataReport();
 
 // -------- REPORT: Number of visits per month (script) ----------------------------------------------------//
 
+// ----------------------------------- DEMO DATA ----------------------------------- //
 var chartData = generateChartData();
 
 function generateChartData() {
     var chartData = [];
     var firstDate = new Date( 2012, 0, 1 );
     firstDate.setDate( firstDate.getDate() - 500 );
-    firstDate.setHours( 0, 0, 0, 0 );
+    //firstDate.setHours( 0, 0, 0, 0 );
 
     for ( var i = 0; i < 500; i++ ) {
         var newDate = new Date( firstDate );
@@ -198,83 +199,97 @@ function generateChartData() {
         var value = Math.round( Math.random() * ( 40 + i ) ) + 100 + i;
 
         chartData.push( {
-            date: newDate,
-            value: value
+            per_month_date: newDate,
+            visits_per_month: value
         } );
     }
     console.log(chartData);
     return chartData;
 }
+// ----------------------------------- END DEMO DATA ----------------------------------- //
 
 
-var chart = AmCharts.makeChart( "medical_visits_per_month", {
+var medicalVisitsPerMonth = [];
 
-    type: "stock",
-    "theme": "light",
+function fetchmedicalVisitsPerMonthDataReport() {
+    $.ajax({
+        url: $('body').attr('data-url') + "/medical_visits-PER-month-Report-get-data",
+        success: function (response) {
+            medicalVisitsPerMonth = response;
+        }
+    }).done(function () {
+        var chart = AmCharts.makeChart( "medical_visits_per_month", {
 
-    dataSets: [ {
-        color: "#b0de09",
-        fieldMappings: [ {
-            fromField: "value",
-            toField: "value"
-        } ],
-        dataProvider: chartData,
-        categoryField: "date"
-    } ],
+            type: "stock",
+            "theme": "light",
 
-    panels: [ {
-        showCategoryAxis: true,
-        title: "Value",
-        eraseAll: false,
-        allLabels: [ {
-            x: 0,
-            y: 115,
-            //text: "Click on the pencil icon on top-right to start drawing",
-            text: "",
-            align: "center",
-            size: 16
-        } ],
+            dataSets: [ {
+                color: "#b0de09",
+                fieldMappings: [ {
+                    fromField: "visits_per_month",
+                    toField: "visits_per_month"
+                } ],
+                dataProvider: medicalVisitsPerMonth,
+                categoryField: "per_month_date"
+            } ],
 
-        stockGraphs: [ {
-            id: "g1",
-            valueField: "value",
-            useDataSetColors: false
-        } ],
+            panels: [ {
+                showCategoryAxis: true,
+                title: "Αριθμός Ιατρικών Επισκέψεων",
+                eraseAll: false,
+                allLabels: [ {
+                    x: 0,
+                    y: 115,
+                    //text: "Click on the pencil icon on top-right to start drawing",
+                    text: "",
+                    align: "center",
+                    size: 16
+                } ],
+
+                stockGraphs: [ {
+                    id: "g1",
+                    valueField: "visits_per_month",
+                    useDataSetColors: false,
+                    "bullet": "round"
+                } ],
 
 
-        stockLegend: {
-            valueTextRegular: " ",
-            markerType: "none"
-        },
+                stockLegend: {
+                    valueTextRegular: " ",
+                    markerType: "none"
+                },
 
-        drawingIconsEnabled: true
-    } ],
+                drawingIconsEnabled: true
+            } ],
 
-    chartScrollbarSettings: {
-        graph: "g1"
-    },
-    chartCursorSettings: {
-        valueBalloonsEnabled: true
-    },
-    periodSelector: {
-        position: "bottom",
-        periods: [ {
-            period: "DD",
-            count: 10,
-            label: "10 days"
-        }, {
-            period: "MM",
-            count: 1,
-            label: "1 month"
-        }, {
-            period: "YYYY",
-            count: 1,
-            label: "1 year"
-        }, {
-            period: "MAX",
-            label: "MAX"
-        } ]
-    }
-} );
+            chartScrollbarSettings: {
+                graph: "g1"
+            },
+            chartCursorSettings: {
+                valueBalloonsEnabled: true
+            },
+            periodSelector: {
+                position: "bottom",
+                periods: [ {
+                    period: "DD",
+                    count: 10,
+                    label: "10 days"
+                }, {
+                    period: "MM",
+                    count: 1,
+                    label: "1 month"
+                }, {
+                    period: "YYYY",
+                    count: 1,
+                    label: "1 year"
+                }, {
+                    period: "MAX",
+                    label: "MAX"
+                } ]
+            }
+        } );
+    });
+}
+fetchmedicalVisitsPerMonthDataReport();
 
 // -------- END REPORT: Number of visits per month (script) ----------------------------------------------------//

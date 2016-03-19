@@ -477,9 +477,33 @@ class ReportsService{
     // -------------------------------------------------------------------------------------------------------- //
     // ----------------------- REPORT: Benefiters vs medical visits per month --------------------------------- //
     public function getReport_medical_visits_vs_date(){
-        // count medical visits regarding time period (from , to)
+        // in order to count the visits per month the only thing we have to do is to fetch all available medical visits
+        // and count the medical visit dates with the same month.
+
+        $results = array();
+        $months = array();
+        // get all medical visits
+        $medical_visits = medical_visits::get();
+        // for each visit remove the day part of the string (last three characters) and create a new array.
+        foreach ($medical_visits as $visit) {
+            $time = strtotime($visit['medical_visit_date']);
+            $current_month = date('Y-m',$time);
+            array_push($months, $current_month);
+        }
+        // for the new date array count for duplicities and create the necessary data pair.
+        $array_duplicities = array_count_values($months);
+        foreach($array_duplicities as $key => $per_month_count){
+            $medical_result = ['per_month_date' => $key , 'visits_per_month' => $per_month_count ];
+            array_push($results, $medical_result);
+        }
+        // Order results by date (ascending)
+        foreach ($results as $key => $part) {
+            $sort[$key] = strtotime($part['per_month_date']);
+        }
+        array_multisort($sort, SORT_ASC, $results);
 
         // return array with time_period => number of medical visits
+        return $results;
     }
 }
 
