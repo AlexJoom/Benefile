@@ -453,26 +453,19 @@ class ReportsService{
         $results = array();
         // get all clinical conditions from lookup
         $clinical_conditions_lookup = medical_examination_results_lookup::get();
-        // get all medical examination results from DB
-        $medical_examination_results = medical_examination_results::get();
-        // get all benefiters who have at list one medical visit
-        $medical_visits = medical_visits::select('id','benefiter_id')->get();
 
         // count benefiters regarding their medical condition
         foreach($clinical_conditions_lookup as $condition){
-            // TODO benefiters with same clinical condition
-//            $benefiters_with_same_clinical_condition =
-            $current_clinical_condition_counter = 0;
-            foreach($medical_visits as $visit){
-                // benefiter duplicity counter for the same clinical condition
-//                $benefiter_duplicity_counter = 0;
-                foreach($medical_examination_results as $med_result){
-                    if( $med_result['medical_visit_id'] == $visit['id'] && $med_result['results_lookup_id'] == $condition['id']){
-
-                        $current_clinical_condition_counter++;
-                    }
-                }
+            // first we will make a benefiters id list with the current clinical condition.
+            $medical_examination_results_with_same_clinical_condition = medical_examination_results::where('results_lookup_id',$condition['id'])->get();
+            // then make an array with all benefiter_id with the current clinical condition.
+            $benefiters_with_same_clinical_condition =array();
+            foreach($medical_examination_results_with_same_clinical_condition as $med_exam_same_clinical){
+                array_push($benefiters_with_same_clinical_condition, medical_visits::find($med_exam_same_clinical['medical_visit_id'])['benefiter_id']);
             }
+            // then find the duplicities in the above array and count the result.
+            $current_clinical_condition_counter = count(array_count_values($benefiters_with_same_clinical_condition));
+            // pass all necessary for amchart.js results to another array.
             $clinical_conditions_result = [ 'clinical_condition_name' => $condition['description'],
                                             'clinical_condition_count' => $current_clinical_condition_counter];
             array_push($results, $clinical_conditions_result);
