@@ -204,17 +204,17 @@
     {{-- REPORT: Benefiters vs clinical conditions --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            <div class="col-md-8 right-border">
+            <div class="col-md-7 right-border">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-clinical-condition')</h1>
                 </div>
                 <div id="benefiter_vs_clinical_conditions"></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5 padding-right-35">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-med-visits-per-month')</h1>
                 </div>
-                <div id="benefiter_vs_medical_visits_per_month"></div>
+                <div id="medical_visits_per_month"></div>
             </div>
 
         </div>
@@ -475,14 +475,16 @@
     <script src="{{ asset('js/amcharts/serial.js') }}"></script>
     <script src="{{ asset('js/amcharts/radar.js') }}"></script>
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
+    <script src="{{ asset('js/amcharts/amstock.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
     <script src="{{ asset('js/reports/download_csv.js') }}"></script>
     <script src="{{ asset('js/reports/reports-search.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
-    <script src="{{asset('js/forms.js')}}"></script>
-    <script src="{{asset('js/reports/reports-messages.js')}}"></script>
+    <script src="{{ asset('js/forms.js') }}"></script>
+    <script src="{{ asset('js/reports/reports-messages.js') }}"></script>
+
     <script>
         Lang.setLocale('gr');
     </script>

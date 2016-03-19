@@ -151,7 +151,7 @@ function fetchClinicalConditionsDataReport() {
         var chart = AmCharts.makeChart( "benefiter_vs_clinical_conditions", {
             "type": "radar",
             "theme": "none",
-            "fontSize": 12,
+            "fontSize": 8,
             "dataProvider": clinicalConditionsData,
             "valueAxes": [ {
                 "axisTitleOffset": 20,
@@ -172,5 +172,109 @@ function fetchClinicalConditionsDataReport() {
     });
 }
 fetchClinicalConditionsDataReport();
+
 // -------- END REPORT: Benefiters vs clinical condition type (script) -------------------------------------//
 
+
+
+// -------------------------------------------------------------------------------------------------------- //
+
+
+
+// -------- REPORT: Number of visits per month (script) ----------------------------------------------------//
+
+var chartData = generateChartData();
+
+function generateChartData() {
+    var chartData = [];
+    var firstDate = new Date( 2012, 0, 1 );
+    firstDate.setDate( firstDate.getDate() - 500 );
+    firstDate.setHours( 0, 0, 0, 0 );
+
+    for ( var i = 0; i < 500; i++ ) {
+        var newDate = new Date( firstDate );
+        newDate.setDate( newDate.getDate() + i );
+
+        var value = Math.round( Math.random() * ( 40 + i ) ) + 100 + i;
+
+        chartData.push( {
+            date: newDate,
+            value: value
+        } );
+    }
+    console.log(chartData);
+    return chartData;
+}
+
+
+var chart = AmCharts.makeChart( "medical_visits_per_month", {
+
+    type: "stock",
+    "theme": "light",
+
+    dataSets: [ {
+        color: "#b0de09",
+        fieldMappings: [ {
+            fromField: "value",
+            toField: "value"
+        } ],
+        dataProvider: chartData,
+        categoryField: "date"
+    } ],
+
+    panels: [ {
+        showCategoryAxis: true,
+        title: "Value",
+        eraseAll: false,
+        allLabels: [ {
+            x: 0,
+            y: 115,
+            //text: "Click on the pencil icon on top-right to start drawing",
+            text: "",
+            align: "center",
+            size: 16
+        } ],
+
+        stockGraphs: [ {
+            id: "g1",
+            valueField: "value",
+            useDataSetColors: false
+        } ],
+
+
+        stockLegend: {
+            valueTextRegular: " ",
+            markerType: "none"
+        },
+
+        drawingIconsEnabled: true
+    } ],
+
+    chartScrollbarSettings: {
+        graph: "g1"
+    },
+    chartCursorSettings: {
+        valueBalloonsEnabled: true
+    },
+    periodSelector: {
+        position: "bottom",
+        periods: [ {
+            period: "DD",
+            count: 10,
+            label: "10 days"
+        }, {
+            period: "MM",
+            count: 1,
+            label: "1 month"
+        }, {
+            period: "YYYY",
+            count: 1,
+            label: "1 year"
+        }, {
+            period: "MAX",
+            label: "MAX"
+        } ]
+    }
+} );
+
+// -------- END REPORT: Number of visits per month (script) ----------------------------------------------------//
