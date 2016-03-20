@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/ReportsService.php" afterPath="$PROJECT_DIR$/app/Services/ReportsService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/reports/reports.js" afterPath="$PROJECT_DIR$/public/js/reports/reports.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" afterPath="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/records/record_form.css" afterPath="$PROJECT_DIR$/public/css/records/record_form.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -54,98 +54,89 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.8" vertical-offset="1150" max-vertical-offset="1840">
-              <caret line="104" column="52" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="52" />
+            <state vertical-scroll-proportion="-8.56" vertical-offset="634" max-vertical-offset="1840">
+              <caret line="62" column="46" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
+      <file leaf-file-name="medical_visit_info.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="7632" max-vertical-offset="15232">
-              <caret line="477" column="65" selection-start-line="477" selection-start-column="65" selection-end-line="477" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.0" vertical-offset="686" max-vertical-offset="1824">
-              <caret line="75" column="49" selection-start-line="75" selection-start-column="49" selection-end-line="75" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportsService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.28" vertical-offset="6011" max-vertical-offset="6752">
-              <caret line="491" column="9" selection-start-line="491" selection-start-column="9" selection-end-line="491" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.6552901" vertical-offset="208" max-vertical-offset="832">
+              <caret line="406" column="104" selection-start-line="406" selection-start-column="104" selection-end-line="406" selection-end-column="104" />
               <folding>
-                <element signature="e#31#51#0#PHP" expanded="true" />
-                <element signature="e#486#1559#0#PHP" expanded="false" />
-                <element signature="e#1565#2450#0#PHP" expanded="false" />
-                <element signature="e#2456#3039#0#PHP" expanded="false" />
-                <element signature="e#3045#3692#0#PHP" expanded="false" />
-                <element signature="e#3771#4554#0#PHP" expanded="false" />
-                <element signature="e#4633#5329#0#PHP" expanded="false" />
-                <element signature="e#5431#6152#0#PHP" expanded="false" />
-                <element signature="e#6209#7015#0#PHP" expanded="false" />
-                <marker date="1458418770502" expanded="true" signature="596:656" placeholder="select count..users..." />
-                <marker date="1458418770502" expanded="true" signature="710:770" placeholder="select count..users..." />
-                <marker date="1458418770502" expanded="true" signature="825:885" placeholder="select count..users..." />
-                <marker date="1458418770502" expanded="true" signature="946:1006" placeholder="select count..users..." />
-                <marker date="1458418770502" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
-                <marker date="1458418770502" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
-                <marker date="1458418770502" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
-                <marker date="1458418770502" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
-                <marker date="1458418770502" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
-                <marker date="1458418770502" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
-                <marker date="1458418770502" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
-                <marker date="1458418770502" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
-                <marker date="1458418770502" expanded="true" signature="8337:8800" placeholder="select b.*, ..." />
-                <marker date="1458418770502" expanded="true" signature="14262:14330" placeholder="select * fro..median_table..." />
+                <element signature="n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#!!top" expanded="false" />
+                <element signature="n#div#4;n#!!top" expanded="false" />
+                <element signature="n#div#5;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
+      <file leaf-file-name="new_medical_visit_form.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.95335275" vertical-offset="3378" max-vertical-offset="4816">
-              <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
+            <state vertical-scroll-proportion="-16.4" vertical-offset="710" max-vertical-offset="1408">
+              <caret line="70" column="17" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1013" max-vertical-offset="2224">
-              <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+            <state vertical-scroll-proportion="-16.68" vertical-offset="8159" max-vertical-offset="11808">
+              <caret line="560" column="98" selection-start-line="560" selection-start-column="80" selection-end-line="560" selection-end-column="98" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="benefile.medical_visits" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/7b37888c/fe174942-0b16-415f-9394-dfbd7f208451/benefile..medical_visits">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="96">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+      <file leaf-file-name="BenefiterMedicalFolderService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.226415" vertical-offset="4747" max-vertical-offset="5456">
+              <caret line="1084" column="16" selection-start-line="1084" selection-start-column="16" selection-end-line="1084" selection-end-column="16" />
+              <folding>
+                <element signature="e#5615#6509#0#PHP" expanded="false" />
+                <element signature="e#6596#7177#0#PHP" expanded="false" />
+                <element signature="e#7279#8336#0#PHP" expanded="false" />
+                <element signature="e#8361#8681#0#PHP" expanded="false" />
+                <element signature="e#8784#10219#0#PHP" expanded="false" />
+                <element signature="e#10320#11108#0#PHP" expanded="false" />
+                <element signature="e#11209#11672#0#PHP" expanded="false" />
+                <element signature="e#11697#11971#0#PHP" expanded="false" />
+                <element signature="e#12070#15213#0#PHP" expanded="false" />
+                <element signature="e#15310#15751#0#PHP" expanded="false" />
+                <element signature="e#15776#16031#0#PHP" expanded="false" />
+                <element signature="e#16123#17144#0#PHP" expanded="false" />
+                <element signature="e#17357#18376#0#PHP" expanded="false" />
+                <element signature="e#18463#19141#0#PHP" expanded="false" />
+                <element signature="e#19243#23827#0#PHP" expanded="false" />
+                <element signature="e#24275#29387#0#PHP" expanded="false" />
+                <element signature="e#29488#30381#0#PHP" expanded="false" />
+                <element signature="e#30482#33104#0#PHP" expanded="false" />
+                <element signature="e#33129#33402#0#PHP" expanded="false" />
+                <element signature="e#33501#45590#0#PHP" expanded="false" />
+                <element signature="e#45687#48168#0#PHP" expanded="false" />
+                <element signature="e#48557#52873#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+        </entry>
+      </file>
+      <file leaf-file-name="record_form.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.821428" vertical-offset="4665" max-vertical-offset="5328">
+              <caret line="321" column="12" selection-start-line="321" selection-start-column="12" selection-end-line="321" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,6 +163,10 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" />
         <option value="$PROJECT_DIR$/app/Services/ReportsService.php" />
         <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+        <option value="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" />
+        <option value="$PROJECT_DIR$/public/css/records/record_form.css" />
+        <option value="$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php" />
       </list>
     </option>
   </component>
@@ -224,6 +219,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -279,6 +275,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modals" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -399,6 +421,62 @@
               <option name="myItemId" value="lang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -464,7 +542,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reports" />
+              <option name="myItemId" value="records" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,11 +560,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="amcharts" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="records" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -644,7 +740,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -700,20 +795,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -723,6 +815,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="benefile" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" server_name="benefile" start_url="/benefile/index.php">
@@ -773,28 +868,28 @@
     <frame x="0" y="0" width="1680" height="1022" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17593643" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17593643" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27582294" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1971917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23076923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23321123" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27582294" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34210527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -820,34 +915,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/bootstrap-3.3.6/dist/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1584022" vertical-offset="0" max-vertical-offset="726">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2762763" vertical-offset="483" max-vertical-offset="9591">
-          <caret line="30" column="54" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5870871" vertical-offset="1840" max-vertical-offset="2714">
-          <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20609578" vertical-offset="318" max-vertical-offset="1633">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/importCSV/importCSV.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="759">
@@ -904,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2198347" vertical-offset="3149" max-vertical-offset="10442">
-          <caret line="169" column="87" selection-start-line="169" selection-start-column="87" selection-end-line="169" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/composer/ClassLoader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.703704" vertical-offset="6535" max-vertical-offset="9453">
@@ -946,13 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.116828926" vertical-offset="6977" max-vertical-offset="15226">
-          <caret line="307" column="137" selection-start-line="307" selection-start-column="137" selection-end-line="307" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4398907" vertical-offset="0" max-vertical-offset="732">
@@ -968,24 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4717477" vertical-offset="2815" max-vertical-offset="7153">
-          <caret line="138" column="24" selection-start-line="138" selection-start-column="24" selection-end-line="138" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/TestBenefitersSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50864553" vertical-offset="1924" max-vertical-offset="5750">
           <caret line="100" column="49" selection-start-line="100" selection-start-column="49" selection-end-line="100" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="13199" max-vertical-offset="25553">
-          <caret line="583" column="58" selection-start-line="583" selection-start-column="53" selection-end-line="583" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -1000,7 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.518518" vertical-offset="0" max-vertical-offset="414">
           <caret line="10" column="43" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,13 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.636778" vertical-offset="1378" max-vertical-offset="8924">
-          <caret line="677" column="0" selection-start-line="677" selection-start-column="0" selection-end-line="677" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52431613" vertical-offset="690" max-vertical-offset="33396">
@@ -1065,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6685879" vertical-offset="387" max-vertical-offset="1081">
           <caret line="43" column="27" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,25 +1136,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.981132" vertical-offset="3933" max-vertical-offset="4768">
-          <caret line="259" column="26" selection-start-line="259" selection-start-column="9" selection-end-line="259" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/records/medical_visit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4792561" vertical-offset="3329" max-vertical-offset="5248">
-          <caret line="229" column="7" selection-start-line="229" selection-start-column="7" selection-end-line="229" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/gr/reports.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6913947" vertical-offset="174" max-vertical-offset="848">
           <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,22 +1147,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="699">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7b37888c/fe174942-0b16-415f-9394-dfbd7f208451/benefile..medical_visits">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="96">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6011" max-vertical-offset="6752">
+          <caret line="491" column="9" selection-start-line="491" selection-start-column="9" selection-end-line="491" selection-end-column="9" />
+          <folding>
+            <element signature="e#31#51#0#PHP" expanded="true" />
+            <element signature="e#486#1559#0#PHP" expanded="false" />
+            <element signature="e#1565#2450#0#PHP" expanded="false" />
+            <element signature="e#2456#3039#0#PHP" expanded="false" />
+            <element signature="e#3045#3692#0#PHP" expanded="false" />
+            <element signature="e#3771#4554#0#PHP" expanded="false" />
+            <element signature="e#4633#5329#0#PHP" expanded="false" />
+            <element signature="e#5431#6152#0#PHP" expanded="false" />
+            <element signature="e#6209#7015#0#PHP" expanded="false" />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select marit..marital_status_lookup..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select count..benefiters..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select legal..legal_status_lookup..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select work_..benefiters..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select mll.d..medical_location_lookup..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select visit..benefiter_id..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select benef..medical_visits..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select date_..benefiters..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select b.*, ..." />
+            <marker date="1458418770502" expanded="true" signature="-1:-1" placeholder="select * fro..median_table..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/select-panel.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="880">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
+    <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1013" max-vertical-offset="2224">
-          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="4816">
+          <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.8" vertical-offset="1150" max-vertical-offset="1840">
-          <caret line="104" column="52" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.6928447" vertical-offset="4147" max-vertical-offset="4768">
+          <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1160,64 +1226,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/7b37888c/fe174942-0b16-415f-9394-dfbd7f208451/benefile..medical_visits">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="96">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+    <entry file="file://$PROJECT_DIR$/public/js/records/medical_visit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47855917" vertical-offset="4665" max-vertical-offset="5248">
+          <caret line="309" column="112" selection-start-line="309" selection-start-column="93" selection-end-line="309" selection-end-column="112" />
           <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0" vertical-offset="686" max-vertical-offset="1824">
+        <state vertical-scroll-proportion="0.7679181" vertical-offset="686" max-vertical-offset="1824">
           <caret line="75" column="49" selection-start-line="75" selection-start-column="49" selection-end-line="75" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.28" vertical-offset="6011" max-vertical-offset="6752">
-          <caret line="491" column="9" selection-start-line="491" selection-start-column="9" selection-end-line="491" selection-end-column="9" />
+        <state vertical-scroll-proportion="-8.56" vertical-offset="634" max-vertical-offset="1840">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41884816" vertical-offset="2192" max-vertical-offset="7264">
+          <caret line="152" column="46" selection-start-line="152" selection-start-column="46" selection-end-line="152" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3846154" vertical-offset="1013" max-vertical-offset="2224">
+          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.226415" vertical-offset="4747" max-vertical-offset="5456">
+          <caret line="1084" column="16" selection-start-line="1084" selection-start-column="16" selection-end-line="1084" selection-end-column="16" />
           <folding>
-            <element signature="e#31#51#0#PHP" expanded="true" />
-            <element signature="e#486#1559#0#PHP" expanded="false" />
-            <element signature="e#1565#2450#0#PHP" expanded="false" />
-            <element signature="e#2456#3039#0#PHP" expanded="false" />
-            <element signature="e#3045#3692#0#PHP" expanded="false" />
-            <element signature="e#3771#4554#0#PHP" expanded="false" />
-            <element signature="e#4633#5329#0#PHP" expanded="false" />
-            <element signature="e#5431#6152#0#PHP" expanded="false" />
-            <element signature="e#6209#7015#0#PHP" expanded="false" />
-            <marker date="1458418770502" expanded="true" signature="596:656" placeholder="select count..users..." />
-            <marker date="1458418770502" expanded="true" signature="710:770" placeholder="select count..users..." />
-            <marker date="1458418770502" expanded="true" signature="825:885" placeholder="select count..users..." />
-            <marker date="1458418770502" expanded="true" signature="946:1006" placeholder="select count..users..." />
-            <marker date="1458418770502" expanded="true" signature="1828:2102" placeholder="select marit..marital_status_lookup..." />
-            <marker date="1458418770502" expanded="true" signature="2735:2893" placeholder="select count..benefiters..." />
-            <marker date="1458418770502" expanded="true" signature="3178:3453" placeholder="select legal..legal_status_lookup..." />
-            <marker date="1458418770502" expanded="true" signature="3899:3991" placeholder="select work_..benefiters..." />
-            <marker date="1458418770502" expanded="true" signature="4764:4958" placeholder="select mll.d..medical_location_lookup..." />
-            <marker date="1458418770502" expanded="true" signature="5575:5800" placeholder="select visit..benefiter_id..." />
-            <marker date="1458418770502" expanded="true" signature="5636:5725" placeholder="select benef..medical_visits..." />
-            <marker date="1458418770502" expanded="true" signature="6408:6543" placeholder="select date_..benefiters..." />
-            <marker date="1458418770502" expanded="true" signature="8337:8800" placeholder="select b.*, ..." />
-            <marker date="1458418770502" expanded="true" signature="14262:14330" placeholder="select * fro..median_table..." />
+            <element signature="e#5615#6509#0#PHP" expanded="false" />
+            <element signature="e#6596#7177#0#PHP" expanded="false" />
+            <element signature="e#7279#8336#0#PHP" expanded="false" />
+            <element signature="e#8361#8681#0#PHP" expanded="false" />
+            <element signature="e#8784#10219#0#PHP" expanded="false" />
+            <element signature="e#10320#11108#0#PHP" expanded="false" />
+            <element signature="e#11209#11672#0#PHP" expanded="false" />
+            <element signature="e#11697#11971#0#PHP" expanded="false" />
+            <element signature="e#12070#15213#0#PHP" expanded="false" />
+            <element signature="e#15310#15751#0#PHP" expanded="false" />
+            <element signature="e#15776#16031#0#PHP" expanded="false" />
+            <element signature="e#16123#17144#0#PHP" expanded="false" />
+            <element signature="e#17357#18376#0#PHP" expanded="false" />
+            <element signature="e#18463#19141#0#PHP" expanded="false" />
+            <element signature="e#19243#23827#0#PHP" expanded="false" />
+            <element signature="e#24275#29387#0#PHP" expanded="false" />
+            <element signature="e#29488#30381#0#PHP" expanded="false" />
+            <element signature="e#30482#33104#0#PHP" expanded="false" />
+            <element signature="e#33129#33402#0#PHP" expanded="false" />
+            <element signature="e#33501#45590#0#PHP" expanded="false" />
+            <element signature="e#45687#48168#0#PHP" expanded="false" />
+            <element signature="e#48557#52873#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.95335275" vertical-offset="3378" max-vertical-offset="4816">
-          <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
+        <state vertical-scroll-proportion="-16.68" vertical-offset="8159" max-vertical-offset="11808">
+          <caret line="560" column="98" selection-start-line="560" selection-start-column="80" selection-end-line="560" selection-end-column="98" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.4" vertical-offset="710" max-vertical-offset="1408">
+          <caret line="70" column="17" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_uploads.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32764506" vertical-offset="0" max-vertical-offset="586">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.56" vertical-offset="5058" max-vertical-offset="6800">
+          <caret line="579" column="64" selection-start-line="579" selection-start-column="64" selection-end-line="579" selection-end-column="155" />
+          <folding>
+            <element signature="e#21127#25354#0#HTML" expanded="false" />
+            <element signature="e#25409#29183#0#HTML" expanded="false" />
+            <element signature="e#29238#38411#0#HTML" expanded="false" />
+            <element signature="e#38457#42134#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.821428" vertical-offset="4665" max-vertical-offset="5328">
+          <caret line="321" column="12" selection-start-line="321" selection-start-column="12" selection-end-line="321" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6552901" vertical-offset="208" max-vertical-offset="832">
+          <caret line="406" column="104" selection-start-line="406" selection-start-column="104" selection-end-line="406" selection-end-column="104" />
+          <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
