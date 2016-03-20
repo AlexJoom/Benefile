@@ -8,7 +8,7 @@
         'new_registration'  =>  'Νέα εγγραφή',
         'file_import'  =>  'Φόρτωση αρχείου',
         'search' => 'Αναζήτηση',
-        'reports'  =>  'Αναφορά',
+        'reports'  =>  'Αναφορές',
         'users'  =>  'Χρήστες',
         'logout'  =>  'Έξοδος',
     );
