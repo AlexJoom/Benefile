@@ -27,4 +27,9 @@
         'detention_lift' => 'Διαδικασία για άρση κράτησης',
         'save_legal_folder' => 'Αποθήκευση Νομικού Φακέλου',
         'edit_legal_folder' => 'Ενημέρωση Νομικού Φακέλου',
+        'gender'               => 'ΦΥΛΟ',
+        'fathers_name'         =>  'ΠΑΤΡΩΝΥΜΟ',
+        'mothers_name'         =>  'ΜΗΤΡΩΝΥΜΟ',
+        'nationality'          =>  'ΧΩΡΑ ΕΘΝΙΚΟΤΗΤΑΣ',
+        'arrival_date'         =>  'ΗΜΕΡ. ΑΦΙΞΗΣ',
     );
