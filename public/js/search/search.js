@@ -64,6 +64,59 @@ $(document).ready(function(){
     if($('input[name="folder_number"]').val().length != 0) {
         $('#search-form').trigger('submit');
     }
+
+    $('#download-link').on("click", function(){
+        var csv = '';
+        var $table = $("#results");
+        $table.find('thead > tr > th').each(function (i, row) {
+            csv += '"' + $(row).text().trim().replace(/\s+/g, ' ') + '"' + '\t';
+        });
+        csv = csv.substring(0, csv.length - 1) + "\n";
+
+        var $rows = $table.find('tr'),
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0),
+        // actual delimiter characters for CSV format
+            colDelim = '\t',
+            rowDelim = '\r\n';
+        // Grab text from table into CSV formatted string
+        csv += $rows.map(function (i, row) {
+            var $row = $(row),
+                $cols = $row.find('td');
+
+            return $cols.map(function (j, col) {
+                var $col = $(col),
+                    text = $col.text();
+                text = text.replace(/\s+/g, ' ');
+                return '"' + text.replace('"', ' ') + '"'; // escape double quotes
+            }).get().join(tmpColDelim);
+        }).get().join(tmpRowDelim)
+            .split(tmpRowDelim).join(rowDelim)
+            .split(tmpColDelim).join(colDelim) + '"';
+
+
+        if (window.GetIEVersion() > 0) {
+            var oWin = window.open();
+            oWin.document.write(csv);
+            oWin.document.close();
+            oWin.document.execCommand('SaveAs', true, "export.csv");
+            oWin.close();
+            return false;
+        }
+        else {
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+            $(this)
+                .attr({
+                    'download': Date.now() + "-Benefile-export.csv",
+                    'href': csvData,
+                    'target': '_blank'
+                });
+        }
+    });
 });
 
 // make the ajax call to get a response
@@ -128,4 +181,73 @@ function GetYesOrNoTextFromId($binary){
     } else {
         return $yes;
     }
+}
+
+// make .csv file from the results
+function MakeResultsCSV() {
+    var csv = '';
+    var $table = $("#results");
+    $table.find('thead > tr > th').each(function (i, row) {
+        csv += '"' + $(row).text().trim().replace(/\s+/g, ' ') + '"' + '\t';
+    });
+    csv = csv.substring(0, csv.length - 1) + "\n";
+
+    var $rows = $table.find('tr'),
+    // Temporary delimiter characters unlikely to be typed by keyboard
+    // This is to avoid accidentally splitting the actual contents
+    tmpColDelim = String.fromCharCode(11), // vertical tab character
+     tmpRowDelim = String.fromCharCode(0),
+    // actual delimiter characters for CSV format
+    colDelim = '\t',
+        rowDelim = '\r\n';
+    // Grab text from table into CSV formatted string
+    csv += $rows.map(function (i, row) {
+        var $row = $(row),
+            $cols = $row.find('td');
+
+            return $cols.map(function (j, col) {
+                var $col = $(col),
+                    text = $col.text();
+                    text = text.replace(/\s+/g, ' ');
+                return '"' + text.replace('"', ' ') + '"'; // escape double quotes
+            }).get().join(tmpColDelim);
+    }).get().join(tmpRowDelim)
+        .split(tmpRowDelim).join(rowDelim)
+        .split(tmpColDelim).join(colDelim) + '"';
+
+
+            if (window.GetIEVersion() > 0) {
+                var oWin = window.open();
+                oWin.document.write(csv);
+                oWin.document.close();
+                oWin.document.execCommand('SaveAs', true, "export.csv");
+                oWin.close();
+                return false;
+            }
+            else {
+                // Data URI
+                csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+                $(this)
+                    .attr({
+                        'download': "export",
+                        'href': csvData,
+                        'target': '_blank'
+                    });
+            }
+}
+function GetIEVersion(){
+    var sAgent = window.navigator.userAgent;
+    var Idx = sAgent.indexOf("MSIE");
+
+    // If IE, return version number.
+    if (Idx > 0)
+        return parseInt(sAgent.substring(Idx+ 5, sAgent.indexOf(".", Idx)));
+
+    // If IE 11 then look for Updated user agent string.
+    else if (!!navigator.userAgent.match(/Trident\/7\./))
+        return 11;
+
+    else
+        return 0; //It is not IE
 }

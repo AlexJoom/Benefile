@@ -8,7 +8,7 @@
 @stop
 
 @section('panel-headLinks')
-    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
@@ -308,6 +308,7 @@
                                 <tbody>
                                 </tbody>
                             </table>
+                            <a id="download-link" href="javascript:void(0)">DOWNLOAD</a>
                         </div>
                     </div>
                 </div>
