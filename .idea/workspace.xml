@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/reports/reports.js" afterPath="$PROJECT_DIR$/public/js/reports/reports.js" />
     </list>
     <ignored path="Benefile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,12 +57,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.4074074" vertical-offset="15441" max-vertical-offset="16606">
-              <caret line="673" column="23" selection-start-line="673" selection-start-column="23" selection-end-line="673" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="0.47214076" vertical-offset="483" max-vertical-offset="12190">
+              <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+              <folding>
+                <element signature="tag#div#0" expanded="false" />
+                <element signature="tag#div#1" expanded="false" />
+                <element signature="tag#div#2" expanded="false" />
+                <element signature="tag#div#3" expanded="false" />
+                <element signature="tag#div#4" expanded="false" />
+                <element signature="tag#div#5" expanded="false" />
+                <element signature="tag#div#6" expanded="false" />
+                <element signature="tag#div#7" expanded="false" />
+                <element signature="tag#div#8" expanded="false" />
+                <element signature="tag#div#9" expanded="false" />
+                <element signature="tag#div#10" expanded="false" />
+                <element signature="tag#div#11" expanded="false" />
+                <element signature="tag#div#12" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reports.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32686982" vertical-offset="2110" max-vertical-offset="3381">
-              <caret line="306" column="33" selection-start-line="306" selection-start-column="29" selection-end-line="306" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2110" max-vertical-offset="3381">
+              <caret line="305" column="31" selection-start-line="305" selection-start-column="31" selection-end-line="305" selection-end-column="31" />
               <folding>
                 <element signature="n#!!block;n#fetchEducationDataReport#0" expanded="false" />
                 <element signature="n#!!block;n#fetchClinicalConditionsDataReport#0" expanded="false" />
@@ -157,8 +170,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
-        <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
         <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
+        <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
       </list>
     </option>
   </component>
@@ -1233,7 +1246,7 @@
         <state vertical-scroll-proportion="2.1158357" vertical-offset="3525" max-vertical-offset="7015">
           <caret line="216" column="55" selection-start-line="216" selection-start-column="50" selection-end-line="216" selection-end-column="55" />
           <folding>
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#4;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1383,23 +1396,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4074074" vertical-offset="15441" max-vertical-offset="16606">
-          <caret line="673" column="23" selection-start-line="673" selection-start-column="23" selection-end-line="673" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32686982" vertical-offset="2110" max-vertical-offset="3381">
-          <caret line="306" column="33" selection-start-line="306" selection-start-column="29" selection-end-line="306" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2110" max-vertical-offset="3381">
+          <caret line="305" column="31" selection-start-line="305" selection-start-column="31" selection-end-line="305" selection-end-column="31" />
           <folding>
             <element signature="n#!!block;n#fetchEducationDataReport#0" expanded="false" />
             <element signature="n#!!block;n#fetchClinicalConditionsDataReport#0" expanded="false" />
             <element signature="n#!!block;n#fetchmedicalVisitsPerMonthDataReport#0" expanded="false" />
             <element signature="n#!!block;n#fetchBenefitersRegistrationsPerMonthDataReport#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47214076" vertical-offset="483" max-vertical-offset="12190">
+          <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+          <folding>
+            <element signature="tag#div#0" expanded="false" />
+            <element signature="tag#div#1" expanded="false" />
+            <element signature="tag#div#2" expanded="false" />
+            <element signature="tag#div#3" expanded="false" />
+            <element signature="tag#div#4" expanded="false" />
+            <element signature="tag#div#5" expanded="false" />
+            <element signature="tag#div#6" expanded="false" />
+            <element signature="tag#div#7" expanded="false" />
+            <element signature="tag#div#8" expanded="false" />
+            <element signature="tag#div#9" expanded="false" />
+            <element signature="tag#div#10" expanded="false" />
+            <element signature="tag#div#11" expanded="false" />
+            <element signature="tag#div#12" expanded="false" />
           </folding>
         </state>
       </provider>

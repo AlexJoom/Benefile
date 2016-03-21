@@ -15,7 +15,7 @@
 @stop
 
 @section('main-window-content')
-    {{-- report for users numbers divided by their roles --}}
+    {{-- REPORT: users numbers divided by their roles --}}
     <div class="users-report form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."users")</h1>
@@ -53,12 +53,11 @@
             </div>
         </div>
     </div>
+    {{-- REPORT: Benefiters VS gerder --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."benefiters")</h1>
         </div>
-
-        {{-- REPORT: Benefiters VS gerder --}}
         <div id="benefiters_vs_gerder" class="row padding-30 row-eq-height display-table ">
             <div class="col-md-10 col-equal-height">
                 {{-- male icons --}}
@@ -73,7 +72,6 @@
                 @for($i=0 ; $i< $report_benefiters_vs_gender['other_percentage'] ; $i++)
                     <icon class="glyphicon glyphicon-user gender-icon other-color"></icon>
                 @endfor
-
             </div>
 
             <div class="col-md-2 col-equal-height">
@@ -98,35 +96,31 @@
 
             </div>
         </div>
-
-        {{-- =1= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Benefiters marital statuses --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            {{-- Benefiters marital statuses --}}
             <div class="col-md-12">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-marital-status')</h1>
                 </div>
                 <div id="maritalStatusReport"></div>
             </div>
-            {{-- Benefiters marital statuses end --}}
         </div>
-        {{-- =2= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Medical visits location --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            {{-- Medical visits location --}}
             <div class="col-md-12">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-medical-visits-location')</h1>
                 </div>
                 <div id="medicalStatusReport" class="col-md-12"></div>
             </div>
-            <!-- </div> -->
-            {{-- Medical visits location end --}}
         </div>
-        {{-- =3= --}}
-        <hr>
-        {{-- Benefiters work titles --}}
+    </div>
+    {{-- REPORT: Benefiters work titles --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
@@ -135,9 +129,9 @@
                 <div id="benefiters-work-title-chart"></div>
             </div>
         </div>
-        {{-- Benefiters work titles end --}}
-        {{-- =4= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Benefiters work titles end --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
@@ -146,9 +140,9 @@
                     <div id="benefiters-per-medical-visits-chart"></div>
             </div>
         </div>
-        {{-- Benefiters age report end --}}
-        {{-- =5= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Benefiters age report end --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
@@ -157,9 +151,9 @@
                 <div id="ageReport" class="col-md-12"></div>
             </div>
         </div>
-        {{-- Benefiters legal statuses --}}
-        {{-- =6= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Benefiters legal statuses --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
@@ -168,9 +162,9 @@
                 <div id="legalStatusReport"></div>
             </div>
         </div>
-        {{-- Benefiters registration numbers per month --}}
-        {{-- =7= --}}
-        <hr>
+    </div>
+    {{-- REPORT: Benefiters registration numbers per month --}}
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-12 padding-right-35">
                 <div class="underline-header">
@@ -191,7 +185,6 @@
             </div>
         </div>
     </div>
-
     {{-- REPORT: Benefiters vs doctor --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
@@ -203,7 +196,6 @@
             </div>
         </div>
     </div>
-
     {{-- REPORT: Benefiters vs clinical conditions --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
@@ -221,7 +213,6 @@
             </div>
         </div>
     </div>
-
     {{-- REPORT: Benefiters vs phycological support --}}
     <div class="benefiters-report form-section">
         <div class="row">
