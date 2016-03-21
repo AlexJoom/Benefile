@@ -7,7 +7,7 @@ class SearchService{
     // perform DB search with the request parameters
     public function searchBenefiters($request){
         $datesHelper = new DatesHelper();
-        $queryString = "select b.*, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id";
+        $queryString = "select b.*, gl.gender, msl.marital_status_title, el.education_title, wll.description as legal_working_status, wtll.work_title, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id left join genders_lookup as gl on b.gender_id = gl.id left join marital_status_lookup as msl on b.marital_status_id = msl.id left join education_lookup as el on b.education_id = el.id left join working_legally_lookup as wll on b.working_legally = wll.id left join work_title_list_lookup as wtll on b.work_title_id = wtll.id";
         $queryString2 = " group by b.id";
         $firstWhereParameter = true;
         $firstWhereParameterExternalSelect = true;
