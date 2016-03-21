@@ -9,11 +9,8 @@
 @stop
 
 @section('panel-headLinks')
-    <link href="{{ asset('/assets/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('plugins/faloading/jquery.faloading.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/plugins/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/records/record_form.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/search/search.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/reports/reports.css') }}" rel="stylesheet" type="text/css">
 @stop
 
@@ -208,7 +205,7 @@
     </div>
 
     {{-- REPORT: Benefiters vs clinical conditions --}}
-    <div class="benefiters-report form-section no-bottom-border">
+    <div class="benefiters-report form-section">
         <div class="row">
             <div class="col-md-7 right-border">
                 <div class="underline-header">
@@ -225,256 +222,9 @@
 
         </div>
     </div>
-
-
-    {{-- SEARCH --}}
-    <div id="benefiters-search" class="margin-bottom-300px form-section">
-        <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">@lang($p."search")</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-            {!! Form::open(array('url' => 'reports-search-results', 'id' => 'search-form', 'method' => 'get')) !!}
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
-                            <div>
-                                <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($marital_statuses)){
-                                            foreach($marital_statuses as $marital_status){
-                                                echo "<option value=" . $marital_status->id . ">" . $marital_status->marital_status_title . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('age', Lang::get('reports.age')) !!}
-                            {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
-                            <div>
-                                <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($legal_statuses)){
-                                            foreach($legal_statuses as $legal_status){
-                                                echo "<option value=" . $legal_status->id . ">" . $legal_status->description . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('education_id', Lang::get('reports.education')) !!}
-                            <div>
-                                <select name="education_id" id="education-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($education_titles)){
-                                            foreach($education_titles as $education_title){
-                                                echo "<option value=" . $education_title->id . ">" . $education_title->education_title . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('gender_id', Lang::get('reports.gender')) !!}
-                            <div>
-                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
-                            <div>
-                                <select name="work_title_id" id="work-title-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($work_titles)){
-                                            foreach($work_titles as $work_title){
-                                                if($work_title->work_title == ""){
-                                                    $work_title->work_title = "-";
-                                                }
-                                                echo "<option value=" . $work_title->id . ">" . $work_title->work_title . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('drug', Lang::get('reports.drug')) !!}
-                            {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
-                            <div>
-                                <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($medical_incident_types)){
-                                            foreach($medical_incident_types as $medical_incident_type){
-                                                echo "<option value=" . $medical_incident_type->id . ">" . $medical_incident_type->description . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('location_id', Lang::get('reports.location')) !!}
-                            <div>
-                                <select name="location_id" id="location-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($medical_locations)){
-                                            foreach($medical_locations as $location){
-                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('doctor_name', Lang::get('reports.doctor_name')) !!}
-                            {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('incidents_number', Lang::get('reports.incidents_number')) !!}
-                            {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                            {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
-                            <div>
-                                <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
-                                    <option value=0></option>
-                                    <?php
-                                        if(!empty($medical_examination_results)){
-                                            foreach($medical_examination_results as $medical_examination_result){
-                                                echo "<option value=" . $medical_examination_result->id . ">" . $medical_examination_result->description . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label(Lang::get('reports.insertion_date')) !!}
-                            <div>
-                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="padding-left-right-15">
-                            {!! Form::label(Lang::get('reports.incident_dates_range')) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label(Lang::get('reports.from')) !!}
-                            <div>
-                                {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                            </div>
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label(Lang::get('reports.to')) !!}
-                            <div>
-                                {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                            </div>
-                        </div>
-                        {!! Form::submit(Lang::get('reports.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
-                    </div>
-                </div>
-            {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-    <div id="search-results" class="form-section min-height-300px" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get("search/search.view_folders") }}">
-        <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">@lang("search/search.search_results")</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="state state-results" class="row padding-bottom-30">
-                    <div class="no-margin pos-relative" id="results-to-activate">
-                        <div class="display padding-20">
-                            <table id="results" class="display" cellspacing="0" width="100%">
-                                <thead>
-                                <tr>
-                                    <th>@lang("search/search.folder_number")</th>
-                                    <th>@lang("basic_info_form.name")</th>
-                                    <th>@lang("basic_info_form.lastname")</th>
-                                    <th>@lang("basic_info_form.telephone")</th>
-                                    <th>@lang("search/search.view")</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>@lang("search/search.folder_number")</th>
-                                    <th>@lang("basic_info_form.name")</th>
-                                    <th>@lang("basic_info_form.lastname")</th>
-                                    <th>@lang("basic_info_form.telephone")</th>
-                                    <th>@lang("search/search.view")</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                </tbody>
-                            </table>
-                            <div class="text-align-center margin-top-60">
-                                {!! Form::open(array('url' => 'download-csv', 'id' => 'download-csv-form', 'method' => 'get')) !!}
-                                {!! Form::hidden('benefiters_found_ids', null, array('id' => 'benefiters-found-ids')) !!}
-                                <button class="simple-button">@lang($p."download_csv")</button>
-                                {!! Form::close() !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="state state-loading min-height-150px padding-left-right-15">
-                </div>
-                <div class="state state-no-results">
-                    <h1>@lang("search/search.no_results")</h1>
-                </div>
-                <div class="state state-error">
-                    <h1>@lang("search/search.error")</h1>
-                </div>
-            </div>
-        </div>
-    </div>
 @stop
 
 @section('panel-scripts')
-    <script src="{{ asset('plugins/faloading/jquery.faloading-0.1.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
     <script src="{{ asset('js/amcharts/pie.js') }}"></script>
@@ -483,8 +233,6 @@
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
     <script src="{{ asset('js/amcharts/amstock.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
-    <script src="{{ asset('js/reports/download_csv.js') }}"></script>
-    <script src="{{ asset('js/reports/reports-search.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>

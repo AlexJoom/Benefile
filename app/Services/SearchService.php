@@ -243,4 +243,28 @@ class SearchService{
         return \DB::table('medical_examination_results_lookup')->get();
     }
 
+    // get medication id from name
+    private function getMedicationIdFromName($drug){
+        $tmp = \DB::table('medical_medication_lookup')->where('description', 'like', '%' . $drug . '%')->first();
+        if($tmp != null) {
+            Log::info("Returning the drug id.");
+            return $tmp->id;
+        } else {
+            Log::error("Couldn't find the drug id.");
+            return null;
+        }
+    }
+
+    // get doctor id from name
+    private function getDoctorIdFromName($doctorName){
+        $tmp = \DB::table('users')->where('user_role_id', '=', 2)->where('lastname', 'like', '%' . $doctorName . '%')->orWhere('name', 'like', '%' . $doctorName . '%')->first();
+        if($tmp != null) {
+            Log::info("Returning the doctor's id.");
+            return $tmp->id;
+        } else {
+            Log::error("Couldn't find the doctor's id");
+            return null;
+        }
+    }
+
 }

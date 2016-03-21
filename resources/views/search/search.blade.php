@@ -58,7 +58,7 @@
                                 {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
                                 {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
+                    {!! Form::label('marital_status_id', Lang::get('search/search.marital_status')) !!}
                     <div>
                         <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
                             <option value=0></option>
@@ -116,11 +116,11 @@
                     </div>
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('age', Lang::get('reports.age')) !!}
+                    {!! Form::label('age', Lang::get('search/search.age')) !!}
                     {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                    {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
+                    {!! Form::label('legal_status_id', Lang::get('search/search.legal_status')) !!}
                     <div>
                         <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
                             <option value=0></option>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                    {!! Form::label('education_id', Lang::get('reports.education')) !!}
+                    {!! Form::label('education_id', Lang::get('search/search.education')) !!}
                     <div>
                         <select name="education_id" id="education-id" class="width-100-percent">
                             <option value=0></option>
@@ -151,25 +151,10 @@
                 </div>
             </div>
         </div>
-        {{--<div class="row">--}}
-            {{--<div class="padding-left-right-15">--}}
-                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
-                    {{--{!! Form::label('gender_id', Lang::get('reports.gender')) !!}--}}
-                    {{--<div>--}}
-                        {{--{!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}--}}
-                        {{--{!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}--}}
-                        {{--{!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
+                    {!! Form::label('work_title_id', Lang::get('search/search.work')) !!}
                     <div>
                         <select name="work_title_id" id="work-title-id" class="width-100-percent">
                             <option value=0></option>
@@ -187,11 +172,11 @@
                     </div>
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('drug', Lang::get('reports.drug')) !!}
+                    {!! Form::label('drug', Lang::get('search/search.drug')) !!}
                     {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                    {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
+                    {!! Form::label('incident_type_id', Lang::get('search/search.incident_type')) !!}
                     <div>
                         <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
                             <option value=0></option>
@@ -205,35 +190,20 @@
                         </select>
                     </div>
                 </div>
-                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
-                    {{--{!! Form::label('location_id', Lang::get('reports.location')) !!}--}}
-                    {{--<div>--}}
-                        {{--<select name="location_id" id="location-id" class="width-100-percent">--}}
-                            {{--<option value=0></option>--}}
-                            <?php
-                                /*if(!empty($medical_locations)){
-                                    foreach($medical_locations as $location){
-                                        echo "<option value=" . $location->id . ">" . $location->description . "</option>";
-                                    }
-                                }*/
-                            ?>
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('doctor_name', Lang::get('reports.doctor_name')) !!}
+                    {!! Form::label('doctor_name', Lang::get('search/search.doctor_name')) !!}
                     {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('incidents_number', Lang::get('reports.incidents_number')) !!}
+                    {!! Form::label('incidents_number', Lang::get('search/search.incidents_number')) !!}
                     {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                    {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
+                    {!! Form::label('examination_results_id', Lang::get('search/search.examination_results')) !!}
                     <div>
                         <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
                             <option value=0></option>
@@ -248,7 +218,7 @@
                     </div>
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('reports.insertion_date')) !!}
+                    {!! Form::label(Lang::get('search/search.insertion_date')) !!}
                     <div>
                         {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                     </div>
@@ -258,20 +228,20 @@
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="padding-left-right-15">
-                    {!! Form::label(Lang::get('reports.incident_dates_range')) !!}
+                    {!! Form::label(Lang::get('search/search.incident_dates_range')) !!}
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('reports.from')) !!}
+                    {!! Form::label(Lang::get('search/search.from')) !!}
                     <div>
                         {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                     </div>
                 </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('reports.to')) !!}
+                    {!! Form::label(Lang::get('search/search.to')) !!}
                     <div>
                         {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                     </div>
