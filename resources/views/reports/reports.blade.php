@@ -244,6 +244,7 @@
     <script src="{{ asset('js/amcharts/themes/light.js') }}"></script>
     <script src="{{ asset('js/amcharts/amstock.js') }}"></script>
     <script src="{{ asset('js/reports/reports.js') }}"></script>
+    <script src="{{ asset('js/records/selectReports.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
