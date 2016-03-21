@@ -216,10 +216,20 @@
                 </div>
                 <div id="medical_visits_per_month"></div>
             </div>
-
         </div>
     </div>
 
+    {{-- REPORT: Benefiters vs phycological support --}}
+    <div class="benefiters-report form-section no-bottom-border">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'report-phycological-support')</h1>
+                </div>
+                <div id="benefiter_vs_phycological_support"></div>
+            </div>
+        </div>
+    </div>
 
     {{-- SEARCH --}}
     <div id="benefiters-search" class="margin-bottom-300px form-section">
@@ -479,6 +489,7 @@
     <script src="{{ asset('js/reports/reports.js') }}"></script>
     <script src="{{ asset('js/reports/download_csv.js') }}"></script>
     <script src="{{ asset('js/reports/reports-search.js') }}"></script>
+    <script src="{{ asset('js/records/selectReports.js') }}"></script>
     <script src="{{ asset('js/canvasjs.min.js') }}"></script>
     <script src="{{ asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>

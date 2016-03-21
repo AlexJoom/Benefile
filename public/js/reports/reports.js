@@ -1,8 +1,8 @@
 /**
 * Created by cdimitzas on 16/3/2016.
 */
-
-// -------- REPORT: Benefiters vs education (script) --------------------------------------------//
+// -------------------------------------------------------------------------------------------------------- //
+// -------- REPORT: Benefiters vs education (script) -------------------------------------------------------//
 var educationData = [];
 
 function fetchEducationDataReport(){
@@ -74,13 +74,9 @@ function fetchEducationDataReport(){
 }
 fetchEducationDataReport();
 
-// -------- END REPORT: Benefiters vs education (script) -------------------------------------------//
 
-
-// ------------------------------------------------------------------------------------------------ //
-
-
-// -------- REPORT: Benefiters vs doctor type needed (script) --------------------------------------//
+// -------------------------------------------------------------------------------------------------------- //
+// -------- REPORT: Benefiters vs doctor type needed (script) ----------------------------------------------//
 var doctorData = [];
 
 function fetchPerDoctorDataReport(){
@@ -132,14 +128,10 @@ function fetchPerDoctorDataReport(){
     });
 }
 fetchPerDoctorDataReport();
-// -------- END REPORT: Benefiters vs doctor type needed (script) --------------------------------------//
 
 
-// ---------------------------------------------------------------------------------------------------- //
-
-
-
-// -------- REPORT: Benefiters vs clinical condition type (script) -------------------------------------//
+// -------------------------------------------------------------------------------------------------------- //
+// -------- REPORT: Benefiters vs clinical condition type (script) -----------------------------------------//
 var clinicalConditionsData = [];
 
 function fetchClinicalConditionsDataReport() {
@@ -150,66 +142,63 @@ function fetchClinicalConditionsDataReport() {
         }
     }).done(function () {
         var chart = AmCharts.makeChart( "benefiter_vs_clinical_conditions", {
-            "type": "radar",
-            "theme": "none",
-            "fontSize": 8,
+            "type": "serial",
+            "theme": "dark",
+            "fontSize": 14,
             "dataProvider": clinicalConditionsData,
-            "valueAxes": [ {
-                "axisTitleOffset": 20,
-                "minimum": 0,
-                "axisAlpha": 0.15
-            } ],
-            "startDuration": 2,
+
+            "gridAboveGraphs": true,
+            "startDuration": 1,
             "graphs": [ {
-                "balloonText": "[[value]] ωφελούμενοι",
-                "bullet": "round",
+                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "fillAlphas": 0.8,
+                "lineAlpha": 0.2,
+                "type": "column",
                 "valueField": "clinical_condition_count"
             } ],
+            "chartCursor": {
+                "categoryBalloonEnabled": false,
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "rotate": true,
             "categoryField": "clinical_condition_name",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "gridAlpha": 0,
+                "tickPosition": "start",
+                "tickLength": 20,
+                "fontSize": 14
+            },
             "export": {
                 "enabled": true
             }
+
+
+            //"valueAxes": [ {
+            //    "axisTitleOffset": 20,
+            //    "minimum": 0,
+            //    "axisAlpha": 0.15
+            //} ],
+            //"startDuration": 2,
+            //"graphs": [ {
+            //    "balloonText": "[[value]] ωφελούμενοι",
+            //    "bullet": "round",
+            //    "valueField": "clinical_condition_count"
+            //} ],
+            //"rotate": true,
+            //"categoryField": "clinical_condition_name",
+            //"export": {
+            //    "enabled": true
+            //}
         } );
     });
 }
 fetchClinicalConditionsDataReport();
 
-// -------- END REPORT: Benefiters vs clinical condition type (script) -------------------------------------//
-
-
 
 // -------------------------------------------------------------------------------------------------------- //
-
-
-
 // -------- REPORT: Number of visits per month (script) ----------------------------------------------------//
-
-// ----------------------------------- DEMO DATA ----------------------------------- //
-var chartData = generateChartData();
-
-function generateChartData() {
-    var chartData = [];
-    var firstDate = new Date( 2012, 0, 1 );
-    firstDate.setDate( firstDate.getDate() - 500 );
-    //firstDate.setHours( 0, 0, 0, 0 );
-
-    for ( var i = 0; i < 500; i++ ) {
-        var newDate = new Date( firstDate );
-        newDate.setDate( newDate.getDate() + i );
-
-        var value = Math.round( Math.random() * ( 40 + i ) ) + 100 + i;
-
-        chartData.push( {
-            per_month_date: newDate,
-            visits_per_month: value
-        } );
-    }
-    console.log(chartData);
-    return chartData;
-}
-// ----------------------------------- END DEMO DATA ----------------------------------- //
-
-
 var medicalVisitsPerMonth = [];
 
 function fetchmedicalVisitsPerMonthDataReport() {
@@ -293,4 +282,58 @@ function fetchmedicalVisitsPerMonthDataReport() {
 }
 fetchmedicalVisitsPerMonthDataReport();
 
-// -------- END REPORT: Number of visits per month (script) ----------------------------------------------------//
+
+// -------------------------------------------------------------------------------------------------------- //
+// -------- REPORT: Benefiters vs phycological support ---------------------------------------------------- //
+var phycologicalSupportType = [];
+
+function fetchBenefitersVSphycologicalSupportType(){
+    $.ajax({
+        url: $('body').attr('data-url') + "/benefites-VS-phycological-support-type",
+        success: function (response) {
+            phycologicalSupportType = response;
+        }
+    }).done(function () {
+        var chart = AmCharts.makeChart( "benefiter_vs_phycological_support", {
+            "type": "serial",
+            "theme": "light",
+            "dataProvider": phycologicalSupportType,
+            "valueAxes": [ {
+                "gridColor": "#FFFFFF",
+                "gridAlpha": 0.2,
+                "dashLength": 0,
+                "fontSize": 16
+            } ],
+            "gridAboveGraphs": true,
+            "startDuration": 1,
+            "graphs": [ {
+                "balloonText": "[[category]]: <b>[[value]]</b>",
+                "fillAlphas": 0.8,
+                "lineAlpha": 0.2,
+                "type": "column",
+                "valueField": "type_count"
+            } ],
+            "chartCursor": {
+                "categoryBalloonEnabled": false,
+                "cursorAlpha": 0,
+                "zoomable": false
+            },
+            "rotate": true,
+            "categoryField": "$phycological_support_type",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "gridAlpha": 0,
+                "tickPosition": "start",
+                "tickLength": 20,
+                "fontSize": 14
+            },
+            "export": {
+                "enabled": true
+            }
+
+        } );
+    });
+}
+fetchBenefitersVSphycologicalSupportType();
+
+
