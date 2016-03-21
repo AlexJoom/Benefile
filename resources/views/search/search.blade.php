@@ -151,21 +151,6 @@
                 </div>
             </div>
         </div>
-        {{--<div class="row">--}}
-            {{--<div class="padding-left-right-15">--}}
-                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
-                    {{--{!! Form::label('gender_id', Lang::get('reports.gender')) !!}--}}
-                    {{--<div>--}}
-                        {{--{!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}--}}
-                        {{--{!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}--}}
-                        {{--{!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}--}}
-                        {{--{!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
         <div class="row">
             <div class="padding-left-right-15">
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
@@ -205,21 +190,6 @@
                         </select>
                     </div>
                 </div>
-                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
-                    {{--{!! Form::label('location_id', Lang::get('reports.location')) !!}--}}
-                    {{--<div>--}}
-                        {{--<select name="location_id" id="location-id" class="width-100-percent">--}}
-                            {{--<option value=0></option>--}}
-                            <?php
-                                /*if(!empty($medical_locations)){
-                                    foreach($medical_locations as $location){
-                                        echo "<option value=" . $location->id . ">" . $location->description . "</option>";
-                                    }
-                                }*/
-                            ?>
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
         <div class="row">
