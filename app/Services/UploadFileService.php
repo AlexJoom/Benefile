@@ -7,6 +7,7 @@ use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\ImportCSV_BasicInfo;
 use App\Services\ConversionsForFileUpload;
 use App\Services\DatesHelper;
+use \Carbon\Carbon;
 use App\Services\GreekStringConversionHelper;
 
 class UploadFileService{
@@ -108,6 +109,7 @@ class UploadFileService{
         $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
         $singleRow->nationality_country = $conversionForFile->getNationalityCountry($singleRow->nationality_country);
         $singleRow->work_title = $conversionForFile->getWorkTitleId($singleRow->work_title);
+        $tmpdate = \Carbon\Carbon::now();
         return array(
             'folder_number' => $singleRow->folder_number,
             'name' => $singleRow->name,
@@ -135,6 +137,7 @@ class UploadFileService{
             'detention_duration' => $singleRow->detention_duration,
             'social_history' => $singleRow->social_history,
             'document_manager_id' => \Auth::user()->id,
+            'created_at' => $tmpdate,
         );
     }
 

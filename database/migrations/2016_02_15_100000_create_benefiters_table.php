@@ -39,7 +39,6 @@ class CreateBenefitersTable extends Migration
             $table->text('relatives_residence')->nullable();
 //            $table->text('other_language')->nullable();
             $table->boolean('language_interpreter_needed')->nullable();
-            $table->string('job_description')->nullable();
             $table->boolean('is_benefiter_working')->nullable();
 //            $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();

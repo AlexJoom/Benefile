@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('home', 'HomeController@index');
+Route::get('home', 'MainPanel\RecordsController@getBenefitersList');
 
 /*
  * Layout after login
