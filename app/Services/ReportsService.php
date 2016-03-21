@@ -504,5 +504,33 @@ class ReportsService{
         // return array with time_period => number of medical visits
         return $results;
     }
+    //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters registration numbers per month ------------------------------ //
+    public function getRegistrationsVSMonthDate() {
+        $results = array();
+        $months = array();
+        // get all benefiters
+        $benefiters = Benefiter::get();
+        foreach ($benefiters as $benefiter) {
+            $time = strtotime($benefiter['created_at']);
+            $current_month = date('Y-m', $time);
+            array_push($months, $current_month);
+        }
+
+        // for the new date array count for duplicities and create the necessary data pair.
+        $array_duplicities = array_count_values($months);
+        foreach($array_duplicities as $key => $per_month_count){
+            $registration_date = ['per_month_date' => $key , 'registrations_per_month' => $per_month_count ];
+            array_push($results, $registration_date);
+        }
+
+        foreach ($results as $key => $part) {
+            $sort[$key] = strtotime($part['per_month_date']);
+        }
+        array_multisort($sort, SORT_ASC, $results);
+        return $results;
+    }
+
 }
 

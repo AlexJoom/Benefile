@@ -108,4 +108,10 @@ class ReportsController extends Controller
         return $report_medical_visits_vs_date;
     }
 
+    //fetch all medical visits destributed per month
+    public function getRegistrationsVSMonthDate(){
+        $report_registrations_vs_date = $this->reportsService->getRegistrationsVSMonthDate();
+        return $report_registrations_vs_date;
+    }
+
 }
