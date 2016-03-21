@@ -165,7 +165,6 @@ class ReportsService{
         $datesHelper = new DatesHelper();
         $queryString = "select b.*, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id";
         $queryString2 = " group by b.id";
-//        $queryStringTest = "select * from (select b.folder_number, b.name, b.lastname, b.telephone, count(mv.id) as incidents_counter from benefiters as b left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id group by b.id) as median_table";
         $firstWhereParameter = true;
         $firstWhereParameterExternalSelect = true;
         if($request['marital_status_id'] != 0) {

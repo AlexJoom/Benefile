@@ -75,8 +75,10 @@ return array(
 
     'save_medical_visit'   =>  'Αποθήκευση Ιατρικής Επίσκεψης',
     'update_medical_visit' =>  'Ανανέωση Ιατρικής Επίσκεψης',
+    'doctor_speciality'    =>  'Ειδiκότητα',
     'condition-name'       =>  'ΠΑΘΗΣΗ',
     'icd10'                =>  'ICD10 ΕΠΙΛΟΓΕΣ',
     'description'          =>  'ΠΕΡΙΓΡΑΦΗ',
+    'admin'                =>  'Διαχειριστής'
 
 );

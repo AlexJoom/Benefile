@@ -17,7 +17,7 @@
 @stop
 
 @section('main-window-content')
-    <div class="personal-info form-section">
+    <div class="benefiters-search margin-bottom-300px form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_parameters")</h1>
         </div>
@@ -57,6 +57,8 @@
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
                                 {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
+                                {!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -98,12 +100,192 @@
         </div>
         <div class="row">
             <div class="padding-left-right-15">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('marital_status_id', Lang::get('reports.marital_status')) !!}
+                    <div>
+                        <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($marital_statuses)){
+                                    foreach($marital_statuses as $marital_status){
+                                        echo "<option value=" . $marital_status->id . ">" . $marital_status->marital_status_title . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('age', Lang::get('reports.age')) !!}
+                    {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                    {!! Form::label('legal_status_id', Lang::get('reports.legal_status')) !!}
+                    <div>
+                        <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($legal_statuses)){
+                                    foreach($legal_statuses as $legal_status){
+                                        echo "<option value=" . $legal_status->id . ">" . $legal_status->description . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                    {!! Form::label('education_id', Lang::get('reports.education')) !!}
+                    <div>
+                        <select name="education_id" id="education-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($education_titles)){
+                                    foreach($education_titles as $education_title){
+                                        echo "<option value=" . $education_title->id . ">" . $education_title->education_title . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--<div class="row">--}}
+            {{--<div class="padding-left-right-15">--}}
+                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                    {{--{!! Form::label('gender_id', Lang::get('reports.gender')) !!}--}}
+                    {{--<div>--}}
+                        {{--{!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}--}}
+                        {{--{!! Form::label('gender_id', Lang::get('reports.male'), array('class' => 'radio-value')) !!}--}}
+                        {{--{!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}--}}
+                        {{--{!! Form::label('gender_id', Lang::get('reports.female'), array('class' => 'radio-value')) !!}--}}
+                        {{--{!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}--}}
+                        {{--{!! Form::label('gender_id', Lang::get('reports.other'), array('class' => 'radio-value')) !!}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        <div class="row">
+            <div class="padding-left-right-15">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('work_title_id', Lang::get('reports.work')) !!}
+                    <div>
+                        <select name="work_title_id" id="work-title-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($work_titles)){
+                                    foreach($work_titles as $work_title){
+                                        if($work_title->work_title == ""){
+                                            $work_title->work_title = "-";
+                                        }
+                                        echo "<option value=" . $work_title->id . ">" . $work_title->work_title . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('drug', Lang::get('reports.drug')) !!}
+                    {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                    {!! Form::label('incident_type_id', Lang::get('reports.incident_type')) !!}
+                    <div>
+                        <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($medical_incident_types)){
+                                    foreach($medical_incident_types as $medical_incident_type){
+                                        echo "<option value=" . $medical_incident_type->id . ">" . $medical_incident_type->description . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">--}}
+                    {{--{!! Form::label('location_id', Lang::get('reports.location')) !!}--}}
+                    {{--<div>--}}
+                        {{--<select name="location_id" id="location-id" class="width-100-percent">--}}
+                            {{--<option value=0></option>--}}
+                            <?php
+                                /*if(!empty($medical_locations)){
+                                    foreach($medical_locations as $location){
+                                        echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                    }
+                                }*/
+                            ?>
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="padding-left-right-15">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('doctor_name', Lang::get('reports.doctor_name')) !!}
+                    {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label('incidents_number', Lang::get('reports.incidents_number')) !!}
+                    {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                    {!! Form::label('examination_results_id', Lang::get('reports.examination_results')) !!}
+                    <div>
+                        <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($medical_examination_results)){
+                                    foreach($medical_examination_results as $medical_examination_result){
+                                        echo "<option value=" . $medical_examination_result->id . ">" . $medical_examination_result->description . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label(Lang::get('reports.insertion_date')) !!}
+                    <div>
+                        {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="padding-left-right-15">
+                <div class="padding-left-right-15">
+                    {!! Form::label(Lang::get('reports.incident_dates_range')) !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="padding-left-right-15">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label(Lang::get('reports.from')) !!}
+                    <div>
+                        {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    {!! Form::label(Lang::get('reports.to')) !!}
+                    <div>
+                        {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="padding-left-right-15">
                 {!! Form::submit(Lang::get('layouts/mainPanel.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
             </div>
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
+    <div id="search-results" class="form-section min-height-300px" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
         </div>
