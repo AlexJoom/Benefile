@@ -146,8 +146,8 @@ function fetchClinicalConditionsDataReport() {
             "type": "serial",
             "theme": "dark",
             "fontSize": 14,
+            fontFamily: "Helvetica Neue",
             "dataProvider": clinicalConditionsData,
-
             "gridAboveGraphs": true,
             "startDuration": 1,
             "graphs": [ {
@@ -171,27 +171,14 @@ function fetchClinicalConditionsDataReport() {
                 "tickLength": 20,
                 "fontSize": 14
             },
+            "valueAxes": [{
+                "axisAlpha": 0,
+                "position": "left",
+                "title": "Αριθμός ωφελουμένων"
+            }],
             "export": {
                 "enabled": true
             }
-
-
-            //"valueAxes": [ {
-            //    "axisTitleOffset": 20,
-            //    "minimum": 0,
-            //    "axisAlpha": 0.15
-            //} ],
-            //"startDuration": 2,
-            //"graphs": [ {
-            //    "balloonText": "[[value]] ωφελούμενοι",
-            //    "bullet": "round",
-            //    "valueField": "clinical_condition_count"
-            //} ],
-            //"rotate": true,
-            //"categoryField": "clinical_condition_name",
-            //"export": {
-            //    "enabled": true
-            //}
         } );
     });
 }
@@ -299,12 +286,15 @@ function fetchBenefitersVSphycologicalSupportType(){
             "type": "serial",
             "theme": "light",
             "dataProvider": phycologicalSupportType,
+            "fontSize": 16,
             "valueAxes": [ {
                 "gridColor": "#FFFFFF",
                 "gridAlpha": 0.2,
                 "dashLength": 0,
-                "fontSize": 16,
-                "position": "left"
+                //"fontSize": 16,
+                "position": "left",
+                "title": "Αριθμός ωφελουμένων"
+
             } ],
             "gridAboveGraphs": true,
             "startDuration": 1,
