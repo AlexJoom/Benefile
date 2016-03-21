@@ -39,10 +39,13 @@
                                 <?php
                                 $male = false;
                                 $female = false;
-                                if($benefiter->gender_id == 2){
+                                $other = false;
+                                if($benefiter->gender_id == 1){
+                                    $male = true;
+                                } elseif ($benefiter->gender_id == 2) {
                                     $female = true;
                                 } else {
-                                    $male = true;
+                                    $other = true;
                                 }
                                 ?>
                                 <div class="make-inline">
@@ -50,6 +53,8 @@
                                     {!! Form::label('gender_idm', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
                                     {!! Form::radio('gender_idf', 2, $female, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
                                     {!! Form::label('gender_idf', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                    {!! Form::radio('gender_ido', 3, $other, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                    {!! Form::label('gender_ido', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                                 </div>
                             </div>
                         </div>
