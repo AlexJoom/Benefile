@@ -65,6 +65,8 @@ function MakeAjaxSearchCall($url, $values){
                 'medical_location_id': $values.medical_location_id
             },
         beforeSend: function () {
+            // remove the bottom margin
+            $('.benefiters-search').removeClass('margin-bottom-300px');
             // shows the results div and the loading state section, hiding all others
             $('#search-results').show();
             $('.state').hide();

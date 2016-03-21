@@ -37,3 +37,7 @@ a.simple-button:hover, a.simple-button:focus{
     color: white;
     text-decoration: none;
 }
+
+.margin-bottom-300px{
+    margin-bottom: 300px;
+}
