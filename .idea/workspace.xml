@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/reports/reports.js" afterPath="$PROJECT_DIR$/public/js/reports/reports.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" />
     </list>
     <ignored path="Benefile.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,234 +50,29 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1817" max-vertical-offset="2691">
+            <state vertical-scroll-proportion="-13.62963" vertical-offset="1817" max-vertical-offset="2691">
               <caret line="104" column="21" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
+      <file leaf-file-name="new_medical_visit.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.925926" vertical-offset="1204" max-vertical-offset="3496">
-              <caret line="183" column="55" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
-              <folding>
-                <element signature="tag#div#0;tag#div#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#1;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#2;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#3;tag#div#0;tag#div#1;tag#div#0" expanded="false" />
-                <element signature="tag#div#1" expanded="false" />
-                <element signature="tag#div#0;tag#div#1" expanded="false" />
-                <element signature="tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#0;tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#1;tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#0;tag#div#1;tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#1;tag#div#1;tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#2;tag#div#1;tag#div#1;tag#div#1" expanded="false" />
-                <element signature="tag#div#2" expanded="false" />
-                <element signature="tag#div#0;tag#div#2" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#2" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#2" expanded="false" />
-                <element signature="tag#div#3" expanded="false" />
-                <element signature="tag#div#0;tag#div#3" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#3" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#3" expanded="false" />
-                <element signature="tag#div#4" expanded="false" />
-                <element signature="tag#div#0;tag#div#4" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#4" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#4" expanded="false" />
-                <element signature="tag#div#5" expanded="false" />
-                <element signature="tag#div#0;tag#div#5" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#5" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#5" expanded="false" />
-                <element signature="tag#div#6" expanded="false" />
-                <element signature="tag#div#0;tag#div#6" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#6" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#6" expanded="false" />
-                <element signature="tag#div#7" expanded="false" />
-                <element signature="tag#div#0;tag#div#7" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#7" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#7" expanded="false" />
-                <element signature="tag#div#8" expanded="false" />
-                <element signature="tag#div#0;tag#div#8" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#8" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#8" expanded="false" />
-                <element signature="tag#div#10" expanded="false" />
-                <element signature="tag#div#0;tag#div#10" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#10" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#10" expanded="false" />
-                <element signature="tag#div#11" expanded="false" />
-                <element signature="tag#div#0;tag#div#11" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#11" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#11" expanded="false" />
-                <element signature="tag#div#1;tag#div#0;tag#div#11" expanded="false" />
-                <element signature="tag#div#0;tag#div#1;tag#div#0;tag#div#11" expanded="false" />
-                <element signature="tag#div#12" expanded="false" />
-                <element signature="tag#div#0;tag#div#12" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#12" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#div#0;tag#div#12" expanded="false" />
-                <element signature="e#11520#11674#0#HTML" expanded="false" />
-                <element signature="e#11904#12081#0#HTML" expanded="false" />
-                <element signature="e#12121#12271#0#HTML" expanded="false" />
-                <element signature="e#12304#12457#0#HTML" expanded="false" />
-                <element signature="e#12520#12636#0#HTML" expanded="false" />
-                <element signature="e#12521#12601#0#HTML" expanded="false" />
-                <element signature="e#12768#12807#0#HTML" expanded="false" />
-                <element signature="e#12909#12956#0#HTML" expanded="false" />
-                <element signature="e#13066#13100#0#HTML" expanded="false" />
-                <element signature="e#13129#13202#0#HTML" expanded="false" />
-                <element signature="e#13234#13329#0#HTML" expanded="false" />
-                <element signature="tag#script#17" expanded="false" />
-                <element signature="e#13439#14977#0#HTML" expanded="false" />
-                <element signature="e#13503#14882#0#HTML" expanded="false" />
-                <element signature="e#13724#13878#0#HTML" expanded="false" />
-                <element signature="e#13934#14694#0#HTML" expanded="false" />
-                <element signature="e#13962#14680#0#HTML" expanded="false" />
-                <element signature="e#13963#14679#0#HTML" expanded="false" />
-                <element signature="e#14108#14285#0#HTML" expanded="false" />
-                <element signature="e#14325#14475#0#HTML" expanded="false" />
-                <element signature="e#14508#14661#0#HTML" expanded="false" />
-                <element signature="e#14724#14881#0#HTML" expanded="false" />
-                <element signature="e#14725#14826#0#HTML" expanded="false" />
-                <element signature="e#14979#15018#0#HTML" expanded="false" />
-                <element signature="e#15120#15167#0#HTML" expanded="false" />
-                <element signature="e#15277#15311#0#HTML" expanded="false" />
-                <element signature="e#15340#15413#0#HTML" expanded="false" />
-                <element signature="e#15445#15540#0#HTML" expanded="false" />
-                <element signature="tag#script#18" expanded="false" />
-                <element signature="e#15641#17159#0#HTML" expanded="false" />
-                <element signature="e#15703#17069#0#HTML" expanded="false" />
-                <element signature="e#15924#16078#0#HTML" expanded="false" />
-                <element signature="e#16134#16894#0#HTML" expanded="false" />
-                <element signature="e#16162#16880#0#HTML" expanded="false" />
-                <element signature="e#16163#16879#0#HTML" expanded="false" />
-                <element signature="e#16308#16485#0#HTML" expanded="false" />
-                <element signature="e#16525#16675#0#HTML" expanded="false" />
-                <element signature="e#16708#16861#0#HTML" expanded="false" />
-                <element signature="e#16924#17068#0#HTML" expanded="false" />
-                <element signature="e#16925#17024#0#HTML" expanded="false" />
-                <element signature="e#17161#17200#0#HTML" expanded="false" />
-                <element signature="e#17301#17348#0#HTML" expanded="false" />
-                <element signature="e#17458#17492#0#HTML" expanded="false" />
-                <element signature="e#17521#17594#0#HTML" expanded="false" />
-                <element signature="e#17626#17721#0#HTML" expanded="false" />
-                <element signature="tag#script#19" expanded="false" />
-                <element signature="e#17831#19344#0#HTML" expanded="false" />
-                <element signature="e#17895#19258#0#HTML" expanded="false" />
-                <element signature="e#18116#18270#0#HTML" expanded="false" />
-                <element signature="e#18326#19086#0#HTML" expanded="false" />
-                <element signature="e#18354#19072#0#HTML" expanded="false" />
-                <element signature="e#18355#19071#0#HTML" expanded="false" />
-                <element signature="e#18500#18677#0#HTML" expanded="false" />
-                <element signature="e#18717#18867#0#HTML" expanded="false" />
-                <element signature="e#18900#19053#0#HTML" expanded="false" />
-                <element signature="e#19116#19257#0#HTML" expanded="false" />
-                <element signature="e#19117#19215#0#HTML" expanded="false" />
-                <element signature="e#19346#19385#0#HTML" expanded="false" />
-                <element signature="e#19487#19534#0#HTML" expanded="false" />
-                <element signature="e#19644#19678#0#HTML" expanded="false" />
-                <element signature="e#19707#19780#0#HTML" expanded="false" />
-                <element signature="e#19812#19907#0#HTML" expanded="false" />
-                <element signature="tag#script#20" expanded="false" />
-                <element signature="e#20009#21244#0#HTML" expanded="false" />
-                <element signature="e#20169#20414#0#HTML" expanded="false" />
-                <element signature="e#20242#20383#0#HTML" expanded="false" />
-                <element signature="e#20437#20583#0#HTML" expanded="false" />
-                <element signature="e#20438#20582#0#HTML" expanded="false" />
-                <element signature="e#20631#20892#0#HTML" expanded="false" />
-                <element signature="e#20632#20891#0#HTML" expanded="false" />
-                <element signature="e#20917#21033#0#HTML" expanded="false" />
-                <element signature="e#21098#21178#0#HTML" expanded="false" />
-                <element signature="e#21198#21237#0#HTML" expanded="false" />
-                <element signature="tag#script#21" expanded="false" />
-                <element signature="e#21348#22730#0#HTML" expanded="false" />
-                <element signature="e#21508#21831#0#HTML" expanded="false" />
-                <element signature="e#21603#21800#0#HTML" expanded="false" />
-                <element signature="e#21854#22012#0#HTML" expanded="false" />
-                <element signature="e#21855#22011#0#HTML" expanded="false" />
-                <element signature="e#22060#22321#0#HTML" expanded="false" />
-                <element signature="e#22061#22320#0#HTML" expanded="false" />
-                <element signature="e#22346#22462#0#HTML" expanded="false" />
-                <element signature="e#22527#22664#0#HTML" expanded="false" />
-                <element signature="e#22684#22723#0#HTML" expanded="false" />
-                <element signature="tag#script#22" expanded="false" />
-                <element signature="e#22779#23816#0#HTML" expanded="false" />
-                <element signature="e#22929#23300#0#HTML" expanded="false" />
-                <element signature="e#23011#23300#0#HTML" expanded="false" />
-                <element signature="e#23302#23794#1#HTML" expanded="false" />
-                <element signature="e#23324#23779#0#HTML" expanded="false" />
-                <element signature="e#23915#24301#1#HTML" expanded="false" />
-                <element signature="e#23937#24283#0#HTML" expanded="false" />
-                <element signature="tag#script#23" expanded="false" />
-                <element signature="e#24521#24809#0#HTML" expanded="false" />
-                <element signature="e#24681#24808#0#HTML" expanded="false" />
-                <element signature="e#24742#24771#0#HTML" expanded="false" />
-                <element signature="e#24947#25093#0#HTML" expanded="false" />
-                <element signature="e#24948#25092#0#HTML" expanded="false" />
-                <element signature="e#25141#25399#0#HTML" expanded="false" />
-                <element signature="e#25142#25398#0#HTML" expanded="false" />
-                <element signature="e#25424#25540#0#HTML" expanded="false" />
-                <element signature="e#25605#25685#0#HTML" expanded="false" />
-                <element signature="e#25705#25744#0#HTML" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.593361" vertical-offset="2998" max-vertical-offset="6946">
+              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="152" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
+      <file leaf-file-name="basic_info_form.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.666667" vertical-offset="1145" max-vertical-offset="2093">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding>
-                <marker date="1458563758645" expanded="true" signature="538:1814" placeholder="..." />
-                <marker date="1458563758645" expanded="true" signature="3762:3768" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportsService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6264" max-vertical-offset="8464">
-              <caret line="293" column="44" selection-start-line="293" selection-start-column="44" selection-end-line="293" selection-end-column="44" />
-              <folding>
-                <element signature="e#31#51#0#PHP" expanded="true" />
-                <marker date="1458564058737" expanded="true" signature="676:736" placeholder="select count..users..." />
-                <marker date="1458564058737" expanded="true" signature="790:850" placeholder="select count..users..." />
-                <marker date="1458564058737" expanded="true" signature="905:965" placeholder="select count..users..." />
-                <marker date="1458564058737" expanded="true" signature="1026:1086" placeholder="select count..users..." />
-                <marker date="1458564058737" expanded="true" signature="1908:2182" placeholder="select marit..marital_status_lookup..." />
-                <marker date="1458564058737" expanded="true" signature="2815:2973" placeholder="select count..benefiters..." />
-                <marker date="1458564058737" expanded="true" signature="3258:3533" placeholder="select legal..legal_status_lookup..." />
-                <marker date="1458564058737" expanded="true" signature="3979:4071" placeholder="select work_..benefiters..." />
-                <marker date="1458564058737" expanded="true" signature="4844:5038" placeholder="select mll.d..medical_location_lookup..." />
-                <marker date="1458564058737" expanded="true" signature="5435:5503" placeholder="select * fro..queryString..." />
-                <marker date="1458564058737" expanded="true" signature="5655:5880" placeholder="select visit..benefiter_id..." />
-                <marker date="1458564058737" expanded="true" signature="5716:5805" placeholder="select benef..medical_visits..." />
-                <marker date="1458564058737" expanded="true" signature="6488:6623" placeholder="select date_..benefiters..." />
-                <marker date="1458564058737" expanded="true" signature="20416:20417" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reports.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52216065" vertical-offset="681" max-vertical-offset="2852">
-              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-              <folding>
-                <element signature="n#!!block;n#fetchPerDoctorDataReport#0" expanded="false" />
-                <element signature="n#!!block;n#fetchClinicalConditionsDataReport#0" expanded="false" />
-                <element signature="n#!!block;n#fetchmedicalVisitsPerMonthDataReport#0" expanded="false" />
-                <element signature="n#!!block;n#fetchBenefitersVSphycologicalSupportType#0" expanded="false" />
-                <element signature="n#!!block;n#fetchBenefitersRegistrationsPerMonthDataReport#0" expanded="false" />
-                <marker date="1458570339336" expanded="true" signature="2026:2040" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-15.333333" vertical-offset="966" max-vertical-offset="33396">
+              <caret line="60" column="133" selection-start-line="59" selection-start-column="32" selection-end-line="60" selection-end-column="133" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -307,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" />
         <option value="$PROJECT_DIR$/resources/lang/gr/reports.php" />
         <option value="$PROJECT_DIR$/app/Models/PsychosocialSession.php" />
@@ -320,6 +113,7 @@
         <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
         <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
         <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" />
       </list>
     </option>
   </component>
@@ -477,6 +271,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medical-visit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -956,7 +780,7 @@
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17582418" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13076924" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1971917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1105,13 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52431613" vertical-offset="690" max-vertical-offset="33396">
-          <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_visits.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="828">
@@ -1229,6 +1046,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.333333" vertical-offset="138" max-vertical-offset="1081">
           <caret line="30" column="97" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="97" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1237,20 +1055,6 @@
         <state vertical-scroll-proportion="0.7747489" vertical-offset="1323" max-vertical-offset="2070">
           <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1158357" vertical-offset="3525" max-vertical-offset="7015">
-          <caret line="216" column="55" selection-start-line="216" selection-start-column="50" selection-end-line="216" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48861912" vertical-offset="2829" max-vertical-offset="6555">
-          <caret line="137" column="66" selection-start-line="137" selection-start-column="45" selection-end-line="137" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -1294,6 +1098,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47916666" vertical-offset="0" max-vertical-offset="672">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#30#69#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1308,14 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="230">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1817" max-vertical-offset="2691">
-          <caret line="104" column="21" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1337,37 +1136,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6264" max-vertical-offset="8464">
-          <caret line="293" column="44" selection-start-line="293" selection-start-column="44" selection-end-line="293" selection-end-column="44" />
-          <folding>
-            <element signature="e#31#51#0#PHP" expanded="true" />
-            <marker date="1458564058737" expanded="true" signature="676:736" placeholder="select count..users..." />
-            <marker date="1458564058737" expanded="true" signature="790:850" placeholder="select count..users..." />
-            <marker date="1458564058737" expanded="true" signature="905:965" placeholder="select count..users..." />
-            <marker date="1458564058737" expanded="true" signature="1026:1086" placeholder="select count..users..." />
-            <marker date="1458564058737" expanded="true" signature="1908:2182" placeholder="select marit..marital_status_lookup..." />
-            <marker date="1458564058737" expanded="true" signature="2815:2973" placeholder="select count..benefiters..." />
-            <marker date="1458564058737" expanded="true" signature="3258:3533" placeholder="select legal..legal_status_lookup..." />
-            <marker date="1458564058737" expanded="true" signature="3979:4071" placeholder="select work_..benefiters..." />
-            <marker date="1458564058737" expanded="true" signature="4844:5038" placeholder="select mll.d..medical_location_lookup..." />
-            <marker date="1458564058737" expanded="true" signature="5435:5503" placeholder="select * fro..queryString..." />
-            <marker date="1458564058737" expanded="true" signature="5655:5880" placeholder="select visit..benefiter_id..." />
-            <marker date="1458564058737" expanded="true" signature="5716:5805" placeholder="select benef..medical_visits..." />
-            <marker date="1458564058737" expanded="true" signature="6488:6623" placeholder="select date_..benefiters..." />
-            <marker date="1458564058737" expanded="true" signature="20416:20417" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.666667" vertical-offset="1145" max-vertical-offset="2093">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
-            <marker date="1458563758645" expanded="true" signature="538:1814" placeholder="..." />
-            <marker date="1458563758645" expanded="true" signature="3762:3768" placeholder="..." />
+            <marker date="1458563758645" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1458563758645" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1380,9 +1155,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="681" max-vertical-offset="2852">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!block;n#fetchPerDoctorDataReport#0" expanded="false" />
+            <element signature="n#!!block;n#fetchClinicalConditionsDataReport#0" expanded="false" />
+            <element signature="n#!!block;n#fetchmedicalVisitsPerMonthDataReport#0" expanded="false" />
+            <element signature="n#!!block;n#fetchBenefitersVSphycologicalSupportType#0" expanded="false" />
+            <element signature="n#!!block;n#fetchBenefitersRegistrationsPerMonthDataReport#0" expanded="false" />
+            <marker date="1458570339336" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reports/reports.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.925926" vertical-offset="1204" max-vertical-offset="3496">
+        <state vertical-scroll-proportion="0.3856115" vertical-offset="1204" max-vertical-offset="3496">
           <caret line="183" column="55" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
           <folding>
             <element signature="tag#div#0;tag#div#0" expanded="false" />
@@ -1547,18 +1337,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
+    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52216065" vertical-offset="681" max-vertical-offset="2852">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.69648093" vertical-offset="6264" max-vertical-offset="8464">
+          <caret line="293" column="44" selection-start-line="293" selection-start-column="44" selection-end-line="293" selection-end-column="44" />
           <folding>
-            <element signature="n#!!block;n#fetchPerDoctorDataReport#0" expanded="false" />
-            <element signature="n#!!block;n#fetchClinicalConditionsDataReport#0" expanded="false" />
-            <element signature="n#!!block;n#fetchmedicalVisitsPerMonthDataReport#0" expanded="false" />
-            <element signature="n#!!block;n#fetchBenefitersVSphycologicalSupportType#0" expanded="false" />
-            <element signature="n#!!block;n#fetchBenefitersRegistrationsPerMonthDataReport#0" expanded="false" />
-            <marker date="1458570339336" expanded="true" signature="2026:2040" placeholder="..." />
+            <element signature="e#31#51#0#PHP" expanded="true" />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select marit..marital_status_lookup..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select count..benefiters..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select legal..legal_status_lookup..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select work_..benefiters..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select mll.d..medical_location_lookup..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select * fro..queryString..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select visit..benefiter_id..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select benef..medical_visits..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="select date_..benefiters..." />
+            <marker date="1458564058737" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47214076" vertical-offset="2829" max-vertical-offset="6555">
+          <caret line="137" column="66" selection-start-line="137" selection-start-column="45" selection-end-line="137" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.62963" vertical-offset="1817" max-vertical-offset="2691">
+          <caret line="104" column="21" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.333333" vertical-offset="966" max-vertical-offset="33396">
+          <caret line="60" column="133" selection-start-line="59" selection-start-column="32" selection-end-line="60" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.593361" vertical-offset="2998" max-vertical-offset="6946">
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="152" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

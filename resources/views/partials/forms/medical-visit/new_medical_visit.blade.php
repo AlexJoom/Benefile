@@ -18,26 +18,30 @@
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
     </div>
-    <div class="row padding-top-20">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="padding-left-right-15">
-                    <div class="form-group padding-left-right-15 float-left">
-                        {!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}
-                        {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
-                    </div>
+    {{--<div class="row padding-top-20">--}}
+        {{--<div class="col-md-12">--}}
+            {{--<div class="row">--}}
+                {{--<div class="padding-left-right-15">--}}
+                    {{--<div class="form-group padding-left-right-15 float-left">--}}
+                        {{--{!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}--}}
+                        {{--{!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}--}}
+                    {{--</div>--}}
                     {{--<div class="form-group padding-left-right-15 float-left">--}}
                         {{--{!! Form::label('medical_visit_id', Lang::get($p.'total_visits_number')) !!}--}}
                         {{--{!! Form::text('medical_visit_id', $medical_visits_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}--}}
                     {{--</div>--}}
-                </div>
-            </div>
-        </div>
-    </div>
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 <div class="padding-left-right-15">
+                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}
+                        {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
+                    </div>
                     {{-- LASTNAME --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                         {!! Form::label('lastname', Lang::get($p.'lastname')) !!}
@@ -55,10 +59,13 @@
                             <?php
                                 $male = false;
                                 $female = false;
-                                if($benefiter->gender_id == 2){
+                                 $other = false;
+                                if($benefiter->gender_id == 1){
+                                    $male = true;
+                                } elseif ($benefiter->gender_id == 2) {
                                     $female = true;
                                 } else {
-                                    $male = true;
+                                    $other = true;
                                 }
                             ?>
                             <div class="make-inline">
@@ -66,6 +73,8 @@
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
                                 {!! Form::radio('gender_id', 2, $female, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, $other, array('class' => 'make-inline', 'disabled' => 'disabled')) !!}
+                                {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -100,6 +109,11 @@
                         {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                         {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
+                    {{-- ETHNICITY --}}
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
+                        {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -124,23 +138,6 @@
                         {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                         {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                     </div>
-
-                    {{-- ETHNICITY --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                        {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
-                        {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
-                    </div>
-
-                    {{-- ENTRY POINT --}}
-                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
-                        {{--{!! Form::label('travel_route', Lang::get($p.'travel_route')) !!}--}}
-                        {{--{!! Form::text('travel_route', $benefiter->travel_route, array('class' => 'custom-input-text' , 'disabled')) !!}--}}
-                    {{--</div>--}}
-                    {{-- DURATION OF TRAVEL --}}
-                    {{--<div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">--}}
-                        {{--{!! Form::label('travel_duration', Lang::get($p.'travel_duration')) !!}--}}
-                        {{--{!! Form::text('travel_duration', $benefiter->travel_duration, array('class' => 'custom-input-text' , 'disabled')) !!}--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
