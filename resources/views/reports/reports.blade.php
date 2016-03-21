@@ -205,7 +205,7 @@
     </div>
 
     {{-- REPORT: Benefiters vs clinical conditions --}}
-    <div class="benefiters-report form-section">
+    <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
             <div class="col-md-7 right-border">
                 <div class="underline-header">
@@ -223,7 +223,7 @@
     </div>
 
     {{-- REPORT: Benefiters vs phycological support --}}
-    <div class="benefiters-report form-section no-bottom-border">
+    <div class="benefiters-report form-section">
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
@@ -263,14 +263,15 @@
         var chart = AmCharts.makeChart("ageReport", {
             "titles":[{'text':'','size':22}],
             "type": "pie",
+            "fontSize": 16,
             "startDuration": 0,
             "theme": "light",
             "addClassNames": true,
             "legend":{
                 "position":"right",
                 "marginRight":100,
-                "autoMargins":false
-
+                "autoMargins":false,
+                "fontSize": 16
             },
             "innerRadius": "30%",
             "defs": {
@@ -336,11 +337,12 @@
             "startDuration": 0,
             "theme": "light",
             "addClassNames": true,
+            "fontSize": 16,
             "legend":{
                 "position":"right",
                 "marginRight":100,
-                "autoMargins":false
-
+                "autoMargins":false,
+                "fontSize": 16
             },
             "innerRadius": "30%",
             "defs": {
@@ -405,12 +407,13 @@
             "type": "pie",
             "startDuration": 0,
             "theme": "light",
+            "fontSize": 16,
             "addClassNames": true,
             "legend":{
                 "position":"right",
                 "marginRight":100,
-                "autoMargins":false
-
+                "autoMargins":false,
+                "fontSize": 16
             },
             "innerRadius": "30%",
             "defs": {
@@ -475,12 +478,13 @@
             "type": "pie",
             "startDuration": 0,
             "theme": "light",
+            "fontSize": 16,
             "addClassNames": true,
             "legend":{
                 "position":"right",
                 "marginRight":100,
-                "autoMargins":false
-
+                "autoMargins":false,
+                "fontSize": 16
             },
             "innerRadius": "30%",
             "defs": {
@@ -541,7 +545,7 @@
     var chart = AmCharts.makeChart("benefiters-work-title-chart", {
         "type": "serial",
         "theme": "light",
-        "fontSize": 12,
+        "fontSize": 16,
         "fontFamily": "Arial",
         "marginRight": 70,
         "dataProvider": [
@@ -587,7 +591,7 @@
     var chart = AmCharts.makeChart("benefiters-per-medical-visits-chart", {
         "type": "serial",
         "theme": "light",
-        "fontSize": 12,
+        "fontSize": 16,
         "fontFamily": "Arial",
         "marginRight": 70,
         "dataProvider": [
@@ -667,7 +671,7 @@
     var chart = AmCharts.makeChart("registrationStatusReport", {
         "type": "serial",
         "theme": "light",
-        "fontSize": 20,
+        "fontSize": 16,
         "fontFamily": "Arial",
         "marginRight": 70,
         "dataProvider": [

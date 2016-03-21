@@ -51,6 +51,7 @@ function fetchEducationDataReport(){
             "dataProvider":educationData,
             "valueField": "benefiters_count_with_this_education_title",
             "titleField": "education_title",
+            "fontSize": 16,
             "export": {
                 "enabled": true
             }
@@ -302,7 +303,8 @@ function fetchBenefitersVSphycologicalSupportType(){
                 "gridColor": "#FFFFFF",
                 "gridAlpha": 0.2,
                 "dashLength": 0,
-                "fontSize": 16
+                "fontSize": 16,
+                "position": "left"
             } ],
             "gridAboveGraphs": true,
             "startDuration": 1,
@@ -325,7 +327,7 @@ function fetchBenefitersVSphycologicalSupportType(){
                 "gridAlpha": 0,
                 "tickPosition": "start",
                 "tickLength": 20,
-                "fontSize": 14
+                "fontSize": 16
             },
             "export": {
                 "enabled": true
@@ -351,7 +353,7 @@ function fetchBenefitersRegistrationsPerMonthDataReport() {
 
             type: "stock",
             "theme": "light",
-
+            "fontSize": 16,
             dataSets: [ {
                 color: "#b0de09",
                 fieldMappings: [ {
