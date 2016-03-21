@@ -41,17 +41,8 @@ class SearchController extends Controller
 
     // gets the search parameters and returns the results to view
     public function getResults(Request $request){
-        $basicInfoService = new BasicInfoService();
-        $results = $basicInfoService->searchBenefitersTable($request->folder_number,
-                $request->lastname,
-                $request->name,
-                $request->fathers_name,
-                $request->gender_id,
-                $request->telephone,
-                $request->birth_date,
-                $request->origin_country,
-                $request->medical_location_id
-            );
+        $searchService = new SearchService();
+        $results = $searchService->searchBenefiters($request->all());
         return $results;
     }
 }
