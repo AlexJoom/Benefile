@@ -100,6 +100,9 @@ function MakeAjaxSearchCall($url, $values){
     });
 }
 
+var $no = $(".benefiters-search").data("no-lang");
+var $yes = $(".benefiters-search").data("yes-lang");
+
 // show the results returned from the ajax call
 function DisplayResults($response){
     // if nothing is returned, display "No results found" message
@@ -109,9 +112,20 @@ function DisplayResults($response){
         $view_folders = $('#search-results').data('view-folders');
         for (var i in $response) {
             $anchor = $('#search-results').data('url').replace('-1', $response[i].id);
-            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
+            $response[i].language_interpreter_needed = GetYesOrNoTextFromId($response[i].language_interpreter_needed);
+            $response[i].is_benefiter_working = GetYesOrNoTextFromId($response[i].is_benefiter_working);
+            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td><td class=\"hide\">" + $response[i].fathers_name + "</td><td class=\"hide\">" + $response[i].mothers_name + "</td><td class=\"hide\">" + $response[i].birth_date + "</td><td class=\"hide\">" + $response[i].arrival_date + "</td><td class=\"hide\">" + $response[i].address + "</td><td class=\"hide\">" + $response[i].number_of_children + "</td><td class=\"hide\">" + $response[i].relatives_residence + "</td><td class=\"hide\">" + $response[i].language_interpreter_needed + "</td><td class=\"hide\">" + $response[i].is_benefiter_working + "</td><td class=\"hide\">" + $response[i].legal_working_status + "</td><td class=\"hide\">" + $response[i].country_abandon_reason + "</td><td class=\"hide\">" + $response[i].travel_route + "</td><td class=\"hide\">" + $response[i].travel_duration + "</td><td class=\"hide\">" + $response[i].detention_duration + "</td><td class=\"hide\">" + $response[i].origin_country + "</td><td class=\"hide\">" + $response[i].nationality_country + "</td><td class=\"hide\">" + $response[i].ethnic_group + "</td><td class=\"hide\">" + $response[i].social_history + "</td><td class=\"hide\">" + $response[i].marital_status_title + "</td><td class=\"hide\">" + $response[i].education_title + "</td><td class=\"hide\">" + $response[i].legal_working_status + "</td><td class=\"hide\">" + $response[i].work_title + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
             $("#results > tbody").append($row);
         }
         $('.state-results').show();
+    }
+}
+
+// gets binary and returns yes or no
+function GetYesOrNoTextFromId($binary){
+    if ($binary == "0"){
+        return $no;
+    } else {
+        return $yes;
     }
 }
