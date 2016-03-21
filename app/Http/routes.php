@@ -103,6 +103,7 @@ Route::get('benefites-VS-education-Report-get-data', 'MainPanel\ReportsControlle
 Route::get('benefites-VS-doctor-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSdoctorsData');
 Route::get('benefites-VS-ClinicalConditions-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSClinicalConditionsData');
 Route::get('medical_visits-PER-month-Report-get-data', 'MainPanel\ReportsController@getMedicalVisitsVSMonthDate');
+Route::get('registrations-PER-month-Report-get-data', 'MainPanel\ReportsController@getRegistrationsVSMonthDate');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ

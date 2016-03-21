@@ -169,11 +169,11 @@
         {{-- =7= --}}
         <hr>
         <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <h4>@lang($p.'h3-registration-status')</h4>
-                    <div id="registrationStatusReport"></div>
+            <div class="col-md-12 padding-right-35">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-registration-status')</h1>
                 </div>
+                <div id="registrations_per_month"></div>
             </div>
         </div>
     </div>

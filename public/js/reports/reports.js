@@ -217,6 +217,7 @@ function fetchmedicalVisitsPerMonthDataReport() {
         url: $('body').attr('data-url') + "/medical_visits-PER-month-Report-get-data",
         success: function (response) {
             medicalVisitsPerMonth = response;
+	    console.log(medicalVisitsPerMonth);
         }
     }).done(function () {
         var chart = AmCharts.makeChart( "medical_visits_per_month", {
@@ -292,5 +293,90 @@ function fetchmedicalVisitsPerMonthDataReport() {
     });
 }
 fetchmedicalVisitsPerMonthDataReport();
+
+// -------- END REPORT: Number of visits per month (script) ----------------------------------------------------//
+
+var benefitersRegistrationsPerMonth = [];
+
+function fetchBenefitersRegistrationsPerMonthDataReport() {
+    $.ajax({
+        url: $('body').attr('data-url') + "/registrations-PER-month-Report-get-data",
+        success: function (response) {
+            benefitersRegistrationsPerMonth = response;
+        }
+    }).done(function () {
+        var chart = AmCharts.makeChart( "registrations_per_month", {
+
+            type: "stock",
+            "theme": "light",
+
+            dataSets: [ {
+                color: "#b0de09",
+                fieldMappings: [ {
+                    fromField: "registrations_per_month",
+                    toField: "registrations_per_month"
+                } ],
+                dataProvider: benefitersRegistrationsPerMonth,
+                categoryField: "per_month_date"
+            } ],
+
+            panels: [ {
+                showCategoryAxis: true,
+                title: "Αριθμός Εγγραφών",
+                eraseAll: false,
+                allLabels: [ {
+                    x: 0,
+                    y: 115,
+                    //text: "Click on the pencil icon on top-right to start drawing",
+                    text: "",
+                    align: "center",
+                    size: 16
+                } ],
+
+                stockGraphs: [ {
+                    id: "g1",
+                    valueField: "registrations_per_month",
+                    useDataSetColors: false,
+                    "bullet": "round"
+                } ],
+
+
+                stockLegend: {
+                    valueTextRegular: " ",
+                    markerType: "none"
+                },
+
+                drawingIconsEnabled: true
+            } ],
+
+            chartScrollbarSettings: {
+                graph: "g1"
+            },
+            chartCursorSettings: {
+                valueBalloonsEnabled: true
+            },
+            periodSelector: {
+                position: "bottom",
+                periods: [ {
+                    period: "DD",
+                    count: 10,
+                    label: "10 days"
+                }, {
+                    period: "MM",
+                    count: 1,
+                    label: "1 month"
+                }, {
+                    period: "YYYY",
+                    count: 1,
+                    label: "1 year"
+                }, {
+                    period: "MAX",
+                    label: "MAX"
+                } ]
+            }
+        } );
+    });
+}
+fetchBenefitersRegistrationsPerMonthDataReport();
 
 // -------- END REPORT: Number of visits per month (script) ----------------------------------------------------//
