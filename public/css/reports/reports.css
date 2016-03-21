@@ -1,5 +1,5 @@
-.width-85px{
-    width: 85px;
+.width-120px{
+    width: 120px;
 }
 
 p{
@@ -15,13 +15,13 @@ h4 {
 }
 
 p.users-title{
-    font-size: 1.1em;
+    font-size: 1.4em;
     font-weight: 700;
     margin: 0;
 }
 
 p.users-counter{
-    font-size: 3.6em;
+    font-size: 4.375em;
     font-weight: 700;
     margin: 0 0 0 10px;
     padding: 0;
@@ -50,7 +50,7 @@ p.users-counter{
     padding-bottom: 30px;
 }
 .gender-number{
-    font-size: 70px;
+    font-size: 4.375em;
     font-weight: 700;
     line-height: 1;
 }
