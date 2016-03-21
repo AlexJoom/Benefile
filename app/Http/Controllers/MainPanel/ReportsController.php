@@ -40,21 +40,6 @@ class ReportsController extends Controller
         $benefitersPerMedicalVisits = $this->reportsService->getReportDataForBenefitersPerMedicalVisitsCount();
         // count benefiters based on registration date
         $benefitersCount = $this->reportsService->getReportDataForRegisteredBenefiters();
-        /* variables for search */
-        // all the marital statuses
-        $allMaritalStatuses = $this->reportsService->getAllMaritalStatuses();
-        // all the legal statuses
-        $allLegalStatuses = $this->reportsService->getAllLegalStatuses();
-        // all the education titles
-        $allEducationTitles = $this->reportsService->getAllEducationTitles();
-        // all the work titles
-        $allWorkTitles = $this->reportsService->getAllWorkTitles();
-        // all the medical incident types
-        $allMedicalIncidentTypes = $this->reportsService->getAllMedicalIncidentTypes();
-        // all the medical locations
-        $allMedicalLocations = $this->reportsService->getAllMedicalLocations();
-        // all the medical examination results
-        $allMedicalExaminationResults = $this->reportsService->getAllMedicalExaminationResults();
 
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
@@ -66,22 +51,8 @@ class ReportsController extends Controller
             ->with('benefiters_legal_statuses', $benefitersLegalStatuses)
             ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
             ->with('benefiters_count', $benefitersCount)
-            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
-            ->with('marital_statuses', $allMaritalStatuses)
-            ->with('legal_statuses', $allLegalStatuses)
-            ->with('education_titles', $allEducationTitles)
-            ->with('work_titles', $allWorkTitles)
-            ->with('medical_incident_types', $allMedicalIncidentTypes)
-            ->with('medical_locations', $allMedicalLocations)
-            ->with('medical_examination_results', $allMedicalExaminationResults);
+            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits);
     }
-
-    
-    // gets the search query and returns the search results
-    public function getBenefiterSearchResults(Request $request) {
-        $request->request->gender_id = "";
-        return $this->reportsService->getSearchResults($request->all());
-    }    
     
     // fetch benefiters vs education data from service in order to be used by an ajax call
     public function getBenefitesVSeducationdata(){
@@ -98,6 +69,7 @@ class ReportsController extends Controller
         $report_benefiters_vs_clinical_conditions = $this->reportsService->getReport_benefiters_vs_clinical_conditions();
         return $report_benefiters_vs_clinical_conditions;
     }
+
     //fetch all medical visits destributed per month
     public function getMedicalVisitsVSMonthDate(){
         $report_medical_visits_vs_date = $this->reportsService->getReport_medical_visits_vs_date();
@@ -107,6 +79,11 @@ class ReportsController extends Controller
     public function getBenefitersVSPhycologicalSupportType(){
         $benefiters_vs_phycological_support = $this->reportsService->getReport_benefiters_vs_phycological_support();
         return $benefiters_vs_phycological_support;
+    }
+    //fetch all Registrations per month
+    public function getRegistrationsVSMonthDate(){
+        $report_registrations_vs_date = $this->reportsService->getRegistrationsVSMonthDate();
+        return $report_registrations_vs_date;
     }
 
 }

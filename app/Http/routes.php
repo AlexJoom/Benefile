@@ -104,6 +104,7 @@ Route::get('benefites-VS-doctor-Report-get-data', 'MainPanel\ReportsController@g
 Route::get('benefites-VS-ClinicalConditions-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSClinicalConditionsData');
 Route::get('medical_visits-PER-month-Report-get-data', 'MainPanel\ReportsController@getMedicalVisitsVSMonthDate');
 Route::get('benefites-VS-phycological-support-type', 'MainPanel\ReportsController@getBenefitersVSPhycologicalSupportType');
+Route::get('registrations-PER-month-Report-get-data', 'MainPanel\ReportsController@getRegistrationsVSMonthDate');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ
