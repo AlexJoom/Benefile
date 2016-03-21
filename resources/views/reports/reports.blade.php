@@ -105,7 +105,7 @@
             {{-- Benefiters marital statuses --}}
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-marital-status')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-marital-status')</h1>
                 </div>
                 <div id="maritalStatusReport"></div>
             </div>
@@ -117,7 +117,7 @@
             {{-- Medical visits location --}}
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-medical-visits-location')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-medical-visits-location')</h1>
                 </div>
                 <div id="medicalStatusReport" class="col-md-12"></div>
             </div>
@@ -130,7 +130,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-work-title')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-work-title')</h1>
                 </div>
                 <div id="benefiters-work-title-chart"></div>
             </div>
@@ -141,7 +141,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-medical-visits')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-medical-visits')</h1>
                 </div>
                     <div id="benefiters-per-medical-visits-chart"></div>
             </div>
@@ -152,7 +152,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-age-report')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-age-report')</h1>
                 </div>
                 <div id="ageReport" class="col-md-12"></div>
             </div>
@@ -163,7 +163,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-legal-status')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-legal-status')</h1>
                 </div>
                 <div id="legalStatusReport"></div>
             </div>
@@ -174,7 +174,7 @@
         <div class="row">
             <div class="col-md-12 padding-right-35">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h3-registration-status')</h1>
+                    <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-registration-status')</h1>
                 </div>
                 <div id="registrations_per_month"></div>
             </div>
