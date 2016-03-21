@@ -363,6 +363,7 @@ class CreateBenefitersTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('benefiters_psychosocial_support', function(Blueprint $table) {
