@@ -41,3 +41,7 @@ a.simple-button:hover, a.simple-button:focus{
 .margin-bottom-300px{
     margin-bottom: 300px;
 }
+
+.min-height-300px{
+    min-height: 300px;
+}

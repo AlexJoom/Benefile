@@ -83,7 +83,6 @@ class ReportsController extends Controller
     
     // gets the search query and returns the search results
     public function getBenefiterSearchResults(Request $request) {
-        $request->request->gender_id = "";
         return $this->reportsService->getSearchResults($request->all());
     }    
     

@@ -285,7 +285,7 @@
         </div>
         {!! Form::close() !!}
     </div>
-    <div id="search-results" class="form-section" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
+    <div id="search-results" class="form-section min-height-300px" style="display: none;" data-url="{{ url('benefiter/-1/basic-info') }}" data-view-folders="{{ Lang::get($p."view_folders") }}">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_results")</h1>
         </div>
