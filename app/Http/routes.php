@@ -102,6 +102,7 @@ Route::get('download-csv', 'DownloadFileController@getDownloadCSV');
 Route::get('benefites-VS-education-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSeducationdata');
 Route::get('benefites-VS-doctor-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSdoctorsData');
 Route::get('benefites-VS-ClinicalConditions-Report-get-data', 'MainPanel\ReportsController@getBenefitesVSClinicalConditionsData');
+Route::get('medical_visits-PER-month-Report-get-data', 'MainPanel\ReportsController@getMedicalVisitsVSMonthDate');
 //--- END ΑΝΑΦΟΡΑ
 
 //--- ΧΡΗΣΤΕΣ

@@ -188,6 +188,7 @@
                             <tr>
                                 <th>Α/Α</th>
                                 <th>@lang($p.'doctor')</th>
+                                <th>@lang($p.'doctor_speciality')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
@@ -199,6 +200,7 @@
                             <tr>
                                 <th>Α/Α</th>
                                 <th>@lang($p.'doctor')</th>
+                                <th>@lang($p.'doctor_speciality')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
@@ -211,6 +213,11 @@
                                 <tr>
                                     <td>{{ $i+1 }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}</td>
+                                    @if($benefiter_medical_visits_list[$i]['doctor']['user_subrole_id'] == null)
+                                    <td>@lang($p.'admin')</td>
+                                    @else
+                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }}</td>
+                                    @endif
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalLocation']['description'] }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalIncidentType']['description'] }}</td>
                                     @if($benefiter_medical_visits_list[$i]['medical_visit_date'] == null)
