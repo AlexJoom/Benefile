@@ -14,6 +14,7 @@ function fetchEducationDataReport(){
     }).done(function(){
         var chart = AmCharts.makeChart("benefiter_vs_education", {
             "type": "pie",
+            // "groupPercent": 10,
             "startDuration": 0,
             "theme": "light",
             "addClassNames": true,
