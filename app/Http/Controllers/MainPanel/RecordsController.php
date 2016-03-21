@@ -492,7 +492,8 @@ class RecordsController extends Controller
         $med_visit_lab_results = '';
         $med_visit_medication = '';
         $med_visit_referrals = '';
-        // TODO CREATE A SRVICE THAT RETURNS A JSON WITH ALL INFO FOR EVERY VISIT
+        $med_visit_uploads = '';
+        // TODO CREATE A SERVICE THAT RETURNS A JSON WITH ALL INFO FOR EVERY VISIT
         $current_benefiter_medical_visit_id = $request['current_medical_visit'];
         $benefiter_medical_visits_list = $this->medicalVisit->findMedicalVisitsForBenefiter($id);
         $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
@@ -536,6 +537,8 @@ class RecordsController extends Controller
                 $med_visit_medication = $this->medicalVisit->findMedicalVisitMedication($med_visit['id']);
                 // Referrals
                 $med_visit_referrals = $this->medicalVisit->findMedicalVisitReferrals($med_visit['id']);
+                // Uploads
+                $med_visit_uploads = $this->medicalVisit->findMedicalVisitUploads($med_visit['id']);
             }
         }
         // ------ END MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
@@ -555,6 +558,7 @@ class RecordsController extends Controller
                                                     ->with('med_visit_lab_results', $med_visit_lab_results)
                                                     ->with('med_visit_medication', $med_visit_medication)
                                                     ->with('med_visit_referrals', $med_visit_referrals)
+                                                    ->with('med_visit_uploads', $med_visit_uploads)
                                                     ->with('benefiter_folder_number', $benefiter_folder_number)
                                                     ->with('benefiter', $benefiter)
                                                     ->with('ExamResultsLookup', $ExamResultsLookup)

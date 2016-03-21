@@ -66,11 +66,18 @@ return array(
     'referrals'            =>  'Παραπομπές',
     'referrals_info'       =>  'ΠΑΡΑΠΟΜΠΗ: ',
 
+    'upload'               =>  'Αποθηκευμένα αρχεία: ',
+    'upload_description'   =>  'Περιγραφή αρχείου: ',
+    'upload_title'         =>  'Όνομα αρχείου: ',
+
     'upload_file'          =>  'Ανέβασμα αρχείου',
     'file_details'         =>  'ΠΕΡΙΓΡΑΦΗ ΑΡΧΕΙΟΥ:',
 
     'save_medical_visit'   =>  'Αποθήκευση Ιατρικής Επίσκεψης',
     'update_medical_visit' =>  'Ανανέωση Ιατρικής Επίσκεψης',
     'doctor_speciality'    =>  'Ειδiκότητα',
+    'condition-name'       =>  'ΠΑΘΗΣΗ',
+    'icd10'                =>  'ICD10 ΕΠΙΛΟΓΕΣ',
+    'description'          =>  'ΠΕΡΙΓΡΑΦΗ',
 
 );

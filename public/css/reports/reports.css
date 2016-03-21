@@ -75,7 +75,8 @@ p.users-counter{
 #registrationStatusReport,
 #benefiters-work-title-chart,
 #benefiters-per-medical-visits-chart,
-#benefiter_vs_clinical_conditions{
+#benefiter_vs_clinical_conditions,
+#medical_visits_per_month{
     width: 100%;
     height: 500px;
     font-size: 16px !important;
@@ -125,4 +126,8 @@ p.users-counter{
 }
 .min-height-300px{
     min-height: 300px;
+}
+
+.padding-right-35{
+    padding-right: 35px;
 }

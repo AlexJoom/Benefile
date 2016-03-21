@@ -453,26 +453,19 @@ class ReportsService{
         $results = array();
         // get all clinical conditions from lookup
         $clinical_conditions_lookup = medical_examination_results_lookup::get();
-        // get all medical examination results from DB
-        $medical_examination_results = medical_examination_results::get();
-        // get all benefiters who have at list one medical visit
-        $medical_visits = medical_visits::select('id','benefiter_id')->get();
 
         // count benefiters regarding their medical condition
         foreach($clinical_conditions_lookup as $condition){
-            // TODO benefiters with same clinical condition
-//            $benefiters_with_same_clinical_condition =
-            $current_clinical_condition_counter = 0;
-            foreach($medical_visits as $visit){
-                // benefiter duplicity counter for the same clinical condition
-//                $benefiter_duplicity_counter = 0;
-                foreach($medical_examination_results as $med_result){
-                    if( $med_result['medical_visit_id'] == $visit['id'] && $med_result['results_lookup_id'] == $condition['id']){
-
-                        $current_clinical_condition_counter++;
-                    }
-                }
+            // first we will make a benefiters id list with the current clinical condition.
+            $medical_examination_results_with_same_clinical_condition = medical_examination_results::where('results_lookup_id',$condition['id'])->get();
+            // then make an array with all benefiter_id with the current clinical condition.
+            $benefiters_with_same_clinical_condition =array();
+            foreach($medical_examination_results_with_same_clinical_condition as $med_exam_same_clinical){
+                array_push($benefiters_with_same_clinical_condition, medical_visits::find($med_exam_same_clinical['medical_visit_id'])['benefiter_id']);
             }
+            // then find the duplicities in the above array and count the result.
+            $current_clinical_condition_counter = count(array_count_values($benefiters_with_same_clinical_condition));
+            // pass all necessary for amchart.js results to another array.
             $clinical_conditions_result = [ 'clinical_condition_name' => $condition['description'],
                                             'clinical_condition_count' => $current_clinical_condition_counter];
             array_push($results, $clinical_conditions_result);
@@ -484,9 +477,33 @@ class ReportsService{
     // -------------------------------------------------------------------------------------------------------- //
     // ----------------------- REPORT: Benefiters vs medical visits per month --------------------------------- //
     public function getReport_medical_visits_vs_date(){
-        // count medical visits regarding time period (from , to)
+        // in order to count the visits per month the only thing we have to do is to fetch all available medical visits
+        // and count the medical visit dates with the same month.
+
+        $results = array();
+        $months = array();
+        // get all medical visits
+        $medical_visits = medical_visits::get();
+        // for each visit remove the day part of the string (last three characters) and create a new array.
+        foreach ($medical_visits as $visit) {
+            $time = strtotime($visit['medical_visit_date']);
+            $current_month = date('Y-m',$time);
+            array_push($months, $current_month);
+        }
+        // for the new date array count for duplicities and create the necessary data pair.
+        $array_duplicities = array_count_values($months);
+        foreach($array_duplicities as $key => $per_month_count){
+            $medical_result = ['per_month_date' => $key , 'visits_per_month' => $per_month_count ];
+            array_push($results, $medical_result);
+        }
+        // Order results by date (ascending)
+        foreach ($results as $key => $part) {
+            $sort[$key] = strtotime($part['per_month_date']);
+        }
+        array_multisort($sort, SORT_ASC, $results);
 
         // return array with time_period => number of medical visits
+        return $results;
     }
 }
 
