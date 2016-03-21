@@ -213,7 +213,11 @@
                                 <tr>
                                     <td>{{ $i+1 }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}</td>
-                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor'] }}</td>
+                                    @if($benefiter_medical_visits_list[$i]['doctor']['user_subrole_id'] == null)
+                                    <td>@lang($p.'admin')</td>
+                                    @else
+                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }}</td>
+                                    @endif
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalLocation']['description'] }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalIncidentType']['description'] }}</td>
                                     @if($benefiter_medical_visits_list[$i]['medical_visit_date'] == null)
