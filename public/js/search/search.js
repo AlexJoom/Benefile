@@ -12,6 +12,19 @@ $(document).ready(function(){
         var $birth_date = $("input[name='birth_date']").val();
         var $origin_country = $("input[name='origin_country']").val();
         var $medical_location_id = $("select:first").val();
+        var $marital_status_id = $("#marital-status-id :selected").val();
+        var $age = $("input[name='age']").val();
+        var $legal_status_id = $("#legal-status-id :selected").val();
+        var $education_id = $("#education-id :selected").val();
+        var $work_title_id = $("#work-title-id :selected").val();
+        var $drug = $("input[name='drug']").val();
+        var $incident_type_id = $("#incident-type-id :selected").val();
+        var $doctor_name = $("input[name='doctor_name']").val();
+        var $incidents_number = $("input[name='incidents_number']").val();
+        var $examination_results_id = $("#examination-results-id :selected").val();
+        var $insertion_date = $("input[name='insertion_date']").val();
+        var $incident_from = $("input[name='incident_from']").val();
+        var $incident_to = $("input[name='incident_to']").val();
         var $temp = {'folder_number': $folder_number,
                 'lastname': $lastname,
                 'fname': $name,
@@ -20,16 +33,21 @@ $(document).ready(function(){
                 'telephone': $telephone,
                 'birth_date': $birth_date,
                 'origin_country': $origin_country,
-                'medical_location_id': $medical_location_id
+                'medical_location_id': $medical_location_id,
+                'marital_status_id': $marital_status_id,
+                'age': $.trim($age),
+                'legal_status_id': $legal_status_id,
+                'education_id': $education_id,
+                'work_title_id': $work_title_id,
+                'drug': $.trim($drug),
+                'incident_type_id': $incident_type_id,
+                'doctor_name': $.trim($doctor_name),
+                'incidents_number': $.trim($incidents_number),
+                'examination_results_id': $examination_results_id,
+                'insertion_date': $insertion_date,
+                'incident_from': $incident_from,
+                'incident_to': $incident_to
             };
-        //var $queryUrl = $(this).attr('action') + '?folder_number=' + $("input[name='folder_number']").val() +
-        //    '&lastname=' + $("input[name='lastname']").val() + '&name=' + $("input[name='name']").val() +
-        //    '&fathers_name=' + $("input[name='fathers_name']").val() + '&gender_id=' +
-        //    $("input:radio[name='gender_id']:checked").val() == "undefined" ?  + '&telephone=' +
-        //    $("input[name='telephone']").val() + '&birth_date=' + $("input[name='birth_date']").val() +
-        //    '&origin_country=' + $("input[name='origin_country']").val() + '&medical_location_id=' +
-        //    $("select:first").val();
-        //window.history.pushState("", document.title, $queryUrl);
         MakeAjaxSearchCall($url, $temp);
         return false;
     });
@@ -54,16 +72,7 @@ function MakeAjaxSearchCall($url, $values){
     $.ajax({
         url: $url,
         type: 'get',
-        data: {'folder_number': $values.folder_number,
-                'lastname': $values.lastname,
-                'name': $values.fname,
-                'fathers_name': $values.fathers_name,
-                'gender_id': $values.gender_id,
-                'telephone': $values.telephone,
-                'birth_date': $values.birth_date,
-                'origin_country': $values.origin_country,
-                'medical_location_id': $values.medical_location_id
-            },
+        data: $values,
         beforeSend: function () {
             // remove the bottom margin
             $('.benefiters-search').removeClass('margin-bottom-300px');
