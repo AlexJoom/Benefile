@@ -41,8 +41,6 @@ class ReportsController extends Controller
         // count benefiters based on registration date
         $benefitersCount = $this->reportsService->getReportDataForRegisteredBenefiters();
 
-        $report_medical_visits_vs_date = $this->reportsService->getReport_medical_visits_vs_date();
-
         return View('reports.reports')
             ->with('users_roles_count', $usersRolesCount)
             ->with('benefitersMaritalStatuses', $benefitersMaritalStatus)
@@ -53,8 +51,7 @@ class ReportsController extends Controller
             ->with('benefiters_legal_statuses', $benefitersLegalStatuses)
             ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
             ->with('benefiters_count', $benefitersCount)
-            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits)
-            ->with('report_medical_visits_vs_date', $report_medical_visits_vs_date);
+            ->with('benefiters_medical_visits', $benefitersPerMedicalVisits);
     }
     
     // fetch benefiters vs education data from service in order to be used by an ajax call
@@ -78,8 +75,12 @@ class ReportsController extends Controller
         $report_medical_visits_vs_date = $this->reportsService->getReport_medical_visits_vs_date();
         return $report_medical_visits_vs_date;
     }
-
-    //fetch all medical visits destributed per month
+    // fetch benefiters vs phycological support type
+    public function getBenefitersVSPhycologicalSupportType(){
+        $benefiters_vs_phycological_support = $this->reportsService->getReport_benefiters_vs_phycological_support();
+        return $benefiters_vs_phycological_support;
+    }
+    //fetch all Registrations per month
     public function getRegistrationsVSMonthDate(){
         $report_registrations_vs_date = $this->reportsService->getRegistrationsVSMonthDate();
         return $report_registrations_vs_date;

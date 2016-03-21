@@ -7,6 +7,8 @@ use App\Models\Benefiters_Tables_Models\EducationLookup;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
+use App\Models\PsychosocialSession;
+use App\Models\Psychosocial_support_lookup;
 
 class ReportsService{
 
@@ -175,8 +177,8 @@ class ReportsService{
         return $result;
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs education ---------------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs education ------------------------------------------------ //
     public function getReport_benefiters_vs_education(){
         // count benefiters regarding each education type
         $results = array();
@@ -192,8 +194,8 @@ class ReportsService{
         return $results;
     }
 
-    // ------------------------------------------------------------------------------------------------ //
-    // ----------------------- REPORT: Benefiters vs doctor specialty --------------------------------- //
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs doctor specialty ----------------------------------------- //
     public function getReport_benefiters_vs_doctor(){
         // count benefiters regarding which doctor have visit
         $results = array();
@@ -241,7 +243,7 @@ class ReportsService{
     }
 
     // -------------------------------------------------------------------------------------------------------- //
-    // ----------------------- REPORT: Benefiters vs medical condition category ------------------------------- //
+    // ----------------------- REPORT: Benefiters vs medical clinical condition category ---------------------- //
     public function getReport_benefiters_vs_clinical_conditions(){
         $results = array();
         // get all clinical conditions from lookup
@@ -298,7 +300,37 @@ class ReportsService{
         // return array with time_period => number of medical visits
         return $results;
     }
-    //
+
+    // -------------------------------------------------------------------------------------------------------- //
+    // ----------------------- REPORT: Benefiters vs phycological support ------------------------------------- //
+    public function getReport_benefiters_vs_phycological_support(){
+        $results = array();
+
+        // get all phycological support types from lookup
+        $phycological_support_types_lookup = Psychosocial_support_lookup::get();
+        // get all phycological visits
+        $phycological_visits = PsychosocialSession::select('social_folder_id', 'psychosocial_theme_id')->get();
+
+        // foreach phycological support type count the benefiters avoiding duplicities
+        foreach($phycological_support_types_lookup as $phycological_type){
+            // benefiters with same psychosocial support type
+            $benefiters_same_psychosocial_support_type = array();
+            // here for each visit/session we create an array with all social folder ids registered for the current phycological support type
+            foreach($phycological_visits as $visit){
+                if($phycological_type['id'] == $visit['psychosocial_theme_id']){
+                    array_push($benefiters_same_psychosocial_support_type, $visit['social_folder_id']);
+                }
+            }
+            // then we count the duplicate result array
+            $benefiters_count = count(array_count_values($benefiters_same_psychosocial_support_type));
+            // we create the necessary pair of data, needed for the chart
+            $phycological_support_result = ['$phycological_support_type'=> $phycological_type['description'], 'type_count'=> $benefiters_count];
+            array_push($results, $phycological_support_result);
+        }
+        // return array with number of benefiters per phycological support type
+        return $results;
+    }
+    
     // -------------------------------------------------------------------------------------------------------- //
     // ----------------------- REPORT: Benefiters registration numbers per month ------------------------------ //
     public function getRegistrationsVSMonthDate() {
