@@ -28,20 +28,20 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
                             {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right', 'disabled' => 'disabled')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
                             {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- GENDER --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                             <div class="make-inline">
                                 <?php
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         {{-- Birth date --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('birth_date', Lang::get('basic_info_form.birth_date')) !!}
                             {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date hide"></span></a>
                         </div>
@@ -76,27 +76,27 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- FATHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('fathers_name', Lang::get($p.'fathers_name')) !!}
                            {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- MOTHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('mothers_name', Lang::get($p.'mothers_name')) !!}
                             {!! Form::text('mothers_name', $benefiter->mothers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- NATIONALITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                             {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- ORIGIN COUNTRY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                         {{-- ETHNICITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
                             {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
@@ -105,12 +105,12 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- ARRIVAL DATE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                             {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- TELEPHONE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                             <?php
                                 if($benefiter->telephone == 0){
@@ -120,12 +120,12 @@
                             {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- ADDRESS --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                             {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- CHILDRENS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-4">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
                             {!! Form::text('children_names', $benefiter->children_names, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
@@ -159,9 +159,9 @@
     @if (Auth::user()->user_role_id == 4 || Auth::user()->user_role_id == 1)
     <div class="form-section align-text-center no-bottom-border">
         @if($social_folder_is_null)
-        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button')) !!}
+        {!! Form::submit(Lang::get('social_folder_form.save_social_folder'), array('class' => 'submit-button margin-30')) !!}
         @else
-        {!! Form::submit(Lang::get('social_folder_form.edit_social_folder'), array('class' => 'submit-button')) !!}
+        {!! Form::submit(Lang::get('social_folder_form.edit_social_folder'), array('class' => 'submit-button margin-30')) !!}
         @endif
     </div>
     @endif
@@ -169,12 +169,16 @@
 
 @if(!$social_folder_is_null)
     <div class="psychosocial-support form-section">
-        <div class="underline-header row">
-            <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
+        <div class="row">
             <!-- ACCESS LEVEL -->
             @if (Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
-                <button id="add-new-session" class="float-right simple-button">@lang($p."add_new_session")</button>
+            <div class="col-xs-12">
+                <button id="add-new-session" class="float-right margin-30 float-right session-button lighter-green-background">@lang($p."add_new_session")</button>
+            </div>
             @endif
+        </div>
+        <div class="underline-header row">
+            <h1 id="psychosocial-history-title" class="record-section-header padding-left-right-15 float-left">3. @lang($p."psychosocial_support_history")</h1>
         </div>
         <div class="new-session dynamic-form-section">
             <h1 class="record-section-header padding-left-right-15">@lang($p."new_session")</h1>
@@ -183,15 +187,15 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                            <div class="form-group padding-left-right-15 float-left col-xs-2">
                                 {!! Form::label('psychologist_name', Lang::get('social_folder_form.created_by')) !!}
                                 {!! Form::text('psychologist_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
                             </div>
-                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                            <div class="form-group padding-left-right-15 float-left col-xs-2">
                                 {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
                                 {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
-                            <div class="form-group padding-left-right-15 float-left col-md-3">
+                            <div class="form-group padding-left-right-15 float-left col-xs-3">
                                 <div class="width-100-percent">
                                     {!! Form::label('psychosocial_theme', Lang::get('social_folder_form.psychosocial_theme')) !!}
                                 </div>
@@ -238,9 +242,11 @@
             <div class="col-md-12">
                 <div class="div-table-titles row">
                     <div class="col-md-12">
-                        <div class="col-sm-2"><p>@lang($p."date")</p></div>
-                        <div class="col-sm-2"><p>@lang($p."subject")</p></div>
-                        <div class="col-sm-4"><p>@lang($p."notes")</p></div>
+                        <div class="col-xs-2 text-align-center"><p>@lang($p."date")</p></div>
+                        <div class="col-xs-2 text-align-center"><p>@lang($p."subject")</p></div>
+                        <div class="col-xs-4"><p>@lang($p."notes")</p></div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
                     </div>
                 </div>
             </div>
@@ -253,21 +259,23 @@
                 </div>
                 @else
                 @foreach($benefiter_sessions as $benefiter_session)
+                {{-- EACH SAVED SESSION INFO --}}
                 <div class="row div-table-row div-hr">
                     <div class="col-md-12">
-                        <div class="col-sm-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
-                        <div class="col-sm-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
+                        <div class="col-xs-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) }}</div>
+                        <div class="col-xs-2 text-align-center">{{ $psychosocialSubjects[$benefiter_session->psychosocial_theme_id - 1]->description }}</div>
                         <!-- ACCESS LEVEL -->
                         @if(Auth::user()->user_role_id == 5 || Auth::user()->user_role_id == 1)
-                            <div class="col-sm-4 text-align-center">{!! nl2br(e($benefiter_session->session_comments)) !!}</div>
+                            <div class="col-xs-4 text-align-center">{!! nl2br(e($benefiter_session->session_comments)) !!}</div>
                         @else
-                            <div class="col-sm-4 text-align-center">----------------</div>
+                            <div class="col-xs-4 text-align-center">----------------</div>
                         @endif
                         <!-- ACCESS LEVEL END -->
-                        <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent edit-session">@lang($p."edit")</button>@endif</div>
-                        <div class="col-sm-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="simple-button width-100-percent delete-session" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
+                        <div class="col-xs-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="session-button edit-session medical_visit_from_history btn btn-info btn-lg">@lang($p."edit")</button>@endif</div>
+                        <div class="col-xs-2">@if(\Auth::user()->user_role_id == 5 || \Auth::user()->user_role_id == 1)<button class="session-button delete-session btn btn-warning btn-lg" name="{{ $benefiter_session->id }}">@lang($p."delete")</button>@endif</div>
                     </div>
                 </div>
+                {{-- EDIT EACH SESSION --}}
                 <div class="edit-session-div dynamic-form-section">
                     <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
                     {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/session-edit/'.$benefiter_session->id)) !!}

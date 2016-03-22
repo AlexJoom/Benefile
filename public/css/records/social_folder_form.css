@@ -27,3 +27,22 @@
 	width: 99%;
 	margin-left: 10px;
 }
+
+.session-button{
+    border: none;
+    /*width: 220px;*/
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+}
+.lighter-green-background {
+    background-color: #6ae0b4;
+}
+.margin-30 {
+    margin: 30px;
+}
+.float-right{
+    float: right;
+}
