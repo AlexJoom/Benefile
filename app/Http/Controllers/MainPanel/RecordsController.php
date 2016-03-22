@@ -473,7 +473,7 @@ class RecordsController extends Controller
 
     }
 
-    //------------ GET MEDICAL VISIT MODAL DATA FOR BENEFITER FOR EACH VISIT ------------//
+    //------------ GET MEDICAL VISIT MODAL DATA FOR BENEFITER FOR EACH VISIT ------//
     public function getMedicalVisitModal(Request $request, $id){
         // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
         // initialize
@@ -687,17 +687,17 @@ class RecordsController extends Controller
 
     }
 
-    //------ MEDICATION LIST FETCH "LIKE" OBJECTS --------------------//
+    //------ MEDICATION LIST FETCH "LIKE" OBJECTS ---------------------------------//
     public function getMedicationList(Request $request){
         return medical_medication_lookup::where('description','LIKE', '%'.$request['m'].'%' )->get();
     }
 
-    //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS --------------------//
+    //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS -------------------------------//
     public function getICD10List(Request $request){
         return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
 
-    // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
+    // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ----------------- //
     public function fetch_medical_visits_data(Request $request){
         $current_benefiter_medical_visit_id = $request['current_medical_visit'];
         return $current_benefiter_medical_visit_id;
