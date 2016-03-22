@@ -307,7 +307,9 @@
                                 <tbody>
                                 </tbody>
                             </table>
-                            <a id="download-link" href="javascript:void(0)">DOWNLOAD</a>
+                            <div class="text-align-center margin-top-60 margin-bottom-50">
+                                <a id="download-link" class="simple-button" href="javascript:void(0)">@lang($p."download_csv")</a>
+                            </div>
                         </div>
                     </div>
                 </div>
