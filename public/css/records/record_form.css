@@ -326,7 +326,3 @@ input[disabled]{
     max-width: 100%;
     word-wrap: break-word;
 }
-
-html, body{
-    overflow-x: hidden !important;
-}

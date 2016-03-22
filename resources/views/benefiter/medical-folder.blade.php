@@ -45,5 +45,6 @@
     <script src="{{asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/records/medical_visit.js')}}"></script>
 @stop

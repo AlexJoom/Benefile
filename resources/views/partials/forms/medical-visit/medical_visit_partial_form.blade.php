@@ -33,12 +33,12 @@
                         {!! Form::text('examination_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                     </div>
                     {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
                         {!! Form::select('medical_location_id', $medical_locations_array) !!}
                     </div>
                     {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('medical_incident_id', Lang::get($p.'incident_type')) !!}
                         {!! Form::select('medical_incident_id', $medical_incident_type_array) !!}
                     </div>
@@ -111,18 +111,22 @@
                         {!! Form::text('weight', null, array('class' => 'custom-input-text')) !!}
                     </div>
                     {{-- ΘΕΡΜΟΚΡΑΣΙΑ --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('temperature', Lang::get($p.'temperature')) !!}
                         {!! Form::text('temperature', null, array('class' => 'custom-input-text')) !!}
                     </div>
                     {{-- ΑΡΤΗΡΙΑΚΗ ΠΙΕΣΗ --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                         {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure')) !!}
                         {!! Form::text('blood_pressure_systolic', null, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'systolic'))) !!}
                         {!! Form::text('blood_pressure_diastolic', null, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'diastolic'))) !!}
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="padding-left-right-15">
                     {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
-                    <div class="form-group make-inline padding-left-right-15 float-left col-md-3">
+                    <div class="form-group make-inline padding-left-right-15 float-left col-md-4">
                         {!! Form::label('skull_perimeter', Lang::get($p.'skull_perimeter')) !!}
                         {!! Form::text('skull_perimeter', null, array('class' => 'custom-input-text')) !!}
                     </div>
@@ -153,7 +157,7 @@
                                         @endif
                                     @endfor
                             </select>
-                            {!! Form::textarea('examResultDescription[]', "$examResultDescription_session[$i]", ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                            {!! Form::textarea('examResultDescription[]', "$examResultDescription_session[$i]", ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per']) !!}
                         </div>
 {{--                        @if($i%2 == 1)--}}
                     </div>
@@ -169,7 +173,7 @@
                         <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                             <option selected="selected" style="display: none"></option>
                         </select>
-                        {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                        {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per']) !!}
                     </div>
 {{--                        @if($i%2 == 1)--}}
                     </div>
