@@ -7,6 +7,9 @@
         if ($benefiter->birth_date != null) {
             $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
         }
+        if ($benefiter->arrival_date != null) {
+            $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
+        }
     }
 ?>
 {!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/legal-folder')) !!}
