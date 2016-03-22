@@ -24,20 +24,20 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
                             {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right', 'disabled' => 'disabled')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
                             {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- GENDER --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                             <div class="make-inline">
                                 <?php
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         {{-- Birth date --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('birth_date', Lang::get('basic_info_form.birth_date')) !!}
                             {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date hide"></span></a>
                         </div>
@@ -72,27 +72,27 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                        {{-- FATHERS NAME --}}
-                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('fathers_name', Lang::get($p.'fathers_name')) !!}
                            {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                        </div>
                        {{-- MOTHERS NAME --}}
-                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('mothers_name', Lang::get($p.'mothers_name')) !!}
                            {!! Form::text('mothers_name', $benefiter->mothers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                        </div>
                        {{-- NATIONALITY --}}
-                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                            {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                        </div>
                        {{-- ORIGIN COUNTRY --}}
-                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                            {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                        </div>
                        {{-- ETHNICITY --}}
-                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                       <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                            {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
                            {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                        </div>
@@ -102,12 +102,12 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- ARRIVAL DATE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                             {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- TELEPHONE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                             <?php
                                 if($benefiter->telephone == 0){
@@ -117,12 +117,12 @@
                             {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- ADDRESS --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                             {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- CHILDRENS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-4">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
                             {!! Form::text('children_names', $benefiter->children_names, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
