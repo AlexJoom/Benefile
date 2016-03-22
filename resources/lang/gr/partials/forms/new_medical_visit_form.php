@@ -18,16 +18,16 @@ return array(
     'travel_duration'      =>  'ΔΙΑΡΚΕΙΑ',
     'folder_number'        =>  'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
     'total_visits_number'  =>  'ΑΡΙΘΜΟΣ ΕΠΙΣΚΕΨΕΩΝ',
-    'show_visit'           =>  'Εμφάνιση στοιχείων εξέτασης',
+    'show_visit'           =>  'ΕΜΦΑΝΙΣΗ ΣΤΟΙΧΕΙΩΝ ΕΞΕΤΑΣΗΣ',
     'medical_visit'        =>  'Ιατρική επίσκεψη',
     'show_medical_visit'   =>  'Εμφάνιση επίσκεψης',
-    'edit_visit_info'      =>  'Επεξεργασία επίσκεψης',
+    'edit_visit_info'      =>  'ΕΠΕΞΕΡΓΑΣΙΑ ΕΠΙΣΚΕΨΗΣ',
     'edit_visit'           =>  'Επεξεργασία',
 
     'success_visit'        =>  'Η επίσκεψη δημιουργήθηκε επιτυχώς',
     'edit-visit'           =>  'Επεξεργασία ιατρικής επίσκεψης',
     'unsuccess_visit'      =>  'Η δημιουργεία νεας επίσκεψης ηταν ανεπιτυχής. Παρακαλώ ελέγξτε τα πεδία και προσπαθήστε ξανά.',
-    'medical_history'      =>  'Ιατρικό Ιστορικό οφελούμενου',
+    'medical_history'      =>  'Ιατρικό Ιστορικό Ωφελούμενου',
     'yes'                  =>  'ΝΑΙ',
     'no'                   =>  'ΟΧΙ',
     'doctor'               =>  'ΓΙΑΤΡΟΣ',
@@ -52,7 +52,7 @@ return array(
 
     'clinical_results'     =>  'Κλινικά αποτελέσματα',
 
-    'medicinal_name'       =>  'Πληκτρολογίστε την ονομασία του φαρμάκου αν δεν υπάρχει στην λίστα',
+    'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στην λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',
     'medicinal_duration'   =>  'Διάρκεια θεραπείας',
     'supply_from_praksis'  =>  'Προμήθεια από Praxis',
@@ -75,7 +75,7 @@ return array(
 
     'save_medical_visit'   =>  'Αποθήκευση Ιατρικής Επίσκεψης',
     'update_medical_visit' =>  'Ανανέωση Ιατρικής Επίσκεψης',
-    'doctor_speciality'    =>  'Ειδiκότητα',
+    'doctor_speciality'    =>  'ΕΙΔΙΚΟΤΗΤΑ',
     'condition-name'       =>  'ΠΑΘΗΣΗ',
     'icd10'                =>  'ICD10 ΕΠΙΛΟΓΕΣ',
     'description'          =>  'ΠΕΡΙΓΡΑΦΗ',

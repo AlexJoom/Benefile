@@ -715,7 +715,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                             {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <?php
-                                $male = false;
+                                $male = true;
                                 $female = false;
                                 if($benefiter->gender_id == 1){
                                     $male = true;
