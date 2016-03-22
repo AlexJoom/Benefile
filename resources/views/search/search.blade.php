@@ -267,32 +267,31 @@
                             <table id="results" class="display" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
-                                    <th>@lang($p."folder_number")</th>
-                                    <th>@lang("basic_info_form.name")</th>
-                                    <th>@lang("basic_info_form.lastname")</th>
-                                    <th>@lang("basic_info_form.telephone")</th>
-                                    <th class="hide">@lang("basic_info_form.fathers_name")</th>
-                                    <th class="hide">@lang("basic_info_form.mothers_name")</th>
-                                    <th class="hide">@lang("basic_info_form.birth_date")</th>
-                                    <th class="hide">@lang("basic_info_form.arrival_date")</th>
-                                    <th class="hide">@lang("basic_info_form.address")</th>
-                                    <th class="hide">@lang("basic_info_form.number_of_children")</th>
-                                    <th class="hide">@lang("basic_info_form.relatives_residence")</th>
-                                    <th class="hide">@lang($p."language_interpreter_needed")</th>
-                                    <th class="hide">@lang($p."is_benefiter_working")</th>
-                                    <th class="hide">@lang($p."legal_working_status")</th>
-                                    <th class="hide">@lang($p."country_abandon_reason")</th>
-                                    <th class="hide">@lang($p."travel_route")</th>
-                                    <th class="hide">@lang($p."travel_duration")</th>
-                                    <th class="hide">@lang($p."detention_duration")</th>
-                                    <th class="hide">@lang($p."origin_country")</th>
-                                    <th class="hide">@lang($p."nationality_country")</th>
-                                    <th class="hide">@lang($p."ethnic_group")</th>
-                                    <th class="hide">@lang($p."social_history")</th>
-                                    <th class="hide">@lang($p."marital_status_title")</th>
-                                    <th class="hide">@lang($p."education_title")</th>
-                                    <th class="hide">@lang($p."legal_working_status")</th>
-                                    <th class="hide">@lang($p."work_title")</th>
+                                    <th class="printable">@lang($p."folder_number")</th>
+                                    <th class="printable">@lang("basic_info_form.name")</th>
+                                    <th class="printable">@lang("basic_info_form.lastname")</th>
+                                    <th class="printable">@lang("basic_info_form.telephone")</th>
+                                    <th class="hide printable">@lang("basic_info_form.fathers_name")</th>
+                                    <th class="hide printable">@lang("basic_info_form.mothers_name")</th>
+                                    <th class="hide printable">@lang("basic_info_form.birth_date")</th>
+                                    <th class="hide printable">@lang("basic_info_form.arrival_date")</th>
+                                    <th class="hide printable">@lang("basic_info_form.address")</th>
+                                    <th class="hide printable">@lang("basic_info_form.number_of_children")</th>
+                                    <th class="hide printable">@lang("basic_info_form.relatives_residence")</th>
+                                    <th class="hide printable">@lang($p."language_interpreter_needed")</th>
+                                    <th class="hide printable">@lang($p."is_benefiter_working")</th>
+                                    <th class="hide printable">@lang($p."country_abandon_reason")</th>
+                                    <th class="hide printable">@lang($p."travel_route")</th>
+                                    <th class="hide printable">@lang($p."travel_duration")</th>
+                                    <th class="hide printable">@lang($p."detention_duration")</th>
+                                    <th class="hide printable">@lang($p."origin_country")</th>
+                                    <th class="hide printable">@lang($p."nationality_country")</th>
+                                    <th class="hide printable">@lang($p."ethnic_group")</th>
+                                    <th class="hide printable">@lang($p."social_history")</th>
+                                    <th class="hide printable">@lang($p."marital_status_title")</th>
+                                    <th class="hide printable">@lang($p."education_title")</th>
+                                    <th class="hide printable">@lang($p."legal_working_status")</th>
+                                    <th class="hide printable">@lang($p."work_title")</th>
                                     <th>@lang($p."view")</th>
                                 </tr>
                                 </thead>

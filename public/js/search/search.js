@@ -68,7 +68,7 @@ $(document).ready(function(){
     $('#download-link').on("click", function(){
         var csv = '';
         var $table = $("#results");
-        $table.find('thead > tr > th').each(function (i, row) {
+        $table.find('thead > tr > th.printable').each(function (i, row) {
             csv += '"' + $(row).text().trim().replace(/\s+/g, ' ') + '"' + '\t';
         });
         csv = csv.substring(0, csv.length - 1) + "\n";
@@ -84,7 +84,7 @@ $(document).ready(function(){
         // Grab text from table into CSV formatted string
         csv += $rows.map(function (i, row) {
             var $row = $(row),
-                $cols = $row.find('td');
+                $cols = $row.find('td.printable');
 
             return $cols.map(function (j, col) {
                 var $col = $(col),
@@ -109,9 +109,12 @@ $(document).ready(function(){
             // Data URI
             csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
 
+            // get date and time in nice format for file naming
+            $today = GetCurrentDateNicelyFormattedForCSVFileNaming();
+
             $(this)
                 .attr({
-                    'download': Date.now() + "-Benefile-export.csv",
+                    'download': $today + "_Benefile_export.csv",
                     'href': csvData,
                     'target': '_blank'
                 });
@@ -167,7 +170,7 @@ function DisplayResults($response){
             $anchor = $('#search-results').data('url').replace('-1', $response[i].id);
             $response[i].language_interpreter_needed = GetYesOrNoTextFromId($response[i].language_interpreter_needed);
             $response[i].is_benefiter_working = GetYesOrNoTextFromId($response[i].is_benefiter_working);
-            $row = "<tr><td>" + $response[i].folder_number + "</td><td>" + $response[i].name + "</td><td>" + $response[i].lastname + "</td><td>" + $response[i].telephone + "</td><td class=\"hide\">" + $response[i].fathers_name + "</td><td class=\"hide\">" + $response[i].mothers_name + "</td><td class=\"hide\">" + $response[i].birth_date + "</td><td class=\"hide\">" + $response[i].arrival_date + "</td><td class=\"hide\">" + $response[i].address + "</td><td class=\"hide\">" + $response[i].number_of_children + "</td><td class=\"hide\">" + $response[i].relatives_residence + "</td><td class=\"hide\">" + $response[i].language_interpreter_needed + "</td><td class=\"hide\">" + $response[i].is_benefiter_working + "</td><td class=\"hide\">" + $response[i].country_abandon_reason + "</td><td class=\"hide\">" + $response[i].travel_route + "</td><td class=\"hide\">" + $response[i].travel_duration + "</td><td class=\"hide\">" + $response[i].detention_duration + "</td><td class=\"hide\">" + $response[i].origin_country + "</td><td class=\"hide\">" + $response[i].nationality_country + "</td><td class=\"hide\">" + $response[i].ethnic_group + "</td><td class=\"hide\">" + $response[i].social_history + "</td><td class=\"hide\">" + $response[i].marital_status_title + "</td><td class=\"hide\">" + $response[i].education_title + "</td><td class=\"hide\">" + $response[i].legal_working_status + "</td><td class=\"hide\">" + $response[i].work_title + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
+            $row = "<tr><td class=\"printable\">" + $response[i].folder_number + "</td><td class=\"printable\">" + GetEmptyStringIfValueIsNull($response[i].name) + "</td><td class=\"printable\">" + GetEmptyStringIfValueIsNull($response[i].lastname) + "</td><td class=\"printable\">" + GetEmptyStringIfValueIsNull($response[i].telephone) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].fathers_name) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].mothers_name) + "</td><td class=\"hide printable\">" + FormatDateCorrectly($response[i].birth_date) + "</td><td class=\"hide printable\">" + FormatDateCorrectly($response[i].arrival_date) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].address) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].number_of_children) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].relatives_residence) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].language_interpreter_needed) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].is_benefiter_working) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].country_abandon_reason) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].travel_route) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].travel_duration) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].detention_duration) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].origin_country) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].nationality_country) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].ethnic_group) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].social_history) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].marital_status_title) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].education_title) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].legal_working_status) + "</td><td class=\"hide printable\">" + GetEmptyStringIfValueIsNull($response[i].work_title) + "</td><td><a href=\"" + $anchor + "\" class=\"simple-button\" target=\"_blank\">" + $view_folders + "</a></td></tr>";
             $("#results > tbody").append($row);
         }
         $('.state-results').show();
@@ -183,59 +186,6 @@ function GetYesOrNoTextFromId($binary){
     }
 }
 
-// make .csv file from the results
-function MakeResultsCSV() {
-    var csv = '';
-    var $table = $("#results");
-    $table.find('thead > tr > th').each(function (i, row) {
-        csv += '"' + $(row).text().trim().replace(/\s+/g, ' ') + '"' + '\t';
-    });
-    csv = csv.substring(0, csv.length - 1) + "\n";
-
-    var $rows = $table.find('tr'),
-    // Temporary delimiter characters unlikely to be typed by keyboard
-    // This is to avoid accidentally splitting the actual contents
-    tmpColDelim = String.fromCharCode(11), // vertical tab character
-     tmpRowDelim = String.fromCharCode(0),
-    // actual delimiter characters for CSV format
-    colDelim = '\t',
-        rowDelim = '\r\n';
-    // Grab text from table into CSV formatted string
-    csv += $rows.map(function (i, row) {
-        var $row = $(row),
-            $cols = $row.find('td');
-
-            return $cols.map(function (j, col) {
-                var $col = $(col),
-                    text = $col.text();
-                    text = text.replace(/\s+/g, ' ');
-                return '"' + text.replace('"', ' ') + '"'; // escape double quotes
-            }).get().join(tmpColDelim);
-    }).get().join(tmpRowDelim)
-        .split(tmpRowDelim).join(rowDelim)
-        .split(tmpColDelim).join(colDelim) + '"';
-
-
-            if (window.GetIEVersion() > 0) {
-                var oWin = window.open();
-                oWin.document.write(csv);
-                oWin.document.close();
-                oWin.document.execCommand('SaveAs', true, "export.csv");
-                oWin.close();
-                return false;
-            }
-            else {
-                // Data URI
-                csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
-
-                $(this)
-                    .attr({
-                        'download': "export",
-                        'href': csvData,
-                        'target': '_blank'
-                    });
-            }
-}
 function GetIEVersion(){
     var sAgent = window.navigator.userAgent;
     var Idx = sAgent.indexOf("MSIE");
@@ -250,4 +200,41 @@ function GetIEVersion(){
 
     else
         return 0; //It is not IE
+}
+
+// do not display the word null in csv, just show empty string
+function GetEmptyStringIfValueIsNull($str){
+    if(!$str){
+        return '';
+    } else {
+        return $str;
+    }
+}
+
+// change date format from yyyy/mm/dd to dd/mm/yyyy
+function FormatDateCorrectly($date){
+    if($date == "0000-00-00" || !$date){
+        return '';
+    } else {
+        $tmp = $date.split("-");
+        return $tmp[2] + "-" + $tmp[1] + "-" + $tmp[0];
+    }
+}
+
+// gets date in nice format for csv file name
+function GetCurrentDateNicelyFormattedForCSVFileNaming(){
+    var $today = new Date();
+    var $day = $today.getDate();
+    if ($day < 10){
+        $day = '0' + $day;
+    }
+    var $month = $today.getMonth();
+    if ($month < 10){
+        $month = '0' + $month;
+    }
+    var $year = $today.getFullYear();
+    var $hours = $today.getHours();
+    var $minutes = $today.getMinutes();
+    var $seconds = $today.getSeconds();
+    return $year + "-" + $month + "-" + $day + "_" + $hours + "_" + $minutes + "_" + $seconds;
 }
