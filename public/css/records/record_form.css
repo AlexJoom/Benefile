@@ -330,3 +330,17 @@ input[disabled]{
 a.btn{
     font-weight: 700;
 }
+
+.padding-left-50px{
+    padding-left: 50px;
+}
+#medication .select2
+{
+    min-width: 250px !important;
+}
+
+@media screen and (max-width: 992px){
+    .medication_other_name{
+        padding-left: 50px;
+    }
+}
