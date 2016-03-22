@@ -326,3 +326,7 @@ input[disabled]{
     max-width: 100%;
     word-wrap: break-word;
 }
+
+a.btn{
+    font-weight: 700;
+}
