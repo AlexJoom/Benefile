@@ -23,17 +23,17 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- LASTNAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('lastname', Lang::get($p.'lastname')) !!}
                             {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                         {{--NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('name', Lang::get($p.'name')) !!}
                             {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- GENDER --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                             <div class="make-inline">
                                 <?php
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         {{-- DATE OF BIRTH --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('birth_date', Lang::get($p.'birth_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
@@ -70,22 +70,22 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- FATHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('fathers_name', Lang::get($p.'fathers_name')) !!}
                             {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- MOTHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('mothers_name', Lang::get($p.'mothers_name')) !!}
                             {!! Form::text('mothers_name', $benefiter->mothers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- NATIONALITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                             {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- ORIGIN COUNTRY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
@@ -94,12 +94,12 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- ARRIVAL DATE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                             {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- TELEPHONE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                             <?php
                                 if($benefiter->telephone == 0){
@@ -109,13 +109,13 @@
                             {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- ADDRESS --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                             {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                         </div>
 
                         {{-- ETHNICITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
                             {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
@@ -137,28 +137,28 @@
                     <div class="padding-left-right-15">
 
                         {{-- ΟΝΟΜΑ ΙΑΤΡΟΥ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('doctor_name', Lang::get($p.'doctor_name')) !!}
                             <div class="custom-input-text">
                                 {{$med_visit_doctor}}
                             </div>
                         </div>
                         {{-- ΗΜΕΡ. ΕΞΕΤΑΣΗΣ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('examination_date', Lang::get($p.'exam_date')) !!}
                             <div class="custom-input-text">
                                 {{$med_visit_date}}
                             </div>
                         </div>
                         {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
                             {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
                             <div class="custom-input-text">
                             {{ $med_visit_location }}
                             </div>
                         </div>
                         {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
-                        <div class="form-group make-inline padding-left-right-15 float-left col-md-4">
+                        <div class="form-group make-inline padding-left-right-15 float-left col-xs-4">
                             {!! Form::label('incident_type', Lang::get($p.'incident_type')) !!}
                             <div class="custom-input-text">
                                 {{$med_visit_incident_type}}
@@ -176,7 +176,7 @@
                                 <div  class="padding-left-right-15">
                                     <div class="form-group float-left width-100-percent">
                                         {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
-                                        <div class="make-inline col-md-3">
+                                        <div class="make-inline col-xs-3">
                                         {{-- if post fail then reprint what was entered in the fields --}}
                                             {!! Form::label('chronic_conditions', Lang::get($p.'chronic_conditions')) !!}
                                             <div class="custom-input-text">
@@ -194,41 +194,41 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- ΥΨΟΣ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-1">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-1">
                             {!! Form::label('height', Lang::get($p.'height')) !!}
                             <div class="custom-input-text">
                                 {{ $med_visit_height }}
                             </div>
                         </div>
                         {{-- ΒΑΡΟΣ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-1">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-1">
                             {!! Form::label('weight', Lang::get($p.'weight')) !!}
                             <div class="custom-input-text">
                                {{ $med_visit_weight }}
                             </div>
                         </div>
                         {{-- ΘΕΡΜΟΚΡΑΣΙΑ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('temperature', Lang::get($p.'temperature')) !!}
                             <div class="custom-input-text">
                                 {{ $med_visit_temperature }}
                             </div>
                         </div>
                         {{-- ΑΡΤΗΡΙΑΚΗ ΠΙΕΣΗ --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-sm-3">
-                            {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure')) !!}
-                            <div class="custom-input-text display-inline width-30-percent">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
+                            {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure'), array('class' => 'margin-0')) !!}
+                            <div class="custom-input-text display-inline width-30-percent margin-top-minus-3">
                                 {!! Form::label('blood_pressure', Lang::get($p.'diastolic')) !!}
                                 {{ $med_visit_blood_pressure_diastolic }}
                             </div>
 
-                            <div class="custom-input-text display-inline width-30-percent">
+                            <div class="custom-input-text display-inline width-30-percent margin-top-minus-3">
                                 {!! Form::label('blood_pressure', Lang::get($p.'systolic')) !!}
                                 {{ $med_visit_blood_pressure_systolic }}
                             </div>
                         </div>
                         {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
-                        <div class="form-group make-inline padding-left-right-15 float-left col-sm-3">
+                        <div class="form-group make-inline padding-left-right-15 float-left col-xs-3">
                             {!! Form::label('skull_perimeter', Lang::get($p.'skull_perimeter')) !!}
                             <div class="custom-input-text">
                                 {{ $med_visit_skull_perimeter }}
