@@ -246,60 +246,58 @@
                 @if(!empty($medication_dosage_session) && !empty($medication_duration_session))
 
                     @for($i=0 ; $i<count($supply_from_praksis_hidden_session) ; $i++)
-                    <div class="row">
                         <div  class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
-                            <div class="form-group float-left col-md-12">
-                            {{--width-100-percent">--}}
-                                 {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
-                                <div class="select-lists make-inline col-md-12 width-100-percent">
-                                 {{--col-md-12">--}}
-                                    {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
-                                    {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
-                                    <select id="medicinal_name_{{$i+1}}" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >
-                                        @if(!empty($medication_name_from_lookup_session[$i]) && $medication_name_from_lookup_session[$i] != -1 ))
-                                            <option selected="selected" value="{{$medication_name_from_lookup_session[$i]}}" >{{$medication_name_from_lookup_session_description[$i]}}</option>
+                            <div class="row">
+                                <div class="form-group float-left col-md-12">
+                                    {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
+                                    <div class="select-lists make-inline col-md-6">
+                                        {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
+                                        {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
+                                        <select id="medicinal_name_{{$i+1}}" class="js-example-basic-multiple " name="medication_name_from_lookup[]">
+                                            @if(!empty($medication_name_from_lookup_session[$i]) && $medication_name_from_lookup_session[$i] != -1 ))
+                                                <option selected="selected" value="{{$medication_name_from_lookup_session[$i]}}" >{{$medication_name_from_lookup_session_description[$i]}}</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    {{--Description--}}
+                                    @if(!empty($medication_new_name_session[$i]))
+                                        <div class="col-md-6" style="display: block !important;">
+                                            {{--{!! Form::textarea('medication_new_name[]', "$medication_new_name_session[$i]", array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}--}}
+                                            {!! Form::label('medication_new_name[]') !!}
+                                            <input type="text" name="medication_new_name[]" class="custom-input-text display-inline width-100-percent" value="{{$medication_new_name_session[$i]}}"/>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div  class="padding-left-right-15">
+                                    <div class="form-group float-left col-md-12 padding-left-50px">
+                                        {!! Form::text('medication_dosage[]', "$medication_dosage_session[$i]", array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                        {!! Form::text('medication_duration[]', "$medication_duration_session[$i]", array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+
+                                        {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+                                        {!! Form::hidden('supply_from_praksis_hidden[]', $supply_from_praksis_hidden_session[$i], array('class'=>'supply_from_praksis_hidden'))!!}
+                                        @if($supply_from_praksis_hidden_session[$i] != 0)
+                                        {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", true, array('class'=>'supply_from_praksis make-inline')) !!}--}}
+                                        <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]" checked>
+                                        @else
+                                        {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", false, array('class'=>'supply_from_praksis make-inline')) !!}--}}
+                                        <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
                                         @endif
-                                    </select>
+                                        {{--add--}}
+                                        @if($i<1)
+                                        <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                        </a>
+                                        @endif
+                                        {{--remove--}}
+                                        <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div  class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
-                            <div class="form-group float-left col-md-4">
-                                {!! Form::text('medication_dosage[]', "$medication_dosage_session[$i]", array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
-                                {!! Form::text('medication_duration[]', "$medication_duration_session[$i]", array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-
-                                {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
-                                {!! Form::hidden('supply_from_praksis_hidden[]', $supply_from_praksis_hidden_session[$i], array('class'=>'supply_from_praksis_hidden'))!!}
-                                @if($supply_from_praksis_hidden_session[$i] != 0)
-                                    {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", true, array('class'=>'supply_from_praksis make-inline')) !!}--}}
-                                    <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]" checked>
-                                @else
-                                    {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", false, array('class'=>'supply_from_praksis make-inline')) !!}--}}
-                                     <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
-                                @endif
-                                {{--add--}}
-                                @if($i<1)
-                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                    </a>
-                                @endif
-                                 {{--remove--}}
-                                <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
-                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
-                                </a>
-                                 {{--Description--}}
-                                 @if(!empty($medication_new_name_session[$i]))
-                                    <div class="col-md-4" style="display: block !important;">
-                                        {{--{!! Form::textarea('medication_new_name[]', "$medication_new_name_session[$i]", array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}--}}
-                                        {!! Form::label('medication_new_name[]') !!}
-                                        <textarea name="medication_new_name[]" class="border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px" rows="3" cols="70" >{{$medication_new_name_session[$i]}}</textarea>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
                     @endfor
                 @else
                     <div class="padding-left-right-15 medicationList">
@@ -320,24 +318,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div  class="@if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
-                                <div class="padding-left-right-15">
-                                    <div class="form-group float-left col-md-12 padding-left-50px">
-                                        {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
-                                        {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-                                        {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
-                                        {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
-                                        {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
+                            <div class="padding-left-right-15">
+                                <div class="form-group float-left col-md-12 padding-left-50px">
+                                    {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                    {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                    {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+                                    {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
+                                    {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
 
-                                        {{-- add --}}
-                                        <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                        </a>
-                                        {{-- remove --}}
-                                        <a id="remove-medicine" class="color-red remove-med hide-element" href="javascript:void(0)">
-                                            <span class="glyphicon glyphicon-minus-sign make-inline"></span>
-                                        </a>
-                                    </div>
+                                    {{-- add --}}
+                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                    </a>
+                                    {{-- remove --}}
+                                    <a id="remove-medicine" class="color-red remove-med hide-element" href="javascript:void(0)">
+                                        <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
