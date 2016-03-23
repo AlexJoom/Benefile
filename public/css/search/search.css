@@ -1,10 +1,10 @@
-#search-btn{
-    float: right;
-    margin: 0 0.8em 0.8em;
-    font-size: 1.4em;
-    padding: 0.2em 1.4em;
-    background: #4c2a47;
-}
+/*#search-btn{*/
+    /*float: right;*/
+    /*margin: 0 0.8em 0.8em;*/
+    /*font-size: 1.4em;*/
+    /*padding: 0.2em 1.4em;*/
+    /*background: #4c2a47;*/
+/*}*/
 
 .state > h1{
     font-size: 1.1em;
@@ -44,4 +44,26 @@ a.simple-button:hover, a.simple-button:focus{
 
 .min-height-300px{
     min-height: 300px;
+}
+.border-top{
+    border-top: 20px solid #e6f4f4;
+}
+.margin-top-14px{
+    margin-top: 14px;
+}
+.custom-label-width{
+    display: inline-block;
+    max-width: none;
+    width: 190px;
+}
+.search-submit-button {
+    border: medium none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    width: 220px;
+    background-color: #4c2a47;
+    float: right;
+
 }
