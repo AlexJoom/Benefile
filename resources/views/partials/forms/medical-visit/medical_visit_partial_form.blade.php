@@ -261,10 +261,16 @@
                                     </div>
                                     {{--Description--}}
                                     @if(!empty($medication_new_name_session[$i]))
-                                        <div class="col-md-6" style="display: block !important;">
+                                        <div class="medication_other_name col-md-6" style="display: block !important;">
                                             {{--{!! Form::textarea('medication_new_name[]', "$medication_new_name_session[$i]", array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}--}}
-                                            {!! Form::label('medication_new_name[]') !!}
-                                            <input type="text" name="medication_new_name[]" class="custom-input-text display-inline width-100-percent" value="{{$medication_new_name_session[$i]}}"/>
+                                            {{--{!! Form::label('medication_new_name[]') !!}--}}
+                                            <input type="text" name="medication_new_name[]" placeholder="@lang($p.'medicinal_name')" class="custom-input-text display-inline width-100-percent" value="{{$medication_new_name_session[$i]}}"/>
+                                        </div>
+                                    @else
+                                        <div class="medication_other_name col-md-6" style="display: none;">
+                                            {{--{!! Form::textarea('medication_new_name[]', "$medication_new_name_session[$i]", array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}--}}
+                                            {{--{!! Form::label('medication_new_name[]') !!}--}}
+                                            <input type="text" name="medication_new_name[]" placeholder="@lang($p.'medicinal_name')" class="custom-input-text display-inline width-100-percent" value="{{$medication_new_name_session[$i]}}"/>
                                         </div>
                                     @endif
                                 </div>
