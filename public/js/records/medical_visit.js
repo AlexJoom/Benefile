@@ -119,7 +119,7 @@ $(document).ready(function(){
 
             //Clear copied fields
             $copy.find("input:text[name='medication_dosage[]']").val('');
-            $copy.find("textarea[name='medication_new_name[]']").val('');
+            $copy.find("input:text[name='medication_new_name[]']").val('');
             $copy.find("input:text[name='medication_duration[]']").val('');
             //$copy.find($('#medicinal_name_' + $temp)).select2("val", "");
 
