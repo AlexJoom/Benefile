@@ -247,13 +247,13 @@
         </div>
         {{-- titles --}}
         <div class="row margin-15-30 border-bottom-light-thick">
-            <div class=" col-md-2">
+            <div class=" col-xs-2">
                 <label class="font-weight-700">@lang($p.'condition-name')</label>
             </div>
-            <div class=" col-md-6">
+            <div class=" col-xs-6">
                 <label class="font-weight-700">@lang($p.'icd10')</label>
             </div>
-            <div class=" col-md-4">
+            <div class=" col-xs-4">
                 <label class="font-weight-700">@lang($p.'description')</label>
             </div>
         </div>
