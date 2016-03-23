@@ -36,7 +36,7 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date'         => 'date',
+            'examination_date'         => 'required|date',
             'medical_location_id'      => 'integer',
             'medical_incident_id'      => 'integer',
             'height'                   => 'numeric',
@@ -407,7 +407,7 @@ class BenefiterMedicalFolderService
         // medical referrals
         $this->update_medical_referrals($request, $updatedMedicalVisit_id);
         // medical file uploads
-        $this->upload_medical_uploads($request, $updatedMedicalVisit_id);
+        $this->update_medical_uploads($request, $updatedMedicalVisit_id);
 
     }
 
@@ -911,8 +911,9 @@ class BenefiterMedicalFolderService
 
     //----------- medical_uploads table ----------------------------//
     // DB save
-    private function upload_medical_uploads($request, $selected_medical_visit_id){
-        $path = base_path() . '/public/uploads/medical-visit-uploads/';
+    private function update_medical_uploads($request, $selected_medical_visit_id){
+        $path_after_public_folder = '/uploads/medical-visit-uploads/';
+        $path = public_path() . $path_after_public_folder;
         $request_upload_file_description = $request['upload_file_description'];
         $request_upload_file_title = $request['upload_file_title'];
         $file = Input::file('upload_file_title');
@@ -932,7 +933,7 @@ class BenefiterMedicalFolderService
                         $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                         $medical_upload->title = $fileName;
                         $medical_upload->description = $request_upload_file_description[$i];
-                        $medical_upload->path = $path;
+                        $medical_upload->path = $path_after_public_folder;
                         $medical_upload->medical_visit_id = $selected_medical_visit_id;
                         $medical_upload->save();
                     }
@@ -943,7 +944,7 @@ class BenefiterMedicalFolderService
                         $medical_upload = new medical_uploads();
                         $medical_upload->title = $fileName;
                         $medical_upload->description = $request_upload_file_description[$i];
-                        $medical_upload->path = $path;
+                        $medical_upload->path = $path_after_public_folder;
                         $medical_upload->medical_visit_id = $selected_medical_visit_id;
                         $medical_upload->save();
                     }
@@ -960,7 +961,7 @@ class BenefiterMedicalFolderService
                         $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                         $medical_upload->title = $fileName;
                         $medical_upload->description = $request_upload_file_description[$j];
-                        $medical_upload->path = $path;
+                        $medical_upload->path = $path_after_public_folder;
                         $medical_upload->medical_visit_id = $selected_medical_visit_id;
                         $medical_upload->save();
                     }

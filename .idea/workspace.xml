@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/search/search.blade.php" afterPath="$PROJECT_DIR$/resources/views/search/search.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/search/search.css" afterPath="$PROJECT_DIR$/public/css/search/search.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -52,7 +51,7 @@
       <file leaf-file-name="search.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/search/search.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.62963" vertical-offset="1828" max-vertical-offset="4347">
+            <state vertical-scroll-proportion="-11.518518" vertical-offset="1966" max-vertical-offset="4347">
               <caret line="255" column="90" selection-start-line="255" selection-start-column="90" selection-end-line="255" selection-end-column="90" />
               <folding>
                 <element signature="tag#div#2;tag#div#0" expanded="false" />
@@ -66,8 +65,8 @@
       <file leaf-file-name="search.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/search/search.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7895425" vertical-offset="914" max-vertical-offset="1702">
-              <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.81960785" vertical-offset="914" max-vertical-offset="1702">
+              <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -704,11 +703,9 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/records/record_form.css</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/records/medical_visit.js</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -1304,7 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/search/search.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.62963" vertical-offset="1828" max-vertical-offset="4347">
+        <state vertical-scroll-proportion="-11.518518" vertical-offset="1966" max-vertical-offset="4347">
           <caret line="255" column="90" selection-start-line="255" selection-start-column="90" selection-end-line="255" selection-end-column="90" />
           <folding>
             <element signature="tag#div#2;tag#div#0" expanded="false" />
@@ -1316,8 +1313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/search/search.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7895425" vertical-offset="914" max-vertical-offset="1702">
-          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.81960785" vertical-offset="914" max-vertical-offset="1702">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding />
         </state>
       </provider>
