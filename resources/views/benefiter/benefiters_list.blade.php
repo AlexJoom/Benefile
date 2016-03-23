@@ -68,7 +68,7 @@
                         <h4 class="modal-title">@lang($p."delete_benefiter_modal_title")</h4>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-md-3 col-md-offset-9">
+                        <div class="col-xs-3 col-xs-offset-9">
                             <button type="submit" class="simple-button">@lang($p."done")</button>
                         </div>
                     </div>
