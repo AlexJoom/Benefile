@@ -342,38 +342,40 @@
         @if(!empty($med_visit_medication))
             @foreach($med_visit_medication as $med_medication)
                 <div class="row padding-bottom-30">
-                    {{-- medicine name --}}
-                    <div class="col-md-5">
-                        {!! Form::label('medication_name', Lang::get($p.'medication_info')) !!}
-                        <div class="custom-input-text display-inline">
-                            {{ $med_medication['medical_medication_lookup']['description'] }}
-                        </div>
+                    <div class="col-md-12">
+                        {{-- medicine name --}}
+                        <div class="col-xs-5">
+                            {!! Form::label('medication_name', Lang::get($p.'medication_info')) !!}
+                            <div class="custom-input-text display-inline">
+                                {{ $med_medication['medical_medication_lookup']['description'] }}
+                            </div>
 
-                    </div>
-                    {{-- medicine dosage --}}
-                    <div class="col-md-2">
-                        {!! Form::label('medicinal_dosage', Lang::get($p.'medicinal_dosage')) !!}
-                        <div class="custom-input-text display-inline">
-                            {{ $med_medication['dosage'] }}
                         </div>
+                        {{-- medicine dosage --}}
+                        <div class="col-xs-2">
+                            {!! Form::label('medicinal_dosage', Lang::get($p.'medicinal_dosage')) !!}
+                            <div class="custom-input-text display-inline">
+                                {{ $med_medication['dosage'] }}
+                            </div>
 
-                    </div>
-                    {{-- medicine duration --}}
-                    <div class="col-md-2">
-                        {!! Form::label('medicinal_duration', Lang::get($p.'medicinal_duration')) !!}
-                        <div class="custom-input-text display-inline">
-                            {{ $med_medication['duration'] }}
                         </div>
+                        {{-- medicine duration --}}
+                        <div class="col-xs-2">
+                            {!! Form::label('medicinal_duration', Lang::get($p.'medicinal_duration')) !!}
+                            <div class="custom-input-text display-inline">
+                                {{ $med_medication['duration'] }}
+                            </div>
 
-                    </div>
-                    {{-- supplied from PRAKSIS --}}
-                    <div class="col-md-2">
-                        {!! Form::label('supply', Lang::get($p.'supply_from_praksis')) !!}
-                        @if($med_medication['supply_from_praksis'] == 1)
-                            {!! Form::checkbox('supply', 1, true, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
-                        @else
-                            {!! Form::checkbox('supply', 0, false, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
-                        @endif
+                        </div>
+                        {{-- supplied from PRAKSIS --}}
+                        <div class="col-xs-2">
+                            {!! Form::label('supply', Lang::get($p.'supply_from_praksis')) !!}
+                            @if($med_medication['supply_from_praksis'] == 1)
+                                {!! Form::checkbox('supply', 1, true, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
+                            @else
+                                {!! Form::checkbox('supply', 0, false, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
+                            @endif
+                        </div>
                     </div>
                 </div>
             @endforeach
