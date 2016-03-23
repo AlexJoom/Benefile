@@ -116,6 +116,13 @@ $(document).ready(function(){
             // make the add button invisible and the remove button visible
             $copy.find(".color-green").hide();
             $copy.find(".color-red").show();
+
+            //Clear copied fields
+            $copy.find("input:text[name='medication_dosage[]']").val('');
+            $copy.find("textarea[name='medication_new_name[]']").val('');
+            $copy.find("input:text[name='medication_duration[]']").val('');
+            //$copy.find($('#medicinal_name_' + $temp)).select2("val", "");
+
             // set new name to dropdowns so that the controller can view them all
             var $temp = $clickCount+1;
             $clickCount++;
@@ -129,20 +136,11 @@ $(document).ready(function(){
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
 
-            //Clear copied fields
-            $copy.find("input:text[name='medication_dosage[]']").val('');
-            $copy.find("textarea[name='medication_new_name[]']").val('');
-            $copy.find("input:text[name='medication_duration[]']").val('');
-            //$copy.find($('#medicinal_name_' + $temp)).select2("val", "");
-
             if($('#medicinal_name_' + $temp).val() != null){
-                $('.medication_other_name').hide();
+                $('#medicinal_name_' + $temp).parent().siblings('.medication_other_name').hide();
             }else{
-                $('.medication_other_name').show();
+                $('#medicinal_name_' + $temp).parent().siblings('.medication_other_name').show();
             }
-
-            //$copy.find("input:checkbox[name='supply_from_praksis[]']").attr('checked', false);
-
 
             $('.supply_from_praksis').change(function(){
                 if($(this).is(':checked')){
@@ -151,9 +149,6 @@ $(document).ready(function(){
                     $(this).siblings('.supply_from_praksis_hidden').val(0);
                 }
             });
-
-
-
         });
 
 
