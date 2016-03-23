@@ -65,5 +65,5 @@ a.simple-button:hover, a.simple-button:focus{
     width: 220px;
     background-color: #4c2a47;
     float: right;
-
+    margin: 20px;
 }
