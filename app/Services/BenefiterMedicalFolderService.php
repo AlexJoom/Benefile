@@ -36,7 +36,7 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date'         => 'date',
+            'examination_date'         => 'required|date',
             'medical_location_id'      => 'integer',
             'medical_incident_id'      => 'integer',
             'height'                   => 'numeric',
