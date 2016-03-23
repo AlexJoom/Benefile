@@ -128,7 +128,7 @@
     {{-- 2. BASIC MEDICAL INFO -----}}
     <div class="form-section no-bottom-border">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">3. @lang($p.'medical_info')</h1>
+            <h1 class="record-section-header padding-left-right-15">2. @lang($p.'medical_info')</h1>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -241,7 +241,7 @@
     </div>
 
     {{-- 3. CLINICAL RESULTS INFO --}}
-    <div class="form-section no-bottom-border">
+    <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">3. @lang($p.'clinical_results')</h1>
         </div>
@@ -257,9 +257,16 @@
                 <label class="font-weight-700">@lang($p.'description')</label>
             </div>
         </div>
-
+        <?php
+            $examResultsLookupLength = count($ExamResultsLookup);
+            $i = 0;
+        ?>
         @foreach($ExamResultsLookup as $med_exam)
+            @if($i == $examResultsLookupLength - 1)
+            <div class="row margin-15-30 border-bottom-light margin-bottom-0">
+            @else
             <div class="row margin-15-30 border-bottom-light">
+            @endif
                 <div class="form-group padding-left-right-15 col-md-2">
                     <label> {{ $med_exam['description'] }} </label>
                 </div>
@@ -374,7 +381,7 @@
     </div>
 
     {{-- 6. REFERALS INFO ----------}}
-    <div class="form-section no-bottom-border">
+    <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">6. @lang($p.'referrals')</h1>
         </div>
@@ -394,7 +401,7 @@
     </div>
 
     {{-- 7. UPLOADED FILES LIST ----}}
-    <div class="form-section no-bottom-border">
+    <div class="form-section">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">7. @lang($p.'upload')</h1>
         </div>
