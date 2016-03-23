@@ -29,8 +29,9 @@
             </ul>
         </div>
     @endif
-    <div class="record-section-header padding-left-right-15 edit-visit">
-        @lang($p.'edit-visit')
+    <div class="padding-left-right-15">
+     {{--edit-visit">--}}
+        <h1 class="record-section-header">@lang($p.'edit-visit')</h1>
     </div>
     {{--------------- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) ---------------}}
     <!-- ACCESS LEVEL -->
@@ -60,17 +61,17 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- LASTNAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('lastname', Lang::get($p.'lastname')) !!}
                             {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
                         {{--NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('name', Lang::get($p.'name')) !!}
                             {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- GENDER --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                             <div class="make-inline">
                                 <?php
@@ -91,7 +92,7 @@
                             </div>
                         </div>
                         {{-- DATE OF BIRTH --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('birth_date', Lang::get($p.'birth_date')) !!}
                             <div class="make-inline">
                                 {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
@@ -102,22 +103,22 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- FATHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('fathers_name', Lang::get($p.'fathers_name')) !!}
                             {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- MOTHERS NAME --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('mothers_name', Lang::get($p.'mothers_name')) !!}
                             {!! Form::text('mothers_name', $benefiter->mothers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- NATIONALITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                             {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                         </div>
                         {{-- ORIGIN COUNTRY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                         </div>
@@ -126,12 +127,12 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         {{-- ARRIVAL DATE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                             {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- TELEPHONE --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                             <?php
                                 if($benefiter->telephone == 0){
@@ -141,13 +142,13 @@
                             {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         {{-- ADDRESS --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                             {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                         </div>
 
                         {{-- ETHNICITY --}}
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
                             {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
@@ -198,12 +199,12 @@
                                     {!! Form::text('examination_date', $med_visit_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                 </div>
                                 {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
-                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                                     {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
                                     {!! Form::select('medical_location_id', $medical_locations_array, $med_visit_location_id) !!}
                                 </div>
                                 {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
-                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                                     {!! Form::label('medical_incident_id', Lang::get($p.'incident_type')) !!}
                                     {!! Form::select('medical_incident_id', $medical_incident_type_array, $med_visit_incident_type_id) !!}
                                 </div>
@@ -276,18 +277,22 @@
                                     {!! Form::text('weight', $med_visit_weight, array('class' => 'custom-input-text')) !!}
                                 </div>
                                 {{-- ΘΕΡΜΟΚΡΑΣΙΑ --}}
-                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                                     {!! Form::label('temperature', Lang::get($p.'temperature')) !!}
                                     {!! Form::text('temperature', $med_visit_temperature, array('class' => 'custom-input-text')) !!}
                                 </div>
                                 {{-- ΑΡΤΗΡΙΑΚΗ ΠΙΕΣΗ --}}
-                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
                                     {!! Form::label('blood_pressure', Lang::get($p.'blood_pressure')) !!}
                                     {!! Form::text('blood_pressure_systolic', $med_visit_blood_pressure_systolic, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'systolic'))) !!}
                                     {!! Form::text('blood_pressure_diastolic', $med_visit_blood_pressure_diastolic, array('class' => 'custom-input-text display-inline width-30-percent','placeholder'=>Lang::get($p.'diastolic'))) !!}
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="padding-left-right-15">
                                 {{-- ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ (για νεογέννητα) --}}
-                                <div class="form-group make-inline padding-left-right-15 float-left col-md-3">
+                                <div class="form-group make-inline padding-left-right-15 float-left col-md-4">
                                     {!! Form::label('skull_perimeter', Lang::get($p.'skull_perimeter')) !!}
                                     {!! Form::text('skull_perimeter', $med_visit_skull_perimeter, array('class' => 'custom-input-text')) !!}
                                 </div>
@@ -305,7 +310,7 @@
                 @for($i=0; $i<count($ExamResultsLookup) ; $i++)
                     {{--@if(!empty($med_visit_exam_results) )--}}
                         <div class="row padding-left-right-30 padding-top-bottom-15">
-                            <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition-{{$i}}">
+                            <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition-{{$i}}">
                                 {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                                 <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                                     <?php $with_select_options = false;?>
@@ -323,13 +328,13 @@
                                 <?php $duplicity_counter = 0; ?>
                                 @for($j=0; $j<count($med_visit_exam_results); $j++)
                                     @if($duplicity_counter < 1 && $med_visit_exam_results[$j]['results_lookup_id'] == $ExamResultsLookup[$i]['id'])
-                                        {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                        {!! Form::textarea('examResultDescription[]', $med_visit_exam_results[$j]['description'], ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per']) !!}
                                         <?php $duplicity_counter++; ?>
                                     @endif
                                 @endfor
 
                                 @if($duplicity_counter ==0)
-                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}
+                                    {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per custom-input-textarea']) !!}
                                 @endif
                             </div>
                         </div>
@@ -341,7 +346,7 @@
                                 {{--<select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">--}}
                                     {{--<option selected="selected" style="display: none"></option>--}}
                                 {{--</select>--}}
-                                {{--{!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per']) !!}--}}
+                                {{--{!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'margin-top-20 width-100-percent max-width-100per custom-input-textarea']) !!}--}}
                             {{--</div>--}}
                         {{--</div>--}}
                      {{--@endfor--}}
@@ -412,45 +417,55 @@
                             @if(!empty($med_visit_medication) && count($med_visit_medication) !=0)
                                 @for($i=0 ; $i<count($med_visit_medication) ; $i++)
                                     <div class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">
-                                        <div class="form-group float-left width-100-percent">
-                                             {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
-                                            <div class="select-lists make-inline col-md-12">
-                                                {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
-                                                {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
-                                                <select id="medicinal_name_{{$i+1}}" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >
-                                                    {{--@if(!empty($medication_name_from_lookup_session[$i]) && $medication_name_from_lookup_session[$i] != -1 ))--}}
-                                                        <option selected="selected" value="{{$med_visit_medication[$i]['medication_lookup_id']}}" >{{$med_visit_medication[$i]['medical_medication_lookup']['description']}}</option>
-                                                    {{--@endif--}}
-                                                </select>
-                                                {{-- Dosage --}}
-                                                {!! Form::text('medication_dosage[]', $med_visit_medication[$i]['dosage'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                        <div class="row">
+                                            <div class="form-group float-left col-md-12">
+                                                 {{--ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ--}}
+                                                <div class="select-lists make-inline col-md-6">
+                                                    {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
+                                                    {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
+                                                    <select id="medicinal_name_{{$i+1}}" class="js-example-basic-multiple " name="medication_name_from_lookup[]">
+                                                        {{--@if(!empty($medication_name_from_lookup_session[$i]) && $medication_name_from_lookup_session[$i] != -1 ))--}}
+                                                            <option selected="selected" value="{{$med_visit_medication[$i]['medication_lookup_id']}}" >{{$med_visit_medication[$i]['medical_medication_lookup']['description']}}</option>
+                                                        {{--@endif--}}
+                                                    </select>
+                                                </div>
+                                                {{--Description--}}
+                                                <div class="medication_other_name col-md-6">
+                                                    {!! Form::label('medication_new_name[]') !!}
+                                                    {!! Form::text('medication_new_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div  class="padding-left-right-15">
+                                                <div class="form-group float-left col-md-6 padding-left-50px">
+                                                    {{-- Dosage --}}
+                                                    {!! Form::text('medication_dosage[]', $med_visit_medication[$i]['dosage'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
 
-                                                {{-- Duration --}}
-                                                {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-
-                                                {{-- Supplied from PRAKSIS --}}
-                                                {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
-                                                {!! Form::hidden('supply_from_praksis_hidden[]', $med_visit_medication[$i]['supply_from_praksis'], array('class'=>'supply_from_praksis_hidden'))!!}
-                                                @if($med_visit_medication[$i]['supply_from_praksis'] != 0)
-                                                    {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", true, array('class'=>'supply_from_praksis make-inline')) !!}--}}
-                                                    <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]" checked>
-                                                @else
-                                                    {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", false, array('class'=>'supply_from_praksis make-inline')) !!}--}}
-                                                     <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
-                                                @endif
-                                                {{--add--}}
-                                                @if($i==0)
-                                                    <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                    {{-- Duration --}}
+                                                    {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                                </div>
+                                                <div class="form-group float-left col-md-3">
+                                                    {{-- Supplied from PRAKSIS --}}
+                                                    {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+                                                    {!! Form::hidden('supply_from_praksis_hidden[]', $med_visit_medication[$i]['supply_from_praksis'], array('class'=>'supply_from_praksis_hidden'))!!}
+                                                    @if($med_visit_medication[$i]['supply_from_praksis'] != 0)
+                                                        {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", true, array('class'=>'supply_from_praksis make-inline')) !!}--}}
+                                                        <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]" checked>
+                                                    @else
+                                                        {{--{!! Form::checkbox('supply_from_praksis[]', "$supply_from_praksis_hidden_session[$i]", false, array('class'=>'supply_from_praksis make-inline')) !!}--}}
+                                                         <input name="supply_from_praksis[]" class="supply_from_praksis make-inline" type="checkbox" value="$supply_from_praksis_hidden_session[$i]">
+                                                    @endif
+                                                    {{--add--}}
+                                                    @if($i==0)
+                                                        <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                        </a>
+                                                    @endif
+                                                     {{--remove--}}
+                                                    <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
+                                                        <span class="glyphicon glyphicon-minus-sign make-inline"></span>
                                                     </a>
-                                                @endif
-                                                 {{--remove--}}
-                                                <a id="remove-medicine" class="color-red remove-med @if($i == 0) hide-element @endif" href="javascript:void(0)">
-                                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
-                                                </a>
-                                                 {{--Description--}}
-                                                <div class="medication_other_name col-md-4 width-32-percent col-xs-offset-1 left-20">
-                                                    {!! Form::textarea('medication_new_name[]', null, array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -458,32 +473,41 @@
                                 @endfor
                             @else
                                 <div  class="padding-left-right-15 medicationList">
-                                    <div class="form-group float-left width-100-percent">
-                                        {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
-                                        <div class="select-lists make-inline col-md-12">
-                                            {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
-                                            {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
-                                            <select id="medicinal_name_1" class="js-example-basic-multiple " name="medication_name_from_lookup[]" style="width:30%;" >
-                                                <option value="-1" selected="selected">Επιλέξτε αγωγή</option>
-                                            </select>
-                                            {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
-                                            {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-
-                                            {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
-                                            {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
-                                            {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
-
-                                            {{-- add --}}
-                                            <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
-                                                <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                            </a>
-                                            {{-- remove --}}
-                                            <a id="remove-medicine" class="color-red remove-med hide-element" href="javascript:void(0)">
-                                                <span class="glyphicon glyphicon-minus-sign make-inline"></span>
-                                            </a>
+                                    <div class="row">
+                                        <div class="form-group col-md-12 float-left">
+                                            {{-- ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ --}}
+                                            <div class="select-lists make-inline col-md-6">
+                                                {!! Form::label('medication_name_from_lookup[]', Lang::get($p.'medication_info')) !!}
+                                                {{--{!! Form::select('medication_name_from_lookup[]', [], '', array('id'=>'medicinal_name_1', 'class'=>'js-example-basic-multiple', 'style'=>'width:30%;')) !!}--}}
+                                                <select id="medicinal_name_1" class="js-example-basic-multiple " name="medication_name_from_lookup[]">
+                                                    <option value="-1" selected="selected">Επιλέξτε αγωγή</option>
+                                                </select>
+                                            </div>
                                             {{-- Description --}}
                                             <div class="medication_other_name col-md-4 width-32-percent col-xs-offset-1 left-20">
                                                 {!! Form::textarea('medication_new_name[]', null, array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="padding-left-right-15">
+                                            <div class="form-group float-left col-md-6 padding-left-50px">
+                                                {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                                {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                            </div>
+                                            <div class="form-group float-left col-md-3">
+                                                {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
+                                                {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
+                                                {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
+
+                                                {{-- add --}}
+                                                <a id="add-medicine" class="color-green add-med" href="javascript:void(0)">
+                                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                </a>
+                                                {{-- remove --}}
+                                                <a id="remove-medicine" class="color-red remove-med hide-element" href="javascript:void(0)">
+                                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -646,6 +670,7 @@
     <script src="{{asset('/plugins/datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/records/custom_datepicker.js') }}"></script>
     <script src="{{asset('js/records/basic_info.js')}}"></script>
+    <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/records/medical_visit.js')}}"></script>
 @stop
 
