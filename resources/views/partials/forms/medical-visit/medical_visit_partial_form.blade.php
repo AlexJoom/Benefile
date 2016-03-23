@@ -147,7 +147,7 @@
                 {{--@if($i%2 == 0)--}}
                     <div class="row padding-left-right-30 padding-top-bottom-15">
                 {{--@endif--}}
-                        <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8" id="select-condition">
+                        <div class="form-group padding-left-right-15 margin-right-30 float-left col-md-8 clinical-results" id="select-condition">
                             {!! Form::label('examResultLoukup[{{$i}}][]', $ExamResultsLookup[$i]['description'].':', array('class' => 'display-block width-270 max-width-none')) !!}
                             <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                                 <option selected="selected" style="display: none"></option>
@@ -271,10 +271,11 @@
                             </div>
                             <div class="row">
                                 <div  class="padding-left-right-15">
-                                    <div class="form-group float-left col-md-12 padding-left-50px">
+                                    <div class="form-group float-left col-md-6 padding-left-50px">
                                         {!! Form::text('medication_dosage[]', "$medication_dosage_session[$i]", array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
                                         {!! Form::text('medication_duration[]', "$medication_duration_session[$i]", array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
-
+                                    </div>
+                                    <div class="form-group float-left col-md-3">
                                         {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
                                         {!! Form::hidden('supply_from_praksis_hidden[]', $supply_from_praksis_hidden_session[$i], array('class'=>'supply_from_praksis_hidden'))!!}
                                         @if($supply_from_praksis_hidden_session[$i] != 0)
@@ -319,9 +320,11 @@
                         </div>
                         <div class="row">
                             <div class="padding-left-right-15">
-                                <div class="form-group float-left col-md-12 padding-left-50px">
+                                <div class="form-group float-left col-md-6 padding-left-50px">
                                     {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
                                     {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                </div>
+                                <div class="form-group float-left col-md-3">
                                     {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
                                     {!! Form::hidden('supply_from_praksis_hidden[]', 0, array('class'=>'supply_from_praksis_hidden'))!!}
                                     {!! Form::checkbox('supply_from_praksis[]', 1, false, array('class'=>'supply_from_praksis make-inline')) !!}
