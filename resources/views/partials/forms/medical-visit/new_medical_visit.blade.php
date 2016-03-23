@@ -164,12 +164,16 @@
 {{--------------- 2. MEDICAL HISTORY TABLE --------------------------------------------}}
 <div class="form-section">
     @if(($visit_submited_succesfully == 1))
-        <div class="record-section-header padding-left-right-15 success-message">
-            @lang($p.'success_visit')
+        <div class="alert alert-success">
+            <ul>
+                <li>@lang($p.'success_visit')</li>
+            </ul>
         </div>
     @elseif($visit_submited_succesfully == 2)
-        <div class="record-section-header padding-left-right-15 unsuccess-message">
-            @lang($p.'unsuccess_visit')
+        <div class="alert alert-danger">
+            <ul>
+                <li>@lang($p.'unsuccess_visit')</li>
+            </ul>
         </div>
     @endif
     <div class="underline-header">
