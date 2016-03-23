@@ -21,12 +21,12 @@
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">@lang($p."search_parameters")</h1>
         </div>
+    {!! Form::open(array('url' => 'results', 'id' => 'search-form', 'method' => 'get')) !!}
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(array('url' => 'results', 'id' => 'search-form', 'method' => 'get')) !!}
                 <div class="row">
                     <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
                             @if(isset($_GET['search']))
                             {!! Form::text('folder_number', $_GET['search'], array('class' => 'custom-input-text')) !!}
@@ -34,23 +34,15 @@
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text')) !!}
                             @endif
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
                             {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
                             {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('fathers_name', Lang::get('basic_info_form.fathers_name')) !!}
-                            {!! Form::text('fathers_name', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <div>
                                 {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
@@ -61,37 +53,37 @@
                                 {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="padding-left-right-15">
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                            {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
-                            {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
-                        </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div>
                                 {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                            {!! Form::label('fathers_name', Lang::get('basic_info_form.fathers_name')) !!}
+                            {!! Form::text('fathers_name', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                            {!! Form::label('age', Lang::get('search/search.age')) !!}
+                            {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                            {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
+                            {!! Form::text('telephone', null, array('class' => 'custom-input-text')) !!}
+                        </div>
+
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                             {!! Form::text('origin_country', null, array('class' => 'custom-input-text')) !!}
                         </div>
-                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                            {!! Form::label('medical_location_id', Lang::get('partials/forms/new_medical_visit_form.exam_location')) !!}
+                        <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                            {!! Form::label(Lang::get('search/search.insertion_date')) !!}
                             <div>
-                                <select name="medical_location_id">
-                                    <option value=0></option>
-                                    <?php
-                                        if(isset($medical_locations) and $medical_locations != null){
-                                            foreach($medical_locations as $location){
-                                                echo "<option value=" . $location->id . ">" . $location->description . "</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
+                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -100,7 +92,7 @@
         </div>
         <div class="row">
             <div class="padding-left-right-15">
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                     {!! Form::label('marital_status_id', Lang::get('search/search.marital_status')) !!}
                     <div>
                         <select name="marital_status_id" id="marital-status-id" class="width-100-percent">
@@ -115,45 +107,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('age', Lang::get('search/search.age')) !!}
-                    {!! Form::text('age', null, array('class' => 'custom-input-text')) !!}
-                </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                    {!! Form::label('legal_status_id', Lang::get('search/search.legal_status')) !!}
-                    <div>
-                        <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
-                            <option value=0></option>
-                            <?php
-                                if(!empty($legal_statuses)){
-                                    foreach($legal_statuses as $legal_status){
-                                        echo "<option value=" . $legal_status->id . ">" . $legal_status->description . "</option>";
-                                    }
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
-                    {!! Form::label('education_id', Lang::get('search/search.education')) !!}
-                    <div>
-                        <select name="education_id" id="education-id" class="width-100-percent">
-                            <option value=0></option>
-                            <?php
-                                if(!empty($education_titles)){
-                                    foreach($education_titles as $education_title){
-                                        echo "<option value=" . $education_title->id . ">" . $education_title->education_title . "</option>";
-                                    }
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="padding-left-right-15">
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                     {!! Form::label('work_title_id', Lang::get('search/search.work')) !!}
                     <div>
                         <select name="work_title_id" id="work-title-id" class="width-100-percent">
@@ -171,11 +125,62 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('drug', Lang::get('search/search.drug')) !!}
-                    {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
+                    {!! Form::label('education_id', Lang::get('search/search.education')) !!}
+                    <div>
+                        <select name="education_id" id="education-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($education_titles)){
+                                    foreach($education_titles as $education_title){
+                                        echo "<option value=" . $education_title->id . ">" . $education_title->education_title . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-3">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
+                    {!! Form::label('legal_status_id', Lang::get('search/search.legal_status')) !!}
+                    <div>
+                        <select name="legal_status_id" id="legal-status-id" class="width-100-percent">
+                            <option value=0></option>
+                            <?php
+                                if(!empty($legal_statuses)){
+                                    foreach($legal_statuses as $legal_status){
+                                        echo "<option value=" . $legal_status->id . ">" . $legal_status->description . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- MEDICAL --}}
+        <div class="row border-top ">
+            <div class="padding-left-right-15 margin-top-14px">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                    {!! Form::label('doctor_name', Lang::get('search/search.doctor_name')) !!}
+                    {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                    {{--{!! Form::label('medical_location_id', Lang::get('partials/forms/new_medical_visit_form.exam_location', array('class' => 'custom-label-width'))) !!}--}}
+                    <label class="custom-label-width" for="medical_location_id">@lang('partials/forms/new_medical_visit_form.exam_location')</label>
+                   <div>
+                        <select name="medical_location_id">
+                            <option value=0></option>
+                            <?php
+                                if(isset($medical_locations) and $medical_locations != null){
+                                    foreach($medical_locations as $location){
+                                        echo "<option value=" . $location->id . ">" . $location->description . "</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
                     {!! Form::label('incident_type_id', Lang::get('search/search.incident_type')) !!}
                     <div>
                         <select name="incident_type_id" id="incident-type-id" class="width-100-percent">
@@ -190,19 +195,19 @@
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="padding-left-right-15">
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label('doctor_name', Lang::get('search/search.doctor_name')) !!}
-                    {!! Form::text('doctor_name', null, array('class' => 'custom-input-text')) !!}
-                </div>
                 <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
                     {!! Form::label('incidents_number', Lang::get('search/search.incidents_number')) !!}
                     {!! Form::text('incidents_number', null, array('class' => 'custom-input-text')) !!}
                 </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="padding-left-right-15">
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                    {!! Form::label('drug', Lang::get('search/search.drug')) !!}
+                    {!! Form::text('drug', null, array('class' => 'custom-input-text')) !!}
+                </div>
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-4">
                     {!! Form::label('examination_results_id', Lang::get('search/search.examination_results')) !!}
                     <div>
                         <select name="examination_results_id" id="examination-results-id" class="width-100-percent">
@@ -217,40 +222,38 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('search/search.insertion_date')) !!}
-                    <div>
-                        {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+
+                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-5">
+                    <div class="row">
+                        <div class="padding-left-right-15">
+                            <div class="padding-left-right-15">
+                                {!! Form::label(Lang::get('search/search.incident_dates_range')) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="padding-left-right-15">
+                            <div class="form-group make-inline padding-left-right-15 float-left col-xs-6">
+                                {!! Form::label(Lang::get('search/search.from')) !!}
+                                <div>
+                                    {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                </div>
+                            </div>
+                            <div class="form-group make-inline padding-left-right-15 float-left col-xs-6">
+                                {!! Form::label(Lang::get('search/search.to')) !!}
+                                <div>
+                                    {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{--  SUBMIT BUTTON--}}
         <div class="row">
             <div class="padding-left-right-15">
-                <div class="padding-left-right-15">
-                    {!! Form::label(Lang::get('search/search.incident_dates_range')) !!}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="padding-left-right-15">
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('search/search.from')) !!}
-                    <div>
-                        {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                    </div>
-                </div>
-                <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
-                    {!! Form::label(Lang::get('search/search.to')) !!}
-                    <div>
-                        {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="padding-left-right-15">
-                {!! Form::submit(Lang::get('layouts/mainPanel.search'), array('class' => 'simple-button', 'id' => 'search-btn')) !!}
+                {!! Form::submit(Lang::get('layouts/mainPanel.search'), array('class' => 'search-submit-button', 'id' => 'search-btn')) !!}
             </div>
         </div>
         {!! Form::close() !!}
