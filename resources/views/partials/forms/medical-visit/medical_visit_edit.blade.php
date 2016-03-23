@@ -440,10 +440,10 @@
                                             <div  class="padding-left-right-15">
                                                 <div class="form-group float-left col-md-6 padding-left-50px">
                                                     {{-- Dosage --}}
-                                                    {!! Form::text('medication_dosage[]', $med_visit_medication[$i]['dosage'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
+                                                    {!! Form::text('medication_dosage[]', $med_visit_medication[$i]['dosage'], array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
 
                                                     {{-- Duration --}}
-                                                    {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                                    {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
                                                 </div>
                                                 <div class="form-group float-left col-md-3">
                                                     {{-- Supplied from PRAKSIS --}}
@@ -484,8 +484,8 @@
                                                 </select>
                                             </div>
                                             {{-- Description --}}
-                                            <div class="medication_other_name col-md-4 width-32-percent col-xs-offset-1 left-20">
-                                                {!! Form::textarea('medication_new_name[]', null, array('size' => '70x3', 'class' => 'border-1-grey custom-input-text display-inline width-100-percent margin-left-right-10px', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
+                                            <div class="medication_other_name col-md-6">
+                                                {!! Form::text('medication_new_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
                                             </div>
                                         </div>
                                     </div>
