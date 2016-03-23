@@ -361,13 +361,14 @@ class BenefiterMedicalFolderService
         for ($i = 0; $i < $files_numbers; $i++) {
             if(!empty($file[$i])){
 
-                $path = base_path() . '/public/uploads/medical-visit-uploads/';
+                $path_after_public_folder = '/uploads/medical-visit-uploads/';
+                $path = public_path() . $path_after_public_folder;
                 $fileName = 'medical_visit-' . $id . $file[$i]->getClientOriginalName();
                 $file[$i]->move($path, $fileName); // uploading file to given path
                 $medical_upload = new medical_uploads();
                 $medical_upload->title = $fileName;
                 $medical_upload->description = $request_upload_file_description[$i];
-                $medical_upload->path = $path;
+                $medical_upload->path = $path_after_public_folder;
                 $medical_upload->medical_visit_id = $id;
 
                 $medical_upload->save();
