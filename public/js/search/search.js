@@ -94,7 +94,7 @@ $(document).ready(function(){
             }).get().join(tmpColDelim);
         }).get().join(tmpRowDelim)
             .split(tmpRowDelim).join(rowDelim)
-            .split(tmpColDelim).join(colDelim) + '"';
+            .split(tmpColDelim).join(colDelim);// + '"';
 
 
         if (window.GetIEVersion() > 0) {
