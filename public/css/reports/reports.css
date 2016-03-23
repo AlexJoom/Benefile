@@ -134,3 +134,9 @@ p.users-counter{
 .padding-right-35{
     padding-right: 35px;
 }
+
+@media(max-width: 1360px){
+    p.users-title{
+        font-size: 1em;
+    }
+}

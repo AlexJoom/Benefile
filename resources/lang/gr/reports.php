@@ -1,11 +1,11 @@
 <?php
 
     return array(
-        'users'                         => 'Χρήστες',
-        'doctors'                       => 'ΙΑΤΡΟΙ',
-        'legals'                        => 'ΔΙΚΗΓΟΡΟΙ',
-        'psychologists'                 => 'ΨΥΧΟΛΟΓΟΙ',
-        'socials'                       => 'ΚΟΙΝ. ΛΕΙΤΟΥΡΓΟΙ',
+        'users'                         => 'Χρήστες<br><br>',
+        'doctors'                       => 'ΙΑΤΡΟΙ<br><br>',
+        'legals'                        => 'ΔΙΚΗΓΟΡΟΙ<br><br>',
+        'psychologists'                 => 'ΨΥΧΟΛΟΓΟΙ<br><br>',
+        'socials'                       => 'ΚΟΙΝ.<br>ΛΕΙΤΟΥΡΓΟΙ',
         'benefiters'                    => 'Ωφελούμενοι',
         'male'                          =>  'άνδρες',
         'female'                        =>  'γυναίκες',
