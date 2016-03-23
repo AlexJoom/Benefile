@@ -36,7 +36,7 @@ class BenefiterMedicalFolderService
     //-----------------------------------------------//
     public function medicalValidation($request){
         $rules = array(
-            'examination_date'         => 'required|date',
+            'examination_date'         => 'date',
             'medical_location_id'      => 'integer',
             'medical_incident_id'      => 'integer',
             'height'                   => 'numeric',
@@ -44,78 +44,75 @@ class BenefiterMedicalFolderService
             'temperature'              => 'numeric',
             'blood_pressure_systolic'  => 'numeric',
             'blood_pressure_diastolic' => 'numeric',
-            'skull_perimeter'          => 'numeric'
+            'skull_perimeter'          => 'numeric',
         );
-        // Push the dynamic elements into the rule array
+        // VALIDATE - chronic conditions
         $chronic_conditions = $request['chronic_conditions'];
-        foreach ($chronic_conditions as $cc){
-            array_push($rules, [$cc=>'max:255']);
+        foreach ($chronic_conditions as $i=>$cc){
+            $rules['chronic_conditions.'.$i] = 'max:255';
         }
 
-        // TODO Change the way of exam results validation
-        // Push the dynamic elements into the rule array
+
+        // VALIDATE - clinical results
         if(!empty($request['examResultLoukup'])){
             $examResultsDescription = $request['examResultDescription'];
             $examResults = $request['examResultLoukup'];
             for($i=0; $i<count($examResults) ; $i++) {
                 if(!empty($examResults[$i]) && !empty($examResultsDescription[$i])){
                     for ($j = 0; $j < count($examResults[$i]); $j++) {
-                        array_push($rules, [$examResultsDescription[$i]=>'max:255']);
-                        array_push($rules, [$examResults[$i][$j]=>'max:255']);
+                        if(!empty($examResults[$i][$j])){
+                            $rules['examResultDescription.'.$i] = 'max:255';
+                            $rules['examResultLoukup.'.$i.'.'.$j] = 'max:255';
+                        }
                     }
                 }
             }
         }
-        // Push the dynamic elements into the rule array
+
+        // VALIDATE - Lab results
         $lab_results = $request['lab_results'];
-        foreach ($lab_results as $lr){
-            array_push($rules, [$lr=>'max:255']);
+        foreach ($lab_results as $i=>$lr){
+            $rules['lab_results.'.$i] = 'max:255';
         }
 
-        // Push the dynamic elements into the rule array
-        if(!empty($request['medication_name']) && !empty($request->medication_dosage)
-                                               && !empty($request->medication_duration)
-                                               && !empty($request->supply_from_praksis_hidden)){
-            $request_medication_name = $request->medication_name;
-            $request_medication_dosage = $request->medication_dosage;
-            $request_medication_duration = $request->medication_duration;
-            $request_supply_from_praksis = $request->supply_from_praksis_hidden;
-
-            for($i=0 ; $i<count($request_medication_name) ; $i++){
-                array_push($rules, [$request_medication_name[$i]=>'max:255']);
-                array_push($rules, [$request_medication_dosage[$i]=>'max:255']);
-                array_push($rules, [$request_medication_duration[$i]=>'max:255']);
-                array_push($rules, [$request_supply_from_praksis[$i]=>'max:255']);
+        // VALIDATE - Medication
+        $count = 0;
+        if(!empty($request['medication_name_from_lookup'])){
+            $count = sizeof($request['medication_name_from_lookup']);
+        }elseif(!empty($request['medication_dosage'])){
+            $count = sizeof($request['medication_dosage']);
+        }
+        elseif(!empty($request['medication_duration'])){
+            $count = sizeof($request['medication_duration']);
+        }
+        elseif(!empty($request['supply_from_praksis_hidden'])){
+            $count = sizeof($request['supply_from_praksis_hidden']);
+        }
+        if($count>0){
+            for($i=0 ; $i<$count ; $i++){
+                if(!empty($request['medication_name_from_lookup'])){
+                    $rules['medication_name_from_lookup.'.$i] = 'max:255';
+                    $rules['medication_new_name.'.$i] = 'max:255';
+                }else{
+                    $rules['medication_new_name.'.$i] = 'max:255';
+                    $rules['medication_name_from_lookup.'.$i] = 'max:255';
+                }
+                    $rules['medication_dosage.'.$i] = 'max:255';
+                    $rules['medication_duration.'.$i] = 'max:255';
             }
         }
 
-//        $medicationList = $request['medicationList'];
-//        foreach ($medicationList as $ml){
-//            array_push($rules, [$ml=>'max:255']);
-//        }
-
-        // Push the dynamic elements into the rule array
+        // VALIDATE - Referrals
         $referrals = $request['referrals'];
-        foreach ($referrals as $ref){
-            array_push($rules, [$ref=>'max:255']);
+        foreach ($referrals as $i=>$ref){
+            $rules['referrals.'.$i] = 'max:255';
         }
 
-        // Push the dynamic elements into the rule array
+        // VALIDATE - Uploaded files
         $upload_file_description = $request['upload_file_description'];
-        foreach ($upload_file_description as $fd){
-            array_push($rules, [$fd=>'max:255']);
+        foreach ($upload_file_description as $i=>$fd){
+            $rules['upload_file_description.'.$i] = 'max:255';
         }
-
-        // Push the dynamic elements into the rule array
-        // TODO ADD IF NESSESARY VALIDATION FOR FILE UPLOADS
-//        $upload_file_title = $request['upload_file_title'];
-//        if(!empty($upload_file_title)){
-//            for ($i=0 ; $i<count($upload_file_title) ; $i++){
-//                $ft = $upload_file_title[$i]; //->getClientOriginalName();
-//                array_push($rules, [$ft =>'max:255']);
-//            }
-//        }
-
         return Validator::make($request, $rules);
     }
 

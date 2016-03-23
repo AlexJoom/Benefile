@@ -16,7 +16,7 @@
                <b>@lang($p.'registratio_message_2')</b>
            </div>
 
-           <div class="white">
+           <div class="white margin-top-100">
                <div class="bottomDiv" >
                   @lang($p.'need_help')<a class="white" href="#"><b>@lang($p.'contact')</b></a>
               </div>

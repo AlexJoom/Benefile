@@ -20,10 +20,10 @@
 <body id="login-register-layout">
     <div class="container-fluid table-display">
     	<div class="row table-row">
-    	    <div class="col-md-6 table-cell height-100per" id="leftCell">
+    	    <div class="col-xs-6 table-cell height-100per" id="leftCell">
                 <img alt="Benefile logo" class="img-responsive logo-padding" src={{asset('images/BeneFile-Logo.png')}}>
     	    </div>
-    		<div class="col-md-6 benfile-back-color table-cell height-100per" id="rightCell">
+    		<div class="col-xs-6 benfile-back-color table-cell height-100per" id="rightCell">
     		    @yield('log-content')
     		</div>
     	</div>
