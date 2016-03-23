@@ -368,7 +368,7 @@
 
                         </div>
                         {{-- supplied from PRAKSIS --}}
-                        <div class="col-xs-2">
+                        <div class="col-xs-3">
                             {!! Form::label('supply', Lang::get($p.'supply_from_praksis')) !!}
                             @if($med_medication['supply_from_praksis'] == 1)
                                 {!! Form::checkbox('supply', 1, true, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
