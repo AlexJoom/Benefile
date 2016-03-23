@@ -602,7 +602,7 @@
                                             <div class="padding-left-right-15">
                                                 {{--@if(!empty($med_visit_uploads[$i]['title']))--}}
                                                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4 saved-file">
-                                                        {{ $med_visit_uploads[$i]['title'] }} &nbsp; &nbsp; <a><i class="glyphicon glyphicon-remove color-red remove-uploaded-file"></i></a>
+                                                        {{ $med_visit_uploads[$i]['title'] }} &nbsp; &nbsp; <a href="javascript:void(0)"><i class="glyphicon glyphicon-remove color-red remove-uploaded-file"></i></a>
                                                     </div>
                                                 {{--@else--}}
                                                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4 new-upload-file">
