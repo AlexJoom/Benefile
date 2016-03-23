@@ -326,3 +326,21 @@ input[disabled]{
     max-width: 100%;
     word-wrap: break-word;
 }
+
+a.btn{
+    font-weight: 700;
+}
+
+.padding-left-50px{
+    padding-left: 50px;
+}
+#medication .select2
+{
+    min-width: 250px !important;
+}
+
+@media screen and (max-width: 991px){
+    .medication_other_name{
+        padding-left: 50px;
+    }
+}

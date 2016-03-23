@@ -145,7 +145,6 @@ $(document).ready(function(){
 
 
             $('.supply_from_praksis').change(function(){
-                //console.log('hell');
                 if($(this).is(':checked')){
                     $(this).siblings('.supply_from_praksis_hidden').val(1);
                 }else {

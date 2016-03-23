@@ -38,22 +38,22 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="padding-left-right-15">
-                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('folder_number', Lang::get($p.'folder_number')) !!}
                         {!! Form::text('folder_number', $benefiter->folder_number, array('class' => 'custom-input-text text-align-right' , 'disabled')) !!}
                     </div>
                     {{-- LASTNAME --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('lastname', Lang::get($p.'lastname')) !!}
                         {!! Form::text('lastname', $benefiter->lastname, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
                     {{--NAME --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('name', Lang::get($p.'name')) !!}
                         {!! Form::text('name', $benefiter->name, array('class' => 'custom-input-text' , 'disabled')) !!}
                     </div>
                     {{-- GENDER --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('gender_id', Lang::get($p.'gender')) !!}
                         <div class="make-inline">
                             <?php
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     {{-- DATE OF BIRTH --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('birth_date', Lang::get($p.'birth_date')) !!}
                         <div class="make-inline">
                             {!! Form::text('birth_date', $benefiter->birth_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
@@ -90,27 +90,27 @@
             <div class="row">
                 <div class="padding-left-right-15">
                     {{-- FATHERS NAME --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('fathers_name', Lang::get($p.'fathers_name')) !!}
                         {!! Form::text('fathers_name', $benefiter->fathers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                     </div>
                     {{-- MOTHERS NAME --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('mothers_name', Lang::get($p.'mothers_name')) !!}
                         {!! Form::text('mothers_name', $benefiter->mothers_name, array('class' => 'custom-input-text' , 'disabled')) !!}
                     </div>
                     {{-- NATIONALITY --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('nationality_country', Lang::get($p.'nationality')) !!}
                         {!! Form::text('nationality_country', $benefiter->nationality_country, array('class' => 'custom-input-text' , 'disabled')) !!}
                     </div>
                     {{-- ORIGIN COUNTRY --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('origin_country', Lang::get('basic_info_form.origin_country')) !!}
                         {!! Form::text('origin_country', $benefiter->origin_country, array('class' => 'custom-input-text', 'disabled')) !!}
                     </div>
                     {{-- ETHNICITY --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('ethnic_group', Lang::get('basic_info_form.ethnic_group')) !!}
                         {!! Form::text('ethnic_group', $benefiter->ethnic_group, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
@@ -119,12 +119,12 @@
             <div class="row">
                 <div class="padding-left-right-15">
                     {{-- ARRIVAL DATE --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('arrival_date', Lang::get($p.'arrival_date')) !!}
                         {!! Form::text('arrival_date', $benefiter->arrival_date, array('class' => 'custom-input-text width-80-percent date-input', 'disabled' => 'disabled')) !!}
                     </div>
                     {{-- TELEPHONE --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
                         <?php
                             if($benefiter->telephone == 0){
@@ -134,7 +134,7 @@
                         {!! Form::text('telephone', $benefiter->telephone, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                     </div>
                     {{-- ADDRESS --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                         {!! Form::label('address', Lang::get('basic_info_form.address')) !!}
                         {!! Form::text('address', $benefiter->address, array('class' => 'custom-input-text address', 'disabled' => 'disabled')) !!}
                     </div>
@@ -164,12 +164,16 @@
 {{--------------- 2. MEDICAL HISTORY TABLE --------------------------------------------}}
 <div class="form-section">
     @if(($visit_submited_succesfully == 1))
-        <div class="record-section-header padding-left-right-15 success-message">
-            @lang($p.'success_visit')
+        <div class="alert alert-success">
+            <ul>
+                <li>@lang($p.'success_visit')</li>
+            </ul>
         </div>
     @elseif($visit_submited_succesfully == 2)
-        <div class="record-section-header padding-left-right-15 unsuccess-message">
-            @lang($p.'unsuccess_visit')
+        <div class="alert alert-danger">
+            <ul>
+                <li>@lang($p.'unsuccess_visit')</li>
+            </ul>
         </div>
     @endif
     <div class="underline-header">
