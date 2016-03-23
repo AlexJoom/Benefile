@@ -431,7 +431,7 @@
                                                 </div>
                                                 {{--Description--}}
                                                 <div class="medication_other_name col-md-6">
-                                                    {!! Form::label('medication_new_name[]') !!}
+                                                    {{--{!! Form::label('medication_new_name[]') !!}--}}
                                                     {!! Form::text('medication_new_name[]', null, array('class' => 'custom-input-text display-inline width-100-percent', 'placeholder' => Lang::get($p.'medicinal_name'))) !!}
                                                 </div>
                                             </div>
