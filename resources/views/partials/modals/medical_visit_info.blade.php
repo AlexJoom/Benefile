@@ -267,13 +267,13 @@
             @else
             <div class="row margin-15-30 border-bottom-light">
             @endif
-                <div class="form-group padding-left-right-15 col-md-2">
+                <div class="form-group padding-left-right-15 col-xs-2">
                     <label> {{ $med_exam['description'] }} </label>
                 </div>
                 <?php $duplicity_counter = 0; ?>
                 @if(!empty($med_visit_exam_results))
                     {{-- one foreach to fetch icd10 --}}
-                <div class="form-group padding-left-right-15 col-md-6">
+                <div class="form-group padding-left-right-15 col-xs-6">
                     <div class="row">
                         <div class=" form-group padding-left-right-15 col-md-12">
                             <ul>
@@ -294,7 +294,7 @@
                     @foreach($med_visit_exam_results as $med_exam_result)
                         @if($med_exam_result['results_lookup_id'] == $med_exam['id'])
                             @if($duplicity_counter == 0)
-                                <div class=" form-group padding-left-right-15 col-md-4">
+                                <div class=" form-group padding-left-right-15 col-xs-4">
                                     {{ $med_exam_result['description'] }}
                                 </div>
                                 <?php $duplicity_counter++; ?>
@@ -335,7 +335,7 @@
     </div>
 
     {{-- 5. MEDICINAL LIST INFO ----}}
-    <div class="form-section no-bottom-border">
+    <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">5. @lang($p.'medication')</h1>
         </div>
@@ -414,7 +414,7 @@
                     <div class="make-inline padding-left-right-15 float-left  saved-file">
                         {!! Form::label('medication_name', Lang::get($p.'upload_title')) !!}
                         <div class="custom-input-text display-inline">
-                            {{ $med_upload['title'] }}
+                            <a href="{{ url($med_upload['path'] . $med_upload['title']) }}" target="_blank">{{ $med_upload['title'] }}</a>
                         </div>
                     </div>
                     {{-- uploaded file description --}}
