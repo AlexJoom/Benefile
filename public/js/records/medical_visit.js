@@ -132,6 +132,9 @@ $(document).ready(function(){
             // change the select id name
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
+            $copy.find("select > option").remove();
+
+            $copy.find(".supply_from_praksis").removeAttr("checked");
 
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
