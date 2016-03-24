@@ -1,5 +1,6 @@
 <?php namespace app\Services;
 
+use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
@@ -1016,6 +1017,11 @@ class BenefiterMedicalFolderService
         }
         return $reindexed_array;
     }
+    // get logged in user id
+    public function get_logged_in_user_id(){
+        $user_id = Auth::user()->id;
+        return $user_id;
+    }
     // medical visits for each benefiter
     public function findMedicalVisitsForBenefiter($id){
         return medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
@@ -1029,10 +1035,20 @@ class BenefiterMedicalFolderService
         $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
         return $medical_visits_number;
     }
+    // find benefiter folder number
+    public function find_benefiter_folder_number($id){
+        $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
+        return $benefiter_folder_number;
+    }
     // examination results
     public function examinationsResultsLookup(){
         $examResultsLookup = medical_examination_results_lookup::get()->all();
         return $examResultsLookup;
+    }
+    // get all medical examinaiton results from lookup
+    public function get_medical_examination_results_from_lookup(){
+        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+        return $ExamResultsLookup;
     }
     // Medical Visit location
     public function medicalLocationsLookup(){
@@ -1059,7 +1075,17 @@ class BenefiterMedicalFolderService
         $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit_id)->with('icd10')->get();
         return $med_visit_exam_results;
     }
-
+    // get all medical visits for a benefiter
+    public function get_all_medical_visits_for_benefiter($id){
+        $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
+        return $benefiter_medical_history_list;
+    }
+    // count benefiter's medical visits
+    public function count_medical_visits_for_a_benefiter($id){
+        $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
+        return $medical_visits_number;
+    }
+    // find medical examination results by id
     public function find_medical_examination_results_lookup_id($id){
         $medical_examination_results_lookup_id = medical_examination_results_lookup::where('id', '=', $id)->first()['attributes']['id'];
         return $medical_examination_results_lookup_id;
@@ -1100,5 +1126,14 @@ class BenefiterMedicalFolderService
     public function getAllMedicalLocations(){
         return medical_location_lookup::get()->all();
     }
-
+    // find medical medicinal name from lookup using partial name
+    public function get_full_medication_name($partial_name){
+        $full_medication_name = medical_medication_lookup::where('description','LIKE', '%'.$partial_name.'%' )->get();
+        return $full_medication_name;
+    }
+    // find ICD10 from lookup using partial name
+    public function get_full_icd10_description($partial_name){
+        $full_icd10_description = ICD10::where('description','LIKE', '%'.$partial_name.'%' )->get();
+        return $full_icd10_description;
+    }
 }

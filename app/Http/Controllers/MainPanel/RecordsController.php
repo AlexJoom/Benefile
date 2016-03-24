@@ -64,18 +64,12 @@ class RecordsController extends Controller
     // get basic info view
     public function getBasicInfo($id){
         // brings the referrals options array from db to view
-        $basic_info_referral = BenefiterReferrals_lookup::get()->all();
-        $basic_info_referral_attributes = BenefiterReferrals::all();
-        /*
-         * foreach ($basic_info_referral_attributes as $attributes)
-         * {
-         *     var_dump($attributes->id);
-         * }
-         */
+        $basic_info_referral = $this->basicInfoService->get_basic_info_referrals_from_lookup();
+        $basic_info_referral_attributes = $this->basicInfoService->get_basic_info_referral();
+
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
         // brinks all referrals saved to db for this benefiter id
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')
-                                                        ->get();
+        $benefiter_referrals_list = $this->basicInfoService->get_referrals_for_a_benefiter($id);
         $workTitle = null;
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
@@ -177,7 +171,7 @@ class RecordsController extends Controller
         // update basic info referrals table
         $this->basicInfoService->basic_info_referrals($request);
         // fetch all saved referrals
-        $basic_info_referrals = BenefiterReferrals::get()->all();
+        $basic_info_referrals = $this->basicInfoService->get_basic_info_referral();
 
         return redirect('benefiter/'.$request['benefiter_id'].'/basic-info')->with('basic_info_referrals',$basic_info_referrals)->with("success", \Lang::get('records_controller_messages.referrals_create_success'));
     }
@@ -390,17 +384,16 @@ class RecordsController extends Controller
     //------------ POST MEDICAL VISIT DATA ----------------------------------------//
     public function postMedicalFolder(Request $request, $id){
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-        $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
-        $benefiter_medical_history_list = medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation')->get();
-        $doctor_id = Auth::user()->id;
+        $benefiter_folder_number = $this->medicalVisit->find_benefiter_folder_number($id);
+        $benefiter_medical_history_list = $this->medicalVisit->get_all_medical_visits_for_benefiter($id);
+        $doctor_id = $this->medicalVisit->get_logged_in_user_id();
 
         $benefiter_id = $benefiter->id;
-        $medical_visits_number = medical_visits::where('benefiter_id', $id)->count();
+        $medical_visits_number = $this->medicalVisit->count_medical_visits_for_a_benefiter($id);
         // brings the medical location array from db
-        $medical_locations = medical_location_lookup::get()->all();
+        $medical_locations = $this->medicalVisit->getAllMedicalLocations();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
-        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
-
+        $ExamResultsLookup = $this->medicalVisit->examinationsResultsLookup();
 
         // Post Validation
         $validator = $this->medicalVisit->medicalValidation($request->all());
@@ -497,9 +490,9 @@ class RecordsController extends Controller
         // TODO CREATE A SERVICE THAT RETURNS A JSON WITH ALL INFO FOR EVERY VISIT
         $current_benefiter_medical_visit_id = $request['current_medical_visit'];
         $benefiter_medical_visits_list = $this->medicalVisit->findMedicalVisitsForBenefiter($id);
-        $benefiter_folder_number = Benefiter::where('id', '=', $id)->first()->folder_number;
+        $benefiter_folder_number = $this->medicalVisit->find_benefiter_folder_number($id);
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-        $ExamResultsLookup = medical_examination_results_lookup::get()->all();
+        $ExamResultsLookup = $this->medicalVisit->get_medical_examination_results_from_lookup();
         // for every medical visit of the benefiter fetch the corresponding medical data from DB
         foreach($benefiter_medical_visits_list as $med_visit) {
             if ($med_visit['id'] == $current_benefiter_medical_visit_id) {
@@ -690,12 +683,14 @@ class RecordsController extends Controller
 
     //------ MEDICATION LIST FETCH "LIKE" OBJECTS ---------------------------------//
     public function getMedicationList(Request $request){
-        return medical_medication_lookup::where('description','LIKE', '%'.$request['q'].'%' )->get();
+        $full_medication_name = $this->medicalVisit->get_full_medication_name($request['q']);
+        return $full_medication_name;
     }
 
     //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS -------------------------------//
     public function getICD10List(Request $request){
-        return ICD10::where('description','LIKE', '%'.$request['q'].'%' )->get();
+        $full_icd10_description = $this->medicalVisit->get_full_icd10_description($request['q']);
+        return $full_icd10_description;
     }
 
     // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ----------------- //
