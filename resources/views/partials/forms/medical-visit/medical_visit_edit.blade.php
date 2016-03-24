@@ -615,30 +615,30 @@
                                 @endfor
                             @else
                                 <div class="uploadFile">
-                                     <div class="row">
-                                         <div class="padding-left-right-15">
-                                             {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
-                                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
-                                                 {!! Form::label('upload_file_title', Lang::get($p.'file_details')) !!}
-                                                 {!! Form::text('upload_file_description[]', null, array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
-                                                 {{-- add --}}
-                                                 <a class="color-green add-file" href="javascript:void(0)">
-                                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
-                                                 </a>
-                                                 {{-- remove --}}
-                                                 <a class="color-red remove-file hide-element" href="javascript:void(0)">
-                                                     <span class="glyphicon glyphicon-minus-sign make-inline"></span>
-                                                 </a>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="row">
-                                         <div class="padding-left-right-15">
-                                             <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                                                 {!! Form::file('upload_file_title[]', null, array('class' => 'custom-input-text')) !!}
-                                             </div>
-                                         </div>
-                                     </div>
+                                    <div class="row">
+                                        <div class="padding-left-right-15">
+                                            {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
+                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-8">
+                                                {!! Form::label('upload_file_title', Lang::get($p.'file_details')) !!}
+                                                {!! Form::text('upload_file_description[]', null, array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                                {{-- add --}}
+                                                <a class="color-green add-file" href="javascript:void(0)">
+                                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                </a>
+                                                {{-- remove --}}
+                                                <a class="color-red remove-file hide-element" href="javascript:void(0)">
+                                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="padding-left-right-15">
+                                            <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
+                                                {!! Form::file('upload_file_title[]', null, array('class' => 'custom-input-text')) !!}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endif
                         </div>
