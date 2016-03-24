@@ -2,6 +2,7 @@
 
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
+use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Services\GreekStringConversionHelper;
 use App\Services\DatesHelper;
 use Validator;
@@ -413,7 +414,7 @@ class BasicInfoService{
         return $workTitleId;
     }
 
-    // -------------------------------------------------------------- //
+    // ------------------------------------------------------------------ //
     //----------- benefter basic_info_referrals table (REFERRALS) --------//
     // DB save
     public function basic_info_referrals($request){
@@ -434,6 +435,24 @@ class BasicInfoService{
             $basic_info_referral->save();
         }
     }
+    // get all basic info referrals
+    public function get_basic_info_referral(){
+        $basic_info_referral_attributes = BenefiterReferrals::get()->all();
+        return $basic_info_referral_attributes;
+    }
+
+    // get all referrals form lookup for benefiter's basic info
+    public function get_basic_info_referrals_from_lookup(){
+        $basic_info_referral = BenefiterReferrals_lookup::get()->all();
+        return $basic_info_referral;
+    }
+
+    // get all referrals saved to db for this benefiter id
+    public function get_referrals_for_a_benefiter($id){
+        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->get();
+        return $benefiter_referrals_list;
+    }
+
 
     /*
      * public function deleteBasicInfoReferral($id, $referral_id){
