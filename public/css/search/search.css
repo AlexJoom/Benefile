@@ -67,3 +67,9 @@ a.simple-button:hover, a.simple-button:focus{
     float: right;
     margin: 20px;
 }
+.float-left{
+    float: left;
+}
+.width-60per{
+    width: 60%;
+}
