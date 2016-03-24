@@ -20,11 +20,12 @@
             <a class="logout-button" href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
            </div>
 
-           <div class="white margin-top-100">
-               <div class="bottomDiv" >
-                  @lang($p.'need_help')<a class="white" href="#"><b>@lang($p.'contact')</b></a>
-              </div>
-          </div>
+
+        </div>
+    </div>
+    <div class="white margin-top-100">
+        <div class="bottomDiv" >
+           @lang($p.'need_help')<a class="white" href="#"><b>@lang($p.'contact')</b></a>
         </div>
     </div>
 @stop
