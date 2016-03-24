@@ -17,9 +17,9 @@
     @section('main-window-content')
         {{-- Dropzone --}}
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <form action="{{url('new-benefiter/uploadCSV')}}" id="dropzone" class="dropzone margin-5per custom-style relPos">
-                    <div class="col-md-12 adsPos-height100per">
+                    <div class="col-xs-12 adsPos-height100per">
                         <div class="row title-row-style">
                             <h1 class="dropzone-title">@lang($p.'upload_here')</h1>
                         </div>
@@ -37,7 +37,7 @@
 
         {{-- Progress Bar (NOT FOR NOW) --}}
         {{--<div class="row margin-0per-5per-0per-5per">--}}
-            {{--<div class="col-md-12">--}}
+            {{--<div class="col-xs-12">--}}
                 {{--<div class="row progress progress-custom">--}}
                 <?php
                      // $percent = 100;
@@ -65,7 +65,7 @@
 
         {{-- Refresh button --}}
         <div class="row">
-            <div class="col-md-12 text-align-center">
+            <div class="col-xs-12 text-align-center">
                 <button class="importButton btn btn-warning" onclick="refreshPage()">@lang($p.'add-another')</button>
             </div>
         </div>
@@ -74,7 +74,7 @@
         @if(count($importedCSVFiles_basic_info) != 0)
         <div class="row margin-top-20">
             <h3 class="text-align-center">@lang($p.'already-uploaded')</h3>
-            <div class="col-md-6 col-centered">
+            <div class="col-xs-6 col-centered">
                  <table id="imported-info" style="width:100%">
                   <thead>
                       <tr>
