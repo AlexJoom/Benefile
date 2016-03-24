@@ -25,7 +25,7 @@
     </div>
     <div class="white margin-top-100">
         <div class="bottomDiv" >
-           @lang($p.'need_help')<a class="white" href="#"><b>@lang($p.'contact')</b></a>
+           @lang($p.'need_help')<a class="white" target="_blank" href="http://www.praksis.gr/el/επικοινωνια"><b>@lang($p.'contact')</b></a>
         </div>
     </div>
 @stop
