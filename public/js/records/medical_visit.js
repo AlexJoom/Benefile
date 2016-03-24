@@ -203,6 +203,8 @@ $(document).ready(function(){
         // Clear copied fields+
         $copy.find('#file').val('');
         $copy.find("input:file[name='upload_file_title[]']").val('');
+        $copy.find(".saved-file").hide();
+        $copy.find(".new-upload-file").show();
     });
 
     // remove file element after remove button is clicked
