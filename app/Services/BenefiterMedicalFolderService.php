@@ -938,8 +938,9 @@ class BenefiterMedicalFolderService
                         $medical_upload->save();
                     }
                 } else {
-                    if(!empty($request_medical_referrals[$i])){
-                        $fileName = $file[$i]->getClientOriginalName() . '-medical_visit-' . $selected_medical_visit_id;
+                    if(!empty($file[$i])){
+//                    if(!empty($request_medical_referrals[$i])){
+                        $fileName = 'medical_visit-' . $selected_medical_visit_id . $file[$i]->getClientOriginalName();
                         $file[$i]->move($path, $fileName); // uploading file to given path
                         $medical_upload = new medical_uploads();
                         $medical_upload->title = $fileName;
