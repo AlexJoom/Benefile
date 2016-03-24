@@ -200,11 +200,11 @@ $(document).ready(function(){
         // append cloned element to parent
         var $parent = $("#upload_file");
         $copy.appendTo($parent);
-
         // Clear copied fields+
         $copy.find('#file').val('');
         $copy.find("input:file[name='upload_file_title[]']").val('');
     });
+
     // remove file element after remove button is clicked
     $("body").on("click", ".remove-file", function(){
         $(this).parents(".file-added-div").remove();
@@ -212,7 +212,7 @@ $(document).ready(function(){
 
     // hide upload option if saved found $ show if the present is removed
     $('.new-upload-file').hide();
-    $('.remove-uploaded-file').on('click', function(){
+    $('body').on('click', '.remove-uploaded-file', function(){
         $(this).parents('.padding-left-right-15').find('.new-upload-file').show();
         $(this).parents('.saved-file').hide();
     });
