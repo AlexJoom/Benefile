@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/auth/awaitActivation.php" afterPath="$PROJECT_DIR$/resources/lang/gr/auth/awaitActivation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/loginRegister.css" afterPath="$PROJECT_DIR$/public/css/common/loginRegister.css" />
     </list>
     <ignored path="Benefile.iws" />
@@ -49,21 +47,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="awaitActivation.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="awaitActivation.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5602165" vertical-offset="0" max-vertical-offset="805">
+            <state vertical-scroll-proportion="-15.333333" vertical-offset="0" max-vertical-offset="805">
               <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginRegister.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loginRegister.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.785715" vertical-offset="3402" max-vertical-offset="4140">
-              <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.56368566" vertical-offset="3402" max-vertical-offset="4140">
+              <caret line="166" column="20" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -127,8 +125,8 @@
         <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
         <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/gr/auth/awaitActivation.php" />
-        <option value="$PROJECT_DIR$/public/css/common/loginRegister.css" />
         <option value="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/common/loginRegister.css" />
       </list>
     </option>
   </component>
@@ -1215,18 +1213,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.785715" vertical-offset="3402" max-vertical-offset="4140">
-          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+        <state vertical-scroll-proportion="-15.333333" vertical-offset="0" max-vertical-offset="805">
+          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5602165" vertical-offset="0" max-vertical-offset="805">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.56368566" vertical-offset="3402" max-vertical-offset="4140">
+          <caret line="166" column="20" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
           <folding />
         </state>
       </provider>
