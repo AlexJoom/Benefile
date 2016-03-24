@@ -922,7 +922,6 @@ class BenefiterMedicalFolderService
         $saved_files = medical_uploads::where("medical_visit_id", $selected_medical_visit_id)->get();
         $saved_files_count = count($saved_files);
         $counter = 0;
-
         // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
         if($requests_count > $saved_files_count){
             for($i=0; $i<$requests_count ; $i++) {
@@ -956,16 +955,16 @@ class BenefiterMedicalFolderService
         }else{
             for($j=0; $j<$saved_files_count; $j++){
                 if ($counter < $requests_count) {
+                    $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
+                    $medical_upload->description = $request_upload_file_description[$j];
                     if(!empty($file[$j])){
                         $fileName = 'medical_visit-' . $selected_medical_visit_id . $file[$j]->getClientOriginalName();
                         $file[$j]->move($path, $fileName); // uploading file to given path
-                        $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                         $medical_upload->title = $fileName;
-                        $medical_upload->description = $request_upload_file_description[$j];
                         $medical_upload->path = $path_after_public_folder;
                         $medical_upload->medical_visit_id = $selected_medical_visit_id;
-                        $medical_upload->save();
                     }
+                    $medical_upload->save();
                 } else {
                     $medical_upload = medical_uploads::find($saved_files[$counter]['id']);
                     $medical_upload->delete();
