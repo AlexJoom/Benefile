@@ -52,9 +52,7 @@ function fetchEducationDataReport(){
             "valueField": "benefiters_count_with_this_education_title",
             "titleField": "education_title",
             "outlineAlpha": 0.4,
-            "depth3D": 15,
             "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-            "angle": 30,
             "fontSize": 16,
             "export": {
                 "enabled": true

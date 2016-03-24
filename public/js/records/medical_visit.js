@@ -321,6 +321,12 @@ $(document).ready(function(){
     // hide text input if a value is selected using select2 plugin
     // else show it
     $("body").on("change", ".js-example-basic-multiple", function(){
+        // remove the empty element from select2 plugin
+        $(this).siblings(".select2").find("li").each(function(){
+            if($(this).attr("title") == ""){
+                $(this).remove();
+            }
+        });
         if($(this).parent().find(".select2-selection").attr("aria-expanded") != "false"){
             $(this).parent().siblings(".medication_other_name").hide();
         } else {

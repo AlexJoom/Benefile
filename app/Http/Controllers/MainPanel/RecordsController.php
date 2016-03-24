@@ -74,6 +74,7 @@ class RecordsController extends Controller
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         // get legal statuses from session, else get null and afterwards forget session value
+        // If validation fails, get back all previously written info
         $legal_statuses = session()->get('legalStatuses', function() { return null; });
         session()->forget('legalStatuses');
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });

@@ -286,13 +286,14 @@
                     }
                 }]
             },
-            "dataProvider": [{
+            "dataProvider": [
             @foreach ($benefiters_age as $age)
+            {
                 "benefiters": {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
                 "counter": {!! json_encode($age->counter) !!}
-            }, {
+            },
             @endforeach
-            }],
+            ],
             "valueField": "counter",
             "titleField": "benefiters",
             "export": {
@@ -357,13 +358,14 @@
                     }
                 }]
             },
-            "dataProvider": [{
+            "dataProvider": [
             @foreach ($benefitersMaritalStatuses as $maritalStatus)
+            {
                 "benefiters": {!! json_encode($maritalStatus->marital_status_title) !!},
                 "counter": {!! json_encode($maritalStatus->marital_counter) !!}
-            }, {
+            },
             @endforeach
-            }],
+            ],
             "valueField": "counter",
             "titleField": "benefiters",
             "export": {
@@ -428,13 +430,14 @@
                     }
                 }]
             },
-            "dataProvider": [{
+            "dataProvider": [
             @foreach ($benefiters_legal_statuses as $legalStatus)
+            {
                 "benefiters": {!! json_encode($legalStatus->description) !!},
                 "litres": {!! json_encode($legalStatus->legal_counter) !!}
-            }, {
+            },
             @endforeach
-            }],
+            ],
             "valueField": "litres",
             "titleField": "benefiters",
             "export": {
@@ -499,13 +502,14 @@
                     }
                 }]
             },
-            "dataProvider": [{
+            "dataProvider": [
             @foreach ($medical_visits_location as $medicalVisit)
+            {
                 "benefiters": {!! json_encode($medicalVisit->location) !!},
                 "counter": {!! json_encode($medicalVisit->counter) !!}
-            }, {
+            },
             @endforeach
-            }],
+            ],
             "valueField": "counter",
             "titleField": "benefiters",
             "export": {
