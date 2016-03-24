@@ -13,6 +13,14 @@
     <link href="{{asset('select2-4.0.2-rc.1/css/select2.min.css')}}" rel="stylesheet" type="text/css">
 @stop
 
+@section('benefiter-info')
+    @if(isset($benefiter) and $benefiter != null)
+        <div class="benefiter-info">
+            <h2>{{$benefiter->name}} {{$benefiter->lastname}} / {{$benefiter->folder_number}}</h2>
+        </div>
+    @endif
+@stop
+
 @section('main-window-content')
 
     <?php

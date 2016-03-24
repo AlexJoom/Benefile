@@ -12,6 +12,14 @@
     <link href="{{ asset('css/records/social_folder_form.css') }}" rel="stylesheet" type="text/css">
 @stop
 
+@section('benefiter-info')
+    @if(isset($benefiter) and $benefiter != null)
+        <div class="benefiter-info">
+            <h2>{{$benefiter->name}} {{$benefiter->lastname}} / {{$benefiter->folder_number}}</h2>
+        </div>
+    @endif
+@stop
+
 @section('main-window-content')
 
     @include('partials.select-panel')
