@@ -588,7 +588,7 @@
                                                     {!! Form::label('upload_file_title', Lang::get($p.'file_details')) !!}
                                                     {!! Form::text('upload_file_description[]', $med_visit_uploads[$i]['description'], array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                                     {{-- add --}}
-                                                    <a class="color-green add-file" href="javascript:void(0)">
+                                                    <a class="color-green add-file @if($i != 0) hide-element @endif" href="javascript:void(0)">
                                                         <span class="glyphicon glyphicon-plus-sign make-inline"></span>
                                                     </a>
                                                     {{-- remove --}}
