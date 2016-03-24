@@ -14,8 +14,6 @@ class UsersSubrolesSeeder extends Seeder
                 array('subrole' => "Γενικός ιατρός"),
                 array('subrole' => "Παιδίατρος"),
                 array('subrole' => "Γυναικολόγος"),
-                array('subrole' => "Κοινωνικός Σύμβουλος"),
-                array('subrole' => "Ψυχολόγος"),
                 array('subrole'  => 'Οδοντίατρος'),
                 array('subrole'  => 'Δερματολόγος'),
                 array('subrole'  => 'Ορθοπεδικός'),

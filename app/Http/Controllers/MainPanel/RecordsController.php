@@ -689,7 +689,7 @@ class RecordsController extends Controller
 
     //------ MEDICATION LIST FETCH "LIKE" OBJECTS ---------------------------------//
     public function getMedicationList(Request $request){
-        return medical_medication_lookup::where('description','LIKE', '%'.$request['m'].'%' )->get();
+        return medical_medication_lookup::where('description','LIKE', '%'.$request['q'].'%' )->get();
     }
 
     //------ ICD10 SELECT LIST FETCH "LIKE" OBJECTS -------------------------------//

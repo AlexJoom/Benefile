@@ -26,7 +26,9 @@
 .table-cell{
     display: table-cell;
 }
-
+.float-left{
+    float: left;
+}
 .no-background{
     background-color: transparent !important;
 }
@@ -126,23 +128,19 @@
             /* Search Bar*/
 .searchField{
     width: 76%;
-    height: 55px;
+    height: 60px;
     font-size: 16px;
     color: #ffffff;
     font-weight: 500;
     border: 3px solid #926194;
     padding: 10px;
-    margin-left: 5px;
 }
 .searchButton{
     color: white;
     background-color: #4c2a47;
     border: none;
-    height: 57px;
-    width: 19.9%;
-    padding: 0px;
-    right: 7px;
-    top: 2px;
+    padding: 15px;
+    width: 24%;
 }
 .searchField::-webkit-input-placeholder {
     font-style: italic;
@@ -155,6 +153,10 @@
 }
 .searchField:-ms-input-placeholder {
     font-style: italic;
+}
+
+.fond-size-25px{
+    font-size: 25px;
 }
             /* END Search Bar*/
 

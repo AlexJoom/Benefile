@@ -72,7 +72,7 @@
 
         {{-- Imported files info --}}
         @if(count($importedCSVFiles_basic_info) != 0)
-        <div class="row margin-top-20">
+        <div class="row margin-top-20 margin-bottom-100">
             <h3 class="text-align-center">@lang($p.'already-uploaded')</h3>
             <div class="col-xs-6 col-centered">
                  <table id="imported-info" style="width:100%">

@@ -54,11 +54,11 @@
                     </div>
 
                     {{-- Search bar --}}
-                    <div id="search-bar" class="table-row">
+                    <div id="search-bar" class="">
                         {!! Form::open(array('url' => 'search', 'method' => 'get')) !!}
 {{--                        <form action="{{ url('search') }}" method="post">--}}
-                            <input type="text" class="searchField dark-green-background table-cell" name="search" placeholder="@lang($p.'folder_number_search')">
-                            <button type="submit" class="glyphicon glyphicon-search searchButton table-cell"></button>
+                            <input type="text" class="searchField dark-green-background float-left" name="search" placeholder="@lang($p.'folder_number_search')">
+                            <button type="submit" class=" searchButton"><i class="glyphicon glyphicon-search fond-size-25px"></i></button>
                         {{--</form>--}}
                         {!! Form::close() !!}
                     </div>
