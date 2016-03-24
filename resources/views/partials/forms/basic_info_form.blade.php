@@ -645,7 +645,7 @@
         </div>
     @else
         {{-- REFERRALS --}}
-        <div class="referrals-list form-section">
+        <div class="referrals-list form-section no-bottom-border">
             <div class="underline-header">
                 <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
             </div>
@@ -671,6 +671,9 @@
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
+                                            <td>
+                                                <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
+                                            </td>
                                         </tr>
                                     @endif
                                     @endforeach
@@ -690,6 +693,48 @@
                 </div>
             </div>
         </div>
+        <div class="add-new-referral form-section no-bottom-border">
+             <div class="underline-header">
+                <h1 class="record-section-header padding-left-right-15">12. @lang($p."new_referral")</h1>
+            </div>
+            {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
+                {!! Form::hidden('benefiter_id', $benefiter->id) !!}
+                {{-- ADD NEW REFERRAL --}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="basic_info_referrals" class="row padding-bottom-30">
+                            <div  class="padding-left-right-15 basic_info_referral">
+                                <div class="form-group float-left width-100-percent">
+
+                                    {{-- ΠΑΡΑΠΟΜΠΗ --}}
+                                    <div class="form-group make-inline float-left col-md-9">
+                                        {!! Form::label('basic_info_referrals', Lang::get('basic_info_form.referral_label')) !!}
+                                        {!! Form::select('basic_info_referrals_id[]', $basic_info_referral_array) !!}
+                                        {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                    </div>
+                                    <div class="form-group make-inline float-left col-md-2">
+                                        {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
+                                    <div class="col-md-1">
+                                        {{-- add --}}
+                                        <a class="color-green add-ref float-right" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                        </a>
+                                        {{-- remove --}}
+                                        <a class="color-red remove-ref hide-element float-right" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="form-section align-text-center">
+                    {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
+                </div>
+            {!! Form::close() !!}
     @endif
 @else
     <div class="personal-info form-section no-bottom-border">
