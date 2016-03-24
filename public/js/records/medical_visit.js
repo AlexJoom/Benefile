@@ -132,6 +132,9 @@ $(document).ready(function(){
             // change the select id name
             $copy.find('.js-example-basic-multiple').attr('id','medicinal_name_' + $temp);
             $copy.find(".select2.select2-container").remove();
+            $copy.find("select > option").remove();
+
+            $copy.find(".supply_from_praksis").removeAttr("checked");
 
             // then calls the select2 functionality
             createSelect2($('#medicinal_name_' + $temp));
@@ -197,11 +200,11 @@ $(document).ready(function(){
         // append cloned element to parent
         var $parent = $("#upload_file");
         $copy.appendTo($parent);
-
         // Clear copied fields+
         $copy.find('#file').val('');
         $copy.find("input:file[name='upload_file_title[]']").val('');
     });
+
     // remove file element after remove button is clicked
     $("body").on("click", ".remove-file", function(){
         $(this).parents(".file-added-div").remove();
@@ -209,7 +212,7 @@ $(document).ready(function(){
 
     // hide upload option if saved found $ show if the present is removed
     $('.new-upload-file').hide();
-    $('.remove-uploaded-file').on('click', function(){
+    $('body').on('click', '.remove-uploaded-file', function(){
         $(this).parents('.padding-left-right-15').find('.new-upload-file').show();
         $(this).parents('.saved-file').hide();
     });
