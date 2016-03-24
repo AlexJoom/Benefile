@@ -327,5 +327,10 @@ $(document).ready(function(){
             $(this).parent().siblings(".medication_other_name").show();
         }
     });
+
+    // clinical results textareas will be shown only when select2 plugin input is clicked
+    $("body").on("select2:open", ".js-example-basic-multiple", function(){
+        $(this).siblings("textarea").show();
+    });
 });
 var $clickCount = $('#medication select').length;
