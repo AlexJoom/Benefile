@@ -15,7 +15,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             {{-- email --}}
             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                <div class="col-md-6 centerDiv">
+                <div class="width-55-percent centerDiv">
                     <input type="email" class="inputFields" name="email" value="{{ old('email') }}" placeholder="e-mail">
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -27,7 +27,7 @@
 
             {{-- password --}}
             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                <div class="col-md-6 centerDiv">
+                <div class="width-55-percent centerDiv">
                     <input type="password" class="inputFields" name="password" placeholder=@lang($p.'password')>
                     @if ($errors->has('password'))
                         <span class="help-block">
@@ -42,7 +42,7 @@
 
             {{-- Login button --}}
             <div class="form-group">
-                <div class="col-md-6 centerDiv">
+                <div class="width-55-percent centerDiv">
                     <button type="submit" class="inputFields submitColor no-border" >
                         @lang($p.'login')
                     </button>
