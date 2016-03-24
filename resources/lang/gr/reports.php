@@ -1,7 +1,7 @@
 <?php
 
     return array(
-        'users'                         => 'Χρήστες<br><br>',
+        'users'                         => 'Χρήστες',
         'doctors'                       => 'ΙΑΤΡΟΙ<br><br>',
         'legals'                        => 'ΔΙΚΗΓΟΡΟΙ<br><br>',
         'psychologists'                 => 'ΨΥΧΟΛΟΓΟΙ<br><br>',
