@@ -16,9 +16,11 @@ class UploadFileService{
     private $__levelNames = array();
     private $__legalStatuses = array();
     private $__errors = array();
+    private $socialService;
 
     public function __construct(){
         $this->greekStringConversion = new GreekStringConversionHelper();
+        $this->socialService = new SocialFolderService();
     }
 
     // inserts all values to DB
@@ -82,6 +84,7 @@ class UploadFileService{
             foreach ($allFileRows as $singleRow) {
                 try {
                     $imported_benefiter_id = \DB::table('benefiters')->insertGetId($this->selectBenefitersColumnsAndValuesFromFileRow($singleRow));
+                    $this->socialService->saveSocialFolderToDB(array('comments' => ''), $imported_benefiter_id);
                     $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $imported_benefiter_id);
                     $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
                     $this->importReferrals($singleRow, $imported_benefiter_id);
