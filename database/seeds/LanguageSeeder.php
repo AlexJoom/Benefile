@@ -305,10 +305,10 @@ class LanguageSeeder extends Seeder
         \DB::table('language_levels')->insert(
             array(
                 array('description'   => 'Επιλέξτε επίπεδο'),
-                array('description'   => 'Κακό'),
-                array('description'   => 'Κάτω του μετρίου'),
+                array('description'   => 'Χαμηλό'),
                 array('description'   => 'Μέτριο'),
                 array('description'   => 'Καλό'),
+                array('description'   => 'Πολύ Καλό'),
                 array('description'   => 'Άριστο'),
             )
         );
