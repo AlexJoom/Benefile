@@ -1,4 +1,4 @@
-@extends('layouts.mainPanel')v
+@extends('layouts.mainPanel')
 
 @section('panel-title')
     @lang('social_folder_form.social_folder')
