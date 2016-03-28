@@ -76,7 +76,9 @@ class BasicInfoService{
             $request['legal_status'] = null;
         }
         $this->saveLegalStatusesToDB($benefiter->id, $request);
-        $this->createSocialFolderToDB($benefiter->id);
+        // initialize SocialFolderService to use the saveSocialFolderToDB function
+        $socialService = new SocialFolderService();
+        $socialService->saveSocialFolderToDB(array('comments' => ''), $benefiter->id);
         return $benefiter;
     }
 
@@ -413,11 +415,6 @@ class BasicInfoService{
             $workTitleId = \DB::table('work_title_list_lookup')->insertGetId(array('work_title' => $workTitleFromForm));
         }
         return $workTitleId;
-    }
-
-    // creates an empty social folder for newly registered benefiters
-    private function createSocialFolderToDB($benefiterId){
-        \DB::table('social_folder')->insert(array('benefiter_id' => $benefiterId));
     }
 
     // ------------------------------------------------------------------ //
