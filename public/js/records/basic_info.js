@@ -17,6 +17,7 @@ $(document).ready(function(){
     $("body").on("change", "#hide_work_legally", function(){
         $("#working_legally_div").hide();
         $("#working_title_div").hide();
+        $("#working_title").val("");
     });
 
     // add more languages
