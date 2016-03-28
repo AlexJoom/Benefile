@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(MedicalLocationSeeder::class);
         $this->call(MedicalIncidentTypesSeeders::class);
-        $this->call(TestBenefitersSeeder::class);
         $this->call(ICDSeeder::class);
         $this->call(LegalFolderTableSeeder::class);
         $this->call(CountriesLookupSeeder::class);
+        $this->call(TestBenefitersSeeder::class);
 
         Model::reguard();
     }
