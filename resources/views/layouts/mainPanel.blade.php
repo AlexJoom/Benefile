@@ -37,7 +37,7 @@
             @yield('benefiter-info')
 
             <div class="userName">
-                <a href="#" class="white" role="button" aria-expanded="false">
+                <a class="white" aria-expanded="false">
                     {{ Auth::user()->name }} {{ Auth::user()->lastname }}
                 </a>
             </div>
