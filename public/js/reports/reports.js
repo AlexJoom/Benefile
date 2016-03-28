@@ -382,7 +382,7 @@ function fetchBenefitersRegistrationsPerMonthDataReport() {
                     markerType: "none"
                 },
 
-                drawingIconsEnabled: true
+                drawingIconsEnabled: false
             } ],
 
             chartScrollbarSettings: {
