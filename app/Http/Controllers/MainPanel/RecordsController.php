@@ -564,7 +564,7 @@ class RecordsController extends Controller
         $selected_medical_visit_id = $request['medical_visit_id'];
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $benefiter_medical_visits_list = $this->medicalVisit->findMedicalVisitsForBenefiter($id);
-        $doctor_id = $this->medicalVisit->findDoctorId();
+//        $doctor_id = $this->medicalVisit->findDoctorId();
         $medical_locations = $this->medicalVisit->medicalLocationsLookup();  //medical_location_lookup::get();
         $medical_incident_type = $this->medicalVisit->medicalIncidentTypeLookup();  //medical_incident_type_lookup::get();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
@@ -591,6 +591,7 @@ class RecordsController extends Controller
         // for every medical visit of the benefiter fetch the corresponding medical data from DB
         foreach($benefiter_medical_visits_list as $med_visit) {
             if ($med_visit['id'] == $selected_medical_visit_id) {
+                $doctor_id = $med_visit['doctor']['id'];
                 //Doctor Name
                 $med_visit_doctor = $med_visit['doctor']['name'] . ' ' . $med_visit['doctor']['lastname'];
                 // Examination date
