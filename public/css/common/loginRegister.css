@@ -57,23 +57,21 @@
 }
 
 #leftCell{
-    /*display: table-cell;*/
-    /*text-align: center;*/
     vertical-align: middle;
-    width: 50%;
+    height: 100%;
+}
+
+#leftCell > img{
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #rightCell{
     /*display: table-cell;*/
     /*text-align: center;*/
     vertical-align: middle;
-    width: 50%;
     font-size: 120%;
     color: #d3d3d3;
-}
-
-.logo-padding{
-    padding: 0px 100px;
 }
 
 .inputFields{
