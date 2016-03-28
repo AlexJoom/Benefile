@@ -376,6 +376,77 @@ class TestBenefitersSeeder extends Seeder
             )
         );
 
+        \DB::table('medical_examinations')->insert(
+            array(
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 1,
+                ),
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 2,
+                ),
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 3,
+                ),
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 4,
+                ),
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 5,
+                ),
+                array(
+                    'height' => 0,
+                    'weight' => 0,
+                    'skull_perimeter' => 0,
+                    'temperature' => 0,
+                    'blood_pressure_diastolic' => 0,
+                    'blood_pressure_systolic' => 0,
+                    'examination_date' => date('2015-06-30'),
+                    'description' => 'description',
+                    'medical_visit_id' => 6,
+                ),
+            )
+        );
+
         \DB::table('social_folder')->insert(
             array(
                 array(
