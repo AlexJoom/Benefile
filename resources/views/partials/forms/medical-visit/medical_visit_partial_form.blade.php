@@ -56,7 +56,7 @@
                 {{-- Fetch the posted input values if the post fails --}}
                 @if(!empty($chronic_conditions_sesssion))
                     @for($i=0; $i< count($chronic_conditions_sesssion) ; $i++)
-                        <div  class="padding-left-right-15 chronicConditions condition-added-div">
+                        <div  class="padding-left-right-15 @if($i==0) chronicConditions @else condition-added-div @endif">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ --}}
                                 <div class="make-inline col-md-6">
@@ -193,7 +193,7 @@
             <div id="lab-result" class="row padding-bottom-30">
                 @if(!empty($lab_results_session))
                     @for($i=0 ; $i<count($lab_results_session) ; $i++)
-                        <div class="padding-left-right-15 lab-results lab-added-div">
+                        <div class="padding-left-right-15 @if($i==0) lab-results @else lab-added-div @endif">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                 <div class="make-inline col-md-10">
@@ -363,7 +363,7 @@
             <div id="referrals" class="row padding-bottom-30">
                 @if(!empty($referrals_session))
                     @for($i=0; $i<count($referrals_session) ; $i++)
-                        <div class="padding-left-right-15 referral ref-added-div">
+                        <div class="padding-left-right-15 @if($i==0) referral @else ref-added-div @endif">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                 <div class="make-inline col-md-10">

@@ -342,5 +342,19 @@ $(document).ready(function(){
     $("body").on("select2:open", ".js-example-basic-multiple", function(){
         $(this).siblings("textarea").show();
     });
+
+    // do not display add sign on already added values
+    $(".condition-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".clinical-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".lab-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".ref-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
 });
 var $clickCount = $('#medication select').length;
