@@ -239,7 +239,7 @@ function fetchmedicalVisitsPerMonthDataReport() {
                     markerType: "none"
                 },
 
-                drawingIconsEnabled: true
+                drawingIconsEnabled: false
             } ],
 
             chartScrollbarSettings: {
