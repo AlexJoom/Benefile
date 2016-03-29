@@ -219,12 +219,14 @@ $(document).ready(function(){
         $(this).parents('.saved-file').hide();
     });
 
-    // By clicking the new visit button the form should be slide down
+    // if something wrong happens with the validation, don't hide the #new-medical-visit form
     if($(".alert.alert-danger").length <= 0) {
         $('#new-medical-visit').hide();
     }
+
+    // By clicking the new visit button the form should be slide down
     $('#new-med-visit-button').on('click', function(){
-        $('#new-medical-visit').slideToggle();
+        $('#new-medical-visit').slideToggle(); // show/hide the #new-medical-visit form
         $('html, body').animate({
             scrollTop: $("#new-medical-visit").offset().top
         }, 500);
@@ -233,7 +235,7 @@ $(document).ready(function(){
     // SELECT2 option added for auto complete ICD10 medical conditions
     //$('select[id^=clinical-select-]').hide()
     $('select[id^="clinical-select-"]').select2({
-        placeholder: 'Πάθηση',
+        placeholder: $("#clinical-results-div").data("placeholder-name"),
         ajax: {
 	    //url: $("#examajax").data("url")+"/benefiter/getIC10List",
 	    url: $('body').attr('data-url') + "/benefiter/getIC10List",

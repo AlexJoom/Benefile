@@ -51,6 +51,7 @@ return array(
     'skull_perimeter'      =>  'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ για νεογέννητα (cm)',
 
     'clinical_results'     =>  'Κλινικά αποτελέσματα',
+    'condition'            =>  'Πάθηση',
 
     'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στην λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',

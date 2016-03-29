@@ -137,7 +137,7 @@
 </div>
 
 {{-- CLINICAL RESULTS --}}
-<div class="form-section no-bottom-border">
+<div class="form-section no-bottom-border" id="clinical-results-div" data-placeholder-name="@lang($p."condition")">
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">4. @lang($p.'clinical_results')</h1>
     </div>
