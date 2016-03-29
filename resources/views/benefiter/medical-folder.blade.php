@@ -29,16 +29,7 @@
     ?>
     @include('partials.select-panel')
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-        @include('partials.forms.medical-visit.new_medical_visit')
+    @include('partials.forms.medical-visit.new_medical_visit')
 @stop
 
 @section('panel-scripts')

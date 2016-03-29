@@ -173,6 +173,11 @@
         <div class="alert alert-danger">
             <ul>
                 <li>@lang($p.'unsuccess_visit')</li>
+                @if (count($errors) > 0)
+                    @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     @endif
