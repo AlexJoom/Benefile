@@ -343,6 +343,13 @@ $(document).ready(function(){
         $(this).siblings("textarea").show();
     });
 
+    // clinical results textareas will be hidden when select2 plugin input is closed if there is nothing selected
+    $("body").on("select2:close", ".js-example-basic-multiple", function(){
+        if($(this).siblings(".select2").find("li").attr("title") === undefined) {
+            $(this).siblings("textarea").hide();
+        }
+    });
+
     // do not display add sign on already added values
     $(".condition-added-div").each(function(){
         $(this).find(".color-green").hide();
