@@ -220,7 +220,9 @@ $(document).ready(function(){
     });
 
     // By clicking the new visit button the form should be slide down
-    $('#new-medical-visit').hide();
+    if($(".alert.alert-danger").length <= 0) {
+        $('#new-medical-visit').hide();
+    }
     $('#new-med-visit-button').on('click', function(){
         $('#new-medical-visit').slideToggle();
         $('html, body').animate({
