@@ -21,34 +21,36 @@
             <h1 class="record-section-header padding-left-right-15">@lang($p."users")</h1>
         </div>
         <div class="row">
+        <div class="col-md-12">
             <div id="doctors" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_doctors.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_doctors.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."doctors")</p>
                     <p class="users-counter">{{ $users_roles_count['doctors'] }}</p>
                 </div>
             </div>
             <div id="legals" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_legals.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_legals.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."legals")</p>
                     <p class="users-counter">{{ $users_roles_count['legals'] }}</p>
                 </div>
             </div>
             <div id="psychologists" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_psychologists.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_psychologists.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."psychologists")</p>
                     <p class="users-counter">{{ $users_roles_count['psychologists'] }}</p>
                 </div>
             </div>
             <div id="socials" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_socials.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_socials.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."socials")</p>
                     <p class="users-counter">{{ $users_roles_count['socials'] }}</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     {{-- REPORT: Benefiters VS gerder --}}
