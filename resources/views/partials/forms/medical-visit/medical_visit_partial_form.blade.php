@@ -1,5 +1,5 @@
 {{-- NEW VISIT NUMBER --}}
-<div class="row padding-top-20">
+<div class="row padding-top-20 width-100-percent">
     <div class="col-md-12">
         <div class="row float-right">
             <div class="padding-left-right-15">

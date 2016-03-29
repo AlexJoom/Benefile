@@ -262,7 +262,7 @@
 
 {{--------------- 3. NEW MEDICAL VISIT ------------------------------------------------}}
 {{-- Button (dropsdown the form) --}}
-<div class="row padding-top-20">
+<div class="row padding-top-20 margin-0">
     <div class="col-md-12">
         @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
             <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
