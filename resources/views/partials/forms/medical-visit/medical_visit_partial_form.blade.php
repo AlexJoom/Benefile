@@ -157,7 +157,7 @@
                                         @endif
                                     @endfor
                             </select>
-                            {!! Form::textarea('examResultDescription[]', "$examResultDescription_session[$i]", ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per']) !!}
+                            {!! Form::textarea('examResultDescription[]', "$examResultDescription_session[$i]", ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per', 'style' => 'display: none;']) !!}
                         </div>
 {{--                        @if($i%2 == 1)--}}
                     </div>
@@ -173,7 +173,7 @@
                         <select id="clinical-select-{{$i}}" class="js-example-basic-multiple" multiple="multiple" name="examResultLoukup[{{$i}}][]" style="width:100%;">
                             <option selected="selected" style="display: none"></option>
                         </select>
-                        {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per']) !!}
+                        {!! Form::textarea('examResultDescription[]', null, ['size' => '35x5', 'class'=>'custom-input-textarea margin-top-20 width-100-percent max-width-100per', 'style' => 'display: none;']) !!}
                     </div>
 {{--                        @if($i%2 == 1)--}}
                     </div>
