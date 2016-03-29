@@ -452,7 +452,7 @@ class BasicInfoService{
 
     // get all referrals saved to db for this benefiter id
     public function get_referrals_for_a_benefiter($id){
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->get();
+        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
         return $benefiter_referrals_list;
     }
 

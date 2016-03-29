@@ -1024,7 +1024,7 @@ class BenefiterMedicalFolderService
     }
     // medical visits for each benefiter
     public function findMedicalVisitsForBenefiter($id){
-        return medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
+        return medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->orderBy('medical_visit_date', 'desc')->get();
     }
     // chronic conditions for each benefiter
     public function findMedicalChronicConditionsForBenefiter($benefiter_id, $medical_visit_id){
