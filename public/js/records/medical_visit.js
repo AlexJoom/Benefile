@@ -356,5 +356,14 @@ $(document).ready(function(){
     $(".ref-added-div").each(function(){
         $(this).find(".color-green").hide();
     });
+
+    // remove empty elements from clinical results if existent
+    $(".js-example-basic-multiple").each(function(){
+        $(this).siblings(".select2").find("li").each(function(){
+            if($(this).attr("title") == ""){
+                $(this).remove();
+            }
+        });
+    });
 });
 var $clickCount = $('#medication select').length;
