@@ -12,7 +12,7 @@ class SearchService{
         $firstWhereParameter = true;
         $firstWhereParameterExternalSelect = true;
         if ($request['folder_number'] != ""){
-            $queryString = $queryString . " where " . "b.folder_number='" . $request['folder_number'] . "'";
+            $queryString = $queryString . " where " . "b.folder_number like '%" . $request['folder_number'] . "%'";
             $firstWhereParameter = false;
         }
         if ($request['lastname'] != ""){
