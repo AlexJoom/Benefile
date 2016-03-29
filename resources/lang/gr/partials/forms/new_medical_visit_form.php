@@ -53,7 +53,7 @@ return array(
     'clinical_results'     =>  'Κλινικά αποτελέσματα',
     'condition'            =>  'Πάθηση',
 
-    'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στην λίστα',
+    'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στη λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',
     'medicinal_duration'   =>  'Διάρκεια θεραπείας',
     'supply_from_praksis'  =>  'Προμήθεια από Praxis',
