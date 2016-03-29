@@ -287,7 +287,7 @@ class BenefiterMedicalFolderService
                 $med_medication = new medical_medication();
 
                 // check if the request comes from the auto complete select (from lookup)
-                if (empty($request_medication_new_name[$i])) {
+                if (empty($request_medication_new_name[$i]) && !empty($request_medication_name_from_lookup[$i])) {
                     $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
 
                     $med_medication->dosage = $request_medication_dosage[$i];
@@ -303,7 +303,7 @@ class BenefiterMedicalFolderService
                     $med_medication->save();
                 }
                 // check if the request comes from the input field.
-                else{
+                else if(!empty($request_medication_new_name[$i])){
                     $request_medication_name[$i] = $request_medication_new_name[$i];
 
                     $med_medication_lookup = new medical_medication_lookup();
@@ -723,7 +723,7 @@ class BenefiterMedicalFolderService
                         if(!empty($request_medication_dosage[$i]) && !empty($request_medication_duration[$i])) {
                             $med_medication = new medical_medication();
                             // check if the request comes from the auto complete select (from lookup)
-                            if (empty($request_medication_new_name[$i])) {
+                            if (empty($request_medication_new_name[$i]) and !empty($request_medication_name_from_lookup[$i])) {
                                 $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
                                 $med_medication->dosage = $request_medication_dosage[$i];
                                 $med_medication->duration = $request_medication_duration[$i];
@@ -737,7 +737,7 @@ class BenefiterMedicalFolderService
                                 $med_medication->save();
                             }
                             // check if the request comes from the input field.
-                            else{
+                            else if(!empty($request_medication_new_name[$i])) {
                                 $request_medication_name[$i] = $request_medication_new_name[$i];
                                 $med_medication_lookup = new medical_medication_lookup();
                                 $med_medication_lookup->description = $request_medication_name[$i];
