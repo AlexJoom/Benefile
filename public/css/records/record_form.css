@@ -350,6 +350,12 @@ a.btn{
     margin-top: -3px;
 }
 
+.asterisk{
+    vertical-align: top;
+    font-size: 0.7em;
+    color: #b269a7;
+}
+
 @media screen and (max-width: 991px){
     .medication_other_name{
         padding-left: 50px;

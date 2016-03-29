@@ -746,7 +746,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
+                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!} <i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
