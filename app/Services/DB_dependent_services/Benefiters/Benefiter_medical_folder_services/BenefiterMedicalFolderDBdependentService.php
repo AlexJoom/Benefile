@@ -6,7 +6,7 @@
  * Time: 12:59 μμ
  */
 
-namespace App\Services\DB_dependent_services\benefiter_medical_folder_services;
+namespace App\Services\DB_dependent_services\Benefiters\Benefiter_medical_folder_services;
 
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
@@ -24,7 +24,7 @@ use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
 use App\Models\Benefiters_Tables_Models\ICD10;
 use Illuminate\Support\Facades\Auth;
 
-class Benefiter_Medical_Folder_DB_dependent_services {
+class BenefiterMedicalFolderDBdependentService{
 
     // ----------------------------MEDICAL VISIT TABLE -----------------------------------//
 

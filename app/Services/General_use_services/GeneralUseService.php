@@ -6,10 +6,10 @@
  * Time: 4:07 μμ
  */
 
-namespace app\Services\General_use_services;
+namespace App\Services\General_use_services;
 
 
-class general_use_services {
+class GeneralUseService{
 
     public function reindex_array($array){
         $reindexed_array = [];

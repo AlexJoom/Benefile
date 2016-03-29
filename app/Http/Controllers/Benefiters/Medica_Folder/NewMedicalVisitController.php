@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Benefiters\Medica_Folder;
 
-use app\Services\Benefiters\benefiter_medical_folder_services\Benefiter_Medical_Folder_Service;
-use App\Services\DB_dependent_services\benefiter_medical_folder_services\Benefiter_Medical_Folder_DB_dependent_services;
-use app\Services\General_use_services\general_use_services;
-use App\Services\Validation_services\Benefiters\benefiter_medical_folder_services\Benefiter_medical_folder_validation_service;
+use App\Services\Benefiters\Benefiter_medical_folder_services\BenefiterMedicalFolderService;
+use App\Services\DB_dependent_services\Benefiters\Benefiter_medical_folder_services\BenefiterMedicalFolderDBdependentService;
+use App\Services\General_use_services\GeneralUseService;
+use App\Services\Validation_services\Benefiters\benefiter_medical_folder_services\BenefiterMedicalFolderValidationService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,18 +13,20 @@ use App\Http\Controllers\Controller;
 
 class NewMedicalVisitController extends Controller{
 
-    // call services
-    private $medicalVisit;
+    private $newMedicalVisit;
+    private $db_dependences;
+    private $general_use_services;
+    private $new_medical_visit_validator;
 
     public function __construct(){
         // only for logged in users
         $this->middleware('activated');
 
         // initialize medical visit service
-        $this->newMedicalVisit = new Benefiter_Medical_Folder_Service();
-        $this->db_dependences = new Benefiter_Medical_Folder_DB_dependent_services();
-        $this->general_use_services = new general_use_services();
-        $this->new_medical_visit_validator = new Benefiter_medical_folder_validation_service();
+        $this->newMedicalVisit = new BenefiterMedicalFolderService();
+        $this->db_dependences = new BenefiterMedicalFolderDBdependentService();
+        $this->general_use_services = new GeneralUseService();
+        $this->new_medical_visit_validator = new BenefiterMedicalFolderValidationService();
     }
 
     //------------ GET MEDICAL FOLDER FOR BENEFITER -------------------------------//

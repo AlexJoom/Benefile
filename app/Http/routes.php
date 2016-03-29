@@ -56,8 +56,8 @@ Route::get('benefiter/{id}/basic-info/referral-delete/{referral_id}', 'MainPanel
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
-Route::get('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@getMedicalFolder');
-Route::post('benefiter/{id}/medical-folder', 'MainPanel\RecordsController@postMedicalFolder');
+Route::get('benefiter/{id}/medical-folder', 'Benefiters\Medica_Folder\NewMedicalVisitController@getMedicalFolder');
+Route::post('benefiter/{id}/medical-folder', 'Benefiters\Medica_Folder\NewMedicalVisitController@postMedicalFolder');
 Route::get('benefiter/getIC10List', 'MainPanel\RecordsController@getICD10List');
 Route::get('benefiter/getMedicationList', 'MainPanel\RecordsController@getMedicationList');
 Route::get('benefiter/{id}/getEachMedicalVisit', 'MainPanel\RecordsController@getMedicalVisitModal');

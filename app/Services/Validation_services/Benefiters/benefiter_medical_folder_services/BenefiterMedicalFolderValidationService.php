@@ -9,7 +9,7 @@
 namespace App\Services\Validation_services\Benefiters\benefiter_medical_folder_services;
 use Validator;
 
-class Benefiter_medical_folder_validation_service {
+class BenefiterMedicalFolderValidationService {
     public function medicalValidationService($request){
         $rules = array(
             'examination_date'         => 'required|date',
