@@ -243,6 +243,15 @@
     <div class="row">
         <div class="col-md-12">
             <div id="medication" class="row padding-bottom-30">
+                <div  class="padding-left-right-15">
+                    <div class="medicinal-instructions row padding-bottom-30">
+                        <div class="col-md-12">
+                            <div  class="padding-left-right-15">
+                                <i class="fa fa-exclamation-triangle color-orange"></i> <span class="make-italic">@lang($p."medicinal_instructions")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @if(!empty($medication_dosage_session) && !empty($medication_duration_session))
 
                     @for($i=0 ; $i<count($supply_from_praksis_hidden_session) ; $i++)

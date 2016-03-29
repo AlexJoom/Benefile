@@ -418,6 +418,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div id="medication" class="row padding-bottom-30">
+                            <div  class="padding-left-right-15">
+                                <div class="medicinal-instructions row padding-bottom-30">
+                                    <div class="col-md-12">
+                                        <div  class="padding-left-right-15">
+                                            <i class="fa fa-exclamation-triangle color-orange"></i> <span class="make-italic">@lang($p."medicinal_instructions")</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @if(!empty($med_visit_medication) && count($med_visit_medication) !=0)
                                 @for($i=0 ; $i<count($med_visit_medication) ; $i++)
                                     <div class="padding-left-right-15 @if($i==0) medicationList @endif @if($i!=0) med-added-div @endif">

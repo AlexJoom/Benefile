@@ -356,6 +356,14 @@ a.btn{
     color: #b269a7;
 }
 
+.make-italic{
+    font-style: italic;
+}
+
+.color-orange{
+    color: darkorange;
+}
+
 @media screen and (max-width: 991px){
     .medication_other_name{
         padding-left: 50px;
