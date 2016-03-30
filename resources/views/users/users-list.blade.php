@@ -9,8 +9,8 @@
 
 @section('main-window-content')
     {{-- actions refering to users --}}
-    <div class="no-margin light-green-background width-100-percent" id="actions">
-        <div class="width-100-percent row">
+    <div class="light-green-background row" id="actions">
+        <div class="col-md-12">
             <div class="col-md-4 userStatus">
                 <div id="to-activate" class="height-70 active white bold pink-border-bottom">
                    @lang($p.'to_activate')
