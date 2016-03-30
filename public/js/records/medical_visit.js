@@ -372,5 +372,27 @@ $(document).ready(function(){
             }
         });
     });
+
+    // check if all files are acceptable so that the submit will upload them
+    $("form").on("submit", function(){
+        if(!filesForUploadAreAcceptable()) {
+            alert($("#upload_file").data("form-submit-error"));
+            return false;
+        }
+    });
 });
+
 var $clickCount = $('#medication select').length;
+
+function filesForUploadAreAcceptable(){
+    var $files = $("input[type='file']");
+    var $totalSize = 0;
+    for(var $i = 0; $i < $files.length; $i++){
+       $totalSize += $files[$i].files[0].size;
+    }
+    if($totalSize <= 52428800){
+        return true;
+    } else {
+      return false;
+    }
+}
