@@ -6,7 +6,7 @@
  * Time: 12:27 μμ
  */
 
-namespace App\Services\Validation_services\Benefiters\benefiter_medical_folder_services;
+namespace App\Services\Validation_services\Medical_folder;
 use Validator;
 
 class BenefiterMedicalFolderValidationService {

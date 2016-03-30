@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Benefiters\Medica_Folder;
+namespace App\Http\Controllers\Medical_Folder;
 
-use App\Services\Benefiters\Benefiter_medical_folder_services\BenefiterMedicalFolderService;
-use App\Services\DB_dependent_services\Benefiters\Benefiter_medical_folder_services\BenefiterMedicalFolderDBdependentService;
-use App\Services\General_use_services\GeneralUseService;
-use App\Services\Validation_services\Benefiters\benefiter_medical_folder_services\BenefiterMedicalFolderValidationService;
+use App\Services\Medical_folder\BenefiterMedicalFolderService;
+use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
+use App\Services\Utilities\GeneralUseService;
+use App\Services\Validation_services\Medical_folder\BenefiterMedicalFolderValidationService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -91,7 +91,7 @@ class NewMedicalVisitController extends Controller{
         } else {
             $ExamResultsLookup = $this->db_dependences->get_medical_examination_results_from_lookup(); //medical_examination_results_lookup::get()->all();
             // brings the medical location array from db
-            $medical_locations = $this->db_dependences->get_all_medical_locations();  //medical_location_lookup::get();
+            $medical_locations = $this->db_dependences->get_all_medical_locations_lookup();  //medical_location_lookup::get();
             $medical_incident_type = $this->db_dependences->medical_incident_type_lookup();  //medical_incident_type_lookup::get();
             $medical_locations_array = $this->general_use_services->reindex_array($medical_locations);
             $medical_incident_type_array = $this->general_use_services->reindex_array($medical_incident_type);
@@ -135,7 +135,7 @@ class NewMedicalVisitController extends Controller{
         $benefiter_id = $benefiter->id;
         $medical_visits_number = $this->db_dependences->count_medical_visits_for_a_benefiter($id);
         // brings the medical location array from db
-        $medical_locations = $this->db_dependences->get_all_medical_locations();
+        $medical_locations = $this->db_dependences->get_all_medical_locations_lookup();
         $medical_locations_array = $this->general_use_services->reindex_array($medical_locations);
         $ExamResultsLookup = $this->db_dependences->get_medical_examination_results_from_lookup();
 

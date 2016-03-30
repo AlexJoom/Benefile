@@ -6,7 +6,7 @@
  * Time: 12:59 μμ
  */
 
-namespace App\Services\DB_dependent_services\Benefiters\Benefiter_medical_folder_services;
+namespace App\Services\Medical_folder;
 
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
@@ -44,7 +44,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $medical_visits_number;
     }
 
-    // -----------------------------------------------------------------------------------//
 
 
     // ---------------------- MEDICAL CHRONIC CONDITIONS TABLE ---------------------------//
@@ -64,7 +63,6 @@ class BenefiterMedicalFolderDBdependentService{
         return medical_chronic_conditions::where('benefiters_id', $benefiter_id)->where('medical_visit_id', $medical_visit_id)->with('chronic_conditions_lookup')->get();;
     }
 
-    // ----------------------------------------------------------------------------------- //
 
 
     // --------------------- MEDICAL EXAMINATION RESULTS TABLE --------------------------- //
@@ -96,7 +94,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $ExamResultsLookup;
     }
 
-    // ---------------------------------------------------------------------------------- //
 
 
     // --------------------- MEDICAL EXAMINATION TABLE ---------------------------------- //
@@ -111,8 +108,6 @@ class BenefiterMedicalFolderDBdependentService{
         $med_visit_examination = medical_examinations::where('medical_visit_id', $med_visit_id)->first();
         return $med_visit_examination;
     }
-
-    // ---------------------------------------------------------------------------------- //
 
 
 
@@ -133,8 +128,6 @@ class BenefiterMedicalFolderDBdependentService{
         $med_visit_lab_results = medical_laboratory_results::where('medical_visit_id', $med_visit_id)->get();
         return $med_visit_lab_results;
     }
-
-    // ---------------------------------------------------------------------------------- //
 
 
 
@@ -166,8 +159,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $full_medication_name;
     }
 
-    // ---------------------------------------------------------------------------------- //
-
 
 
     // --------------------- MEDICAL REFERRALS TABLE ----------------------------------- //
@@ -188,9 +179,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $med_visit_referrals;
     }
 
-    // ---------------------------------------------------------------------------------- //
-
-
 
     // --------------------- MEDICAL UPLOADS TABLE -------------------------------------- //
 
@@ -210,8 +198,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $med_visit_uploads;
     }
 
-    // ---------------------------------------------------------------------------------- //
-
 
 
     // --------------------- BENEFITERS TABLE ------------------------------------------- //
@@ -227,20 +213,15 @@ class BenefiterMedicalFolderDBdependentService{
     }
 
 
-    // ---------------------------------------------------------------------------------- //
-
-
-
 
     // --------------------- MEDICAL LOCATION LOOKUP TABLE ------------------------------ //
 
     // return all the medical locations
-    public function get_all_medical_locations(){
+    public function get_all_medical_locations_lookup(){
         $medical_locations = medical_location_lookup::get()->all();
         return $medical_locations;
     }
 
-    // ---------------------------------------------------------------------------------- //
 
 
     // --------------------- MEDICAL INCIDENT TYPE LOOKUP TABLE ------------------------- //
@@ -250,8 +231,6 @@ class BenefiterMedicalFolderDBdependentService{
         $medical_incident_type = medical_incident_type_lookup::get();
         return $medical_incident_type;
     }
-
-    // ---------------------------------------------------------------------------------- //
 
 
 
@@ -270,8 +249,6 @@ class BenefiterMedicalFolderDBdependentService{
         return $full_icd10_description;
     }
 
-    // ---------------------------------------------------------------------------------- //
-
 
 
     // --------------------- USERS TABLE ------------------------------------------------ //
@@ -281,6 +258,4 @@ class BenefiterMedicalFolderDBdependentService{
         $user_id = Auth::user()->id;
         return $user_id;
     }
-
-    // ---------------------------------------------------------------------------------- //
 } 

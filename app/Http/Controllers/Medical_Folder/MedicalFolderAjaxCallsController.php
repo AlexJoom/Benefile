@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Benefiters\Medica_Folder\AjaxCalls;
+namespace App\Http\Controllers\Medical_Folder;
 
 use Illuminate\Http\Request;
 

@@ -1,4 +1,4 @@
-<?php namespace App\Services\Benefiters\Benefiter_medical_folder_services;
+<?php namespace App\Services\Medical_folder;
 
 // models used
 use App\Models\Benefiters_Tables_Models\Benefiter;
@@ -16,16 +16,23 @@ use App\Models\Benefiters_Tables_Models\medical_uploads;
 use App\Models\Benefiters_Tables_Models\medical_incident_type_lookup;
 use App\Models\Benefiters_Tables_Models\ICD10;
 use App\Models\Benefiters_Tables_Models\medical_location_lookup;
+
 // services used
 use App\Services\DatesHelper;
-use App\Services\DB_dependent_services\Benefiters\Benefiter_medical_folder_services\BenefiterMedicalFolderDBdependentService;
-use App\Services\Validation_services\Benefiters\benefiter_medical_folder_services\BenefiterMedicalFolderValidationService;
+use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
+use App\Services\Validation_services\Medical_folder\BenefiterMedicalFolderValidationService;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Mockery\CountValidator\Exception;
 use Validator;
 
+
+/*
+ *
+ * This class contains all necessary in order to create and edit a medical visit
+ *
+ */
 class BenefiterMedicalFolderService{
 
     private $datesHelper;
@@ -40,22 +47,15 @@ class BenefiterMedicalFolderService{
         $this->medical_folder_db_dependent_services = new BenefiterMedicalFolderDBdependentService();
     }
 
-    //-----------------------------------------------//
+    //-------------------------------------------------------------------------------------------//
     // PART 1 : validate the medical info frm the post
-    //-----------------------------------------------//
 
     public function medicalValidation($request){
         $this->medical_folder_validator->medicalValidationService($request);
     }
 
-
-
-
-
-
-    //--------------------------------------------------------------------//
+    //------------------------------------------------------------------------//
     // PART 2 : insert into DB benefiter medical tables
-    //--------------------------------------------------------------------//
     // TODO add transaction to public function (not now)
 
     public function save_new_medical_visit_tables($request){
@@ -77,7 +77,7 @@ class BenefiterMedicalFolderService{
         $this->save_medical_uploads($request, $medicalVisit_id);
     }
 
-    //----------- medical_visit table ------------------------------------DONE//
+    //----------- medical_visit table ---------------------------------//
     private function create_medical_visit($request){
         $newMedicalVisit = new medical_visits();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
@@ -89,7 +89,7 @@ class BenefiterMedicalFolderService{
         return $newMedicalVisit->id;
     }
 
-    //----------- medical_chronic_conditions table -----------------------DONE//
+    //----------- medical_chronic_conditions table --------------------//
     // DB save
     private function save_medical_chronic_conditions($request, $id){
         $request_medical_chronic_conditions = $this->get_medical_chronic_conditions($request);
@@ -119,7 +119,7 @@ class BenefiterMedicalFolderService{
         return $chronic_conditions_array;
     }
 
-    //----------- clinical_examination_results table ----------------------DONE//
+    //----------- clinical_examination_results table ------------------//
     // DB save
     private function save_medical_examination_results($request, $id){
         if(!empty($request['examResultLoukup'])){
@@ -145,7 +145,7 @@ class BenefiterMedicalFolderService{
         }
     }
 
-    //----------- medical_examinations table ----------------------------DONE//
+    //----------- medical_examinations table --------------------------//
     // DB save
     private function save_medical_examinations($request, $id){
         $medical_examination = new medical_examinations();
@@ -162,7 +162,7 @@ class BenefiterMedicalFolderService{
         $medical_examination->save();
     }
 
-    //----------- medical_laboratory_results table ----------------------DONE//
+    //----------- medical_laboratory_results table --------------------//
     // DB save
     private function save_medical_laboratory_results($request, $id){
         $request_lab_results = $this->medical_laboratory_results($request);
@@ -187,7 +187,7 @@ class BenefiterMedicalFolderService{
         return $lab_results_array;
     }
 
-    //----------- medical_medication table ----------------------------DONE//
+    //----------- medical_medication table ----------------------------//
     // DB save
     private function save_medical_medication($request, $id){
         if(!empty($request['medication_name_from_lookup'])){
@@ -255,7 +255,7 @@ class BenefiterMedicalFolderService{
         }
     }
 
-    //----------- medical_referrals table ---------------------------DONE//
+    //----------- medical_referrals table -----------------------------//
     // DB save
     private function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);
@@ -278,7 +278,7 @@ class BenefiterMedicalFolderService{
         return $referrals_array;
     }
 
-    //----------- medical_uploads table ----------------------------//
+    //----------- medical_uploads table -------------------------------//
     // DB save
     private function save_medical_uploads($request, $id){
         $request_upload_file_description = $request['upload_file_description'];
@@ -306,12 +306,8 @@ class BenefiterMedicalFolderService{
     }
 
 
-
-
-
-    // ------------------------------------------------------------------ //
+    // ---------------------------------------------------------------------------------------------- //
     // PART 3 : EDIT SAVED MEDICAL VISIT
-    //--------------------------------------------------------------------//
 
     public function update_medical_visit_tables($request, $selected_medical_visit_id){
         // medical visit table
@@ -333,7 +329,7 @@ class BenefiterMedicalFolderService{
 
     }
 
-    //----------- medical_visit table ------------------------------------DONE//
+    //----------- medical_visit table ----------------------------------//
     private function update_medical_visit($request, $selected_medical_visit_id){
         $updatedMedicalVisit = $this->medical_folder_db_dependent_services->find_medical_visit_by_id($selected_medical_visit_id);
 
@@ -346,7 +342,7 @@ class BenefiterMedicalFolderService{
         return $updatedMedicalVisit->id;
     }
 
-    //----------- medical_chronic_conditions table -----------------------DONE//
+    //----------- medical_chronic_conditions table ---------------------//
     // DB save
     private function update_medical_chronic_conditions($request, $selected_medical_visit_id){
         $request_medical_chronic_conditions = $this->get_updated_chronic_conditions($request);
@@ -424,7 +420,7 @@ class BenefiterMedicalFolderService{
         return $chronic_conditions_array;
     }
 
-    //----------- clinical_examination_results table ----------------------DONE//
+    //----------- clinical_examination_results table -------------------//
     // DB save
     private function update_medical_examination_results($request, $selected_medical_visit_id){
         $request_med_exams_results = $request['examResultLoukup'];
@@ -482,7 +478,7 @@ class BenefiterMedicalFolderService{
                             $medical_examination_result->icd10_id = $request_med_exams_results[$i][$j];
                             $medical_examination_result->medical_visit_id = $selected_medical_visit_id;
                             // get medical examinations list from the lookup table
-                            $med_exams_lookup_item = $this->find_medical_examination_results_lookup_id($i+1);
+                            $med_exams_lookup_item = $this->medical_folder_db_dependent_services->find_medical_examination_results_lookup_id($i+1);
                             $medical_examination_result->results_lookup_id = $med_exams_lookup_item;
 
                             $medical_examination_result->save();
@@ -498,7 +494,7 @@ class BenefiterMedicalFolderService{
         } // end for every clinical result
     }
 
-    //----------- medical_examinations table ----------------------------DONE//
+    //----------- medical_examinations table ---------------------------//
     // DB save
     private function update_medical_examinations($request, $selected_medical_visit_id){
 //        $medical_examination = medical_examinations::where("medical_visit_id", $selected_medical_visit_id)->first();
@@ -515,7 +511,7 @@ class BenefiterMedicalFolderService{
         $medical_examination->save();
     }
 
-    //----------- medical_laboratory_results table ----------------------DONE//
+    //----------- medical_laboratory_results table ---------------------//
     // DB save
     private function update_medical_laboratory_results($request, $selected_medical_visit_id){
         $request_lab_results = $this->update_laboratory_results($request);
@@ -575,7 +571,7 @@ class BenefiterMedicalFolderService{
         return $lab_results_array;
     }
 
-    //----------- medical_medication table ----------------------------DONE//
+    //----------- medical_medication table -----------------------------//
     // DB save
     private function update_medical_medication($request, $selected_medical_visit_id){
         if(!empty($request['medication_name_from_lookup'])){
@@ -730,7 +726,7 @@ class BenefiterMedicalFolderService{
         }
     }
 
-    //----------- medical_referrals table ---------------------------DONE//
+    //----------- medical_referrals table ------------------------------//
     // DB save
     private function update_medical_referrals($request, $selected_medical_visit_id){
         $request_medical_referrals = $this->update_requested_medical_referrals($request);
@@ -787,7 +783,7 @@ class BenefiterMedicalFolderService{
         return $referrals_array;
     }
 
-    //----------- medical_uploads table ----------------------------//
+    //----------- medical_uploads table --------------------------------//
     // DB save
     private function update_medical_uploads($request, $selected_medical_visit_id){
         $path_after_public_folder = '/uploads/medical-visit-uploads/';
@@ -852,7 +848,7 @@ class BenefiterMedicalFolderService{
         }
     }
 
-    // ------------------------------------------------------------------ //
+    // --------------------------------------------------------------------------------------------------------------//
     // PART 3 : END
-    //--------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------------------------------------//
 }

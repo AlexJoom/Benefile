@@ -6,7 +6,7 @@
  * Time: 4:07 μμ
  */
 
-namespace App\Services\General_use_services;
+namespace App\Services\Utilities;
 
 
 class GeneralUseService{
