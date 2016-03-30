@@ -1,4 +1,4 @@
-<?php namespace app\Services;
+<?php namespace App\Services;
 
 use Carbon\Carbon;
 
