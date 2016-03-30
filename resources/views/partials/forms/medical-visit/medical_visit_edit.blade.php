@@ -590,7 +590,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="upload_file">
+                        <div id="upload_file" data-form-submit-error="@lang($p."form_submit_error")">
                             @if(!empty($med_visit_uploads) && count($med_visit_uploads)!=0)
                                 @for($i=0 ; $i<count($med_visit_uploads) ; $i++)
                                     <div class="@if($i==0) uploadFile @endif @if($i!=0) file-added-div @endif">

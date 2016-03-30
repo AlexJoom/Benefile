@@ -388,7 +388,11 @@ function filesForUploadAreAcceptable(){
     var $files = $("input[type='file']");
     var $totalSize = 0;
     for(var $i = 0; $i < $files.length; $i++){
-       $totalSize += $files[$i].files[0].size;
+        try {
+            $totalSize += $files[$i].files[0].size;
+        } catch(err){
+            // on medical visit edit there might be null files as they've been preselected
+        }
     }
     if($totalSize <= 52428800){
         return true;
