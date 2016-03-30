@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderAjaxCallsController.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/DatesHelper.php" afterPath="$PROJECT_DIR$/app/Services/DatesHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -63,34 +59,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31550068" vertical-offset="0" max-vertical-offset="3634">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="2" selection-end-line="18" selection-end-column="60" />
+            <state vertical-scroll-proportion="-7.109091" vertical-offset="0" max-vertical-offset="5773">
+              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
               <folding>
-                <element signature="e#3367#6258#0#PHP" expanded="false" />
-                <element signature="e#6297#10091#0#PHP" expanded="false" />
-                <element signature="e#10170#10680#0#PHP" expanded="false" />
-                <element signature="e#10686#10964#0#PHP" expanded="false" />
-                <element signature="e#11000#12982#0#PHP" expanded="false" />
-                <element signature="e#13024#14412#0#PHP" expanded="false" />
-                <element signature="e#14468#15631#0#PHP" expanded="false" />
-                <element signature="e#15669#16794#0#PHP" expanded="false" />
-                <element signature="e#16824#17096#0#PHP" expanded="false" />
+                <element signature="e#9350#9860#0#PHP" expanded="false" />
+                <element signature="e#10180#12162#0#PHP" expanded="false" />
+                <element signature="e#12204#13592#0#PHP" expanded="false" />
+                <element signature="e#13648#14811#0#PHP" expanded="false" />
+                <element signature="e#14849#15974#0#PHP" expanded="false" />
+                <element signature="e#16004#16276#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MedicalFolderExtraFunctionsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MedicalFolderExtraFunctionsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="2921">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.7210243" vertical-offset="132" max-vertical-offset="874">
+              <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
               <folding>
+                <element signature="e#56#129#0#PHP" expanded="true" />
                 <element signature="e#674#878#0#PHP" expanded="false" />
                 <element signature="e#970#1175#0#PHP" expanded="false" />
+                <element signature="e#1268#7511#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -159,8 +154,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderAjaxCallsController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Services/DatesHelper.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
       </list>
     </option>
   </component>
@@ -1062,17 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.111111" vertical-offset="0" max-vertical-offset="2921">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="29" />
-          <folding>
-            <element signature="e#674#878#0#PHP" expanded="false" />
-            <element signature="e#970#1175#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.666667" vertical-offset="958" max-vertical-offset="2691">
@@ -1083,18 +1067,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31550068" vertical-offset="0" max-vertical-offset="3634">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="2" selection-end-line="18" selection-end-column="60" />
+        <state vertical-scroll-proportion="-7.109091" vertical-offset="0" max-vertical-offset="5773">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
           <folding>
-            <element signature="e#3367#6258#0#PHP" expanded="false" />
-            <element signature="e#6297#10091#0#PHP" expanded="false" />
-            <element signature="e#10170#10680#0#PHP" expanded="false" />
-            <element signature="e#10686#10964#0#PHP" expanded="false" />
-            <element signature="e#11000#12982#0#PHP" expanded="false" />
-            <element signature="e#13024#14412#0#PHP" expanded="false" />
-            <element signature="e#14468#15631#0#PHP" expanded="false" />
-            <element signature="e#15669#16794#0#PHP" expanded="false" />
-            <element signature="e#16824#17096#0#PHP" expanded="false" />
+            <element signature="e#9350#9860#0#PHP" expanded="false" />
+            <element signature="e#10180#12162#0#PHP" expanded="false" />
+            <element signature="e#12204#13592#0#PHP" expanded="false" />
+            <element signature="e#13648#14811#0#PHP" expanded="false" />
+            <element signature="e#14849#15974#0#PHP" expanded="false" />
+            <element signature="e#16004#16276#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7210243" vertical-offset="132" max-vertical-offset="874">
+          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+          <folding>
+            <element signature="e#56#129#0#PHP" expanded="true" />
+            <element signature="e#674#878#0#PHP" expanded="false" />
+            <element signature="e#970#1175#0#PHP" expanded="false" />
+            <element signature="e#1268#7511#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

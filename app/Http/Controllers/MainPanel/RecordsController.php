@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers\MainPanel;
 
+//models used
 use App\Models\Benefiters_Tables_Models\Benefiter;
-use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
-use App\Models\Benefiters_Tables_Models\medical_location_lookup;
-use App\Models\Benefiters_Tables_Models\medical_incident_type_lookup;
-use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
-//use App\Models\Benefiters_Tables_Models\medical_visits;
-//use App\Models\Benefiters_Tables_Models\ICD10;
-//use App\Models\Benefiters_Tables_Models\medical_medication_lookup;
-//use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
-//use App\Models\Benefiters_Tables_Models\medical_examinations;
-//use App\Models\Benefiters_Tables_Models\medical_examination_results;
-//use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
-//use App\Models\Benefiters_Tables_Models\medical_medication;
-//use App\Models\Benefiters_Tables_Models\medical_referrals;
 
+// services used
 use App\Services\Validation_services\Medical_folder\BenefiterMedicalFolderValidationService;
 use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
 use App\Services\SocialFolderService;
@@ -26,11 +15,12 @@ use App\Services\BenefitersService;
 use App\Services\LegalFolderService;
 use App\Services\Utilities\GeneralUseService;
 use App\Services\DatesHelper;
+use App\Services\BasicInfoService;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Services\BasicInfoService;
+
 use Illuminate\Support\Facades\Auth;
 use Validator;
 

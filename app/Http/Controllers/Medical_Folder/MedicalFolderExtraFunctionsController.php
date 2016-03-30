@@ -33,7 +33,7 @@ class MedicalFolderExtraFunctionsController extends Controller{
     }
 
 
-    //------------ GET MEDICAL VISIT MODAL DATA FOR BENEFITER FOR EACH VISIT ------//
+    //----- GET MEDICAL VISIT MODAL DATA FOR BENEFITER FOR EACH VISIT -------------//
     public function getMedicalVisitModal(Request $request, $id){
         // ------ MODAL: MEDICAL HISTORY DATA FOR EACH MEDICAL VISIT ------ //
         // initialize
