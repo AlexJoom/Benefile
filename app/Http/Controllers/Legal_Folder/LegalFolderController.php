@@ -9,12 +9,15 @@ use App\Http\Controllers\Controller;
 
 // services used
 use App\Services\Legal_folder\BenefiterLegalFolderService;
-use App\Services\BasicInfoService;
+use App\Services\Validation_services\Legal_folder\LegalFolderValidationService;
+use App\Services\Basic_info_folder\BasicInfoService;
 
 class LegalFolderController extends Controller{
 
     private $legalFolderService;
     private $basicInfoService;
+    private $legal_folder_validation;
+
 
     public function __construct(){
         // only for logged in users
@@ -23,6 +26,8 @@ class LegalFolderController extends Controller{
         $this->basicInfoService = new BasicInfoService();
         // initialize legal folder service
         $this->legalFolderService = new BenefiterLegalFolderService();
+        // initialize legal folder validation service
+        $this->legal_folder_validation = new LegalFolderValidationService();
     }
 
     // returns view of legal folder
@@ -55,7 +60,7 @@ class LegalFolderController extends Controller{
 
     // gets data from legal folder form
     public function postLegalFolder(Request $request, $id){
-        $validator = $this->legalFolderService->legalFolderValidator($request->all());
+        $validator = $this->legal_folder_validation->legalFolderValidatorService($request->all());
         if ($validator->fails()){
             return redirect('benefiter/'.$id.'/legal-folder')
                 ->withInput($request->all())

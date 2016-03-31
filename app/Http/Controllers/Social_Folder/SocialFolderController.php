@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Social_Folder;
 use Illuminate\Http\Request;
 
 // services used
-use App\Services\BasicInfoService;
+use App\Services\Basic_info_folder\BasicInfoService;
 use App\Services\Social_folder\BenefiterSocialFolderService;
+use App\Services\Validation_services\Social_folder\BenefiterSocialFolderValidationService;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class SocialFolderController extends Controller{
     // services
     private $basicInfoService;
     private $socialFolderService;
+    private $social_folder_validation_service;
 
     public function __construct(){
         // only for logged in users
@@ -27,6 +29,8 @@ class SocialFolderController extends Controller{
         $this->basicInfoService = new BasicInfoService();
         // initialize social folder service
         $this->socialFolderService = new BenefiterSocialFolderService();
+        // initialize social folder validation service
+        $this->social_folder_validation_service = new BenefiterSocialFolderValidationService();
     }
 
     // get social folder view
@@ -72,7 +76,7 @@ class SocialFolderController extends Controller{
         $psychosocialSubjects = $this->socialFolderService->getAllPsychosocialSupportSubjects();
         $socialFolder = null;
         $psychosocialSupport = null;
-        $validator = $this->socialFolderService->socialFolderValidation($request->all());
+        $validator = $this->social_folder_validation_service->socialFolderValidationService($request->all());
         if($validator->fails()){
             return redirect('benefiter/' . $id . '/social-folder')->with("tab", "social")->with("psychosocialSubjects", $psychosocialSubjects)->with("benefiter", $benefiter)->with("social_folder", $socialFolder)->with("psychosocial_support", $psychosocialSupport)->withErrors($validator->errors()->all());
         } else {
@@ -85,7 +89,7 @@ class SocialFolderController extends Controller{
 
     // save a new session from social folder view
     public function postSessionSave(Request $request, $id){
-        $validator = $this->socialFolderService->sessionValidation(array(
+        $validator = $this->social_folder_validation_service->sessionValidationService(array(
             'session_date' => $request->session_date,
             'session_comments' => $request->session_comments
         ));
@@ -105,7 +109,7 @@ class SocialFolderController extends Controller{
 
     // update an edited session
     public function postSessionEdit(Request $request, $id, $session_id){
-        $validator = $this->socialFolderService->sessionValidation(array(
+        $validator = $this->social_folder_validation_service->sessionValidationService(array(
             'session_date' => $request->session_date,
             'session_comments' => $request->session_comments
         ));

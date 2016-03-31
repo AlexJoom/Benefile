@@ -1,4 +1,4 @@
-<?php namespace App\Services\Medical_folder;
+<?php namespace App\Services\Validation_services\Medical_folder;
 
 // models used
 use App\Models\Benefiters_Tables_Models\Benefiter;

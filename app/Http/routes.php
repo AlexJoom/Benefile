@@ -43,16 +43,16 @@ Route::get('main-panel', 'HomeController@index');
 
 // MAIN PANEL MENU
 //--- ΟΦΕΛΟΥΜΕΝΟΙ
-Route::get('benefiters-list'                             , 'Benefiters_list\BenefitersListController@getBenefitersList');
-Route::get('benefiter/{id}/delete'                       , 'Benefiters_list\BenefitersListController@getDeleteBenefiter');
+Route::get('benefiters-list'                                           , 'Benefiters_list\BenefitersListController@getBenefitersList');
+Route::get('benefiter/{id}/delete'                                     , 'Benefiters_list\BenefitersListController@getDeleteBenefiter');
 //--- END ΟΦΕΛΟΥΜΕΝΟΙ
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
 //----------------------- BASIC INFO
-Route::get('benefiter/{id}/basic-info', 'MainPanel\RecordsController@getBasicInfo');
-Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicInfo');
-Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@postBasicInfoReferrals');
-Route::get('benefiter/{id}/basic-info/referral-delete/{referral_id}', 'MainPanel\RecordsController@deleteBasicInfoReferral');
+Route::get('benefiter/{id}/basic-info'                                 , 'Basic_Info_Folder\BasicInfoController@getBasicInfo');
+Route::post('benefiter/{id}/basic-info'                                , 'Basic_Info_Folder\BasicInfoController@postBasicInfo');
+Route::post('benefiter/{id}/basic-info/referrals'                      , 'Basic_Info_Folder\BasicInfoController@postBasicInfoReferrals');
+Route::post('benefiter/{id}/basic-info/referral-delete/{referral_id}'  , 'Basic_Info_Folder\BasicInfoController@deleteBasicInfoReferral');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER

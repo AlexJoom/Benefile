@@ -13,21 +13,6 @@ class BenefiterSocialFolderService{
         $this->datesHelper = new DatesHelper();
     }
 
-    // validates the social folder view form input
-    public function socialFolderValidation($request){
-        return Validator::make($request, array(
-            'comments' => 'max:2000',
-        ));
-    }
-
-    // validates the social folder view form input
-    public function sessionValidation($request){
-        return Validator::make($request, array(
-            'session_date' => 'date',
-            'session_comments' => 'max:2000',
-        ));
-    }
-
     // saves the social folder in DB
     public function saveSocialFolderToDB($request, $benefiterId){
         if(!array_key_exists('psychosocial_statuses', $request)){

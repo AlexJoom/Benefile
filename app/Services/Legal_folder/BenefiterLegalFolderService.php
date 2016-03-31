@@ -1,26 +1,23 @@
 <?php namespace App\Services\Legal_folder;
 
 use App\Services\DatesHelper;
+use App\Services\Validation_services\Legal_folder\LegalFolderValidationService;
 use Validator;
 
 class BenefiterLegalFolderService{
 
     private $datesHelper;
+    private $legal_folder_validation;
 
     public function __construct(){
         // initialize DatesHelper
         $this->datesHelper = new DatesHelper();
+        $this->legal_folder_validation = new LegalFolderValidationService();
     }
 
     // validation for legal folder form
     public function legalFolderValidator($request){
-        return Validator::make($request,
-            array(
-                'asylum_request_date' => 'date',
-                'request_progress' => 'max:2000',
-                'penalty_text' => 'max:2000',
-            )
-        );
+        $this->legal_folder_validation->legalFolderValidatorService($request);
     }
 
     // save legal folder form's input in DB
