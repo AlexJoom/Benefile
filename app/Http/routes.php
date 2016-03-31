@@ -72,11 +72,11 @@ Route::post('benefiter/{id}/legal-folder', 'MainPanel\RecordsController@postLega
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
-Route::get('benefiter/{id}/social-folder', 'MainPanel\RecordsController@getSocialFolder');
-Route::post('benefiter/{id}/social-folder', 'MainPanel\RecordsController@postSocialFolder');
-Route::post('benefiter/{id}/session-save', 'MainPanel\RecordsController@postSessionSave');
-Route::post('benefiter/{id}/session-edit/{session_id}', 'MainPanel\RecordsController@postSessionEdit');
-Route::get('benefiter/{id}/session-delete/{session_id}', 'MainPanel\RecordsController@getSessionDelete');
+Route::get('benefiter/{id}/social-folder'                , 'Social_Folder\SocialFolderController@getSocialFolder');
+Route::post('benefiter/{id}/social-folder'               , 'Social_Folder\SocialFolderController@postSocialFolder');
+Route::post('benefiter/{id}/session-save'                , 'Social_Folder\SocialFolderController@postSessionSave');
+Route::post('benefiter/{id}/session-edit/{session_id}'   , 'Social_Folder\SocialFolderController@postSessionEdit');
+Route::get('benefiter/{id}/session-delete/{session_id}'  , 'Social_Folder\SocialFolderController@getSessionDelete');
 //----------------------- END SOCIAL FOLDER
 //----------- END ΝΕΑ new-benefiter/medical-folderΕΓΓΡΑΦΗ
 

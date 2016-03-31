@@ -1,9 +1,17 @@
-<?php namespace app\Services;
+<?php namespace App\Services\Social_folder;
 
 use Validator;
 use App\Models\PsychosocialSession;
 
-class SocialFolderService{
+use App\Services\DatesHelper;
+
+class BenefiterSocialFolderService{
+
+    private $datesHelper;
+
+    public function __construct(){
+        $this->datesHelper = new DatesHelper();
+    }
 
     // validates the social folder view form input
     public function socialFolderValidation($request){
@@ -112,9 +120,8 @@ class SocialFolderService{
 
     // get psychosocial session array for DB row edit
     private function getPsychosocialSessionArrayForDBEdit($request){
-        $datesHelper = new DatesHelper();
         return array(
-            'session_date' => $datesHelper->makeDBFriendlyDate($request['session_date']),
+            'session_date' => $this->datesHelper->makeDBFriendlyDate($request['session_date']),
             'psychosocial_theme_id' => $request['psychosocial_theme'],
             'session_comments' => $request['session_comments'],
         );
