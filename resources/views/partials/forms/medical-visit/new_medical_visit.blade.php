@@ -14,7 +14,7 @@
 
 
 {{--------------- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) ---------------}}
-<div class="form-section no-bottom-border">
+<div class="form-section no-bottom-border personal-info">
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
     </div>
@@ -162,7 +162,7 @@
 </div>
 
 {{--------------- 2. MEDICAL HISTORY TABLE --------------------------------------------}}
-<div class="form-section">
+<div class="form-section medical-history">
     @if(($visit_submited_succesfully == 1))
         <div class="alert alert-success">
             <ul>
