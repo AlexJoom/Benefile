@@ -247,7 +247,9 @@ input:focus, textarea:focus {
     /*cursor: pointer;*/
 }
 a.new-visit-button:hover,
-a.new-visit-button:focus{
+a.new-visit-button:focus,
+a.simple-button:hover,
+a.simple-button:focus{
     color: white;
     text-decoration: none;
 }

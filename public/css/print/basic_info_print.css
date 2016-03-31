@@ -118,3 +118,7 @@ select[value="1"]{
 .form-section{
     border-style: none !important;
 }
+
+.print-button{
+    display: none;
+}

@@ -1476,12 +1476,17 @@
                     </div>
                 </div>
                 </div>
-                <div class="form-section align-text-center">
+                <div class="form-section align-text-center no-bottom-border">
                     {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
                 </div>
             {!! Form::close() !!}
     @endif
 @endif
+    <div class="form-section padding-left-right-15 print-button">
+        <div class="row">
+            <a href="javascript:window.print()" class="simple-button float-right"><i class="fa fa-print"></i> @lang($p."print_page")</a>
+        </div>
+    </div>
 </div>
 <!--delete session confirmation modal-->
 <div class="modal fade" id="delete-session-modal" aria-hidden="true" role="dialog" tabindex="-1">
