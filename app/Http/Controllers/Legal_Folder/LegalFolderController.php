@@ -17,6 +17,8 @@ class LegalFolderController extends Controller{
     private $basicInfoService;
 
     public function __construct(){
+        // only for logged in users
+        $this->middleware('activated');
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
         // initialize legal folder service

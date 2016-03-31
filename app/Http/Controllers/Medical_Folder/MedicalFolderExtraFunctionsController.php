@@ -16,6 +16,8 @@ class MedicalFolderExtraFunctionsController extends Controller{
 
     // constructor
     public function __construct(){
+        // only for logged in users
+        $this->middleware('activated');
         $this->medicalVisitDBDependencies = new BenefiterMedicalFolderDBdependentService();
         $this->datesHelper = new DatesHelper();
     }

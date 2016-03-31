@@ -7,7 +7,6 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 
 // services used
-use App\Services\BenefitersService;
 use App\Services\Utilities\GeneralUseService;
 use App\Services\BasicInfoService;
 
@@ -22,25 +21,17 @@ class RecordsController extends Controller
     // services
     private $basicInfoService;
     private $generalUseService;
-    private $benefiterList = null;
 
     public function __construct(){
         // only for logged in users
         $this->middleware('activated');
-        // initialize benefiters list service
-        $this->benefiterList = new BenefitersService();
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
         // initialize general use service
         $this->generalUseService = new GeneralUseService();
-
     }
 
-    //------------ GET BENEFITERS LIST -------------------------------//
-    public function getBenefitersList(){
-        $benefiters =  $this->benefiterList->getAllBenefiters();
-        return view('benefiter.benefiters_list', compact('benefiters'));
-    }
+
 
     // get basic info view
     public function getBasicInfo($id){
@@ -163,9 +154,5 @@ class RecordsController extends Controller
         return redirect('benefiter/'.$id.'/basic-info')->with("success", \Lang::get('records_controller_messages.referrals_delete_success'));
     }
 
-    // delete a benefiter from id
-    public function getDeleteBenefiter($id){
-        $this->basicInfoService->deleteBenefiter($id);
-        return redirect('benefiters-list');
-    }
+
 }

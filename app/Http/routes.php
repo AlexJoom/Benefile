@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('home', 'MainPanel\RecordsController@getBenefitersList');
+Route::get('home', 'Benefiters_list\BenefitersListController@getBenefitersList');
 
 /*
  * Layout after login
@@ -43,8 +43,8 @@ Route::get('main-panel', 'HomeController@index');
 
 // MAIN PANEL MENU
 //--- ΟΦΕΛΟΥΜΕΝΟΙ
-Route::get('benefiters-list', 'MainPanel\RecordsController@getBenefitersList');
-Route::get('benefiter/{id}/delete', 'MainPanel\RecordsController@getDeleteBenefiter');
+Route::get('benefiters-list'                             , 'Benefiters_list\BenefitersListController@getBenefitersList');
+Route::get('benefiter/{id}/delete'                       , 'Benefiters_list\BenefitersListController@getDeleteBenefiter');
 //--- END ΟΦΕΛΟΥΜΕΝΟΙ
 //--- ΕΓΓΡΑΦΗ
 //----------- ΝΕΑ ΕΓΓΡΑΦΗ
@@ -83,10 +83,6 @@ Route::get('benefiter/{id}/session-delete/{session_id}'  , 'Social_Folder\Social
 //----------- ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
 Route::get('new-benefiter/uploadCSV', 'UploadFileController@getUploadCSV');
 Route::post('new-benefiter/uploadCSV', 'UploadFileController@excelUpload');
-
-//// --- to be deleted later  ---//
-//Route::get('new-benefiter/uploadCSV/dataTester', 'UploadFileController@testData');
-
 //----------- END ΦΟΡΤΩΣΗ ΑΡΧΕΙΟΥ
 //--- END ΕΓΓΡΑΦΗ
 

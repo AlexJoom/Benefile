@@ -21,6 +21,8 @@ class SocialFolderController extends Controller{
     private $socialFolderService;
 
     public function __construct(){
+        // only for logged in users
+        $this->middleware('activated');
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
         // initialize social folder service

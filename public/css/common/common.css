@@ -65,3 +65,9 @@ a[disabled] {
     border: none;
     margin: 0.5em;
 }
+
+.alert, .alert ul {
+    text-align: center;
+    font-size: 24px;
+    list-style-type: none;
+}

@@ -5,6 +5,7 @@ use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Services\GreekStringConversionHelper;
 use App\Services\DatesHelper;
+use App\Services\Social_folder\BenefiterSocialFolderService;
 use Validator;
 
 class BasicInfoService{
@@ -58,7 +59,7 @@ class BasicInfoService{
     public function saveBasicInfoToDB($request){
         // if interpreter checkbox has no value, it should have '0' value
         if(!array_key_exists('interpreter' ,$request)){
-           $request['interpreter'] = 0;
+            $request['interpreter'] = 0;
         }
         // get work title id from work title name
         $request['working_title'] = $this->getWorkTitleIdFromDBAndInsertNewWorkTitleIfNeeded($request['working_title']);
@@ -77,7 +78,7 @@ class BasicInfoService{
         }
         $this->saveLegalStatusesToDB($benefiter->id, $request);
         // initialize SocialFolderService to use the saveSocialFolderToDB function
-        $socialService = new SocialFolderService();
+        $socialService = new BenefiterSocialFolderService();
         $socialService->saveSocialFolderToDB(array('comments' => ''), $benefiter->id);
         return $benefiter;
     }
@@ -452,7 +453,7 @@ class BasicInfoService{
 
     // get all referrals saved to db for this benefiter id
     public function get_referrals_for_a_benefiter($id){
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->get();
+        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
         return $benefiter_referrals_list;
     }
 

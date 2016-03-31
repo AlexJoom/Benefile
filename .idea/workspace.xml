@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Services/LegalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Services/Benefiters_list/BenefitersListService.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Services/BenefitersService.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BasicInfoService.php" afterPath="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/common.css" afterPath="$PROJECT_DIR$/public/css/common/common.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -50,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.43191198" vertical-offset="1441" max-vertical-offset="2691">
-              <caret line="58" column="54" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+            <state vertical-scroll-proportion="-6.4814816" vertical-offset="1596" max-vertical-offset="2599">
+              <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -63,12 +69,22 @@
       <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7636364" vertical-offset="0" max-vertical-offset="2553">
-              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+            <state vertical-scroll-proportion="-9.888889" vertical-offset="2930" max-vertical-offset="3772">
+              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding>
-                <element signature="e#4255#8049#0#PHP" expanded="false" />
-                <element signature="e#8128#8638#0#PHP" expanded="false" />
-                <element signature="e#8644#8922#0#PHP" expanded="false" />
+                <element signature="e#64#114#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BenefitersListController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.90939045" vertical-offset="0" max-vertical-offset="1081">
+              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="e#56#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,10 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/css/records/social_folder_form.css" />
-        <option value="$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
-        <option value="$PROJECT_DIR$/resources/lang/gr/reports.php" />
         <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/login-register-layout.blade.php" />
         <option value="$PROJECT_DIR$/public/css/search/search.css" />
@@ -107,7 +119,6 @@
         <option value="$PROJECT_DIR$/public/css/common/loginRegister.css" />
         <option value="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" />
         <option value="$PROJECT_DIR$/public/js/records/medical_visit.js" />
-        <option value="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php" />
         <option value="$PROJECT_DIR$/app/Services/Benefiters/benefiter_medical_folder_services/BenefiterMedicalFolderServices.php" />
         <option value="$PROJECT_DIR$/app/Services/Benefiters/benefiter_medical_folder_services/Benefiter_Medical_Folder_Services.php" />
@@ -131,14 +142,19 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderAjaxCallsController.php" />
         <option value="$PROJECT_DIR$/app/Services/DatesHelper.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
         <option value="$PROJECT_DIR$/app/Services/Social_folder/SocialFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" />
         <option value="$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php" />
         <option value="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+        <option value="$PROJECT_DIR$/app/Services/Benefiters_list/BenefitersListService.php" />
+        <option value="$PROJECT_DIR$/app/Services/BenefitersService.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
+        <option value="$PROJECT_DIR$/public/css/common/common.css" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php" />
       </list>
     </option>
   </component>
@@ -397,7 +413,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Legal_folder" />
+              <option name="myItemId" value="Benefiters_list" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,6 +468,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefiters_list" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -586,7 +628,8 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12637363" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12637363" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2725275" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1971917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34210527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -601,7 +644,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27302632" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -638,13 +680,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/records/social_folder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61671925" vertical-offset="0" max-vertical-offset="634">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5838" max-vertical-offset="7751">
@@ -827,13 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/BenefitersService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18648648" vertical-offset="0" max-vertical-offset="740">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/common/mainLayout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2750978" vertical-offset="2342" max-vertical-offset="6026">
@@ -886,13 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8710563" vertical-offset="0" max-vertical-offset="3887">
-          <caret line="91" column="69" selection-start-line="91" selection-start-column="69" selection-end-line="91" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="14.481482" vertical-offset="460" max-vertical-offset="10028">
@@ -922,80 +943,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7210243" vertical-offset="132" max-vertical-offset="874">
-          <caret line="35" column="78" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
-          <folding>
-            <element signature="e#56#129#0#PHP" expanded="false" />
-            <element signature="e#674#878#0#PHP" expanded="false" />
-            <element signature="e#970#1175#0#PHP" expanded="false" />
-            <element signature="e#1268#7511#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7654321" vertical-offset="3005" max-vertical-offset="4991">
-          <caret line="43" column="66" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="66" />
-          <folding>
-            <element signature="e#55#117#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/BasicInfoService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34567901" vertical-offset="9776" max-vertical-offset="10718">
-          <caret line="441" column="20" selection-start-line="441" selection-start-column="20" selection-end-line="441" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6804734" vertical-offset="0" max-vertical-offset="19780">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.11111" vertical-offset="2378" max-vertical-offset="3105">
-          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
-          <folding>
-            <element signature="e#45#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37964237" vertical-offset="0" max-vertical-offset="3105">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28473178" vertical-offset="0" max-vertical-offset="1656">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7636364" vertical-offset="0" max-vertical-offset="2553">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="e#4255#8049#0#PHP" expanded="false" />
-            <element signature="e#8128#8638#0#PHP" expanded="false" />
-            <element signature="e#8644#8922#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,11 +961,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6327373" vertical-offset="0" max-vertical-offset="1702">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding>
+            <element signature="e#53#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1389271" vertical-offset="0" max-vertical-offset="4830">
+          <caret line="43" column="66" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.530949" vertical-offset="0" max-vertical-offset="3634">
+          <caret line="91" column="69" selection-start-line="91" selection-start-column="69" selection-end-line="91" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48117155" vertical-offset="0" max-vertical-offset="828">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+          <folding>
+            <element signature="e#750#954#0#PHP" expanded="false" />
+            <element signature="e#1046#1251#0#PHP" expanded="false" />
+            <element signature="e#1344#7587#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75928473" vertical-offset="0" max-vertical-offset="3151">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding>
+            <element signature="e#54#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43191198" vertical-offset="1441" max-vertical-offset="2691">
-          <caret line="58" column="54" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+        <state vertical-scroll-proportion="-6.4814816" vertical-offset="1596" max-vertical-offset="2599">
+          <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/common/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7097792" vertical-offset="1160" max-vertical-offset="1817">
+          <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.888889" vertical-offset="2930" max-vertical-offset="3772">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="e#64#114#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/BasicInfoService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9915825" vertical-offset="10106" max-vertical-offset="10833">
+          <caret line="465" column="1" selection-start-line="465" selection-start-column="1" selection-end-line="465" selection-end-column="1" />
+          <folding>
+            <element signature="e#31#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3105">
+          <caret line="0" column="42" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="42" />
+          <folding>
+            <element signature="e#45#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Benefiters_list/BenefitersListService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07578254" vertical-offset="0" max-vertical-offset="897">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#152#181#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.90939045" vertical-offset="0" max-vertical-offset="1081">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#56#84#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
