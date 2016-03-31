@@ -37,7 +37,23 @@
     margin: 0;
 }
 
+.modal-body{
+    padding: 0;
+}
+
 hr{
     border-style: none;
     margin: 0;
+}
+
+.padding-bottom-30{
+    padding: 0;
+}
+
+#chronic-cond-visit * .custom-input-text{
+    display: inline-block;
+}
+
+.form-group{
+    margin-bottom: 10px;
 }
