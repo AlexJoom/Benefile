@@ -406,7 +406,7 @@
     </div>
 
     {{-- 7. UPLOADED FILES LIST ----}}
-    <div class="form-section">
+    <div class="form-section file-uploads">
         <div class="underline-header">
             <h1 class="record-section-header padding-left-right-15">7. @lang($p.'upload')</h1>
         </div>
