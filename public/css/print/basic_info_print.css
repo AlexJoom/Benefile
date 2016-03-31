@@ -1,0 +1,120 @@
+body{
+    background: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    color: black;
+    font-family: serif;
+    font-size: 0.9em;
+}
+
+.make-inline{
+    display: block;
+}
+
+.language-div * .make-inline{
+    display: inline-block;
+}
+
+.legal-info * .make-inline{
+    display: inline-block;
+}
+
+.benefiter-info{
+    color: black;
+}
+
+h2{
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.userName{
+    display: none;
+}
+
+#sidebar{
+    display: none;
+}
+
+#actions{
+    display: none;
+}
+
+h1.record-section-header{
+    font-size: 1.1em;
+    color: black;
+    font-weight: 600;
+}
+
+.underline-header{
+    border-style: none;
+}
+
+input[type='submit']{
+    display: none;
+}
+
+input[type='text'], label{
+    color: black;
+    font-weight: 100;
+    border-style: none;
+}
+
+input[type='radio'], input[type='radio'] + label, input[type='checkbox'], input[type='checkbox'] + label{
+    display: none;
+}
+
+input[type='radio']:checked + label, input[type='checkbox']:checked + label{
+    display: inline-block;
+}
+
+input[disabled]{
+    opacity: 1;
+}
+
+select{
+    border-style: none;
+    color: black;
+}
+
+select[value="1"]{
+    display: none;
+}
+
+.non-printable{
+    display: none !important;
+}
+
+.custom-input-textarea{
+    color: black;
+    font-weight: 100;
+    border-style: none;
+    max-height: 5em;
+}
+
+.text-align-right{
+    text-align: left;
+}
+
+.color-red, .color-green, .glyphicon-minus-sign{
+    display: none;
+}
+
+.referrals-list{
+    display: none;
+}
+
+.add-new-referral{
+    display: none;
+}
+
+#delete-session-modal{
+    display: none;
+}
+
+.form-section{
+    border-style: none !important;
+}

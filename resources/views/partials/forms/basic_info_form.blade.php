@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}
+                            {!! Form::label('folder_number', Lang::get('basic_info_form.folder_number')) !!}<i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
@@ -179,7 +179,11 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-12">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
+                        @if(empty($benefiter->children_names))
+                            {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent non-printable', 'disabled' => 'disabled')) !!}
+                        @else
                             {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent', 'disabled' => 'disabled')) !!}
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -192,22 +196,22 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <?php
-                        for($i = 0; $i < 8; $i++){
-                            $legal_status[$i] = false;
-                            $legal_status_text[$i] = "";
-                            $legal_status_exp_date[$i] = "";
+                <?php
+                    for($i = 0; $i < 8; $i++){
+                        $legal_status[$i] = false;
+                        $legal_status_text[$i] = "";
+                        $legal_status_exp_date[$i] = "";
+                    }
+                    if(isset($legalStatuses) and $legalStatuses != null){
+                        foreach($legalStatuses as $status){
+                            $id = $status->legal_lookup_id - 1;
+                            $legal_status[$id] = true;
+                            $legal_status_text[$id] = $status->description;
+                            $legal_status_exp_date[$id] = $datesHelper->getFinelyFormattedStringDateFromDBDate($status->exp_date);
                         }
-                        if(isset($legalStatuses) and $legalStatuses != null){
-                            foreach($legalStatuses as $status){
-                                $id = $status->legal_lookup_id - 1;
-                                $legal_status[$id] = true;
-                                $legal_status_text[$id] = $status->description;
-                                $legal_status_exp_date[$id] = $datesHelper->getFinelyFormattedStringDateFromDBDate($status->exp_date);
-                            }
-                        }
-                    ?>
+                    }
+                ?>
+                <div class="row @if(!$legal_status[0]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 1, $legal_status[0], array('class' => 'float-left', 'tabindex' => '1', 'disabled' => 'disabled')) !!}
@@ -224,7 +228,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[1]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 2, $legal_status[1], array('class' => 'float-left', 'tabindex' => '2', 'disabled' => 'disabled')) !!}
@@ -241,7 +245,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[2]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 3, $legal_status[2], array('class' => 'float-left', 'tabindex' => '3', 'disabled' => 'disabled')) !!}
@@ -258,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[3]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 4, $legal_status[3], array('class' => 'float-left', 'tabindex' => '4', 'disabled' => 'disabled')) !!}
@@ -275,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[4]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 5, $legal_status[4], array('class' => 'float-left', 'tabindex' => '5', 'disabled' => 'disabled')) !!}
@@ -292,7 +296,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[5]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 6, $legal_status[5], array('class' => 'float-left', 'tabindex' => '6', 'disabled' => 'disabled')) !!}
@@ -309,7 +313,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[6]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7', 'disabled' => 'disabled')) !!}
@@ -326,7 +330,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[7]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8', 'disabled' => 'disabled')) !!}
@@ -423,7 +427,7 @@
                             }
                             $counter++;
                 ?>
-                        <div class="form-group float-left width-100-percent">
+                        <div class="form-group float-left width-100-percent @if($benefiter_language->language_id == 1) non-printable @endif">
                             <div class="col-md-3 make-inline">
                                 <select disabled name="language{{$counter}}" class="language-selection">
                                     @foreach($languages as $language)
@@ -435,7 +439,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3 make-inline">
+                            <div class="col-md-3 make-inline @if(empty($benefiter_language->language_level_id) or $benefiter_language->language_level_id == 1) non-printable @endif">
                                 <select disabled name="language_level{{$counter}}" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -455,7 +459,7 @@
                         }
                     } else { // if there are not selected languages available
                 ?>
-                    <div class="padding-left-right-15 language-div">
+                    <div class="padding-left-right-15 language-div non-printable">
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
                                 <select disabled name="language" class="language-selection">
@@ -628,7 +632,11 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
+                        @if(empty($benefiter->social_history))
+                            {!! Form::textarea('social_history', null, array('class' => 'custom-input-textarea width-100-percent non-printable', 'disabled' => 'disabled')) !!}
+                        @else
                             {!! Form::textarea('social_history', null, array('class' => 'custom-input-textarea width-100-percent', 'disabled' => 'disabled')) !!}
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -897,7 +905,11 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-12">
                             {!! Form::label('children_names', Lang::get('basic_info_form.children_names')) !!}
+                        @if(empty($benefiter->children_names))
+                            {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent non-printable')) !!}
+                        @else
                             {!! Form::textarea('children_names', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -910,22 +922,22 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <?php
-                        for($i = 0; $i < 8; $i++){
-                            $legal_status[$i] = false;
-                            $legal_status_text[$i] = "";
-                            $legal_status_exp_date[$i] = "";
+                <?php
+                    for($i = 0; $i < 8; $i++){
+                        $legal_status[$i] = false;
+                        $legal_status_text[$i] = "";
+                        $legal_status_exp_date[$i] = "";
+                    }
+                    if(isset($legalStatuses) and $legalStatuses != null){
+                        foreach($legalStatuses as $status){
+                            $id = $status->legal_lookup_id - 1;
+                            $legal_status[$id] = true;
+                            $legal_status_text[$id] = $status->description;
+                            $legal_status_exp_date[$id] = $datesHelper->getFinelyFormattedStringDateFromDBDate($status->exp_date);
                         }
-                        if(isset($legalStatuses) and $legalStatuses != null){
-                            foreach($legalStatuses as $status){
-                                $id = $status->legal_lookup_id - 1;
-                                $legal_status[$id] = true;
-                                $legal_status_text[$id] = $status->description;
-                                $legal_status_exp_date[$id] = $datesHelper->getFinelyFormattedStringDateFromDBDate($status->exp_date);
-                            }
-                        }
-                    ?>
+                    }
+                ?>
+                <div class="row @if(!$legal_status[0]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 1, $legal_status[0], array('class' => 'float-left', 'tabindex' => '1')) !!}
@@ -942,7 +954,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[1]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 2, $legal_status[1], array('class' => 'float-left', 'tabindex' => '2')) !!}
@@ -959,7 +971,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[2]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 3, $legal_status[2], array('class' => 'float-left', 'tabindex' => '3')) !!}
@@ -976,7 +988,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[3]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 4, $legal_status[3], array('class' => 'float-left', 'tabindex' => '4')) !!}
@@ -993,7 +1005,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[4]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 5, $legal_status[4], array('class' => 'float-left', 'tabindex' => '5')) !!}
@@ -1010,7 +1022,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[5]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 6, $legal_status[5], array('class' => 'float-left', 'tabindex' => '6')) !!}
@@ -1027,7 +1039,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[6]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7')) !!}
@@ -1044,7 +1056,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row @if(!$legal_status[7]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
                             {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8')) !!}
@@ -1141,7 +1153,7 @@
                             }
                             $counter++;
                 ?>
-                        <div class="form-group float-left width-100-percent">
+                        <div class="form-group float-left width-100-percent @if($benefiter_language->language_id == 1) non-printable @endif">
                             <div class="col-md-3 make-inline">
                                 <select name="language{{$counter}}" class="language-selection">
                                     @foreach($languages as $language)
@@ -1153,7 +1165,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3 make-inline">
+                            <div class="col-md-3 make-inline @if(empty($benefiter_language->language_level_id) or $benefiter_language->language_level_id == 1) non-printable @endif">
                                 <select name="language_level{{$counter}}" class="make-inline level-selection">
                                     <?php
                                         $first = true;
@@ -1350,7 +1362,11 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
+                        @if(empty($benefiter->social_history))
+                            {!! Form::textarea('social_history', null, array('class' => 'custom-input-textarea width-100-percent non-printable')) !!}
+                        @else
                             {!! Form::textarea('social_history', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                        @endif
                         </div>
                     </div>
                 </div>
