@@ -1,5 +1,8 @@
     <?php
         $p = "partials/forms/new_medical_visit_form.";
+        $datesHelper = new \app\Services\DatesHelper();
+        $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
     ?>
     {{-- 1. BASIC BENEFITER INFO --}}
     <div class="form-section no-bottom-border">
