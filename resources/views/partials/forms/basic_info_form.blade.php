@@ -739,7 +739,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="form-section align-text-center">
+                <div class="form-section align-text-center no-bottom-border">
                     {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
                 </div>
             {!! Form::close() !!}
