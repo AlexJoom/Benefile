@@ -7,11 +7,8 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 
 // services used
-use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
 use App\Services\BenefitersService;
-use App\Services\LegalFolderService;
 use App\Services\Utilities\GeneralUseService;
-use App\Services\DatesHelper;
 use App\Services\BasicInfoService;
 
 use Illuminate\Http\Request;
@@ -25,8 +22,6 @@ class RecordsController extends Controller
     // services
     private $basicInfoService;
     private $generalUseService;
-    private $legalFolderService;
-    private $datesHelper;
     private $benefiterList = null;
 
     public function __construct(){
@@ -38,12 +33,7 @@ class RecordsController extends Controller
         $this->basicInfoService = new BasicInfoService();
         // initialize general use service
         $this->generalUseService = new GeneralUseService();
-        // initialize services for medical visit with DB dependencies
-        $this->medicalVisitDBDependencies = new BenefiterMedicalFolderDBdependentService();
-        // initialize legal folder service
-        $this->legalFolderService = new LegalFolderService();
 
-        $this->datesHelper = new DatesHelper();
     }
 
     //------------ GET BENEFITERS LIST -------------------------------//
@@ -177,46 +167,5 @@ class RecordsController extends Controller
     public function getDeleteBenefiter($id){
         $this->basicInfoService->deleteBenefiter($id);
         return redirect('benefiters-list');
-    }
-
-    // returns view of legal folder
-    public function getLegalFolder($id){
-        $legalFolder = $this->legalFolderService->findLegalFolderFromBenefiterId($id);
-        $asylumRequest = null;
-        $noLegalStatus = null;
-        $lawyerActions = null;
-        $successMsg = session()->get('success', function() { return null; });
-        session()->forget('success');
-        // if the legal folder exists return all things connected with it
-        if($legalFolder != null){
-            $asylumRequest = $this->legalFolderService->findAsylumRequestFromLegalFolderId($legalFolder->id);
-            $noLegalStatus = $this->legalFolderService->findNoLegalStatusFromLegalFolderId($legalFolder->id);
-            $lawyerActions = $this->legalFolderService->findLawyerActionsFromLegalFolderId($legalFolder->id);
-        }
-        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
-        if($benefiter == null){
-            return view('errors.404');
-        }
-        return view('benefiter.legal_folder')
-            ->with('legal_folder', $legalFolder)
-            ->with('benefiter', $benefiter)
-            ->with('asylum_request', $asylumRequest)
-            ->with('no_legal_status', $noLegalStatus)
-            ->with('lawyer_action', $lawyerActions)
-            ->with('tab', 'legal')
-            ->with('success', $successMsg);
-    }
-
-    // gets data from legal folder form
-    public function postLegalFolder(Request $request, $id){
-        $validator = $this->legalFolderService->legalFolderValidator($request->all());
-        if ($validator->fails()){
-            return redirect('benefiter/'.$id.'/legal-folder')
-                ->withInput($request->all())
-                ->withErrors($validator->errors()->all());
-        } else {
-            $this->legalFolderService->saveLegalFolderToDB($request->all(), $id);
-            return redirect('benefiter/'.$id.'/legal-folder')->with('success', \Lang::get('records_controller_messages.legal_folder_create_success'));
-        }
     }
 }

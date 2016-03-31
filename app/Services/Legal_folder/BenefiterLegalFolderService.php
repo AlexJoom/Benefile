@@ -1,9 +1,9 @@
-<?php namespace App\Services;
+<?php namespace App\Services\Legal_folder;
 
 use App\Services\DatesHelper;
 use Validator;
 
-class LegalFolderService{
+class BenefiterLegalFolderService{
 
     private $datesHelper;
 

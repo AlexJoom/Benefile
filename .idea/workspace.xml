@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Services/SocialFolderService.php" afterPath="$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Services/LegalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -50,29 +50,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4074073" vertical-offset="958" max-vertical-offset="2691">
-              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+            <state vertical-scroll-proportion="-0.43191198" vertical-offset="1441" max-vertical-offset="2691">
+              <caret line="58" column="54" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45405406" vertical-offset="1136" max-vertical-offset="1909">
-              <caret line="174" column="4" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
+            <state vertical-scroll-proportion="-3.7636364" vertical-offset="0" max-vertical-offset="2553">
+              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
               <folding>
-                <element signature="e#64#114#0#PHP" expanded="true" />
-                <element signature="e#1840#4731#0#PHP" expanded="false" />
-                <element signature="e#4770#8564#0#PHP" expanded="false" />
-                <element signature="e#8643#9153#0#PHP" expanded="false" />
-                <element signature="e#9159#9437#0#PHP" expanded="false" />
-                <element signature="e#9668#10986#0#PHP" expanded="false" />
-                <element signature="e#11032#11640#0#PHP" expanded="false" />
+                <element signature="e#4255#8049#0#PHP" expanded="false" />
+                <element signature="e#8128#8638#0#PHP" expanded="false" />
+                <element signature="e#8644#8922#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,8 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/partials/forms/legal_folder_form.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/records/social_folder.js" />
         <option value="$PROJECT_DIR$/public/css/records/social_folder_form.css" />
         <option value="$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php" />
         <option value="$PROJECT_DIR$/public/css/reports/reports.css" />
@@ -138,10 +132,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderAjaxCallsController.php" />
         <option value="$PROJECT_DIR$/app/Services/DatesHelper.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Services/Social_folder/SocialFolderService.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" />
         <option value="$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php" />
+        <option value="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
       </list>
     </option>
@@ -401,7 +397,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Utilities" />
+              <option name="myItemId" value="Legal_folder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -456,32 +452,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Benefile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Social_Folder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -525,11 +495,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Services/Legal_folder" />
       <recent name="$PROJECT_DIR$/app/Services/Social_folder" />
       <recent name="$PROJECT_DIR$/app/Services/Medical_folder" />
       <recent name="$PROJECT_DIR$/app/Services/DB_dependent_services" />
       <recent name="$PROJECT_DIR$/app/Services/Validation_services" />
-      <recent name="$PROJECT_DIR$/app/Services" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
@@ -829,13 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/LegalFolderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3381">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/SearchService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="5425" max-vertical-offset="6348">
@@ -998,14 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4074073" vertical-offset="958" max-vertical-offset="2691">
-          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.11111" vertical-offset="2378" max-vertical-offset="3105">
@@ -1024,19 +979,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28473178" vertical-offset="0" max-vertical-offset="1656">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45405406" vertical-offset="1136" max-vertical-offset="1909">
-          <caret line="174" column="4" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
+        <state vertical-scroll-proportion="-3.7636364" vertical-offset="0" max-vertical-offset="2553">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding>
-            <element signature="e#64#114#0#PHP" expanded="true" />
-            <element signature="e#1840#4731#0#PHP" expanded="false" />
-            <element signature="e#4770#8564#0#PHP" expanded="false" />
-            <element signature="e#8643#9153#0#PHP" expanded="false" />
-            <element signature="e#9159#9437#0#PHP" expanded="false" />
-            <element signature="e#9668#10986#0#PHP" expanded="false" />
-            <element signature="e#11032#11640#0#PHP" expanded="false" />
+            <element signature="e#4255#8049#0#PHP" expanded="false" />
+            <element signature="e#8128#8638#0#PHP" expanded="false" />
+            <element signature="e#8644#8922#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09491059" vertical-offset="0" max-vertical-offset="3404">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding>
+            <element signature="e#44#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.43191198" vertical-offset="1441" max-vertical-offset="2691">
+          <caret line="58" column="54" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

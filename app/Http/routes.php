@@ -56,19 +56,19 @@ Route::get('benefiter/{id}/basic-info/referral-delete/{referral_id}', 'MainPanel
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER
-Route::get('benefiter/{id}/medical-folder'      , 'Medical_Folder\NewMedicalVisitController@getMedicalFolder');
-Route::post('benefiter/{id}/medical-folder'     , 'Medical_Folder\NewMedicalVisitController@postMedicalFolder');
-Route::get('benefiter/getIC10List'              , 'Medical_Folder\MedicalFolderExtraFunctionsController@getICD10List');
-Route::get('benefiter/getMedicationList'        , 'Medical_Folder\MedicalFolderExtraFunctionsController@getMedicationList');
-Route::get('benefiter/{id}/getEachMedicalVisit' , 'Medical_Folder\MedicalFolderExtraFunctionsController@getMedicalVisitModal');
-Route::get('benefiter/{id}/editMedicalVisit'    , 'Medical_Folder\EditMedicalVisitController@getMedicalVisitForEditing');
-Route::post('benefiter/{id}/editMedicalVisit'   , 'Medical_Folder\EditMedicalVisitController@postMedicalVisitFromEditing');
+Route::get('benefiter/{id}/medical-folder'               , 'Medical_Folder\NewMedicalVisitController@getMedicalFolder');
+Route::post('benefiter/{id}/medical-folder'              , 'Medical_Folder\NewMedicalVisitController@postMedicalFolder');
+Route::get('benefiter/getIC10List'                       , 'Medical_Folder\MedicalFolderExtraFunctionsController@getICD10List');
+Route::get('benefiter/getMedicationList'                 , 'Medical_Folder\MedicalFolderExtraFunctionsController@getMedicationList');
+Route::get('benefiter/{id}/getEachMedicalVisit'          , 'Medical_Folder\MedicalFolderExtraFunctionsController@getMedicalVisitModal');
+Route::get('benefiter/{id}/editMedicalVisit'             , 'Medical_Folder\EditMedicalVisitController@getMedicalVisitForEditing');
+Route::post('benefiter/{id}/editMedicalVisit'            , 'Medical_Folder\EditMedicalVisitController@postMedicalVisitFromEditing');
 
 //----------------------- END MEDICAL FOLDER
 
 //----------------------- LEGAL FOLDER
-Route::get('benefiter/{id}/legal-folder', 'MainPanel\RecordsController@getLegalFolder');
-Route::post('benefiter/{id}/legal-folder', 'MainPanel\RecordsController@postLegalFolder');
+Route::get('benefiter/{id}/legal-folder'                 , 'Legal_Folder\LegalFolderController@getLegalFolder');
+Route::post('benefiter/{id}/legal-folder'                , 'Legal_Folder\LegalFolderController@postLegalFolder');
 //----------------------- END LEGAL FOLDER
 
 //----------------------- SOCIAL FOLDER
