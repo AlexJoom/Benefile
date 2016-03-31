@@ -82,6 +82,8 @@ return array(
     'condition-name'       =>  'ΠΑΘΗΣΗ',
     'icd10'                =>  'ICD10 ΕΠΙΛΟΓΕΣ',
     'description'          =>  'ΠΕΡΙΓΡΑΦΗ',
-    'admin'                =>  'Διαχειριστής'
+    'admin'                =>  'Διαχειριστής',
 
+    'print_visit'          =>  'Εκτύπωση επίσκεψης',
+    'close'                =>  'Κλείσιμο',
 );

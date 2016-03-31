@@ -8,6 +8,14 @@ body{
     font-size: 0.9em;
 }
 
+.make-inline{
+    display: block;
+}
+
+.text-align-right{
+    text-align: left;
+}
+
 .benefiter-info{
     margin: 10px 0 !important;
     color: black;

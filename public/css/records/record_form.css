@@ -366,6 +366,10 @@ a.btn{
     color: darkorange;
 }
 
+a.btn.btn-default.font-weight-normal{
+    font-weight: 100;
+}
+
 @media screen and (max-width: 991px){
     .medication_other_name{
         padding-left: 50px;

@@ -298,7 +298,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="javascript:window.print()" class="btn btn-default font-weight-normal"><i class="fa fa-print"></i> @lang($p."print_visit")</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang($p.("close"))</button>
             </div>
         </div>
     </div>
