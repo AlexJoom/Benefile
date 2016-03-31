@@ -1,18 +1,14 @@
-body{
-    background: none;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    color: black;
-    font-family: serif;
-    font-size: 0.9em;
-}
-
 .make-inline{
     display: block;
 }
 
-.language-div * .make-inline{
+.asterisk{
+    color: black;
+    font-weight: 100;
+    font-size: 0.1em;
+}
+
+.languages-info * .make-inline{
     display: inline-block;
 }
 
@@ -20,60 +16,12 @@ body{
     display: inline-block;
 }
 
-.benefiter-info{
-    margin: 10px !important;
-    color: black;
+.legal-info * input[type="text"]{
+    width: 100%;
 }
 
-h2{
-    font-size: 1.2em;
-    font-weight: 600;
-    margin: 1em auto;
-    text-align: center;
-}
-
-.userName{
-    display: none;
-}
-
-#sidebar{
-    display: none;
-}
-
-#actions{
-    display: none;
-}
-
-h1.record-section-header{
-    font-size: 1.1em;
-    color: black;
-    font-weight: 600;
-}
-
-.underline-header{
-    border-style: none;
-}
-
-input[type='submit']{
-    display: none;
-}
-
-input[type='text'], label{
-    color: black;
-    font-weight: 100;
-    border-style: none;
-}
-
-input[type='radio'], input[type='radio'] + label, input[type='checkbox'], input[type='checkbox'] + label{
-    display: none;
-}
-
-input[type='radio']:checked + label, input[type='checkbox']:checked + label{
-    display: inline-block;
-}
-
-input[disabled]{
-    opacity: 1;
+.family-info * .col-md-6{
+    width: 100%;
 }
 
 select{
@@ -85,8 +33,8 @@ select[value="1"]{
     display: none;
 }
 
-.non-printable{
-    display: none !important;
+select.make-inline{
+    display: inline-block;
 }
 
 .custom-input-textarea{
@@ -104,6 +52,10 @@ select[value="1"]{
     display: none;
 }
 
+#travel_route, #travel_duration{
+    width: 100%;
+}
+
 .referrals-list{
     display: none;
 }
@@ -113,13 +65,5 @@ select[value="1"]{
 }
 
 #delete-session-modal{
-    display: none;
-}
-
-.form-section{
-    border-style: none !important;
-}
-
-.print-button{
     display: none;
 }

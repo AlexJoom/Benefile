@@ -62,12 +62,3 @@ hr{
 .form-group{
     margin-bottom: 10px;
 }
-
-@media print{
-    /*.file-uploads{*/
-        /*page-break-after: avoid;*/
-    /*}*/
-    html, body {
-        height: auto;
-    }
-}
