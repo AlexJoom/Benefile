@@ -610,7 +610,8 @@
             "fillAlphas": 0.9,
             "lineAlpha": 0.2,
             "type": "column",
-            "valueField": "work description"
+            "valueField": "work description",
+            "lineColor" : "#3D6139"
         }],
         "chartCursor": {
             "categoryBalloonEnabled": false,
