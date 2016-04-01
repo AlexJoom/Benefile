@@ -1,3 +1,7 @@
+body{
+    position: relative !important;
+}
+
 .custom-input-text{
     border-style: none;
     font-size: inherit;
@@ -41,9 +45,7 @@
 
 .modal-body{
     padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
 }
 
 hr{
