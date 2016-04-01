@@ -222,8 +222,14 @@ class ReportsService{
         // get all doctors from user table
         $subscribed_doctors = User::with('subrole')->where('user_role_id', 2)->orWhere('user_role_id', 1)->get();
         foreach($subscribed_doctors as $doctor){
-            $count_benefiters_with_same_doctor = count(medical_visits::where('doctor_id', $doctor['id'])->get());
-            if($count_benefiters_with_same_doctor != 0){
+            $benefiters_visits_with_same_doctor_id = medical_visits::select('benefiter_id')->where('doctor_id', $doctor['id'])->get();
+
+            $benefiter_per_doctor_array = array();
+            foreach($benefiters_visits_with_same_doctor_id as $ben){
+                array_push($benefiter_per_doctor_array, $ben['benefiter_id']);
+            }
+            $count_benefiters_per_doctor_id = count(array_count_values($benefiter_per_doctor_array));
+            if($count_benefiters_per_doctor_id != 0){
                 $doctor_name = $doctor['name'] . " " . $doctor['lastname'];
 
                 if($doctor['user_role_id'] == 1){
@@ -233,7 +239,7 @@ class ReportsService{
                 }
 
                 $doctor_type_result = [ 'doctor' =>  $doctor_name. '<br>' .'('. $doctor_specialty . ')',
-                    'count_benefiters_with_same_doctor' => $count_benefiters_with_same_doctor,
+                    'count_benefiters_with_same_doctor' => $count_benefiters_per_doctor_id,
                     'color' => $color_array[array_rand($color_array)]];
                 array_push($results, $doctor_type_result);
             }
