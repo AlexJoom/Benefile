@@ -145,14 +145,27 @@ class SearchService{
             $firstWhereParameter = false;
         }
         if($request['doctor_name'] != ""){
-            $doctorId = $this->getDoctorIdFromName($request['doctor_name']);
-            if($doctorId != null) {
+            $doctors = $this->getDoctorIdFromName($request['doctor_name']);
+            if($doctors != null) {
                 if (!$firstWhereParameter) {
                     $queryString = $queryString . " and ";
                 } else {
                     $queryString = $queryString . " where ";
                 }
-                $queryString = $queryString . 'mv.doctor_id=' . $doctorId;
+                if(count($doctors) > 1) {
+                    $queryString = $queryString . '(';
+                    $firstDoctor = true;
+                    foreach ($doctors as $doctor) {
+                        if(!$firstDoctor){
+                            $queryString = $queryString . ' or ';
+                        }
+                        $queryString = $queryString . 'mv.doctor_id=' . $doctor->id;
+                        $firstDoctor = false;
+                    }
+                    $queryString = $queryString . ')';
+                } else {
+                    $queryString = $queryString . 'mv.doctor_id=' . $doctors[0]->id;
+                }
                 $firstWhereParameter = false;
             }
         }
@@ -259,8 +272,8 @@ class SearchService{
     private function getDoctorIdFromName($doctorName){
         $tmp = \DB::select(\DB::raw('select id from users where (user_role_id = 1 or user_role_id = 2) and (lastname like "%' . $doctorName . '%" or name like "%' . $doctorName . '%")'));
         if($tmp != null) {
-            Log::info("Returning the doctor's id. [=" . $tmp[0]->id . "]");
-            return $tmp[0]->id;
+            Log::info("Returning the doctors ids.");
+            return $tmp;
         } else {
             Log::error("Couldn't find the doctor's id");
             return null;
