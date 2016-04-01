@@ -2,11 +2,17 @@
 
 use Illuminate\Support\Facades\Log;
 
+use App\Services\DatesHelper;
+
 class SearchService{
 
+    private $datesHelper;
+
+    public function __construct(){
+        $this->datesHelper = new DatesHelper();
+    }
     // perform DB search with the request parameters
     public function searchBenefiters($request){
-        $datesHelper = new DatesHelper();
         $queryString = "select b.*, gl.gender, msl.marital_status_title, el.education_title, wll.description as legal_working_status, wtll.work_title, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id left join genders_lookup as gl on b.gender_id = gl.id left join marital_status_lookup as msl on b.marital_status_id = msl.id left join education_lookup as el on b.education_id = el.id left join working_legally_lookup as wll on b.working_legally = wll.id left join work_title_list_lookup as wtll on b.work_title_id = wtll.id";
         $queryString2 = " group by b.id";
         $firstWhereParameter = true;
@@ -167,7 +173,7 @@ class SearchService{
         }
         if($request['incident_from'] != "" and $request['incident_to'] != ""){
             // if difference in days between the two dates is negative, the incident_to date is earlier
-            if($datesHelper->getDifferenceInDays($request['incident_from'], $request['incident_to']) < 0){
+            if($this->datesHelper->getDifferenceInDays($request['incident_from'], $request['incident_to']) < 0){
                 $tmp = $request['incident_from'];
                 $request['incident_from'] = $request['incident_to'];
                 $request['incident_to'] = $tmp;
@@ -177,7 +183,7 @@ class SearchService{
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . 'mv.medical_visit_date between \'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['incident_from'])) . '\' and \'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['incident_to'])) . '\'';
+            $queryString = $queryString . 'mv.medical_visit_date between \'' . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($request['incident_from'])) . '\' and \'' . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($request['incident_to'])) . '\'';
             $firstWhereParameter = false;
         }
         $queryString = "select * from (" . $queryString . $queryString2 . ") as median_table";
@@ -201,7 +207,7 @@ class SearchService{
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . 'created_at_date=\'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['insertion_date'])). '\'';
+            $queryString = $queryString . 'created_at_date=\'' . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($request['insertion_date'])). '\'';
             $firstWhereParameterExternalSelect = false;
         }
         if(!$firstWhereParameter or !$firstWhereParameterExternalSelect) {

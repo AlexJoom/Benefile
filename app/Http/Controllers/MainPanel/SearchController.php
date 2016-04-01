@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\MainPanel;
 
-use App\Services\BasicInfoService;
-use App\Services\BenefiterMedicalFolderService;
+//use App\Services\BasicInfoService;
+use App\Services\Medical_folder\BenefiterMedicalFolderService;
+use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
 use Illuminate\Http\Request;
 use App\Services\SearchService;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SearchController extends Controller
-{
+class SearchController extends Controller{
+    private $medical_folder_db_dependent_services;
+
     public function __construct(){
         // only for logged in users
         $this->middleware('auth');
+        // initialize db dependent services for medical folder
+        $this->medical_folder_db_dependent_services = new BenefiterMedicalFolderDBdependentService();
     }
 
     // returns the search view
@@ -33,7 +37,7 @@ class SearchController extends Controller
         // all the medical examination results
         $allMedicalExaminationResults = $searchService->getAllMedicalExaminationResults();
         // all the medical locations
-        $medicalLocations = $medicalService->getAllMedicalLocations();
+        $medicalLocations = $this->medical_folder_db_dependent_services->get_all_medical_locations_lookup();
         return view('search.search')
             ->with('medical_locations', $medicalLocations)
             ->with('marital_statuses', $allMaritalStatuses)
