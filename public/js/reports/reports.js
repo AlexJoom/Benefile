@@ -305,7 +305,8 @@ function fetchBenefitersVSphycologicalSupportType(){
                 "fillAlphas": 0.8,
                 "lineAlpha": 0.2,
                 "type": "column",
-                "valueField": "type_count"
+                "valueField": "type_count",
+                "lineColor" : "#A57251",
             } ],
             "chartCursor": {
                 "categoryBalloonEnabled": false,
