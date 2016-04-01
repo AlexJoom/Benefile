@@ -34,7 +34,7 @@ body{
     overflow: visible;
 }
 
-.model-open .modal{
+.modal-open .modal{
     overflow-x: visible;
     overflow-y: visible;
 }
@@ -45,7 +45,6 @@ body{
 
 .modal-body{
     padding: 0;
-    position: relative;
 }
 
 hr{
