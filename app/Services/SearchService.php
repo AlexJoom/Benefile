@@ -247,7 +247,7 @@ class SearchService{
     private function getMedicationIdFromName($drug){
         $tmp = \DB::table('medical_medication_lookup')->where('description', 'like', '%' . $drug . '%')->first();
         if($tmp != null) {
-            Log::info("Returning the drug id.");
+            Log::info("Returning the drug id. [=" . $tmp->id . "]");
             return $tmp->id;
         } else {
             Log::error("Couldn't find the drug id.");
@@ -257,10 +257,10 @@ class SearchService{
 
     // get doctor id from name
     private function getDoctorIdFromName($doctorName){
-        $tmp = \DB::table('users')->where('user_role_id', '=', 2)->where('lastname', 'like', '%' . $doctorName . '%')->orWhere('name', 'like', '%' . $doctorName . '%')->first();
+        $tmp = \DB::select(\DB::raw('select id from users where (user_role_id = 1 or user_role_id = 2) and (lastname like "%' . $doctorName . '%" or name like "%' . $doctorName . '%")'));
         if($tmp != null) {
-            Log::info("Returning the doctor's id.");
-            return $tmp->id;
+            Log::info("Returning the doctor's id. [=" . $tmp[0]->id . "]");
+            return $tmp[0]->id;
         } else {
             Log::error("Couldn't find the doctor's id");
             return null;
