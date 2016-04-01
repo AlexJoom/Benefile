@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BasicInfoService.php" afterPath="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -50,10 +47,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21142857" vertical-offset="16642" max-vertical-offset="17342">
+            <state vertical-scroll-proportion="-9.888889" vertical-offset="16523" max-vertical-offset="17388">
               <caret line="733" column="51" selection-start-line="733" selection-start-column="51" selection-end-line="733" selection-end-column="51" />
               <folding>
                 <element signature="e#50#100#0#PHP" expanded="true" />
@@ -63,10 +60,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SearchService.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Services/SearchService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6327373" vertical-offset="759" max-vertical-offset="6348">
+              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+              <folding>
+                <marker date="1459499862943" expanded="true" signature="257:1159" placeholder="select b.*, ..." />
+                <marker date="1459499862943" expanded="true" signature="8959:9027" placeholder="select * fro..queryString..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BenefiterMedicalFolderService.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.444445" vertical-offset="25607" max-vertical-offset="26335">
+            <state vertical-scroll-proportion="0.0" vertical-offset="25607" max-vertical-offset="26335">
               <caret line="1135" column="31" selection-start-line="1135" selection-start-column="8" selection-end-line="1135" selection-end-column="31" />
               <folding>
                 <element signature="e#31#81#0#PHP" expanded="true" />
@@ -129,6 +139,7 @@
         <option value="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
         <option value="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+        <option value="$PROJECT_DIR$/app/Services/SearchService.php" />
       </list>
     </option>
   </component>
@@ -153,9 +164,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="39" />
-    <option name="y" value="-4" />
+    <option name="y" value="21" />
     <option name="width" value="1641" />
-    <option name="height" value="1054" />
+    <option name="height" value="1029" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -638,6 +649,142 @@
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/BasicInfoService.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Services/SearchService.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/common/mainLayout.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/records/record_form.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/reports/reports.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/importCSV/importCSV.js</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/records/medical_visit.js</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/js/reports/reports.js</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/lang/gr/auth/emails/password.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/lang/gr/basic_info_form.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/reports/reports.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/uploadExcel.blade.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/views/users/users-list.blade.php</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/print/basic_info_print.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/print/generic_print.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/public/css/print/medical_visit_print.css</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -649,20 +796,17 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -671,6 +815,9 @@
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="false" name="benefile" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="benefile" start_url="/benefile/index.php">
@@ -718,11 +865,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="-4" width="1641" height="1054" extended-state="6" />
+    <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12719299" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12637363" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1971917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34210527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -733,7 +880,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26641652" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26954347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -774,13 +921,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.333333" vertical-offset="138" max-vertical-offset="1081">
-          <caret line="30" column="97" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/SocialFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38088012" vertical-offset="922" max-vertical-offset="2921">
@@ -1123,7 +1263,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.444445" vertical-offset="25607" max-vertical-offset="26335">
+        <state vertical-scroll-proportion="0.0" vertical-offset="25607" max-vertical-offset="26335">
           <caret line="1135" column="31" selection-start-line="1135" selection-start-column="8" selection-end-line="1135" selection-end-column="31" />
           <folding>
             <element signature="e#31#81#0#PHP" expanded="true" />
@@ -1133,11 +1273,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21142857" vertical-offset="16642" max-vertical-offset="17342">
+        <state vertical-scroll-proportion="-9.888889" vertical-offset="16523" max-vertical-offset="17388">
           <caret line="733" column="51" selection-start-line="733" selection-start-column="51" selection-end-line="733" selection-end-column="51" />
           <folding>
             <element signature="e#50#100#0#PHP" expanded="true" />
             <element signature="e#2362#2542#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/SearchService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6327373" vertical-offset="759" max-vertical-offset="6348">
+          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+          <folding>
+            <marker date="1459499862943" expanded="true" signature="257:1159" placeholder="select b.*, ..." />
+            <marker date="1459499862943" expanded="true" signature="8959:9027" placeholder="select * fro..queryString..." />
           </folding>
         </state>
       </provider>
