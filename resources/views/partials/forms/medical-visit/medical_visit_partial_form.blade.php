@@ -454,8 +454,7 @@
                                     <div class="padding-left-right-15">
                                         <i class="fa fa-exclamation-triangle color-orange"></i>
                                         <span class="make-italic">
-                                            Επιλέξτε ξανά τα αντίστοιχα αρχεία.
-                                            {{--{{$upload_file_title_session[$i]->getClientOriginalName()}}--}}
+                                            @lang($p.'choose_file_again')<span style="font-weight: bolder; color: #003300">{{$upload_file_title_session[$i]}}</span>.
                                         </span>
                                     </div>
                                 </div>
