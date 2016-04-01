@@ -16,7 +16,7 @@
                <b>@lang($p.'registratio_message_2')</b>
            </div>
 
-           <div class="text-center margin-top-40">
+           <div class="text-center margin-top-40 margin-bottom-50">
             <a class="logout-button" href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
            </div>
 

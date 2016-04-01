@@ -149,8 +149,8 @@ form .form-group button{
 }
 
 .bottomDiv{
-    position: absolute;
-    bottom: 30px;
+    position: relative;
+    padding-top: 30px;
     text-align: center;
     width: 100%;
 }
