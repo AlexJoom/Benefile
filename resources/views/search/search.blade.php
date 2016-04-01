@@ -168,7 +168,7 @@
                     {{--{!! Form::label('medical_location_id', Lang::get('partials/forms/new_medical_visit_form.exam_location', array('class' => 'custom-label-width'))) !!}--}}
                     <label class="custom-label-width" for="medical_location_id">@lang('partials/forms/new_medical_visit_form.exam_location')</label>
                    <div>
-                        <select name="medical_location_id">
+                        <select id="medical-location-id" name="medical_location_id">
                             <option value=0></option>
                             <?php
                                 if(isset($medical_locations) and $medical_locations != null){

@@ -69,13 +69,13 @@ class SearchService{
             $queryString = $queryString . "b.origin_country='" . $request['origin_country'] . "'";
             $firstWhereParameter = false;
         }
-        if ($request['medical_location_id'] != "0"){
+        if ($request['medical_location_id'] != 0){
             if (!$firstWhereParameter){
                 $queryString = $queryString . " and ";
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . "b.medical_location_id=" . $request['medical_location_id'];
+            $queryString = $queryString . "mv.medical_location_id=" . $request['medical_location_id'];
             $firstWhereParameter = false;
         }
         if($request['marital_status_id'] != 0) {
@@ -193,7 +193,7 @@ class SearchService{
                 $queryString = $queryString . " where ";
             }
             $queryString = $queryString . 'incidents_counter=' . $request['incidents_number'];
-            $firstWhereParameter = false;
+            $firstWhereParameterExternalSelect = false;
         }
         if($request['insertion_date'] != ""){
             if(!$firstWhereParameterExternalSelect){
@@ -208,7 +208,7 @@ class SearchService{
             Log::info("The search benefiter DB query is: " . $queryString);
             return \DB::select(\DB::raw($queryString));
         } else {
-            Log::info("No parameters passed from benefiter search from!");
+            Log::info("No parameters passed from benefiter search form!");
             return null;
         }
     }
