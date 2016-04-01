@@ -17,14 +17,16 @@ body{
 }
 
 .benefiter-info{
+    display: block;
+    position: relative;
     margin: 10px 0 !important;
-    color: black;
+    height: 20px !important;
 }
 
 h2{
     font-size: 1.2em;
     font-weight: 600;
-    margin: 1em auto;
+    margin: 10px auto !important;
     text-align: center;
 }
 
