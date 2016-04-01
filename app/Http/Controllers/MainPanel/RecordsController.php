@@ -333,8 +333,8 @@ class RecordsController extends Controller
         session()->forget('supply_from_praksis_hidden_session');
         $upload_file_description_session = session()->get('upload_file_description_session');
         session()->forget('upload_file_description_session');
-//        $upload_file_title_session = session()->get('upload_file_title_session');
-//        session()->forget('upload_file_title_session');
+        $upload_file_title_session = session()->get('upload_file_title_session');
+        session()->forget('upload_file_title_session');
 
         // ------ END VALIDATION FAILURE SAVE TYPED DATA ------------------ //
 
@@ -376,7 +376,7 @@ class RecordsController extends Controller
                         ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
                         ->with('benefiter_medical_visits_list', $benefiter_medical_visits_list)
                         ->with('upload_file_description_session', $upload_file_description_session)
-//                        ->with('upload_file_title_session', $upload_file_title_session)
+                        ->with('upload_file_title_session', $upload_file_title_session)
                         ->with('visit_submited_succesfully', $visit_submited_succesfully);
         }
     }
@@ -411,7 +411,12 @@ class RecordsController extends Controller
             $supply_from_praksis_hidden_session = $request['supply_from_praksis_hidden'];
 
             $upload_file_description_session = $request['upload_file_description'];
-//            $upload_file_title_session = $request['upload_file_title'];
+
+            $upload_file_title_session = array();
+            $upload_file_title_session_files = $request['upload_file_title'];
+            foreach($upload_file_title_session_files as $uft){
+                array_push($upload_file_title_session,$uft->getClientOriginalName());
+            }
             $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
                 ->withInput(array(
@@ -446,7 +451,7 @@ class RecordsController extends Controller
                 ->with('medication_duration_session', $medication_duration_session)
                 ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
                 ->with('upload_file_description_session', $upload_file_description_session)
-//                ->with('upload_file_title_session', $upload_file_title_session)
+                ->with('upload_file_title_session', $upload_file_title_session)
                 ->withErrors($validator->errors()->all());
         } else {
             $this->medicalVisit->save_new_medical_visit_tables($request->all());

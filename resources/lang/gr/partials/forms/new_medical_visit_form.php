@@ -86,4 +86,5 @@ return array(
 
     'print_visit'          =>  'Εκτύπωση επίσκεψης',
     'close'                =>  'Κλείσιμο',
+    'choose_file_again'    =>  'Επιλέξτε ξανά τo αρχείο: ',
 );
