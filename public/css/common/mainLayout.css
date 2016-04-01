@@ -170,7 +170,7 @@
     cursor: pointer;
 }
 #menu ul > li {
-    padding: 10px 0px 10px 30px;
+    padding: 10px 10px 10px 30px;
     height: 62px;
 }
 #menu ul > li > ul > li{
@@ -197,6 +197,10 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+#edit-benefiter{
+    font-size: 20px;
+    line-height: 40px;
 }
 
 .min-height-720px{
