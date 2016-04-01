@@ -422,9 +422,10 @@
     <div class="row">
         <div class="col-md-12">
             <div id="upload_file" data-form-submit-error="@lang($p."form_submit_error")">
-                @if(!empty($upload_file_description_session) && !empty($upload_file_title_session))
+                @if(!empty($upload_file_description_session))
+                <?php $counter = 0; ?>
                     @for($i=0 ; $i<count($upload_file_description_session) ; $i++)
-                        <div class="uploadFile file-added-div">
+                        <div class="@if($i==0)uploadFile @else file-added-div @endif">
                             <div class="row">
                                 <div class="padding-left-right-15">
                                     {{-- ΑΝΕΒΑΣΜΑ ΑΡΧΕΙΟΥ --}}
@@ -432,9 +433,12 @@
                                         {!! Form::label('upload_file_title', Lang::get($p.'file_details')) !!}
                                         {!! Form::text('upload_file_description[]', "$upload_file_description_session[$i]", array('id'=>'file', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                         {{-- add --}}
+                                        @if($counter<1)
                                         <a class="color-green add-file" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline"></span>
                                         </a>
+                                        @endif
+                                        <?php $counter++; ?>
                                         {{-- remove --}}
                                         <a class="color-red remove-file @if($i == 0) hide-element @endif" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-minus-sign make-inline"></span>
@@ -445,7 +449,14 @@
                             <div class="row">
                                 <div class="padding-left-right-15">
                                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-md-4">
-                                        {!! Form::file('upload_file_title[]', "$upload_file_title_session[$i]", array('class' => 'custom-input-text')) !!}
+                                        {!! Form::file('upload_file_title[]', null, array('class' => 'custom-input-text')) !!}
+                                    </div>
+                                    <div class="padding-left-right-15">
+                                        <i class="fa fa-exclamation-triangle color-orange"></i>
+                                        <span class="make-italic">
+                                            Επιλέξτε ξανά τα αντίστοιχα αρχεία.
+                                            {{--{{$upload_file_title_session[$i]->getClientOriginalName()}}--}}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
