@@ -40,7 +40,7 @@ return array(
 
     'medical_info'         =>  'Βασικά Ιατρικά στοιχεία',
     'doctor_name'          =>  'ΟΝΟΜΑ ΙΑΤΡΟΥ',
-    'incident_type'        =>  'ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ',
+    'incident_type'        =>  'ΑΝΤΙΜΕΤΩΠΙΣΗ',
     'chronic_conditions'   =>  'ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ: ',
     'height'               =>  'ΥΨΟΣ (cm)',
     'weight'               =>  'ΒΑΡΟΣ (kg)',
