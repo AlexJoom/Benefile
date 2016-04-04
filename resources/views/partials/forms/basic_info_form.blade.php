@@ -1128,6 +1128,12 @@
                                 {!! Form::radio('education_status', 9, $education[8], array('class' => 'make-inline')) !!}
                                 {!! Form::label('education_status', Lang::get('basic_info_form.phd'), array('class' => 'radio-value')) !!}
                             </div>
+                            <div class="col-md-12 margin-top-20">
+                                <div class="form-group width-100-percent">
+                                    {!! Form::label('education_specialization', Lang::get('basic_info_form.education_specialization'), array('class' => 'width-20-percent make-inline col-md-1 no-padding')) !!}
+                                    {!! Form::text('education_specialization', null, array('class' => 'custom-input-text col-md-11 no-padding')) !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
