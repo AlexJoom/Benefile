@@ -73,7 +73,7 @@ class BenefiterMedicalFolderService
         // VALIDATE - Lab results
         $lab_results = $request['lab_results'];
         foreach ($lab_results as $i=>$lr){
-            $rules['lab_results.'.$i] = 'max:255';
+            $rules['lab_results.'.$i] = 'max:2000';
         }
 
         // VALIDATE - Medication
