@@ -52,6 +52,7 @@ class CreateBenefitersTable extends Migration
             $table->string('origin_country')->nullable();
             $table->string('nationality_country')->nullable();
             $table->string('ethnic_group')->nullable();
+            $table->string('education_specialization')->nullable();
             // Insert user that created the benefiter's file.
             $table->integer('document_manager_id');
             $table->text('social_history')->nullable();
