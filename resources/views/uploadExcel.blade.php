@@ -73,6 +73,9 @@
 
             {{-- Imported files info --}}
             @if(count($importedCSVFiles_basic_info) != 0)
+            <?php
+                $datesHelper = new \App\Services\DatesHelper();
+            ?>
             <div class="row margin-top-20 margin-bottom-100">
                 <h3 class="text-align-center">@lang($p.'already-uploaded')</h3>
                 <div class="col-xs-6 col-centered">
@@ -89,7 +92,7 @@
                               <tr>
                                   <td>{{ $i+1 }}</td>
                                   <td>{{ $importedCSVFiles_basic_info[$i]['csv_name'] }}</td>
-                                  <td>{{ substr($importedCSVFiles_basic_info[$i]['created_at'], 0, -8) }}</td>
+                                  <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($importedCSVFiles_basic_info[$i]['created_at']) }}</td>
                               </tr>
                           @endfor
                       </tbody>
