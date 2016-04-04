@@ -197,15 +197,15 @@
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                 <div class="make-inline col-md-10">
-                                    {!! Form::label('lab_results', Lang::get($p.'lab_results_info')) !!}
-                                    {!! Form::text('lab_results[]', "$lab_results_session[$i]", array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                    {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
+                                    {!! Form::textarea('lab_results[]', "$lab_results_session[$i]", array('size' => '35x5', 'id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                     {{-- add --}}
                                     <a class="color-green add-lab-result" href="javascript:void(0)">
-                                        <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                        <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
                                     </a>
                                     {{-- remove --}}
                                     <a class="color-red remove-lab-result @if($i == 0) hide-element @endif" href="javascript:void(0)">
-                                        <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                        <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
                                     </a>
                                 </div>
                             </div>
@@ -216,15 +216,15 @@
                         <div class="form-group float-left width-100-percent">
                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                             <div class="make-inline col-md-10">
-                                {!! Form::label('lab_results', Lang::get($p.'lab_results_info')) !!}
-                                {!! Form::text('lab_results[]', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
+                                {!! Form::textarea('lab_results[]', null, array('size' => '35x5', 'id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent vertical-align-top')) !!}
                                 {{-- add --}}
                                 <a class="color-green add-lab-result" href="javascript:void(0)">
-                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                    <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
                                 </a>
                                 {{-- remove --}}
                                 <a class="color-red remove-lab-result hide-element" href="javascript:void(0)">
-                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                    <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
                                 </a>
                             </div>
                         </div>
@@ -422,7 +422,7 @@
     <div class="row">
         <div class="col-md-12">
             <div id="upload_file" data-form-submit-error="@lang($p."form_submit_error")">
-                @if(!empty($upload_file_description_session))
+                @if(!empty($upload_file_description_session) and !empty($upload_file_title_session))
                 <?php $counter = 0; ?>
                     @for($i=0 ; $i<count($upload_file_description_session) ; $i++)
                         <div class="@if($i==0)uploadFile @else file-added-div @endif">

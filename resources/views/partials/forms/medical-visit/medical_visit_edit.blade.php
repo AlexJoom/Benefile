@@ -372,15 +372,15 @@
                                         <div class="form-group float-left width-100-percent">
                                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                             <div class="make-inline col-md-10">
-                                                {!! Form::label('lab_results', Lang::get($p.'lab_results_info')) !!}
-                                                {!! Form::text('lab_results[]', $med_visit_lab_results[$i]['laboratory_results'], array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                                {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
+                                                {!! Form::textarea('lab_results[]', $med_visit_lab_results[$i]['laboratory_results'], array('id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                                 {{-- add --}}
                                                 <a class="color-green add-lab-result" href="javascript:void(0)">
-                                                    <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                    <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
                                                 </a>
                                                 {{-- remove --}}
                                                 <a class="color-red remove-lab-result @if($i == 0) hide-element @endif" href="javascript:void(0)">
-                                                    <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                                    <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
                                                 </a>
                                             </div>
                                         </div>
@@ -391,15 +391,15 @@
                                     <div class="form-group float-left width-100-percent">
                                         {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                         <div class="make-inline col-md-10">
-                                            {!! Form::label('lab_results', Lang::get($p.'lab_results_info')) !!}
-                                            {!! Form::text('lab_results[]', null, array('id'=>'labRes', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                            {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
+                                            {!! Form::textarea('lab_results[]', null, array('id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                             {{-- add --}}
                                             <a class="color-green add-lab-result" href="javascript:void(0)">
-                                                <span class="glyphicon glyphicon-plus-sign make-inline"></span>
+                                                <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
                                             </a>
                                             {{-- remove --}}
                                             <a class="color-red remove-lab-result hide-element" href="javascript:void(0)">
-                                                <span class="glyphicon glyphicon-minus-sign make-inline"></span>
+                                                <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
                                             </a>
                                         </div>
                                     </div>

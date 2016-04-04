@@ -370,6 +370,10 @@ a.btn.btn-default.font-weight-normal{
     font-weight: 100;
 }
 
+.vertical-align-top{
+    vertical-align: top;
+}
+
 @media screen and (max-width: 991px){
     .medication_other_name{
         padding-left: 50px;

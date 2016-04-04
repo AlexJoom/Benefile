@@ -415,8 +415,12 @@ class RecordsController extends Controller
 
             $upload_file_title_session = array();
             $upload_file_title_session_files = $request['upload_file_title'];
-            foreach($upload_file_title_session_files as $uft){
-                array_push($upload_file_title_session,$uft->getClientOriginalName());
+            if(!empty($upload_file_title_session_files)) {
+                foreach ($upload_file_title_session_files as $uft) {
+                    if(!empty($uft)) {
+                        array_push($upload_file_title_session, $uft->getClientOriginalName());
+                    }
+                }
             }
             $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
