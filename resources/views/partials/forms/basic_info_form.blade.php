@@ -1482,11 +1482,13 @@
             {!! Form::close() !!}
     @endif
 @endif
+@if($benefiter->id != -1)
     <div class="form-section padding-left-right-15 print-button">
         <div class="row">
             <a href="javascript:window.print()" class="simple-button float-right"><i class="fa fa-print"></i> @lang($p."print_page")</a>
         </div>
     </div>
+@endif
 </div>
 <!--delete session confirmation modal-->
 <div class="modal fade" id="delete-session-modal" aria-hidden="true" role="dialog" tabindex="-1">
