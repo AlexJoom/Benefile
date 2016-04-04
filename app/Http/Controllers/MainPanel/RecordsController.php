@@ -134,6 +134,7 @@ class RecordsController extends Controller
                             'relatives_residence' => $request->relatives_residence,
                             'children_names' => $request->children_names,
                             'education_status' => $request->education_status,
+                            'education_specialization' => $request->education_specialization,
                             'interpreter' => $request->interpreter,
                             'working' => $request->working,
                             'working_title' => $request->working_title,
