@@ -166,11 +166,11 @@
     {{-- REPORT: Benefiters registration numbers per month --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            <div class="col-md-12 padding-right-35">
+            <div class="col-md-12">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-registration-status')</h1>
                 </div>
-                <div id="registrations_per_month" data-registrations-per-month="@lang($p."registrations_per_month")"></div>
+                <div id="registrations_per_month" class="padding-left-right-15" data-registrations-per-month="@lang($p."registrations_per_month")"></div>
             </div>
         </div>
     </div>
@@ -199,17 +199,17 @@
     {{-- REPORT: Benefiters vs clinical conditions --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            <div class="col-md-7 right-border">
+            <div class="col-md-7 padding-right-0">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-clinical-condition')</h1>
                 </div>
                 <div id="benefiter_vs_clinical_conditions" data-number-of-benefiters="@lang($p."number_of_benefiters")"></div>
             </div>
-            <div class="col-md-5 padding-right-35">
+            <div class="col-md-5 left-border">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-med-visits-per-month')</h1>
                 </div>
-                <div id="medical_visits_per_month" data-medical-visits-per-month="@lang($p."medical_visits_per_month")"></div>
+                <div id="medical_visits_per_month" class="padding-left-right-15" data-medical-visits-per-month="@lang($p."medical_visits_per_month")"></div>
             </div>
         </div>
     </div>
