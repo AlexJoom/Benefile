@@ -18,7 +18,7 @@ class ReferenceSeeder extends Seeder
                 array('description'   => 'Ιατρική'),
                 array('description'   => 'Νομική'),
                 array('description'   => 'Εκπαίδευση/Κατάρτιση'),
-                array('description'   => 'Ψυχολόγος')
+                array('description'   => 'Ψυχολογική')
             )
         );
     }
