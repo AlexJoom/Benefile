@@ -373,7 +373,7 @@
                                             {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                             <div class="make-inline col-md-10">
                                                 {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
-                                                {!! Form::textarea('lab_results[]', $med_visit_lab_results[$i]['laboratory_results'], array('id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
+                                                {!! Form::textarea('lab_results[]', $med_visit_lab_results[$i]['laboratory_results'], array('size' => '35x5', 'id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                                 {{-- add --}}
                                                 <a class="color-green add-lab-result" href="javascript:void(0)">
                                                     <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
@@ -392,7 +392,7 @@
                                         {{-- ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ --}}
                                         <div class="make-inline col-md-10">
                                             {!! Form::label('lab_results', Lang::get($p.'lab_results_info'), array('class' => 'vertical-align-top')) !!}
-                                            {!! Form::textarea('lab_results[]', null, array('id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
+                                            {!! Form::textarea('lab_results[]', null, array('size' => '35x5', 'id'=>'labRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                             {{-- add --}}
                                             <a class="color-green add-lab-result" href="javascript:void(0)">
                                                 <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
