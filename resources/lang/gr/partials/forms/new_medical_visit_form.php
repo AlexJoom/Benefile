@@ -57,7 +57,7 @@ return array(
     'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στη λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',
     'medicinal_duration'   =>  'Διάρκεια θεραπείας',
-    'supply_from_praksis'  =>  'Προμήθεια από Praxis',
+    'supply_from_praksis'  =>  'Προμήθεια από Praksis',
 
     'lab_results'          =>  'Εργαστηριακά αποτελέσματα',
     'lab_results_info'     =>  'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ',
