@@ -20,8 +20,8 @@ class BasicInfoService{
     public function basicInfoValidation($request, $id){
         $rules = array(
             'folder_number' => 'max:255|required|unique:benefiters,folder_number,'.$id,
-            'name' => 'max:255',
-            'lastname' => 'max:255',
+            'name' => 'required|max:255',
+            'lastname' => 'required|max:255',
             'fathers_name' => 'max:255',
             'mothers_name' => 'max:255',
             'nationality_country' => 'max:255',

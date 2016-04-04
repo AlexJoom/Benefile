@@ -31,11 +31,11 @@
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
+                            {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}<i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('lastname', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
+                            {!! Form::label('name', Lang::get('basic_info_form.name')) !!}<i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('name', null, array('class' => 'custom-input-text', 'disabled' => 'disabled')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
@@ -758,11 +758,11 @@
                             {!! Form::text('folder_number', null, array('class' => 'custom-input-text text-align-right')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}
+                            {!! Form::label('lastname', Lang::get('basic_info_form.lastname')) !!}<i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('lastname', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
-                            {!! Form::label('name', Lang::get('basic_info_form.name')) !!}
+                            {!! Form::label('name', Lang::get('basic_info_form.name')) !!}<i class="fa fa-asterisk asterisk"></i>
                             {!! Form::text('name', null, array('class' => 'custom-input-text')) !!}
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
