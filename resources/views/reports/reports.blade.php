@@ -126,7 +126,7 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-work-title')</h1>
                 </div>
-                <div id="benefiters-work-title-chart"></div>
+                <div id="benefiters-work-title-chart" data-benefiters-registered="@lang($p."benefiters_registered")"></div>
             </div>
         </div>
     </div>
@@ -554,7 +554,7 @@
         "valueAxes": [{
             "axisAlpha": 0,
             "position": "left",
-            "title": "Benefiters registered",
+            "title": $("#benefiters-work-title-chart").data("benefiters-registered"),
             "fontSize": 16
         }],
         "startDuration": 1,
