@@ -21,6 +21,7 @@
         'h1-age-report'                 => 'Tαξινόμηση ανά ηλικιακό γκρουπ',
         'h1-legal-status'               => 'Ταξινόμηση ανά νομικό καθεστώς',
         'h1-registration-status'        => 'Εγγραφές ανά μήνα',
+        'registrations_per_month'       => 'Αριθμός Εγγραφών',
         'search'                        => 'Αναζήτηση',
         'marital_status'                => 'ΟΙΚ. ΚΑΤΑΣΤΑΣΗ',
         'age'                           => 'ΗΛΙΚΙΑ',
@@ -43,6 +44,8 @@
         'medical-visit-x-title'         => 'Ωφελούμενοι',
         'medical-visit-y-title'         => 'Αριθμός περιστατικών',
         'report-clinical-condition'     => 'Αριθμός ωφελούμενων ανά κατηγορία παθήσεων',
+        'number_of_benefiters'          => 'Αριθμός ωφελούμενων',
         'report-med-visits-per-month'   => 'Αριθμός περιστατικών ανά μήνα',
+        'medical_visits_per_month'      => 'Αριθμός Ιατρικών Επισκέψεων',
         'report-phycological-support'   => 'Αριθμός ωφελούμενων ανά κατηγορία ψυχοκοινωνική  υποστήριξης',
     );

@@ -170,7 +170,7 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-registration-status')</h1>
                 </div>
-                <div id="registrations_per_month"></div>
+                <div id="registrations_per_month" data-registrations-per-month="@lang($p."registrations_per_month")"></div>
             </div>
         </div>
     </div>
@@ -203,13 +203,13 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-clinical-condition')</h1>
                 </div>
-                <div id="benefiter_vs_clinical_conditions"></div>
+                <div id="benefiter_vs_clinical_conditions" data-number-of-benefiters="@lang($p."number_of_benefiters")"></div>
             </div>
             <div class="col-md-5 padding-right-35">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-med-visits-per-month')</h1>
                 </div>
-                <div id="medical_visits_per_month"></div>
+                <div id="medical_visits_per_month" data-medical-visits-per-month="@lang($p."medical_visits_per_month")"></div>
             </div>
         </div>
     </div>
@@ -220,7 +220,7 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-phycological-support')</h1>
                 </div>
-                <div id="benefiter_vs_phycological_support"></div>
+                <div id="benefiter_vs_phycological_support" data-number-of-benefiters="@lang($p."number_of_benefiters")"></div>
             </div>
         </div>
     </div>
