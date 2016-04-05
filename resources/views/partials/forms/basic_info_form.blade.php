@@ -783,6 +783,7 @@
                             <?php
                                 $male = true;
                                 $female = false;
+                                $other = false;
                                 if($benefiter->gender_id == 1){
                                     $male = true;
                                 } elseif ($benefiter->gender_id == 2) {
@@ -792,12 +793,12 @@
                                 }
                             ?>
                             <div class="make-inline">
-                                {!! Form::radio('gender_id', 1, $male, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 2, $female, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 3, $female, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 1, $male, array('class' => 'make-inline', 'id' => 'male')) !!}
+                                {!! Form::label('male', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, $female, array('class' => 'make-inline', 'id' => 'female')) !!}
+                                {!! Form::label('female', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, $other, array('class' => 'make-inline', 'id' => 'other')) !!}
+                                {!! Form::label('other', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
@@ -873,24 +874,24 @@
                                 $marital_status[$benefiter->marital_status_id -1] = true;
                             ?>
                             <div class="col-md-2 make-inline">
-                                {!! Form::radio('marital_status', 1, $marital_status[0], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', Lang::get('basic_info_form.unmarried'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('marital_status', 1, $marital_status[0], array('class' => 'make-inline', 'id' => 'unmarried')) !!}
+                                {!! Form::label('unmarried', Lang::get('basic_info_form.unmarried'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
-                                {!! Form::radio('marital_status', 2, $marital_status[1], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', Lang::get('basic_info_form.married'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('marital_status', 2, $marital_status[1], array('class' => 'make-inline', 'id' => 'married')) !!}
+                                {!! Form::label('married', Lang::get('basic_info_form.married'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
-                                {!! Form::radio('marital_status', 3, $marital_status[2], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', Lang::get('basic_info_form.divorced'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('marital_status', 3, $marital_status[2], array('class' => 'make-inline', 'id' => 'divorced')) !!}
+                                {!! Form::label('divorced', Lang::get('basic_info_form.divorced'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
-                                {!! Form::radio('marital_status', 4, $marital_status[3], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', Lang::get('basic_info_form.widower'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('marital_status', 4, $marital_status[3], array('class' => 'make-inline', 'id' => 'widowed')) !!}
+                                {!! Form::label('widowed', Lang::get('basic_info_form.widower'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-2 make-inline">
-                                {!! Form::radio('marital_status', 5, $marital_status[4], array('class' => 'make-inline')) !!}
-                                {!! Form::label('marital_status', Lang::get('basic_info_form.estranged'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('marital_status', 5, $marital_status[4], array('class' => 'make-inline', 'id' => 'estranged')) !!}
+                                {!! Form::label('estranged', Lang::get('basic_info_form.estranged'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -953,7 +954,7 @@
                 <div class="row @if(!$legal_status[0]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 1, $legal_status[0], array('class' => 'float-left', 'tabindex' => '1')) !!}
+                            {!! Form::radio('legal_status[]', 1, $legal_status[0], array('class' => 'float-left', 'tabindex' => '1', 'id' => 'deportation')) !!}
                             {!! Form::label('deportation', Lang::get('basic_info_form.deportation'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[0], array('class' => 'custom-input-text make-inline float-left')) !!}
                         </div>
@@ -970,7 +971,7 @@
                 <div class="row @if(!$legal_status[1]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 2, $legal_status[1], array('class' => 'float-left', 'tabindex' => '2')) !!}
+                            {!! Form::radio('legal_status[]', 2, $legal_status[1], array('class' => 'float-left', 'tabindex' => '2', 'id' => 'asylum_application')) !!}
                             {!! Form::label('asylum_application', Lang::get('basic_info_form.asylum_application'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[1], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -987,7 +988,7 @@
                 <div class="row @if(!$legal_status[2]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 3, $legal_status[2], array('class' => 'float-left', 'tabindex' => '3')) !!}
+                            {!! Form::radio('legal_status[]', 3, $legal_status[2], array('class' => 'float-left', 'tabindex' => '3', 'id' => 'refugee')) !!}
                             {!! Form::label('refugee', Lang::get('basic_info_form.refugee'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[2], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1004,7 +1005,7 @@
                 <div class="row @if(!$legal_status[3]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 4, $legal_status[3], array('class' => 'float-left', 'tabindex' => '4')) !!}
+                            {!! Form::radio('legal_status[]', 4, $legal_status[3], array('class' => 'float-left', 'tabindex' => '4', 'id' => 'residence_permit')) !!}
                             {!! Form::label('residence_permit', Lang::get('basic_info_form.residence_permit'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[3], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1021,7 +1022,7 @@
                 <div class="row @if(!$legal_status[4]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 5, $legal_status[4], array('class' => 'float-left', 'tabindex' => '5')) !!}
+                            {!! Form::radio('legal_status[]', 5, $legal_status[4], array('class' => 'float-left', 'tabindex' => '5', 'id' => 'immigrant_residence_permit')) !!}
                             {!! Form::label('immigrant_residence_permit', Lang::get('basic_info_form.immigrant_residence_permit'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[4], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1038,7 +1039,7 @@
                 <div class="row @if(!$legal_status[5]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 6, $legal_status[5], array('class' => 'float-left', 'tabindex' => '6')) !!}
+                            {!! Form::radio('legal_status[]', 6, $legal_status[5], array('class' => 'float-left', 'tabindex' => '6', 'id' => 'european')) !!}
                             {!! Form::label('european', Lang::get('basic_info_form.european'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[5], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1055,7 +1056,7 @@
                 <div class="row @if(!$legal_status[6]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7')) !!}
+                            {!! Form::radio('legal_status[]', 7, $legal_status[6], array('class' => 'float-left', 'tabindex' => '7', 'id' => 'humanitarian')) !!}
                             {!! Form::label('humanitarian', Lang::get('basic_info_form.humanitarian'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[6], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1072,7 +1073,7 @@
                 <div class="row @if(!$legal_status[7]) non-printable @endif">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8')) !!}
+                            {!! Form::radio('legal_status[]', 8, $legal_status[7], array('class' => 'float-left', 'tabindex' => '8', 'id' => 'out_of_legal')) !!}
                             {!! Form::label('out_of_legal', Lang::get('basic_info_form.out_of_legal'), array('class' => 'float-left')) !!}
                             {!! Form::text('legal_status_text[]', $legal_status_text[7], array('class' => 'custom-input-text float-left')) !!}
                         </div>
@@ -1106,40 +1107,40 @@
                                 $education[$benefiter->education_id - 1] = true;
                             ?>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 1, $education[0], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.illiterate'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 1, $education[0], array('class' => 'make-inline', 'id' => 'illiterate')) !!}
+                                {!! Form::label('illiterate', Lang::get('basic_info_form.illiterate'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 2, $education[1], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.elementary'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 2, $education[1], array('class' => 'make-inline', 'id' => 'elementary')) !!}
+                                {!! Form::label('elementary', Lang::get('basic_info_form.elementary'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 3, $education[2], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.middle'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 3, $education[2], array('class' => 'make-inline', 'id' => 'middle')) !!}
+                                {!! Form::label('middle', Lang::get('basic_info_form.middle'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 4, $education[3], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.high'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 4, $education[3], array('class' => 'make-inline', 'id' => 'high')) !!}
+                                {!! Form::label('high', Lang::get('basic_info_form.high'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 5, $education[4], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.professional_high'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 5, $education[4], array('class' => 'make-inline', 'id' => 'professional_high')) !!}
+                                {!! Form::label('professional_high', Lang::get('basic_info_form.professional_high'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 6, $education[5], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.tei'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 6, $education[5], array('class' => 'make-inline', 'id' => 'tei')) !!}
+                                {!! Form::label('tei', Lang::get('basic_info_form.tei'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 7, $education[6], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.aei'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 7, $education[6], array('class' => 'make-inline', 'id' => 'aei')) !!}
+                                {!! Form::label('aei', Lang::get('basic_info_form.aei'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 8, $education[7], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.master'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 8, $education[7], array('class' => 'make-inline', 'id' => 'master')) !!}
+                                {!! Form::label('master', Lang::get('basic_info_form.master'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
-                                {!! Form::radio('education_status', 9, $education[8], array('class' => 'make-inline')) !!}
-                                {!! Form::label('education_status', Lang::get('basic_info_form.phd'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('education_status', 9, $education[8], array('class' => 'make-inline', 'id' => 'phd')) !!}
+                                {!! Form::label('phd', Lang::get('basic_info_form.phd'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-12 margin-top-20">
                                 <div class="form-group width-100-percent">
@@ -1257,7 +1258,7 @@
                             }
                         ?>
                         <div class="form-group float-left padding-left-right-15 width-100-percent">
-                            {!! Form::checkbox('interpreter', true, $interpreter, array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('interpreter', true, $interpreter, array('class' => 'float-left', 'id' => 'interpreter')) !!}
                             {!! Form::label('interpreter', Lang::get('basic_info_form.interpreter'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -1291,11 +1292,11 @@
                         ?>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working', 1, $working, array('id' => 'show_work_legally')) !!}
-                            {!! Form::label('working', Lang::get('basic_info_form.yes'), array('class' => 'radio-value')) !!}
+                            {!! Form::label('show_work_legally', Lang::get('basic_info_form.yes'), array('class' => 'radio-value')) !!}
                         </div>
                         <div class="form-group float-left col-md-2">
                             {!! Form::radio('working', 2, $not_working, array('id' => 'hide_work_legally')) !!}
-                            {!! Form::label('working', Lang::get('basic_info_form.no'), array('class' => 'radio-value')) !!}
+                            {!! Form::label('hide_work_legally', Lang::get('basic_info_form.no'), array('class' => 'radio-value')) !!}
                         </div>
                         <div id="working_title_div" class="form-group float-left col-md-8">
                             {!! Form::label('working_title', Lang::get('basic_info_form.working_title'), array('class' => 'make-inline')) !!}
@@ -1307,12 +1308,12 @@
                     <div class="padding-left-right-15">
                         <span class="float-left padding-left-right-15">@lang($p."working")</span>
                         <div class="form-group float-left col-md-2">
-                            {!! Form::radio('working_legally', 1, $working_legally) !!}
-                            {!! Form::label('working_legally', Lang::get('basic_info_form.legally'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('working_legally', 1, $working_legally, array('id' => 'legally')) !!}
+                            {!! Form::label('legally', Lang::get('basic_info_form.legally'), array('class' => 'radio-value')) !!}
                         </div>
                         <div class="form-group float-left col-md-2">
-                            {!! Form::radio('working_legally', 2, $working_illegally) !!}
-                            {!! Form::label('working_legally', Lang::get('basic_info_form.illegally'), array('class' => 'radio-value')) !!}
+                            {!! Form::radio('working_legally', 2, $working_illegally, array('id' => 'illegally')) !!}
+                            {!! Form::label('illegally', Lang::get('basic_info_form.illegally'), array('class' => 'radio-value')) !!}
                         </div>
                     </div>
                 </div>
