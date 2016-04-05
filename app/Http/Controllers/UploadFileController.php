@@ -13,6 +13,8 @@ class UploadFileController extends Controller
     public  $uploadFileService =null;
 
     public function __construct(){
+        // only for admin
+        $this->middleware('admin');
         // initialize benefiters list service
         $this->uploadFileService = new UploadFileService();
     }
