@@ -270,6 +270,17 @@ class CreateBenefitersTable extends Migration
             $table->timestamps();
         });
 
+        // Benefiter's diagnosis results.
+        Schema::create('medical_diagnosis_results', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('diagnosis_results')->nullable();
+
+            $table->integer('medical_visit_id')->unsigned();
+            $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+
+            $table->timestamps();
+        });
+
         Schema::create('medical_referrals', function (Blueprint $table) {
             $table->increments('id');
             $table->text('referrals');
@@ -402,6 +413,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('medical_medication_lookup');
         Schema::dropIfExists('medical_referrals');
         Schema::dropIfExists('medical_laboratory_results');
+        Schema::dropIfExists('medical_diagnosis_results');
         Schema::dropIfExists('medical_examination_results');
         Schema::dropIfExists('medical_chronic_conditions');
         Schema::dropIfExists('medical_examination_results_lookup');
