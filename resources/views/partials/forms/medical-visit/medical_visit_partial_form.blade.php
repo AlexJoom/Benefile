@@ -247,9 +247,11 @@
                     $i = 0;
                 ?>
                 {{-- check if there are some already put diagnosis results and then display all of them, otherwise display just an empty text area --}}
-                @if(!empty($diagnosis_results_session))
-                    @for($i=0 ; $i<count($diagnosis_results_session) ; $i++)
-                @endif
+                <?php
+                    if(!empty($diagnosis_results_session)){
+                        echo "for($i=0 ; $i<count($diagnosis_results_session) ; $i++){";
+                    }
+                ?>
                 <div class="padding-left-right-15 @if($i==0) diagnosis-results @else diagnosis-added-div @endif">
                     <div class="form-group float-left width-100-percent">
                         <div class="make-inline col-md-10">
@@ -266,9 +268,11 @@
                         </div>
                     </div>
                 </div>
-                @if(!empty($diagnosis_results_session))
-                    @endfor
-                @endif
+                <?php
+                    if(!empty($diagnosis_results_session)){
+                        echo "}";
+                    }
+                ?>
             </div>
         </div>
     </div>
