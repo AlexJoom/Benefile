@@ -418,20 +418,31 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div id="diagnosis-result" class="row padding-bottom-30">
-                            <?php
-                                $i = 0;
-                            ?>
-                            {{-- check if there are some already put diagnosis results and then display all of them, otherwise display just an empty text area --}}
-                            <?php
-                                if(!empty($diagnosis_results_session)){
-                                    echo "for($i=0 ; $i<count($diagnosis_results_session) ; $i++){";
-                                }
-                            ?>
-                            <div class="padding-left-right-15 @if($i==0) diagnosis-results @else diagnosis-added-div @endif">
+                            @if(!empty($med_visit_diagnosis_results) && count($med_visit_diagnosis_results) !=0)
+                                @for($i=0 ; $i<count($med_visit_diagnosis_results) ; $i++)
+                            <div class="padding-left-right-15 @if($i==0) diagnosis-results @endif @if($i!=0) diagnosis-added-div @endif">
                                 <div class="form-group float-left width-100-percent">
                                     <div class="make-inline col-md-10">
                                         {!! Form::label('diagnosis_results', Lang::get($p.'diagnosis_results_info'), array('class' => 'vertical-align-top')) !!}
-                                        {!! Form::textarea('diagnosis_results[]', null, array('id' => 'diagRes', 'size' => '35x5', 'class' => 'custom-input-textarea display-inline width-50-percent vertical-align-top')) !!}
+                                        {!! Form::textarea('diagnosis_results[]', $med_visit_diagnosis_results[$i]['diagnosis_results'], array('size' => '35x5', 'id'=>'diagRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
+                                        {{-- add --}}
+                                        <a class="color-green add-diagnosis-result @if($i != 0) hide-element @endif" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                        {{-- remove --}}
+                                        <a class="color-red remove-diagnosis-result @if($i == 0) hide-element @endif" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                @endfor
+                            @else
+                            <div class="padding-left-right-15 diagnosis-results">
+                                <div class="form-group float-left width-100-percent">
+                                    <div class="make-inline col-md-10">
+                                        {!! Form::label('diagnosis_results', Lang::get($p.'diagnosis_results_info'), array('class' => 'vertical-align-top')) !!}
+                                        {!! Form::textarea('diagnosis_results[]', null, array('size' => '35x5', 'id'=>'diagRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                         {{-- add --}}
                                         <a class="color-green add-diagnosis-result" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
@@ -443,11 +454,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                                if(!empty($diagnosis_results_session)){
-                                    echo "}";
-                                }
-                            ?>
+                            @endif
                         </div>
                     </div>
                 </div>

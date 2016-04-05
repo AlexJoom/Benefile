@@ -3,6 +3,7 @@
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
+use App\Models\Benefiters_Tables_Models\medical_diagnosis_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
 use App\Models\Benefiters_Tables_Models\medical_examinations;
 use App\Models\Benefiters_Tables_Models\medical_visits;
@@ -76,6 +77,12 @@ class BenefiterMedicalFolderService
             $rules['lab_results.'.$i] = 'max:2000';
         }
 
+        // VALIDATE - Diagnosis results
+        $diagnosis_results = $request['diagnosis_results'];
+        foreach ($diagnosis_results as $i=>$dr){
+            $rules['diagnosis_results.'.$i] = 'max:2000';
+        }
+
         // VALIDATE - Medication
         $count = 0;
         if(!empty($request['medication_name_from_lookup'])){
@@ -141,6 +148,8 @@ class BenefiterMedicalFolderService
         $this->save_medical_examinations($request, $medicalVisit_id);
         // laboratory results
         $this->save_medical_laboratory_results($request, $medicalVisit_id);
+        // diagnosis results
+        $this->save_medical_diagnosis_results($request, $medicalVisit_id);
         // medication table
         $this->save_medical_medication($request, $medicalVisit_id);
         // medical referrals
@@ -257,6 +266,31 @@ class BenefiterMedicalFolderService
             array_push($lab_results_array, $lr);
         }
         return $lab_results_array;
+    }
+
+    //----------- medical_diagnosis_results table ----------------------DONE//
+    // DB save
+    private function save_medical_diagnosis_results($request, $id){
+        $request_diagnosis_results = $this->medical_diagnosis_results($request);
+        foreach($request_diagnosis_results as $rdr){
+            if(!empty($rdr)){
+                $diagnosis_results = new medical_diagnosis_results();
+
+                $diagnosis_results->diagnosis_results = $rdr;
+                $diagnosis_results->medical_visit_id = $id;
+
+                $diagnosis_results->save();
+            }
+        }
+    }
+    // post request
+    private function medical_diagnosis_results($request){
+        $diagnosis_results = $request['diagnosis_results'];
+        $diagnosis_results_array = [];
+        foreach ($diagnosis_results as $dr){
+            array_push($diagnosis_results_array, $dr);
+        }
+        return $diagnosis_results_array;
     }
 
     //----------- medical_medication table ----------------------------DONE//
@@ -403,6 +437,8 @@ class BenefiterMedicalFolderService
         $this->update_medical_examinations($request, $updatedMedicalVisit_id);
         // laboratory results
         $this->update_medical_laboratory_results($request, $updatedMedicalVisit_id);
+        // diagnosis results
+        $this->update_medical_diagnosis_results($request, $updatedMedicalVisit_id);
         // medication table
         $this->update_medical_medication($request, $updatedMedicalVisit_id);
         // medical referrals
@@ -651,6 +687,66 @@ class BenefiterMedicalFolderService
             array_push($lab_results_array, $lr);
         }
         return $lab_results_array;
+    }
+
+    //----------- medical_diagnosis_results table ----------------------DONE//
+    // DB save
+    private function update_medical_diagnosis_results($request, $selected_medical_visit_id){
+        $request_diagnosis_results = $this->update_diagnosis_results($request);
+        $requests_count = count($request_diagnosis_results);
+        $saved_diagnosis_results = medical_diagnosis_results::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_diagnosis_results_count = count($saved_diagnosis_results);
+        $counter = 0;
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_diagnosis_results_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                // update what is saved
+                if ($counter < $saved_diagnosis_results_count) {
+                    if(!empty($request_diagnosis_results[$i])){
+                        $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                        $diagnosis_result->diagnosis_results = $request_diagnosis_results[$i];
+                        $diagnosis_result->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_result->save();
+                    }
+                    //add new rows for the new requests
+                } else {
+                    if(!empty($request_diagnosis_results[$i])){
+                        $diagnosis_results = new medical_diagnosis_results();
+                        $diagnosis_results->diagnosis_results = $request_diagnosis_results[$i];
+                        $diagnosis_results->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_results->save();
+                    }
+                }
+                $counter++;
+            }
+            // else if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_diagnosis_results_count; $j++){
+                // update already saved rows
+                if ($counter < $requests_count) {
+                    if(!empty($request_diagnosis_results[$j])){
+                        $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                        $diagnosis_result->diagnosis_results = $request_diagnosis_results[$j];
+                        $diagnosis_result->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_result->save();
+                    }
+                    // else delete extra rows
+                } else {
+                    $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                    $diagnosis_result->delete();
+                }
+                $counter++;
+            }
+        }
+    }
+    // post request
+    private function update_diagnosis_results($request){
+        $diagnosis_results = $request['lab_results'];
+        $diagnosis_results_array = [];
+        foreach ($diagnosis_results as $dr){
+            array_push($diagnosis_results_array, $dr);
+        }
+        return $diagnosis_results_array;
     }
 
     //----------- medical_medication table ----------------------------DONE//
@@ -1094,6 +1190,11 @@ class BenefiterMedicalFolderService
     public function findMedicalVisitLabResults($med_visit_id){
         $med_visit_lab_results = medical_laboratory_results::where('medical_visit_id', $med_visit_id)->get();
         return $med_visit_lab_results;
+    }
+    // Diagnosis results
+    public function findMedicalVisitDiagnosisResults($med_visit_id){
+        $med_visit_diagnosis_results = medical_diagnosis_results::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_diagnosis_results;
     }
     // Medication
     public function findMedicalVisitMedication($med_visit_id){

@@ -305,6 +305,9 @@ class RecordsController extends Controller
             // lab results
         $lab_results_session = session()->get('lab_results_session');
         session()->forget('lab_results_session');
+            // diagnosis results
+        $diagnosis_results_session = session()->get('diagnosis_results_session');
+        session()->forget('diagnosis_results_session');
             // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
@@ -370,6 +373,7 @@ class RecordsController extends Controller
                         ->with('medical_visits_number', $medical_visits_number)
                         ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
                         ->with('lab_results_session', $lab_results_session)
+                        ->with('diagnosis_results_session', $diagnosis_results_session)
                         ->with('referrals_session', $referrals_session)
                         ->with('examResultDescription_session', $examResultDescription_session)
                         ->with('examResultLoukup_session', $examResultLoukup_session)
@@ -407,6 +411,7 @@ class RecordsController extends Controller
             //Fetch all array posts (if validation fails)
             $chronic_conditions_session = $request['chronic_conditions'];
             $lab_results_session = $request['lab_results'];
+            $diagnosis_results_session = $request['diagnosis_results'];
             $referrals_session = $request['referrals'];
             $examResultDescription_session = $request['examResultDescription'];
             $examResultLoukup_session = $request['examResultLoukup'];
@@ -452,6 +457,7 @@ class RecordsController extends Controller
                 ->with('visit_submited_succesfully', $visit_submited_succesfully)
                 ->with('chronic_conditions_session', $chronic_conditions_session)
                 ->with('lab_results_session', $lab_results_session)
+                ->with('diagnosis_results_session', $diagnosis_results_session)
                 ->with('referrals_session', $referrals_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
@@ -599,6 +605,7 @@ class RecordsController extends Controller
         $med_visit_skull_perimeter = '';
         $med_visit_exam_results = '';
         $med_visit_lab_results = '';
+        $med_visit_diagnosis_results = '';
         $med_visit_medication = '';
         $med_visit_referrals = '';
 
@@ -637,6 +644,8 @@ class RecordsController extends Controller
                 $med_visit_exam_results = $this->medicalVisit->findMedicalVisitExaminationResults($med_visit['id']);
                 // Lab results
                 $med_visit_lab_results = $this->medicalVisit->findMedicalVisitLabResults($med_visit['id']);
+                // Diagnosis results
+                $med_visit_diagnosis_results = $this->medicalVisit->findMedicalVisitDiagnosisResults($med_visit['id']);
                 // Medication
                 $med_visit_medication = $this->medicalVisit->findMedicalVisitMedication($med_visit['id']);
                 // Referrals
@@ -663,6 +672,7 @@ class RecordsController extends Controller
             ->with('med_visit_skull_perimeter',$med_visit_skull_perimeter)
             ->with('med_visit_exam_results',$med_visit_exam_results)
             ->with('med_visit_lab_results',$med_visit_lab_results)
+            ->with('med_visit_diagnosis_results',$med_visit_diagnosis_results)
             ->with('med_visit_medication',$med_visit_medication)
             ->with('med_visit_referrals',$med_visit_referrals)
             ->with('med_visit_uploads',$med_visit_uploads)
