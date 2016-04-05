@@ -666,19 +666,30 @@
                                 <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
+                                        <th>@lang($p."counter")</th>
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th>@lang($p."referrer")</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        $counter = 1;
+                                    ?>
                                     @foreach($benefiter_referrals_list as $referral)
                                     @if(!empty($referral))
                                         <tr>
+                                            <td><?php
+                                                    echo $counter;
+                                                    $counter++;
+                                                ?>
+                                            </td>
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
+                                            <td>{{ $referral['name'] . ' ' . $referral['lastname'] }}</td>
                                             <td>
                                                 <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                             </td>
@@ -688,9 +699,11 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>@lang($p."counter")</th>
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th>@lang($p."referrer")</th>
                                         <th></th>
                                     </tr>
                                     </tfoot>
@@ -1409,19 +1422,30 @@
                                 <table id="benefiter_referrals_history" class="display" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
+                                        <th>@lang($p."counter")</th>
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th>@lang($p."referrer")</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        $counter = 1;
+                                    ?>
                                     @foreach($benefiter_referrals_list as $referral)
                                     @if(!empty($referral))
                                         <tr>
+                                            <td><?php
+                                                    echo $counter;
+                                                    $counter++;
+                                                ?>
+                                            </td>
                                             <td>{{ $referral['referralType']['description'] }}</td>
                                             <td>{{ $referral['description'] }}</td>
                                             <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
+                                            <td>{{ $referral['name'] . ' ' . $referral['lastname'] }}</td>
                                             <td>
                                                 <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                             </td>
@@ -1431,9 +1455,11 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>@lang($p."counter")</th>
                                         <th>@lang($p."referral")</th>
                                         <th>@lang($p."description")</th>
                                         <th>@lang($p."referral_date")</th>
+                                        <th>@lang($p."referrer")</th>
                                         <th></th>
                                     </tr>
                                     </tfoot>

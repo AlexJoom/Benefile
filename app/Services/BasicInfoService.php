@@ -436,7 +436,7 @@ class BasicInfoService{
             $basic_info_referral->referral_date = $this->datesHelper->makeDBFriendlyDate($request_basic_info_referrals_date[$i]);
             $basic_info_referral->benefiter_id = $benefiter_id;
             $basic_info_referral->referral_lookup_id = $request_basic_info_referrals_id[$i];
-
+            $basic_info_referral->user_id = \Auth::user()->id;
             $basic_info_referral->save();
         }
     }
@@ -454,7 +454,7 @@ class BasicInfoService{
 
     // get all referrals saved to db for this benefiter id
     public function get_referrals_for_a_benefiter($id){
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
+        $benefiter_referrals_list = BenefiterReferrals::join('users', 'benefiter_referrals.user_id', '=', 'users.id')->where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
         return $benefiter_referrals_list;
     }
 

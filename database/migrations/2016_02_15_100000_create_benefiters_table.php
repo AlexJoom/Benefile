@@ -83,6 +83,8 @@ class CreateBenefitersTable extends Migration
             $table->string('description')->nullable();
             $table->date('referral_date')->nullable();
 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('benefiter_id')->unsigned();
             $table->foreign('benefiter_id')->references('id')->on('benefiters');
             $table->integer('referral_lookup_id')->unsigned();
