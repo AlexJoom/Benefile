@@ -14,7 +14,7 @@ class ReportsController extends Controller
 
     public function __construct(){
         // only for logged in users
-        $this->middleware('auth');
+        $this->middleware('activated');
         // initialize reports service
         $this->reportsService = new ReportsService();
     }
