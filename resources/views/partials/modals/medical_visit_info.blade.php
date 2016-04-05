@@ -337,10 +337,37 @@
         </div>
     </div>
 
-    {{-- 5. MEDICINAL LIST INFO ----}}
+    {{-- 5. DIAGNOSIS RESULTS INFO -------}}
+    <div class="form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">5. @lang($p.'diagnosis_results')</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="lab-result-visit" class="row padding-bottom-30">
+                    <div class="padding-left-right-15 ">
+                        <div class="form-group float-left width-100-percent">
+                            @if(!empty($med_visit_diagnosis_results))
+                                @foreach($med_visit_diagnosis_results as $diagnosis_result)
+                                    <div class="make-inline col-md-10">
+                                        {!! Form::label('lab_results', Lang::get($p.'diagnosis_results_info')) !!}
+                                        <div class="custom-input-text display-inline width-50-percent">
+                                            {{ $diagnosis_result['diagnosis_results'] }}
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- 6. MEDICINAL LIST INFO ----}}
     <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">5. @lang($p.'medication')</h1>
+            <h1 class="record-section-header padding-left-right-15">6. @lang($p.'medication')</h1>
         </div>
         @if(!empty($med_visit_medication))
             @foreach($med_visit_medication as $med_medication)
@@ -385,10 +412,10 @@
         @endif
     </div>
 
-    {{-- 6. REFERALS INFO ----------}}
+    {{-- 7. REFERALS INFO ----------}}
     <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">6. @lang($p.'referrals')</h1>
+            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'referrals')</h1>
         </div>
         @if(!empty($med_visit_referrals))
             @foreach($med_visit_referrals as $med_referral)
@@ -405,10 +432,10 @@
         @endif
     </div>
 
-    {{-- 7. UPLOADED FILES LIST ----}}
+    {{-- 8. UPLOADED FILES LIST ----}}
     <div class="form-section file-uploads">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'upload')</h1>
+            <h1 class="record-section-header padding-left-right-15">8. @lang($p.'upload')</h1>
         </div>
         @if(!empty($med_visit_uploads))
             @foreach($med_visit_uploads as $med_upload)
