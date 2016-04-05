@@ -45,12 +45,12 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <div>
-                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'id' => 'male')) !!}
+                                {!! Form::label('male', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'id' => 'female')) !!}
+                                {!! Form::label('female', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline', 'id' => 'other')) !!}
+                                {!! Form::label('other', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
