@@ -168,7 +168,7 @@ class BasicInfoService{
 
     // returns all the country abandon reasons from DB
     public function getAllCountryAbandonReasons(){
-        return \DB::table('country_abandon_reasons')->get();
+        return \DB::table('country_abandon_reasons_lookup')->get();
     }
 
     // get all languages keys from basic info's form $request

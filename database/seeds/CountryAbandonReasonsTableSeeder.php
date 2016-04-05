@@ -13,6 +13,7 @@ class CountryAbandonReasonsTableSeeder extends Seeder
     {
         \DB::table('country_abandon_reasons_lookup')->insert(
             array(
+                array('description' => 'Επιλέξτε λόγο εγκατάλειψης χώρας'),
                 array('description' => 'Κοινωνικός'),
                 array('description' => 'Πολιτικός'),
                 array('description' => 'Οικονομικός'),

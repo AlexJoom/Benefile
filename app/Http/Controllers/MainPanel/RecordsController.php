@@ -66,9 +66,9 @@ class RecordsController extends Controller
         // brings the referrals options array from db to view
         $basic_info_referral = $this->basicInfoService->get_basic_info_referrals_from_lookup();
         $basic_info_referral_attributes = $this->basicInfoService->get_basic_info_referral();
-
+        $country_abandon_reasons = $this->basicInfoService->getAllCountryAbandonReasons();
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
-        // brinks all referrals saved to db for this benefiter id
+        // brings all referrals saved to db for this benefiter id
         $benefiter_referrals_list = $this->basicInfoService->get_referrals_for_a_benefiter($id);
         $workTitle = null;
         $languages = $this->basicInfoService->getAllLanguages();
@@ -105,7 +105,8 @@ class RecordsController extends Controller
                                            ->with('basic_info_referral_array', $basic_info_referral_array)
                                            ->with('benefiter_referrals_list', $benefiter_referrals_list)
                                            ->with('workTitle', $workTitle)
-                                           ->with('success', $successMsg);
+                                           ->with('success', $successMsg)
+                                           ->with('country_abandon_reasons', $country_abandon_reasons);
     }
 
     // post from basic info form
