@@ -741,7 +741,7 @@ class BenefiterMedicalFolderService
     }
     // post request
     private function update_diagnosis_results($request){
-        $diagnosis_results = $request['lab_results'];
+        $diagnosis_results = $request['diagnosis_results'];
         $diagnosis_results_array = [];
         foreach ($diagnosis_results as $dr){
             array_push($diagnosis_results_array, $dr);
