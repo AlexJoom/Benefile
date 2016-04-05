@@ -243,7 +243,14 @@
     <div class="row">
         <div class="col-md-12">
             <div id="diagnosis-result" class="row padding-bottom-30">
-                <div class="padding-left-right-15 diagnosis-results">
+                <?php
+                    $i = 0;
+                ?>
+                {{-- check if there are some already put diagnosis results and then display all of them, otherwise display just an empty text area --}}
+                @if(!empty($diagnosis_results_session))
+                    @for($i=0 ; $i<count($diagnosis_results_session) ; $i++)
+                @endif
+                <div class="padding-left-right-15 @if($i==0) diagnosis-results @else diagnosis-added-div @endif">
                     <div class="form-group float-left width-100-percent">
                         <div class="make-inline col-md-10">
                             {!! Form::label('diagnosis_results', Lang::get($p.'diagnosis_results_info'), array('class' => 'vertical-align-top')) !!}
@@ -259,6 +266,9 @@
                         </div>
                     </div>
                 </div>
+                @if(!empty($diagnosis_results_session))
+                    @endfor
+                @endif
             </div>
         </div>
     </div>
