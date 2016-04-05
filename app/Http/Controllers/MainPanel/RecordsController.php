@@ -504,6 +504,7 @@ class RecordsController extends Controller
         $med_visit_skull_perimeter = '';
         $med_visit_exam_results = '';
         $med_visit_lab_results = '';
+        $med_visit_diagnosis_results = '';
         $med_visit_medication = '';
         $med_visit_referrals = '';
         $med_visit_uploads = '';
@@ -547,6 +548,8 @@ class RecordsController extends Controller
                 $med_visit_exam_results = $this->medicalVisit->findMedicalVisitExaminationResults($med_visit['id']);
                 // Lab results
                 $med_visit_lab_results = $this->medicalVisit->findMedicalVisitLabResults($med_visit['id']);
+                // Diagnosis results
+                $med_visit_diagnosis_results = $this->medicalVisit->findMedicalVisitDiagnosisResults($med_visit['id']);
                 // Medication
                 $med_visit_medication = $this->medicalVisit->findMedicalVisitMedication($med_visit['id']);
                 // Referrals
@@ -570,6 +573,7 @@ class RecordsController extends Controller
                                                     ->with('med_visit_skull_perimeter', $med_visit_skull_perimeter)
                                                     ->with('med_visit_exam_results', $med_visit_exam_results)
                                                     ->with('med_visit_lab_results', $med_visit_lab_results)
+                                                    ->with('med_visit_diagnosis_results', $med_visit_diagnosis_results)
                                                     ->with('med_visit_medication', $med_visit_medication)
                                                     ->with('med_visit_referrals', $med_visit_referrals)
                                                     ->with('med_visit_uploads', $med_visit_uploads)
