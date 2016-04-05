@@ -22,6 +22,11 @@ class CreateBenefitersTable extends Migration
             $table->string('description');
         });
 
+        Schema::create('country_abandon_reasons_lookup', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('description');
+        });
+
         Schema::create('benefiters', function (Blueprint $table) {
             $table->increments('id');
             // Insert user that created the benefiter's file.
@@ -408,6 +413,7 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('legal_status_lookup');
         Schema::dropIfExists('benefiter_referrals');
         Schema::dropIfExists('benefiter_referrals_lookup');
+        Schema::dropIfExists('country_abandon_reasons_lookup');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('icd10');
         Schema::dropIfExists('working_legally_lookup');
