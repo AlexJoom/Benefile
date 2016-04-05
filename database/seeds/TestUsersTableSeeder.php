@@ -21,7 +21,7 @@ class TestUsersTableSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 2,
             'user_subrole_id' => 3,
-            'activation_status' => 0,
+            'activation_status' => 1,
             'is_deactivated' => 0,
         ));
 
@@ -32,7 +32,7 @@ class TestUsersTableSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 3,
             'user_subrole_id' => null,
-            'activation_status' => 0,
+            'activation_status' => 1,
             'is_deactivated' => 0,
         ));
 
@@ -43,7 +43,7 @@ class TestUsersTableSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 4,
             'user_subrole_id' => null,
-            'activation_status' => 0,
+            'activation_status' => 1,
             'is_deactivated' => 0,
         ));
 
@@ -54,7 +54,7 @@ class TestUsersTableSeeder extends Seeder
             'password' => Hash::make('1234qwer'),
             'user_role_id' => 5,
             'user_subrole_id' => null,
-            'activation_status' => 0,
+            'activation_status' => 1,
             'is_deactivated' => 0,
         ));
 
