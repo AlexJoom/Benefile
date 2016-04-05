@@ -1333,7 +1333,7 @@
                                 <?php
                                     $first = true;
                                 ?>
-                                @foreach($country_abandon_reasons as $country_abandon_reason)
+                                @foreach($countryAbandonReasons as $country_abandon_reason)
                                 <?php $selected = "";?>
                                 @if($benefiter->country_abandon_reason_id == $country_abandon_reason->id)
                                     <?php $selected = "selected"; ?>
