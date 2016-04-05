@@ -181,6 +181,10 @@ input[type="radio"] {
     width: 80%;
 }
 
+.width-60-percent{
+    width: 60%;
+}
+
 .width-50-percent{
     width: 50%;
 }

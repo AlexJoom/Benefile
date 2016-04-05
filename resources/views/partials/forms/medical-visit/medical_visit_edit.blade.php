@@ -451,12 +451,13 @@
                                         </div>
                                         <div class="row">
                                             <div  class="padding-left-right-15">
-                                                <div class="form-group float-left col-md-6 padding-left-50px">
+                                                <div class="form-group float-left col-md-3 padding-left-50px">
                                                     {{-- Dosage --}}
                                                     {!! Form::text('medication_dosage[]', $med_visit_medication[$i]['dosage'], array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
-
+                                                </div>
+                                                <div class="form-group float-left col-md-3">
                                                     {{-- Duration --}}
-                                                    {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                                    {!! Form::text('medication_duration[]', $med_visit_medication[$i]['duration'], array('class' => 'custom-input-text display-inline text-align-right width-60-percent', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!} @lang($p."days")
                                                 </div>
                                                 <div class="form-group float-left col-md-3">
                                                     {{-- Supplied from PRAKSIS --}}
@@ -504,9 +505,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="padding-left-right-15">
-                                            <div class="form-group float-left col-md-6 padding-left-50px">
+                                            <div class="form-group float-left col-md-3 padding-left-50px">
                                                 {!! Form::text('medication_dosage[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_dosage'))) !!}
-                                                {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!}
+                                            </div>
+                                            <div class="form-group float-left col-md-3">
+                                                {!! Form::text('medication_duration[]', null, array('class' => 'custom-input-text display-inline text-align-right width-60-percent', 'placeholder' => Lang::get($p.'medicinal_duration'))) !!} @lang($p."days")
                                             </div>
                                             <div class="form-group float-left col-md-3">
                                                 {!! Form::label('supply_from_praksis[]', Lang::get($p.'supply_from_praksis'), array('class' => 'radio-value margin-right-10px')) !!}
