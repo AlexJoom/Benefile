@@ -47,7 +47,6 @@ class CreateBenefitersTable extends Migration
             $table->boolean('is_benefiter_working')->nullable();
 //            $table->string('legal_status_details')->nullable();
             $table->boolean('working_legally')->nullable();
-            $table->text('country_abandon_reason')->nullable();
             $table->text('travel_route')->nullable();
             $table->text('travel_duration')->nullable();
             $table->text('detention_duration')->nullable();
@@ -70,6 +69,8 @@ class CreateBenefitersTable extends Migration
             $table->foreign('marital_status_id')->references('id')->on('marital_status_lookup');
             $table->integer('education_id')->unsigned()->nullable();
             $table->foreign('education_id')->references('id')->on('education_lookup');
+            $table->integer('country_abandon_reason_id')->unsigned();
+            $table->foreign('country_abandon_reason_id')->references('id')->on('country_abandon_reasons_lookup');
             // Lookup table for work field.
             $table->integer('work_title_id')->unsigned()->nullable();
             $table->foreign('work_title_id')->references('id')->on('work_title_list_lookup');
@@ -413,10 +414,10 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('legal_status_lookup');
         Schema::dropIfExists('benefiter_referrals');
         Schema::dropIfExists('benefiter_referrals_lookup');
-        Schema::dropIfExists('country_abandon_reasons_lookup');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('icd10');
         Schema::dropIfExists('working_legally_lookup');
         Schema::dropIfExists('binary_lookup');
+        Schema::dropIfExists('country_abandon_reasons_lookup');
     }
 }
