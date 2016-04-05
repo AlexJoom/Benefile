@@ -152,11 +152,11 @@
                         <div class="form-group float-left width-100-percent">
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('legal_folder_status', 1, $legal_folder_status[0], array('class' => 'make-inline', 'id' => 'asylum')) !!}
-                                {!! Form::label('legal_folder_status', Lang::get('legal_folder_form.asylum'), array('class' => 'radio-value')) !!}
+                                {!! Form::label('asylum', Lang::get('legal_folder_form.asylum'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-3 make-inline">
                                 {!! Form::radio('legal_folder_status', 2, $legal_folder_status[1], array('class' => 'make-inline', 'id' => 'no-legal')) !!}
-                                {!! Form::label('legal_folder_status', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}
+                                {!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -196,11 +196,11 @@
                                 <div class="form-group float-left padding-left-right-15 width-100-percent">
                                     <div class="col-md-2 make-inline">
                                         {!! Form::radio('procedure', 1, $procedure[0], array('class' => 'make-inline', 'id' => 'procedure-old')) !!}
-                                        {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_old'), array('class' => 'radio-value')) !!}
+                                        {!! Form::label('procedure-old', Lang::get('legal_folder_form.procedure_old'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-md-2 make-inline">
                                         {!! Form::radio('procedure', 2, $procedure[1], array('class' => 'make-inline', 'id' => 'procedure-new')) !!}
-                                        {!! Form::label('procedure', Lang::get('legal_folder_form.procedure_new'), array('class' => 'radio-value')) !!}
+                                        {!! Form::label('procedure-new', Lang::get('legal_folder_form.procedure_new'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="request-status col-md-6 make-inline hide">
                                         {!! Form::label('request_status', Lang::get('legal_folder_form.request_status')) !!}
@@ -241,11 +241,11 @@
                                 <div class="form-group padding-left-right-15 float-left width-100-percent">
                                     <div class="col-md-3 make-inline">
                                         {!! Form::radio('action', 1, $action[0], array('class' => 'make-inline', 'id' => 'action-none')) !!}
-                                        {!! Form::label('action', Lang::get('legal_folder_form.action_none'), array('class' => 'radio-value')) !!}
+                                        {!! Form::label('action-none', Lang::get('legal_folder_form.action_none'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-md-3 make-inline">
                                         {!! Form::radio('action', 2, $action[1], array('class' => 'make-inline', 'id' => 'action-refusal')) !!}
-                                        {!! Form::label('action', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
+                                        {!! Form::label('action-refusal', Lang::get('legal_folder_form.action_refusal'), array('class' => 'radio-value')) !!}
                                     </div>
                                 </div>
                             </div>
@@ -256,12 +256,12 @@
                                             {!! Form::label('result', Lang::get('legal_folder_form.result')) !!}
                                         </div>
                                         <div class="col-md-2 make-inline">
-                                            {!! Form::radio('result', 1, $result[0], array('class' => 'make-inline')) !!}
-                                            {!! Form::label('result', Lang::get('legal_folder_form.positive'), array('class' => 'radio-value')) !!}
+                                            {!! Form::radio('result', 1, $result[0], array('class' => 'make-inline', 'id' => 'positive')) !!}
+                                            {!! Form::label('positive', Lang::get('legal_folder_form.positive'), array('class' => 'radio-value')) !!}
                                         </div>
                                         <div class="col-md-2 make-inline">
-                                            {!! Form::radio('result', 2, $result[1], array('class' => 'make-inline')) !!}
-                                            {!! Form::label('result', Lang::get('legal_folder_form.negative'), array('class' => 'radio-value')) !!}
+                                            {!! Form::radio('result', 2, $result[1], array('class' => 'make-inline', 'id' => 'negative')) !!}
+                                            {!! Form::label('negative', Lang::get('legal_folder_form.negative'), array('class' => 'radio-value')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -297,11 +297,11 @@
                             </div>
                             <div class="col-md-1 make-inline">
                                 {!! Form::radio('penalty', 1, $penalty[0], array('class' => 'make-inline', 'id' => 'penalty-yes')) !!}
-                                {!! Form::label('penalty', Lang::get('legal_folder_form.yes'), array('class' => 'radio-value')) !!}
+                                {!! Form::label('penalty-yes', Lang::get('legal_folder_form.yes'), array('class' => 'radio-value')) !!}
                             </div>
                             <div class="col-md-1 make-inline">
                                 {!! Form::radio('penalty', 2, $penalty[1], array('class' => 'make-inline', 'id' => 'penalty-no')) !!}
-                                {!! Form::label('penalty', Lang::get('legal_folder_form.no'), array('class' => 'radio-value')) !!}
+                                {!! Form::label('penalty-no', Lang::get('legal_folder_form.no'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                     </div>
@@ -337,7 +337,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('lawyer_action[]', 1, $lawyer[0], array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('lawyer_action[]', 1, $lawyer[0], array('class' => 'float-left', 'id' => 'rights_advise')) !!}
                             {!! Form::label('rights_advise', Lang::get('legal_folder_form.rights_advise'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -345,7 +345,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('lawyer_action[]', 2, $lawyer[1], array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('lawyer_action[]', 2, $lawyer[1], array('class' => 'float-left', 'id' => 'asylum_advise')) !!}
                             {!! Form::label('asylum_advise', Lang::get('legal_folder_form.asylum_advise'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -353,7 +353,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('lawyer_action[]', 3, $lawyer[2], array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('lawyer_action[]', 3, $lawyer[2], array('class' => 'float-left', 'id' => 'interview_preparation')) !!}
                             {!! Form::label('interview_preparation', Lang::get('legal_folder_form.interview_preparation'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -361,7 +361,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('lawyer_action[]', 4, $lawyer[3], array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('lawyer_action[]', 4, $lawyer[3], array('class' => 'float-left', 'id' => 'appeal')) !!}
                             {!! Form::label('appeal', Lang::get('legal_folder_form.appeal'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
@@ -369,7 +369,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                            {!! Form::checkbox('lawyer_action[]', 5, $lawyer[4], array('class' => 'float-left')) !!}
+                            {!! Form::checkbox('lawyer_action[]', 5, $lawyer[4], array('class' => 'float-left', 'id' => 'detention_lift')) !!}
                             {!! Form::label('detention_lift', Lang::get('legal_folder_form.detention_lift'), array('class' => 'float-left')) !!}
                         </div>
                     </div>
