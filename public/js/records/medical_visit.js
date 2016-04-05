@@ -105,6 +105,28 @@ $(document).ready(function(){
         $(this).parents(".lab-added-div").remove();
     });
 
+    // add more diagnosis results
+    $("body").on("click", ".add-diagnosis-result", function(){
+        var $copy = $(".diagnosis-results").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("diagnosis-results").addClass("diagnosis-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$result_count++;
+        //$copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
+
+        // append cloned element to parent
+        var $parent = $("#diagnosis-result");
+        $copy.appendTo($parent);
+        $copy.find('#diagRes').val("");
+    });
+    // remove diagnosis result element after remove button is clicked
+    $("body").on("click", ".remove-diagnosis-result", function(){
+        $(this).parents(".diagnosis-added-div").remove();
+    });
+
     // add more medication
     // calls two functions
     $("body").on("click", ".add-med",

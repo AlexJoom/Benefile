@@ -235,10 +235,39 @@
     </div>
 </div>
 
+{{-- DIAGNOSIS RESULTS --}}
+<div class="form-section no-bottom-border">
+    <div class="underline-header">
+        <h1 class="record-section-header padding-left-right-15">6. @lang($p.'diagnosis_results')</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="diagnosis-result" class="row padding-bottom-30">
+                <div class="padding-left-right-15 diagnosis-results">
+                    <div class="form-group float-left width-100-percent">
+                        <div class="make-inline col-md-10">
+                            {!! Form::label('diagnosis_results', Lang::get($p.'diagnosis_results_info'), array('class' => 'vertical-align-top')) !!}
+                            {!! Form::textarea('diagnosis_results[]', null, array('id' => 'diagRes', 'size' => '35x5', 'class' => 'custom-input-textarea display-inline width-50-percent vertical-align-top')) !!}
+                            {{-- add --}}
+                            <a class="color-green add-diagnosis-result" href="javascript:void(0)">
+                                <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
+                            </a>
+                            {{-- remove --}}
+                            <a class="color-red remove-diagnosis-result hide-element" href="javascript:void(0)">
+                                <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- MEDICATION DETAILS --}}
 <div class="form-section no-bottom-border">
     <div class="underline-header">
-        <h1 class="record-section-header padding-left-right-15">6. @lang($p.'medication')</h1>
+        <h1 class="record-section-header padding-left-right-15">7. @lang($p.'medication')</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -369,7 +398,7 @@
 {{-- REFERRALS --}}
 <div class="form-section no-bottom-border">
     <div class="underline-header">
-        <h1 class="record-section-header padding-left-right-15">7. @lang($p.'referrals')</h1>
+        <h1 class="record-section-header padding-left-right-15">8. @lang($p.'referrals')</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -421,7 +450,7 @@
 {{-- UPLOAD FILE --}}
 <div class="form-section no-bottom-border">
     <div class="underline-header">
-        <h1 class="record-section-header padding-left-right-15">8. @lang($p.'upload_file')</h1>
+        <h1 class="record-section-header padding-left-right-15">9. @lang($p.'upload_file')</h1>
     </div>
     <div class="row">
         <div class="col-md-12">

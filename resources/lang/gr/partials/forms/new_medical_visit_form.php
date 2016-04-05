@@ -63,6 +63,9 @@ return array(
     'lab_results'          =>  'Εργαστηριακά αποτελέσματα',
     'lab_results_info'     =>  'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ',
 
+    'diagnosis_results'    =>  'Διαγνωστικά αποτελέσματα',
+    'diagnosis_results_info'=> 'ΔΙΑΓΝΩΣΤΙΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ',
+
     'medication'           =>  'Φαρμακευτική αγωγή',
     'medication_info'      =>  'ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ: ',
 
