@@ -579,7 +579,18 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
-                            {!! Form::text('country_abandon_reason', null, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                            <select disabled name="country_abandon_reason" class="abandon-reason-selection">
+                                <?php
+                                    $first = true;
+                                ?>
+                                @foreach($countryAbandonReasons as $country_abandon_reason)
+                                <?php $selected = "";?>
+                                @if($benefiter->country_abandon_reason_id == $country_abandon_reason->id)
+                                    <?php $selected = "selected"; ?>
+                                @endif
+                                <option value="{{ $country_abandon_reason->id }}" {{ $selected }}>{{ $country_abandon_reason->description }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
