@@ -86,6 +86,10 @@ input[disabled]{
     display: none;
 }
 
+.alert{
+    display: none;
+}
+
 @media print{
     html, body {
         height: auto;
