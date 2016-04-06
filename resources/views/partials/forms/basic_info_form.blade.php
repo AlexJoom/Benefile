@@ -630,7 +630,7 @@
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
-                            {!! Form::text('detention_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'id' => 'detention-date')) !!}
+                            {!! Form::text('detention_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'id' => 'detention-date', 'disabled' => 'disabled')) !!}
                         </div>
                     </div>
                 </div>
