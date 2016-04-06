@@ -57,7 +57,7 @@ class SearchService{
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . "b.birth_date='" . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($request['birth_date'])) . "'";
+            $queryString = $queryString . "b.birth_date='" . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['birth_date'])) . "'";
             $firstWhereParameter = false;
         }
         if ($request['origin_country'] != ""){
