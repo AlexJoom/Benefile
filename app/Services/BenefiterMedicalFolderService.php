@@ -485,6 +485,8 @@ class BenefiterMedicalFolderService
         $this->update_medical_laboratory_results($request, $updatedMedicalVisit_id);
         // diagnosis results
         $this->update_medical_diagnosis_results($request, $updatedMedicalVisit_id);
+        // hospitalizations
+        $this->update_medical_hospitalizations($request, $updatedMedicalVisit_id);
         // medication table
         $this->update_medical_medication($request, $updatedMedicalVisit_id);
         // medical referrals
@@ -793,6 +795,61 @@ class BenefiterMedicalFolderService
             array_push($diagnosis_results_array, $dr);
         }
         return $diagnosis_results_array;
+    }
+
+    //----------- medical_hospitalizations table ----------------------DONE//
+    // DB save
+    private function update_medical_hospitalizations($request, $selected_medical_visit_id){
+        $request_hospitalizations = $this->medical_hospitalizations($request);
+        $request_hospitalization_dates = $this->medical_hospitalization_dates($request);
+        $requests_count = count($request_hospitalizations);
+        $saved_hospitalizations = medical_hospitalizations::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_hospitalizations_count = count($saved_hospitalizations);
+        $counter = 0;
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_hospitalizations_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                // update what is saved
+                if ($counter < $saved_hospitalizations_count) {
+                    if(!empty($request_hospitalizations[$i])){
+                        $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                        $hospitalization->hospitalizations = $request_hospitalizations[$i];
+                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$i];
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                    //add new rows for the new requests
+                } else {
+                    if(!empty($request_hospitalizations[$i])){
+                        $hospitalization = new medical_hospitalizations();
+                        $hospitalization->hospitalizations = $request_hospitalizations[$i];
+                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$i];
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                }
+                $counter++;
+            }
+            // else if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_hospitalizations_count; $j++){
+                // update already saved rows
+                if ($counter < $requests_count) {
+                    if(!empty($request_hospitalizations[$j])){
+                        $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                        $hospitalization->hospitalizations = $request_hospitalizations[$j];
+                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$j];
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                    // else delete extra rows
+                } else {
+                    $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                    $hospitalization->delete();
+                }
+                $counter++;
+            }
+        }
     }
 
     //----------- medical_medication table ----------------------------DONE//
