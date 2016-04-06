@@ -518,6 +518,7 @@ class RecordsController extends Controller
         $med_visit_lab_results = '';
         $med_visit_diagnosis_results = '';
         $med_visit_medication = '';
+        $med_visit_hospitalizations = '';
         $med_visit_referrals = '';
         $med_visit_uploads = '';
         // TODO CREATE A SERVICE THAT RETURNS A JSON WITH ALL INFO FOR EVERY VISIT
@@ -564,6 +565,8 @@ class RecordsController extends Controller
                 $med_visit_diagnosis_results = $this->medicalVisit->findMedicalVisitDiagnosisResults($med_visit['id']);
                 // Medication
                 $med_visit_medication = $this->medicalVisit->findMedicalVisitMedication($med_visit['id']);
+                // Hospitalizations
+                $med_visit_hospitalizations = $this->medicalVisit->findMedicalVisitHospitalizations($med_visit['id']);
                 // Referrals
                 $med_visit_referrals = $this->medicalVisit->findMedicalVisitReferrals($med_visit['id']);
                 // Uploads
@@ -587,6 +590,7 @@ class RecordsController extends Controller
                                                     ->with('med_visit_lab_results', $med_visit_lab_results)
                                                     ->with('med_visit_diagnosis_results', $med_visit_diagnosis_results)
                                                     ->with('med_visit_medication', $med_visit_medication)
+                                                    ->with('med_visit_hospitalizations', $med_visit_hospitalizations)
                                                     ->with('med_visit_referrals', $med_visit_referrals)
                                                     ->with('med_visit_uploads', $med_visit_uploads)
                                                     ->with('benefiter_folder_number', $benefiter_folder_number)
