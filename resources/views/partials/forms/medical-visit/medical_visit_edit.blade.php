@@ -597,7 +597,7 @@
             {{-- HOSPITALIZATIONS --}}
             <div class="form-section no-bottom-border">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">8. @lang($p.'hospitalizations')</h1>
+                    <h1 class="record-section-header padding-left-right-15">8. @lang($p.'hospitalization')</h1>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -611,7 +611,7 @@
                                         {!! Form::textarea('hospitalization[]', $med_visit_hospitalizations[$i]['hospitalizations'], array('size' => '35x5', 'id'=>'hospRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                     </div>
                                     <div class="make-inline col-md-4">
-                                        {!! Form::text('hospitalization_date[]', "$hospitalization_date_session[$i]", array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('hospitalization_date[]', $datesHelper->getFinelyFormattedStringDateFromDBDate($med_visit_hospitalizations[$i]['hospitalization_date']), array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                         {{-- add --}}
                                         <a class="color-green add-hospitalization @if($i != 0) hide-element @endif" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
@@ -632,7 +632,7 @@
                                         {!! Form::textarea('hospitalization[]', null, array('size' => '35x5', 'id'=>'hospRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
                                     </div>
                                     <div class="make-inline col-md-4">
-                                        {!! Form::text('hospitalization_date[]', "$hospitalization_date_session[$i]", array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('hospitalization_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                         {{-- add --}}
                                         <a class="color-green add-hospitalization" href="javascript:void(0)">
                                             <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
