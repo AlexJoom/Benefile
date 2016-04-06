@@ -62,7 +62,7 @@ class TestBenefitersSeeder extends Seeder
                 'country_abandon_reason_id'        => 2,
                 'travel_route'                  => 'travel route',
                 'travel_duration'               => '2 weeks',
-                'detention_duration'            => '',
+                'detention_date'            => '',
 
 //                'has_educational_reference'     => 1,
 //                'educational_reference_actions' => 'education',
@@ -97,7 +97,7 @@ class TestBenefitersSeeder extends Seeder
             'country_abandon_reason_id'        => 2,
             'travel_route'                  => 'travel route',
             'travel_duration'               => '2 weeks',
-            'detention_duration'            => '',
+            'detention_date'            => '',
 
 //            'has_educational_reference'     => 2,
 //            'educational_reference_actions' => 'education',
@@ -132,7 +132,7 @@ class TestBenefitersSeeder extends Seeder
             'country_abandon_reason_id'        => 3,
             'travel_route'                  => 'travel route',
             'travel_duration'               => '2 weeks',
-            'detention_duration'            => '',
+            'detention_date'            => '',
 
 //            'has_educational_reference'     => 3,
 //            'educational_reference_actions' => 'education',
@@ -167,7 +167,7 @@ class TestBenefitersSeeder extends Seeder
             'country_abandon_reason_id'        => 4,
             'travel_route'                  => 'travel route',
             'travel_duration'               => '2 weeks',
-            'detention_duration'            => '',
+            'detention_date'            => '',
 
 //            'has_educational_reference'     => 4,
 //            'educational_reference_actions' => 'education',
@@ -202,7 +202,7 @@ class TestBenefitersSeeder extends Seeder
             'country_abandon_reason_id'        => 5,
             'travel_route'                  => 'travel route',
             'travel_duration'               => '2 weeks',
-            'detention_duration'            => '',
+            'detention_date'            => '',
 
 //            'has_educational_reference'     => 5,
 //            'educational_reference_actions' => 'education',
@@ -238,7 +238,7 @@ class TestBenefitersSeeder extends Seeder
             'country_abandon_reason_id'        => 3,
             'travel_route'                  => 'travel route',
             'travel_duration'               => '2 weeks',
-            'detention_duration'            => '',
+            'detention_date'            => '',
 
 //            'has_educational_reference'     => 6,
 //            'educational_reference_actions' => 'education',

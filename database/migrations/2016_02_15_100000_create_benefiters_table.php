@@ -49,7 +49,7 @@ class CreateBenefitersTable extends Migration
             $table->boolean('working_legally')->nullable();
             $table->text('travel_route')->nullable();
             $table->text('travel_duration')->nullable();
-            $table->text('detention_duration')->nullable();
+            $table->date('detention_date')->nullable();
 //            $table->boolean('has_educational_reference');
 //            $table->text('educational_reference_actions');
 //            $table->date('educational_reference_date');
