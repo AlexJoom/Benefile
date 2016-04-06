@@ -814,7 +814,7 @@ class BenefiterMedicalFolderService
                     if(!empty($request_hospitalizations[$i])){
                         $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
                         $hospitalization->hospitalizations = $request_hospitalizations[$i];
-                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$i];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
                         $hospitalization->medical_visit_id = $selected_medical_visit_id;
                         $hospitalization->save();
                     }
@@ -823,7 +823,7 @@ class BenefiterMedicalFolderService
                     if(!empty($request_hospitalizations[$i])){
                         $hospitalization = new medical_hospitalizations();
                         $hospitalization->hospitalizations = $request_hospitalizations[$i];
-                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$i];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
                         $hospitalization->medical_visit_id = $selected_medical_visit_id;
                         $hospitalization->save();
                     }
@@ -838,7 +838,7 @@ class BenefiterMedicalFolderService
                     if(!empty($request_hospitalizations[$j])){
                         $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
                         $hospitalization->hospitalizations = $request_hospitalizations[$j];
-                        $hospitalization->hospitalization_date = $request_hospitalization_dates[$j];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$j]);
                         $hospitalization->medical_visit_id = $selected_medical_visit_id;
                         $hospitalization->save();
                     }
