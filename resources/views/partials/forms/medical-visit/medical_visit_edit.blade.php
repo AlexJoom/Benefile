@@ -594,10 +594,66 @@
                 </div>
             </div>
 
+            {{-- HOSPITALIZATIONS --}}
+            <div class="form-section no-bottom-border">
+                <div class="underline-header">
+                    <h1 class="record-section-header padding-left-right-15">8. @lang($p.'hospitalizations')</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="hospitalization" class="row padding-bottom-30">
+                            @if(!empty($med_visit_hospitalizations) && count($med_visit_hospitalizations) !=0)
+                                @for($i=0 ; $i<count($med_visit_hospitalizations) ; $i++)
+                            <div class="padding-left-right-15 @if($i==0) hospitalization-div @endif @if($i!=0) hospitalization-added-div @endif">
+                                <div class="form-group float-left width-100-percent">
+                                    <div class="make-inline col-md-8">
+                                        {!! Form::label('hospitalization', Lang::get($p.'hospitalization_info'), array('class' => 'vertical-align-top')) !!}
+                                        {!! Form::textarea('hospitalization[]', $med_visit_hospitalizations[$i]['hospitalizations'], array('size' => '35x5', 'id'=>'hospRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
+                                    </div>
+                                    <div class="make-inline col-md-4">
+                                        {!! Form::text('hospitalization_date[]', "$hospitalization_date_session[$i]", array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {{-- add --}}
+                                        <a class="color-green add-hospitalization @if($i != 0) hide-element @endif" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                        {{-- remove --}}
+                                        <a class="color-red remove-hospitalization @if($i == 0) hide-element @endif" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                                @endfor
+                            @else
+                            <div class="padding-left-right-15 hospitalization">
+                                <div class="form-group float-left width-100-percent">
+                                    <div class="make-inline col-md-8">
+                                        {!! Form::label('hospitalization', Lang::get($p.'hospitalization_info'), array('class' => 'vertical-align-top')) !!}
+                                        {!! Form::textarea('hospitalization[]', null, array('size' => '35x5', 'id'=>'hospRes', 'class' => 'custom-input-textarea display-inline width-50-percent')) !!}
+                                    </div>
+                                    <div class="make-inline col-md-4">
+                                        {!! Form::text('hospitalization_date[]', "$hospitalization_date_session[$i]", array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {{-- add --}}
+                                        <a class="color-green add-hospitalization" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-plus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                        {{-- remove --}}
+                                        <a class="color-red remove-hospitalization hide-element" href="javascript:void(0)">
+                                            <span class="glyphicon glyphicon-minus-sign make-inline vertical-align-top"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {{-- REFERRALS --}}
             <div class="form-section no-bottom-border">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">8. @lang($p.'referrals')</h1>
+                    <h1 class="record-section-header padding-left-right-15">9. @lang($p.'referrals')</h1>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -649,7 +705,7 @@
             {{-- UPLOAD FILE --}}
             <div class="form-section no-bottom-border">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">9. @lang($p.'upload_file')</h1>
+                    <h1 class="record-section-header padding-left-right-15">10. @lang($p.'upload_file')</h1>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
