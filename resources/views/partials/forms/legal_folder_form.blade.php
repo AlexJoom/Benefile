@@ -188,7 +188,7 @@
                                 <div class="form-group float-left padding-left-right-15 width-100-percent">
                                     <div class="col-md-2 make-inline">
                                         {!! Form::label('asylum_request_date', Lang::get('legal_folder_form.asylum_request_date')) !!}
-                                        {!! Form::text('asylum_request_date', $asylum_request_date, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('asylum_request_date', $asylum_request_date, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                     </div>
                                 </div>
                             </div>
