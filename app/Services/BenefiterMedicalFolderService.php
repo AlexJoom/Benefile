@@ -6,6 +6,7 @@ use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
 use App\Models\Benefiters_Tables_Models\medical_diagnosis_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
 use App\Models\Benefiters_Tables_Models\medical_examinations;
+use App\Models\Benefiters_Tables_Models\medical_hospitalizations;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
@@ -83,6 +84,13 @@ class BenefiterMedicalFolderService
             $rules['diagnosis_results.'.$i] = 'max:2000';
         }
 
+        // VALIDATE - Hospitalizations
+        $hospitalizations = $request['hospitalization'];
+        foreach ($hospitalizations as $i=>$h){
+            $rules['hospitalization.'.$i] = 'max:2000';
+            $rules['haspitalization_date'.$i] = 'date';
+        }
+
         // VALIDATE - Medication
         $count = 0;
         if(!empty($request['medication_name_from_lookup'])){
@@ -150,6 +158,8 @@ class BenefiterMedicalFolderService
         $this->save_medical_laboratory_results($request, $medicalVisit_id);
         // diagnosis results
         $this->save_medical_diagnosis_results($request, $medicalVisit_id);
+        // hospitalizations
+        $this->save_medical_hospitalizations($request, $medicalVisit_id);
         // medication table
         $this->save_medical_medication($request, $medicalVisit_id);
         // medical referrals
@@ -291,6 +301,42 @@ class BenefiterMedicalFolderService
             array_push($diagnosis_results_array, $dr);
         }
         return $diagnosis_results_array;
+    }
+
+    //----------- medical_hospitalizations table ----------------------DONE//
+    // DB save
+    private function save_medical_hospitalizations($request, $id){
+        $request_hospitalizations = $this->medical_hospitalizations($request);
+        $request_hospitalization_dates = $this->medical_hospitalization_dates($request);
+        foreach($request_hospitalizations as $i=>$rh){
+            if(!empty($rh)){
+                $hospitalization = new medical_hospitalizations();
+
+                $hospitalization->hospitalizations = $rh;
+                $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
+                $hospitalization->medical_visit_id = $id;
+
+                $hospitalization->save();
+            }
+        }
+    }
+    // post request
+    private function medical_hospitalizations($request){
+        $hospitalizations = $request['hospitalization'];
+        $hospitalizations_array = [];
+        foreach ($hospitalizations as $h){
+            array_push($hospitalizations_array, $h);
+        }
+        return $hospitalizations_array;
+    }
+    // post request
+    private function medical_hospitalization_dates($request){
+        $hospitalization_dates = $request['hospitalization_date'];
+        $hospitalization_dates_array = [];
+        foreach ($hospitalization_dates as $hd){
+            array_push($hospitalization_dates_array, $hd);
+        }
+        return $hospitalization_dates_array;
     }
 
     //----------- medical_medication table ----------------------------DONE//
