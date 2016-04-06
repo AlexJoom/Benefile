@@ -1,7 +1,21 @@
 @extends('layouts.mainPanel')
 
+<?php
+    $p = "partials/forms/new_medical_visit_form.";
+    // format correctly the dates!
+    $datesHelper = new \app\Services\DatesHelper();
+    if (isset($benefiter) and $benefiter != null){
+        if ($benefiter->birth_date != null) {
+            $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        }
+        if ($benefiter->arrival_date != null) {
+            $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
+        }
+    }
+?>
+
 @section('panel-title')
-    Επεξεργασία Ιατρικής επίσκεψης
+    @lang($p.'edit-visit')
 @stop
 
 @section('panel-headLinks')
@@ -14,10 +28,6 @@
 @stop
 
 @section('main-window-content')
-
-    <?php
-        $p = "partials/forms/new_medical_visit_form.";
-    ?>
     {{--@include('partials.select-panel')--}}
 
     @if (count($errors) > 0)
