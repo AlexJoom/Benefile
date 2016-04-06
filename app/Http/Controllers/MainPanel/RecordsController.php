@@ -308,6 +308,12 @@ class RecordsController extends Controller
             // diagnosis results
         $diagnosis_results_session = session()->get('diagnosis_results_session');
         session()->forget('diagnosis_results_session');
+            // hospitalizations
+        $hospitalization_session = session()->get('hospitalization_session');
+        session()->forget('hospitalization_session');
+            // hospitalization dates
+        $hospitalization_date_session = session()->get('hospitalization_date_session');
+        session()->forget('hospitalization_date_session');
             // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
@@ -374,6 +380,8 @@ class RecordsController extends Controller
                         ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
                         ->with('lab_results_session', $lab_results_session)
                         ->with('diagnosis_results_session', $diagnosis_results_session)
+                        ->with('hospitalization_session', $hospitalization_session)
+                        ->with('hospitalization_date_session', $hospitalization_date_session)
                         ->with('referrals_session', $referrals_session)
                         ->with('examResultDescription_session', $examResultDescription_session)
                         ->with('examResultLoukup_session', $examResultLoukup_session)
@@ -412,6 +420,8 @@ class RecordsController extends Controller
             $chronic_conditions_session = $request['chronic_conditions'];
             $lab_results_session = $request['lab_results'];
             $diagnosis_results_session = $request['diagnosis_results'];
+            $hospitalization_session = $request['hospitalization'];
+            $hospitalization_date_session = $request['hospitalization_date'];
             $referrals_session = $request['referrals'];
             $examResultDescription_session = $request['examResultDescription'];
             $examResultLoukup_session = $request['examResultLoukup'];
@@ -458,6 +468,8 @@ class RecordsController extends Controller
                 ->with('chronic_conditions_session', $chronic_conditions_session)
                 ->with('lab_results_session', $lab_results_session)
                 ->with('diagnosis_results_session', $diagnosis_results_session)
+                ->with('hospitalization_session', $hospitalization_session)
+                ->with('hospitalization_date_session', $hospitalization_date_session)
                 ->with('referrals_session', $referrals_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
