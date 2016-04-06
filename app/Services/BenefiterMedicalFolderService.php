@@ -1304,6 +1304,11 @@ class BenefiterMedicalFolderService
         $med_visit_medication = medical_medication::where('medical_visit_id', $med_visit_id)->with('medical_medication_lookup')->get();
         return $med_visit_medication;
     }
+    // Hospitalization
+    public function findMedicalVisitHospitalizations($med_visit_id){
+        $med_visit_hospitalizations = medical_hospitalizations::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_hospitalizations;
+    }
     // Referrals
     public function findMedicalVisitReferrals($med_visit_id){
         $med_visit_referrals = medical_referrals::where('medical_visit_id', $med_visit_id)->get();
