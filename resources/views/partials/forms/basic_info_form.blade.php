@@ -1384,11 +1384,20 @@
             <h1 class="record-section-header padding-left-right-15">9. @lang($p."detention_info")</h1>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-3">
                 <div class="row">
                     <div class="padding-left-right-15">
                         <div class="form-group padding-left-right-15">
-                            {!! Form::text('detention_duration', null, array('class' => 'custom-input-text width-100-percent')) !!}
+                            {!! Form::text('detention_duration', null, array('class' => 'custom-input-text width-80-percent date-input', 'id' => 'detention-date', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row">
+                    <div class="padding-left-right-15">
+                        <div class="form-group padding-left-right-15">
+                            <p id="months-passed" data-months="@lang($p."months")" data-month="@lang($p."month")"></p>
                         </div>
                     </div>
                 </div>

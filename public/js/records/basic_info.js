@@ -78,6 +78,14 @@ $(document).ready(function(){
         $(this).parents(".ref-added-div").remove();
     });
 
+    // on document ready display the months passed from duration date
+    displayMonthsPassed($("#detention-date").val());
+
+    // on detention date change get the correct amount of months passed
+    $("#detention-date").on("changeDate focusout", function(){
+        displayMonthsPassed($(this).val());
+    });
+
     // Apply dataTable to benefiter referrals history
     $(function() {
         $('#benefiter_referrals_history').DataTable( {
@@ -87,3 +95,26 @@ $(document).ready(function(){
 });
 
 var $langs_count = $(".added-div").length;
+
+function displayMonthsPassed($selected_date){
+    // used only for document ready, if no date is selected
+    if($selected_date == ""){
+        $("#months-passed").text("");
+        return;
+    }
+    var $det_date = new Date($selected_date.substring(6, 10), $selected_date.substring(3, 5) - 1, $selected_date.substring(0, 2));
+    var $now = $.now();
+    var $diff = new Date($now - $det_date);
+    if($diff >= 0) {
+        var $array = ($diff/1000/60/60/24/30).toString().split(".");
+        var $result = $array[0];
+        if($result == 1){
+            $result = $result + " " + $("#months-passed").data("month");
+        } else{
+            $result = $result + " " + $("#months-passed").data("months");
+        }
+        $("#months-passed").text("(" + $result + ")");
+    } else {
+        $("#months-passed").text("");
+    }
+}
