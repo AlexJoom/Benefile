@@ -69,6 +69,9 @@ return array(
     'medication'           =>  'Φαρμακευτική αγωγή',
     'medication_info'      =>  'ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ: ',
 
+    'hospitalization'      =>  'Νοσηλεία',
+    'hospitalization_info' =>  'ΝΟΣΗΛΕΙΑ: ',
+
     'referrals'            =>  'Παραπομπές',
     'referrals_info'       =>  'ΠΑΡΑΠΟΜΠΗ: ',
 

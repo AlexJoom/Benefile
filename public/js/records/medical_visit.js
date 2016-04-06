@@ -127,6 +127,28 @@ $(document).ready(function(){
         $(this).parents(".diagnosis-added-div").remove();
     });
 
+    // add more hospitalizations
+    $("body").on("click", ".add-hospitalization", function(){
+        var $copy = $(".hospitalization-div").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("hospitalization-div").addClass("hospitalization-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$result_count++;
+        //$copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
+
+        // append cloned element to parent
+        var $parent = $("#hospitalization");
+        $copy.appendTo($parent);
+        $copy.find('#hospRes').val("");
+    });
+    // remove hospitalization element after remove button is clicked
+    $("body").on("click", ".remove-hospitalization", function(){
+        $(this).parents(".hospitalization-added-div").remove();
+    });
+
     // add more medication
     // calls two functions
     $("body").on("click", ".add-med",
