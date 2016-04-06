@@ -426,8 +426,8 @@
         <div class="col-md-12">
             <div id="hospitalization" class="row padding-bottom-30">
                 {{-- check if there are some already put diagnosis results and then display all of them, otherwise display just an empty text area --}}
-                @if(!empty($diagnosis_results_session))
-                    @for($i=0 ; $i<count($diagnosis_results_session) ; $i++)
+                @if(!empty($hospitalization_session))
+                    @for($i=0 ; $i<count($hospitalization_session) ; $i++)
                 <div class="padding-left-right-15 @if($i==0) hospitalization-div @else hospitalization-added-div @endif">
                     <div class="form-group float-left width-100-percent">
                         <div class="make-inline col-md-8">
