@@ -38,7 +38,7 @@ class BasicInfoService{
             'working_title' => 'max:255',
             'travel_route' => 'max:255',
             'travel_duration' => 'max:255',
-            'detention_duration' => 'max:255',
+            'detention_date' => 'date',
             'social_history' => 'max:2000',
         );
         $legal_status_texts = $request['legal_status_text'];
@@ -51,6 +51,7 @@ class BasicInfoService{
         }
         $request['birth_date'] = $this->datesHelper->makeDBFriendlyDate($request['birth_date']);
         $request['arrival_date'] = $this->datesHelper->makeDBFriendlyDate($request['arrival_date']);
+        $request['detention_date'] = $this->datesHelper->makeDBFriendlyDate($request['detention_date']);
         return Validator::make($request, $rules);
     }
 
@@ -264,7 +265,7 @@ class BasicInfoService{
             "country_abandon_reason_id" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention_duration'],
+            "detention_date" => $this->datesHelper->makeDBFriendlyDate($request['detention_date']),
             "social_history" => $request['social_history'],
             "document_manager_id" => \Auth::user()->id,
         );
