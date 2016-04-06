@@ -815,7 +815,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -848,7 +848,7 @@
                     <div class="padding-left-right-15">
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('arrival_date', Lang::get('basic_info_form.arrival_date')) !!}
-                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                            {!! Form::text('arrival_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('telephone', Lang::get('basic_info_form.telephone')) !!}
@@ -974,7 +974,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[0], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[0], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '1', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -991,7 +991,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[1], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[1], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '2', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1008,7 +1008,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[2], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[2], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '3', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1025,7 +1025,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[3], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[3], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '4', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1042,7 +1042,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[4], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[4], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '5', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1059,7 +1059,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[5], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[5], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '6', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1076,7 +1076,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[6], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '7', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1093,7 +1093,7 @@
                         <div class="form-group make-inline padding-left-right-15 float-left">
                             {!! Form::label(Lang::get('basic_info_form.exp_date')) !!}
                             <div class="make-inline">
-                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('legal_status_exp_date[]', $legal_status_exp_date[7], array('class' => 'custom-input-text width-80-percent date-input', 'tabindex' => '8', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -1513,7 +1513,7 @@
                                         {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                     </div>
                                     <div class="form-group make-inline float-left col-md-2">
-                                        {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                     </div>
                                     <div class="col-md-1">
                                         {{-- add --}}
