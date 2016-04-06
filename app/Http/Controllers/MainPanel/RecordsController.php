@@ -365,6 +365,12 @@ class RecordsController extends Controller
             $medical_locations = $this->medicalVisit->medicalLocationsLookup();  //medical_location_lookup::get();
             $medical_incident_type = $this->medicalVisit->medicalIncidentTypeLookup();  //medical_incident_type_lookup::get();
             $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
+
+
+            //TODO if admin
+            array_push($medical_locations_array, trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' ));
+            // if admin
+
             $medical_incident_type_array = $this->medicalVisit->reindex_array($medical_incident_type);
             $doctor_id = $this->medicalVisit->findDoctorId();  //Auth::user()->id;
             $benefiter_id = $benefiter->id;
