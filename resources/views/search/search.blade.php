@@ -56,7 +56,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div>
-                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('search/search.insertion_date')) !!}
                             <div>
-                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -237,14 +237,14 @@
                                 {{--{!! Form::label(Lang::get('search/search.from')) !!}--}}
                                 <label class="float-left">@lang('search/search.from')</label>
                                 <div>
-                                    {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-60per date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-60per date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                 </div>
                             </div>
                             <div class="form-group make-inline padding-left-right-15 float-left col-xs-6">
                                 {{--{!! Form::label(Lang::get('search/search.to')) !!}--}}
                                 <label class="float-left">@lang('search/search.to')</label>
                                 <div>
-                                    {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-60per date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-60per date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                 </div>
                             </div>
                         </div>
