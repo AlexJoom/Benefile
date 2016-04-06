@@ -152,9 +152,8 @@ $(document).ready(function(){
 
     // add more medication
     // calls two functions
-    $("body").on("click", ".add-med",
-        // first clone the medicine row, in order to add another
-        function(){
+    $("body").on("click", ".add-med", function(){
+            // first clone the medicine row, in order to add another
             var $copy = $(".medicationList").clone();
             // change the class so they won't be cloned every time all of them
             $copy.removeClass("medicationList").addClass("med-added-div");

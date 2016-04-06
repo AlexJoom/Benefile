@@ -1337,12 +1337,13 @@ class BenefiterMedicalFolderService
     }
     // find medical medicinal name from lookup using partial name
     public function get_full_medication_name($partial_name){
-        $full_medication_name = medical_medication_lookup::where('description','LIKE', '%'.$partial_name.'%' )->get();
+        $full_medication_name = medical_medication_lookup::where('description','LIKE', '%'.$partial_name.'%' );
         return $full_medication_name;
     }
     // find ICD10 from lookup using partial name
     public function get_full_icd10_description($partial_name){
-        $full_icd10_description = ICD10::where('description','LIKE', '%'.$partial_name.'%' )->get();
+        $full_icd10_description = ICD10::where('description','LIKE', '%'.$partial_name.'%' )
+                                        ->orWhere('code', 'LIKE', '%'.$partial_name.'%')->get();
         return $full_icd10_description;
     }
 }
