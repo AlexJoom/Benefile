@@ -143,6 +143,7 @@ $(document).ready(function(){
         var $parent = $("#hospitalization");
         $copy.appendTo($parent);
         $copy.find('#hospRes').val("");
+        $copy.find('.date-input').val("");
     });
     // remove hospitalization element after remove button is clicked
     $("body").on("click", ".remove-hospitalization", function(){
