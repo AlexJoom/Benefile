@@ -344,7 +344,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div id="lab-result-visit" class="row padding-bottom-30">
+                <div id="diagnosis-result-visit" class="row padding-bottom-30">
                     <div class="padding-left-right-15 ">
                         <div class="form-group float-left width-100-percent">
                             @if(!empty($med_visit_diagnosis_results))
@@ -412,10 +412,46 @@
         @endif
     </div>
 
-    {{-- 7. REFERALS INFO ----------}}
+    {{-- 7. HOSPITALIZATION -------}}
+    <div class="form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'hospitalization')</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="hospitalization-visit" class="row padding-bottom-30">
+                    <div class="padding-left-right-15 ">
+                        <div class="form-group float-left width-100-percent">
+                            @if(!empty($med_visit_hospitalizations))
+                                @foreach($med_visit_hospitalizations as $hospitalization)
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="make-inline col-xs-6">
+                                                {!! Form::label('hospitalization', Lang::get($p.'hospitalization_info')) !!}
+                                                <div class="custom-input-text display-inline">
+                                                    {{ $hospitalization['hospitalizations'] }}
+                                                </div>
+                                            </div>
+                                            <div class="make-inline col-xs-2">
+                                                <div class="custom-input-text display-inline">
+                                                    {{ $datesHelper->getFinelyFormattedStringDateFromDBDate($hospitalization['hospitalization_date']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- 8. REFERALS INFO ----------}}
     <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'referrals')</h1>
+            <h1 class="record-section-header padding-left-right-15">8. @lang($p.'referrals')</h1>
         </div>
         @if(!empty($med_visit_referrals))
             @foreach($med_visit_referrals as $med_referral)
@@ -432,10 +468,10 @@
         @endif
     </div>
 
-    {{-- 8. UPLOADED FILES LIST ----}}
+    {{-- 9. UPLOADED FILES LIST ----}}
     <div class="form-section file-uploads">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">8. @lang($p.'upload')</h1>
+            <h1 class="record-section-header padding-left-right-15">9. @lang($p.'upload')</h1>
         </div>
         @if(!empty($med_visit_uploads))
             @foreach($med_visit_uploads as $med_upload)
