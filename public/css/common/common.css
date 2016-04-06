@@ -67,6 +67,6 @@ a[disabled] {
 }
 .alert, .alert ul {
     text-align: center;
-    font-size: 24px;
+    font-size: 1.1em;
     list-style-type: none;
 }
