@@ -14,6 +14,7 @@
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css" media="print">
     <link href="{{ asset('css/print/generic_print.css') }}" rel="stylesheet" type="text/css" media="print">
     <link href="{{ asset('css/print/basic_info_print.css') }}" rel="stylesheet" type="text/css" media="print">
+    <link href="{{ asset('css/records/social_folder_form.css') }}" rel="stylesheet" type="text/css" media="print">
 @stop
 
 @section('benefiter-info')

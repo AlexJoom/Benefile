@@ -1,4 +1,21 @@
 $(document).ready(function(){
+    // hide new occurrence form
+    $(".new-occurrence").hide();
+    $("#add-new-occurrence").on("click", function(){
+        $(".new-occurrence").slideToggle("slow");
+    });
+    // slide toggle to edit a session
+    $(".edit-occurrence-div").hide();
+    $(".edit-occurrence").on("click", function(){
+        $(this).parents(".div-table-row:first").next().slideToggle("slow");
+    });
+
+    // display modal asking for session deletion confirmation
+    $(".delete-occurrence").on("click", function(){
+        $("#delete-occurrence-modal").modal('show');
+        $(".delete-occurrence-form").attr("action", $(".delete-occurrence-path").attr("value") + "/" + $(this).attr("name"));
+    });
+
     // at startup check if "yes" is checked and then display the working legally div
     if ($("#show_work_legally:checked").val()){
         $("#working_legally_div").show();
