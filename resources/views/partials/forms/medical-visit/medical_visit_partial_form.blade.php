@@ -500,12 +500,24 @@
                                 {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                 <div class="make-inline col-md-6">
                                     {!! Form::label('referrals', Lang::get($p.'referrals_info')) !!}
-                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline')) !!}
+                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline width-80-percent')) !!}
                                 </div>
                                 <div class="col-md-6">
                                     <select name="is_done_id[]">
-                                        <option value="0" selected>@lang($p."not_done")</option>
-                                        <option value="1">@lang($p."done")</option>
+                                        <?php
+                                            $selected0 = "selected";
+                                            $selected1 = "";
+                                        ?>
+                                        @if(!empty($referrals_is_done_session[$i]))
+                                            @if($referrals_is_done_session[$i] == "1")
+                                                <?php
+                                                    $selected0 = "";
+                                                    $selected1 = "selected";
+                                                ?>
+                                            @endif
+                                        @endif
+                                        <option value="0" {{ $selected0 }}>@lang($p."not_done")</option>
+                                        <option value="1" {{ $selected1 }}>@lang($p."done")</option>
                                     </select>
                                     {{-- add --}}
                                     <a class="color-green add-ref" href="javascript:void(0)">

@@ -457,11 +457,20 @@
             @foreach($med_visit_referrals as $med_referral)
                 <div class="row padding-bottom-30">
                     {{-- referral name --}}
-                    <div class="col-md-6">
+                    <div class="col-md-6 display-inline">
                         {!! Form::label('medication_name', Lang::get($p.'referrals_info')) !!}
                         <div class="custom-input-text display-inline">
                             {{ $med_referral['referrals'] }}
                         </div>
+                    </div>
+                    <div class="col-md-3 display-inline">
+                        <?php
+                            if($med_referral['is_done_id'] == 0){
+                                echo Lang::get($p."not_done");
+                            } else {
+                                echo Lang::get($p."done");
+                            }
+                        ?>
                     </div>
                 </div>
             @endforeach

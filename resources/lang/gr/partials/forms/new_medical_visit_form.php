@@ -31,6 +31,7 @@ return array(
     'yes'                  =>  'ΝΑΙ',
     'no'                   =>  'ΟΧΙ',
     'doctor'               =>  'ΓΙΑΤΡΟΣ',
+    'registered_by'        =>  'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ',
     'exam_location'        =>  'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
     'new_exam_loc'         =>  'ΝΕΑ ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
     'new_exam_location'    =>  'Εισαγωγή νέας',

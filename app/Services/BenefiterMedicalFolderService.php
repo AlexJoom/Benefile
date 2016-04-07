@@ -1083,6 +1083,7 @@ class BenefiterMedicalFolderService
     // DB save
     private function update_medical_referrals($request, $selected_medical_visit_id){
         $request_medical_referrals = $this->update_requested_medical_referrals($request);
+        $request_medical_referrals_is_done = $this->medical_referrals_is_done($request);
         $requests_count = count($request_medical_referrals);
         $saved_medical_referrals = medical_referrals::where("medical_visit_id", $selected_medical_visit_id)->get();
         $saved_medical_referrals_count = count($saved_medical_referrals);
@@ -1096,6 +1097,7 @@ class BenefiterMedicalFolderService
                         $med_referral = medical_referrals::find($saved_medical_referrals[$counter]['id']);
                         $med_referral->referrals = $request_medical_referrals[$i];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                         $med_referral->save();
                     }
                 } else {
@@ -1103,6 +1105,7 @@ class BenefiterMedicalFolderService
                         $med_referral = new medical_referrals();
                         $med_referral->referrals = $request_medical_referrals[$i];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                         $med_referral->save();
                     }
                 }
@@ -1116,6 +1119,7 @@ class BenefiterMedicalFolderService
                         $med_referral = medical_referrals::find($saved_medical_referrals[$counter]['id']);
                         $med_referral->referrals = $request_medical_referrals[$j];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$j];
                         $med_referral->save();
                     }
                 } else {

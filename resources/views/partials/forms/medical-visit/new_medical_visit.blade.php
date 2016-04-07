@@ -193,8 +193,7 @@
                         <thead>
                             <tr>
                                 <th>Α/Α</th>
-                                <th>@lang($p.'doctor')</th>
-                                <th>@lang($p.'doctor_speciality')</th>
+                                <th>@lang($p.'registered_by')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
@@ -205,8 +204,7 @@
                         <tfoot>
                             <tr>
                                 <th>Α/Α</th>
-                                <th>@lang($p.'doctor')</th>
-                                <th>@lang($p.'doctor_speciality')</th>
+                                <th>@lang($p.'registered_by')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
@@ -218,12 +216,13 @@
                             @for($i=0 ; $i<count($benefiter_medical_visits_list) ; $i++)
                                 <tr>
                                     <td>{{ $i+1 }}</td>
-                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}</td>
+                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}
                                     @if($benefiter_medical_visits_list[$i]['doctor']['user_subrole_id'] == null)
-                                    <td>@lang($p.'admin')</td>
+                                        (@lang($p.'admin'))
                                     @else
-                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }}</td>
+                                        ({{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }})
                                     @endif
+                                    </td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalLocation']['description'] }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalIncidentType']['description'] }}</td>
                                     @if($benefiter_medical_visits_list[$i]['medical_visit_date'] == null)
