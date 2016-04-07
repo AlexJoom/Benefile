@@ -500,7 +500,7 @@
                                 {{-- ΠΑΡΑΠΟΜΠΗ --}}
                                 <div class="make-inline col-md-6">
                                     {!! Form::label('referrals', Lang::get($p.'referrals_info')) !!}
-                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline')) !!}
+                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline width-80-percent')) !!}
                                 </div>
                                 <div class="col-md-6">
                                     <select name="is_done_id[]">
