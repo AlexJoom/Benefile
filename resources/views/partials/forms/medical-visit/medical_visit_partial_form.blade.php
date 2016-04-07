@@ -487,9 +487,15 @@
                         <div class="padding-left-right-15 @if($i==0) referral @else ref-added-div @endif">
                             <div class="form-group float-left width-100-percent">
                                 {{-- ΠΑΡΑΠΟΜΠΗ --}}
-                                <div class="make-inline col-md-10">
+                                <div class="make-inline col-md-6">
                                     {!! Form::label('referrals', Lang::get($p.'referrals_info')) !!}
-                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                    {!! Form::text('referrals[]', "$referrals_session[$i]", array('id'=>'refList', 'class' => 'custom-input-text display-inline')) !!}
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="is_done_id[]">
+                                        <option value="0" selected>@lang($p."not_done")</option>
+                                        <option value="1">@lang($p."done")</option>
+                                    </select>
                                     {{-- add --}}
                                     <a class="color-green add-ref" href="javascript:void(0)">
                                         <span class="glyphicon glyphicon-plus-sign make-inline"></span>
@@ -506,9 +512,15 @@
                     <div class="padding-left-right-15 referral">
                         <div class="form-group float-left width-100-percent">
                             {{-- ΠΑΡΑΠΟΜΠΗ --}}
-                            <div class="make-inline col-md-10">
+                            <div class="make-inline col-md-6">
                                 {!! Form::label('referrals', Lang::get($p.'referrals_info')) !!}
-                                {!! Form::text('referrals[]', null, array('id'=>'refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
+                                {!! Form::text('referrals[]', null, array('id'=>'refList', 'class' => 'custom-input-text display-inline width-80-percent')) !!}
+                            </div>
+                            <div class="col-md-6">
+                                <select name="is_done_id[]">
+                                    <option value="0" selected>@lang($p."not_done")</option>
+                                    <option value="1">@lang($p."done")</option>
+                                </select>
                                 {{-- add --}}
                                 <a class="color-green add-ref" href="javascript:void(0)">
                                     <span class="glyphicon glyphicon-plus-sign make-inline"></span>
