@@ -1,7 +1,22 @@
 <?php
 
     return array(
-        'new_benefiter' => 'Νέος Ωφελούμενος',
+        'new_occurrence' => 'Νέο Συμβάν',
+        'occurrence_history' => 'Ιστορικό Συμβάντων',
+        'add_new_occurrence' => 'Νέο Συμβάν',
+        'created_by' => 'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ:',
+        'occurrence_date' => 'ΗΜ. ΚΑΤΑΧΩΡΗΣΗΣ:',
+        'date_placeholder' => 'DD-MM-YYYY',
+        'save_occurrence' => 'Αποθήκευση Συμβάντος',
+        'date' => 'Ημερομηνία',
+        'subject' => 'Ημερομηνία',
+        'occurrences_comments' => 'ΠΑΡΑΤΗΡΗΣΕΙΣ:',
+        'edit' => 'Τροποποίηση',
+        'delete' => 'Διαγραφή',
+        'save_edited_occurrence' => 'Ενημέρωση Συμβάντος',
+        'occurrence_info' => 'Για την δυνατότητα καταχώρησης συμβάντος, καταχωρήστε και αποθηκεύστε πρώτα τα βασικά στοιχεία του ωφελούμενου.',
+        'delete_occurrence_modal_title' => 'Είστε βέβαιοι πως θέλετε να διαγράψετε αυτό το συμβάν;',
+        'done' => 'Εντάξη',
         'basic_info' => 'Βασικά Στοιχεία',
         'personal_info' => 'Προσωπικά Στοιχεία',
         'folder_number' => 'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
