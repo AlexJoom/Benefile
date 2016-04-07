@@ -1377,4 +1377,13 @@ class BenefiterMedicalFolderService
                                         ->orWhere('code', 'LIKE', '%'.$partial_name.'%')->get();
         return $full_icd10_description;
     }
+    // finds and returns all the benefiter's referrals ordered by medical visit
+    public function findAllMedicalVisitsReferralsForBenefiter($visitsList){
+        $result = array();
+        foreach($visitsList as $visit){
+            $tmp = medical_referrals::where('medical_visit_id', '=', $visit->id)->get();
+            array_push($result, $tmp);
+        }
+        return $result;
+    }
 }

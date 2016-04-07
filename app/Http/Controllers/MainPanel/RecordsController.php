@@ -360,6 +360,7 @@ class RecordsController extends Controller
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = $this->medicalVisit->benefiter_medical_visits_number($id) ; //medical_visits::where('benefiter_id', $id)->count();
         $benefiter_medical_visits_list = $this->medicalVisit->findMedicalVisitsForBenefiter($id); // medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
+        $referrals = $this->medicalVisit->findAllMedicalVisitsReferralsForBenefiter($benefiter_medical_visits_list);
         if ($benefiter == null) {
             return view('errors.404');
         } else {
@@ -401,6 +402,7 @@ class RecordsController extends Controller
                         ->with('medication_duration_session', $medication_duration_session)
                         ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
                         ->with('benefiter_medical_visits_list', $benefiter_medical_visits_list)
+                        ->with('referrals', $referrals)
                         ->with('upload_file_description_session', $upload_file_description_session)
                         ->with('upload_file_title_session', $upload_file_title_session)
                         ->with('visit_submited_succesfully', $visit_submited_succesfully);

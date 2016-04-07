@@ -23,6 +23,21 @@ class ConversionsForFileUpload{
         return null;
     }
 
+    // get id from country abandon reason name
+    public function getCountryAbandonReasonId($countryAbandonReasonFromFile){
+        $countryAbandonReasonFromFile = $this->greekStringConversion->grstrtoupper($countryAbandonReasonFromFile);
+        $allCountryAbandonReasons = \DB::table('country_abandon_reasons_lookup')->get();
+        // change the country abandon reason name to country abandon reason id
+        foreach($allCountryAbandonReasons as $reason){
+            $reason->description = $this->greekStringConversion->grstrtoupper($reason->description);
+            if(strcasecmp($countryAbandonReasonFromFile, $reason->description) == 0){
+                return $reason->id;
+            }
+        }
+        // reason not found
+        return null;
+    }
+
     // match country of origin
     public function getOriginCountry($originCountryFromFile) {
         $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($originCountryFromFile);

@@ -197,8 +197,8 @@
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
-                                <th>@lang($p.'show_visit')</th>
-                                <th>@lang($p.'edit_visit_info')</th>
+                                <th>@lang($p.'referrals_history')</th>
+                                <th>@lang($p.'options')</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -208,8 +208,8 @@
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
-                                <th>@lang($p.'show_visit')</th>
-                                <th>@lang($p.'edit_visit_info')</th>
+                                <th>@lang($p.'referrals_history')</th>
+                                <th>@lang($p.'options')</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -231,21 +231,39 @@
                                     <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_visits_list[$i]['medical_visit_date']) }}</td>
                                     @endif
                                     <td>
-                                    {{-- Only admin and doctor rolesshould be able to view and edit medical visits. --}}
-                                    @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
-                                        <button value="{{$benefiter_medical_visits_list[$i]['id']}}" data-url="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/getEachMedicalVisit') }}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button>
-                                    @endif
+                                        @if(!empty($referrals[$i]))
+                                        <ol>
+                                            @foreach($referrals[$i] as $referral)
+                                            <li>
+                                                {{ $referral->referrals }}
+                                                @if($referral->is_done_id == 0)
+                                                <span class="make-bold color-red">(@lang($p."not_done"))</span>
+                                                @else
+                                                <span class="make-bold">(@lang($p."done"))</span>
+                                                @endif
+                                            </li>
+                                            @endforeach
+                                        </ol>
+                                        @endif
                                     </td>
                                     <td>
+                                    <div>
+                                    {{-- Only admin and doctor rolesshould be able to view and edit medical visits. --}}
                                     @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
-                                        <a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg" type="button" >
+                                        <button value="{{$benefiter_medical_visits_list[$i]['id']}}" data-url="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/getEachMedicalVisit') }}" type="button" class="medical_visit_from_history btn btn-info btn-lg medical-visit-btn" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button>
+                                    @endif
+                                    </div>
+                                    <div class="margin-top-5">
+                                    @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
+                                        <a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg medical-visit-btn" type="button" >
                                             @lang($p.('edit_visit'))
                                         </a>
                                     @endif
                                         @if($benefiter_medical_visits_list[$i]['id'] == $selected_medical_visit_id && $visit_submited_succesfully == 3)
                                             <i class="glyphicon glyphicon-ok updated-visit"></i>
-                                    </td>
                                     @endif
+                                    </div>
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>

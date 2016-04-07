@@ -18,10 +18,10 @@ return array(
     'travel_duration'      =>  'ΔΙΑΡΚΕΙΑ',
     'folder_number'        =>  'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
     'total_visits_number'  =>  'ΑΡΙΘΜΟΣ ΕΠΙΣΚΕΨΕΩΝ',
-    'show_visit'           =>  'ΕΜΦΑΝΙΣΗ ΣΤΟΙΧΕΙΩΝ ΕΞΕΤΑΣΗΣ',
+    'referrals_history'    =>  'ΠΑΡΑΠΟΜΠΕΣ',
+    'options'              =>  'ΕΠΙΛΟΓΕΣ',
     'medical_visit'        =>  'Ιατρική επίσκεψη',
-    'show_medical_visit'   =>  'Εμφάνιση επίσκεψης',
-    'edit_visit_info'      =>  'ΕΠΕΞΕΡΓΑΣΙΑ ΕΠΙΣΚΕΨΗΣ',
+    'show_medical_visit'   =>  'Εμφάνιση',
     'edit_visit'           =>  'Επεξεργασία',
 
     'success_visit'        =>  'Η επίσκεψη δημιουργήθηκε επιτυχώς',
