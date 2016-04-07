@@ -15,6 +15,12 @@ class LegalFolderTableSeeder extends Seeder
             array(
                 array('description' => 'Αίτημα ασύλου'),
                 array('description' => 'Εκτός νομικού πλαισίου'),
+                array('description' => 'Αρ. Δελτίου Αιτήσαντος Ασύλου'),
+                array('description' => 'Αρ. Δελτίου Πρόσφυγα'),
+                array('description' => 'Βεβ. Άδειας Διαμονής'),
+                array('description' => 'Άδεια Παραμονής'),
+                array('description' => 'Ευρωπαϊος Πολίτης'),
+                array('description' => 'Ασυνόδευτος Ανήλικος'),
             )
         );
 
@@ -37,19 +43,6 @@ class LegalFolderTableSeeder extends Seeder
                 array('description' => 'α\''),
                 array('description' => 'β\''),
                 array('description' => 'μεταγενέστερο'),
-            )
-        );
-
-        \DB::table('legal_section_options_lookup')->insert(
-            array(
-                array('description' => 'Αίτημα Ασύλου'),
-                array('description' => 'Εκτός Νομικού Πλαισίου'),
-                array('description' => 'Αρ. Δελτίου Αιτήσαντος Ασύλου'),
-                array('description' => 'Αρ. Δελτίου Πρόσφυγα'),
-                array('description' => 'Βεβ. Άδειας Διαμονής'),
-                array('description' => 'Άδεια Παραμονής'),
-                array('description' => 'Ευρωπαϊος Πολίτης'),
-                array('description' => 'Ασυνόδευτος Ανήλικος'),
             )
         );
 
