@@ -688,7 +688,7 @@
     {!! Form::close() !!}
 
 
-    {{-- BASIC INFO REFERRALS --}}
+        {{-- BASIC INFO REFERRALS --}}
         @if($benefiter->id == -1)
             <div class="form-section no-bottom-border">
                 <div class="col-md-12 referral-info">
@@ -903,6 +903,156 @@
                 </div>
             </div>
         </div>
+
+        {{-- 2. Συμβάν --}}
+            {{--@if(true)--}}
+        <div class="form-section">
+            {{-- NEW OCCURRENCE BUTTON --}}
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" id="add-new-occurrence" class="float-right margin-30 session-button lighter-green-background">@lang($p."add_new_occurrence")</button>
+                </div>
+            </div>
+            <div class="underline-header row">
+                <h1 class="record-section-header padding-left-right-15 float-left">2. @lang($p."occurrence_history")</h1>
+            </div>
+
+            {{-- Νέο Συμβάν --}}
+            <div class="new-occurrence dynamic-form-section">
+                <h1 class="record-section-header padding-left-right-15">@lang($p."new_occurrence")</h1>
+                {{--{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/new-occurrence-save')) !!}--}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                    {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                    {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                </div>
+                                <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                    {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
+                                    {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                </div>
+                                {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                    {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
+                                    {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="align-text-center">
+                        <button id="new-occurrence-submit" type="button" class="submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Ιστορικό Συμβάντων --}}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="div-table-titles row">
+                        <div class="col-md-12">
+                            <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
+                            <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
+                            <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{--@if(!isset($benefiter_sessions) or $benefiter_sessions == null or $benefiter_sessions->count() == 0)--}}
+                    {{--<div class="social-info">--}}
+                        {{--<p>@lang($p."sessions_not_found")</p>--}}
+                    {{--</div>--}}
+                    {{--@else--}}
+
+                    {{--@foreach($benefiter_sessions as $benefiter_session)--}}
+
+                    {{-- EACH SAVED SESSION INFO --}}
+                    <div class="row div-table-row div-hr">
+                        <div class="col-md-12">
+                            <div class="col-xs-2 text-align-center">apo pion</div>
+                            <div class="col-xs-2 text-align-center">HM</div>
+                            <div class="col-xs-4 text-align-center">occurrences_comments</div>
+                            <div class="col-xs-2">
+                                <button type="button" class="session-button edit-occurrence medical_visit_from_history btn btn-info btn-lg">@lang($p."edit")</button>
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="button" class="session-button delete-session btn btn-warning btn-lg">@lang($p."delete")</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- EDIT EACH SESSION --}}
+                    <div class="edit-occurrence-div dynamic-form-section">
+                        <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                            {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                            {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                        </div>
+                                        <div class="form-group padding-left-right-15 float-left col-md-2">
+                                            {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
+                                            {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                            {{-- $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) --}}
+                                        </div>
+
+                                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                            {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
+                                            {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="align-text-center">
+                                <button type="button" class="submit-button save-session" data-url="benefiter/{{$benefiter->id}}/update-occurrence">@lang($p.'save_edited_occurrence')</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{--@endforeach--}}
+
+                    {{--@endif--}}
+                </div>
+            </div>
+        </div>
+            {{--@else--}}
+        <div class=" no-bottom-border">
+                <div class="col-md-12 social-info">
+                    <p>@lang($p."occurrence_info")</p>
+                </div>
+            </div>
+            {{--@endif--}}
+            {{--</div>--}}
+            <!--delete occurrence confirmation modal-->
+        <div class="modal fade" id="delete-occurrence-modal" aria-hidden="true" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="delete-occurrence-form" action="" method="get">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" class="delete-occurrence-path" name="path" value="{{ url("benefiter/".$benefiter->id."/occurrence-delete/") }}">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">@lang($p."delete_occurrence_modal_title")</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-md-3 col-md-offset-9">
+                                    <button type="submit" class="simple-button">@lang($p."done")</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.modal -->
 
         {{-- Οικογενειακή Κατάσταση --}}
         <div class="family-info form-section no-bottom-border">

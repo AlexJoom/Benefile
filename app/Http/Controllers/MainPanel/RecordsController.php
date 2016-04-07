@@ -172,6 +172,21 @@ class RecordsController extends Controller
         }
     }
 
+    public function saveOccurrencesBasicInfo(Request $request, $id){
+        // TODO
+        // Add service that takes the requests and saves them in DB, with the benefiter->id
+
+        $occurrence_date = $request['occurrence_date'];
+        $occurrences_comments = $request['occurrences_comments'];
+        $user_who_added_occurrence = Auth::user();
+
+        // Then return from the DB all occurrences history and return it to the view
+        return redirect('benefiter/'.$id.'/basic-info')
+            ->with('occurrence_date', $occurrence_date)
+            ->with('user_who_added_occurrence', $user_who_added_occurrence)
+            ->with('occurrences_comments', $occurrences_comments);
+    }
+
     //------ POST BASIC INFO REFERRALS -------------------------------//
     public function postBasicInfoReferrals(Request $request){
         // update basic info referrals table
