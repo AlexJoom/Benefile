@@ -76,6 +76,8 @@ return array(
 
     'referrals'            =>  'Παραπομπές',
     'referrals_info'       =>  'ΠΑΡΑΠΟΜΠΗ: ',
+    'done'                 =>  'Πραγματοποιήθηκε',
+    'not_done'             =>  'Δεν πραγματοποιήθηκε',
 
     'upload'               =>  'Αποθηκευμένα αρχεία: ',
     'upload_description'   =>  'Περιγραφή αρχείου: ',

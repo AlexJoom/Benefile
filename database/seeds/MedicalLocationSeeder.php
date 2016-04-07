@@ -18,6 +18,7 @@ class MedicalLocationSeeder extends Seeder
                 array('description' => "Πολυιατρείο Θεσσαλονίκης"),
                 array('description' => "Κέντρο Ημέρας Αθήνας"),
                 array('description' => "Κέντρο Ημέρας"),
+                array('description' => "Κέντρο Κράτησης"),
             )
         );
     }

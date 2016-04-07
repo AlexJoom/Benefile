@@ -427,11 +427,13 @@ class BenefiterMedicalFolderService
     // DB save
     private function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);
-        foreach($request_medical_referrals as $rmr){
+        $request_medical_referrals_is_done = $this->medical_referrals_is_done($request);
+        foreach($request_medical_referrals as $i => $rmr){
             if(!empty($rmr)){
                 $med_referral = new medical_referrals();
                 $med_referral->referrals = $rmr;
                 $med_referral->medical_visit_id = $id;
+                $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                 $med_referral->save();
             }
         }
@@ -444,6 +446,15 @@ class BenefiterMedicalFolderService
             array_push($referrals_array, $ref);
         }
         return $referrals_array;
+    }
+    // post request
+    private function medical_referrals_is_done($request){
+        $referrals_is_done = $request['is_done_id'];
+        $referrals_is_done_array = [];
+        foreach ($referrals_is_done as $rid){
+            array_push($referrals_is_done_array, $rid);
+        }
+        return $referrals_is_done_array;
     }
 
     //----------- medical_uploads table ----------------------------//
