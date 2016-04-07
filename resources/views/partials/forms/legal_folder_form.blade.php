@@ -185,7 +185,7 @@
                                         {!! Form::label('european', Lang::get('legal_folder_form.european'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 7, $legal_folder_status[6], array('class' => 'make-inline', 'id' => 'minor')) !!}
+                                        {!! Form::radio('legal_folder_status', 8, $legal_folder_status[7], array('class' => 'make-inline', 'id' => 'minor')) !!}
                                         {!! Form::label('minor', Lang::get('legal_folder_form.minor'), array('class' => 'radio-value')) !!}
                                     </div>
                                 </div>
