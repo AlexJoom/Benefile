@@ -378,6 +378,10 @@ a.btn.btn-default.font-weight-normal{
     vertical-align: top;
 }
 
+#new_medical_location{
+    width: 300px;
+}
+
 @media screen and (max-width: 991px){
     .medication_other_name{
         padding-left: 50px;

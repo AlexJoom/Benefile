@@ -365,12 +365,10 @@ class RecordsController extends Controller
             $medical_locations = $this->medicalVisit->medicalLocationsLookup();  //medical_location_lookup::get();
             $medical_incident_type = $this->medicalVisit->medicalIncidentTypeLookup();  //medical_incident_type_lookup::get();
             $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
-
-
-            //TODO if admin
-            array_push($medical_locations_array, trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' ));
-            // if admin
-
+            // If logged in user is admin then more medical locations can be added dynamically.
+            if(Auth::user()->user_role_id == 1){
+                $medical_locations_array['new_location'] = trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' );
+            }
             $medical_incident_type_array = $this->medicalVisit->reindex_array($medical_incident_type);
             $doctor_id = $this->medicalVisit->findDoctorId();  //Auth::user()->id;
             $benefiter_id = $benefiter->id;
@@ -423,6 +421,7 @@ class RecordsController extends Controller
         $validator = $this->medicalVisit->medicalValidation($request->all());
         if($validator->fails()){
             //Fetch all array posts (if validation fails)
+            $new_medical_location = $request['new_medical_location'];
             $chronic_conditions_session = $request['chronic_conditions'];
             $lab_results_session = $request['lab_results'];
             $diagnosis_results_session = $request['diagnosis_results'];
@@ -468,6 +467,7 @@ class RecordsController extends Controller
                 ->with('doctor_id', $doctor_id)
                 ->with('benefiter_id', $benefiter_id)
                 ->with('medical_locations_array', $medical_locations_array)
+                ->with('new_medical_location', $new_medical_location)
                 ->with('ExamResultsLookup', $ExamResultsLookup)
                 ->with('medical_visits_number', $medical_visits_number)
                 ->with('visit_submited_succesfully', $visit_submited_succesfully)
@@ -614,6 +614,10 @@ class RecordsController extends Controller
         $medical_locations = $this->medicalVisit->medicalLocationsLookup();  //medical_location_lookup::get();
         $medical_incident_type = $this->medicalVisit->medicalIncidentTypeLookup();  //medical_incident_type_lookup::get();
         $medical_locations_array = $this->medicalVisit->reindex_array($medical_locations);
+        // If logged in user is admin then more medical locations can be added dynamically.
+        if(Auth::user()->user_role_id == 1){
+            $medical_locations_array['new_location'] = trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' );
+        }
         $medical_incident_type_array = $this->medicalVisit->reindex_array($medical_incident_type);
         $ExamResultsLookup = $this->medicalVisit->examinationsResultsLookup();
 

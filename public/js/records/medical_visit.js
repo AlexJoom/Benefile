@@ -424,6 +424,18 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    // Medical locations (if the user selects to add new medical location, then the input field is shown)
+    $('#new_medical_location_div').hide();
+    var medical_location_id = jQuery('#medical_location_id');
+    var select = this.value;
+    medical_location_id.change(function () {
+        if ($('#medical_location_id').val().length > 2) {
+            $('#new_medical_location_div').show();
+        }
+        else $('#new_medical_location_div').hide();
+    });
+
 });
 
 var $clickCount = $('#medication select').length;
