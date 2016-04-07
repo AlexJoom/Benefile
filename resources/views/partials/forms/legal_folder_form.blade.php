@@ -157,15 +157,15 @@
                                         {!! Form::label('asylum', Lang::get('legal_folder_form.asylum'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 2, $legal_folder_status[1], array('class' => 'make-inline', 'id' => 'no-legal')) !!}
+                                        {!! Form::radio('legal_folder_status', 2, $legal_folder_status[1], array('class' => 'make-inline legal-status', 'id' => 'no-legal')) !!}
                                         {!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 3, $legal_folder_status[2], array('class' => 'make-inline', 'id' => 'asylum-number')) !!}
+                                        {!! Form::radio('legal_folder_status', 3, $legal_folder_status[2], array('class' => 'make-inline legal-status', 'id' => 'asylum-number')) !!}
                                         {!! Form::label('asylum-number', Lang::get('legal_folder_form.asylum_number'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 4, $legal_folder_status[3], array('class' => 'make-inline', 'id' => 'refugee-number')) !!}
+                                        {!! Form::radio('legal_folder_status', 4, $legal_folder_status[3], array('class' => 'make-inline legal-status', 'id' => 'refugee-number')) !!}
                                         {!! Form::label('refugee-number', Lang::get('legal_folder_form.refugee_number'), array('class' => 'radio-value')) !!}
                                     </div>
                                 </div>
@@ -173,19 +173,19 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 5, $legal_folder_status[4], array('class' => 'make-inline', 'id' => 'stay-permit-ack')) !!}
+                                        {!! Form::radio('legal_folder_status', 5, $legal_folder_status[4], array('class' => 'make-inline legal-status', 'id' => 'stay-permit-ack')) !!}
                                         {!! Form::label('stay-permit-ack', Lang::get('legal_folder_form.stay_permit_ack'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 6, $legal_folder_status[5], array('class' => 'make-inline', 'id' => 'stay-permit')) !!}
+                                        {!! Form::radio('legal_folder_status', 6, $legal_folder_status[5], array('class' => 'make-inline legal-status', 'id' => 'stay-permit')) !!}
                                         {!! Form::label('stay-permit', Lang::get('legal_folder_form.stay_permit'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 7, $legal_folder_status[6], array('class' => 'make-inline', 'id' => 'european')) !!}
+                                        {!! Form::radio('legal_folder_status', 7, $legal_folder_status[6], array('class' => 'make-inline legal-status', 'id' => 'european')) !!}
                                         {!! Form::label('european', Lang::get('legal_folder_form.european'), array('class' => 'radio-value')) !!}
                                     </div>
                                     <div class="col-xs-3 make-inline">
-                                        {!! Form::radio('legal_folder_status', 8, $legal_folder_status[7], array('class' => 'make-inline', 'id' => 'minor')) !!}
+                                        {!! Form::radio('legal_folder_status', 8, $legal_folder_status[7], array('class' => 'make-inline legal-status', 'id' => 'minor')) !!}
                                         {!! Form::label('minor', Lang::get('legal_folder_form.minor'), array('class' => 'radio-value')) !!}
                                     </div>
                                 </div>
@@ -268,7 +268,7 @@
                                 $result[$legal_status->result_id - 1] = true;
                             }
                         ?>
-                        <div class="no-legal dynamic-form-section hide">
+                        <div class="legal-status-div dynamic-form-section hide">
                             <h1 class="record-section-header padding-left-right-15">@lang($p."no_legal")</h1>
                             <div class="row">
                                 <div class="form-group padding-left-right-15 float-left width-100-percent">
