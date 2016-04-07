@@ -795,14 +795,14 @@ class RecordsController extends Controller
     public function getLegalFolder($id){
         $legalFolder = $this->legalFolderService->findLegalFolderFromBenefiterId($id);
         $asylumRequest = null;
-        $noLegalStatus = null;
+        $legalStatus = null;
         $lawyerActions = null;
         $successMsg = session()->get('success', function() { return null; });
         session()->forget('success');
         // if the legal folder exists return all things connected with it
         if($legalFolder != null){
             $asylumRequest = $this->legalFolderService->findAsylumRequestFromLegalFolderId($legalFolder->id);
-            $noLegalStatus = $this->legalFolderService->findNoLegalStatusFromLegalFolderId($legalFolder->id);
+            $legalStatus = $this->legalFolderService->findLegalSectionStatusFromLegalFolderId($legalFolder->id);
             $lawyerActions = $this->legalFolderService->findLawyerActionsFromLegalFolderId($legalFolder->id);
         }
         $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -813,7 +813,7 @@ class RecordsController extends Controller
             ->with('legal_folder', $legalFolder)
             ->with('benefiter', $benefiter)
             ->with('asylum_request', $asylumRequest)
-            ->with('no_legal_status', $noLegalStatus)
+            ->with('legal_status', $legalStatus)
             ->with('lawyer_action', $lawyerActions)
             ->with('tab', 'legal')
             ->with('success', $successMsg);

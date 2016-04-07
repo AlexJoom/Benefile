@@ -61,7 +61,6 @@ class CreateLegalFolderTable extends Migration
             $table->timestamps();
         });
 
-        // create the lookups needed for no_legal_status table creation
         Schema::create('action_lookup', function(Blueprint $table){
             $table->increments('id');
             $table->string('description');
@@ -73,11 +72,13 @@ class CreateLegalFolderTable extends Migration
         });
 
         // create no_legal_status table
-        Schema::create('no_legal_status', function(Blueprint $table){
+        Schema::create('legal_section_status', function(Blueprint $table){
             $table->increments('id');
+            $table->integer('legal_option_id')->unsigned();
             $table->integer('action_id')->unsigned();
             $table->integer('result_id')->unsigned()->nullable();
             $table->integer('legal_folder_id')->unsigned();
+            $table->foreign('legal_option_id')->references('id')->on('legal_folder_status_lookup');
             $table->foreign('action_id')->references('id')->on('action_lookup');
             $table->foreign('result_id')->references('id')->on('result_lookup');
             $table->foreign('legal_folder_id')->references('id')->on('legal_folder');
@@ -110,7 +111,7 @@ class CreateLegalFolderTable extends Migration
     {
         Schema::drop('legal_lawyer_action');
         Schema::drop('lawyer_action_lookup');
-        Schema::drop('no_legal_status');
+        Schema::drop('legal_section_status');
         Schema::drop('result_lookup');
         Schema::drop('action_lookup');
         Schema::drop('asylum_request');

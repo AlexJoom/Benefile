@@ -50,7 +50,7 @@
                 <div class="col-md-2 col-xs-2 dark-green-background no-padding height-100per min-height-720px hide-overflow" id="sidebar">
                     {{-- NGO logo --}}
                     <div class="logo-ngo" id="ngo-logo">
-                        <img width="35%" alt="Benefile logo" class="img-responsive min-width-85px" src={{asset('images/logo-praksis.png')}}>
+                        <img width="35%" alt="Benefile logo" class="img-responsive min-width-85px" src={{asset('images/praksis_logo_black.png')}}>
                     </div>
 
                     {{-- Search bar --}}

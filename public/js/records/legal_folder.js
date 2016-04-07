@@ -4,17 +4,17 @@ $(document).ready(function(){
         $(".asylum-request").removeClass("hide");
     }
     else{
-        $(".no-legal").removeClass("hide");
+        $(".legal-status-div").removeClass("hide");
     }
 
-    // listeners that decide whether asylum or no-legal form should be displayed
+    // listeners that decide whether asylum or legal-status form should be displayed
     $("body").on("change", "#asylum", function(){
         $(".asylum-request").removeClass("hide");
-        $(".no-legal").addClass("hide");
+        $(".legal-status-div").addClass("hide");
     });
-    $("body").on("change", "#no-legal", function(){
+    $("body").on("change", ".legal-status", function(){
         $(".asylum-request").addClass("hide");
-        $(".no-legal").removeClass("hide");
+        $(".legal-status-div").removeClass("hide");
     });
 
     // at startup check if "action refusal" is checked then display the results div
