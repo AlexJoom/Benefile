@@ -32,6 +32,7 @@ return array(
     'no'                   =>  'ΟΧΙ',
     'doctor'               =>  'ΓΙΑΤΡΟΣ',
     'exam_location'        =>  'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
+    'new_exam_loc'         =>  'ΝΕΑ ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
     'new_exam_location'    =>  'Εισαγωγή νέας',
     'exam_date'            =>  'ΗΜΕΡ. ΕΞΕΤΑΣΗΣ',
     'new_medical_visit'    =>  'ΝΕΑ ΕΠΙΣΚΕΨΗ',
