@@ -53,6 +53,10 @@
     margin-top: 20px;
 }
 
+.margin-top-5{
+    margin-top: 5px;
+}
+
 .float-left{
     float: left;
 }
@@ -179,6 +183,11 @@ input[type="radio"] {
 
 .width-80-percent{
     width: 80%;
+}
+
+.medical-visit-btn{
+    width: 80% !important;
+    min-width: 180px;
 }
 
 .width-60-percent{
