@@ -15,6 +15,7 @@ class CreateBenefitersTable extends Migration
         Schema::create('binary_lookup', function (Blueprint $table){
             $table->integer('id')->unsigned();
             $table->string('description');
+            $table->primary('id');
         });
 
         Schema::create('working_legally_lookup', function(Blueprint $table){
@@ -299,6 +300,8 @@ class CreateBenefitersTable extends Migration
 
             $table->integer('medical_visit_id')->unsigned();
             $table->foreign('medical_visit_id')->references('id')->on('medical_visits');
+            $table->integer('is_done_id')->unsigned();
+            $table->foreign('is_done_id')->references('id')->on('binary_lookup');
 
             $table->timestamps();
         });
