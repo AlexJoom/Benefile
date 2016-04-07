@@ -317,6 +317,9 @@ class RecordsController extends Controller
             // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
+            // referrals is done
+        $referrals_is_done_session = session()->get('referrals_is_done_session');
+        session()->forget('referrals_is_done_session');
             //Examination results (consists of selected conditions & descriptions)
         $examResultDescription_session = session()->get('examResultDescription_session');
         session()->forget('examResultDescription_session');
@@ -389,6 +392,7 @@ class RecordsController extends Controller
                         ->with('hospitalization_session', $hospitalization_session)
                         ->with('hospitalization_date_session', $hospitalization_date_session)
                         ->with('referrals_session', $referrals_session)
+                        ->with('referrals_is_done_session', $referrals_is_done_session)
                         ->with('examResultDescription_session', $examResultDescription_session)
                         ->with('examResultLoukup_session', $examResultLoukup_session)
                         ->with('examResultLoukup_session_description', $examResultLoukup_session_description)
@@ -429,6 +433,7 @@ class RecordsController extends Controller
             $hospitalization_session = $request['hospitalization'];
             $hospitalization_date_session = $request['hospitalization_date'];
             $referrals_session = $request['referrals'];
+            $referrals_is_done_session = $request['is_done_id'];
             $examResultDescription_session = $request['examResultDescription'];
             $examResultLoukup_session = $request['examResultLoukup'];
             $medication_name_from_lookup_session = $request['medication_name_from_lookup'];
@@ -477,6 +482,7 @@ class RecordsController extends Controller
                 ->with('hospitalization_session', $hospitalization_session)
                 ->with('hospitalization_date_session', $hospitalization_date_session)
                 ->with('referrals_session', $referrals_session)
+                ->with('referrals_is_done_session', $referrals_is_done_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
                 ->with('medication_name_from_lookup_session', $medication_name_from_lookup_session)

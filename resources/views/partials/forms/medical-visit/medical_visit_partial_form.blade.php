@@ -493,8 +493,20 @@
                                 </div>
                                 <div class="col-md-6">
                                     <select name="is_done_id[]">
-                                        <option value="0" selected>@lang($p."not_done")</option>
-                                        <option value="1">@lang($p."done")</option>
+                                        <?php
+                                            $selected0 = "selected";
+                                            $selected1 = "";
+                                        ?>
+                                        @if(!empty($referrals_is_done_session[$i]))
+                                            @if($referrals_is_done_session[$i] == "1")
+                                                <?php
+                                                    $selected0 = "";
+                                                    $selected1 = "selected";
+                                                ?>
+                                            @endif
+                                        @endif
+                                        <option value="0" {{ $selected0 }}>@lang($p."not_done")</option>
+                                        <option value="1" {{ $selected1 }}>@lang($p."done")</option>
                                     </select>
                                     {{-- add --}}
                                     <a class="color-green add-ref" href="javascript:void(0)">
