@@ -231,8 +231,19 @@
                                     <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_visits_list[$i]['medical_visit_date']) }}</td>
                                     @endif
                                     <td>
-                                        @if()
-
+                                        @if(!empty($referrals[$i]))
+                                        <ol>
+                                            @foreach($referrals[$i] as $referral)
+                                            <li>
+                                                {{ $referral->referrals }}
+                                                @if($referral->is_done_id == 0)
+                                                <span class="make-bold color-red">(@lang($p."not_done"))</span>
+                                                @else
+                                                <span class="make-bold">(@lang($p."done"))</span>
+                                                @endif
+                                            </li>
+                                            @endforeach
+                                        </ol>
                                         @endif
                                     </td>
                                     <td>
