@@ -150,6 +150,7 @@ class UploadFileService{
         $singleRow->working_legally = $conversionForFile->getLegalWorkId($singleRow->working_legally);
         $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
         $singleRow->nationality_country = $conversionForFile->getNationalityCountry($singleRow->nationality_country);
+        $singleRow->country_abandon_reason = $conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
         $singleRow->work_title = $conversionForFile->getWorkTitleId($singleRow->work_title);
         $tmpdate = \Carbon\Carbon::now();
         return array(

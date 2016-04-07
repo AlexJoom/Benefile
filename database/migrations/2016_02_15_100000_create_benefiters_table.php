@@ -70,7 +70,7 @@ class CreateBenefitersTable extends Migration
             $table->foreign('marital_status_id')->references('id')->on('marital_status_lookup');
             $table->integer('education_id')->unsigned()->nullable();
             $table->foreign('education_id')->references('id')->on('education_lookup');
-            $table->integer('country_abandon_reason_id')->unsigned();
+            $table->integer('country_abandon_reason_id')->unsigned()->nullable();
             $table->foreign('country_abandon_reason_id')->references('id')->on('country_abandon_reasons_lookup');
             // Lookup table for work field.
             $table->integer('work_title_id')->unsigned()->nullable();
