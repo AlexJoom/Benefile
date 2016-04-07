@@ -780,7 +780,7 @@ class RecordsController extends Controller
     public function getLegalFolder($id){
         $legalFolder = $this->legalFolderService->findLegalFolderFromBenefiterId($id);
         $asylumRequest = null;
-        $noLegalStatus = null;
+        $legalStatus = null;
         $lawyerActions = null;
         $successMsg = session()->get('success', function() { return null; });
         session()->forget('success');
