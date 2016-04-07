@@ -158,6 +158,26 @@
                                 {!! Form::radio('legal_folder_status', 2, $legal_folder_status[1], array('class' => 'make-inline', 'id' => 'no-legal')) !!}
                                 {!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}
                             </div>
+                            {{--<div class="col-md-3 make-inline">--}}
+                                {{--{!! Form::radio('legal_folder_status', 3, $legal_folder_status[2], array('class' => 'make-inline', 'id' => 'no-legal')) !!}--}}
+                                {{--{!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 make-inline">--}}
+                                {{--{!! Form::radio('legal_folder_status', 4, $legal_folder_status[3], array('class' => 'make-inline', 'id' => 'no-legal')) !!}--}}
+                                {{--{!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 make-inline">--}}
+                                {{--{!! Form::radio('legal_folder_status', 5, $legal_folder_status[4], array('class' => 'make-inline', 'id' => 'no-legal')) !!}--}}
+                                {{--{!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 make-inline">--}}
+                                {{--{!! Form::radio('legal_folder_status', 6, $legal_folder_status[5], array('class' => 'make-inline', 'id' => 'no-legal')) !!}--}}
+                                {{--{!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 make-inline">--}}
+                                {{--{!! Form::radio('legal_folder_status', 7, $legal_folder_status[6], array('class' => 'make-inline', 'id' => 'no-legal')) !!}--}}
+                                {{--{!! Form::label('no-legal', Lang::get('legal_folder_form.no_legal'), array('class' => 'radio-value')) !!}--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
@@ -232,9 +252,9 @@
                                     $result[$i] = false;
                                 }
                                 $result[0] = true;
-                                if(isset($no_legal_status) and $no_legal_status != null){
-                                    $action[$no_legal_status->action_id - 1] = true;
-                                    $result[$no_legal_status->result_id - 1] = true;
+                                if(isset($legal_status) and $legal_status != null){
+                                    $action[$legal_status->action_id - 1] = true;
+                                    $result[$legal_status->result_id - 1] = true;
                                 }
                             ?>
                             <div class="row">
