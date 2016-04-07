@@ -134,10 +134,10 @@ class UploadFileService{
             'is_benefiter_working' => $singleRow->is_benefiter_working,
             'work_title_id' => $singleRow->work_title,
             'working_legally' => $singleRow->working_legally,
-            'country_abandon_reason' => $singleRow->country_abandon_reason,
+            'country_abandon_reason_id' => $singleRow->country_abandon_reason,
             'travel_route' => $singleRow->travel_route,
             'travel_duration' => $singleRow->travel_duration,
-            'detention_duration' => $singleRow->detention_duration,
+            'detention_date' => $datesHelper->makeDBFriendlyDate($singleRow->detention_duration),
             'social_history' => $singleRow->social_history,
             'document_manager_id' => \Auth::user()->id,
             'created_at' => $tmpdate,
@@ -183,6 +183,7 @@ class UploadFileService{
         $datesHelper = new DatesHelper();
         $referralDb = array('description' => $description,
                             'referral_date' => $datesHelper->makeDBFriendlyDate($referral_date),
+                            'user_id' => \Auth::user()->id,
                             'benefiter_id' => $benefiter_id,
                             'referral_lookup_id' => $referral_type_id);
         return $referralDb;
