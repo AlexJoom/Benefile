@@ -175,13 +175,13 @@ class BenefiterMedicalFolderService
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
 
-        $newMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_lookup($request);
+        $newMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_to_lookup($request);
         $newMedicalVisit->medical_incident_id = $request['medical_incident_id'];
         $newMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
-    private function add_dynamically_medical_locations_lookup($request){
+    private function add_dynamically_medical_locations_to_lookup($request){
         if(!is_int($request['medical_location_id'] && !empty($request['new_medical_location']))){
             // add the input value to medical locations table and return the table id
             $new_medical_location = new medical_location_lookup();
@@ -529,7 +529,7 @@ class BenefiterMedicalFolderService
 
         $updateddMedicalVisit->benefiter_id = $request['benefiter_id'];
         $updateddMedicalVisit->doctor_id = $request['doctor_id'];
-        $updateddMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_lookup($request);
+        $updateddMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_to_lookup($request);
         $updateddMedicalVisit->medical_incident_id = $request['medical_incident_id'];
         $updateddMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $updateddMedicalVisit->save();
