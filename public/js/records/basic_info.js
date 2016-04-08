@@ -16,6 +16,26 @@ $(document).ready(function(){
         $(".delete-occurrence-form").attr("action", $(".delete-occurrence-path").attr("value") + "/" + $(this).attr("name"));
     });
 
+    // AJAX OCCURRENCES SAVE & UPDATE
+    // POST NEW
+
+    $('#new-occurrence-submit').on('click',function(){
+        var occurrences = [];
+        $.ajax({
+            url: $('body').attr('data-url') + "/benefiter/"+ $(this).attr('data-benefiter-id') +"/new-occurrence-save",
+            data: {
+                    occurrence_date: $('#occurrence_date').val(),
+                    occurrences_comments: $('#occurrences_comments').val(),
+                    benefiter_id: $('#benefiter_id').val()
+                },
+            success: function (response) {
+            }
+        }).done(function() {
+        });
+    });
+
+
+
     // at startup check if "yes" is checked and then display the working legally div
     if ($("#show_work_legally:checked").val()){
         $("#working_legally_div").show();

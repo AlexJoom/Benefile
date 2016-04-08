@@ -464,6 +464,15 @@ class BasicInfoService{
     }
 
 
+    // ------------------------------------------------------------------ //
+    //----------- benefter occurrences table (OCCURRENCES) ---------------//
+    public function saveNewOccurrence($request){
+        $occurrence_date = $request['occurrence_date'];
+        $occurrences_comments = $request['occurrences_comments'];
+        $user_who_added_occurrence = Auth::user()->id;
+        $benefiter_id = $request['benefiter_id'];
+    }
+
     /*
      * public function deleteBasicInfoReferral($id, $referral_id){
      *     BenefiterReferrals::where('id', '=', $referral_id)->delete();
