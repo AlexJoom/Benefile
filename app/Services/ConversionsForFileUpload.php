@@ -11,6 +11,11 @@ class ConversionsForFileUpload{
     // get id from gender name
     public function getGenderId($genderFromFile){
         $genderFromFile = $this->greekStringConversion->grstrtoupper($genderFromFile);
+        if($genderFromFile == \Lang::get('gender_monograms.w') or $genderFromFile == \Lang::get('gender_monograms.f')){
+            $genderFromFile = $this->greekStringConversion->grstrtoupper(\Lang::get('basic_info_form.female'));
+        } else if($genderFromFile == \Lang::get('gender_monograms.m')){
+            $genderFromFile = $this->greekStringConversion->grstrtoupper(\Lang::get('basic_info_form.male'));
+        }
         $genders = \DB::table('genders_lookup')->get();
         // change the gender name to gender id
         foreach($genders as $gender){
