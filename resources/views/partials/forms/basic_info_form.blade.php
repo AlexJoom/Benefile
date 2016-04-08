@@ -448,7 +448,7 @@
                                         @if($benefiter_language->language_id == $language->id)
                                             <?php $selected = "selected"; ?>
                                         @endif
-                                        <option value="{{ $language->id }}" {{ $selected }}>@lang($t.$language->description)</option>
+                                        <option value="{{ $language->id }}" {{ $selected }}>{{ $language->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -486,7 +486,7 @@
                                                   $first = false;
                                             ?>
                                         @endif
-                                        <option value="{{ $language->id }}" {{ $selected }}>@lang($t.$language->description)</option>
+                                        <option value="{{ $language->id }}" {{ $selected }}>{{ $language->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -1385,7 +1385,7 @@
                                         @if($benefiter_language->language_id == $language->id)
                                             <?php $selected = "selected"; ?>
                                         @endif
-                                        <option value="{{ $language->id }}" {{ $selected }}>@lang($t.$language->description)</option>
+                                        <option value="{{ $language->id }}" {{ $selected }}>{{ $language->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -1425,7 +1425,7 @@
                                                   $first = false;
                                             ?>
                                         @endif
-                                        <option value="{{ $language->id }}" {{ $selected }}>@lang($t.$language->description)</option>
+                                        <option value="{{ $language->id }}" {{ $selected }}>{{ $language->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
