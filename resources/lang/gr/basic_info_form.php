@@ -2,6 +2,7 @@
 
     return array(
         'new_occurrence' => 'Νέο Συμβάν',
+        'no_occurrences_found' => "Δεν υπάρχουν διαθέσιμα συμβάντα γι' αυτόν τον ωφελούμενο" ,
         'occurrence_history' => 'Ιστορικό Συμβάντων',
         'add_new_occurrence' => 'Νέο Συμβάν',
         'created_by' => 'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ:',
