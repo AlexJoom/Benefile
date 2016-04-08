@@ -44,13 +44,13 @@ class UploadFileService{
             'number_of_children',
             'relatives_residence',
             'legal_status',
-            'legal_status_details',             // ??? not shown on excel
-            'legal_status_exp_date',            // ??? not shown on excel
+//            'legal_status_details',             // ??? not shown on excel
+//            'legal_status_exp_date',            // ??? not shown on excel
             'education',
             'language',
             'language_level',
-            'other_language',                   // ??? not shown on excel
-            'language_interpreter_needed',      // ??? not shown on excel
+//            'other_language',                   // ??? not shown on excel
+//            'language_interpreter_needed',      // ??? not shown on excel
             'is_benefiter_working',
             'work_title',
             'working_legally',
@@ -59,23 +59,23 @@ class UploadFileService{
             'travel_duration',
             'detention_duration',
 
-            'has_social_reference',             // ??? not shown on excel
-            'social_reference_actions',         // ??? not shown on excel
-            'social_reference_date',            // ??? not shown on excel
-
-            'has_medical_reference',            // ??? not shown on excel
-            'medical_reference_actions',        // ??? not shown on excel
-            'medical_reference_date',           // ??? not shown on excel
-
-            'has_legal_reference',              // ??? not shown on excel
-            'legal_reference_actions',          // ??? not shown on excel
-            'legal_reference_date',             // ??? not shown on excel
-
-            'has_educational_reference',        // ??? not shown on excel
-            'educational_reference_actions',    // ??? not shown on excel
-            'educational_reference_date',       // ??? not shown on excel
-
-            'social_history'                    // ??? not shown on excel
+//            'has_social_reference',             // ??? not shown on excel
+//            'social_reference_actions',         // ??? not shown on excel
+//            'social_reference_date',            // ??? not shown on excel
+//
+//            'has_medical_reference',            // ??? not shown on excel
+//            'medical_reference_actions',        // ??? not shown on excel
+//            'medical_reference_date',           // ??? not shown on excel
+//
+//            'has_legal_reference',              // ??? not shown on excel
+//            'legal_reference_actions',          // ??? not shown on excel
+//            'legal_reference_date',             // ??? not shown on excel
+//
+//            'has_educational_reference',        // ??? not shown on excel
+//            'educational_reference_actions',    // ??? not shown on excel
+//            'educational_reference_date',       // ??? not shown on excel
+//
+//            'social_history'                    // ??? not shown on excel
         ];
         // get max id in File_import_schema so that it won't try to insert benefiters already inserted via file
         $maxIdInFileImportSchema = File_import_schema::max('id');
@@ -89,7 +89,9 @@ class UploadFileService{
             $colValues = str_getcsv( $csvFile[$i]);
             $file_import = new File_import_schema();
             for($j=1; $j<count($colValues); $j++){
-                $file_import->$file_import_Fields[$j] = $colValues[$j];
+                if($j != count($colValues) - 1) {
+                    $file_import->$file_import_Fields[$j] = $colValues[$j];
+                }
             }
             try {
                 $file_import->save();
@@ -126,7 +128,7 @@ class UploadFileService{
                     $this->socialService->saveSocialFolderToDB(array('comments' => ''), $imported_benefiter_id);
                     $this->insertLanguagesToDBFromFile($singleRow->language, $singleRow->language_level, $imported_benefiter_id);
                     $this->insertLegalStatusToDBFromFile($singleRow->legal_status, $singleRow->legal_status_details, $singleRow->legal_status_exp_date, $imported_benefiter_id);
-                    $this->importReferrals($singleRow, $imported_benefiter_id);
+//                    $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
                     array_push($this->__errors, \Lang::get('upload_file_errors.insert_benefiter_error') . $singleRow->folder_number);
                 }
@@ -147,7 +149,7 @@ class UploadFileService{
         $singleRow->education = $conversionForFile->getEducationId($singleRow->education);
         $singleRow->language_interpreter_needed = $conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
         $singleRow->is_benefiter_working = $conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
-        $singleRow->working_legally = $conversionForFile->getLegalWorkId($singleRow->working_legally);
+        $singleRow->working_legally = $conversionForFile->getYesOrNoId($singleRow->working_legally);
         $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
         $singleRow->nationality_country = $conversionForFile->getNationalityCountry($singleRow->nationality_country);
         $singleRow->country_abandon_reason = $conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
@@ -170,7 +172,7 @@ class UploadFileService{
             'number_of_children' => $singleRow->number_of_children,
             'relatives_residence' => $singleRow->relatives_residence,
             'education_id' => $singleRow->education,
-            'language_interpreter_needed' => $singleRow->language_interpreter_needed,
+            'language_interpreter_needed' => null, //$singleRow->language_interpreter_needed,
             'is_benefiter_working' => $singleRow->is_benefiter_working,
             'work_title_id' => $singleRow->work_title,
             'working_legally' => $singleRow->working_legally,
@@ -178,7 +180,7 @@ class UploadFileService{
             'travel_route' => $singleRow->travel_route,
             'travel_duration' => $singleRow->travel_duration,
             'detention_date' => $datesHelper->makeDBFriendlyDate($singleRow->detention_duration),
-            'social_history' => $singleRow->social_history,
+            'social_history' => '', //$singleRow->social_history,
             'document_manager_id' => \Auth::user()->id,
             'created_at' => $tmpdate,
         );
@@ -410,8 +412,8 @@ class UploadFileService{
             $legal_exp_date = $datesHelper->makeDBFriendlyDate($legal_exp_date);
             return array(
                 'legal_lookup_id' => $legal_id,
-                'description' => $legal_description,
-                'exp_date' => $legal_exp_date,
+                'description' => '', //$legal_description,
+                'exp_date' => null, //$legal_exp_date,
                 'benefiter_id' => $id,
             );
         } else { // return null if legal status was not found

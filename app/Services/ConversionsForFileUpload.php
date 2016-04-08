@@ -114,20 +114,21 @@ class ConversionsForFileUpload{
         return null;
     }
 
+    /** NOT NEEDED WITH THE NEW .CSV FILE */
     // get legal work id
-    public function getLegalWorkId($legalWorkFromFile){
-        $legalWorkFromFile = $this->greekStringConversion->grstrtoupper($legalWorkFromFile);
-        $legallyWorking = \DB::table('working_legally_lookup')->get();
-        // change from legal work name, to legal work id
-        foreach($legallyWorking as $legalWork){
-            $legalWork->description = $this->greekStringConversion->grstrtoupper($legalWork->description);
-            if(strcasecmp($legalWorkFromFile, $legalWork->description) == 0){
-                return $legalWork->id;
-            }
-        }
-        // no legal work found
-        return null;
-    }
+//    public function getLegalWorkId($legalWorkFromFile){
+//        $legalWorkFromFile = $this->greekStringConversion->grstrtoupper($legalWorkFromFile);
+//        $legallyWorking = \DB::table('working_legally_lookup')->get();
+//        // change from legal work name, to legal work id
+//        foreach($legallyWorking as $legalWork){
+//            $legalWork->description = $this->greekStringConversion->grstrtoupper($legalWork->description);
+//            if(strcasecmp($legalWorkFromFile, $legalWork->description) == 0){
+//                return $legalWork->id;
+//            }
+//        }
+//        // no legal work found
+//        return null;
+//    }
 
     // get work title id
     public function getWorkTitleId($workTitleFromFile){
