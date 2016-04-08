@@ -63,13 +63,15 @@ class RecordsController extends Controller
 
     // get basic info view
     public function getBasicInfo($id){
+        // get all occurences from DB
+        $occurrences = $this->basicInfoService->getAllOccurrencesByBenefiter($id);
         // brings the referrals options array from db to view
+
         $basic_info_referral = $this->basicInfoService->get_basic_info_referrals_from_lookup();
-        $basic_info_referral_attributes = $this->basicInfoService->get_basic_info_referral();
         $countryAbandonReasons = $this->basicInfoService->getAllCountryAbandonReasons();
         $basic_info_referral_array = $this->medicalVisit->reindex_array($basic_info_referral);
         // brings all referrals saved to db for this benefiter id
-        $benefiter_referrals_list = $this->basicInfoService->get_referrals_for_a_benefiter($id);
+        $benefiter_referrals_list = $this->basicInfoService->get_basic_info_referral_by_id($id);
         $workTitle = null;
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
@@ -103,6 +105,7 @@ class RecordsController extends Controller
         }
         return view('benefiter.basic_info')->with("languages", $languages)
                                            ->with("languageLevels", $languageLevels)
+                                           ->with("occurrences", $occurrences)
                                            ->with("benefiter", $benefiter)
                                            ->with("legalStatuses", $legal_statuses)
                                            ->with("benefiter_languages", $benefiterLanguagesAndLevels)
@@ -113,7 +116,7 @@ class RecordsController extends Controller
                                            ->with('countryAbandonReasons', $countryAbandonReasons);
     }
 
-    // post from basic info form
+    //------ post from basic info form -------------------------------//
     public function postBasicInfo(Request $request, $id){
         $validator = $this->basicInfoService->basicInfoValidation($request->all(), $id);
         if($validator->fails()){
@@ -172,20 +175,26 @@ class RecordsController extends Controller
         }
     }
 
+    // save Occurrences to DB with AJAX
     public function saveOccurrencesBasicInfo(Request $request, $id){
-        // TODO
-        // Add service that takes the requests and saves them in DB, with the benefiter->id
-
-        $occurrence_date = $request['occurrence_date'];
-        $occurrences_comments = $request['occurrences_comments'];
-        $user_who_added_occurrence = Auth::user();
-
+        // saves in DB, with the benefiter->id
+        $this->basicInfoService->saveNewOccurrence($request);
         // Then return from the DB all occurrences history and return it to the view
-        return redirect('benefiter/'.$id.'/basic-info')
-            ->with('occurrence_date', $occurrence_date)
-            ->with('user_who_added_occurrence', $user_who_added_occurrence)
-            ->with('occurrences_comments', $occurrences_comments);
+        return redirect('benefiter/'.$id.'/basic-info');
     }
+
+    // EDIT OCCURRENCE
+    public function editOccurrencesBasicInfo(Request $request, $id, $occurrence_id){
+        $this->basicInfoService->findOccurrence_by_id($request, $occurrence_id);
+        return redirect('benefiter/'.$id.'/basic-info');
+    }
+
+    // DELETE OCCURRENCE
+    public function deleteOccurrencesBasicInfo($id, $occurrence_id){
+        $this->basicInfoService->deleteOccurrence_by_id($occurrence_id);
+        return redirect('benefiter/'.$id.'/basic-info');
+    }
+
 
     //------ POST BASIC INFO REFERRALS -------------------------------//
     public function postBasicInfoReferrals(Request $request){

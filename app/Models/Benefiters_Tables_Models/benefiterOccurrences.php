@@ -13,5 +13,9 @@ class benefiterOccurrences extends Model{
         'occurrence_date',
         'benefiter_id',
         'user_id'];
+
+    public function user(){
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }
 

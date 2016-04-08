@@ -123,10 +123,161 @@
             </div>
         </div>
 
+        {{--2. Συμβάν --}}
+        <div class="form-section">
+            {{--NEW OCCURRENCE BUTTON --}}
+            @if($benefiter->id != -1)
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" id="add-new-occurrence" class="float-right margin-30 session-button lighter-green-background">@lang($p."add_new_occurrence")</button>
+                    </div>
+                </div>
+            @endif
+            <div class="underline-header row">
+                <h1 class="record-section-header padding-left-right-15 float-left">2. @lang($p."occurrence_history")</h1>
+            </div>
+
+            {{--Νέο Συμβάν --}}
+            <div class="new-occurrence dynamic-form-section">
+                <h1 class="record-section-header padding-left-right-15">@lang($p."new_occurrence")</h1>
+                {{--{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/new-occurrence-save')) !!}--}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                    {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                    {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                </div>
+                                <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                    {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
+                                    {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                </div>
+                                {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                    {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
+                                    {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="align-text-center">
+                        <button type="button" class="new-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
+                    </div>
+                </div>
+            </div>
+
+             {{--Ιστορικό Συμβάντων --}}
+            @if(count($occurrences)!=0)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="div-table-titles row">
+                            <div class="col-md-12 bold">
+                                <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
+                                <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
+                                <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class=" no-bottom-border bold">
+                    <div class="col-md-12 social-info">
+                        <p>@lang($p."occurrence_info")</p>
+                    </div>
+                </div>
+            @endif
+
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach($occurrences as $occurrence)
+                        <?php $occurrence_editor = $occurrence['user']['name'] .' '. $occurrence['user']['lastname']; ?>
+                         {{--EACH SAVED SESSION INFO --}}
+                        <div class="row div-table-row div-hr padding-top-bottom-5 line-height-50">
+                            <div class="col-md-12">
+                                <div class="col-xs-2 text-align-center">{{ $occurrence_editor }}</div>
+                                <div class="col-xs-2 text-align-center">{{ $occurrence['occurrence_date'] }}</div>
+                                <div class="col-xs-4 text-align-center">{{ $occurrence['description'] }}</div>
+                                <div class="col-xs-2">
+                                    {{-- EDIT --}}
+                                    <button type="button" class="session-button edit-occurrence medical_visit_from_history btn btn-info btn-lg">@lang($p."edit")</button>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{-- DELETE --}}
+                                    <button type="button" class="session-button delete-occurrence btn btn-warning btn-lg" data-benefiter-id="{{$benefiter->id}}" data-occurrence-id="{{$occurrence->id}}">@lang($p."delete")</button>
+                                </div>
+                            </div>
+                        </div>
+
+                         {{--EDIT EACH SESSION --}}
+                        <div class="edit-occurrence-div dynamic-form-section">
+                            <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group padding-left-right-15 float-left col-xs-2">
+
+                                                {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                                {!! Form::text('user_name', $occurrence_editor , array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                            </div>
+                                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                                {!! Form::label('edited_occurrence_date_'.$occurrence->id, Lang::get($p.'occurrence_date')) !!}
+                                                {!! Form::text('edited_occurrence_date_'.$occurrence->id, $occurrence['occurrence_date'], array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                            </div>
+
+                                            <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                                {!! Form::label('edited_occurrences_comments_'.$occurrence->id, Lang::get($p.'occurrences_comments')) !!}
+                                                {!! Form::textarea('edited_occurrences_comments_'.$occurrence->id, $occurrence['description'], array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                            </div>
+                                            {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="align-text-center">
+                                    <button type="button" class="edit-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" data-occurrence-id="{{$occurrence->id}}">@lang($p.'save_edited_occurrence')</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        {{--</div>--}}
+
+        {{-- DELETE SELECTED OCCURENCE - MODAL --}}
+        <div class="modal fade delete-occurrence-modal" aria-hidden="true" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    {{--<form class="delete-occurrence-form" action="" method="get">--}}
+                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                        {{--<input type="hidden" class="delete-occurrence-path" name="path" value="{{ url("benefiter/".$benefiter->id."/delete-occurrence/".$occurrence->id) }}">--}}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">@lang($p."delete_occurrence_modal_title")</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-3 col-md-offset-9">
+                                <button type="button" data-benefiter-id="" data-occurrence-id="" class="simple-button delete-occurrence-confirm-button">@lang($p."done")</button>
+                            </div>
+                        </div>
+                    {{--</form>--}}
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
         {{-- Οικογενειακή Κατάσταση --}}
         <div class="family-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">2. @lang($p."family_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">3. @lang($p."family_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -201,7 +352,7 @@
         {{-- Νομικό Καθεστώς --}}
         <div class="legal-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">3. @lang($p."legal_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">4. @lang($p."legal_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -363,7 +514,7 @@
         {{-- Εκπαίδευση --}}
         <div class="education-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">4. @lang($p."education_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">5. @lang($p."education_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -423,7 +574,7 @@
         {{-- Γλώσσες Eπικοινωνίας --}}
         <div class="languages-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">5. @lang($p."languages_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">6. @lang($p."languages_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -532,7 +683,7 @@
         {{-- Εργασία --}}
         <div class="work-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">6. @lang($p."work_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">7. @lang($p."work_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -588,7 +739,7 @@
         {{-- Λόγος εγκατάλειψης χώρας --}}
         <div class="country-abandon-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">7. @lang($p."country_abandon_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">8. @lang($p."country_abandon_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -617,7 +768,7 @@
         {{-- Ταξίδι --}}
         <div class="travel-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">8. @lang($p."voyage")</h1>
+                <h1 class="record-section-header padding-left-right-15">9. @lang($p."voyage")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -640,7 +791,7 @@
         {{-- Ημερομηνία Κράτησης --}}
         <div class="detention-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">9. @lang($p."detention_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">10. @lang($p."detention_info")</h1>
             </div>
             <div class="row">
                 <div class="col-xs-3">
@@ -667,7 +818,7 @@
         {{-- Κοινωνικό Ιστορικό --}}
         <div class="social-background-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">10. @lang($p."social_background_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">11. @lang($p."social_background_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -688,7 +839,7 @@
     {!! Form::close() !!}
 
 
-        {{-- BASIC INFO REFERRALS --}}
+    {{-- BASIC INFO REFERRALS --}}
         @if($benefiter->id == -1)
             <div class="form-section no-bottom-border">
                 <div class="col-md-12 referral-info">
@@ -699,7 +850,7 @@
             {{-- Ιστορικό Παραπομπών --}}
             <div class="referrals-list form-section no-bottom-border">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
+                    <h1 class="record-section-header padding-left-right-15">12. @lang($p."referrals")</h1>
                 </div>
                 {{-- OLDER REFERRALS LIST --}}
                 <div class="row">
@@ -733,7 +884,7 @@
                                                 <td>{{ $referral['referralType']['description'] }}</td>
                                                 <td>{{ $referral['description'] }}</td>
                                                 <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
-                                                <td>{{ $referral['name'] . ' ' . $referral['lastname'] }}</td>
+                                                <td>{{ $referral['user']['name'] . ' ' . $referral['user']['lastname'] }}</td>
                                                 <td>
                                                     <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                                 </td>
@@ -761,7 +912,7 @@
             {{-- Καταχώρηση Νέας Παραπομπής --}}
             <div class="add-new-referral form-section no-bottom-border">
                  <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">12. @lang($p."new_referral")</h1>
+                    <h1 class="record-section-header padding-left-right-15">13. @lang($p."new_referral")</h1>
                 </div>
                 {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
                     {!! Form::hidden('benefiter_id', $benefiter->id) !!}
@@ -904,20 +1055,21 @@
             </div>
         </div>
 
-        {{-- 2. Συμβάν --}}
-            {{--@if(true)--}}
+        {{--2. Συμβάν --}}
         <div class="form-section">
-            {{-- NEW OCCURRENCE BUTTON --}}
-            <div class="row">
-                <div class="col-xs-12">
-                    <button type="button" id="add-new-occurrence" class="float-right margin-30 session-button lighter-green-background">@lang($p."add_new_occurrence")</button>
+             {{--NEW OCCURRENCE BUTTON --}}
+            @if($benefiter->id != -1)
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" id="add-new-occurrence" class="float-right margin-30 session-button lighter-green-background">@lang($p."add_new_occurrence")</button>
+                    </div>
                 </div>
-            </div>
+            @endif
             <div class="underline-header row">
                 <h1 class="record-section-header padding-left-right-15 float-left">2. @lang($p."occurrence_history")</h1>
             </div>
 
-            {{-- Νέο Συμβάν --}}
+            {{--Νέο Συμβάν --}}
             <div class="new-occurrence dynamic-form-section">
                 <h1 class="record-section-header padding-left-right-15">@lang($p."new_occurrence")</h1>
                 {{--{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/new-occurrence-save')) !!}--}}
@@ -946,118 +1098,118 @@
                         </div>
                     </div>
                     <div class="align-text-center">
-                        <button id="new-occurrence-submit" type="button" class="submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
+                        <button type="button" class="new-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
                     </div>
                 </div>
             </div>
 
-            {{-- Ιστορικό Συμβάντων --}}
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="div-table-titles row">
-                        <div class="col-md-12">
-                            <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
-                            <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
-                            <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
-                            <div class="col-xs-2"></div>
-                            <div class="col-xs-2"></div>
+             {{--Ιστορικό Συμβάντων --}}
+            @if(count($occurrences)!=0)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="div-table-titles row">
+                            <div class="col-md-12 bold">
+                                <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
+                                <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
+                                <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class=" no-bottom-border bold">
+                    <div class="col-md-12 social-info">
+                        <p>@lang($p."occurrence_info")</p>
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-12">
-                    {{--@if(!isset($benefiter_sessions) or $benefiter_sessions == null or $benefiter_sessions->count() == 0)--}}
-                    {{--<div class="social-info">--}}
-                        {{--<p>@lang($p."sessions_not_found")</p>--}}
-                    {{--</div>--}}
-                    {{--@else--}}
-
-                    {{--@foreach($benefiter_sessions as $benefiter_session)--}}
-
-                    {{-- EACH SAVED SESSION INFO --}}
-                    <div class="row div-table-row div-hr">
-                        <div class="col-md-12">
-                            <div class="col-xs-2 text-align-center">apo pion</div>
-                            <div class="col-xs-2 text-align-center">HM</div>
-                            <div class="col-xs-4 text-align-center">occurrences_comments</div>
-                            <div class="col-xs-2">
-                                <button type="button" class="session-button edit-occurrence medical_visit_from_history btn btn-info btn-lg">@lang($p."edit")</button>
-                            </div>
-                            <div class="col-xs-2">
-                                <button type="button" class="session-button delete-session btn btn-warning btn-lg">@lang($p."delete")</button>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- EDIT EACH SESSION --}}
-                    <div class="edit-occurrence-div dynamic-form-section">
-                        <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
-                        <div class="row">
+                    @foreach($occurrences as $occurrence)
+                        <?php $occurrence_editor = $occurrence['user']['name'] .' '. $occurrence['user']['lastname']; ?>
+                         {{--EACH SAVED SESSION INFO --}}
+                        <div class="row div-table-row div-hr padding-top-bottom-5 line-height-50">
                             <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group padding-left-right-15 float-left col-xs-2">
-                                            {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
-                                            {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
-                                        </div>
-                                        <div class="form-group padding-left-right-15 float-left col-md-2">
-                                            {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
-                                            {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                                            {{-- $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date) --}}
-                                        </div>
+                                <div class="col-xs-2 text-align-center">{{ $occurrence_editor }}</div>
+                                <div class="col-xs-2 text-align-center">{{ $occurrence['occurrence_date'] }}</div>
+                                <div class="col-xs-4 text-align-center">{{ $occurrence['description'] }}</div>
+                                <div class="col-xs-2">
+                                    {{-- EDIT --}}
+                                    <button type="button" class="session-button edit-occurrence medical_visit_from_history btn btn-info btn-lg">@lang($p."edit")</button>
+                                </div>
+                                <div class="col-xs-2">
+                                    {{-- DELETE --}}
+                                    <button type="button" class="session-button delete-occurrence btn btn-warning btn-lg" data-benefiter-id="{{$benefiter->id}}" data-occurrence-id="{{$occurrence->id}}">@lang($p."delete")</button>
+                                </div>
+                            </div>
+                        </div>
 
-                                        <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                                            {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
-                                            {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                         {{--EDIT EACH SESSION --}}
+                        <div class="edit-occurrence-div dynamic-form-section">
+                            <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group padding-left-right-15 float-left col-xs-2">
+
+                                                {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                                {!! Form::text('user_name', $occurrence_editor , array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                            </div>
+                                            <div class="form-group padding-left-right-15 float-left col-md-2">
+                                                {!! Form::label('edited_occurrence_date_'.$occurrence->id, Lang::get($p.'occurrence_date')) !!}
+                                                {!! Form::text('edited_occurrence_date_'.$occurrence->id, $occurrence['occurrence_date'], array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                            </div>
+
+                                            <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                                {!! Form::label('edited_occurrences_comments_'.$occurrence->id, Lang::get($p.'occurrences_comments')) !!}
+                                                {!! Form::textarea('edited_occurrences_comments_'.$occurrence->id, $occurrence['description'], array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                            </div>
+                                            {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="align-text-center">
-                                <button type="button" class="submit-button save-session" data-url="benefiter/{{$benefiter->id}}/update-occurrence">@lang($p.'save_edited_occurrence')</button>
+                                <div class="align-text-center">
+                                    <button type="button" class="edit-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" data-occurrence-id="{{$occurrence->id}}">@lang($p.'save_edited_occurrence')</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    {{--@endforeach--}}
-
-                    {{--@endif--}}
+                    @endforeach
                 </div>
             </div>
         </div>
-            {{--@else--}}
-        <div class=" no-bottom-border">
-                <div class="col-md-12 social-info">
-                    <p>@lang($p."occurrence_info")</p>
+
+            {{--</div>--}}
+
+        {{-- DELETE SELECTED OCCURENCE --}}
+        <div class="modal fade delete-occurrence-modal" aria-hidden="true" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    {{--<form class="delete-occurrence-form" action="" method="get">--}}
+                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                        {{--<input type="hidden" class="delete-occurrence-path" name="path" value="{{ url("benefiter/".$benefiter->id."/delete-occurrence/".$occurrence->id) }}">--}}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">@lang($p."delete_occurrence_modal_title")</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-3 col-md-offset-9">
+                                <button type="button" data-benefiter-id="" data-occurrence-id="" class="simple-button delete-occurrence-confirm-button">@lang($p."done")</button>
+                            </div>
+                        </div>
+                    {{--</form>--}}
                 </div>
             </div>
-            {{--@endif--}}
-            {{--</div>--}}
-            <!--delete occurrence confirmation modal-->
-        <div class="modal fade" id="delete-occurrence-modal" aria-hidden="true" role="dialog" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <form class="delete-occurrence-form" action="" method="get">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" class="delete-occurrence-path" name="path" value="{{ url("benefiter/".$benefiter->id."/occurrence-delete/") }}">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">@lang($p."delete_occurrence_modal_title")</h4>
-                            </div>
-                            <div class="modal-footer">
-                                <div class="col-md-3 col-md-offset-9">
-                                    <button type="submit" class="simple-button">@lang($p."done")</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div><!-- /.modal -->
+        </div><!-- /.modal -->
 
         {{-- Οικογενειακή Κατάσταση --}}
         <div class="family-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">2. @lang($p."family_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">3. @lang($p."family_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1132,7 +1284,7 @@
         {{-- Νομικό Καθεστώς --}}
         <div class="legal-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">3. @lang($p."legal_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">4. @lang($p."legal_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1294,7 +1446,7 @@
         {{-- Εκπαίδευση --}}
         <div class="education-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">4. @lang($p."education_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">5. @lang($p."education_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1360,7 +1512,7 @@
         {{-- Γλώσσες Eπικοινωνίας --}}
         <div class="languages-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">5. @lang($p."languages_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">6. @lang($p."languages_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1469,11 +1621,12 @@
                     </div>
                 </div>
             </div>
+            </div>
 
         {{-- Εργασία --}}
         <div class="work-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">6. @lang($p."work_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">7. @lang($p."work_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1529,7 +1682,7 @@
         {{-- Λόγος εγκατάλειψης χώρας --}}
         <div class="country-abandon-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">7. @lang($p."country_abandon_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">8. @lang($p."country_abandon_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1558,7 +1711,7 @@
         {{-- Ταξίδι --}}
         <div class="travel-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">8. @lang($p."voyage")</h1>
+                <h1 class="record-section-header padding-left-right-15">9. @lang($p."voyage")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1581,7 +1734,7 @@
         {{-- Ημερομηνία Κράτησης --}}
         <div class="detention-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">9. @lang($p."detention_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">10. @lang($p."detention_info")</h1>
             </div>
             <div class="row">
                 <div class="col-xs-3">
@@ -1608,7 +1761,7 @@
         {{-- Κοινωνικό Ιστορικό --}}
         <div class="social-background-info form-section no-bottom-border">
             <div class="underline-header">
-                <h1 class="record-section-header padding-left-right-15">10. @lang($p."social_background_info")</h1>
+                <h1 class="record-section-header padding-left-right-15">11. @lang($p."social_background_info")</h1>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -1645,7 +1798,7 @@
             {{-- Ιστορικό Παραπομπών --}}
             <div class="referrals-list form-section no-bottom-border">
                 <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">11. @lang($p."referrals")</h1>
+                    <h1 class="record-section-header padding-left-right-15">12. @lang($p."referrals")</h1>
                 </div>
                 {{-- OLDER REFERRALS LIST --}}
                 <div class="row">
@@ -1679,7 +1832,7 @@
                                                 <td>{{ $referral['referralType']['description'] }}</td>
                                                 <td>{{ $referral['description'] }}</td>
                                                 <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($referral['referral_date']) }}</td>
-                                                <td>{{ $referral['name'] . ' ' . $referral['lastname'] }}</td>
+                                                <td>{{ $referral['user']['name'] . ' ' . $referral['user']['lastname'] }}</td>
                                                 <td>
                                                     <button class="delete-session btn btn-warning btn-lg" name="{{ $referral->id }}">@lang($p."delete_referral")</button>
                                                 </td>
@@ -1707,7 +1860,7 @@
             {{-- Καταχώρηση Νέας Παραπομπής --}}
             <div class="add-new-referral form-section no-bottom-border">
                  <div class="underline-header">
-                    <h1 class="record-section-header padding-left-right-15">12. @lang($p."new_referral")</h1>
+                    <h1 class="record-section-header padding-left-right-15">13. @lang($p."new_referral")</h1>
                 </div>
                 {!! Form::model($benefiter, array('url' => 'benefiter/'.$benefiter->id.'/basic-info/referrals')) !!}
                     {!! Form::hidden('benefiter_id', $benefiter->id) !!}
@@ -1762,7 +1915,7 @@
     <div class="modal fade" id="delete-session-modal" aria-hidden="true" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form class="delete-session-form" action="" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                <form class="delete-session-form" action="" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     @if(!empty($referral))
                     <input type="hidden" class="delete-session-path" name="path" value="{{ url("benefiter/".$benefiter->id."/basic-info/referral-delete/".$referral->id) }}">
@@ -1780,4 +1933,6 @@
             </div>
         </div>
     </div><!-- /.modal -->
+
+
 </div>

@@ -1,7 +1,12 @@
 .form-section{
     border: 20px solid #e6f4f4;
 }
-
+.padding-top-bottom-5{
+    padding: 5px 0px;
+}
+.line-height-50{
+    line-height: 50px;
+}
 .color-red{
     color: red;
 }
@@ -395,6 +400,9 @@ a.btn.btn-default.font-weight-normal{
 #new_medical_location{
     width: 300px;
 }
+.margin-30 {
+    margin: 30px;
+}
 .session-button{
     border: none;
     margin-bottom: 15px;
@@ -403,13 +411,12 @@ a.btn.btn-default.font-weight-normal{
     font-size: 18px;
     font-weight: 700;
     padding: 10px 20px;
+    margin-bottom: 0px;
 }
 .lighter-green-background {
     background-color: #6ae0b4;
 }
-.margin-30 {
-    margin: 30px;
-}
+
 .float-right{
     float: right;
 }
