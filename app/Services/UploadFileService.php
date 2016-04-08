@@ -17,10 +17,12 @@ class UploadFileService{
     private $__legalStatuses = array();
     private $__errors = array();
     private $socialService;
+    private $conversionForFile;
 
     public function __construct(){
         $this->greekStringConversion = new GreekStringConversionHelper();
         $this->socialService = new SocialFolderService();
+        $this->conversionForFile = new ConversionsForFileUpload();
     }
 
     // inserts all values to DB
@@ -143,17 +145,16 @@ class UploadFileService{
     // selects and returns all the columns - values inserted from file that correspond to the benefiters DB table
     private function selectBenefitersColumnsAndValuesFromFileRow($singleRow){
         $datesHelper = new DatesHelper();
-        $conversionForFile = new ConversionsForFileUpload();
-        $singleRow->gender = $conversionForFile->getGenderId($singleRow->gender);
-        $singleRow->marital_status = $conversionForFile->getMaritalStatusId($singleRow->marital_status);
-        $singleRow->education = $conversionForFile->getEducationId($singleRow->education);
-        $singleRow->language_interpreter_needed = $conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
-        $singleRow->is_benefiter_working = $conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
-        $singleRow->working_legally = $conversionForFile->getYesOrNoId($singleRow->working_legally);
-        $singleRow->origin_country = $conversionForFile->getOriginCountry($singleRow->origin_country);
-        $singleRow->nationality_country = $conversionForFile->getNationalityCountry($singleRow->nationality_country);
-        $singleRow->country_abandon_reason = $conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
-        $singleRow->work_title = $conversionForFile->getWorkTitleId($singleRow->work_title);
+        $singleRow->gender = $this->conversionForFile->getGenderId($singleRow->gender);
+        $singleRow->marital_status = $this->conversionForFile->getMaritalStatusId($singleRow->marital_status);
+        $singleRow->education = $this->conversionForFile->getEducationId($singleRow->education);
+        $singleRow->language_interpreter_needed = $this->conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
+        $singleRow->is_benefiter_working = $this->conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
+        $singleRow->working_legally = $this->conversionForFile->getYesOrNoId($singleRow->working_legally);
+        $singleRow->origin_country = $this->conversionForFile->getOriginCountry($singleRow->origin_country);
+        $singleRow->nationality_country = $this->conversionForFile->getNationalityCountry($singleRow->nationality_country);
+        $singleRow->country_abandon_reason = $this->conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
+        $singleRow->work_title = $this->conversionForFile->getWorkTitleId($singleRow->work_title);
         $tmpdate = \Carbon\Carbon::now();
         return array(
             'folder_number' => $singleRow->folder_number,
@@ -253,7 +254,7 @@ class UploadFileService{
                 // Look-up in resources
                 // Normalize
                 // Add to __langNames
-                $this->__langNames[$language->id] = $this->greekStringConversion->grstrtoupper(\Lang::get('language_list.'.$language->description));
+                $this->__langNames[$language->id] = $this->greekStringConversion->grstrtoupper($language->name);
             }
         }
         // else
