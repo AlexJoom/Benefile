@@ -2,7 +2,7 @@
 
     return array(
         'folder_number_search'  =>  'Αριθμός Φακέλου...',
-        'folder_number' => 'Αρ.Φακ. ',
+        'folder_number' => 'Α/Φ ',
         'benefiters'  =>  'Ωφελούμενοι',
         'registration'  =>  'Εγγραφή',
         'new_registration'  =>  'Νέα εγγραφή',

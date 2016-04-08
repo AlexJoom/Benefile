@@ -385,7 +385,8 @@ class CreateBenefitersTable extends Migration
 
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('code');
+            $table->string('name');
             $table->timestamps();
         });
 
@@ -455,11 +456,11 @@ class CreateBenefitersTable extends Migration
         Schema::dropIfExists('legal_status_lookup');
         Schema::dropIfExists('benefiter_referrals');
         Schema::dropIfExists('benefiter_referrals_lookup');
+        Schema::dropIfExists('benefiter_occurrences');
         Schema::dropIfExists('benefiters');
         Schema::dropIfExists('icd10');
         Schema::dropIfExists('working_legally_lookup');
         Schema::dropIfExists('binary_lookup');
         Schema::dropIfExists('country_abandon_reasons_lookup');
-        Schema::dropIfExists('benefiter_occurrences');
     }
 }

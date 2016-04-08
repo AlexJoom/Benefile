@@ -47,16 +47,16 @@ class CreateFileImportSchemaTable extends Migration
 
             $table->string('legal_status');
 
-            $table->string('legal_status_details');
+//            $table->string('legal_status_details');
 
-            $table->string('legal_status_exp_date');
+//            $table->string('legal_status_exp_date');
 
             $table->string('education');
 
             $table->string('language');
             $table->string('language_level');
-            $table->string('other_language');
-            $table->string('language_interpreter_needed');
+//            $table->string('other_language');
+//            $table->string('language_interpreter_needed');
 
             $table->string('is_benefiter_working');
             $table->string('work_title');
@@ -71,23 +71,23 @@ class CreateFileImportSchemaTable extends Migration
 
             $table->string('detention_duration');
 
-            $table->string('has_social_reference');
-            $table->string('social_reference_actions');
-            $table->string('social_reference_date');
-
-            $table->string('has_medical_reference');
-            $table->string('medical_reference_actions');
-            $table->string('medical_reference_date');
-
-            $table->string('has_legal_reference');
-            $table->string('legal_reference_actions');
-            $table->string('legal_reference_date');
-
-            $table->string('has_educational_reference');
-            $table->string('educational_reference_actions');
-            $table->string('educational_reference_date');
-
-            $table->string('social_history');
+//            $table->string('has_social_reference');
+//            $table->string('social_reference_actions');
+//            $table->string('social_reference_date');
+//
+//            $table->string('has_medical_reference');
+//            $table->string('medical_reference_actions');
+//            $table->string('medical_reference_date');
+//
+//            $table->string('has_legal_reference');
+//            $table->string('legal_reference_actions');
+//            $table->string('legal_reference_date');
+//
+//            $table->string('has_educational_reference');
+//            $table->string('educational_reference_actions');
+//            $table->string('educational_reference_date');
+//
+//            $table->string('social_history');
 
             $table->timestamps();
 
