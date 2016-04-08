@@ -11,6 +11,7 @@ class ConversionsForFileUpload{
     // get id from gender name
     public function getGenderId($genderFromFile){
         $genderFromFile = $this->greekStringConversion->grstrtoupper($genderFromFile);
+        // check if a monogram is stored in csv instead of full gender name
         if($genderFromFile == \Lang::get('gender_monograms.w') or $genderFromFile == \Lang::get('gender_monograms.f')){
             $genderFromFile = $this->greekStringConversion->grstrtoupper(\Lang::get('basic_info_form.female'));
         } else if($genderFromFile == \Lang::get('gender_monograms.m')){
