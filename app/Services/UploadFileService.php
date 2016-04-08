@@ -22,7 +22,6 @@ class UploadFileService{
     public function __construct(){
         $this->greekStringConversion = new GreekStringConversionHelper();
         $this->socialService = new SocialFolderService();
-        $this->conversionForFile = new ConversionsForFileUpload();
     }
 
     // inserts all values to DB
@@ -102,6 +101,7 @@ class UploadFileService{
             }
         }
         \DB::insert(\DB::raw('insert into work_title_list_lookup (work_title) select distinct f.work_title  from  File_Import_Schema f left outer join work_title_list_lookup work_title on f.work_title = work_title.work_title where work_title.id is null;'));
+        $this->conversionForFile = new ConversionsForFileUpload();
         $this->selectAppropriateDBTableForEachFileRowColumns($maxIdInFileImportSchema);
         return $this->__errors;
     }
