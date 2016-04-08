@@ -151,8 +151,8 @@ class UploadFileService{
         $singleRow->language_interpreter_needed = $this->conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
         $singleRow->is_benefiter_working = $this->conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
         $singleRow->working_legally = $this->conversionForFile->getYesOrNoId($singleRow->working_legally);
-        $singleRow->origin_country = $this->conversionForFile->getOriginCountry($singleRow->origin_country);
-        $singleRow->nationality_country = $this->conversionForFile->getNationalityCountry($singleRow->nationality_country);
+        $singleRow->origin_country = $this->conversionForFile->getCountry($singleRow->origin_country);
+        $singleRow->nationality_country = $this->conversionForFile->getCountry($singleRow->nationality_country);
         $singleRow->country_abandon_reason = $this->conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
         $singleRow->work_title = $this->conversionForFile->getWorkTitleId($singleRow->work_title);
         $tmpdate = \Carbon\Carbon::now();
@@ -269,8 +269,8 @@ class UploadFileService{
         // else
         if(!$id){
             $id = null;
+            // if we need to add it to DB and __lang array, add it or else return null
             if($sLang != '') {
-                //array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
                 $id = \DB::table('languages')->insertGetId(array('name' => $sLang));
                 $this->__langNames[$id] = $sLang;
             }
