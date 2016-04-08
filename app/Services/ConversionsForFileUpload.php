@@ -65,8 +65,8 @@ class ConversionsForFileUpload{
         // Find if country is listed in table. If not, output error
         foreach ($this->countryList as $country){
             $countryRes = $country->name;
-            $countryResUpper = $this->greekStringConversion->grstrtoupper($countryRes);
-            if (strcasecmp($countryFromFileUpper, $countryResUpper) == 0) {
+//            $countryResUpper = $this->greekStringConversion->grstrtoupper($countryRes);
+            if (strcasecmp($countryFromFileUpper, $countryRes) == 0) {
                 return $countryFromFileUpper;
             }
             // TODO: } else { return $error }
@@ -95,12 +95,17 @@ class ConversionsForFileUpload{
 
     // get id from education name
     public function getEducationId($educationFromFile){
-        $educationFromFile = $this->greekStringConversion->grstrtoupper($educationFromFile);
+        $tmp = array_map('trim', explode('(', $educationFromFile));
+        $educationFromFile = $this->greekStringConversion->grstrtoupper($tmp[0]);
+        $specialization = null;
+        if($tmp[0] != "" and count($tmp) == 2) {
+            $specialization = $this->greekStringConversion->grstrtoupper(str_replace(')', '', $tmp[1]));
+        }
         // change the education name to the education name id
         foreach($this->educations as $education){
             $education->education_title = $this->greekStringConversion->grstrtoupper($education->education_title);
             if(strcasecmp($educationFromFile, $education->education_title) == 0){
-                return $education->id;
+                return array('education_id' => $education->id, 'specialization' => $specialization);
             }
         }
         // education not found

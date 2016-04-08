@@ -150,7 +150,9 @@ class UploadFileService{
         $datesHelper = new DatesHelper();
         $singleRow->gender = $this->conversionForFile->getGenderId($singleRow->gender);
         $singleRow->marital_status = $this->conversionForFile->getMaritalStatusId($singleRow->marital_status);
-        $singleRow->education = $this->conversionForFile->getEducationId($singleRow->education);
+        $education = $this->conversionForFile->getEducationId($singleRow->education);
+        $singleRow->education = $education['education_id'];
+        $specialization = $education['specialization'];
         $singleRow->language_interpreter_needed = $this->conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
         $singleRow->is_benefiter_working = $this->conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
         $singleRow->working_legally = $this->conversionForFile->getYesOrNoId($singleRow->working_legally);
@@ -175,6 +177,7 @@ class UploadFileService{
             'marital_status_id' => $singleRow->marital_status,
             'number_of_children' => $singleRow->number_of_children,
             'relatives_residence' => $singleRow->relatives_residence,
+            'education_specialization' => $specialization,
             'education_id' => $singleRow->education,
             'language_interpreter_needed' => null, //$singleRow->language_interpreter_needed,
             'is_benefiter_working' => $singleRow->is_benefiter_working,
@@ -257,7 +260,7 @@ class UploadFileService{
                 // Look-up in resources
                 // Normalize
                 // Add to __langNames
-                $this->__langNames[$language->id] = $this->greekStringConversion->grstrtoupper($language->name);
+                $this->__langNames[$language->id] = $language->name;
             }
         }
         // else
