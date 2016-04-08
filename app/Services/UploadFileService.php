@@ -277,8 +277,8 @@ class UploadFileService{
             $id = null;
             // if we need to add it to DB and __lang array, add it or else return null
             if($sLang != '') {
-                $id = \DB::table('languages')->insertGetId(array('name' => $sLang));
-                $this->__langNames[$id] = $sLang;
+                $id = \DB::table('languages')->insertGetId(array('name' => $tmp));
+                $this->__langNames[$id] = $tmp;
             }
         }
         // return the ID
