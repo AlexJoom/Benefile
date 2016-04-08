@@ -1,5 +1,7 @@
 <?php namespace App\Services;
 
+use App\Models\Benefiters_Tables_Models\Origin_country_lookup;
+
 class ConversionsForFileUpload{
 
     private $greekStringConversion = null;
@@ -57,9 +59,9 @@ class ConversionsForFileUpload{
         return null;
     }
 
-    // match country of origin
-    public function getOriginCountry($originCountryFromFile) {
-        $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($originCountryFromFile);
+    // get country name and insert new country names to DB
+    public function getCountry($countryFromFile) {
+        $countryFromFileUpper = trim($this->greekStringConversion->grstrtoupper($countryFromFile));
         // Find if country is listed in table. If not, output error
         foreach ($this->countryList as $country){
             $countryRes = $country->name;
@@ -69,24 +71,14 @@ class ConversionsForFileUpload{
             }
             // TODO: } else { return $error }
         }
-        return null;
+        // country is not found, so insert to DB and then return it
+        $newCountry = new Origin_country_lookup();
+        $newCountry->name = $countryFromFileUpper;
+        $newCountry->save();
+        array_push($this->countryList, $newCountry);
+        return $countryFromFileUpper;
     }
 
-
-    // match nationality country
-    public function getNationalityCountry($natCountryFromFile) {
-        $countryFromFileUpper = $this->greekStringConversion->grstrtoupper($natCountryFromFile);
-        // Find if country is listed in table. If not, output error
-        foreach ($this->countryList as $country){
-            $countryRes = $country->name;
-            $countryResUpper = $this->greekStringConversion->grstrtoupper($countryRes);
-            if (strcasecmp($countryFromFileUpper, $countryResUpper) == 0) {
-                return $countryFromFileUpper;
-            }
-            // TODO: } else { return $error }
-        }
-        return null;
-    }
     // get id from marital status name
     public function getMaritalStatusId($maritalStatusFromFile){
         $maritalStatusFromFile = $this->greekStringConversion->grstrtoupper($maritalStatusFromFile);
