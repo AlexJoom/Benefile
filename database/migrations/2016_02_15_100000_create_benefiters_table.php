@@ -385,7 +385,8 @@ class CreateBenefitersTable extends Migration
 
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('code');
+            $table->string('name');
             $table->timestamps();
         });
 
