@@ -54,6 +54,8 @@ Route::post('benefiter/{id}/basic-info', 'MainPanel\RecordsController@postBasicI
 Route::post('benefiter/{id}/basic-info/referrals', 'MainPanel\RecordsController@postBasicInfoReferrals');
 Route::get('benefiter/{id}/basic-info/referral-delete/{referral_id}', 'MainPanel\RecordsController@deleteBasicInfoReferral');
 Route::get('benefiter/{id}/new-occurrence-save', 'MainPanel\RecordsController@saveOccurrencesBasicInfo');
+Route::get('benefiter/{id}/edit-occurrence/{occurrence_id}', 'MainPanel\RecordsController@editOccurrencesBasicInfo');
+Route::get('benefiter/{id}/delete-occurrence/{occurrence_id}', 'MainPanel\RecordsController@deleteOccurrencesBasicInfo');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER

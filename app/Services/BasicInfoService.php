@@ -3,8 +3,10 @@
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
+use App\Models\Benefiters_Tables_Models\benefiterOccurrences;
 use App\Services\GreekStringConversionHelper;
 use App\Services\DatesHelper;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class BasicInfoService{
@@ -446,8 +448,13 @@ class BasicInfoService{
         }
     }
     // get all basic info referrals
+    public function get_basic_info_referral_by_id($id){
+        $basic_info_referral_attributes = BenefiterReferrals::where('benefiter_id', $id)->get();
+        return $basic_info_referral_attributes;
+    }
+
     public function get_basic_info_referral(){
-        $basic_info_referral_attributes = BenefiterReferrals::get()->all();
+        $basic_info_referral_attributes = BenefiterReferrals::get();
         return $basic_info_referral_attributes;
     }
 
@@ -471,6 +478,35 @@ class BasicInfoService{
         $occurrences_comments = $request['occurrences_comments'];
         $user_who_added_occurrence = Auth::user()->id;
         $benefiter_id = $request['benefiter_id'];
+
+        // save to occurrences table
+        $benefiter_new_occurence = new benefiterOccurrences();
+        $benefiter_new_occurence->description = $occurrences_comments;
+        $benefiter_new_occurence->occurrence_date = $this->datesHelper->makeDBFriendlyDate($occurrence_date);
+        $benefiter_new_occurence->benefiter_id = $benefiter_id;
+        $benefiter_new_occurence->user_id = $user_who_added_occurrence;
+
+        $benefiter_new_occurence->save();
+    }
+
+    // get occurrences by benefiter
+    public function getAllOccurrencesByBenefiter($id){
+        $occurences = benefiterOccurrences::where('benefiter_id', $id)->get();
+        return $occurences;
+    }
+
+    // find occurrence by id
+    public function findOccurrence_by_id($request, $occurrence_id){
+        $occurence_by_id = benefiterOccurrences::find($occurrence_id);
+        // update the db row
+        $occurence_by_id->occurrence_date = $this->datesHelper->makeDBFriendlyDate($request['edited_occurrence_date']);
+        $occurence_by_id->description = $request['edited_occurrences_comments'];
+        $occurence_by_id->save();
+    }
+
+    // delete occurrence by id
+    public function deleteOccurrence_by_id($occurrence_id){
+        benefiterOccurrences::where('id','=',$occurrence_id)->delete();
     }
 
     /*
