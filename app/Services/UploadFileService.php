@@ -270,7 +270,9 @@ class UploadFileService{
         if(!$id){
             $id = null;
             if($sLang != '') {
-                array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
+                //array_push($this->__errors, \Lang::get('upload_file_errors.language_not_found_error') . $sLang);
+                $id = \DB::table('languages')->insertGetId(array('name' => $sLang));
+                $this->__langNames[$id] = $sLang;
             }
         }
         // return the ID
