@@ -9,6 +9,7 @@ use App\Services\ConversionsForFileUpload;
 use App\Services\DatesHelper;
 use \Carbon\Carbon;
 use App\Services\GreekStringConversionHelper;
+use Illuminate\Support\Facades\Log;
 
 class UploadFileService{
 
@@ -98,6 +99,7 @@ class UploadFileService{
                 $file_import->save();
             } catch (\Exception $e){
                 array_push($this->__errors, \Lang::get('upload_file_errors.import_csv_row_error1') . $file_import->folder_number . \Lang::get('upload_file_errors.import_csv_row_error2'));
+                Log::error($e);
             }
         }
         \DB::insert(\DB::raw('insert into work_title_list_lookup (work_title) select distinct f.work_title  from  File_Import_Schema f left outer join work_title_list_lookup work_title on f.work_title = work_title.work_title where work_title.id is null;'));
@@ -133,6 +135,7 @@ class UploadFileService{
 //                    $this->importReferrals($singleRow, $imported_benefiter_id);
                 } catch(\Exception $e) {
                     array_push($this->__errors, \Lang::get('upload_file_errors.insert_benefiter_error') . $singleRow->folder_number);
+                    Log::error($e);
                 }
                 // TODO (not for now) Add table to view to display the files that uploaded successfully. Only names and dates, to help while uploading.
 //                $benefiterReferralsColumns = $this->selectBenefitersReferralsColumnsAndValuesFromFileRow($singleRow);
@@ -235,7 +238,7 @@ class UploadFileService{
     // inserts languages to DB
     private function insertLanguagesToDBFromFile($languages, $languages_levels, $id){
         $languagesAndLevels = $this->getLanguagesArrayForDBInsert($languages, $languages_levels, $id);
-        if($languagesAndLevels != null) {
+        if(!empty($languagesAndLevels)) {
             foreach ($languagesAndLevels as $languageAndLevel) {
                 \DB::table('benefiters_languages')->insert($languageAndLevel);
             }
@@ -349,7 +352,7 @@ class UploadFileService{
             foreach ($languagesLevels as $languageLevel) {
                 // Update corresponding language with the given language level
                 $tmp = array_map('trim', explode('(', $languageLevel)); // '0' => language_description, '1' => language_level_description
-                if($tmp[0] != "") {
+                if($tmp[0] != "" and count($tmp) == 2) {
                     $tmp[1] = str_replace(')', '', $tmp[1]);
                     $sLevelID = $this->getLanguageLevelID($tmp[1]);
                     $this->setLanguageLevel($tmp[0], $sLevelID, $languagesAndLevels);
