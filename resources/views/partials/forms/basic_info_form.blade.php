@@ -172,7 +172,7 @@
             </div>
 
              {{--Ιστορικό Συμβάντων --}}
-            @if(count($occurrences)!=0)
+            @if(count($occurrences)!=0 && $benefiter->id != -1)
                 <div class="row">
                     <div class="col-md-12">
                         <div class="div-table-titles row">
@@ -189,7 +189,7 @@
             @else
                 <div class=" no-bottom-border bold">
                     <div class="col-md-12 social-info">
-                        <p>@lang($p."occurrence_info")</p>
+                        <p>@lang($p."no_occurrences_found")</p>
                     </div>
                 </div>
             @endif
@@ -1064,63 +1064,71 @@
                         <button type="button" id="add-new-occurrence" class="float-right margin-30 session-button lighter-green-background">@lang($p."add_new_occurrence")</button>
                     </div>
                 </div>
-            @endif
-            <div class="underline-header row">
-                <h1 class="record-section-header padding-left-right-15 float-left">2. @lang($p."occurrence_history")</h1>
-            </div>
 
-            {{--Νέο Συμβάν --}}
-            <div class="new-occurrence dynamic-form-section">
-                <h1 class="record-section-header padding-left-right-15">@lang($p."new_occurrence")</h1>
-                {{--{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/new-occurrence-save')) !!}--}}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group padding-left-right-15 float-left col-xs-2">
-                                    {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
-                                    {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
-                                </div>
-                                <div class="form-group padding-left-right-15 float-left col-xs-2">
-                                    {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
-                                    {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
-                                </div>
-                                {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
-                                    {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
-                                    {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="align-text-center">
-                        <button type="button" class="new-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
-                    </div>
+                <div class="underline-header row">
+                    <h1 class="record-section-header padding-left-right-15 float-left">2. @lang($p."occurrence_history")</h1>
                 </div>
-            </div>
 
-             {{--Ιστορικό Συμβάντων --}}
-            @if(count($occurrences)!=0)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="div-table-titles row">
-                            <div class="col-md-12 bold">
-                                <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
-                                <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
-                                <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
-                                <div class="col-xs-2"></div>
-                                <div class="col-xs-2"></div>
+                {{--Νέο Συμβάν --}}
+                <div class="new-occurrence dynamic-form-section">
+                    <h1 class="record-section-header padding-left-right-15">@lang($p."new_occurrence")</h1>
+                    {{--{!! Form::open(array('url' => 'benefiter/'.$benefiter->id.'/new-occurrence-save')) !!}--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                        {!! Form::label('user_name', Lang::get($p.'created_by')) !!}
+                                        {!! Form::text('user_name', Auth::user()->name.' '.Auth::user()->lastname, array('class' => 'custom-input-text width-100-percent', 'disabled' => 'disabled')) !!}
+                                    </div>
+                                    <div class="form-group padding-left-right-15 float-left col-xs-2">
+                                        {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
+                                        {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    </div>
+                                    {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">
+                                        {!! Form::label('occurrences_comments', Lang::get($p.'occurrences_comments')) !!}
+                                        {!! Form::textarea('occurrences_comments', null, array('class' => 'custom-input-textarea width-100-percent')) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="align-text-center">
+                            <button type="button" class="new-occurrence-submit submit-button save-session" data-benefiter-id="{{$benefiter->id}}" >@lang($p.'save_occurrence')</button>
                         </div>
                     </div>
                 </div>
+
+                 {{--Ιστορικό Συμβάντων --}}
+                @if(count($occurrences)!=0)
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="div-table-titles row">
+                                <div class="col-md-12 bold">
+                                    <div class="col-xs-2 text-align-center"><p>@lang($p.'created_by')</p></div>
+                                    <div class="col-xs-2 text-align-center"><p>@lang($p.'occurrence_date')</p></div>
+                                    <div class="col-xs-4 text-align-center"><p>@lang($p.'occurrences_comments')</p></div>
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class=" no-bottom-border bold">
+                        <div class="col-md-12 social-info text-align-center font-size-18">
+                            <p>@lang($p."no_occurrences_found")</p>
+                        </div>
+                    </div>
+                @endif
+
             @else
                 <div class=" no-bottom-border bold">
-                    <div class="col-md-12 social-info">
+                    <div class="col-md-12 social-info text-align-center font-size-18">
                         <p>@lang($p."occurrence_info")</p>
                     </div>
                 </div>

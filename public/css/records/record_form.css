@@ -11,6 +11,9 @@
     color: red;
 }
 
+.font-size-18{
+    font-size: 18px;
+}
 .make-bold{
     font-weight: 600;
 }
