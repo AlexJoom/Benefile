@@ -265,47 +265,48 @@
             $i = 0;
         ?>
         @foreach($ExamResultsLookup as $med_exam)
-            @if($i == $examResultsLookupLength - 1)
-            <div class="row margin-15-30 border-bottom-light margin-bottom-0">
-            @else
-            <div class="row margin-15-30 border-bottom-light">
-            @endif
-                <div class="form-group padding-left-right-15 col-xs-2">
-                    <label> {{ $med_exam['description'] }} </label>
-                </div>
-                <?php $duplicity_counter = 0; ?>
-                @if(!empty($med_visit_exam_results))
+            @if(!empty($med_visit_exam_results) and !empty($med_visit_exam_results[$i]) and $med_visit_exam_results[$i]['results_lookup_id'] == $med_exam['id'])
+
+                <div class="row margin-15-30 border-bottom-light">
+                    <div class="form-group padding-left-right-15 col-xs-2">
+                        <label> {{ $med_exam['description'] }} </label>
+                    </div>
+                    <?php $duplicity_counter = 0; ?>
                     {{-- one foreach to fetch icd10 --}}
-                <div class="form-group padding-left-right-15 col-xs-6">
-                    <div class="row">
-                        <div class=" form-group padding-left-right-15 col-md-12">
-                            <ul>
-                                @foreach($med_visit_exam_results as $med_exam_result)
-                                    @if($med_exam_result['results_lookup_id'] == $med_exam['id'])
-                                        @if(!empty($med_exam_result['icd10_id']))
-                                            <li>
-                                                {{ $med_exam_result['icd10']['code'] }}: {{ $med_exam_result['icd10']['description'] }}
-                                            </li>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </ul>
+                    <div class="form-group padding-left-right-15 col-xs-6">
+                        <div class="row">
+                            <div class=" form-group padding-left-right-15 col-md-12">
+                                <ul>
+{{--                                    @foreach($med_visit_exam_results as $med_exam_result)--}}
+{{--                                        @if($med_exam_result['results_lookup_id'] == $med_exam['id'])--}}
+                                            @if(!empty($med_visit_exam_results[$i]['icd10_id']))
+                                                <li>
+                                                    {{ $med_visit_exam_results[$i]['icd10']['code'] }}: {{ $med_visit_exam_results[$i]['icd10']['description'] }}
+                                                </li>
+                                            @endif
+                                        {{--@endif--}}
+                                    {{--@endforeach--}}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                        {{-- one more foreach to fetch descriptions, but only once --}}
-                    @foreach($med_visit_exam_results as $med_exam_result)
-                        @if($med_exam_result['results_lookup_id'] == $med_exam['id'])
+                    {{-- one more foreach to fetch descriptions, but only once --}}
+{{--                    @foreach($med_visit_exam_results as $med_exam_result)--}}
+{{--                        @if($med_exam_result['results_lookup_id'] == $med_exam['id'])--}}
                             @if($duplicity_counter == 0)
                                 <div class=" form-group padding-left-right-15 col-xs-4">
-                                    {{ $med_exam_result['description'] }}
+                                    {{ $med_visit_exam_results[$i]['description'] }}
                                 </div>
                                 <?php $duplicity_counter++; ?>
                             @endif
-                        @endif
-                    @endforeach
-                @endif
-            </div>
+                        {{--@endif--}}
+                    {{--@endforeach--}}
+                    <?php
+                        $i++;
+                    ?>
+                </div>
+            @endif
+
         @endforeach
     </div>
 

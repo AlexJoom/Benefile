@@ -1302,7 +1302,7 @@ class BenefiterMedicalFolderService
     }
     // Examination results
     public function findMedicalVisitExaminationResults($med_visit_id){
-        $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit_id)->with('icd10')->get();
+        $med_visit_exam_results = medical_examination_results::where('medical_visit_id', $med_visit_id)->with('icd10')->orderBy('results_lookup_id')->get();
         return $med_visit_exam_results;
     }
     // get all medical visits for a benefiter
