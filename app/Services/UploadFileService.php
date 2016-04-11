@@ -155,7 +155,7 @@ class UploadFileService{
         $specialization = $education['specialization'];
         $singleRow->language_interpreter_needed = $this->conversionForFile->getYesOrNoId($singleRow->language_interpreter_needed);
         $singleRow->is_benefiter_working = $this->conversionForFile->getYesOrNoId($singleRow->is_benefiter_working);
-        $singleRow->working_legally = $this->conversionForFile->getYesOrNoId($singleRow->working_legally);
+        $singleRow->working_legally = $this->conversionForFile->getLegalWorkId($singleRow->working_legally);
         $singleRow->origin_country = $this->conversionForFile->getCountry($singleRow->origin_country);
         $singleRow->nationality_country = $this->conversionForFile->getCountry($singleRow->nationality_country);
         $singleRow->country_abandon_reason = $this->conversionForFile->getCountryAbandonReasonId($singleRow->country_abandon_reason);
