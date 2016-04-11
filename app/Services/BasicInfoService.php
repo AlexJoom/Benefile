@@ -44,12 +44,13 @@ class BasicInfoService{
             'social_history' => 'max:2000',
         );
         $legal_status_texts = $request['legal_status_text'];
-        foreach($legal_status_texts as $legal_status_text){
-            array_push($rules, [$legal_status_text => 'max:255|required']);
+        foreach($legal_status_texts as $i => $legal_status_text){
+            $rules["legal_status_text." . $i] = 'max:255';
         }
         $legal_status_exp_dates = $request['legal_status_exp_date'];
-        foreach($legal_status_exp_dates as $legal_status_exp_date){
-            array_push($rules, [$legal_status_exp_date => 'date|required']);
+        foreach($legal_status_exp_dates as $i => $legal_status_exp_date){
+            $rules["legal_status_exp_date." . $i] = 'date';
+            $legal_status_exp_dates[$i] = $this->datesHelper->makeDBFriendlyDate($legal_status_exp_date);
         }
         $request['birth_date'] = $this->datesHelper->makeDBFriendlyDate($request['birth_date']);
         $request['arrival_date'] = $this->datesHelper->makeDBFriendlyDate($request['arrival_date']);
