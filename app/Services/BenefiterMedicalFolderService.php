@@ -182,7 +182,7 @@ class BenefiterMedicalFolderService
         return $newMedicalVisit->id;
     }
     private function add_dynamically_medical_locations_to_lookup($request){
-        if(!is_int($request['medical_location_id'] && !empty($request['new_medical_location']))){
+        if(!is_int($request['medical_location_id']) && !empty($request['new_medical_location'])){
             // add the input value to medical locations table and return the table id
             $new_medical_location = new medical_location_lookup();
             $new_medical_location->description = $request['new_medical_location'];
