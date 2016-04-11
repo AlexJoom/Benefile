@@ -5,7 +5,8 @@ body{
     width: 100%;
     color: black;
     font-family: serif;
-    font-size: 0.9em;
+    /*font-size: 0.9em;*/
+    font-size: 11pt;
 }
 
 .make-inline{
