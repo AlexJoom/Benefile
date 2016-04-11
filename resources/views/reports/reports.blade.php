@@ -543,6 +543,7 @@
         "fontSize": 16,
         "fontFamily": "Arial",
         "marginRight": 70,
+        "rotate": true,
         "dataProvider": [
         @foreach($benefiters_work_title as $key => $value)
             {
