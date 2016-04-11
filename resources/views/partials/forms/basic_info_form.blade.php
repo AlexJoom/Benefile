@@ -679,6 +679,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
         {{-- Εργασία --}}
         <div class="work-info form-section no-bottom-border">
@@ -930,7 +931,7 @@
                                             {!! Form::text('basic_info_referrals_text[]', null, array('id'=>'basic_info_refList', 'class' => 'custom-input-text display-inline width-50-percent')) !!}
                                         </div>
                                         <div class="form-group make-inline float-left col-md-2">
-                                            {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                            {!! Form::text('basic_info_referrals_date[]', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                         </div>
                                         <div class="col-md-1">
                                             {{-- add --}}
@@ -947,11 +948,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-section align-text-center no-bottom-border">
-                        {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
-                    </div>
-                {!! Form::close() !!}
             </div>
+            <div class="form-section align-text-center no-bottom-border">
+                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button margin-bottom-0')) !!}
+            </div>
+            {!! Form::close() !!}
         @endif
     @else
         {{-- Προσωπικά Στοιχεία --}}
@@ -1789,9 +1790,9 @@
         </div>
         <div class="form-section align-text-center no-bottom-border">
             @if($benefiter->id == -1)
-                {!! Form::submit(Lang::get('basic_info_form.save_basic_info'), array('class' => 'submit-button')) !!}
+                {!! Form::submit(Lang::get('basic_info_form.save_basic_info'), array('class' => 'submit-button margin-bottom-0')) !!}
             @else
-                {!! Form::submit(Lang::get('basic_info_form.update_basic_info'), array('class' => 'submit-button')) !!}
+                {!! Form::submit(Lang::get('basic_info_form.update_basic_info'), array('class' => 'submit-button margin-bottom-0')) !!}
             @endif
         </div>
     {!! Form::close() !!}
@@ -1903,12 +1904,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-section align-text-center no-bottom-border">
-                        {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
-                    </div>
-                {!! Form::close() !!}
             </div>
+            <div class="form-section align-text-center no-bottom-border">
+                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button margin-bottom-0')) !!}
+            </div>
+            {!! Form::close() !!}
         @endif
     @endif
     @if($benefiter->id != -1)

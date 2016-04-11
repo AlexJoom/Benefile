@@ -450,7 +450,7 @@ class BasicInfoService{
     }
     // get all basic info referrals
     public function get_basic_info_referral_by_id($id){
-        $basic_info_referral_attributes = BenefiterReferrals::where('benefiter_id', $id)->get();
+        $basic_info_referral_attributes = BenefiterReferrals::where('benefiter_id', $id)->orderBy('referral_date', 'desc')->get();
         return $basic_info_referral_attributes;
     }
 
