@@ -124,7 +124,7 @@
         </div>
 
         {{--2. Συμβάν --}}
-        <div class="form-section">
+        <div class="form-section no-bottom-border">
             {{--NEW OCCURRENCE BUTTON --}}
             @if($benefiter->id != -1)
                 <div class="row">
@@ -1056,7 +1056,7 @@
         </div>
 
         {{--2. Συμβάν --}}
-        <div class="form-section">
+        <div class="form-section no-bottom-border">
              {{--NEW OCCURRENCE BUTTON --}}
             @if($benefiter->id != -1)
                 <div class="row">
@@ -1083,7 +1083,7 @@
                                     </div>
                                     <div class="form-group padding-left-right-15 float-left col-xs-2">
                                         {!! Form::label('occurrence_date', Lang::get($p.'occurrence_date')) !!}
-                                        {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('occurrence_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                     </div>
                                     {!! Form::hidden('benefiter_id', $benefiter->id, array('id' => 'benefiter_id')) !!}
                                 </div>
@@ -1142,7 +1142,7 @@
                         <div class="row div-table-row div-hr padding-top-bottom-5 line-height-50">
                             <div class="col-md-12">
                                 <div class="col-xs-2 text-align-center">{{ $occurrence_editor }}</div>
-                                <div class="col-xs-2 text-align-center">{{ $occurrence['occurrence_date'] }}</div>
+                                <div class="col-xs-2 text-align-center">{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($occurrence['occurrence_date']) }}</div>
                                 <div class="col-xs-4 text-align-center">{{ $occurrence['description'] }}</div>
                                 <div class="col-xs-2">
                                     {{-- EDIT --}}
@@ -1157,7 +1157,7 @@
 
                          {{--EDIT EACH SESSION --}}
                         <div class="edit-occurrence-div dynamic-form-section">
-                            <h1 class="record-section-header padding-left-right-15">@lang($p."edit_session")</h1>
+                            <h1 class="record-section-header padding-left-right-15">@lang($p."edit_occurence")</h1>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -1169,7 +1169,7 @@
                                             </div>
                                             <div class="form-group padding-left-right-15 float-left col-md-2">
                                                 {!! Form::label('edited_occurrence_date_'.$occurrence->id, Lang::get($p.'occurrence_date')) !!}
-                                                {!! Form::text('edited_occurrence_date_'.$occurrence->id, $occurrence['occurrence_date'], array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                                {!! Form::text('edited_occurrence_date_'.$occurrence->id, $datesHelper->getFinelyFormattedStringDateFromDBDate($occurrence['occurrence_date']), array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get($p.'date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                             </div>
 
                                             <div class="form-group make-inline padding-left-right-15 float-left width-100-percent">

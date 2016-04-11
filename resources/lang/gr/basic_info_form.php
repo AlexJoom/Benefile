@@ -9,6 +9,7 @@
         'occurrence_date' => 'ΗΜ. ΚΑΤΑΧΩΡΗΣΗΣ:',
         'date_placeholder' => 'DD-MM-YYYY',
         'save_occurrence' => 'Αποθήκευση Συμβάντος',
+        'edit_occurence' => 'Τροποποίηση Συμβάντος',
         'date' => 'Ημερομηνία',
         'subject' => 'Ημερομηνία',
         'occurrences_comments' => 'ΠΑΡΑΤΗΡΗΣΕΙΣ:',
