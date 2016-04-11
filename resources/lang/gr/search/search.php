@@ -9,7 +9,7 @@
         'gender'                        => 'ΦΥΛΟ',
         'work'                          => 'ΕΡΓΑΣΙΑ',
         'drug'                          => 'ΧΟΡΗΓ. ΦΑΡΜΑΚΟ',
-        'incident_type'                 => 'ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ',
+        'incident_type'                 => 'ΑΝΤΙΜΕΤΩΠΙΣΗ',
         'location'                      => 'ΤΟΠΟΘΕΣΙΑ',
         'doctor_name'                   => 'ΟΝΟΜΑ ΙΑΤΡΟΥ',
         'incidents_number'              => 'ΑΡ. ΠΕΡΙΣΤΑΤΙΚΩΝ',

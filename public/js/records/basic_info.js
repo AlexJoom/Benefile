@@ -1,4 +1,65 @@
 $(document).ready(function(){
+    // hide new occurrence form
+    $(".new-occurrence").hide();
+    $("#add-new-occurrence").on("click", function(){
+        $(".new-occurrence").slideToggle("slow");
+    });
+    // slide toggle to edit a session
+    $(".edit-occurrence-div").hide();
+    $(".edit-occurrence").on("click", function(){
+        $(this).parents(".div-table-row:first").next().slideToggle("slow");
+    });
+
+    // display modal asking for occurrence deletion confirmation
+    $(".delete-occurrence").on("click", function(){
+        $(".delete-occurrence-modal").modal('show');
+        var data_benefiter_id = $(this).attr('data-benefiter-id');
+        var occurrence_id = $(this).attr('data-occurrence-id');
+        $(".delete-occurrence-confirm-button").attr("data-benefiter-id", data_benefiter_id).attr("data-occurrence-id", occurrence_id);
+    });
+    // after the modal opens by clicking ok the occurrence is deleted with ajax
+    $('.delete-occurrence-confirm-button').on('click', function(){
+        $.ajax({
+            url: $('body').attr('data-url') + "/benefiter/"+ $(this).attr('data-benefiter-id') +"/delete-occurrence/" + $(this).attr('data-occurrence-id')
+        }).done(function() {
+            location.reload();
+        });
+    });
+
+    // AJAX OCCURRENCES SAVE & UPDATE
+    // POST NEW
+    $('.new-occurrence-submit').on('click',function(){
+        $.ajax({
+            url: $('body').attr('data-url') + "/benefiter/"+ $(this).attr('data-benefiter-id') +"/new-occurrence-save",
+            data: {
+                    occurrence_date: $('#occurrence_date').val(),
+                    occurrences_comments: $('#occurrences_comments').val(),
+                    benefiter_id: $('#benefiter_id').val()
+                },
+            success: function () {
+            }
+        }).done(function() {
+            location.reload();
+        });
+    });
+    // EDIT
+    $('.edit-occurrence-submit').on('click',function(){
+        $.ajax({
+            url: $('body').attr('data-url') + "/benefiter/"+ $(this).attr('data-benefiter-id') + "/edit-occurrence/" + $(this).attr('data-occurrence-id'),
+            data: {
+                edited_occurrence_date: $('#edited_occurrence_date_' + $(this).attr('data-occurrence-id')).val(),
+                edited_occurrences_comments: $('#edited_occurrences_comments_' + $(this).attr('data-occurrence-id')).val()
+                //current_benefiter_id: $('#benefiter_id').val()
+            },
+            success: function () {
+            }
+        }).done(function() {
+            location.reload();
+        });
+    });
+
+
+
     // at startup check if "yes" is checked and then display the working legally div
     if ($("#show_work_legally:checked").val()){
         $("#working_legally_div").show();
@@ -78,6 +139,14 @@ $(document).ready(function(){
         $(this).parents(".ref-added-div").remove();
     });
 
+    // on document ready display the months passed from duration date
+    displayMonthsPassed($("#detention-date").val());
+
+    // on detention date change get the correct amount of months passed
+    $("#detention-date").on("changeDate focusout", function(){
+        displayMonthsPassed($(this).val());
+    });
+
     // Apply dataTable to benefiter referrals history
     $(function() {
         $('#benefiter_referrals_history').DataTable( {
@@ -87,3 +156,28 @@ $(document).ready(function(){
 });
 
 var $langs_count = $(".added-div").length;
+
+function displayMonthsPassed($selected_date){
+    if($selected_date != null) {
+        // used only for document ready, if no date is selected
+        if ($selected_date == "") {
+            $("#months-passed").text("");
+            return;
+        }
+        var $det_date = new Date($selected_date.substring(6, 10), $selected_date.substring(3, 5) - 1, $selected_date.substring(0, 2));
+        var $now = $.now();
+        var $diff = new Date($now - $det_date);
+        if ($diff >= 0) {
+            var $array = ($diff / 1000 / 60 / 60 / 24 / 30).toString().split(".");
+            var $result = $array[0];
+            if ($result == 1) {
+                $result = $result + " " + $("#months-passed").data("month");
+            } else {
+                $result = $result + " " + $("#months-passed").data("months");
+            }
+            $("#months-passed").text("(" + $result + ")");
+        } else {
+            $("#months-passed").text("");
+        }
+    }
+}

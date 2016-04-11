@@ -45,18 +45,18 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label('gender_id', Lang::get('basic_info_form.gender')) !!}
                             <div>
-                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
-                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline')) !!}
-                                {!! Form::label('gender_id', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 1, false, array('class' => 'make-inline', 'id' => 'male')) !!}
+                                {!! Form::label('male', Lang::get('basic_info_form.male'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 2, false, array('class' => 'make-inline', 'id' => 'female')) !!}
+                                {!! Form::label('female', Lang::get('basic_info_form.female'), array('class' => 'radio-value')) !!}
+                                {!! Form::radio('gender_id', 3, false, array('class' => 'make-inline', 'id' => 'other')) !!}
+                                {!! Form::label('other', Lang::get('basic_info_form.other'), array('class' => 'radio-value')) !!}
                             </div>
                         </div>
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('basic_info_form.birth_date')) !!}
                             <div>
-                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('birth_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
                             {!! Form::label(Lang::get('search/search.insertion_date')) !!}
                             <div>
-                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('insertion_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                     {{--{!! Form::label('medical_location_id', Lang::get('partials/forms/new_medical_visit_form.exam_location', array('class' => 'custom-label-width'))) !!}--}}
                     <label class="custom-label-width" for="medical_location_id">@lang('partials/forms/new_medical_visit_form.exam_location')</label>
                    <div>
-                        <select name="medical_location_id">
+                        <select id="medical-location-id" name="medical_location_id">
                             <option value=0></option>
                             <?php
                                 if(isset($medical_locations) and $medical_locations != null){
@@ -237,14 +237,14 @@
                                 {{--{!! Form::label(Lang::get('search/search.from')) !!}--}}
                                 <label class="float-left">@lang('search/search.from')</label>
                                 <div>
-                                    {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-60per date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    {!! Form::text('incident_from', null, array('class' => 'custom-input-text width-60per date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                 </div>
                             </div>
                             <div class="form-group make-inline padding-left-right-15 float-left col-xs-6">
                                 {{--{!! Form::label(Lang::get('search/search.to')) !!}--}}
                                 <label class="float-left">@lang('search/search.to')</label>
                                 <div>
-                                    {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-60per date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                    {!! Form::text('incident_to', null, array('class' => 'custom-input-text width-60per date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,8 @@
     <?php
         $p = "partials/forms/new_medical_visit_form.";
+        $datesHelper = new \app\Services\DatesHelper();
+        $benefiter->birth_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->birth_date);
+        $benefiter->arrival_date = $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter->arrival_date);
     ?>
     {{-- 1. BASIC BENEFITER INFO --}}
     <div class="form-section no-bottom-border">
@@ -334,10 +337,37 @@
         </div>
     </div>
 
-    {{-- 5. MEDICINAL LIST INFO ----}}
+    {{-- 5. DIAGNOSIS RESULTS INFO -------}}
+    <div class="form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">5. @lang($p.'diagnosis_results')</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="diagnosis-result-visit" class="row padding-bottom-30">
+                    <div class="padding-left-right-15 ">
+                        <div class="form-group float-left width-100-percent">
+                            @if(!empty($med_visit_diagnosis_results))
+                                @foreach($med_visit_diagnosis_results as $diagnosis_result)
+                                    <div class="make-inline col-md-10">
+                                        {!! Form::label('lab_results', Lang::get($p.'diagnosis_results_info')) !!}
+                                        <div class="custom-input-text display-inline width-50-percent">
+                                            {{ $diagnosis_result['diagnosis_results'] }}
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- 6. MEDICINAL LIST INFO ----}}
     <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">5. @lang($p.'medication')</h1>
+            <h1 class="record-section-header padding-left-right-15">6. @lang($p.'medication')</h1>
         </div>
         @if(!empty($med_visit_medication))
             @foreach($med_visit_medication as $med_medication)
@@ -368,7 +398,7 @@
 
                         </div>
                         {{-- supplied from PRAKSIS --}}
-                        <div class="col-xs-3">
+                        <div class="col-xs-3 @if(empty($med_medication['supply_from_praksis']) or $med_medication['supply_from_praksis'] == 0) non-printable @endif">
                             {!! Form::label('supply', Lang::get($p.'supply_from_praksis')) !!}
                             @if($med_medication['supply_from_praksis'] == 1)
                                 {!! Form::checkbox('supply', 1, true, array('class'=>'supply_from_praksis make-inline', 'disabled' => 'disabled')) !!}
@@ -382,30 +412,75 @@
         @endif
     </div>
 
-    {{-- 6. REFERALS INFO ----------}}
+    {{-- 7. HOSPITALIZATION -------}}
+    <div class="form-section no-bottom-border">
+        <div class="underline-header">
+            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'hospitalization')</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="hospitalization-visit" class="row padding-bottom-30">
+                    <div class="padding-left-right-15 ">
+                        <div class="form-group float-left width-100-percent">
+                            @if(!empty($med_visit_hospitalizations))
+                                @foreach($med_visit_hospitalizations as $hospitalization)
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="make-inline col-xs-6">
+                                                {!! Form::label('hospitalization', Lang::get($p.'hospitalization_info')) !!}
+                                                <div class="custom-input-text display-inline">
+                                                    {{ $hospitalization['hospitalizations'] }}
+                                                </div>
+                                            </div>
+                                            <div class="make-inline col-xs-2">
+                                                <div class="custom-input-text display-inline">
+                                                    {{ $datesHelper->getFinelyFormattedStringDateFromDBDate($hospitalization['hospitalization_date']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- 8. REFERALS INFO ----------}}
     <div class="form-section no-bottom-border padding-bottom-30">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">6. @lang($p.'referrals')</h1>
+            <h1 class="record-section-header padding-left-right-15">8. @lang($p.'referrals')</h1>
         </div>
         @if(!empty($med_visit_referrals))
             @foreach($med_visit_referrals as $med_referral)
                 <div class="row padding-bottom-30">
                     {{-- referral name --}}
-                    <div class="col-md-6">
+                    <div class="col-md-6 display-inline">
                         {!! Form::label('medication_name', Lang::get($p.'referrals_info')) !!}
                         <div class="custom-input-text display-inline">
                             {{ $med_referral['referrals'] }}
                         </div>
+                    </div>
+                    <div class="col-md-3 display-inline">
+                        <?php
+                            if($med_referral['is_done_id'] == 0){
+                                echo Lang::get($p."not_done");
+                            } else {
+                                echo Lang::get($p."done");
+                            }
+                        ?>
                     </div>
                 </div>
             @endforeach
         @endif
     </div>
 
-    {{-- 7. UPLOADED FILES LIST ----}}
-    <div class="form-section">
+    {{-- 9. UPLOADED FILES LIST ----}}
+    <div class="form-section file-uploads">
         <div class="underline-header">
-            <h1 class="record-section-header padding-left-right-15">7. @lang($p.'upload')</h1>
+            <h1 class="record-section-header padding-left-right-15">9. @lang($p.'upload')</h1>
         </div>
         @if(!empty($med_visit_uploads))
             @foreach($med_visit_uploads as $med_upload)

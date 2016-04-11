@@ -14,11 +14,11 @@ class SearchService{
     // perform DB search with the request parameters
     public function searchBenefiters($request){
         $queryString = "select b.*, gl.gender, msl.marital_status_title, el.education_title, wll.description as legal_working_status, wtll.work_title, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id left join genders_lookup as gl on b.gender_id = gl.id left join marital_status_lookup as msl on b.marital_status_id = msl.id left join education_lookup as el on b.education_id = el.id left join working_legally_lookup as wll on b.working_legally = wll.id left join work_title_list_lookup as wtll on b.work_title_id = wtll.id";
-        $queryString2 = " group by b.id";
+        $queryString2 = " and deleted_at is null group by b.id";
         $firstWhereParameter = true;
         $firstWhereParameterExternalSelect = true;
         if ($request['folder_number'] != ""){
-            $queryString = $queryString . " where " . "b.folder_number='" . $request['folder_number'] . "'";
+            $queryString = $queryString . " where " . "b.folder_number like '%" . $request['folder_number'] . "%'";
             $firstWhereParameter = false;
         }
         if ($request['lastname'] != ""){
@@ -63,7 +63,7 @@ class SearchService{
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . "b.birth_date='" . $this->datesHelper->makeDBSearchFriendlyDate($this->datesHelper->makeDBFriendlyDate($request['birth_date'])) . "'";
+            $queryString = $queryString . "b.birth_date='" . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['birth_date'])) . "'";
             $firstWhereParameter = false;
         }
         if ($request['origin_country'] != ""){
@@ -75,13 +75,13 @@ class SearchService{
             $queryString = $queryString . "b.origin_country='" . $request['origin_country'] . "'";
             $firstWhereParameter = false;
         }
-        if ($request['medical_location_id'] != "0"){
+        if ($request['medical_location_id'] != 0){
             if (!$firstWhereParameter){
                 $queryString = $queryString . " and ";
             } else {
                 $queryString = $queryString . " where ";
             }
-            $queryString = $queryString . "b.medical_location_id=" . $request['medical_location_id'];
+            $queryString = $queryString . "mv.medical_location_id=" . $request['medical_location_id'];
             $firstWhereParameter = false;
         }
         if($request['marital_status_id'] != 0) {
@@ -151,14 +151,27 @@ class SearchService{
             $firstWhereParameter = false;
         }
         if($request['doctor_name'] != ""){
-            $doctorId = $this->getDoctorIdFromName($request['doctor_name']);
-            if($doctorId != null) {
+            $doctors = $this->getDoctorIdFromName($request['doctor_name']);
+            if($doctors != null) {
                 if (!$firstWhereParameter) {
                     $queryString = $queryString . " and ";
                 } else {
                     $queryString = $queryString . " where ";
                 }
-                $queryString = $queryString . 'mv.doctor_id=' . $doctorId;
+                if(count($doctors) > 1) {
+                    $queryString = $queryString . '(';
+                    $firstDoctor = true;
+                    foreach ($doctors as $doctor) {
+                        if(!$firstDoctor){
+                            $queryString = $queryString . ' or ';
+                        }
+                        $queryString = $queryString . 'mv.doctor_id=' . $doctor->id;
+                        $firstDoctor = false;
+                    }
+                    $queryString = $queryString . ')';
+                } else {
+                    $queryString = $queryString . 'mv.doctor_id=' . $doctors[0]->id;
+                }
                 $firstWhereParameter = false;
             }
         }
@@ -199,7 +212,7 @@ class SearchService{
                 $queryString = $queryString . " where ";
             }
             $queryString = $queryString . 'incidents_counter=' . $request['incidents_number'];
-            $firstWhereParameter = false;
+            $firstWhereParameterExternalSelect = false;
         }
         if($request['insertion_date'] != ""){
             if(!$firstWhereParameterExternalSelect){
@@ -214,7 +227,7 @@ class SearchService{
             Log::info("The search benefiter DB query is: " . $queryString);
             return \DB::select(\DB::raw($queryString));
         } else {
-            Log::info("No parameters passed from benefiter search from!");
+            Log::info("No parameters passed from benefiter search form!");
             return null;
         }
     }
@@ -253,7 +266,7 @@ class SearchService{
     private function getMedicationIdFromName($drug){
         $tmp = \DB::table('medical_medication_lookup')->where('description', 'like', '%' . $drug . '%')->first();
         if($tmp != null) {
-            Log::info("Returning the drug id.");
+            Log::info("Returning the drug id. [=" . $tmp->id . "]");
             return $tmp->id;
         } else {
             Log::error("Couldn't find the drug id.");
@@ -263,10 +276,10 @@ class SearchService{
 
     // get doctor id from name
     private function getDoctorIdFromName($doctorName){
-        $tmp = \DB::table('users')->where('user_role_id', '=', 2)->where('lastname', 'like', '%' . $doctorName . '%')->orWhere('name', 'like', '%' . $doctorName . '%')->first();
+        $tmp = \DB::select(\DB::raw('select id from users where (user_role_id = 1 or user_role_id = 2) and (lastname like "%' . $doctorName . '%" or name like "%' . $doctorName . '%")'));
         if($tmp != null) {
-            Log::info("Returning the doctor's id.");
-            return $tmp->id;
+            Log::info("Returning the doctors ids.");
+            return $tmp;
         } else {
             Log::error("Couldn't find the doctor's id");
             return null;

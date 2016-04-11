@@ -4,8 +4,10 @@ use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals;
 use App\Models\Benefiters_Tables_Models\BenefiterReferrals_lookup;
 use App\Services\Validation_services\Basic_info_folder\BasicInfoValdationService;
+use App\Models\Benefiters_Tables_Models\benefiterOccurrences;
 use App\Services\GreekStringConversionHelper;
 use App\Services\DatesHelper;
+use Illuminate\Support\Facades\Auth;
 use App\Services\Social_folder\BenefiterSocialFolderService;
 use Validator;
 
@@ -129,6 +131,11 @@ class BasicInfoService{
         return null;
     }
 
+    // returns all the country abandon reasons from DB
+    public function getAllCountryAbandonReasons(){
+        return \DB::table('country_abandon_reasons_lookup')->get();
+    }
+
     // get all languages keys from basic info's form $request
     private function getLanguageKeysArray($request){
         // make an array with all languages keys
@@ -216,13 +223,14 @@ class BasicInfoService{
             "relatives_residence" => $request['relatives_residence'],
             "language_interpreter_needed" => $request['interpreter'],
             "education_id" => $request['education_status'],
+            "education_specialization" => $request['education_specialization'],
             "is_benefiter_working" => $request['working'],
             "work_title_id" => $request['working_title'],
             "working_legally" => $request['working_legally'],
-            "country_abandon_reason" => $request['country_abandon_reason'],
+            "country_abandon_reason_id" => $request['country_abandon_reason'],
             "travel_route" => $request['travel_route'],
             "travel_duration" => $request['travel_duration'],
-            "detention_duration" => $request['detention_duration'],
+            "detention_date" => $this->datesHelper->makeDBFriendlyDate($request['detention_date']),
             "social_history" => $request['social_history'],
             "document_manager_id" => \Auth::user()->id,
         );
@@ -398,13 +406,18 @@ class BasicInfoService{
             $basic_info_referral->referral_date = $this->datesHelper->makeDBFriendlyDate($request_basic_info_referrals_date[$i]);
             $basic_info_referral->benefiter_id = $benefiter_id;
             $basic_info_referral->referral_lookup_id = $request_basic_info_referrals_id[$i];
-
+            $basic_info_referral->user_id = \Auth::user()->id;
             $basic_info_referral->save();
         }
     }
     // get all basic info referrals
+    public function get_basic_info_referral_by_id($id){
+        $basic_info_referral_attributes = BenefiterReferrals::where('benefiter_id', $id)->get();
+        return $basic_info_referral_attributes;
+    }
+
     public function get_basic_info_referral(){
-        $basic_info_referral_attributes = BenefiterReferrals::get()->all();
+        $basic_info_referral_attributes = BenefiterReferrals::get();
         return $basic_info_referral_attributes;
     }
 
@@ -416,10 +429,49 @@ class BasicInfoService{
 
     // get all referrals saved to db for this benefiter id
     public function get_referrals_for_a_benefiter($id){
-        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
+        $benefiter_referrals_list = BenefiterReferrals::join('users', 'benefiter_referrals.user_id', '=', 'users.id')->where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
+//        $benefiter_referrals_list = BenefiterReferrals::where('benefiter_id', $id)->with('referralType')->orderBy('referral_date', 'desc')->get();
         return $benefiter_referrals_list;
     }
 
+
+    // ------------------------------------------------------------------ //
+    //----------- benefter occurrences table (OCCURRENCES) ---------------//
+    public function saveNewOccurrence($request){
+        $occurrence_date = $request['occurrence_date'];
+        $occurrences_comments = $request['occurrences_comments'];
+        $user_who_added_occurrence = Auth::user()->id;
+        $benefiter_id = $request['benefiter_id'];
+
+        // save to occurrences table
+        $benefiter_new_occurence = new benefiterOccurrences();
+        $benefiter_new_occurence->description = $occurrences_comments;
+        $benefiter_new_occurence->occurrence_date = $this->datesHelper->makeDBFriendlyDate($occurrence_date);
+        $benefiter_new_occurence->benefiter_id = $benefiter_id;
+        $benefiter_new_occurence->user_id = $user_who_added_occurrence;
+
+        $benefiter_new_occurence->save();
+    }
+
+    // get occurrences by benefiter
+    public function getAllOccurrencesByBenefiter($id){
+        $occurences = benefiterOccurrences::where('benefiter_id', $id)->get();
+        return $occurences;
+    }
+
+    // find occurrence by id
+    public function findOccurrence_by_id($request, $occurrence_id){
+        $occurence_by_id = benefiterOccurrences::find($occurrence_id);
+        // update the db row
+        $occurence_by_id->occurrence_date = $this->datesHelper->makeDBFriendlyDate($request['edited_occurrence_date']);
+        $occurence_by_id->description = $request['edited_occurrences_comments'];
+        $occurence_by_id->save();
+    }
+
+    // delete occurrence by id
+    public function deleteOccurrence_by_id($occurrence_id){
+        benefiterOccurrences::where('id','=',$occurrence_id)->delete();
+    }
 
     /*
      * public function deleteBasicInfoReferral($id, $referral_id){

@@ -18,10 +18,10 @@ return array(
     'travel_duration'      =>  'ΔΙΑΡΚΕΙΑ',
     'folder_number'        =>  'ΑΡΙΘΜΟΣ ΦΑΚΕΛΟΥ',
     'total_visits_number'  =>  'ΑΡΙΘΜΟΣ ΕΠΙΣΚΕΨΕΩΝ',
-    'show_visit'           =>  'ΕΜΦΑΝΙΣΗ ΣΤΟΙΧΕΙΩΝ ΕΞΕΤΑΣΗΣ',
+    'referrals_history'    =>  'ΠΑΡΑΠΟΜΠΕΣ',
+    'options'              =>  'ΕΠΙΛΟΓΕΣ',
     'medical_visit'        =>  'Ιατρική επίσκεψη',
-    'show_medical_visit'   =>  'Εμφάνιση επίσκεψης',
-    'edit_visit_info'      =>  'ΕΠΕΞΕΡΓΑΣΙΑ ΕΠΙΣΚΕΨΗΣ',
+    'show_medical_visit'   =>  'Εμφάνιση',
     'edit_visit'           =>  'Επεξεργασία',
 
     'success_visit'        =>  'Η επίσκεψη δημιουργήθηκε επιτυχώς',
@@ -31,7 +31,10 @@ return array(
     'yes'                  =>  'ΝΑΙ',
     'no'                   =>  'ΟΧΙ',
     'doctor'               =>  'ΓΙΑΤΡΟΣ',
+    'registered_by'        =>  'ΚΑΤΑΧΩΡΗΘΗΚΕ ΑΠΟ',
     'exam_location'        =>  'ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
+    'new_exam_loc'         =>  'ΝΕΑ ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ',
+    'new_exam_location'    =>  'Εισαγωγή νέας',
     'exam_date'            =>  'ΗΜΕΡ. ΕΞΕΤΑΣΗΣ',
     'new_medical_visit'    =>  'ΝΕΑ ΕΠΙΣΚΕΨΗ',
     'no_medical_history'   =>  'Δεν βρέθηκε ιατρικό ιστορικό',
@@ -40,7 +43,7 @@ return array(
 
     'medical_info'         =>  'Βασικά Ιατρικά στοιχεία',
     'doctor_name'          =>  'ΟΝΟΜΑ ΙΑΤΡΟΥ',
-    'incident_type'        =>  'ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ',
+    'incident_type'        =>  'ΑΝΤΙΜΕΤΩΠΙΣΗ',
     'chronic_conditions'   =>  'ΧΡΟΝΙΕΣ ΠΑΘΗΣΕΙΣ: ',
     'height'               =>  'ΥΨΟΣ (cm)',
     'weight'               =>  'ΒΑΡΟΣ (kg)',
@@ -51,20 +54,31 @@ return array(
     'skull_perimeter'      =>  'ΠΕΡΙΜΕΤΡΟΣ ΚΡΑΝΙΟΥ για νεογέννητα (cm)',
 
     'clinical_results'     =>  'Κλινικά αποτελέσματα',
+    'condition'            =>  'Πάθηση',
 
-    'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στην λίστα',
+    'medicinal_instructions' => 'Μια φαρμακευτική αγωγή θα πρέπει οπωσδήποτε να περιλαμβάνει ονομασία φαρμάκου, δοσολογία και διάρκεια θεραπείας προκειμένου να αποθηκευτεί.',
+    'medicinal_name'       =>  'Πληκτρολογείστε την ονομασία του φαρμάκου εάν δεν υπάρχει στη λίστα',
     'medicinal_dosage'     =>  'Δοσολογία',
-    'medicinal_duration'   =>  'Διάρκεια θεραπείας',
-    'supply_from_praksis'  =>  'Προμήθεια από Praxis',
+    'medicinal_duration'   =>  'Διάρκεια θεραπείας σε ημέρες',
+    'days'                 =>  'ΗΜΕΡΕΣ',
+    'supply_from_praksis'  =>  'Προμήθεια από Praksis',
 
     'lab_results'          =>  'Εργαστηριακά αποτελέσματα',
     'lab_results_info'     =>  'ΕΡΓΑΣΤΗΡΙΑΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ',
 
+    'diagnosis_results'    =>  'Διαγνωστικά αποτελέσματα',
+    'diagnosis_results_info'=> 'ΔΙΑΓΝΩΣΤΙΚΑ ΑΠΟΤΕΛΕΣΜΑΤΑ: ',
+
     'medication'           =>  'Φαρμακευτική αγωγή',
     'medication_info'      =>  'ΦΑΡΜΑΚΕΥΤΙΚΗ ΑΓΩΓΗ: ',
 
+    'hospitalization'      =>  'Νοσηλεία',
+    'hospitalization_info' =>  'ΝΟΣΗΛΕΙΑ: ',
+
     'referrals'            =>  'Παραπομπές',
     'referrals_info'       =>  'ΠΑΡΑΠΟΜΠΗ: ',
+    'done'                 =>  'Πραγματοποιήθηκε',
+    'not_done'             =>  'Δεν πραγματοποιήθηκε',
 
     'upload'               =>  'Αποθηκευμένα αρχεία: ',
     'upload_description'   =>  'Περιγραφή αρχείου: ',
@@ -72,6 +86,7 @@ return array(
 
     'upload_file'          =>  'Ανέβασμα αρχείου',
     'file_details'         =>  'ΠΕΡΙΓΡΑΦΗ ΑΡΧΕΙΟΥ:',
+    'form_submit_error'    =>  'Το συνολικό μέγεθος των αρχείων υπερβαίνει τα 50 MB. Θα πρέπει να διορθωθεί αυτό προκειμένου να προχωρήσετε στην αποθήκευση της επίσκεψης.',
 
     'save_medical_visit'   =>  'Αποθήκευση Ιατρικής Επίσκεψης',
     'update_medical_visit' =>  'Ανανέωση Ιατρικής Επίσκεψης',
@@ -79,6 +94,9 @@ return array(
     'condition-name'       =>  'ΠΑΘΗΣΗ',
     'icd10'                =>  'ICD10 ΕΠΙΛΟΓΕΣ',
     'description'          =>  'ΠΕΡΙΓΡΑΦΗ',
-    'admin'                =>  'Διαχειριστής'
+    'admin'                =>  'Διαχειριστής',
 
+    'print_visit'          =>  'Εκτύπωση επίσκεψης',
+    'close'                =>  'Κλείσιμο',
+    'choose_file_again'    =>  'Επιλέξτε ξανά τo αρχείο: ',
 );

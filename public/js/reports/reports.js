@@ -176,7 +176,7 @@ function fetchClinicalConditionsDataReport() {
             "valueAxes": [{
                 "axisAlpha": 0,
                 "position": "left",
-                "title": "Αριθμός ωφελουμένων"
+                "title": $("#benefiter_vs_clinical_conditions").data("number-of-benefiters")
             }],
             "export": {
                 "enabled": true
@@ -215,7 +215,7 @@ function fetchmedicalVisitsPerMonthDataReport() {
 
             panels: [ {
                 showCategoryAxis: true,
-                title: "Αριθμός Ιατρικών Επισκέψεων",
+                title: $("#medical_visits_per_month").data("medical-visits-per-month"),
                 eraseAll: false,
                 allLabels: [ {
                     x: 0,
@@ -239,7 +239,7 @@ function fetchmedicalVisitsPerMonthDataReport() {
                     markerType: "none"
                 },
 
-                drawingIconsEnabled: true
+                drawingIconsEnabled: false
             } ],
 
             chartScrollbarSettings: {
@@ -295,7 +295,7 @@ function fetchBenefitersVSphycologicalSupportType(){
                 "dashLength": 0,
                 //"fontSize": 16,
                 "position": "left",
-                "title": "Αριθμός ωφελουμένων"
+                "title": $("#benefiter_vs_phycological_support").data("number-of-benefiters")
 
             } ],
             "gridAboveGraphs": true,
@@ -305,7 +305,8 @@ function fetchBenefitersVSphycologicalSupportType(){
                 "fillAlphas": 0.8,
                 "lineAlpha": 0.2,
                 "type": "column",
-                "valueField": "type_count"
+                "valueField": "type_count",
+                "lineColor" : "#A57251",
             } ],
             "chartCursor": {
                 "categoryBalloonEnabled": false,
@@ -358,12 +359,12 @@ function fetchBenefitersRegistrationsPerMonthDataReport() {
 
             panels: [ {
                 showCategoryAxis: true,
-                title: "Αριθμός Εγγραφών",
+                title: $("#registrations_per_month").data("registrations-per-month"),
                 eraseAll: false,
                 allLabels: [ {
                     x: 0,
                     y: 115,
-                    //text: "Click on the pencil icon on top-right to start drawing",
+                    //text: "Click on the pencil icon on top-right to start drawing", [this feature is currently removed]
                     text: "",
                     align: "center",
                     size: 16

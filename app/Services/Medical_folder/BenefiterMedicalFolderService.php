@@ -4,8 +4,10 @@
 use App\Models\Benefiters_Tables_Models\Benefiter;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions_lookup;
+use App\Models\Benefiters_Tables_Models\medical_diagnosis_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
 use App\Models\Benefiters_Tables_Models\medical_examinations;
+use App\Models\Benefiters_Tables_Models\medical_hospitalizations;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
@@ -69,6 +71,10 @@ class BenefiterMedicalFolderService{
         $this->save_medical_examinations($request, $medicalVisit_id);
         // laboratory results
         $this->save_medical_laboratory_results($request, $medicalVisit_id);
+        // diagnosis results
+        $this->save_medical_diagnosis_results($request, $medicalVisit_id);
+        // hospitalizations
+        $this->save_medical_hospitalizations($request, $medicalVisit_id);
         // medication table
         $this->save_medical_medication($request, $medicalVisit_id);
         // medical referrals
@@ -82,14 +88,29 @@ class BenefiterMedicalFolderService{
         $newMedicalVisit = new medical_visits();
         $newMedicalVisit->benefiter_id = $request['benefiter_id'];
         $newMedicalVisit->doctor_id = $request['doctor_id'];
-        $newMedicalVisit->medical_location_id = $request['medical_location_id'];
+
+        $newMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_to_lookup($request);
         $newMedicalVisit->medical_incident_id = $request['medical_incident_id'];
         $newMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $newMedicalVisit->save();
         return $newMedicalVisit->id;
     }
+    private function add_dynamically_medical_locations_to_lookup($request){
+        if(!is_int($request['medical_location_id']) && !empty($request['new_medical_location'])){
+            // add the input value to medical locations table and return the table id
+            $new_medical_location = new medical_location_lookup();
+            $new_medical_location->description = $request['new_medical_location'];
+            $new_medical_location->save();
 
-    //----------- medical_chronic_conditions table --------------------//
+            return $new_medical_location->id;
+        }
+        // else just return the $request['medical_location_id']
+        else{
+            return $request['medical_location_id'];
+        }
+    }
+
+    //----------- medical_chronic_conditions table -----------------------DONE//
     // DB save
     private function save_medical_chronic_conditions($request, $id){
         $request_medical_chronic_conditions = $this->get_medical_chronic_conditions($request);
@@ -187,7 +208,68 @@ class BenefiterMedicalFolderService{
         return $lab_results_array;
     }
 
-    //----------- medical_medication table ----------------------------//
+    //----------- medical_diagnosis_results table ----------------------DONE//
+    // DB save
+    private function save_medical_diagnosis_results($request, $id){
+        $request_diagnosis_results = $this->medical_diagnosis_results($request);
+        foreach($request_diagnosis_results as $rdr){
+            if(!empty($rdr)){
+                $diagnosis_results = new medical_diagnosis_results();
+
+                $diagnosis_results->diagnosis_results = $rdr;
+                $diagnosis_results->medical_visit_id = $id;
+
+                $diagnosis_results->save();
+            }
+        }
+    }
+    // post request
+    private function medical_diagnosis_results($request){
+        $diagnosis_results = $request['diagnosis_results'];
+        $diagnosis_results_array = [];
+        foreach ($diagnosis_results as $dr){
+            array_push($diagnosis_results_array, $dr);
+        }
+        return $diagnosis_results_array;
+    }
+
+    //----------- medical_hospitalizations table ----------------------DONE//
+    // DB save
+    private function save_medical_hospitalizations($request, $id){
+        $request_hospitalizations = $this->medical_hospitalizations($request);
+        $request_hospitalization_dates = $this->medical_hospitalization_dates($request);
+        foreach($request_hospitalizations as $i=>$rh){
+            if(!empty($rh)){
+                $hospitalization = new medical_hospitalizations();
+
+                $hospitalization->hospitalizations = $rh;
+                $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
+                $hospitalization->medical_visit_id = $id;
+
+                $hospitalization->save();
+            }
+        }
+    }
+    // post request
+    private function medical_hospitalizations($request){
+        $hospitalizations = $request['hospitalization'];
+        $hospitalizations_array = [];
+        foreach ($hospitalizations as $h){
+            array_push($hospitalizations_array, $h);
+        }
+        return $hospitalizations_array;
+    }
+    // post request
+    private function medical_hospitalization_dates($request){
+        $hospitalization_dates = $request['hospitalization_date'];
+        $hospitalization_dates_array = [];
+        foreach ($hospitalization_dates as $hd){
+            array_push($hospitalization_dates_array, $hd);
+        }
+        return $hospitalization_dates_array;
+    }
+
+    //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function save_medical_medication($request, $id){
         if(!empty($request['medication_name_from_lookup'])){
@@ -215,7 +297,7 @@ class BenefiterMedicalFolderService{
                 $med_medication = new medical_medication();
 
                 // check if the request comes from the auto complete select (from lookup)
-                if (empty($request_medication_new_name[$i])) {
+                if (empty($request_medication_new_name[$i]) && !empty($request_medication_name_from_lookup[$i])) {
                     $request_medication_name[$i] = $request_medication_name_from_lookup[$i];
 
                     $med_medication->dosage = $request_medication_dosage[$i];
@@ -231,7 +313,7 @@ class BenefiterMedicalFolderService{
                     $med_medication->save();
                 }
                 // check if the request comes from the input field.
-                else{
+                else if(!empty($request_medication_new_name[$i])){
                     $request_medication_name[$i] = $request_medication_new_name[$i];
 
                     $med_medication_lookup = new medical_medication_lookup();
@@ -259,11 +341,13 @@ class BenefiterMedicalFolderService{
     // DB save
     private function save_medical_referrals($request, $id){
         $request_medical_referrals = $this->medical_referrals($request);
-        foreach($request_medical_referrals as $rmr){
+        $request_medical_referrals_is_done = $this->medical_referrals_is_done($request);
+        foreach($request_medical_referrals as $i => $rmr){
             if(!empty($rmr)){
                 $med_referral = new medical_referrals();
                 $med_referral->referrals = $rmr;
                 $med_referral->medical_visit_id = $id;
+                $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                 $med_referral->save();
             }
         }
@@ -276,6 +360,15 @@ class BenefiterMedicalFolderService{
             array_push($referrals_array, $ref);
         }
         return $referrals_array;
+    }
+    // post request
+    private function medical_referrals_is_done($request){
+        $referrals_is_done = $request['is_done_id'];
+        $referrals_is_done_array = [];
+        foreach ($referrals_is_done as $rid){
+            array_push($referrals_is_done_array, $rid);
+        }
+        return $referrals_is_done_array;
     }
 
     //----------- medical_uploads table -------------------------------//
@@ -320,6 +413,10 @@ class BenefiterMedicalFolderService{
         $this->update_medical_examinations($request, $updatedMedicalVisit_id);
         // laboratory results
         $this->update_medical_laboratory_results($request, $updatedMedicalVisit_id);
+        // diagnosis results
+        $this->update_medical_diagnosis_results($request, $updatedMedicalVisit_id);
+        // hospitalizations
+        $this->update_medical_hospitalizations($request, $updatedMedicalVisit_id);
         // medication table
         $this->update_medical_medication($request, $updatedMedicalVisit_id);
         // medical referrals
@@ -335,7 +432,7 @@ class BenefiterMedicalFolderService{
 
         $updatedMedicalVisit->benefiter_id = $request['benefiter_id'];
         $updatedMedicalVisit->doctor_id = $request['doctor_id'];
-        $updatedMedicalVisit->medical_location_id = $request['medical_location_id'];
+        $updatedMedicalVisit->medical_location_id = $this->add_dynamically_medical_locations_to_lookup($request);
         $updatedMedicalVisit->medical_incident_id = $request['medical_incident_id'];
         $updatedMedicalVisit->medical_visit_date = $this->datesHelper->makeDBFriendlyDate($request['examination_date']);
         $updatedMedicalVisit->save();
@@ -571,7 +668,123 @@ class BenefiterMedicalFolderService{
         return $lab_results_array;
     }
 
-    //----------- medical_medication table -----------------------------//
+    
+    //----------- medical_diagnosis_results table ----------------------DONE//
+    // DB save
+    private function update_medical_diagnosis_results($request, $selected_medical_visit_id){
+        $request_diagnosis_results = $this->update_diagnosis_results($request);
+        $requests_count = count($request_diagnosis_results);
+        $saved_diagnosis_results = medical_diagnosis_results::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_diagnosis_results_count = count($saved_diagnosis_results);
+        $counter = 0;
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_diagnosis_results_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                // update what is saved
+                if ($counter < $saved_diagnosis_results_count) {
+                    if(!empty($request_diagnosis_results[$i])){
+                        $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                        $diagnosis_result->diagnosis_results = $request_diagnosis_results[$i];
+                        $diagnosis_result->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_result->save();
+                    }
+                    //add new rows for the new requests
+                } else {
+                    if(!empty($request_diagnosis_results[$i])){
+                        $diagnosis_results = new medical_diagnosis_results();
+                        $diagnosis_results->diagnosis_results = $request_diagnosis_results[$i];
+                        $diagnosis_results->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_results->save();
+                    }
+                }
+                $counter++;
+            }
+            // else if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_diagnosis_results_count; $j++){
+                // update already saved rows
+                if ($counter < $requests_count) {
+                    if(!empty($request_diagnosis_results[$j])){
+                        $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                        $diagnosis_result->diagnosis_results = $request_diagnosis_results[$j];
+                        $diagnosis_result->medical_visit_id = $selected_medical_visit_id;
+                        $diagnosis_result->save();
+                    }
+                    // else delete extra rows
+                } else {
+                    $diagnosis_result = medical_diagnosis_results::find($saved_diagnosis_results[$counter]['id']);
+                    $diagnosis_result->delete();
+                }
+                $counter++;
+            }
+        }
+    }
+    // post request
+    private function update_diagnosis_results($request){
+        $diagnosis_results = $request['diagnosis_results'];
+        $diagnosis_results_array = [];
+        foreach ($diagnosis_results as $dr){
+            array_push($diagnosis_results_array, $dr);
+        }
+        return $diagnosis_results_array;
+    }
+
+    //----------- medical_hospitalizations table ----------------------DONE//
+    // DB save
+    private function update_medical_hospitalizations($request, $selected_medical_visit_id){
+        $request_hospitalizations = $this->medical_hospitalizations($request);
+        $request_hospitalization_dates = $this->medical_hospitalization_dates($request);
+        $requests_count = count($request_hospitalizations);
+        $saved_hospitalizations = medical_hospitalizations::where("medical_visit_id", $selected_medical_visit_id)->get();
+        $saved_hospitalizations_count = count($saved_hospitalizations);
+        $counter = 0;
+        // if the request array is bigger than the saved then update what is saved and then add new rows for the new requests
+        if($requests_count > $saved_hospitalizations_count){
+            for($i=0; $i<$requests_count ; $i++) {
+                // update what is saved
+                if ($counter < $saved_hospitalizations_count) {
+                    if(!empty($request_hospitalizations[$i])){
+                        $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                        $hospitalization->hospitalizations = $request_hospitalizations[$i];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                    //add new rows for the new requests
+                } else {
+                    if(!empty($request_hospitalizations[$i])){
+                        $hospitalization = new medical_hospitalizations();
+                        $hospitalization->hospitalizations = $request_hospitalizations[$i];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$i]);
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                }
+                $counter++;
+            }
+            // else if the request array is smaller then update some rows and delete the rest
+        }else{
+            for($j=0; $j<$saved_hospitalizations_count; $j++){
+                // update already saved rows
+                if ($counter < $requests_count) {
+                    if(!empty($request_hospitalizations[$j])){
+                        $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                        $hospitalization->hospitalizations = $request_hospitalizations[$j];
+                        $hospitalization->hospitalization_date = $this->datesHelper->makeDBFriendlyDate($request_hospitalization_dates[$j]);
+                        $hospitalization->medical_visit_id = $selected_medical_visit_id;
+                        $hospitalization->save();
+                    }
+                    // else delete extra rows
+                } else {
+                    $hospitalization = medical_hospitalizations::find($saved_hospitalizations[$counter]['id']);
+                    $hospitalization->delete();
+                }
+                $counter++;
+            }
+        }
+    }
+
+    //----------- medical_medication table ----------------------------DONE//
     // DB save
     private function update_medical_medication($request, $selected_medical_visit_id){
         if(!empty($request['medication_name_from_lookup'])){
@@ -730,6 +943,7 @@ class BenefiterMedicalFolderService{
     // DB save
     private function update_medical_referrals($request, $selected_medical_visit_id){
         $request_medical_referrals = $this->update_requested_medical_referrals($request);
+        $request_medical_referrals_is_done = $this->medical_referrals_is_done($request);
         $requests_count = count($request_medical_referrals);
         $saved_medical_referrals = $this->medical_folder_db_dependent_services->find_medical_referrals_with_same_medical_visit_id($selected_medical_visit_id);
         $saved_medical_referrals_count = count($saved_medical_referrals);
@@ -743,6 +957,7 @@ class BenefiterMedicalFolderService{
                         $med_referral = $this->medical_folder_db_dependent_services->find_medical_referral_by_id($saved_medical_referrals[$counter]['id']);
                         $med_referral->referrals = $request_medical_referrals[$i];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                         $med_referral->save();
                     }
                 } else {
@@ -750,6 +965,7 @@ class BenefiterMedicalFolderService{
                         $med_referral = new medical_referrals();
                         $med_referral->referrals = $request_medical_referrals[$i];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$i];
                         $med_referral->save();
                     }
                 }
@@ -763,6 +979,7 @@ class BenefiterMedicalFolderService{
                         $med_referral = $this->medical_folder_db_dependent_services->find_medical_referral_by_id($saved_medical_referrals[$counter]['id']);
                         $med_referral->referrals = $request_medical_referrals[$j];
                         $med_referral->medical_visit_id = $selected_medical_visit_id;
+                        $med_referral->is_done_id = $request_medical_referrals_is_done[$j];
                         $med_referral->save();
                     }
                 } else {

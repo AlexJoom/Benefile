@@ -16,7 +16,7 @@
                <b>@lang($p.'registratio_message_2')</b>
            </div>
 
-           <div class="text-center margin-top-40">
+           <div class="text-center margin-top-40 margin-bottom-50">
             <a class="logout-button" href="{{ url('auth/logout') }}">@lang($p.'logout')</a>
            </div>
 
@@ -24,8 +24,10 @@
         </div>
     </div>
     <div class="white margin-top-100">
-        <div class="bottomDiv" >
-           @lang($p.'need_help')<a class="white" target="_blank" href="http://www.praksis.gr/el/επικοινωνια"><b>@lang($p.'contact')</b></a>
+        <div class="row">
+            <div class="bottomDiv">
+               @lang($p.'need_help')<a class="white" target="_blank" href="http://www.praksis.gr/el/επικοινωνια"><b>@lang($p.'contact')</b></a>
+            </div>
         </div>
     </div>
 @stop

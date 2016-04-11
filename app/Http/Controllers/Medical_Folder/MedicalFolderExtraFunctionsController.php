@@ -52,7 +52,9 @@ class MedicalFolderExtraFunctionsController extends Controller{
         $med_visit_skull_perimeter = '';
         $med_visit_exam_results = '';
         $med_visit_lab_results = '';
+        $med_visit_diagnosis_results = '';
         $med_visit_medication = '';
+        $med_visit_hospitalizations = '';
         $med_visit_referrals = '';
         $med_visit_uploads = '';
         // TODO CREATE A SERVICE THAT RETURNS A JSON WITH ALL INFO FOR EVERY VISIT
@@ -95,8 +97,12 @@ class MedicalFolderExtraFunctionsController extends Controller{
                 $med_visit_exam_results = $this->medicalVisitDBDependencies->findMedicalVisitExaminationResults($med_visit['id']);
                 // Lab results
                 $med_visit_lab_results = $this->medicalVisitDBDependencies->findMedicalVisitLabResults($med_visit['id']);
+                // Diagnosis results
+                $med_visit_diagnosis_results = $this->medicalVisitDBDependencies->findMedicalVisitDiagnosisResults($med_visit['id']);
                 // Medication
                 $med_visit_medication = $this->medicalVisitDBDependencies->findMedicalVisitMedication($med_visit['id']);
+                // Hospitalizations
+                $med_visit_hospitalizations = $this->medicalVisitDBDependencies->findMedicalVisitHospitalizations($med_visit['id']);
                 // Referrals
                 $med_visit_referrals = $this->medicalVisitDBDependencies->findMedicalVisitReferrals($med_visit['id']);
                 // Uploads
@@ -116,6 +122,8 @@ class MedicalFolderExtraFunctionsController extends Controller{
                                         ->with('med_visit_blood_pressure_systolic', $med_visit_blood_pressure_systolic)
                                         ->with('med_visit_blood_pressure_diastolic', $med_visit_blood_pressure_diastolic)
                                         ->with('med_visit_skull_perimeter', $med_visit_skull_perimeter)
+                                        ->with('med_visit_diagnosis_results', $med_visit_diagnosis_results)
+                                        ->with('med_visit_hospitalizations', $med_visit_hospitalizations)
                                         ->with('med_visit_exam_results', $med_visit_exam_results)
                                         ->with('med_visit_lab_results', $med_visit_lab_results)
                                         ->with('med_visit_medication', $med_visit_medication)

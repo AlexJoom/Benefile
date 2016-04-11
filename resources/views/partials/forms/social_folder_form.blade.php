@@ -193,7 +193,7 @@
                             </div>
                             <div class="form-group padding-left-right-15 float-left col-xs-2">
                                 {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
-                                {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                {!! Form::text('session_date', null, array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                             </div>
                             <div class="form-group padding-left-right-15 float-left col-xs-3">
                                 <div class="width-100-percent">
@@ -285,7 +285,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group padding-left-right-15 float-left col-md-2">
                                         {!! Form::label('session_date', Lang::get('social_folder_form.session_date')) !!}
-                                        {!! Form::text('session_date', $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date), array('class' => 'custom-input-text width-80-percent date-input')) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
+                                        {!! Form::text('session_date', $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_session->session_date), array('class' => 'custom-input-text width-80-percent date-input', 'placeholder' => Lang::get('dates_common.date_placeholder'))) !!}<a href="javascript:void(0)"><span class="glyphicon glyphicon-remove color-red clear-date"></span></a>
                                     </div>
                                     <div class="form-group padding-left-right-15 float-left col-md-2">
                                         <div class="width-100-percent">

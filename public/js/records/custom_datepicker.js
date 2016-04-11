@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
 
     // make datepicker fields not editable but clickable
-    $(".date-input").attr("readonly", "");
+    //$(".date-input").attr("readonly", "");
 
     // clear date value
     $("body").on("click", ".clear-date", function(){

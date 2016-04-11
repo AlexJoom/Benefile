@@ -13,10 +13,13 @@ class DatesHelper
             $day = strtok($date, "-");
             $month = strtok("-");
             $year = strtok("-");
-            return Carbon::createFromDate($year, $month, $day);
-        } else {
-            return "";
+            if (is_numeric($day) and is_numeric($month) and is_numeric($year)) {
+                if (strlen($day) <= 2 and strlen($month) <= 2 and strlen($year) <= 4) {
+                    return Carbon::createFromDate($year, $month, $day);
+                }
+            }
         }
+        return "";
     }
 
     // get date String appropriate for DB search

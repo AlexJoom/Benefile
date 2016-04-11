@@ -15,6 +15,12 @@ class LegalFolderTableSeeder extends Seeder
             array(
                 array('description' => 'Αίτημα ασύλου'),
                 array('description' => 'Εκτός νομικού πλαισίου'),
+                array('description' => 'Αρ. Δελτίου Αιτήσαντος Ασύλου'),
+                array('description' => 'Αρ. Δελτίου Πρόσφυγα'),
+                array('description' => 'Βεβ. Άδειας Διαμονής'),
+                array('description' => 'Άδεια Παραμονής'),
+                array('description' => 'Ευρωπαϊος Πολίτης'),
+                array('description' => 'Ασυνόδευτος Ανήλικος'),
             )
         );
 

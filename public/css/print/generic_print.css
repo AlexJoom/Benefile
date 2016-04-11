@@ -1,0 +1,109 @@
+body{
+    background: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    color: black;
+    font-family: serif;
+    font-size: 0.9em;
+}
+
+.make-inline{
+    display: block;
+}
+
+.text-align-right{
+    text-align: left;
+}
+
+.benefiter-info{
+    display: block;
+    position: relative;
+    margin: 10px 0 !important;
+    height: 20px !important;
+}
+
+h2{
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 10px auto !important;
+    text-align: center;
+}
+
+.userName{
+    display: none;
+}
+
+#sidebar{
+    display: none;
+}
+
+#actions{
+    display: none;
+}
+
+h1.record-section-header{
+    font-size: 1.1em;
+    color: black;
+    font-weight: 600;
+}
+
+.underline-header{
+    border-style: none;
+}
+
+input[type='submit']{
+    display: none;
+}
+
+input[type='text'], label{
+    color: black;
+    font-weight: 100;
+    border-style: none;
+}
+
+input[type='radio'], input[type='radio'] + label, input[type='checkbox'], input[type='checkbox'] + label{
+    display: none;
+}
+
+input[type='radio']:checked + label, input[type='checkbox']:checked + label{
+    display: inline-block;
+}
+
+input[disabled]{
+    opacity: 1;
+}
+
+.non-printable{
+    display: none !important;
+}
+
+.form-section{
+    border-style: none !important;
+}
+
+.print-button{
+    display: none;
+}
+
+.alert{
+    display: none;
+}
+
+@media print{
+    html, body {
+        height: auto;
+    }
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color: transparent;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: transparent;
+    }
+}

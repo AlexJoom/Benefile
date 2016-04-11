@@ -11,6 +11,8 @@ namespace App\Services\Medical_folder;
 use App\Models\Benefiters_Tables_Models\medical_visits;
 use App\Models\Benefiters_Tables_Models\medical_chronic_conditions;
 use App\Models\Benefiters_Tables_Models\medical_examination_results_lookup;
+use App\Models\Benefiters_Tables_Models\medical_diagnosis_results;
+use App\Models\Benefiters_Tables_Models\medical_hospitalizations;
 use App\Models\Benefiters_Tables_Models\medical_examination_results;
 use App\Models\Benefiters_Tables_Models\medical_examinations;
 use App\Models\Benefiters_Tables_Models\medical_laboratory_results;
@@ -245,8 +247,21 @@ class BenefiterMedicalFolderDBdependentService{
     }
     // find ICD10 from lookup using partial name
     public function get_full_icd10_description($partial_name){
-        $full_icd10_description = ICD10::where('description','LIKE', '%'.$partial_name.'%' )->get();
+        $full_icd10_description = ICD10::where('description','LIKE', '%'.$partial_name.'%' )
+                                        ->orWhere('code', 'LIKE', '%'.$partial_name.'%')->get();
         return $full_icd10_description;
+    }
+
+    // Diagnosis results
+    public function findMedicalVisitDiagnosisResults($med_visit_id){
+        $med_visit_diagnosis_results = medical_diagnosis_results::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_diagnosis_results;
+    }
+
+    // Hospitalization
+    public function findMedicalVisitHospitalizations($med_visit_id){
+        $med_visit_hospitalizations = medical_hospitalizations::where('medical_visit_id', $med_visit_id)->get();
+        return $med_visit_hospitalizations;
     }
 
 

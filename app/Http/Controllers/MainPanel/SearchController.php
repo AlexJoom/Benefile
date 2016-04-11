@@ -15,7 +15,8 @@ class SearchController extends Controller{
 
     public function __construct(){
         // only for logged in users
-        $this->middleware('auth');
+        $this->middleware('activated');
+//        $this->middleware('auth');
         // initialize db dependent services for medical folder
         $this->medical_folder_db_dependent_services = new BenefiterMedicalFolderDBdependentService();
     }

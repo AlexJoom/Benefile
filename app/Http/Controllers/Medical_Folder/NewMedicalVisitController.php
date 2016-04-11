@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Medical_Folder;
 
+use App\Services\Basic_info_folder\BasicInfoService;
 use App\Services\Medical_folder\BenefiterMedicalFolderService;
 use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
 use App\Services\Utilities\GeneralUseService;
@@ -10,9 +11,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class NewMedicalVisitController extends Controller{
 
+    private $basicInfoService;
     private $newMedicalVisit;
     private $db_dependences;
     private $general_use_services;
@@ -23,6 +26,7 @@ class NewMedicalVisitController extends Controller{
         $this->middleware('activated');
 
         // initialize medical visit service
+        $this->basicInfoService = new BasicInfoService();
         $this->newMedicalVisit = new BenefiterMedicalFolderService();
         $this->db_dependences = new BenefiterMedicalFolderDBdependentService();
         $this->general_use_services = new GeneralUseService();
@@ -43,9 +47,21 @@ class NewMedicalVisitController extends Controller{
         // lab results
         $lab_results_session = session()->get('lab_results_session');
         session()->forget('lab_results_session');
+        // diagnosis results
+        $diagnosis_results_session = session()->get('diagnosis_results_session');
+        session()->forget('diagnosis_results_session');
+        // hospitalizations
+        $hospitalization_session = session()->get('hospitalization_session');
+        session()->forget('hospitalization_session');
+        // hospitalization dates
+        $hospitalization_date_session = session()->get('hospitalization_date_session');
+        session()->forget('hospitalization_date_session');
         // referrals
         $referrals_session = session()->get('referrals_session');
         session()->forget('referrals_session');
+        // referrals is done
+        $referrals_is_done_session = session()->get('referrals_is_done_session');
+        session()->forget('referrals_is_done_session');
         //Examination results (consists of selected conditions & descriptions)
         $examResultDescription_session = session()->get('examResultDescription_session');
         session()->forget('examResultDescription_session');
@@ -75,17 +91,18 @@ class NewMedicalVisitController extends Controller{
         session()->forget('medication_duration_session');
         $supply_from_praksis_hidden_session = session()->get('supply_from_praksis_hidden_session');
         session()->forget('supply_from_praksis_hidden_session');
-//        $upload_file_description_session = session()->get('upload_file_description_session');
-//        session()->forget('upload_file_description_session');
-//        $upload_file_title_session = session()->get('upload_file_title_session');
-//        session()->forget('upload_file_title_session');
+        $upload_file_description_session = session()->get('upload_file_description_session');
+        session()->forget('upload_file_description_session');
+        $upload_file_title_session = session()->get('upload_file_title_session');
+        session()->forget('upload_file_title_session');
 
         // ------ END VALIDATION FAILURE SAVE TYPED DATA ------------------ //
 
 
-        $benefiter = $this->db_dependences->find_benefiter_by_id($id);
+        $benefiter = $this->basicInfoService->findExistentBenefiter($id);
         $medical_visits_number = $this->db_dependences->count_medical_visits_for_a_benefiter($id) ; //medical_visits::where('benefiter_id', $id)->count();
         $benefiter_medical_visits_list = $this->db_dependences->get_all_medical_visits_for_benefiter($id); // medical_visits::where('benefiter_id', $id)->with('doctor', 'medicalLocation', 'medicalIncidentType')->get();
+        $referrals = $this->db_dependences->find_medical_referrals_with_same_medical_visit_id($benefiter_medical_visits_list);
         if ($benefiter == null) {
             return view('errors.404');
         } else {
@@ -94,6 +111,10 @@ class NewMedicalVisitController extends Controller{
             $medical_locations = $this->db_dependences->get_all_medical_locations_lookup();  //medical_location_lookup::get();
             $medical_incident_type = $this->db_dependences->medical_incident_type_lookup();  //medical_incident_type_lookup::get();
             $medical_locations_array = $this->general_use_services->reindex_array($medical_locations);
+            // If logged in user is admin then more medical locations can be added dynamically.
+            if(Auth::user()->user_role_id == 1){
+                $medical_locations_array['new_location'] = trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' );
+            }
             $medical_incident_type_array = $this->general_use_services->reindex_array($medical_incident_type);
             $doctor_id = $this->db_dependences->get_logged_in_user_id();  //Auth::user()->id;
             $benefiter_id = $benefiter->id;
@@ -108,7 +129,11 @@ class NewMedicalVisitController extends Controller{
                 ->with('medical_visits_number', $medical_visits_number)
                 ->with('chronic_conditions_sesssion', $chronic_conditions_sesssion)
                 ->with('lab_results_session', $lab_results_session)
+                ->with('diagnosis_results_session', $diagnosis_results_session)
+                ->with('hospitalization_session', $hospitalization_session)
+                ->with('hospitalization_date_session', $hospitalization_date_session)
                 ->with('referrals_session', $referrals_session)
+                ->with('referrals_is_done_session', $referrals_is_done_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
                 ->with('examResultLoukup_session_description', $examResultLoukup_session_description)
@@ -119,8 +144,9 @@ class NewMedicalVisitController extends Controller{
                 ->with('medication_duration_session', $medication_duration_session)
                 ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
                 ->with('benefiter_medical_visits_list', $benefiter_medical_visits_list)
-//                        ->with('upload_file_description_session', $upload_file_description_session)
-//                        ->with('upload_file_title_session', $upload_file_title_session)
+                ->with('referrals', $referrals)
+                ->with('upload_file_description_session', $upload_file_description_session)
+                ->with('upload_file_title_session', $upload_file_title_session)
                 ->with('visit_submited_succesfully', $visit_submited_succesfully);
         }
     }
@@ -143,9 +169,14 @@ class NewMedicalVisitController extends Controller{
         $validator = $this->new_medical_visit_validator->medicalValidationService($request->all());
         if($validator->fails()){
             //Fetch all array posts (if validation fails)
+            $new_medical_location = $request['new_medical_location'];
             $chronic_conditions_session = $request['chronic_conditions'];
             $lab_results_session = $request['lab_results'];
+            $diagnosis_results_session = $request['diagnosis_results'];
+            $hospitalization_session = $request['hospitalization'];
+            $hospitalization_date_session = $request['hospitalization_date'];
             $referrals_session = $request['referrals'];
+            $referrals_is_done_session = $request['is_done_id'];
             $examResultDescription_session = $request['examResultDescription'];
             $examResultLoukup_session = $request['examResultLoukup'];
             $medication_name_from_lookup_session = $request['medication_name_from_lookup'];
@@ -154,9 +185,17 @@ class NewMedicalVisitController extends Controller{
             $medication_duration_session = $request['medication_duration'];
             $supply_from_praksis_hidden_session = $request['supply_from_praksis_hidden'];
 
-//            $upload_file_description_session = $request['upload_file_description'];
-//            $upload_file_title_session = $request['upload_file_title'];
+            $upload_file_description_session = $request['upload_file_description'];
 
+            $upload_file_title_session = array();
+            $upload_file_title_session_files = $request['upload_file_title'];
+            if(!empty($upload_file_title_session_files)) {
+                foreach ($upload_file_title_session_files as $uft) {
+                    if(!empty($uft)) {
+                        array_push($upload_file_title_session, $uft->getClientOriginalName());
+                    }
+                }
+            }
             $visit_submited_succesfully = 2; // 0:initial value, 1:Success, 2:Unsuccess
             return redirect('benefiter/'.$benefiter_id.'/medical-folder')
                 ->withInput(array(
@@ -177,12 +216,17 @@ class NewMedicalVisitController extends Controller{
                 ->with('doctor_id', $doctor_id)
                 ->with('benefiter_id', $benefiter_id)
                 ->with('medical_locations_array', $medical_locations_array)
+                ->with('new_medical_location', $new_medical_location)
                 ->with('ExamResultsLookup', $ExamResultsLookup)
                 ->with('medical_visits_number', $medical_visits_number)
                 ->with('visit_submited_succesfully', $visit_submited_succesfully)
                 ->with('chronic_conditions_session', $chronic_conditions_session)
                 ->with('lab_results_session', $lab_results_session)
+                ->with('diagnosis_results_session', $diagnosis_results_session)
+                ->with('hospitalization_session', $hospitalization_session)
+                ->with('hospitalization_date_session', $hospitalization_date_session)
                 ->with('referrals_session', $referrals_session)
+                ->with('referrals_is_done_session', $referrals_is_done_session)
                 ->with('examResultDescription_session', $examResultDescription_session)
                 ->with('examResultLoukup_session', $examResultLoukup_session)
                 ->with('medication_name_from_lookup_session', $medication_name_from_lookup_session)
@@ -190,8 +234,8 @@ class NewMedicalVisitController extends Controller{
                 ->with('medication_dosage_session', $medication_dosage_session)
                 ->with('medication_duration_session', $medication_duration_session)
                 ->with('supply_from_praksis_hidden_session', $supply_from_praksis_hidden_session)
-//                ->with('upload_file_description_session', $upload_file_description_session)
-//                ->with('upload_file_title_session', $upload_file_title_session)
+                ->with('upload_file_description_session', $upload_file_description_session)
+                ->with('upload_file_title_session', $upload_file_title_session)
                 ->withErrors($validator->errors()->all());
         } else {
             $this->newMedicalVisit->save_new_medical_visit_tables($request->all());

@@ -11,6 +11,10 @@
     <link href="{{ asset('css/records/validation_errors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('select2-4.0.2-rc.1/css/select2.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('bootstrap-3.3.6/dist/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="print">
+    <link href="{{asset('css/records/record_form.css')}}" rel="stylesheet" type="text/css" media="print">
+    <link href="{{ asset('css/print/generic_print.css') }}" rel="stylesheet" type="text/css" media="print">
+    <link href="{{ asset('css/print/medical_visit_print.css') }}" rel="stylesheet" type="text/css" media="print">
 @stop
 
 @section('benefiter-info')

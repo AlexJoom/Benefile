@@ -1,0 +1,61 @@
+.asterisk{
+    color: black;
+    font-weight: 100;
+    font-size: 0.1em;
+}
+
+.languages-info * .make-inline{
+    display: inline-block;
+}
+
+.legal-info * .make-inline{
+    display: inline-block;
+}
+
+.legal-info * input[type="text"]{
+    width: 100%;
+}
+
+.family-info * .col-md-6{
+    width: 100%;
+}
+
+select{
+    border-style: none;
+    color: black;
+}
+
+select[value="1"]{
+    display: none;
+}
+
+select.make-inline{
+    display: inline-block;
+}
+
+.custom-input-textarea{
+    color: black;
+    font-weight: 100;
+    border-style: none;
+    max-height: 5em;
+}
+
+.color-red, .color-green, .glyphicon-minus-sign{
+    display: none;
+}
+
+#travel_route, #travel_duration{
+    width: 100%;
+}
+
+.referrals-list{
+    display: none;
+}
+
+.add-new-referral{
+    display: none;
+}
+
+#delete-session-modal{
+    display: none;
+}

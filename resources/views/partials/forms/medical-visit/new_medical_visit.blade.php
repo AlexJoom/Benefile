@@ -14,7 +14,7 @@
 
 
 {{--------------- 1. GENERAL DETAILS  (Info that comes from BASIC INFO) ---------------}}
-<div class="form-section no-bottom-border">
+<div class="form-section no-bottom-border personal-info">
     <div class="underline-header">
         <h1 class="record-section-header padding-left-right-15">1. @lang($p."personal_info")</h1>
     </div>
@@ -162,7 +162,7 @@
 </div>
 
 {{--------------- 2. MEDICAL HISTORY TABLE --------------------------------------------}}
-<div class="form-section">
+<div class="form-section medical-history">
     @if(($visit_submited_succesfully == 1))
         <div class="alert alert-success">
             <ul>
@@ -193,37 +193,36 @@
                         <thead>
                             <tr>
                                 <th>Α/Α</th>
-                                <th>@lang($p.'doctor')</th>
-                                <th>@lang($p.'doctor_speciality')</th>
+                                <th>@lang($p.'registered_by')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
-                                <th>@lang($p.'show_visit')</th>
-                                <th>@lang($p.'edit_visit_info')</th>
+                                <th>@lang($p.'referrals_history')</th>
+                                <th>@lang($p.'options')</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Α/Α</th>
-                                <th>@lang($p.'doctor')</th>
-                                <th>@lang($p.'doctor_speciality')</th>
+                                <th>@lang($p.'registered_by')</th>
                                 <th>@lang($p.'exam_location')</th>
                                 <th>@lang($p.'incident_type')</th>
                                 <th>@lang($p.'exam_date')</th>
-                                <th>@lang($p.'show_visit')</th>
-                                <th>@lang($p.'edit_visit_info')</th>
+                                <th>@lang($p.'referrals_history')</th>
+                                <th>@lang($p.'options')</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @for($i=0 ; $i<count($benefiter_medical_visits_list) ; $i++)
                                 <tr>
                                     <td>{{ $i+1 }}</td>
-                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}</td>
+                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['name'] }} {{ $benefiter_medical_visits_list[$i]['doctor']['lastname'] }}
                                     @if($benefiter_medical_visits_list[$i]['doctor']['user_subrole_id'] == null)
-                                    <td>@lang($p.'admin')</td>
+                                        (@lang($p.'admin'))
                                     @else
-                                    <td>{{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }}</td>
+                                        ({{ $benefiter_medical_visits_list[$i]['doctor']['subrole']['subrole'] }})
                                     @endif
+                                    </td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalLocation']['description'] }}</td>
                                     <td>{{ $benefiter_medical_visits_list[$i]['medicalIncidentType']['description'] }}</td>
                                     @if($benefiter_medical_visits_list[$i]['medical_visit_date'] == null)
@@ -232,21 +231,39 @@
                                     <td>{{ $datesHelper->getFinelyFormattedStringDateFromDBDate($benefiter_medical_visits_list[$i]['medical_visit_date']) }}</td>
                                     @endif
                                     <td>
-                                    {{-- Only admin and doctor rolesshould be able to view and edit medical visits. --}}
-                                    @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
-                                        <button value="{{$benefiter_medical_visits_list[$i]['id']}}" data-url="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/getEachMedicalVisit') }}" type="button" class="medical_visit_from_history btn btn-info btn-lg" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button>
-                                    @endif
+                                        @if(!empty($referrals[$i]))
+                                        <ol>
+                                            @foreach($referrals[$i] as $referral)
+                                            <li>
+                                                {{ $referral->referrals }}
+                                                @if($referral->is_done_id == 0)
+                                                <span class="make-bold color-red">(@lang($p."not_done"))</span>
+                                                @else
+                                                <span class="make-bold">(@lang($p."done"))</span>
+                                                @endif
+                                            </li>
+                                            @endforeach
+                                        </ol>
+                                        @endif
                                     </td>
                                     <td>
+                                    <div>
+                                    {{-- Only admin and doctor rolesshould be able to view and edit medical visits. --}}
                                     @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
-                                        <a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg" type="button" >
+                                        <button value="{{$benefiter_medical_visits_list[$i]['id']}}" data-url="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/getEachMedicalVisit') }}" type="button" class="medical_visit_from_history btn btn-info btn-lg medical-visit-btn" data-toggle="modal" data-target="#medicalHistory">@lang($p.('show_medical_visit'))</button>
+                                    @endif
+                                    </div>
+                                    <div class="margin-top-5">
+                                    @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
+                                        <a value="{{$benefiter_medical_visits_list[$i]['id']}}" href="{{ url('benefiter/'.$benefiter_medical_visits_list[$i]['benefiter_id'].'/editMedicalVisit?medical_visit_id='.$benefiter_medical_visits_list[$i]['id']) }}" class="btn btn-warning btn-lg medical-visit-btn" type="button" >
                                             @lang($p.('edit_visit'))
                                         </a>
                                     @endif
                                         @if($benefiter_medical_visits_list[$i]['id'] == $selected_medical_visit_id && $visit_submited_succesfully == 3)
                                             <i class="glyphicon glyphicon-ok updated-visit"></i>
-                                    </td>
                                     @endif
+                                    </div>
+                                    </td>
                                 </tr>
                             @endfor
                         </tbody>
@@ -262,7 +279,7 @@
 
 {{--------------- 3. NEW MEDICAL VISIT ------------------------------------------------}}
 {{-- Button (dropsdown the form) --}}
-<div class="row padding-top-20">
+<div class="row padding-top-20 margin-0">
     <div class="col-md-12">
         @if (Auth::user()->user_role_id == 1 || Auth::user()->user_role_id == 2)
             <button id="new-med-visit-button" class="lighter-green-background new-visit-button float-right padding-left-right-15 margin-30">@lang($p.'new_medical_visit')</button>
@@ -298,7 +315,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="javascript:window.print()" class="btn btn-default font-weight-normal"><i class="fa fa-print"></i> @lang($p."print_visit")</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang($p.("close"))</button>
             </div>
         </div>
     </div>

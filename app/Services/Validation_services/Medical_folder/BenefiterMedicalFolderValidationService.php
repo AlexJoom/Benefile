@@ -13,8 +13,9 @@ class BenefiterMedicalFolderValidationService {
     public function medicalValidationService($request){
         $rules = array(
             'examination_date'         => 'required|date',
-            'medical_location_id'      => 'integer',
+            'medical_location_id'      => 'max:255',
             'medical_incident_id'      => 'integer',
+            'new_medical_location'     => 'max:255',
             'height'                   => 'numeric',
             'weight'                   => 'numeric',
             'temperature'              => 'numeric',
@@ -48,7 +49,20 @@ class BenefiterMedicalFolderValidationService {
         // VALIDATE - Lab results
         $lab_results = $request['lab_results'];
         foreach ($lab_results as $i=>$lr){
-            $rules['lab_results.'.$i] = 'max:255';
+            $rules['lab_results.'.$i] = 'max:2000';
+        }
+
+        // VALIDATE - Diagnosis results
+        $diagnosis_results = $request['diagnosis_results'];
+        foreach ($diagnosis_results as $i=>$dr){
+            $rules['diagnosis_results.'.$i] = 'max:2000';
+        }
+
+        // VALIDATE - Hospitalizations
+        $hospitalizations = $request['hospitalization'];
+        foreach ($hospitalizations as $i=>$h){
+            $rules['hospitalization.'.$i] = 'max:2000';
+            $rules['haspitalization_date'.$i] = 'date';
         }
 
         // VALIDATE - Medication

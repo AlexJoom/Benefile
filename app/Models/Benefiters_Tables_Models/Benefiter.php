@@ -30,7 +30,7 @@ class Benefiter extends Model
         'is_benefiter_working',
         'legal_status_details',
         'working_legally',
-        'country_abandon_reason',
+        'country_abandon_reason_id',
         'travel_route',
         'travel_duration',
         'detention_duration',

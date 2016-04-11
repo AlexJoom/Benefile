@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ICDSeeder::class);
         $this->call(LegalFolderTableSeeder::class);
         $this->call(CountriesLookupSeeder::class);
+        $this->call(CountryAbandonReasonsTableSeeder::class);
         $this->call(TestBenefitersSeeder::class);
 
         Model::reguard();

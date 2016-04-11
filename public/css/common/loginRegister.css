@@ -149,10 +149,10 @@ form .form-group button{
 }
 
 .bottomDiv{
-    position: absolute;
-    bottom: 30px;
-    width: 98%;
+    position: relative;
+    padding-top: 30px;
     text-align: center;
+    width: 100%;
 }
 .margin-top-100{
     margin-top: 100px;

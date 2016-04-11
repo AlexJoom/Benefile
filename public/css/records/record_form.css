@@ -1,9 +1,21 @@
 .form-section{
     border: 20px solid #e6f4f4;
 }
-
+.padding-top-bottom-5{
+    padding: 5px 0px;
+}
+.line-height-50{
+    line-height: 50px;
+}
 .color-red{
     color: red;
+}
+
+.font-size-18{
+    font-size: 18px;
+}
+.make-bold{
+    font-weight: 600;
 }
 
 .text-align-center{
@@ -51,6 +63,10 @@
 }
 .margin-top-20{
     margin-top: 20px;
+}
+
+.margin-top-5{
+    margin-top: 5px;
 }
 
 .float-left{
@@ -181,6 +197,15 @@ input[type="radio"] {
     width: 80%;
 }
 
+.medical-visit-btn{
+    width: 80% !important;
+    min-width: 180px;
+}
+
+.width-60-percent{
+    width: 60%;
+}
+
 .width-50-percent{
     width: 50%;
 }
@@ -233,6 +258,7 @@ input:focus, textarea:focus {
     padding: 1em;
     font-size: 1.2em;
     border: none;
+    margin-bottom: 15px;
 }
 
 .new-visit-button{
@@ -247,7 +273,9 @@ input:focus, textarea:focus {
     /*cursor: pointer;*/
 }
 a.new-visit-button:hover,
-a.new-visit-button:focus{
+a.new-visit-button:focus,
+a.simple-button:hover,
+a.simple-button:focus{
     color: white;
     text-decoration: none;
 }
@@ -348,6 +376,52 @@ a.btn{
 
 .margin-top-minus-3{
     margin-top: -3px;
+}
+
+.asterisk{
+    vertical-align: top;
+    font-size: 0.7em;
+    color: #b269a7;
+}
+
+.make-italic{
+    font-style: italic;
+}
+
+.color-orange{
+    color: darkorange;
+}
+
+a.btn.btn-default.font-weight-normal{
+    font-weight: 100;
+}
+
+.vertical-align-top{
+    vertical-align: top;
+}
+
+#new_medical_location{
+    width: 300px;
+}
+.margin-30 {
+    margin: 30px;
+}
+.session-button{
+    border: none;
+    margin-bottom: 15px;
+    height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+    margin-bottom: 0px;
+}
+.lighter-green-background {
+    background-color: #6ae0b4;
+}
+
+.float-right{
+    float: right;
 }
 
 @media screen and (max-width: 991px){

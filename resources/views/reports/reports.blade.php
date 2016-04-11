@@ -21,34 +21,36 @@
             <h1 class="record-section-header padding-left-right-15">@lang($p."users")</h1>
         </div>
         <div class="row">
+        <div class="col-md-12">
             <div id="doctors" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_doctors.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_doctors.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."doctors")</p>
                     <p class="users-counter">{{ $users_roles_count['doctors'] }}</p>
                 </div>
             </div>
             <div id="legals" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_legals.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_legals.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."legals")</p>
                     <p class="users-counter">{{ $users_roles_count['legals'] }}</p>
                 </div>
             </div>
             <div id="psychologists" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_psychologists.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_psychologists.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."psychologists")</p>
                     <p class="users-counter">{{ $users_roles_count['psychologists'] }}</p>
                 </div>
             </div>
             <div id="socials" class="col-xs-3">
-                <img class="make-inline width-120px img-responsive" src="{{ asset('/img/benefile_3_socials.jpg') }}" />
+                <img class="make-inline width-120px height-120px img-responsive" src="{{ asset('/img/benefile_3_socials.jpg') }}" />
                 <div class="make-inline">
                     <p class="users-title">@lang($p."socials")</p>
                     <p class="users-counter">{{ $users_roles_count['socials'] }}</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     {{-- REPORT: Benefiters VS gerder --}}
@@ -124,7 +126,7 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-work-title')</h1>
                 </div>
-                <div id="benefiters-work-title-chart"></div>
+                <div id="benefiters-work-title-chart" data-benefiters-registered="@lang($p."benefiters_registered")"></div>
             </div>
         </div>
     </div>
@@ -164,11 +166,11 @@
     {{-- REPORT: Benefiters registration numbers per month --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            <div class="col-md-12 padding-right-35">
+            <div class="col-md-12">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'h1-registration-status')</h1>
                 </div>
-                <div id="registrations_per_month"></div>
+                <div id="registrations_per_month" class="padding-left-right-15" data-registrations-per-month="@lang($p."registrations_per_month")"></div>
             </div>
         </div>
     </div>
@@ -197,17 +199,17 @@
     {{-- REPORT: Benefiters vs clinical conditions --}}
     <div class="benefiters-report form-section no-bottom-border">
         <div class="row">
-            <div class="col-md-7 right-border">
+            <div class="col-md-7 padding-right-0">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-clinical-condition')</h1>
                 </div>
-                <div id="benefiter_vs_clinical_conditions"></div>
+                <div id="benefiter_vs_clinical_conditions" data-number-of-benefiters="@lang($p."number_of_benefiters")"></div>
             </div>
-            <div class="col-md-5 padding-right-35">
+            <div class="col-md-5 left-border">
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-med-visits-per-month')</h1>
                 </div>
-                <div id="medical_visits_per_month"></div>
+                <div id="medical_visits_per_month" class="padding-left-right-15" data-medical-visits-per-month="@lang($p."medical_visits_per_month")"></div>
             </div>
         </div>
     </div>
@@ -218,7 +220,7 @@
                 <div class="underline-header">
                     <h1 class="record-section-header padding-left-right-15">@lang($p.'report-phycological-support')</h1>
                 </div>
-                <div id="benefiter_vs_phycological_support"></div>
+                <div id="benefiter_vs_phycological_support" data-number-of-benefiters="@lang($p."number_of_benefiters")"></div>
             </div>
         </div>
     </div>
@@ -289,7 +291,7 @@
             "dataProvider": [
             @foreach ($benefiters_age as $age)
             {
-                "benefiters": {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
+                "benefiters": @if(json_encode($age->ageInYears) == 'null') {!! 0 !!} @else {!! json_encode($age->ageInYears) !!} @endif + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
                 "counter": {!! json_encode($age->counter) !!}
             },
             @endforeach
@@ -552,7 +554,7 @@
         "valueAxes": [{
             "axisAlpha": 0,
             "position": "left",
-            "title": "Benefiters registered",
+            "title": $("#benefiters-work-title-chart").data("benefiters-registered"),
             "fontSize": 16
         }],
         "startDuration": 1,
@@ -608,7 +610,8 @@
             "fillAlphas": 0.9,
             "lineAlpha": 0.2,
             "type": "column",
-            "valueField": "work description"
+            "valueField": "work description",
+            "lineColor" : "#3D6139"
         }],
         "chartCursor": {
             "categoryBalloonEnabled": false,

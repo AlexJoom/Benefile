@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Medical_Folder;
 use Illuminate\Http\Request;
 
 // services used
-use App\Services\BasicInfoService;
-use App\Services\BenefitersService;
+use App\Services\Basic_info_folder\BasicInfoService;
 use App\Services\Validation_services\Medical_folder\BenefiterMedicalFolderValidationService;
 use App\Services\Medical_folder\BenefiterMedicalFolderService;
 use App\Services\Utilities\GeneralUseService;
@@ -14,6 +13,7 @@ use App\Services\Medical_folder\BenefiterMedicalFolderDBdependentService;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class EditMedicalVisitController extends Controller{
 
@@ -23,8 +23,6 @@ class EditMedicalVisitController extends Controller{
     public function __construct(){
         // only for logged in users
         $this->middleware('activated');
-        // initialize benefiters list service
-        $this->benefiterList = new BenefitersService();
         // initialize basic info service
         $this->basicInfoService = new BasicInfoService();
         // initialize validator for medical visit edit
@@ -44,12 +42,15 @@ class EditMedicalVisitController extends Controller{
         $selected_medical_visit_id = $request['medical_visit_id'];
         $benefiter = $this->medicalVisitDBDependencies->find_benefiter_by_id($id);
         $benefiter_medical_visits_list = $this->medicalVisitDBDependencies->get_all_medical_visits_for_benefiter($id);
-//        $doctor_id = $this->medicalVisit->findDoctorId();
         $medical_locations = $this->medicalVisitDBDependencies->get_all_medical_locations_lookup();
         $medical_incident_type = $this->medicalVisitDBDependencies->medical_incident_type_lookup();
         $medical_locations_array = $this->generalUseService->reindex_array($medical_locations);
         $medical_incident_type_array = $this->generalUseService->reindex_array($medical_incident_type);
         $ExamResultsLookup = $this->medicalVisitDBDependencies->get_medical_examination_results_from_lookup();
+        // If logged in user is admin then more medical locations can be added dynamically.
+        if(Auth::user()->user_role_id == 1){
+            $medical_locations_array['new_location'] = trans('partials/forms/new_medical_visit_form.' . 'new_exam_location' );
+        }
 
         // initialize variables
         $med_visit_doctor = '';
@@ -65,7 +66,9 @@ class EditMedicalVisitController extends Controller{
         $med_visit_skull_perimeter = '';
         $med_visit_exam_results = '';
         $med_visit_lab_results = '';
+        $med_visit_diagnosis_results = '';
         $med_visit_medication = '';
+        $med_visit_hospitalizations = '';
         $med_visit_referrals = '';
 
         // for every medical visit of the benefiter fetch the corresponding medical data from DB
@@ -103,8 +106,12 @@ class EditMedicalVisitController extends Controller{
                 $med_visit_exam_results = $this->medicalVisitDBDependencies->findMedicalVisitExaminationResults($med_visit['id']);
                 // Lab results
                 $med_visit_lab_results = $this->medicalVisitDBDependencies->findMedicalVisitLabResults($med_visit['id']);
+                // Diagnosis results
+                $med_visit_diagnosis_results = $this->medicalVisitDBDependencies->findMedicalVisitDiagnosisResults($med_visit['id']);
                 // Medication
                 $med_visit_medication = $this->medicalVisitDBDependencies->findMedicalVisitMedication($med_visit['id']);
+                // Hospitalizations
+                $med_visit_hospitalizations = $this->medicalVisitDBDependencies->findMedicalVisitHospitalizations($med_visit['id']);
                 // Referrals
                 $med_visit_referrals = $this->medicalVisitDBDependencies->findMedicalVisitReferrals($med_visit['id']);
                 // Uploads
@@ -127,7 +134,9 @@ class EditMedicalVisitController extends Controller{
             ->with('med_visit_skull_perimeter',$med_visit_skull_perimeter)
             ->with('med_visit_exam_results',$med_visit_exam_results)
             ->with('med_visit_lab_results',$med_visit_lab_results)
+            ->with('med_visit_diagnosis_results',$med_visit_diagnosis_results)
             ->with('med_visit_medication',$med_visit_medication)
+            ->with('med_visit_hospitalizations', $med_visit_hospitalizations)
             ->with('med_visit_referrals',$med_visit_referrals)
             ->with('med_visit_uploads',$med_visit_uploads)
             ->with('medical_locations_array',$medical_locations_array)
@@ -142,8 +151,6 @@ class EditMedicalVisitController extends Controller{
     public function postMedicalVisitFromEditing(Request $request){
         $selected_medical_visit_id = $request['selected_medical_visit_id'];
         $benefiter_id = $request['benefiter_id'];
-//        dd($request->all());
-
         // Post Validation
         $validator = $this->edit_medical_visit_validator->medicalValidationService($request->all());
         if($validator->fails()){

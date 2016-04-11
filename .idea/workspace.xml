@@ -2,6 +2,91 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7354f17-e51c-498d-85e4-8eb954141926" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/praksis_logo_black.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/seeds/CountryAbandonReasonsTableSeeder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/print/basic_info_print.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/benefiterOccurrences.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/lang/gr/dates_common.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/lang/gr/gender_monograms.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/print/generic_print.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_diagnosis_results.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_hospitalizations.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/css/print/medical_visit_print.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_18_090718_create_countries_lookup_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_18_090718_create_countries_lookup_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_01_22_105934_create_file_import_schema_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_02_093146_create_legal_folder_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_02_093146_create_legal_folder_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Basic_info_folder/BasicInfoService.php" afterPath="$PROJECT_DIR$/app/Services/Basic_info_folder/BasicInfoService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Validation_services/Basic_info_folder/BasicInfoValdationService.php" afterPath="$PROJECT_DIR$/app/Services/Validation_services/Basic_info_folder/BasicInfoValdationService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Benefiter.php" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Benefiter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderDBdependentService.php" afterPath="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderDBdependentService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php" afterPath="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php" afterPath="$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php" afterPath="$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CountriesLookupSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CountriesLookupSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/DatesHelper.php" afterPath="$PROJECT_DIR$/app/Services/DatesHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/GendersTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/GendersTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/LanguageSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/LanguageSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/LegalFolderTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/LegalFolderTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/MedicalLocationSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/MedicalLocationSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Origin_country_lookup.php" afterPath="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Origin_country_lookup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/ReferenceSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/ReferenceSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/ReportsService.php" afterPath="$PROJECT_DIR$/app/Services/ReportsService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/SearchService.php" afterPath="$PROJECT_DIR$/app/Services/SearchService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/TestBenefitersSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/TestBenefitersSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/TestUsersTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/TestUsersTableSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/UploadFileService.php" afterPath="$PROJECT_DIR$/app/Services/UploadFileService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php" afterPath="$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/records/basic_info.js" afterPath="$PROJECT_DIR$/public/js/records/basic_info.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/basic_info_form.php" afterPath="$PROJECT_DIR$/resources/lang/gr/basic_info_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main-panel/benefiters-list.css" afterPath="$PROJECT_DIR$/public/css/main-panel/benefiters-list.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/common.css" afterPath="$PROJECT_DIR$/public/css/common/common.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/records/custom_datepicker.js" afterPath="$PROJECT_DIR$/public/js/records/custom_datepicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" afterPath="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/importCSV/importCSV.js" afterPath="$PROJECT_DIR$/public/js/importCSV/importCSV.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/records/legal_folder.js" afterPath="$PROJECT_DIR$/public/js/records/legal_folder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/legal_folder_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/legal_folder_form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/legal_folder_form.php" afterPath="$PROJECT_DIR$/resources/lang/gr/legal_folder_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/loginRegister.css" afterPath="$PROJECT_DIR$/public/css/common/loginRegister.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/common/mainLayout.css" afterPath="$PROJECT_DIR$/public/css/common/mainLayout.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/layouts/mainPanel.php" afterPath="$PROJECT_DIR$/resources/lang/gr/layouts/mainPanel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php" afterPath="$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/records/medical_visit.js" afterPath="$PROJECT_DIR$/public/js/records/medical_visit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" afterPath="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/auth/emails/password.php" afterPath="$PROJECT_DIR$/resources/lang/gr/auth/emails/password.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/records/record_form.css" afterPath="$PROJECT_DIR$/public/css/records/record_form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" afterPath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/reports/reports.css" afterPath="$PROJECT_DIR$/public/css/reports/reports.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/reports/reports.js" afterPath="$PROJECT_DIR$/public/js/reports/reports.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/reports.php" afterPath="$PROJECT_DIR$/resources/lang/gr/reports.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/search/search.blade.php" afterPath="$PROJECT_DIR$/resources/views/search/search.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/search/search.js" afterPath="$PROJECT_DIR$/public/js/search/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/search/search.php" afterPath="$PROJECT_DIR$/resources/lang/gr/search/search.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/gr/partials/select_panel.php" afterPath="$PROJECT_DIR$/resources/lang/gr/partials/select_panel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" afterPath="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/users/users-list.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/users-list.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Benefile.iws" />
@@ -22,6 +107,7 @@
     <disable_hints />
   </component>
   <component name="DatabaseView">
+    <option name="SHOW_TOOLBAR" value="true" />
     <option name="FLATTEN" value="false" />
     <option name="GROUP_BY_TYPE" value="true" />
     <option name="SORT_CHILDREN" value="false" />
@@ -31,14 +117,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - @localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="benefile" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -47,38 +125,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7572017" vertical-offset="1380" max-vertical-offset="2599">
-              <caret line="45" column="70" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
+            <state vertical-scroll-proportion="-3.4545455" vertical-offset="661" max-vertical-offset="2668">
+              <caret line="46" column="133" selection-start-line="46" selection-start-column="115" selection-end-line="46" selection-end-column="133" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php">
+      <file leaf-file-name="RecordsController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1449">
-              <caret line="39" column="108" selection-start-line="39" selection-start-column="108" selection-end-line="39" selection-end-column="108" />
+            <state vertical-scroll-proportion="0.3006536" vertical-offset="0" max-vertical-offset="3496">
+              <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
               <folding>
-                <element signature="e#87#149#0#PHP" expanded="true" />
+                <element signature="e#2197#2381#0#PHP" expanded="false" />
+                <element signature="e#2414#5965#0#PHP" expanded="false" />
+                <element signature="e#6044#10043#0#PHP" expanded="false" />
+                <element signature="e#10089#10418#0#PHP" expanded="false" />
+                <element signature="e#10706#10910#0#PHP" expanded="false" />
+                <element signature="e#10990#11512#0#PHP" expanded="false" />
+                <element signature="e#11518#11802#0#PHP" expanded="false" />
+                <element signature="e#11838#13886#0#PHP" expanded="false" />
+                <element signature="e#13928#15342#0#PHP" expanded="false" />
+                <element signature="e#15398#16593#0#PHP" expanded="false" />
+                <element signature="e#16631#17788#0#PHP" expanded="false" />
+                <element signature="e#17818#18094#0#PHP" expanded="false" />
+                <element signature="e#18391#26963#0#PHP" expanded="false" />
+                <element signature="e#27055#33777#0#PHP" expanded="false" />
+                <element signature="e#33869#40831#0#PHP" expanded="false" />
+                <element signature="e#40923#47886#0#PHP" expanded="false" />
+                <element signature="e#47978#49207#0#PHP" expanded="false" />
+                <element signature="e#50321#50470#0#PHP" expanded="false" />
+                <element signature="e#50512#51874#0#PHP" expanded="false" />
+                <element signature="e#51920#52546#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Services/SearchService.php">
+      <file leaf-file-name="LegalFolderController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0" vertical-offset="1030" max-vertical-offset="6486">
-              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-              <folding>
-                <element signature="e#31#66#0#PHP" expanded="true" />
-                <marker date="1459519364419" expanded="true" signature="362:1264" placeholder="select b.*, ..." />
-                <marker date="1459519364419" expanded="true" signature="9064:9132" placeholder="select * fro..queryString..." />
-              </folding>
+            <state vertical-scroll-proportion="-6.814815" vertical-offset="460" max-vertical-offset="1633">
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LegalFolderValidationService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Legal_folder/LegalFolderValidationService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.518518" vertical-offset="0" max-vertical-offset="575">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,57 +200,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/resources/lang/gr/reports.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/login-register-layout.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/search/search.css" />
+        <option value="$PROJECT_DIR$/resources/views/search/search.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css" />
+        <option value="$PROJECT_DIR$/resources/views/uploadExcel.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/gr/auth/awaitActivation.php" />
         <option value="$PROJECT_DIR$/resources/views/benefiter/legal_folder.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/benefiter/social_folder.blade.php" />
         <option value="$PROJECT_DIR$/public/css/common/loginRegister.css" />
         <option value="$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/records/medical_visit.js" />
-        <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php" />
-        <option value="$PROJECT_DIR$/app/Services/Benefiters/benefiter_medical_folder_services/BenefiterMedicalFolderServices.php" />
-        <option value="$PROJECT_DIR$/app/Services/Benefiters/benefiter_medical_folder_services/Benefiter_Medical_Folder_Services.php" />
-        <option value="$PROJECT_DIR$/app/Services/Benefiters/Benefiter_medical_folder_services/BenefiterMedicalFolderServices.php" />
-        <option value="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Services/DB_dependent_services/Benefiters/benefiter_medical_folder_services/Benefiter_Medical_Folder_DB_dependent_services.php" />
-        <option value="$PROJECT_DIR$/app/Services/Validation_services/Benefiters/benefiter_medical_folder_services/Benefiter_medical_folder_validation_servise.php" />
-        <option value="$PROJECT_DIR$/app/Services/General_use_services/general_use_services.php" />
-        <option value="$PROJECT_DIR$/app/Services/General_use_services/GeneralUseServices.php" />
-        <option value="$PROJECT_DIR$/app/Services/Benefiters/Benefiter_medical_folder_services/BenefiterMedicalFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Services/DB_dependent_services/Benefiters/Benefiter_medical_folder_services/BenefiterMedicalFolderDBdependentService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Benefiters/Medica_Folder/NewMedicalVisitController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Medical_folder_services/BenefiterMedicalFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Services/DB_dependent_services/Medical_folder/BenefiterMedicalFolderDBdependentService.php" />
-        <option value="$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medica_Folder/NewMedicalVisitController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Utilities/GeneralUseService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderAjaxCallsController.php" />
-        <option value="$PROJECT_DIR$/app/Services/DatesHelper.php" />
-        <option value="$PROJECT_DIR$/app/Services/Social_folder/SocialFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Benefiters_list/BenefitersListService.php" />
-        <option value="$PROJECT_DIR$/app/Services/BenefitersService.php" />
-        <option value="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
+        <option value="$PROJECT_DIR$/app/Services/SearchService.php" />
         <option value="$PROJECT_DIR$/public/css/common/common.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
+        <option value="$PROJECT_DIR$/app/Services/ReportsService.php" />
+        <option value="$PROJECT_DIR$/resources/views/reports/reports.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/reports/reports.js" />
+        <option value="$PROJECT_DIR$/public/css/uploadExcel/dropzone.css" />
+        <option value="$PROJECT_DIR$/public/css/main-panel/benefiters-list.css" />
+        <option value="$PROJECT_DIR$/public/css/common/mainLayout.css" />
+        <option value="$PROJECT_DIR$/database/seeds/MedicalLocationSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/records/medical_visit.js" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Services/BenefiterMedicalFolderService.php" />
+        <option value="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php" />
+        <option value="$PROJECT_DIR$/app/Services/UploadFileService.php" />
+        <option value="$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php" />
+        <option value="$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/benefiterOccurrences.php" />
+        <option value="$PROJECT_DIR$/app/Services/BasicInfoService.php" />
+        <option value="$PROJECT_DIR$/public/js/records/basic_info.js" />
+        <option value="$PROJECT_DIR$/resources/lang/gr/basic_info_form.php" />
+        <option value="$PROJECT_DIR$/public/css/records/record_form.css" />
+        <option value="$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Services/Validation_services/Basic_info_folder/BenefiterBasicInfoValdationService.php" />
         <option value="$PROJECT_DIR$/app/Services/Validation_services/Basic_info_folder/BasicInfoValdationService.php" />
         <option value="$PROJECT_DIR$/app/Services/Basic_info_folder/BasicInfoService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Validation_services/Legal_folder/LegalFolderValidationService.php" />
-        <option value="$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php" />
-        <option value="$PROJECT_DIR$/app/Services/Validation_services/Social_folder/BenefiterSocialFolderValidationService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php" />
+        <option value="$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php" />
         <option value="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderDBdependentService.php" />
         <option value="$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php" />
-        <option value="$PROJECT_DIR$/app/Services/SearchService.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php" />
       </list>
     </option>
   </component>
@@ -202,7 +305,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -353,6 +455,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medical-visit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="benefiter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -368,6 +500,218 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="records" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_folder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Basic_info_folder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -425,8 +769,113 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Social_Folder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainPanel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Legal_Folder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Benefile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Basic_Info_Folder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,7 +903,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="987" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="SearchEverywhereHistoryKey" value="app\Services\BenefiterMedicalFolderService&#9;null&#9;null&#10;c05d3b326b246dd6bbfdc4afa9fcb76b&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/c05d3b326b246dd6bbfdc4afa9fcb76b&#10;b32691e0286f2095d58e79ee678feaa7&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/b32691e0286f2095d58e79ee678feaa7&#10;UploadedFile.php&#9;FILE&#9;file:///home/christos/SciFYProjects/Benefile/vendor/symfony/http-foundation/File/UploadedFile.php&#10;ea9ae14116576d3c201560dc95b90307&#9;FILE&#9;file:///home/christos/SciFYProjects/Benefile/storage/framework/views/ea9ae14116576d3c201560dc95b90307&#10; b32691e0286f2095d58e79ee678feaa7 &#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/b32691e0286f2095d58e79ee678feaa7&#10;491bfc455b95a173f0762bdb93fadf0d&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/491bfc455b95a173f0762bdb93fadf0d&#10;routes&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/app/Http/routes.php" />
+    <property name="SearchEverywhereHistoryKey" value="c05d3b326b246dd6bbfdc4afa9fcb76b&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/c05d3b326b246dd6bbfdc4afa9fcb76b&#10;b32691e0286f2095d58e79ee678feaa7&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/b32691e0286f2095d58e79ee678feaa7&#10;UploadedFile.php&#9;FILE&#9;file:///home/christos/SciFYProjects/Benefile/vendor/symfony/http-foundation/File/UploadedFile.php&#10;ea9ae14116576d3c201560dc95b90307&#9;FILE&#9;file:///home/christos/SciFYProjects/Benefile/storage/framework/views/ea9ae14116576d3c201560dc95b90307&#10; b32691e0286f2095d58e79ee678feaa7 &#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/b32691e0286f2095d58e79ee678feaa7&#10;491bfc455b95a173f0762bdb93fadf0d&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/storage/framework/views/491bfc455b95a173f0762bdb93fadf0d&#10;routes&#9;FILE&#9;file:///home/cdimitzas/Projects/Benefile/app/Http/routes.php" />
     <property name="dynamic.classpath" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -464,11 +913,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Services/Basic_info_folder" />
-      <recent name="$PROJECT_DIR$/app/Services/Legal_folder" />
-      <recent name="$PROJECT_DIR$/app/Services/Social_folder" />
-      <recent name="$PROJECT_DIR$/app/Services/Medical_folder" />
-      <recent name="$PROJECT_DIR$/app/Services/DB_dependent_services" />
+      <recent name="$PROJECT_DIR$/resources/views/partials/forms/medical-visit" />
+      <recent name="$PROJECT_DIR$/resources/lang/gr/partials/forms" />
+      <recent name="$PROJECT_DIR$/resources/lang/gr/partials" />
+      <recent name="$PROJECT_DIR$/public/uploads" />
+      <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.benefile">
@@ -552,30 +1001,30 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="21" width="1641" height="1029" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12609649" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25548247" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26864034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19699812" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34210527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1971917" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329581" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27079424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15494506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31081927" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27192983" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34210527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -602,380 +1051,440 @@
           <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="181" />
+      <option name="time" value="172" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/css/reports/reports.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7591623" vertical-offset="2640" max-vertical-offset="3404">
-          <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/gr/reports.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18724559" vertical-offset="0" max-vertical-offset="1242">
-          <caret line="6" column="61" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/login-register-layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41298342" vertical-offset="276" max-vertical-offset="1035">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/search/search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7941176" vertical-offset="5180" max-vertical-offset="6325">
-          <caret line="244" column="86" selection-start-line="244" selection-start-column="86" selection-end-line="244" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/search/search.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80308217" vertical-offset="1187" max-vertical-offset="1840">
-          <caret line="72" column="12" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/uploadExcel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5385675" vertical-offset="1311" max-vertical-offset="2599">
-          <caret line="74" column="55" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/uploadExcel/uploadExcelPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48041776" vertical-offset="0" max-vertical-offset="3404">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.88889" vertical-offset="552" max-vertical-offset="1518">
-          <caret line="45" column="82" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/gr/auth/awaitActivation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24898511" vertical-offset="0" max-vertical-offset="739">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/mainPanel.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4935806" vertical-offset="598" max-vertical-offset="3266">
-          <caret line="102" column="93" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37955183" vertical-offset="28" max-vertical-offset="1518">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/legal_folder.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6120448" vertical-offset="0" max-vertical-offset="1403">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/benefiter/medical-folder.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.88889" vertical-offset="0" max-vertical-offset="1472">
+        <state vertical-scroll-proportion="0.37246963" vertical-offset="207" max-vertical-offset="1357">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/social_folder.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/MedicalExaminaitonsSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1403">
-          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/awaitActivation.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73278236" vertical-offset="89" max-vertical-offset="828">
-          <caret line="27" column="107" selection-start-line="27" selection-start-column="107" selection-end-line="27" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common/loginRegister.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5796345" vertical-offset="3374" max-vertical-offset="4140">
-          <caret line="166" column="24" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4236588" vertical-offset="1035" max-vertical-offset="3151">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="772">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/DownloadFileService.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/MedicalIncidentTypesSeeders.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7662162" vertical-offset="1307" max-vertical-offset="2047">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="772">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/UserService.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/MedicalLocationSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33286518" vertical-offset="39" max-vertical-offset="966">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9504814" vertical-offset="3263" max-vertical-offset="8694">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2214581" vertical-offset="6380" max-vertical-offset="8280">
-          <caret line="324" column="51" selection-start-line="324" selection-start-column="50" selection-end-line="324" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common/mainLayout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2750978" vertical-offset="2342" max-vertical-offset="6026">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_visits.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18648648" vertical-offset="0" max-vertical-offset="828">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0545454" vertical-offset="7211" max-vertical-offset="11086">
-          <caret line="328" column="44" selection-start-line="328" selection-start-column="44" selection-end-line="328" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Utilities/GeneralUseService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.259259" vertical-offset="0" max-vertical-offset="690">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.481482" vertical-offset="460" max-vertical-offset="10028">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.5865772" vertical-offset="0" max-vertical-offset="745">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/new_medical_visit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.37037" vertical-offset="6447" max-vertical-offset="7153">
-          <caret line="296" column="67" selection-start-line="296" selection-start-column="40" selection-end-line="296" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.03125" vertical-offset="0" max-vertical-offset="7176">
+          <caret line="1" column="48" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/partials/forms/new_medical_visit_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46596065" vertical-offset="474" max-vertical-offset="2415">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/medical_location_lookup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34124628" vertical-offset="0" max-vertical-offset="674">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/ImportCSV_BasicInfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="701">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44362018" vertical-offset="414" max-vertical-offset="1679">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/GreekStringConversionHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24357034" vertical-offset="0" max-vertical-offset="805">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/ConversionsForFileUpload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6959153" vertical-offset="0" max-vertical-offset="3151">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/File_import_schema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4074075" vertical-offset="0" max-vertical-offset="1541">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/UploadFileService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.503782" vertical-offset="8749" max-vertical-offset="9591">
+          <caret line="144" column="53" selection-start-line="144" selection-start-column="53" selection-end-line="144" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/social_folder_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33280507" vertical-offset="342" max-vertical-offset="1035">
+          <caret line="24" column="139" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/records/social_folder_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="1242">
+          <caret line="48" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/basic_info.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48710167" vertical-offset="24" max-vertical-offset="1633">
+          <caret line="15" column="110" selection-start-line="15" selection-start-column="110" selection-end-line="15" selection-end-column="110" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/records/medical_visit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6949" max-vertical-offset="8050">
-          <caret line="320" column="7" selection-start-line="320" selection-start-column="7" selection-end-line="320" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.045779686" vertical-offset="4338" max-vertical-offset="8510">
+          <caret line="284" column="42" selection-start-line="284" selection-start-column="13" selection-end-line="284" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php">
+    <entry file="file://$PROJECT_DIR$/public/js/reports/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1389271" vertical-offset="0" max-vertical-offset="4830">
-          <caret line="43" column="66" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.29470673" vertical-offset="6165" max-vertical-offset="9729">
+          <caret line="277" column="33" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/ReportsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.530949" vertical-offset="0" max-vertical-offset="3634">
-          <caret line="91" column="69" selection-start-line="91" selection-start-column="69" selection-end-line="91" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.60714287" vertical-offset="1449" max-vertical-offset="2093">
+          <caret line="84" column="72" selection-start-line="84" selection-start-column="72" selection-end-line="84" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/Benefiter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48117155" vertical-offset="0" max-vertical-offset="828">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state vertical-scroll-proportion="-1.1294643" vertical-offset="759" max-vertical-offset="1748">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common/common.css">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_15_100000_create_benefiters_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7097792" vertical-offset="1160" max-vertical-offset="1817">
-          <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.75147057" vertical-offset="1881" max-vertical-offset="10810">
+          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/BenefiterReferrals.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12432432" vertical-offset="0" max-vertical-offset="2162">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.77794117" vertical-offset="0" max-vertical-offset="713">
+          <caret line="23" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_partial_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6276771" vertical-offset="447" max-vertical-offset="1081">
-          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.41704035" vertical-offset="871" max-vertical-offset="14904">
+          <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Benefiters_Tables_Models/benefiterOccurrences.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5185184" vertical-offset="326" max-vertical-offset="2714">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4893617" vertical-offset="0" max-vertical-offset="705">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Legal_folder/LegalFolderValidationService.php">
+    <entry file="file://$PROJECT_DIR$/public/js/records/social_folder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4925865" vertical-offset="0" max-vertical-offset="607">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.26136363" vertical-offset="0" max-vertical-offset="704">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/benefiter/social_folder.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3939394" vertical-offset="0" max-vertical-offset="1242">
-          <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
+        <state vertical-scroll-proportion="-0.6851064" vertical-offset="483" max-vertical-offset="1403">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Social_folder/BenefiterSocialFolderValidationService.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/social_folder_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7199341" vertical-offset="0" max-vertical-offset="644">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        <state vertical-scroll-proportion="-1.9533132" vertical-offset="6702" max-vertical-offset="8211">
+          <caret line="235" column="127" selection-start-line="235" selection-start-column="101" selection-end-line="235" selection-end-column="127" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php">
+    <entry file="file://$PROJECT_DIR$/public/js/records/basic_info.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3097643" vertical-offset="759" max-vertical-offset="2461">
-          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="4347">
+          <caret line="17" column="134" selection-start-line="17" selection-start-column="134" selection-end-line="17" selection-end-column="134" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Benefiters_list/BenefitersListService.php">
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/c05d3b326b246dd6bbfdc4afa9fcb76b">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0197045" vertical-offset="0" max-vertical-offset="897">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.45125347" vertical-offset="41743" max-vertical-offset="51129">
+          <caret line="1829" column="144" selection-start-line="1829" selection-start-column="129" selection-end-line="1829" selection-end-column="144" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Legal_folder/BenefiterLegalFolderService.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/basic_info_form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27013424" vertical-offset="0" max-vertical-offset="3335">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5402685" vertical-offset="0" max-vertical-offset="2760">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/DatesHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321859" vertical-offset="313" max-vertical-offset="1656">
-          <caret line="22" column="44" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="44" />
+        <state vertical-scroll-proportion="2.3715222" vertical-offset="24541" max-vertical-offset="44896">
+          <caret line="1130" column="84" selection-start-line="1130" selection-start-column="84" selection-end-line="1130" selection-end-column="84" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/records/record_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10051">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/gr/basic_info_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="2530">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/ReportsService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="12.535189" vertical-offset="0" max-vertical-offset="8418">
+          <caret line="341" column="20" selection-start-line="341" selection-start-column="20" selection-end-line="341" selection-end-column="20" />
+          <folding>
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select count..users..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select marit..marital_status_lookup..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select count..benefiters..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select legal..legal_status_lookup..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select work_..benefiters..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select mll.d..medical_location_lookup..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select visit..benefiter_id..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select benef..medical_visits..." />
+            <marker date="1460370426115" expanded="true" signature="-1:-1" placeholder="select date_..benefiters..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/Basic_info_folder/BasicInfoService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4363637" vertical-offset="4480" max-vertical-offset="9982">
-          <caret line="203" column="54" selection-start-line="203" selection-start-column="54" selection-end-line="203" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5625" vertical-offset="118" max-vertical-offset="19780">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1449">
-          <caret line="39" column="108" selection-start-line="39" selection-start-column="108" selection-end-line="39" selection-end-column="108" />
-          <folding>
-            <element signature="e#87#149#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/SearchService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="1030" max-vertical-offset="6486">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="e#31#66#0#PHP" expanded="true" />
-            <marker date="1459519364419" expanded="true" signature="362:1264" placeholder="select b.*, ..." />
-            <marker date="1459519364419" expanded="true" signature="9064:9132" placeholder="select * fro..queryString..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="769">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderDBdependentService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03155007" vertical-offset="4577" max-vertical-offset="5681">
-          <caret line="219" column="52" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.3764321" vertical-offset="161" max-vertical-offset="10971">
+          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Basic_info_folder/BasicInfoValdationService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46495956" vertical-offset="0" max-vertical-offset="742">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.48397437" vertical-offset="181" max-vertical-offset="1403">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Social_Folder/SocialFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13420622" vertical-offset="1275" max-vertical-offset="1886">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
           <folding>
-            <element signature="e#395#2105#0#PHP" expanded="false" />
+            <element signature="e#3143#4551#0#PHP" expanded="false" />
+            <element signature="e#4607#5560#0#PHP" expanded="false" />
+            <element signature="e#5598#6573#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Social_folder/BenefiterSocialFolderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4042554" vertical-offset="2080" max-vertical-offset="2691">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Basic_Info_Folder/BasicInfoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16254418" vertical-offset="138" max-vertical-offset="3105">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="52" />
+          <folding>
+            <element signature="e#4331#7956#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/NewMedicalVisitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6993464" vertical-offset="469" max-vertical-offset="1081">
+          <caret line="154" column="61" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
+          <folding>
+            <element signature="e#55#107#0#PHP" expanded="true" />
+            <element signature="e#1349#9515#0#PHP" expanded="false" />
+            <element signature="e#9607#16200#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Medical_folder/BenefiterMedicalFolderValidationService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4199347" vertical-offset="1872" max-vertical-offset="2484">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/MedicalFolderExtraFunctionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8643791" vertical-offset="0" max-vertical-offset="966">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+          <folding>
+            <element signature="e#1344#8226#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderDBdependentService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3472454" vertical-offset="436" max-vertical-offset="6348">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="e#135#190#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/modals/medical_visit_info.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8697915" vertical-offset="3381" max-vertical-offset="11753">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/forms/medical-visit/medical_visit_edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1313485" vertical-offset="4985" max-vertical-offset="19665">
+          <caret line="220" column="41" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Medical_folder/BenefiterMedicalFolderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.62963" vertical-offset="2032" max-vertical-offset="24771">
+          <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+          <folding>
+            <element signature="e#61#111#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Medical_Folder/EditMedicalVisitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42404008" vertical-offset="3449" max-vertical-offset="4048">
+          <caret line="161" column="39" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
+          <folding>
+            <element signature="e#55#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Benefiters_list/BenefitersListController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5667808" vertical-offset="313" max-vertical-offset="897">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7572017" vertical-offset="1380" max-vertical-offset="2599">
-          <caret line="45" column="70" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
+        <state vertical-scroll-proportion="-3.4545455" vertical-offset="661" max-vertical-offset="2668">
+          <caret line="46" column="133" selection-start-line="46" selection-start-column="115" selection-end-line="46" selection-end-column="133" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/Validation_services/Legal_folder/LegalFolderValidationService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.518518" vertical-offset="0" max-vertical-offset="575">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Legal_Folder/LegalFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.814815" vertical-offset="460" max-vertical-offset="1633">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainPanel/RecordsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3006536" vertical-offset="0" max-vertical-offset="3496">
+          <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+          <folding>
+            <element signature="e#2197#2381#0#PHP" expanded="false" />
+            <element signature="e#2414#5965#0#PHP" expanded="false" />
+            <element signature="e#6044#10043#0#PHP" expanded="false" />
+            <element signature="e#10089#10418#0#PHP" expanded="false" />
+            <element signature="e#10706#10910#0#PHP" expanded="false" />
+            <element signature="e#10990#11512#0#PHP" expanded="false" />
+            <element signature="e#11518#11802#0#PHP" expanded="false" />
+            <element signature="e#11838#13886#0#PHP" expanded="false" />
+            <element signature="e#13928#15342#0#PHP" expanded="false" />
+            <element signature="e#15398#16593#0#PHP" expanded="false" />
+            <element signature="e#16631#17788#0#PHP" expanded="false" />
+            <element signature="e#17818#18094#0#PHP" expanded="false" />
+            <element signature="e#18391#26963#0#PHP" expanded="false" />
+            <element signature="e#27055#33777#0#PHP" expanded="false" />
+            <element signature="e#33869#40831#0#PHP" expanded="false" />
+            <element signature="e#40923#47886#0#PHP" expanded="false" />
+            <element signature="e#47978#49207#0#PHP" expanded="false" />
+            <element signature="e#50321#50470#0#PHP" expanded="false" />
+            <element signature="e#50512#51874#0#PHP" expanded="false" />
+            <element signature="e#51920#52546#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

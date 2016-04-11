@@ -8,6 +8,7 @@ $(document).ready(function() {
     Dropzone.options.dropzone = {
         acceptedFiles: ".csv",
         maxFiles: 1,
+        maxFilesize: 50, // in MB
         success: function(file, data) {
             html = "";
             for($i = 0; $i < data.length; $i++) {

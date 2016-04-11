@@ -52,7 +52,10 @@ Route::get('benefiter/{id}/delete'                                     , 'Benefi
 Route::get('benefiter/{id}/basic-info'                                 , 'Basic_Info_Folder\BasicInfoController@getBasicInfo');
 Route::post('benefiter/{id}/basic-info'                                , 'Basic_Info_Folder\BasicInfoController@postBasicInfo');
 Route::post('benefiter/{id}/basic-info/referrals'                      , 'Basic_Info_Folder\BasicInfoController@postBasicInfoReferrals');
-Route::post('benefiter/{id}/basic-info/referral-delete/{referral_id}'  , 'Basic_Info_Folder\BasicInfoController@deleteBasicInfoReferral');
+Route::get('benefiter/{id}/basic-info/referral-delete/{referral_id}'  , 'Basic_Info_Folder\BasicInfoController@deleteBasicInfoReferral');
+Route::get('benefiter/{id}/new-occurrence-save'                        , 'Basic_Info_Folder\BasicInfoController@saveOccurrencesBasicInfo');
+Route::get('benefiter/{id}/edit-occurrence/{occurrence_id}'            , 'Basic_Info_Folder\BasicInfoController@editOccurrencesBasicInfo');
+Route::get('benefiter/{id}/delete-occurrence/{occurrence_id}'          , 'Basic_Info_Folder\BasicInfoController@deleteOccurrencesBasicInfo');
 //----------------------- END BASIC INFO
 
 //----------------------- MEDICAL FOLDER

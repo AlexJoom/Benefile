@@ -35,18 +35,22 @@ class BasicInfoController extends Controller{
 
     // get basic info view
     public function getBasicInfo($id){
+        // get all occurrences from DB
+        $occurrences = $this->basicInfoService->getAllOccurrencesByBenefiter($id);
         // brings the referrals options array from db to view
-        $basic_info_referral = $this->basicInfoService->get_basic_info_referrals_from_lookup();
-        $basic_info_referral_attributes = $this->basicInfoService->get_basic_info_referral();
 
+        $basic_info_referral = $this->basicInfoService->get_basic_info_referrals_from_lookup();
+        $countryAbandonReasons = $this->basicInfoService->getAllCountryAbandonReasons();
         $basic_info_referral_array = $this->generalUseService->reindex_array($basic_info_referral);
-        // brinks all referrals saved to db for this benefiter id
-        $benefiter_referrals_list = $this->basicInfoService->get_referrals_for_a_benefiter($id);
+        // brings all referrals saved to db for this benefiter id
+        $benefiter_referrals_list = $this->basicInfoService->get_basic_info_referral_by_id($id);
         $workTitle = null;
         $languages = $this->basicInfoService->getAllLanguages();
         $languageLevels = $this->basicInfoService->getAllLanguageLevels();
         // get legal statuses from session, else get null and afterwards forget session value
         // If validation fails, get back all previously written info
+        $country_abandon_reason = session()->get('country_abandon_reason', function() { return 1; });
+        session()->forget('country_abandon_reason');
         $legal_statuses = session()->get('legalStatuses', function() { return null; });
         session()->forget('legalStatuses');
         $benefiterLanguagesAndLevels = session()->get('benefiter_languages', function() { return null; });
@@ -54,6 +58,7 @@ class BasicInfoController extends Controller{
         $successMsg = session()->get('success', function() { return null; });
         session()->forget('success');
         $errors = session()->get('errors' , function() { return null; });
+        session()->forget('errors');
         // checks if id is correct, so it could find the existent benefiter with that id
         if($id > 0){
             $benefiter = $this->basicInfoService->findExistentBenefiter($id);
@@ -68,16 +73,19 @@ class BasicInfoController extends Controller{
             }
         } else {
             $benefiter = new Benefiter();
+            $benefiter->country_abandon_reason_id = $country_abandon_reason;
         }
         return view('benefiter.basic_info')->with("languages", $languages)
             ->with("languageLevels", $languageLevels)
+            ->with("occurrences", $occurrences)
             ->with("benefiter", $benefiter)
             ->with("legalStatuses", $legal_statuses)
             ->with("benefiter_languages", $benefiterLanguagesAndLevels)
             ->with('basic_info_referral_array', $basic_info_referral_array)
             ->with('benefiter_referrals_list', $benefiter_referrals_list)
             ->with('workTitle', $workTitle)
-            ->with('success', $successMsg);
+            ->with('success', $successMsg)
+            ->with('countryAbandonReasons', $countryAbandonReasons);
     }
 
     // post from basic info form
@@ -106,16 +114,17 @@ class BasicInfoController extends Controller{
                     'relatives_residence' => $request->relatives_residence,
                     'children_names' => $request->children_names,
                     'education_status' => $request->education_status,
+                    'education_specialization' => $request->education_specialization,
                     'interpreter' => $request->interpreter,
                     'working' => $request->working,
                     'working_title' => $request->working_title,
                     'working_legally' => $request->working_legally,
-                    'country_abandon_reason' => $request->country_abandon_reason,
                     'travel_route' => $request->travel_route,
                     'travel_duration' => $request->travel_duration,
                     'detention_duration' => $request->detention_duration,
                     'social_history' => $request->social_history,
                 ))
+                ->with("country_abandon_reason", $request->country_abandon_reason)
                 ->with("legalStatuses", $legal_statuses)
                 ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                 ->withErrors($validator->errors()->all());
@@ -136,6 +145,26 @@ class BasicInfoController extends Controller{
                 ->with("benefiter_languages", $benefiterLanguagesAndLevels)
                 ->with("success", $successMsg);
         }
+    }
+
+    // SAVE OCCURRENCES to DB with AJAX
+    public function saveOccurrencesBasicInfo(Request $request, $id){
+        // saves in DB, with the benefiter->id
+        $this->basicInfoService->saveNewOccurrence($request);
+        // Then return from the DB all occurrences history and return it to the view
+        return redirect('benefiter/'.$id.'/basic-info');
+    }
+
+    // EDIT OCCURRENCE
+    public function editOccurrencesBasicInfo(Request $request, $id, $occurrence_id){
+        $this->basicInfoService->findOccurrence_by_id($request, $occurrence_id);
+        return redirect('benefiter/'.$id.'/basic-info');
+    }
+
+    // DELETE OCCURRENCE
+    public function deleteOccurrencesBasicInfo($id, $occurrence_id){
+        $this->basicInfoService->deleteOccurrence_by_id($occurrence_id);
+        return redirect('benefiter/'.$id.'/basic-info');
     }
 
     //------ POST BASIC INFO REFERRALS -------------------------------//

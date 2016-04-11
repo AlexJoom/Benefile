@@ -105,11 +105,55 @@ $(document).ready(function(){
         $(this).parents(".lab-added-div").remove();
     });
 
+    // add more diagnosis results
+    $("body").on("click", ".add-diagnosis-result", function(){
+        var $copy = $(".diagnosis-results").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("diagnosis-results").addClass("diagnosis-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$result_count++;
+        //$copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
+
+        // append cloned element to parent
+        var $parent = $("#diagnosis-result");
+        $copy.appendTo($parent);
+        $copy.find('#diagRes').val("");
+    });
+    // remove diagnosis result element after remove button is clicked
+    $("body").on("click", ".remove-diagnosis-result", function(){
+        $(this).parents(".diagnosis-added-div").remove();
+    });
+
+    // add more hospitalizations
+    $("body").on("click", ".add-hospitalization", function(){
+        var $copy = $(".hospitalization-div").clone();
+        // change the class so they won't be cloned every time all of them
+        $copy.removeClass("hospitalization-div").addClass("hospitalization-added-div");
+        // make the add button invisible and the remove button visible
+        $copy.find(".color-green").hide();
+        $copy.find(".color-red").show();
+        // set new name to dropdowns so that the controller can view them all
+        //$result_count++;
+        //$copy.find("#labRes").attr("name", $copy.find("#labRes").attr("name") + $result_count);
+
+        // append cloned element to parent
+        var $parent = $("#hospitalization");
+        $copy.appendTo($parent);
+        $copy.find('#hospRes').val("");
+        $copy.find('.date-input').val("");
+    });
+    // remove hospitalization element after remove button is clicked
+    $("body").on("click", ".remove-hospitalization", function(){
+        $(this).parents(".hospitalization-added-div").remove();
+    });
+
     // add more medication
     // calls two functions
-    $("body").on("click", ".add-med",
-        // first clone the medicine row, in order to add another
-        function(){
+    $("body").on("click", ".add-med", function(){
+            // first clone the medicine row, in order to add another
             var $copy = $(".medicationList").clone();
             // change the class so they won't be cloned every time all of them
             $copy.removeClass("medicationList").addClass("med-added-div");
@@ -219,12 +263,14 @@ $(document).ready(function(){
         $(this).parents('.saved-file').hide();
     });
 
-    // By clicking the new visit button the form should be slide down
+    // if something wrong happens with the validation, don't hide the #new-medical-visit form
     if($(".alert.alert-danger").length <= 0) {
         $('#new-medical-visit').hide();
     }
+
+    // By clicking the new visit button the form should be slide down
     $('#new-med-visit-button').on('click', function(){
-        $('#new-medical-visit').slideToggle();
+        $('#new-medical-visit').slideToggle(); // show/hide the #new-medical-visit form
         $('html, body').animate({
             scrollTop: $("#new-medical-visit").offset().top
         }, 500);
@@ -233,7 +279,7 @@ $(document).ready(function(){
     // SELECT2 option added for auto complete ICD10 medical conditions
     //$('select[id^=clinical-select-]').hide()
     $('select[id^="clinical-select-"]').select2({
-        placeholder: 'Πάθηση',
+        placeholder: $("#clinical-results-div").data("placeholder-name"),
         ajax: {
 	    //url: $("#examajax").data("url")+"/benefiter/getIC10List",
 	    url: $('body').attr('data-url') + "/benefiter/getIC10List",
@@ -340,5 +386,73 @@ $(document).ready(function(){
     $("body").on("select2:open", ".js-example-basic-multiple", function(){
         $(this).siblings("textarea").show();
     });
+
+    // clinical results textareas will be hidden when select2 plugin input is closed if there is nothing selected
+    $("body").on("select2:close", ".js-example-basic-multiple", function(){
+        if($(this).siblings(".select2").find("li").attr("title") === undefined) {
+            $(this).siblings("textarea").hide();
+        }
+    });
+
+    // do not display add sign on already added values
+    $(".condition-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".clinical-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".lab-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+    $(".ref-added-div").each(function(){
+        $(this).find(".color-green").hide();
+    });
+
+    // remove empty elements from clinical results if existent (for medical visit edit)
+    $(".js-example-basic-multiple").each(function(){
+        $(this).siblings(".select2").find("li").each(function(){
+            if($(this).attr("title") == ""){
+                $(this).remove();
+            }
+        });
+    });
+
+    // check if all files are acceptable so that the submit will upload them
+    $("form").on("submit", function(){
+        if(!filesForUploadAreAcceptable()) {
+            alert($("#upload_file").data("form-submit-error"));
+            return false;
+        }
+    });
+
+    // Medical locations (if the user selects to add new medical location, then the input field is shown)
+    $('#new_medical_location_div').hide();
+    var medical_location_id = jQuery('#medical_location_id');
+    var select = this.value;
+    medical_location_id.change(function () {
+        if ($('#medical_location_id').val().length > 2) {
+            $('#new_medical_location_div').show();
+        }
+        else $('#new_medical_location_div').hide();
+    });
+
 });
+
 var $clickCount = $('#medication select').length;
+
+function filesForUploadAreAcceptable(){
+    var $files = $("input[type='file']");
+    var $totalSize = 0;
+    for(var $i = 0; $i < $files.length; $i++){
+        try {
+            $totalSize += $files[$i].files[0].size;
+        } catch(err){
+            // on medical visit edit there might be null files as they've been preselected
+        }
+    }
+    if($totalSize <= 52428800){
+        return true;
+    } else {
+      return false;
+    }
+}

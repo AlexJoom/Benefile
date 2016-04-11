@@ -2,6 +2,10 @@
     width: 120px;
 }
 
+.height-120px{
+    height: 120px;
+}
+
 p{
     color: #53585f;
 }
@@ -120,8 +124,13 @@ p.users-counter{
     top: 10px;
     right: 0;
 }
-.right-border{
-    border-right: 20px solid #e6f4f4;
+.left-border{
+    border-left: 20px solid #e6f4f4;
+    padding-left: 0;
+}
+
+.padding-right-0{
+    padding-right: 0;
 }
 
 .margin-bottom-300px{

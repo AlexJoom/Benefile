@@ -71,9 +71,6 @@
     /*top: -82px;*/
 /*}*/
 
-#main-window {
-    overflow-x: hidden;
-}
 
 .benefiter-info{
     color: white;
@@ -111,14 +108,13 @@
     /* SIDEBAR */
 .newCont{
     width: 100%;
-    height: 94%;
+    height: 100%;
     padding: 0px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin-right: auto;
     margin-left: auto;
 }
-
             /* NGO Logo*/
 .logo-ngo{
     padding: 25px 0 25px 25px;
@@ -174,7 +170,7 @@
     cursor: pointer;
 }
 #menu ul > li {
-    padding: 10px 0px 10px 30px;
+    padding: 10px 10px 10px 30px;
     height: 62px;
 }
 #menu ul > li > ul > li{
@@ -201,6 +197,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+#edit-benefiter{
+    line-height: 40px;
 }
 
 .min-height-720px{

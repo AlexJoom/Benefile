@@ -11,7 +11,7 @@ $(document).ready(function(){
         var $telephone = $("input[name='telephone']").val();
         var $birth_date = $("input[name='birth_date']").val();
         var $origin_country = $("input[name='origin_country']").val();
-        var $medical_location_id = $("select:first").val();
+        var $medical_location_id = $("#medical-location-id :selected").val();
         var $marital_status_id = $("#marital-status-id :selected").val();
         var $age = $("input[name='age']").val();
         var $legal_status_id = $("#legal-status-id :selected").val();
