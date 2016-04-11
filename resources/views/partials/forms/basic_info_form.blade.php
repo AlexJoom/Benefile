@@ -950,7 +950,7 @@
                     </div>
             </div>
             <div class="form-section align-text-center no-bottom-border">
-                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button margin-bottom-0')) !!}
+                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
             </div>
             {!! Form::close() !!}
         @endif
@@ -1906,7 +1906,7 @@
                     </div>
             </div>
             <div class="form-section align-text-center no-bottom-border">
-                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button margin-bottom-0')) !!}
+                {!! Form::submit(Lang::get('basic_info_form.save_referral'), array('class' => 'submit-button')) !!}
             </div>
             {!! Form::close() !!}
         @endif

@@ -258,7 +258,6 @@ input:focus, textarea:focus {
     padding: 1em;
     font-size: 1.2em;
     border: none;
-    margin-bottom: 15px;
 }
 
 .new-visit-button{
