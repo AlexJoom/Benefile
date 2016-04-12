@@ -329,7 +329,7 @@ class BasicInfoService{
                 $legalStatusInserted = false;
                 foreach ($temp as $legal_status_db){
                     if($legal_status_db->legal_lookup_id == $legal_status_checked){
-                        \DB::table('benefiters_legal_status')->where('id', '=', $legal_status_db->legal_lookup_id)->update($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked), $request));
+                        \DB::table('benefiters_legal_status')->where('id', '=', $legal_status_db->id)->update($this->getLegalStatusArrayForDBInsert($benefiterId, intval($legal_status_checked), $request));
                         array_push($ids_inserted, $legal_status_checked);
                         $legalStatusInserted = true;
                         break;
