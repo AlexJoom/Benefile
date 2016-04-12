@@ -130,7 +130,11 @@ class BenefiterMedicalFolderService
         foreach ($upload_file_description as $i=>$fd){
             $rules['upload_file_description.'.$i] = 'max:255';
         }
-        return Validator::make($request, $rules);
+        $validator = Validator::make($request, $rules);
+        $validator->sometimes('new_medical_location', 'required', function($request){
+            return $request['medical_location_id'] == "new_location";
+        });
+        return $validator;
     }
 
 
