@@ -44,14 +44,14 @@
             <div class="row">
                 <div class="padding-left-right-15">
                     {{-- ΤΟΠΟΘΕΣΙΑ ΕΞΕΤΑΣΗΣ --}}
-                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-2">
+                    <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
                         {!! Form::label('medical_location_id', Lang::get($p.'exam_location')) !!}
                         {!! Form::select('medical_location_id', $medical_locations_array) !!}
                     </div>
                     {{-- ΕΙΣΑΓΩΓΗ ΝΕΑΣ ΤΟΠΟΘΕΣΙΑΣ ΕΞΕΤΑΣΗΣ --}}
                     <div id="new_medical_location_div" class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
                         {!! Form::label('new_medical_location', Lang::get($p.'new_exam_loc')) !!}
-                        {!! Form::text('new_medical_location', null) !!}
+                        {!! Form::text('new_medical_location', null, array('class' => 'custom-input-text width-80-percent')) !!}
                     </div>
                     {{-- ΤΥΠΟΣ ΠΕΡΙΣΤΑΤΙΚΟΥ --}}
                     <div class="form-group make-inline padding-left-right-15 margin-right-30 float-left col-xs-3">
