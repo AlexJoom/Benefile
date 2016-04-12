@@ -73,7 +73,7 @@ class ReportsService{
     // returns data needed to display the benefiters work titles report
     public function getReportDataForBenefitersWorkTitle(){
         try {
-            $benefitersCountByWork = \DB::select(\DB::raw("select work_title_id, count(work_title_id) as counter from benefiters group by work_title_id"));
+            $benefitersCountByWork = \DB::select(\DB::raw("select work_title_id, count(work_title_id) as counter from benefiters group by work_title_id order by counter desc limit 20"));
             $workTitles = \DB::table('work_title_list_lookup')->get();
         } catch(\Exception $e){
             Log::error("A problem occurred while trying to count the users based on their work title.\n" . $e);
