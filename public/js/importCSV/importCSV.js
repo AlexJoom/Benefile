@@ -9,6 +9,10 @@ $(document).ready(function() {
         acceptedFiles: ".csv",
         maxFiles: 1,
         maxFilesize: 50, // in MB
+        sending: function(){
+            // spinner start
+            $loader = $('#main-window').faLoadingAdd('fa-circle-o-notch');
+        },
         success: function(file, data) {
             html = "";
             for($i = 0; $i < data.length; $i++) {
@@ -25,6 +29,9 @@ $(document).ready(function() {
         canceled: function (response) {
             $('div.unsuccess-message').show();
             $('div.unsuccess-message').delay(7000).fadeOut(400);
+        },
+        complete: function(){
+            $loader.remove(); //stop the loading screen
         }
     };
 
@@ -34,6 +41,8 @@ $(document).ready(function() {
         disabled: true
     });
 });
+
+var $loader;
 
 function refreshPage() {
     location.reload();
