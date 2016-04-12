@@ -291,7 +291,7 @@
             "dataProvider": [
             @foreach ($benefiters_age as $age)
             {
-                "benefiters": @if(json_encode($age->ageInYears) == 'null') {!! 0 !!} @else {!! json_encode($age->ageInYears) !!} @endif + ' - ' + {!! json_encode($age->ageInYears + 9) !!},
+                "benefiters": @if(json_encode($age->ageInYears) == 'null') "n/a" @else {!! json_encode($age->ageInYears) !!} + ' - ' + {!! json_encode($age->ageInYears + 9) !!} @endif ,
                 "counter": {!! json_encode($age->counter) !!}
             },
             @endforeach
