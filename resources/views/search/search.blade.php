@@ -252,9 +252,12 @@
                 </div>
             </div>
         </div>
-        {{--  SUBMIT BUTTON--}}
+        {{-- BUTTONS --}}
         <div class="row">
-            <div class="padding-left-right-15">
+            <div class="padding-left-right-15 text-align-right">
+                {{-- FETCH ALL BUTTON --}}
+                {!! Form::button(Lang::get($p.'fetch_all'), array('class' => 'search-submit-button', 'id' => 'fetch-all-btn')) !!}
+                {{-- SUBMIT BUTTON --}}
                 {!! Form::submit(Lang::get('layouts/mainPanel.search'), array('class' => 'search-submit-button', 'id' => 'search-btn')) !!}
             </div>
         </div>

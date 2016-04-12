@@ -6,9 +6,16 @@ class SearchService{
 
     // perform DB search with the request parameters
     public function searchBenefiters($request){
-        $datesHelper = new DatesHelper();
+        // checks if all_required is set and gives $allRequired a value
+        $allRequired = !empty($request['all_required']) ? (bool) $request['all_required'] : false;
         $queryString = "select b.*, gl.gender, msl.marital_status_title, el.education_title, wll.description as legal_working_status, wtll.work_title, floor(datediff(current_date, str_to_date(b.birth_date, '%Y-%m-%d'))/365) as age_in_years, count(mv.id) as incidents_counter, date(b.created_at) as created_at_date from benefiters as b left join benefiters_legal_status as bls on b.id = bls.benefiter_id left join medical_visits as mv on b.id = mv.benefiter_id left join medical_examination_results as mer on mv.id = mer.medical_visit_id left join medical_medication as mm on mv.id = mm.medical_visit_id left join genders_lookup as gl on b.gender_id = gl.id left join marital_status_lookup as msl on b.marital_status_id = msl.id left join education_lookup as el on b.education_id = el.id left join working_legally_lookup as wll on b.working_legally = wll.id left join work_title_list_lookup as wtll on b.work_title_id = wtll.id";
         $queryString2 = " and deleted_at is null group by b.id";
+        // if $allRequired is true, return all the benefiters from DB
+        if($allRequired) {
+            Log::info("Returning all benefiters from DB.");
+            return \DB::select(\DB::raw($queryString . " where 1=1" . $queryString2));
+        }
+        $datesHelper = new DatesHelper();
         $firstWhereParameter = true;
         $firstWhereParameterExternalSelect = true;
         if ($request['folder_number'] != ""){
@@ -217,6 +224,8 @@ class SearchService{
             $queryString = $queryString . 'created_at_date=\'' . $datesHelper->makeDBSearchFriendlyDate($datesHelper->makeDBFriendlyDate($request['insertion_date'])). '\'';
             $firstWhereParameterExternalSelect = false;
         }
+        // if there is a parameter passed to the query, make a DB query
+        // else return null
         if(!$firstWhereParameter or !$firstWhereParameterExternalSelect) {
             Log::info("The search benefiter DB query is: " . $queryString);
             return \DB::select(\DB::raw($queryString));

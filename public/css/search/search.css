@@ -64,9 +64,14 @@ a.simple-button:hover, a.simple-button:focus{
     height: 50px;
     width: 220px;
     background-color: #4c2a47;
-    float: right;
+    /*float: right;*/
     margin: 20px;
 }
+
+#fetch-all-btn{
+    background-color: #00a59a;
+}
+
 .float-left{
     float: left;
 }

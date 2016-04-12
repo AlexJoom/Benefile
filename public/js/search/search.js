@@ -52,6 +52,13 @@ $(document).ready(function(){
         return false;
     });
 
+    // fetch all benefiters from DB
+    $("#fetch-all-btn").on("click", function(){
+        var $url = $("#search-form").attr("action");
+        MakeAjaxSearchCall($url, {'all_required': true});
+        return false;
+    });
+
     // initialize DataTable
     $('#results').DataTable({
         searching: false,
