@@ -1,5 +1,7 @@
 # Benefile project
 
+Demo can be found here: http://benefile-project.scify.org/
+
 ### Starting the project
 
 For installing Laravel, please refer to [Official Laravel installation
@@ -117,5 +119,3 @@ And finally, set the user appropriately:
 *database instructions placeholder*
 
 Initialize the database with `php artisan migrate` and test the installation with `php artisan serve` and hit `localhost:8000/auth/register` at your browser of choice.
-
-Staging environment could be found here: http://benefile-project.scify.org/
